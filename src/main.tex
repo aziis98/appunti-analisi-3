@@ -23,7 +23,110 @@
 
 \chapter{Teoria della misura}
 
-% TODO
+\section{Misure astratte}
+Siano
+\begin{itemize}
+	\item $X$ un insieme qualunque;
+	\item $\mathcal{A}$ una $\sigma$-algebra di sottoinsiemi di $X$. Ovvero una famiglia di sottinsiemi di $X$ che rispetta le seguenti proprietà.
+		\begin{itemize}
+			\item $\emptyset, X \in \mathcal{A}$;
+			\item $\mathcal{A}$ è chiusa per complementare, unione e intersezione numerabile.
+			\end{itemize}
+	\item $\mu$ una misura su $X$, cioè una funzione $\mu \colon A \to [0,+\infty]$ $\sigma$-addittiva, cioè tale che data una famiglia numerabile $\left\{ E_k \right\} \subset A$ disgiunta e posto $E \coloneqq \bigcup E_n $, allora
+	\[
+		\mu(E) = \sum_{n} \mu (E_n).
+	\] 
+\end{itemize}
+%
+Seguono le proprietà.
+\begin{itemize}
+	\item $\mu(\emptyset) = 0$;
+	\item \textit{monotonia:} dati $E,E' \in \mathcal{A}$ e $E \subset E'$, allora $\mu(E) \leq \mu(E')$;
+	\item data una successione crescente di insiemi, $E_n \uparrow E$, allora $\mu(E) = \lim_{n \to \infty} \mu(E_n) = \sup_{n} \mu(E_n)$;
+	\item se $E_n \uparrow E$ e $\mu (E_{\overline{n}}) < +\infty$ per qualche $\overline{n}$, allora $\mu(E) = \lim_{n \to + \infty} \mu(E_n) = \inf_{n} \mu(E_n)$;
+	\item \textit{subadditività} se $\bigcup E_n \supset E$, allora $\mu(E) \leq \sum_{n}^{} \mu(E_n)$.
+\end{itemize}
+%
+Dove una successione crescente di insiemi $E_n \uparrow E$ è tale che $E_1 \subset E_2 \subset \ldots E_n \subset \ldots $ e $\bigcup E_n = E$.
+%
+\begin{osservazione}
+Dato $X' \in \mathcal{A}$ si possono restringere $\mathcal{A}$ e $\mu$ a $X'$.
+\end{osservazione}
+%
+\textbf{Terminologia}.
+\begin{itemize}
+	\item Sia $P(X)$ un'affermazione che dipende da $x \in X$. Si dice che $P(X)$ vale per quasi $\mu$-quasi ogni $x \in X$ se l'insieme $\left\{ x \colon P(x) \text{ non vale }  \right\}$ è (contenuto in) un insieme di misura $\mu$ nulla.
+	\item $\mu$ si dice \textit{completa} se $F \subset E, E \in \mathcal{A}$ e $\mu(E) = 0$, allora $F \in \mathcal{A}$ (e di conseguenza $\mu(F) = 0$).
+	\item $\mu$ si dice \textit{finita} se $\mu(X) < + \infty$.
+\end{itemize}
+%
+D'ora in poi consideriamo solo misure complete.
+%
+\section{Esempi di misure}
+\textit{Misura che conta i punti}. Siano
+\begin{itemize}
+	\item $X$ qualunque
+	\item $\mathcal{A} \coloneqq \mathcal{P}(X) = \left\{ \text{sottoinsiemi di } X \right\}$;
+	\item $\mu(E) \coloneqq \# E \in \N \cup \left\{ +\infty \right\}$.
+\end{itemize}
+%
+\textit{Delta di Dirac in $x_0$}. Siano
+\begin{itemize}
+	\item $X$ qualunque
+	\item $\mathcal{A} \coloneqq \mathcal{P}(X)$;
+	\item $x_0 \in X$ fissato, allora $\mu(E) \coloneqq \delta_{x_0}(E) = \One_E (x_0)$.
+\end{itemize}
+%
+2. \textit{Misura di Lebesgue}
+Siano
+\begin{itemize}
+	\item $X = \R^n$;
+	\item $\mathcal{M}^n$ la $\sigma$-algebra dei misurabili secondo Lebesgue;
+	\item $\mathcal{L}^n$ la misura di Lebesgue.
+\end{itemize}
+%
+Definiamo la misura di Lebesgue $\mathcal{L}^n$.
+
+Dato $R$ parallelepipedo in $\R^n$, cioè $R = \prod_{k=1}^{n} I_k $ con $I_k$ intervalli in $\R$.
+Si pone
+\[
+\mathrm{vol}_n (R) \coloneqq \prod_{k=1}^{n}  \mathrm{lungh} (I_k)
+\] 
+per ogni $E \subset \R^n$. Si pone
+\[
+\mathcal{L}^n(E) \coloneqq \inf \left\{ \sum_{i}^{} \mathrm{vol}_n (R_i) \mid \left\{ R_i \right\} \text{tale che} \cup_i R_i \supset E  \right\}.
+\] 
+\begin{osservazione}
+Seguono le seguenti osservazioni.
+\begin{itemize}
+\item $\mathcal{L}^n(R) = \mathrm{vol}_n (R)$ (fatto non del tutto ovvio);
+\item $\mathcal{L}^n$ è così definita se $\mathcal{P}(\R^n)$ ma non è $\sigma$-addittiva;
+\item $\mathcal{L}^n$ è $\sigma$-addittiva su $\mathcal{M}^n$ (è per questo che bisogna introdurre $\mathcal{M}^n$).
+\end{itemize}
+\end{osservazione}
+%
+Definizione di $\mathcal{M}^n$. \\
+Dato $E \subset \R^n$, si dice che $E$ è misurabile (secondo Lebesgue) se per ogni $\epsilon > 0$ eiste $A$ aperto, $C$ chiuso tale che
+\begin{itemize}
+\item $C \subset E \subset A$,
+\item $\mathcal{L}^n (A \smallsetminus C) \leq \epsilon$.
+\end{itemize}
+%
+\begin{osservazione}
+Seguono le seguenti osservazioni.
+\begin{itemize}
+\item Per ogni $E$ misurabile vale
+\[
+\mathcal{L}^n = \inf \left\{ \mathcal{L}^n \colon A \ \text{aperto}, A \supset E \right\} = \sup \left\{ \mathcal{L}^n \colon K \ \text{compatto}, K \subset E \right\}.
+\] 
+\item $F \subset E$ con $E \subset \mathcal{M}^n$ e $\mathcal{L}^n(E) = 0$, allora $F \in \mathcal{M}^n$. Ovvero la misura di Lebesgue è completa!
+\end{itemize}
+%
+Useremo spesso la notazione
+\[
+\left| E \right| \coloneqq \mathcal{L}^n (E).
+\] 
+\end{osservazione}
 
 \chapter{Spazi $L^p$ e convoluzione}
 
