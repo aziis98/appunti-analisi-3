@@ -1,0 +1,166 @@
+
+%%%
+%%% Use a custom geometry for the page
+%%%
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+  top=20mm,
+  bottom=25mm
+}
+
+\usepackage{lipsum}
+
+%%%
+%%% File encoding
+%%%
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+
+%%%
+%%% Font
+%%%
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[font=itshape]{quoting}
+
+%%%
+%%% References
+%%%
+\usepackage{hyperref}
+\hypersetup{ 
+  linkbordercolor={.77 .4 .20},
+  citebordercolor={.31 .63 .31},
+  pdftitle={Appunti}
+}
+
+%%%
+%%% Pictures
+%%%
+
+% General
+\usepackage{caption}
+\usepackage{graphicx}
+
+% TikZ
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+% Inkscape figures
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures}{#1.pdf_tex}
+}
+
+%%%
+%%% Basic math and layout packages
+%%%
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{array}
+\usepackage[all]{xy}
+\usepackage{stmaryrd}
+
+%%%
+%%% Enumerations
+%%%
+\usepackage{enumitem}
+
+%%%
+%%% Sections and page borders styles
+%%%
+
+\usepackage{titlesec}
+% Adds horizontal rules under "\section" entries
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+% \fancyhead[L]{\leftmark}% Empty left header
+% \fancyhead[C]{} % Page numbering for center header  
+% \fancyhead[R]{\rightmark}% Empty right header
+% \fancyfoot[L]{}% Empty left footer
+% \fancyfoot[C]{\thepage}% Empty center footer
+% \fancyfoot[R]{}% Empty left footer
+% \fancyhf{}
+% \chead{\footnotesize\rightmark}
+% \rfoot{\thepage}
+
+%%%
+%%% Styles by @aziis98
+%%%
+
+% Better "\setminus"
+\newcommand{\mysetminusD}{%
+  \hbox{\tikz{\draw[line width=0.6pt,line cap=round] (3pt,0) -- (0,6pt);}}
+}
+\newcommand{\mysetminusS}{%
+  \hbox{\tikz{\draw[line width=0.45pt,line cap=round] (2pt,0) -- (0,4pt);}}
+}
+\newcommand{\mysetminusSS}{%
+  \hbox{\tikz{\draw[line width=0.4pt,line cap=round] (1.5pt,0) -- (0,3pt);}}
+}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+\renewcommand{\setminus}{\mysetminus}
+
+\renewcommand{\implies}{\Rightarrow}
+\renewcommand{\iff}{\Leftrightarrow}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\compose}{\circ}
+\newcommand{\mquad}{\;\;}
+\newcommand{\curry}{\,\cdot\,}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\pd}{\partial}
+% \newcommand{\textqt}[1]{``#1''}
+% \newcommand{\Ker}{\text{Ker}\,}
+
+%%%
+%%% Styles by @<arianna>
+%%%
+
+%%
+%% Nuovi comandi
+%%
+
+% Insiemi numerici
+% \newcommand{\N}{\mathbb{N}}
+% \newcommand{\Z}{\mathbb{Z}}
+% \newcommand{\Q}{\mathbb{Q}}
+% \newcommand{\R}{\mathbb{R}}
+% \newcommand{\C}{\mathbb{C}}
+\newcommand{\restr}[2]{\left.#1\right|_{#2}}
+
+% Dichiarazione lettera Chi maiuscola -> \Chi
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{\mbox{\Large$#1\chi$}}} % inner command, used by \rchi%
+\newcommand{\Chi}{\rchi}
+
+% Dichiarazioni nuovi ambienti
+\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}[chapter]
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{proposizione}[definizione]{Proposizione}
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+\newenvironment{dimostrazione}{\textit{Dimostrazione:}}{\hfill$\square$\break}
+\newtheorem{osservazione}{Osservazione}
+\newtheorem{proprieta}[teorema]{Proprietà}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{nota}[osservazione]{Nota}
