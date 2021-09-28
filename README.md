@@ -1,54 +1,31 @@
 
-# Template: LaTeX Project
+# Appunti di Analisi 3
 
-<!-- Generated from template: <https://github.com/aziis98/template-latex> -->
+## Autori
 
-This is a basic template for a LaTeX project, uses `latexmk` for rendering and a [`Makefile`](./Makefile) to build the project.
+- [@ar-lli](https://github.com/ar-lli)
+- [@aziis98](https://github.com/aziis98)
 
-## Installation
+## Development
 
-```bash
-git clone https://github.com/aziis98/template-latex
-```
-
-or (I personally prefer) the following
+Questo progetto è stato generato dal template <https://github.com/aziis98/template-latex>, per clonarlo basta fare
 
 ```bash
-cd /path/to/folder 
-git init
-git pull --depth=1 https://github.com/aziis98/template-latex
+https://github.com/aziis98/appunti-analisi-3
 ```
 
-that downloads just the most recent commit (the `--depth=1` option) and leaves the remote origin empty.
+### Compilazione
 
-### Layouts
+Comandi utili
 
-Fow now there is only one extra layout, but as time passes I will add even more
+- `make all` -- da eseguire al primo clone per generare la cartella di cache.
 
-- A4 with two column layout
+- `make` -- per compilare il progetto
 
-	```bash
-	cd /path/to/folder 
-	git init
-	git pull --depth=1 https://github.com/aziis98/template-latex layout-a4-c2
-	```
+- `watch` -- controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
 
-## Structure
+	Richiede che sia installato <https://github.com/clibs/entr>
 
-All source files should be placed in [`src/`](./src), they are copied to the [`.cache`](./.gitignore) directory, rendered and then [`main.pdf`](./main.pdf) is copied back into the root of the project.
+## Struttura
 
-## Usage
-
-To be organized I've recently started using this [Makefile](./Makefile) to manage LaTeX projects, so just use `make`, `make all` or `make main.pdf` to build the project and generate the output PDF.
-
-The alternative is to run [`./watch`](./watch) that uses `entr` to watch and rerender the PDF when the source files change (and shows a notification with `notify-send`).
-
-### Live reload with entr (just `./watch` now)
-
-If you have `entr` installed you can also have "live reload" on save with
-
-```bash
-find src/ -type f | entr make
-```
-
-that will automatically rebuild [`main.pdf`](main.pdf).
+Tutti i file sorgente sono in [`src/`](./src) mentre la versione più aggiornata delle dispense si trova in [`main.pdf`](./main.pdf).
