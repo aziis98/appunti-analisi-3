@@ -115,6 +115,7 @@
 \newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
 \renewcommand{\setminus}{\mysetminus}
 
+% Generali
 \renewcommand{\implies}{\Rightarrow}
 \renewcommand{\iff}{\Leftrightarrow}
 \renewcommand{\epsilon}{\varepsilon}
@@ -128,8 +129,17 @@
 \newcommand{\ds}{\displaystyle}
 \newcommand{\dd}{\,\mathrm{d}}
 \newcommand{\pd}{\partial}
-% \newcommand{\textqt}[1]{``#1''}
-% \newcommand{\Ker}{\text{Ker}\,}
+
+% Fulmine dell'assurdo
+\usepackage{stmaryrd}
+\let\stmaryrdLightning\lightning
+\renewcommand{\lightning}{\stmaryrdLightning}
+\newcommand{\absurd}{$\lightning$}
+
+% Funzione indicatrice
+\newcommand{\bbOne}{\text{\usefont{U}{bbold}{m}{n}1}}
+\MakeRobust{\bbOne}
+\newcommand{\One}{\bbOne}
 
 %%%
 %%% Styles by @<arianna>
