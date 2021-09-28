@@ -18,11 +18,11 @@ https://github.com/aziis98/appunti-analisi-3
 
 Comandi utili
 
-- `make all` -- da eseguire al primo clone per generare la cartella di cache.
+- `make all` &mdash; da eseguire al primo clone per generare la cartella di cache.
 
-- `make` -- per compilare il progetto
+- `make` &mdash; per compilare il progetto
 
-- `watch` -- controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
+- `watch` &mdash; controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
 
 	Richiede che sia installato <https://github.com/clibs/entr>
 
