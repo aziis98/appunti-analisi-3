@@ -25,37 +25,36 @@
 
 \section{Misure astratte}
 Siano
-\begin{itemize}
-	\item $X$ un insieme qualunque;
-	\item $\mathcal{A}$ una $\sigma$-algebra di sottoinsiemi di $X$. Ovvero una famiglia di sottinsiemi di $X$ che rispetta le seguenti proprietà.
-		\begin{itemize}
-			\item $\emptyset, X \in \mathcal{A}$;
+\begin{itemize}[label={}]
+	\item $X$ un insieme qualunque.
+	\item $\mathcal{A}$ una $\sigma$-algebra di sottoinsiemi di $X$, ovvero una famiglia di sottoinsiemi di $X$ che rispetta le seguenti proprietà:
+		\begin{itemize}[label={--}]
+			\item $\emptyset, X \in \mathcal{A}$.
 			\item $\mathcal{A}$ è chiusa per complementare, unione e intersezione numerabile.
 			\end{itemize}
-	\item $\mu$ una misura su $X$, cioè una funzione $\mu \colon A \to [0,+\infty]$ $\sigma$-addittiva, cioè tale che data una famiglia numerabile $\left\{ E_k \right\} \subset A$ disgiunta e posto $E \coloneqq \bigcup E_n $, allora
+	\item $\mu$ una misura su $X$, ossia una funzione $\mu \colon A \to [0,+\infty]$ $\sigma$-addittiva, cioè tale che data una famiglia numerabile $\left\{ E_k \right\} \subset A$ disgiunta e posto $E \coloneqq \bigcup E_n $, allora
 	\[
 		\mu(E) = \sum_{n} \mu (E_n).
 	\] 
 \end{itemize}
 %
 Seguono le proprietà.
-\begin{itemize}
-	\item $\mu(\emptyset) = 0$;
-	\item \textit{monotonia:} dati $E,E' \in \mathcal{A}$ e $E \subset E'$, allora $\mu(E) \leq \mu(E')$;
-	\item data una successione crescente di insiemi, $E_n \uparrow E$, allora $\mu(E) = \lim_{n \to \infty} \mu(E_n) = \sup_{n} \mu(E_n)$;
-	\item se $E_n \uparrow E$ e $\mu (E_{\overline{n}}) < +\infty$ per qualche $\overline{n}$, allora $\mu(E) = \lim_{n \to + \infty} \mu(E_n) = \inf_{n} \mu(E_n)$;
-	\item \textit{subadditività} se $\bigcup E_n \supset E$, allora $\mu(E) \leq \sum_{n}^{} \mu(E_n)$.
-\end{itemize}
+\begin{enumerate}[label=(\roman*)]
+	\item $\mu(\emptyset) = 0$.
+	\item \textit{Monotonia}. Dati $E,E' \in \mathcal{A}$ e $E \subset E'$, allora $\mu(E) \leq \mu(E')$.
+	\item Data una successione crescente di insiemi, $E_n \uparrow E$, allora $\mu(E) = \lim_{n \to \infty} \mu(E_n) = \sup_{n} \mu(E_n)$.
+	\item Se $E_n \uparrow E$ e $\mu (E_{\bar{n}}) < +\infty$ per qualche $\bar{n}$, allora $\mu(E) = \lim_{n \to + \infty} \mu(E_n) = \inf_{n} \mu(E_n)$.
+	\item \textit{Subadditività}. Se $\bigcup E_n \supset E$, allora $\mu(E) \leq \sum_{n}^{} \mu(E_n)$.
+\end{enumerate}
 %
 Dove una successione crescente di insiemi $E_n \uparrow E$ è tale che $E_1 \subset E_2 \subset \ldots E_n \subset \ldots $ e $\bigcup E_n = E$.
 %
-\begin{osservazione}
-Dato $X' \in \mathcal{A}$ si possono restringere $\mathcal{A}$ e $\mu$ a $X'$.
-\end{osservazione}
+Notiamo infine che dato $X' \in \mathcal{A}$ si possono restringere $\mathcal{A}$ e $\mu$ a $X'$.
 %
+
 \textbf{Terminologia}.
-\begin{itemize}
-	\item Sia $P(X)$ un'affermazione che dipende da $x \in X$. Si dice che $P(X)$ vale per quasi $\mu$-quasi ogni $x \in X$ se l'insieme $\left\{ x \colon P(x) \text{ non vale }  \right\}$ è (contenuto in) un insieme di misura $\mu$ nulla.
+\begin{itemize}[label={}]
+	\item Sia $P(X)$ un'affermazione che dipende da $x \in X$. Si dice che $P(X)$ vale $\mu$-quasi ogni $x \in X$ se l'insieme $\left\{ x \colon P(x) \text{ non vale}  \right\}$ è (contenuto in) un insieme di misura $\mu$ nulla.
 	\item $\mu$ si dice \textit{completa} se $F \subset E, E \in \mathcal{A}$ e $\mu(E) = 0$, allora $F \in \mathcal{A}$ (e di conseguenza $\mu(F) = 0$).
 	\item $\mu$ si dice \textit{finita} se $\mu(X) < + \infty$.
 \end{itemize}
@@ -64,71 +63,267 @@ D'ora in poi consideriamo solo misure complete.
 %
 \section{Esempi di misure}
 \textit{Misura che conta i punti}. Siano
-\begin{itemize}
-	\item $X$ qualunque
-	\item $\mathcal{A} \coloneqq \mathcal{P}(X) = \left\{ \text{sottoinsiemi di } X \right\}$;
+\begin{itemize}[label={}]
+	\item $X$ qualunque.
+	\item $\mathcal{A} \coloneqq \mathcal{P}(X)$.
 	\item $\mu(E) \coloneqq \# E \in \N \cup \left\{ +\infty \right\}$.
 \end{itemize}
 %
 \textit{Delta di Dirac in $x_0$}. Siano
-\begin{itemize}
+\begin{itemize}[label={}]
 	\item $X$ qualunque
-	\item $\mathcal{A} \coloneqq \mathcal{P}(X)$;
+	\item $\mathcal{A} \coloneqq \mathcal{P}(X)$.
 	\item $x_0 \in X$ fissato, allora $\mu(E) \coloneqq \delta_{x_0}(E) = \One_E (x_0)$.
 \end{itemize}
 %
 2. \textit{Misura di Lebesgue}
 Siano
-\begin{itemize}
-	\item $X = \R^n$;
-	\item $\mathcal{M}^n$ la $\sigma$-algebra dei misurabili secondo Lebesgue;
+\begin{itemize}[label={}]
+	\item $X = \R^n$.
+	\item $\mathcal{M}^n$ la $\sigma$-algebra dei misurabili secondo Lebesgue.
 	\item $\mathcal{L}^n$ la misura di Lebesgue.
 \end{itemize}
 %
-Definiamo la misura di Lebesgue $\mathcal{L}^n$.
+Di seguito definiamo la misura di Lebesgue $\mathcal{L}^n$.
 
 Dato $R$ parallelepipedo in $\R^n$, cioè $R = \prod_{k=1}^{n} I_k $ con $I_k$ intervalli in $\R$.
 Si pone
 \[
-\mathrm{vol}_n (R) \coloneqq \prod_{k=1}^{n}  \mathrm{lungh} (I_k)
+	\mathrm{vol}_n (R) \coloneqq \prod_{k=1}^{n}  \mathrm{lungh} (I_k)
 \] 
 per ogni $E \subset \R^n$. Si pone
 \[
-\mathcal{L}^n(E) \coloneqq \inf \left\{ \sum_{i}^{} \mathrm{vol}_n (R_i) \mid \left\{ R_i \right\} \text{tale che} \cup_i R_i \supset E  \right\}.
+	\mathcal{L}^n(E) \coloneqq \inf \left\{ \sum_{i}^{} \mathrm{vol}_n (R_i) \mid \left\{ R_i \right\} \text{tale che} \cup_i R_i \supset E  \right\}.
 \] 
 \begin{osservazione}
-Seguono le seguenti osservazioni.
-\begin{itemize}
-\item $\mathcal{L}^n(R) = \mathrm{vol}_n (R)$ (fatto non del tutto ovvio);
-\item $\mathcal{L}^n$ è così definita se $\mathcal{P}(\R^n)$ ma non è $\sigma$-addittiva;
-\item $\mathcal{L}^n$ è $\sigma$-addittiva su $\mathcal{M}^n$ (è per questo che bisogna introdurre $\mathcal{M}^n$).
+Si hanno le seguenti.
+\begin{itemize}[label={--}]
+	\item $\mathcal{L}^n(R) = \mathrm{vol}_n (R)$.
+	\item $\mathcal{L}^n$ è così definita se $\mathcal{P}(\R^n)$ ma non è $\sigma$-addittiva.
+	\item $\mathcal{L}^n$ è $\sigma$-addittiva su $\mathcal{M}^n$ (è per questo che bisogna introdurre $\mathcal{M}^n$).
 \end{itemize}
 \end{osservazione}
 %
-Definizione di $\mathcal{M}^n$. \\
-Dato $E \subset \R^n$, si dice che $E$ è misurabile (secondo Lebesgue) se per ogni $\epsilon > 0$ eiste $A$ aperto, $C$ chiuso tale che
-\begin{itemize}
-\item $C \subset E \subset A$,
-\item $\mathcal{L}^n (A \smallsetminus C) \leq \epsilon$.
+Il terzo punto giustifica l'introduzione dei \textit{misurabili secondo Lebesgue}. Dunque definiamo $\mathcal{M}^n$.
+
+Dato $E \subset \R^n$, si dice che $E$ è misurabile (secondo Lebesgue) se per ogni $\epsilon > 0$ esiste un aperto $A$ e un chiuso $C$ tale che
+\begin{itemize}[label={--}]
+	\item $C \subset E \subset A$,
+	\item $\mathcal{L}^n (A \smallsetminus C) \leq \epsilon$.
 \end{itemize}
 %
 \begin{osservazione}
-Seguono le seguenti osservazioni.
-\begin{itemize}
-\item Per ogni $E$ misurabile vale
-\[
-\mathcal{L}^n = \inf \left\{ \mathcal{L}^n \colon A \ \text{aperto}, A \supset E \right\} = \sup \left\{ \mathcal{L}^n \colon K \ \text{compatto}, K \subset E \right\}.
-\] 
-\item $F \subset E$ con $E \subset \mathcal{M}^n$ e $\mathcal{L}^n(E) = 0$, allora $F \in \mathcal{M}^n$. Ovvero la misura di Lebesgue è completa!
+Si hanno le seguenti.
+\begin{itemize}[label={--}]
+	\item Per ogni $E$ misurabile vale
+	\[
+	\mathcal{L}^n = \inf \left\{ \mathcal{L}^n \colon A \ \text{aperto}, A \supset E \right\} = \sup \left\{ \mathcal{L}^n \colon K \ \text{compatto}, K \subset E \right\}.
+	\] 
+	\item Notiamo che se $F \subset E$ con $E \subset \mathcal{M}^n$ e $\mathcal{L}^n(E) = 0$, allora $F \in \mathcal{M}^n$. Ovvero la misura di Lebesgue è completa!
 \end{itemize}
 %
-Useremo spesso la notazione
-\[
-\left| E \right| \coloneqq \mathcal{L}^n (E).
-\] 
+\textit{Notazione.} $\left| E \right| \coloneqq \mathcal{L}^n (E).$
+%
 \end{osservazione}
 
-prova
+\section{Funzioni misurabili}
+%
+\begin{definizione}
+	Dati $X, \mathcal{A}, \mu$ e $f \colon X \to \R$ (o in $Y$ spazio topologico), diciamo che $f$ è \textit{misurabile} ($\mathcal{A}$-misurabile), se
+	\[
+		f^{-1} (A) \in \mathcal{A} \quad \text{per ogni} \ A \ \text{aperto}.
+	\] 
+\end{definizione}
+%
+\begin{osservazione}
+Si hanno le seguenti.
+\begin{itemize}[label={--}]
+	\item Dato $E \subset X$, vale $E \in \mathcal{A}$ se solo se $\One_E$ è misurabile.
+	\item La classe delle funzioni misurabili è chiusa rispetto a moolte operazioni:
+	\begin{itemize}[label={$\ast$}]
+		\item somma, prodotto ( se hanno senso nello spazio immagine della funzione).
+		\item Composizione con funzioni continue. In particolare, se $f \colon X \to Y$ continua e $g \colon  Y \to Y'$ continua, allora $g \circ f$ è misurabile.
+		\item Convergenza puntuale: data una successione di $f_n$ misurabili e $f_n \to f$ puntualmente, allora $f$ è misurabile.
+		\item $\liminf$ e $\limsup$ (nel caso $Y = \R$).
+	\end{itemize}
+\end{itemize}
+\end{osservazione}
+%
+\subsection{Funzioni semplici}
+Indico con $\mathcal{S}$ la classe delle funzioni $f \colon  X \to \R$ \textit{semplici}, cioè della forma $f = \sum_{i}^{n} \alpha_i \One_{E_i}$ con $\{E_i \}_{1 \leq i \leq n}$ misurabili e $\alpha_i \in \R$. \\
+\textit{Nota.} Se necessario posso supporre gli $E_i$ disgiunti.
+%
+\section{Integrale}
+La definizione di $\int_X f \, \dd \mu$ è data per passi:
+\begin{enumerate}
+	\item \label{item:def_int_1} $f \in \mathcal{S}, f \geq 0$, cioè $f = \sum_i \alpha_i \One_{E_i}$, $\alpha_i \geq 0$, si pone
+	\[
+		\int\limits_{\mathclap{X}}^{} f \, \dd \mu \coloneqq \sum_{i}^{} \alpha_i \ \mu(E_i),
+	\] 
+	convenendo che $+ \infty \cdot 0 = 0$.
+	\item \label{item:def_int_2} $f \colon  X \to [0,+\infty]$ misurabile si pone
+	\[
+		\int\limits_{\mathclap{X}}^{} f \, \dd \mu \coloneqq \sup_{\substack{g \in \mathcal{S} \\ 0 \leq g \leq f}} \int\limits_{\mathclap{X}}^{} g \, \dd \mu.
+	\] 
+	\item $f \colon X \to \overline{\R}$ misurabile si dice \textit{integrabile} se 
+	\[
+		\int\limits_{\mathclap{X}}^{} f^+ \, \dd \mu < + \infty \quad \text{oppure} \quad \int\limits_{\mathclap{X}}^{} f^- \, \dd \mu < +\infty.
+	\] 
+	Per tali $f$ si pone
+	\[
+		\int\limits_{\mathclap{X}}^{} f \, \dd \mu \coloneqq  \int\limits_{\mathclap{X}}^{} f^+ \, \dd \mu - \int\limits_{\mathclap{X}}^{} f^- \, \dd \mu.
+	\] 
+	\item $f \colon X \to \R^n$ si dice \textit{sommabile} (o di \textit{classe} $\mathcal{L}^1$) se $\int_X \left| f \right| \, \dd \mu < +\infty$.
+	In tal caso, se $\int_X f_i^{\pm} \, \dd \mu < +\infty$ per ogni $f_i$ componente di $f$, allora $\int_X f \, \dd \mu$ esiste ed è finito.
+\end{enumerate}
+%
+Per tali $f$ si pone
+\[
+	\int\limits_{\mathclap{X}}^{} f \, \dd \mu \coloneqq  \left( \int_X f_1 \, \dd \mu, \ldots , \int_X f_n \, \dd \mu \right).
+\] 
+%
+\textit{Notazione.} Scriveremo spesso $\int_E f(x) \, \dd x$ invece di $\int_E f \, \dd \mathcal{L}^n$ .
+%
+\begin{osservazione}
+Si hanno le seguenti.
+\begin{itemize}[label={--}]
+	\item L'integrale è lineare (sulle funzioni sommabili).
+	\item Le definizioni in \ref{item:def_int_1} E \ref{item:def_int_2} Danno lo stesso risultato per $f$ semplice $\geq 0$.
+	\item La definizione in \ref{item:def_int_2} Ha senso per ogni $f \colon X \to [0,+\infty]$ anche non misurabile. Ma in generale vale solo che
+	\[
+		\int\limits_{\mathclap{X}}^{} f_1 + f_2 \, \dd \mu \geq \int_X f_1 \, \dd \mu + \int_X f_2 \, \dd \mu.
+	\] 
+	\item Dato $E \in \mathcal{A}$, $f$ misurabile su $E$, notiamo che vale l'uguaglianza
+	\[
+		\int_E f \, \dd \mu \coloneqq \int_X f \cdot \One_E \, \dd \mu.
+	\] 
+	\item Si può definire $\int_X f \, \dd \mu$ anche per $f \colon X \to Y$ con $Y$ spazio vettoriale normato finito dimensionale e $f$ sommabile. (è necessario avere uno spazio vettoriale, perchè mi serve la linearità e la moltiplicazione per scalare).
+	\item Se $f_1 = f_2$ $\mu$-q.o. allora $\int_X f_1 \, \dd \mu = \int_X f_2 \, \dd \mu$.
+	\item Si definisce $\int_X f \, \dd \mu$ anche se  $f$ è misurabile e definita su $X \setminus N$ con $\mu(N) = 0$.
+	\item se $f \colon [a,b] \to \R$ è integrabile secondo Rienmann allora è misurabile secondo Lebesgue e le due nozioni di integrale coincidono. 
+	\textit{Nota.} Lo stesso vale per integrali impropri di funzioni positive. Ma nel caso più generale non vale: se $f \colon (0,+\infty) \to \R$ è data da $f(x) \coloneqq \dfrac{\sin x}{x}$, allora l'integrale di $f$ definito su $(0,+\infty)$ esiste come integrale improprio ma non secondo Lebesgue $\left( \int_0^{+\infty} f^+ \dd x = \int_0^{+\infty} f^- \dd x = +\infty \right)$.
+	\item $\int_X f \, \dd \delta_{x_0} = f(x_0)$.
+	\item se $X = \N$ e $\mu$ è la misura che conta i punti l'integrale è 
+	\[
+		\int_X f \, \dd \mu = \sum_{n = 0}^{\infty} f(n) 
+	\] 
+	per le $f$ positive o tali che $\sum_{}^{} f^+(n) < +\infty $ oppure $\sum_{}^{} f^+(n) < -\infty $. \\
+	\textit{Nota.} $\sum_{1}^{\infty} \frac{(-1)^n}{n} $ esiste come serie ma non come integrale. Da questo si osserva che serie e integrale non coincidono.
+	\item Dato $X$ qualunque, $\mu$ misura che conta i punti e $f \colon  X \to [0,+\infty] $ posso definire la somma di tutti i valori di $f$ 
+	\[
+		\sum_{x \in X}^{} f(x) \coloneqq \int\limits_{\mathclap{X}}^{} f \, \dd \mu.  
+	\] 
+\end{itemize}
+\end{osservazione}
+%
+\section{Teoremi di convergenza}
+Prendo $X, \mathcal{A}, \mu$ come al solito.
+%
+\begin{teorema}[Convergenza Monotona (Beppo Levi)]
+Date $f_n \colon  X \to [0,+\infty]$ misurabili, tali che $f_n \uparrow f$ ovunque in $X$, allora
+\[
+	\lim_{n \to +\infty} \int\limits_{\mathclap{X}}^{} f_n \, \dd \mu = \int\limits_X f \, \dd \mu,
+\] 
+dove
+\[
+	\lim_{n \to +\infty} \int\limits_{\mathclap{X}}^{} f_n \, \dd \mu = \sup_n \int f_n \, \dd \mu.
+\] 
+\end{teorema}
+%
+\begin{teorema}[Lemma di Fatou]
+Date $f_n \colon X \to [0,+\infty]$ misurabili, allora
+\[
+	\liminf_{n \to +\infty} \int\limits_X f \, \dd \mu \geq \int\limits_{\mathclap{X}}^{} \left( \liminf_{n \to +\infty} f_n \right) \, \dd \mu.
+\] 
+\end{teorema}
+%
+\begin{teorema}
+Date $f_n \colon  X \to \R$ (o anche $\R^n$) tali che
+%
+\begin{itemize}
+	\item[] \textit{convergenza puntuale}. $f_n (x) \to f(x)$ per ogni $x \in X$.
+	\item[] \textit{dominazione}. Esiste $g \colon X \to [0,+\infty]$ sommabile tale che $\left| f_n (x) \right| \leq g(x)$ per ogni $x \in X$ e per ogni $n \in \N$.
+\end{itemize}
+Allora
+\[
+	\lim_{n \to \infty} \int\limits_{\mathclap{X}}^{} f_n \, \dd \mu = \int\limits_X f \, \dd \mu. 
+\] 
+\end{teorema}
+%
+\textit{Nota.}
+la seconda proprietà è essenziale. sostituirla con $\int_X \left| f_n \right| \, \dd \mu \leq C < + \infty$ non basta!
+
+
+\textit{Altro esempio di misura}. Data $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la misura con densità $\rho$ è data da
+\[
+\mu(E) = \int\limits_{\mathclap{E}}^{} \rho \, \dd x \quad \text{per ogni} \ E \ \text{misurabile}.
+\] 
+%
+\begin{osservazione}
+Si hanno le seguenti.
+\begin{itemize}[label={}]
+	\item $\R^n$ e $\mathcal{L}^n$ possono essere sostituiti da $X$ e $\widetilde{\mu}$.
+	\item il fatto che $\mu$ è una misura segue da Beppo Levi, in particolare serve per mostrare la subadditività.
+\end{itemize}
+\end{osservazione}
+%
+\begin{teorema}[Cambio di variabile]
+Siano $\Omega, \Omega'$ aperti di $\R^n$, $\phi \colon \Omega \to \Omega' $ un diffeomorfismo di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
+\[
+\int\limits_{\mathclap{\Omega'}}^{} f(x') \, \dd x' = \int\limits_{\mathclap{\Omega}}^{} f(\phi(x)) \left| \det(\nabla \phi(x)) \right| \, \dd x.
+\] 
+\end{teorema}
+%
+La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$ a valori in $\R^n$ sommabile.
+\begin{osservazione}
+Si hanno le seguenti.
+\begin{itemize}[label={--}]
+	\item Se $n = 1$, $\left| \det(\nabla \phi(x)) \right| = \left| \phi'(x) \right|$ e non $\phi'(x)$ come nella formula vista ad analisi 1 (l'informazione del segno viene data dall'inversione degli estremi).
+	\item Indebolire le ipotesi su $\phi$ è delicato. Basta $\phi$ di classe $C^1$ e $\# \phi^{-1}(x') = 1$ per quasi ogni $x' \in \Omega'$ (supponendo $\phi$ iniettiva la proprietà precedente segue immediatamente).
+	Se $\phi$ non è "quasi" iniettiva bisogna correggere la formula per tenere conto della molteplicità.
+\end{itemize}
+\end{osservazione}
+%
+Di seguito riportiamo il teorema di Fubini-Tonelli per la misura di Lebesgue.
+%
+\begin{teorema}[Fubini-Tonelli]
+Sia $R^{n_1} \times \R^{n_2} \simeq \R^n$ con $n = n_1 + n_2$, $ E \coloneqq E_1 \times E_2 $ dove $E_1, E_2$ sono misurabili e $f$ è una funzione misurabile definita su $E$.
+Se $f$ ha valori in $[0,+\infty]$ allora
+\[
+	\int\limits_X f \, \dd \mu = \int\limits_{\mathclap{E_2}}^{} \left( \int\limits_{\mathclap{E_1}}^{} f(x_1,x_2) \, \dd x_1  \right) \, \dd x_2 = \int\limits_{\mathclap{E_1}}^{} \left( \int\limits_{\mathclap{E_2}}^{} f(x_1,x_2) \, \dd x_2  \right) \, \dd x_1.
+\] 
+\end{teorema}
+%
+Vale lo stesso per $f$ a valori in $\R$ o in $\R^n$ sommabile.
+%
+\begin{osservazione}
+Si hanno le seguenti.
+\begin{itemize}[label={--}]
+	\item Se $X_1, X_2$ sono spazi con misure $\mu_1,\mu_2$ (con opportune ipotesi) vale:
+	\[
+		\int\limits_{\mathclap{E_2}}^{} \Bigg( \int\limits_{\mathclap{E_1}}^{} f(x_1,x_2) \, \dd \mu_1(x_1)  \Bigg) \, \dd \mu_2(x_2) = \int\limits_{\mathclap{E_1}}^{} \Bigg( \int\limits_{\mathclap{E_2}}^{} f(x_1,x_2) \, \dd \mu_2(x_2)  \Bigg) \, \dd \mu_1(x_1).
+	\] 
+	se $f\geq 0$ oppure $\displaystyle \int\limits_{\mathclap{X_1}}^{} \Bigg( \int\limits_{\mathclap{x_2}}^{} \left| f \right| \, \dd \mu_2(x_2)  \Bigg) \, \dd \mu_1(x_1) < + \infty $.
+	\item Se $X_1 \subset \R$ (oppure $X_1 \subset \R^n$), $\mu_1 = \mathcal{L}^n$ e $X_2 = \N$, $\mu_2$ è la misura che conta i punti, allora la formula sopra diventa
+	\[
+		\sum_{n=0}^{\infty} \Bigg( \int\limits_{\mathclap{X_1}}^{} f_n(x) \, \dd x  \Bigg) = \int\limits_{\mathclap{X_1}}^{} \Bigg( \sum_{n=0}^{\infty} f_n(x)  \Bigg) \, \dd x.
+	\] 
+	Se $f_i \geq 0$ oppure $\displaystyle \sum_{i} \Bigg( \int\limits_{\mathclap{X_1}}^{} \left| f_i(x) \right| \, \dd x  \Bigg) < + \infty $.
+	\item se $X_1 = X_2 = \N$ e $\mu_1 = \mu_2$ è la misura che conta i punti la formula sopra diventa
+	\[
+		\sum_{j=0}^{\infty} \Bigg( \sum_{i=0}^{\infty} a_{i,j}  \Bigg) = \sum_{i=0}^{\infty} \Bigg( \sum_{j=0}^{\infty} a_{i,j}  \Bigg)
+	\] 
+	se $a_{i,j} \geq 0$ oppure $\sum_{i} \sum_{j} \left| a_{i,j} \right| < +\infty $.
+\end{itemize}
+\end{osservazione}
+% pagina 16
+
+
+
+
+
+
+
 
 \chapter{Spazi $L^p$ e convoluzione}
 
