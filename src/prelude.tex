@@ -78,14 +78,22 @@
 %%%
 \usepackage{enumitem}
 
+% Custom settings for compact lists
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\circ$}
+
+\setlist[enumerate,1]{label=\roman*)}
+\setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
 %%%
 %%% Sections and page borders styles
 %%%
 
-\usepackage{titlesec}
+% \usepackage{titlesec}
 % Adds horizontal rules under "\section" entries
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\usepackage{fancyhdr}
+% \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+% \usepackage{fancyhdr}
 % \pagestyle{fancy}
 % \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 % \fancyhead[L]{\leftmark}% Empty left header
