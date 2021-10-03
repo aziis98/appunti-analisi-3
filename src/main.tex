@@ -146,9 +146,9 @@ $$
 \forall A \text{ aperto} \; f^{-1} (A) \in \mathcal{A}
 $$ 
 
-\newpage
 
 \textbf{Osservazioni.}
+\nopagebreak
 \begin{itemize}
 	\item Dato $E \subset X$, vale $E \in \mathcal{A}$ se solo se $\One_E$ è misurabile.
 	\item La classe delle funzioni misurabili è chiusa rispetto a molte operazioni
@@ -310,8 +310,6 @@ Data una ``densità'' $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la \textbf
 $$
 \forall E \in \mathcal A \quad \mu(E) \coloneqq \int\limits_{\mathclap{E}} \rho \dd x
 $$ 
-
-\newpage
 
 \textbf{Osservazioni.}
 \begin{itemize}
@@ -575,17 +573,56 @@ $$
 \int_X \prod_i |f_i| \dd \mu \leq \prod_i \norm{f_i}_{p_i} 
 $$
 
-
 \subsection{Disuguaglianza di Minkowski}
 
 \textbf{Proposizione.} 
-Sia $p \in [1, +\infty]$ e $f_1, f_2 \colon X \to \R$ oppure $\R^d$ allora
+Consideriamo sempre $(X, \mathcal A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$ allora vale la disuguaglianza triangolare
 $$
 \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
 $$
 
 \textbf{Dimostrazione.}
-[TODO]
+\begin{itemize}
+	\item \textit{Caso 1:} se $p = 1$ o $p = +\infty$, allora basta fare il calcolo diretto
+		
+		\begin{itemize}
+			\item Se $p = 1$
+				$$
+				\norm{f_1 + f_2}_1 
+				= \int_X |f_1 + f_2| \dd \mu 
+				\leq \int_X |f_1| + |f_2| \dd \mu 
+				= \int_X |f_1| \dd \mu + \int_X |f_2| \dd \mu
+				= \norm{f_1}_1 + \norm{f_2}_1
+				$$
+			\item Se $p = +\infty$
+				$$
+				\norm{f_1 + f_2}_\infty
+				= \mathrm{supess}_X |f_1 + f_2| 
+				= \mathrm{supess}_{X \setminus D} 
+				\leq \mathrm{supess}_{X \setminus D} (|f_1| + |f_2|)
+				$$
+				$$
+				= \mathrm{supess}_{X \setminus D} |f_1| + \mathrm{supess}_{X \setminus D} |f_2|
+				= \mathrm{supess}_X |f_1| + \mathrm{supess}_X |f_2|
+				= \norm{f_1}_\infty + \norm{f_2}_\infty
+				$$
+		\end{itemize}
+
+	\item \textit{Caso 2:} se $1 < p < +\infty$ e $0 < \norm{f_1 + f_2}_p < +\infty$
+		$$
+		\begin{aligned}
+			\norm{f_1 + f_2}_p^p 
+			&= \int_X |f_1 + f_2|^p 
+			\leq \int_X (|f_1| + |f_2|) \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
+			&= \int_X |f_1| \cdot |f_1 + f_2|^{p-1} \dd \mu + \int_X |f_2| \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
+			&\overset{\text{H\"older}}{\leq} \norm{f_1}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q + \norm{f_2}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q = \\
+			& = (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{|f_1 + f_2|^{p-1}}_q 
+			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
+		\end{aligned}
+		$$
+		e rovesciando segue la tesi... [TODO]
+
+\end{itemize}
 
 
 \chapter{Spazi di Hilbert}
