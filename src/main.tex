@@ -620,7 +620,27 @@ $$
 			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
 		\end{aligned}
 		$$
-		e rovesciando segue la tesi... [TODO]
+		e poiché $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte
+		$$
+		\implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
+		\implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
+		$$
+
+	\item \textit{Caso 3:} se $1 < p < +\infty$ ma $\norm{f_1 + f_2} = 0$ o $+\infty$ allora se $\norm{f_1 + f_2} = 0$ la disuguaglianza è banale mentre se $\norm{f_1 + f_2} = +\infty$ si usa la seguente disuguaglianza
+		$$
+		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		$$
+		che si ottiene usando la convessità della funzione $y \mapsto y^p$
+		$$
+		\norm{f_1 + f_2}_p^p 
+		= \int_X |f_1 + f_2|^p \dd \mu 
+		= 2^p \int_X \left| \frac{f_1 + f_2}{2} \right|^p \dd \mu 
+		$$
+		$$
+		\leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
+		= 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		$$
+		da cui possiamo ricavare subito che almeno uno dei due termini deve essere $+\infty$.
 
 \end{itemize}
 
