@@ -695,12 +695,7 @@ Dato $\ds E \in \mathcal{A}, E \subset \bigcup_i E_i$ dove $E_i \in \mathcal{A}$
 \] 
 
 \textbf{Dimostrazione} (\textit{Idea}).
-Basta dimostrare che $\ds \mu \left( \bigcup_i E_i \right) \leq \sum_{i}^{} \mu(E_i)$. Infatti per quanto visto prima $\ds \mu(E) \leq \mu \left( \bigcup_i E_i \right)$.
-
-Si dimostra per induzione la seguente
-\[
-\mu \left( \bigcup_{i = 1}^N E_i \right) \leq \sum_{i=1}^{N} \mu(E_i).
-\] 
+Basta dimostrare che $\ds \mu \left( \bigcup_i E_i \right) \leq \sum_{i}^{} \mu(E_i)$. Infatti per quanto visto prima $\ds \mu(E) \leq \mu \left( \bigcup_i E_i \right)$. Prima dimostriamo per induzione $\ds \mu \left( \bigcup_{i = 1}^N E_i \right) \leq \sum_{i=1}^{N} \mu(E_i)$. 
 
 Il passo base $n = 2$ è stato visto al punto \ref{item:misura_unione_finita}. Una volta dimostrata la proprietà sopra, si nota che $\ds \sum_{i=1}^{N} \mu(E_i) $ è limitata per ogni $N$, e dunque è limitato anche il suo limite, da cui la tesi.
 
@@ -731,37 +726,36 @@ Data $f \colon X \to [0, +\infty]$ misurabile
 
 \item[$\boxed{\Rightarrow}$] Dato che $f$ è non negativa, il dominio $X$ può essere riscritto come
 \[
-	X = \left\{ x \in X \mymid f(x) \geq 0 \right\} = \left\{ x \in X \mymid f(x) > 0 \right\} \cup \left\{ x \in X \mymid f(x) = 0 \right\}.
+	X = \left\{ x \in X \mymid f(x) \geq 0 \right\} = \left\{ x \in X \mymid f(x) > 0 \right\} \cup \left\{ x \in X \mymid f(x) = 0 \right\}
 \] 
-
-Ricordiamo che 
+ricordiamo che $(0, +\infty) = \bigcup_{n \geq 1} (\frac{1}{n}, +\infty)$ da cui segue
 \[
 	\left\{ x \in X \mymid f(x) > 0 \right\} =  \bigcup_{n \in \N \setminus \left\{ 0 \right\}} \left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\},
 \] 
-
-inoltre
+e passiamo alle misure
 \[
-	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) = \lim_{n \to +\infty} \left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\},
+	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) 
+	= \lim_{n \to +\infty} \mu\left(\left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\}\right),
 \] 
-dove
+in questo modo otteniamo la seguente caratterizzazione dell'insieme su cui $f$ è positiva
 \[
-	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) >0 \longiff \exists \bar{n} \mid \mu \left( \left\{ x \in X \mymid f(x) \geq 1 / \bar{n} \right\} \right) > 0.
-\] 
-
-Allora
-\[
-	\int_X f \dd \mu \geq \int\limits_{\mathclap{\left\{ x \mymid f(x) \geq \frac{1}{n} \right\}}}^{} f \dd \mu \geq
-	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
+	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) >0 
+	\longiff
+	\exists \bar{n} \mid \mu \left( \left\{ x \in X \mymid f(x) \geq 1 / \bar{n} \right\} \right) > 0.
 \] 
 
-Dunque
-
+% @aziis98: Boh magari potremmo definire tipo L_n := { blob sotto l'integrale } per rendere un po' più leggibile quel dominio di integrazione.
+% @aziis98: Oppure anche in notazione "probabilistica" $\{ f \geq \frac{1}{n} \}$ che è più corto
+Allora possiamo maggiorare come segue
+\[
+	0 = \int_X f \dd \mu 
+	\geq \;\;\int\limits_{\mathclap{\left\{ x \mymid f(x) \geq \frac{1}{n} \right\}}}^{} \;\; f \dd \mu \geq	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
+\] 
+Dunque abbiamo
 \[
 	\mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0 \qquad \forall n.
 \] 
-
 Si conclude osservando che
-
 \[
 	\mu \left(  \left\{ x \mymid f(x) > 0 \right\} \right) = \lim_n \mu \left( \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0.
 \] 
@@ -780,7 +774,7 @@ Data $f$ misurabile, definiamo
 	\norm{ f }_{\infty, X} \coloneqq \inf \left\{ m \in [0,+\infty] \mymid \left| f(x) \right| \leq m \quad \text{quasi ovunque}  \right\}.
 \] 
 
-Se $\norm{ f }_{\infty} < + \infty$, allora dico che esiste una costante $L > 0$ con $L = \norm{ f }_{\infty, X}$, tale che 
+Se $\norm{ f }_{\infty} < + \infty$, allora diciamo che esiste una costante $L > 0$ con $L = \norm{ f }_{\infty, X}$, tale che 
 \[
 	\left| f(x) \right| \leq L
 \] 
@@ -789,7 +783,7 @@ Infatti, per definizione di $\inf$, $L = \lim_n m_n$, dove $m_n$ verificano
 \[
 	\left| f(x) \right| \leq m_n \quad \forall x \in X \setminus N_m, \quad \mu(N_m) = 0.
 \] 
-Definisco $\ds N = \bigcup_{m} N_m$, da cui si ottiene
+Definiamo $N = \bigcup_{m} N_m$, da cui si ottiene
 \[
 	\mu(N) \leq \sum_{n=1}^{\infty} \mu (N_m) = 0. 
 \] 
@@ -816,6 +810,7 @@ Sia
 \[
 	\psi (x) = \frac{1}{\norm{ x }^{\alpha}}
 \] 
+% @aziis98: Boh secondo me possiamo usare anche solo B(0, 1) invece di \mathcal B(0, 1), sempre sul tema di fare con \mathcal solo l'insieme delle parti e le sigma-algebre?
 su $\mathcal{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1 / t^\alpha$.
 Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mathcal{B}(0,1)$.
 
@@ -823,7 +818,7 @@ Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i qu
 \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \psi(x) \dd x = c_n \int\limits_{\mathclap{0}}^{1} \frac{1}{\rho} \rho^{n -1} \dd \rho = c_n \int\limits_{\mathclap{0}}^{1} \rho^{n-1-\alpha} \dd \rho =
 \begin{cases}
 	\log (\rho) \quad n = \alpha \\
-	\frac{\rho^{n-\alpha}}{n - \alpha} \quad \text{altrimenti} 
+	\dfrac{\rho^{n-\alpha}}{n - \alpha} \quad \text{altrimenti} 
 \end{cases} 
 \] 
 
@@ -872,6 +867,8 @@ Inoltre,
 
 In conclusione, l'integrale è finito se $n > \beta > n / 2$.
 
+% @aziis98: Molto probabilmente metterò un disegnino con assi $n$ e $\beta$ per far vedere "meglio" l'insieme dei valori buoni
+
 \textbf{Esercizio.}
 Studiare l'insieme di finitezza al variare del parametro $\alpha$ dell'integrale
 \[
@@ -885,9 +882,9 @@ Osserviamo che la norma 1 e 2 sono legate dalle seguenti disuguglianze
 Studiamo una maggiorazione per l'integrale
 
 \[
-	\int\limits_{\mathclap{[0,1]^n}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-	\leq \int\limits_{\mathclap{[0,1]^n}}^{} \frac{1}{\norm{ x }^\alpha} \dd x 
-	\leq \int\limits_{\mathclap{\mathcal{B}(0,\sqrt{n})}}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \quad \text{se} \; \alpha < n.
+	\int\limits_{\mathclap{[0,1]^n}}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x 
+	\leq \;\int\limits_{\mathclap{[0,1]^n}}^{} \, \frac{1}{\norm{ x }^\alpha} \dd x 
+	\leq \;\;\int\limits_{\mathclap{\mathcal{B}(0,\sqrt{n})}}^{}\;\; \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \quad \text{se} \; \alpha < n.
 \] 
 
 Vediamo ora una minorazione.
@@ -908,11 +905,11 @@ Allora vale
 \[
 	\norm{ f \cdot g }_r \leq \norm{ f }_{p_1} + \norm{ g }_{p_2}.
 \] 
-\textit{Suggerimento.} Usare Holder osservando che $1 = \frac{r}{p_1} + \frac{r}{p_2} = \frac{1}{\left( p_1/r \right)} + \frac{1}{\left( p_2/r \right)}$.
+\textit{Suggerimento.} Usare Holder osservando che $\ds 1 = \frac{r}{p_1} + \frac{r}{p_2} = \frac{1}{\left( p_1/r \right)} + \frac{1}{\left( p_2/r \right)}$.
 
-\item Dimostrare che date $f_1,\ldots, f_N$ misurabili e $p_i > 0$ tali che $1/p_1 + \ldots + 1/p_N = 1$ si ha
+\item Dimostrare che date $f_1,\ldots, f_n$ misurabili e $p_i > 0$ tali che $1/p_1 + \ldots + 1/p_n = 1$ si ha
 \[
-	\norm{ f_1 \cdots f_N }_1 \leq \norm{ f_1 }_{p_1} \cdots \norm{ f_N }_{p_N}.
+	\norm{ f_1 \cdots f_n }_1 \leq \norm{ f_1 }_{p_1} \cdots \norm{ f_n }_{p_n}.
 \] 
 \textit{Suggerimento.} Fare il primo passo dell'induzione e usare la formula precedente scegliendo $r$ in modo corretto.
 
