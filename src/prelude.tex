@@ -67,7 +67,7 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
-\usepackage{xfrac}
+% \usepackage{xfrac}
 \usepackage{array}
 \usepackage[all]{xy}
 \usepackage{stmaryrd}
@@ -78,14 +78,22 @@
 %%%
 \usepackage{enumitem}
 
+% Custom settings for compact lists
+\setitemize{topsep=5pt}
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\circ$}
+
+\setlist[enumerate,1]{label=\roman*)}
+\setenumerate{topsep=5pt}
+
 %%%
 %%% Sections and page borders styles
 %%%
 
-\usepackage{titlesec}
+% \usepackage{titlesec}
 % Adds horizontal rules under "\section" entries
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\usepackage{fancyhdr}
+% \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+% \usepackage{fancyhdr}
 % \pagestyle{fancy}
 % \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 % \fancyhead[L]{\leftmark}% Empty left header
@@ -117,8 +125,15 @@
 \renewcommand{\setminus}{\mysetminus}
 
 % Generali
-\renewcommand{\implies}{\Rightarrow}
-\renewcommand{\iff}{\Leftrightarrow}
+% \renewcommand{\implies}{\Rightarrow}
+% \renewcommand{\iff}{\Leftrightarrow}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sfrac}[2]{
+    \raisebox{+0.55ex}{$#1$}
+    /
+    \raisebox{-0.3ex}{$#2$}
+}
+
 \renewcommand{\epsilon}{\varepsilon}
 \newcommand{\compose}{\circ}
 \newcommand{\mquad}{\;\;}
@@ -142,6 +157,16 @@
 \MakeRobust{\bbOne}
 \newcommand{\One}{\bbOne}
 
+% Ambienti temporanei
+% [Convergenza Monotona (Beppo Levi)]
+
+\newenvironment{theorem}{\textbf{Teorema.}}{}
+\newenvironment{named-theorem}[1]{\textbf{Teorema.} (\textit{#1})}{}
+
+% \newcommand{\TdF}{\mathcal F}
+\newcommand{\foralmostall}{\widetilde\forall}
+\newcommand{\almosteverywhere}{\;\;\text{q.o.}}
+
 %%%
 %%% Styles by @<arianna>
 %%%
@@ -164,14 +189,14 @@
 \newcommand{\Chi}{\rchi}
 
 % Dichiarazioni nuovi ambienti
-\theoremstyle{definition}
-\newtheorem{definizione}{Definizione}[chapter]
-\newtheorem{teorema}{Teorema}[chapter]
-\newtheorem{proposizione}[definizione]{Proposizione}
-\newtheorem{lemma}[teorema]{Lemma}
-\newtheorem{corollario}[teorema]{Corollario}
-\newenvironment{dimostrazione}{\textit{Dimostrazione:}}{\hfill$\square$\break}
+% \theoremstyle{definition}
+% \newtheorem{definizione}{Definizione}[chapter]
+% \newtheorem{teorema}{Teorema}[chapter]
+% \newtheorem{proposizione}[definizione]{Proposizione}
+% \newtheorem{lemma}[teorema]{Lemma}
+% \newtheorem{corollario}[teorema]{Corollario}
+% \newenvironment{dimostrazione}{\textit{Dimostrazione:}}{\hfill$\square$\break}
 \newtheorem{osservazione}{Osservazione}
-\newtheorem{proprieta}[teorema]{Proprietà}
-\newtheorem{esempio}[teorema]{Esempio}
-\newtheorem{nota}[osservazione]{Nota}
+% \newtheorem{proprieta}[teorema]{Proprietà}
+% \newtheorem{esempio}[teorema]{Esempio}
+% \newtheorem{nota}[osservazione]{Nota}
