@@ -687,7 +687,7 @@ $$
 $$
 \end{enumerate}
 
-\textbf{Esercizio} (Numberabile subaddittività).
+\textbf{Esercizio} (Numerabile subaddittività).
 Dato $\ds E \in \mathcal{A}, E \subset \bigcup_i E_i$ dove $E_i \in \mathcal{A}$. Allora
 $$
 	\mu(E) \leq \sum_{i}^{} \mu(E_i).
@@ -709,10 +709,10 @@ Due osservazioni sulle funzioni semicontinue.
 \item La proprietà di misurabilità delle funzioni semicontinue è necessaria per l'enunciato della disuguaglianza di Jensen.
 \end{itemize}
 
-\textbf{Controesempio} (\textit{Disuguaglianza di Jensen.})
+\textbf{Controesempio} (\textit{Disuguaglianza di Jensen}).
 Notiamo che l'ipotesi di semicontinuità inferiore della funzione $f$ è necessaria per la validità della disuguaglianza di Jensen.
 Infatti, definiamo $f$ come segue
-
+%
 $$
 f(x) = 
 \begin{cases}
@@ -720,16 +720,16 @@ f(x) =
 + \infty \quad \text{altrimenti} 
 \end{cases}.
 $$
-
+%
 Osserviamo che la funzione $f$ così definita è convessa ma non semicontinua inferiormente.
 
 Ora definiamo la funzione $u : X \to \R$ con $X = (0,2)$, come la funzione costante di valore $1/2$.
 Calcoliamo l'integrale di $u(x)$ su $X$.
-
+%
 $$
 	\int\limits_{\mathclap{X}} u(x) \dd x = 1. 
 $$
-
+%
 In tal caso vale $\ds f \left( \int_X u(x) \dd x \right) = + \infty$.
 D'altra parte $\ds \int_X f \compose u \dd x = 0$, dunque l'ipotesi di semicontinuità inferiore è necessaria.
 
