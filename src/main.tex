@@ -44,6 +44,7 @@ Uno spazio misurabile è una terna $(X, \mathcal A, \mu)$ tale che
 
 \end{itemize}
 
+
 \textbf{Notazione.}
 Data una crescente di insiemi $E_1 \subset E_2 \subset \cdots E_n \subset \cdots$ con $\bigcup E_n = E$, scriviamo $E_n \uparrow E$.
 
@@ -1168,6 +1169,252 @@ $$
 \implies \mu(E) \leq \frac{I}{m} \xrightarrow{m \to +\infty} 0
 $$
 \qed
+
+\section{Nozioni di convergenza per successioni di funzioni}
+Fissiamo $X,\mathcal{A},\mu$ e prendiamo $f, f_n \colon X \to \R$ (o $\R^k$) misurabili.
+
+\textbf{Definizione.}
+Riportiamo le definizioni di alcune nozioni di convergenza.
+
+\begin{itemize}
+
+\item \textbf{Uniforme} : $\forall \epsilon \; \exists n_{\epsilon}$ tale che $\norm{f(x) - f_n(x)} < \epsilon \mquad n > n_\epsilon$.
+
+\item \textbf{Puntuale} : $f_n \to f \mquad \forall x \in X$.
+
+\item \textbf{Puntuale} $\mu$\textit{-quasi ovunque} : $f_n \to f$ per $\mu$-q.o. $x \in X$.
+
+\item \textbf{In} $L^p$ : $\norm{f_n - f}_p \to 0$.
+
+\item \textbf{In misura} : $\ds \forall \epsilon > 0 \quad \mu \left( \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\} \right) \xrightarrow{n \to +\infty} 0$.
+
+\end{itemize}
+
+\textbf{Osservazione.}
+Abbiamo le seguenti implicazioni ovvie delle diverse nozioni di convergenza:
+
+\begin{center}
+	uniforme $\Rightarrow$ puntuale $\Rightarrow$ puntuale $\mu \almosteverywhere$
+\end{center}
+
+\textbf{Proposizione.}
+Valgono le seguenti.
+\begin{enumerate}
+
+\item \label{item:convergenza_i} Data $f_n \to f$ q.o. e $\mu(X) < +\infty$, allora $f_n \to f$ in misura.
+
+\item \label{item:convergenza_ii} (\textit{Severini-Egorov}): Data $f_n \to f$ q.o. e $\mu(X) < +\infty$, allora $\forall \delta > 0$ esiste  $E \in \mathcal{A}$ tale che $\mu(E) < \delta$ e $f_n \to f$ uniformemente su $X \setminus E$.
+
+\item \label{item:convergenza_iii} $f_n \to f $ in $L^p$, $p < +\infty$, allora $f_n \to f$ in misura.
+
+\item[iii')] \label{item:convergenza_iv} $f_n \to f \in L^\infty$, allora $\exists E $ tale che $\mu(E) = 0$ e $f_n \to f$ uniformemente su $X \setminus E$.
+
+\item $f_n \to f$ in misura, allora $\exists n_k$ tale che $f_{n_k} \to f$ $\mu$-q.o.
+
+\item $f_n \to f$ in $L^p$, allora $\exists n_k$ tale che $f_{n_k} \to f$ $\mu$-q.o.
+
+\end{enumerate}
+
+\textbf{Osservazione.}
+In i) e ii) l'ipotesi $\mu(X) < +\infty$ è necessaria.
+Infatti, preso $X = \R$ e $f_n = \One_{[n,+\infty)}$ si ha che $f_n \to 0$ ovunque ma $f_n$ non converge a $0$ in misura, e $f_n$ non converge a $0$ uniformemente in $\R \setminus E$ per ogni $E$ di misura finita.
+
+\textbf{Lemma.} (Disuguaglianza di Markov).
+Data $g \colon X \to [0,+\infty]$ misurabile e $m > 0$ si ha
+%
+$$
+\mu \left( \left\{ x \in X \mymid g(x) \geq m \right\} \right) \leq \frac{1}{m} \int_X g \dd \mu
+$$
+%
+
+\textbf{Dimostrazione.}
+Poniamo $\ds E \coloneqq \left\{ x \in X \mymid g(x) \geq m \right\}$.
+Osserviamo che $g \geq m \cdot \One_E$.
+Dunque vale
+%
+$$
+\int\limits_{\mathclap{X}}^{} g \dd \mu \geq \int\limits_{\mathclap{X}} m \cdot \One_E \dd \mu = m \cdot \mu \left( \left\{ x \in X \mymid g(x) \geq m \right\} \right)
+$$
+%
+da cui la tesi.
+\qed
+
+\textbf{Lemma.} (Borel-Cantelli).
+Dati $(E_n) \subset \mathcal{A}$ tali che $\sum \mu(E_n) \leq +\infty$, l'insieme
+%
+$$
+E \coloneqq \left\{ x \in X \mymid x \in E_n \; \text{frequentemente} \right\}
+$$
+%
+ha misura nulla.
+Cioè per $\mu$-q.o. $x$, $x \notin E_n$ definitivamente (in $n$.)
+
+\textbf{Dimostrazione.}
+Osserviamo che
+%
+$$
+E = \bigcap_{m=1}^\infty \Big( \underbrace{\bigcup_{n=m}^\infty E_n}_{F_m} \Big).
+$$
+%
+Allora
+%
+$$
+\mu(E) \quad \underbrace{=}_{\mathclap{F_m \downarrow E \; \& \; \mu(F_1) < +\infty}} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda di serie convergente}}} = 0.
+$$
+%
+
+\textbf{Osservazione.}
+L'ipotesi $\sum \mu(E_n) < +\infty$ non può essere sostituita con $\mu(E_n) \to 0$.
+
+Ora dimostriamo la proposizione.
+
+\textbf{Dimostrazione.}
+
+Definiamo gli insiemi
+\begin{align*}
+A_n^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\}, \\
+B_m^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \; \text{per qualche} \; n \geq m\right\} = \bigcup_{n = m}^\infty A_n^\epsilon, \\
+A_n^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \; \text{frequentemente}  \right\} = \left\{ x \in A_n^\epsilon \; \text{frequentemente}  \right\} = \bigcap_{m = 1}^\infty B_m^\epsilon.
+\end{align*}
+
+\begin{enumerate}
+\item Per ipotesi, $f_n \to f$ quasi ovunque, cioè $\mu(B^\epsilon) = 0$ per ogni $\epsilon > 0$, ma $B_m^\epsilon \downarrow B^\epsilon$ e $\mu(X) < +\infty$.
+Allora
+%
+$$
+\lim_{m \to +\infty} \mu(B_m^\epsilon) = \mu(B^\epsilon) = 0 \Rightarrow \lim_{m \to \infty} \mu(A_m^\epsilon) = 0.
+$$
+%
+
+\item Dalla dimostrazione precedente, abbiamo $\ds \lim_{m \to \infty} \mu(B_m^\epsilon) = 0$. 
+Allora per ogni $k$ esiste un $m_k$ tale che $\mu \left( B_m^{1/k} \right) \leq \delta / 2^k$.
+Pongo $E \coloneqq  \bigcup_{k} B_{m_k}^{1/k}$ per ogni $k$; allora $\mu(E) \leq \delta$.
+Inoltre,
+\begin{align*}
+x \in X \setminus E & \Rightarrow x \notin B_{m_k}^{1/k} \; \forall k \iff x \notin A_n^{1/k} \mquad \forall k,n \geq m_ k \\
+& \Rightarrow \left| f(x) f_n(x) \right| < \frac{1}{k} \mquad \forall k,n \geq m_k \\
+& \Rightarrow \sup_{x \in X \setminus E} \left| f(x) - f_n(x) \right| \leq \frac{1}{k} \mquad \forall k,n \geq m_k \\
+& \Rightarrow f - f_m \; \text{uniformemente su} \; X \setminus E.
+\end{align*}
+
+\item Dobbiamo mostrare che per ogni $\epsilon > 0$ $\mu(A_n^\epsilon) \xrightarrow{n} 0$.
+Usando la disuguaglianza di Markov ottengo
+
+%
+$$
+\mu \Big( A_n^\epsilon= \Big\{ x \Big| \overbrace{\left| f_n(x) - f(x) \right|}^{g} \geq \epsilon^p \Big\} \Big)
+\leq \frac{1}{m} \int\limits_{\mathclap{X}}^{} g \dd \mu = \frac{1}{\epsilon^p} \norm{f_n - f}_p^p \xrightarrow{n \to +\infty} 0.
+$$
+%
+
+\item[iii')] Definiamo $\ds E_n \coloneqq  \left\{ x \mymid \left| f_n(x) - f(x) \right| > \norm{f_n - f}_\infty \right\}$ per ogni $n$, allora $\mu(E_n) = 0$.
+Poniamo $E = \bigcup_{n} E_n$ e $\mu(E) = 0$, dunque
+%
+$$
+\sup_{x \in X\setminus E} \left| f_n(x) - f(x) \right| \leq \norm{f_n - f}_\infty \to 0.
+$$
+%
+
+
+\item per ipotesi, $f_n \to f$ in misura, cioè
+\begin{align*}
+& \forall \epsilon > 0 \quad \mu \left( A_n^\epsilon \right) \xrightarrow{n \to +\infty} 0 \\
+& \Rightarrow \forall k \; \exists n_k \colon \mu \left( A_{n_k}^{1/k} \right) \leq \frac{1}{2^k} \\
+& \Rightarrow \sum_{k}^{} \mu \left( A_{n_k}^{1/k} \right) < +\infty. 
+\end{align*}
+Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/k}$ definitivamente in $k$, cioè $\norm{f_{n_k}(x) - f(x)} < 1/k$ definitivamente in $k$, cioè $\ds f_{n_k}(x) \xrightarrow{k} f(x)$.
+
+\item[v)] [TODO].
+
+\end{enumerate}
+
+\subsection{Prodotto scalare su $L^2$}
+
+Date $f_1,f_2 \in L^2(X)$ si pone
+%
+$$
+\left<f_1, f_2 \right> \coloneqq \int\limits_{\mathclap{X}}^{} f_1 \cdot f_2 \dd \mu.
+$$
+%
+\textbf{Osservazioni.}
+
+\begin{itemize}
+\item La definizione di $\left<f_1, f_2 \right>$ è ben posta.
+Infatti, basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$, che segue da H\"{o}lder.
+%
+$$
+\int\limits_{\mathclap{X}}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
+$$
+%
+
+\item $\norm{f}_2^2 = \left<f,f \right>$ per ogni $f \in L^2(X)$.
+
+\item Inoltre, $\ds \left| \int_X f_1 f_2 \right| \dd \mu \leq \int_X \left| f_1 f_2 \right| \dd \mu$ quindi
+%
+$$
+\left| \left<f_1, f_2 \right> \right| \leq \norm{f_1}_2 \norm{f_2}_2 \quad \; \text{(\textit{Cauchy-Schwartz})}.
+$$
+%
+
+\item L'operatore $\left< \ , \ \right>$ è un prodotto scalare definito positivo.
+
+\end{itemize}
+
+\textbf{Osservazioni.}
+\begin{itemize}
+\item Dato $C$ spazio vettoriale reale con prodotto scalare $\left<\ ,\ \right>$, allora $\left<\ ,\ \right>$ si ricava dalla norma associata $\norm{\cdot}$ tramite l'identità di polarizzazione:
+%
+$$
+\left<v_1, v_2 \right> = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
+$$
+%
+
+\item  Dato $V$ come sopra, vale l'identità del parallelogramma:
+%
+$$
+\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V.
+$$
+%
+ Usando questa identità di dimostra che la norma di $L^p$ deriva da un prodotto scalare solo per $p=2$.
+
+\end{itemize}
+
+\textbf{Proprietà.}
+Sia $V$ uno spazio vettoriale normato con norma $\norm{\cdot}$. Allora vale l'identità del parallelogramma se solo se $\norm{\cdot}$ deriva da un prodotto scalare.
+
+\textbf{Esempio.}
+La norma di $L^p \left( [-1,1] \right)$, deriva da un prodotto scalare solo per $p=2$.
+Prendiamo $f_1 = \One_{[-1,0]}$ e $f_2 = \One_{[0,+1]}$.
+Allora
+%
+\vspace{-5mm}
+%
+\begin{align*}
+\norm{f_1 + f_2}_p^p = \int\limits_{\mathclap{-1}}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
+\norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
+\end{align*}
+%
+Se vale l'identità del parallelogramma allora
+%
+$$
+\norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
+$$
+%
+cioè
+%
+$$
+2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
+$$
+%
+
+\textbf{Domanda.} Per quali $X,\mathcal{A},\mu$ vale la stessa conclusione?
+
+
+
+
+
+
+
 
 
 \chapter{Spazi di Hilbert}
