@@ -1443,45 +1443,45 @@ Per la \ref{item:ce_1} basta consideare $\One_{E_n} \to 0$ in misura (in quanto 
 
 \subsection{Approssimazioni di funzioni in $L^p$}
 
-Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno utili come strumento per fare le dimostrazioni.
+Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno essere un utile strumento da usare nelle dimostrazioni.
 
-Per ora consideriamo $(X, \mathcal A, \mu)$ in generale.
+Per ora sia $(X, \mathcal A, \mu)$ in generale.
 
 \textbf{Esercizio.} 
-Le funzioni limitate ed in $L^p$ sono dense in $L^p$.
+Le funzioni limitate in $L^p$ sono dense in $L^p$.
 
 \textbf{Dimostrazione.}
-Data $f \in L^p(X)$ cerchiamo $f_n \in L^p(X) \cap \text{Limitate}$ tali che $f_n \to f$ in $L^p$, consideriamo
+Data $f \in L^p(X)$ cerchiamo una successione di funzioni $f_n \in L^p(X)$ limitate tali che $f_n \to f$ in $L^p$, consideriamo
 $$
 f(x) (\coloneqq f(x) \land n) \lor (-n)
 $$
-vorremmo mostrare che 
+vorremmo mostrare che $f_n \to f$ in $L^p$ ovvero
 $$
 \norm{f_n - f}_p^p = \int_X |f_n - f|^p \dd \mu \to 0
 $$
-per la \textit{convergenza puntuale} basta osservare che per $n \geq |f(x)|$ abbiamo che $\forall x \; f_n(x) = f(x) \implies f_n(x) \xrightarrow{n} f(x) \implies |f_n(x) - f(x)|^p \to 0$.
+intanto vediamo che per la \textit{convergenza puntuale} basta osservare che se $n \geq |f(x)|$ abbiamo che $\forall x \; f_n(x) = f(x) \implies f_n(x) \xrightarrow{n} f(x) \implies |f_n(x) - f(x)|^p \to 0$.
 
-Infine basta usare convergenza dominata usando come dominazione direttamente $|f(x) - f_n(x)| \leq |f(x)| \implies |f(x) - f_n(x)|^p \leq |f(x)|^p$ e notiamo che $|f|^p \in L^1(X)$.
+Per concludere basta applicare \textit{convergenza dominata} usando come dominazione direttamente $|f(x) - f_n(x)| \leq |f(x)| \implies |f(x) - f_n(x)|^p \leq |f(x)|^p$ e notiamo che $|f|^p \in L^1(X)$.
 \qed
 
 \textbf{Proposizione.}
-Sia $\tilde{\mathscr S} \coloneqq \operatorname{Span}(\{ \One_E \mid E \in \mathcal A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \operatorname{Span}(\{ \One_E \mid E \in \mathcal A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
 
 \textbf{Dimostrazione.}
 Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mathscr S}$.
 \begin{itemize}
 	\item 
-		\textit{Caso 1}: Se $f \geq 0$ allora fissiamo $\epsilon > 0$ e per ogni $k = 1, 2, \dots$ poniamo
+		\textit{Caso 1}: Se $f \geq 0$ allora fissiamo $\epsilon > 0$ e per ogni $k = 1, 2, \dots$ e poniamo
 		$$
 		A_k^\epsilon := \{ x \mid k \epsilon \leq f(x) \leq (k+1) \epsilon \}
 		$$
-		e risulta che $A_k^\epsilon$ è misurabile ed ha misura finita, inoltre poniamo
+		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
 		$$
 		f_\epsilon(x) := \sum_{1 \leq k \leq 1 / \epsilon^2} k \epsilon \cdot \One_{A_\epsilon^k}(x) \in \tilde{\mathscr S}
 		$$
 		[TODO: Disegnino]
 
-		Osserviamo che vale anche $f_\epsilon(x) = \max\{ k \epsilon \mid k \epsilon \leq f(x) \text{ e } k \leq 1 / \epsilon^2 \}$ e mostriamo la seguente\footnote{Notiamo che qui stiamo usando il teorema di convergenza dominata non ad una successione di funzioni ma ad una famiglia parametrizzata da $\epsilon$, però si può verificare facilmente che il teorema si può estendere in questo caso semplicemente prendendo $\epsilon = 1 / n$.}
+		Osserviamo che vale anche $f_\epsilon(x) = \max\{ k \epsilon \mid k \epsilon \leq f(x) \text{ e } k \leq 1 / \epsilon^2 \}$ e mostriamo la seguente\footnote{Notiamo che qui stiamo applicando il teorema di \textit{convergenza dominata} su una famiglia parametrizzata da $\epsilon$ e non su una successione ma si può verificare facilmente che il teorema (ed anche gli altri risultati di convergenza di successioni di funzioni) si può estendere semplicemente prendendo $\epsilon = 1 / n$ per $n \to \infty$.}
 		$$
 		\int_X |f(x) - f_\epsilon(x)|^p \dd \mu(x) \xrightarrow{\epsilon \to 0} 0
 		$$
@@ -1489,22 +1489,23 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 			\item \textit{Convergenza puntuale}: Per l'identità precedente abbiamo che $0 \leq f(x) - f_\epsilon(x) \leq \epsilon$ se $f(x) \leq 1 / \epsilon$.
 			% @aziis98: Cioè per me questo passaggio è ancora un po' mistico quindi poi voglio provare a spiegarlo meglio
 			% ($f(x) \leq 1 / \epsilon \implies k \epsilon \leq 1 / \epsilon \implies k \leq 1 / \epsilon^2$ [TODO])
-			\item \textit{Dominazione}: Possiamo usare $|f(x) - f_\epsilon(x)|^p \leq |f(x)|^p < +\infty$ in quanto $f \in L^p(X)$.
+			\item \textit{Dominazione}: Possiamo usare nuovamente $|f(x) - f_\epsilon(x)|^p \leq |f(x)|^p < +\infty$ in quanto $f \in L^p(X)$.
 		\end{itemize}
 
 		[TODO: Disegnino]
 
 	\item 
 		\textit{Caso 2}:
-		Sia $f \colon X \to \R$ allora rifare la dimostrazione precedente oppure semplicemente consideare $f_\epsilon \coloneqq (f^+)_\epsilon - (f^-)_\epsilon$.
+		Sia $f \colon X \to \R$ allora si può rifare la dimostrazione precedente oppure si può semplicemente consideare $f_\epsilon \coloneqq (f^+)_\epsilon - (f^-)_\epsilon$.
 
 	\item 
 		\textit{Caso 3}:
+		Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
 		\textbf{Proposizione.} (Generalizzata)
 		Sia $\tilde{\mathscr S} \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mathcal A, \mu(E_i) < +\infty \} \implies \tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 
-		\textbf{Idea.}
+		\textbf{Dimostrazione.} (Idea)
 		Basta approssimare componente per componente.
 \end{itemize}
 \qed
@@ -1517,15 +1518,17 @@ Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha
 \textbf{Osservazione.} 
 In generale l'enunciato non vale per $p = +\infty$. Ad esempio preso $L^\infty(\R)$ e $f = 1$ non si può approssimare con funzioni a supporto limitato (come quelle in $\tilde{\mathscr S}_\ell$. In particolare data $g$ con supporto $A$ limitato $|f - g| = 1$ su $\R \setminus A$ e siccome $|\R \setminus A| > 0$ abbiamo $\norm{f - g}_\infty \geq 1$).
 
+\textbf{Dimostrazione.} ($\tilde{\mathscr S}_\ell$ è denso in $L^p$)
+Per prima cosa vediamo un lemma che useremo assieme alla proposizione precedente.
+
 \textbf{Lemma.}
 Dato $E \in \mathcal A, \mu(E) < +\infty$ esiste $E_n \in \mathcal A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
 
 \textbf{Dimostrazione.}
 Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E \cap \mathcal B(x_0, n)$; $E_n \subset E$ e $E \setminus E_n \downarrow \varnothing \implies \mu(E \setminus E_n) \xrightarrow{n} 0$.
 
-\textbf{Dimostrazione.} ($\tilde{\mathscr S}_\ell$ è denso in $L^p$)
-
-Intuitivamente $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta è denso in $L^p$ (topologicamente è quasi ovvio mentre usando la definizione di densità per successioni bisogna pasare per un ragionamento diagonale).
+Intuitivamente $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta è denso in $L^p$ (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
+\qed
 
 Ora sia $X \subset \R^n, \mu = \mathscr L^n$ e 
 $$
@@ -1535,6 +1538,8 @@ notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
 
 \textbf{Proposizione.}
 Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense in $L^p(X)$ per $p < +\infty$.
+
+Vediamo prima alcuni lemmi.
 
 \textbf{Lemma.}
 Dato $E \subset \R^n$ limitato (e quindi di misura finita) esiste $f_\epsilon \in C_C(\R^n)$ tale che $f_\epsilon \xrightarrow{\epsilon \to 0} \One_E$ in $L^p(\R^n)$ e quindi in $L^p(X)$.
@@ -1551,7 +1556,7 @@ $$
 \implies \norm{f_\epsilon - \One_E}_p^p = \int_{A_\epsilon \setminus C_\epsilon} |f_\epsilon - \One_E|^p \dd x
 $$
 
-\textbf{Lemma.} (di Uryson?)
+\textbf{Lemma.} (di Urysohn)
 Dati $C_0, C_1$ chiusi disgiunti in $X$ spazio metrico esiste una funzione $f \colon X \to [0, 1]$ continua tale che $f = 0$ su $C_0$ e $f = 1$ su $C_1$.
 
 \textbf{Dimostrazione.}
@@ -1561,7 +1566,7 @@ f(x) =
 \frac{d(x, C_0)}{d(x, C_0) + d(x, C_1)}
 $$
 
-\textbf{Dimostrazione.} ($C_C(\R)$ è denso in $L^p(X)$)
+\textbf{Dimostrazione.} ($C_C(\R^n)$ è denso in $L^p(X)$)
 
 Segue dalla proposizione e dal lemma precedente.
 
