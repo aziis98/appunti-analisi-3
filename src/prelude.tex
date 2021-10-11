@@ -72,6 +72,7 @@
 \usepackage[all]{xy}
 \usepackage{stmaryrd}
 \usepackage{multicol}
+\usepackage{centernot}
 
 %%%
 %%% Enumerations
@@ -169,6 +170,9 @@
 % \newcommand{\TdF}{\mathcal F}
 \newcommand{\foralmostall}{\widetilde\forall}
 \newcommand{\almosteverywhere}{\;\;\text{q.o.}}
+
+\let\oldtilde\tilde
+\renewcommand{\tilde}{\widetilde}
 
 %%%
 %%% Styles by @<arianna>
