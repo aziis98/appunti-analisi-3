@@ -13,6 +13,7 @@ $(OUTPUT_PDF): src/main.tex src/prelude.tex
 
 setup:
 	mkdir -p $(TEMP_DIR)
+	mkdir -p $(TEMP_DIR)/figures/pdf
 
 clean:
 	rm -rf $(TEMP_DIR)

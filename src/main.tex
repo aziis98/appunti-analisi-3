@@ -1430,11 +1430,11 @@ Consideriamo gli insiemi $I_1 = \left[ 1, 1 + \frac{1}{2} \right], I_2 = \left[1
 $$
 I_n \coloneqq \left[ \; \sum_{k=1}^n \frac{1}{k}, \; \sum_{k=1}^{n+1} \frac{1}{k} \; \right]
 $$
-Prendiamo $p \colon \R \to [0, 1)$ data dalla funzione \textit{parte frazionaria}
+e consideriamo la loro proiezione ``modulo'' $[0, 1]$ usando la funzione $p \colon \R \to [0, 1)$ \textit{parte frazionaria} data da
 $$
 p(x) \coloneqq x - \lfloor x \rfloor
 $$
-ed infine poniamo $E_n \coloneqq p(I_n)$. Per ogni $n$ abbiamo che $|I_n| = |E_n| = 1 / n$ e $\bigcup_n I_n = [1, +\infty)$ (in quanto $\sum_{k=1}^\infty \frac{1}{k} = +\infty$) e quindi ogni $x \in [0, 1)$ appartiene ad $E_n$ per infiniti $n$ ed in particolare questo mostra la \ref{item:ce_3}. 
+e chiamiamo $E_n \coloneqq p(I_n)$. Per ogni $n$ abbiamo che $|I_n| = |E_n| = 1 / n$ e $\bigcup_n I_n = [1, +\infty)$ (in quanto $\sum_{k=1}^\infty \frac{1}{k} = +\infty$) e quindi ogni $x \in [0, 1)$ appartiene ad $E_n$ per infiniti $n$ ed in particolare questo mostra la \ref{item:ce_3}. 
 
 [TODO: Disegnino]
 
@@ -1521,6 +1521,8 @@ In generale l'enunciato non vale per $p = +\infty$. Ad esempio preso $L^\infty(\
 \textbf{Dimostrazione.} ($\tilde{\mathscr S}_\ell$ è denso in $L^p$)
 Per prima cosa vediamo un lemma che useremo assieme alla proposizione precedente.
 
+% @aziis98: Boh questo lemma non so se metterlo prima o se lasciarlo qua
+
 \textbf{Lemma.}
 Dato $E \in \mathcal A, \mu(E) < +\infty$ esiste $E_n \in \mathcal A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
 
@@ -1570,12 +1572,120 @@ $$
 
 Segue dalla proposizione e dal lemma precedente.
 
+% 
+% Lezione del 13 Ottobre 2021
+% 
 
+% [TODO]
 
+% 
+% Lezione del 14 Ottobre 2021
+% 
 
+\section{Complementi su approssimazioni di funzioni in $L^p$}
 
+Sia $X$ misurabile in $\R^n$ con $\mu = \mathscr L^n$ su $X$, in precedenza abbiamo visto che
 
+\textbf{Proposizione 3.} Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense in $L^p$ se $p < +\infty$.
 
+[TODO: la seguente osservazione è da rilocare probabilmente]
+
+\textbf{Osservazione.} 
+Le funzioni $C_C(\R^n)$ sono le funzioni a supporto compatto, dove il supporto è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero
+$$
+\operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}}
+$$
+in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto a parte quando è vuoto.
+
+\textbf{Osservazione.}
+Si vede facilmente che $C_C(\R^n) \subset L^p(\R^n)$.
+
+\textbf{Domanda.} Vale un risultato analogo per le funzioni $C_C(X)$?
+
+Notiamo che dato $X \subset \R^n$ le funzioni continue su $X$ hanno supporto compatto solo se $X$ è aperto in quanto il supporto ha veramente distanza non nulla dal bordo e possiamo estendere la funzione a $0$ fuori da $X$, altrimenti... [TODO: Esempio con un chiuso in cui le cose non fungono?]
+
+[TODO: Disegnino]
+
+\textbf{Proposizione 4.} 
+Sia $X$ aperto di $\R^n, \mu = \mathscr L^n$ allora $C_C(X)$ è denso in $L^p$ per ogni $p < +\infty$
+
+\textbf{Dimostrazione.}
+\begin{itemize}
+	\item
+		$\mathscr S_C := \{ \text{funzioni semplici con supporto compatto in $X$} \}$ è denso in $L^p(X)$ per ogni $p < +\infty$.
+
+	\item
+		Dato $E$ relativamente compatto in $X$ esiste $f_n \in C_C(X)$ tale che $f_n \to \One_E$ in $L^p$ per ogni $p < +\infty$.
+\end{itemize}
+
+La Proposizione 3 non vale per $p = +\infty$, intuitivamente in quanto data $f \in L^\infty(X)$ discontinua, se trovassimo $f_n \to f$ in $L^\infty(X)$ con $f_n$ continue avremmo $f_n \to f$ \textit{uniformemente} e dunque $f$ continua.
+
+\textbf{Fatto.} 
+In generale vale che data $f \colon X \to \R$ misurabile, $\norm{f}_\infty \leq \sup_{x \in X} |f(x)|$ (detta anche \textit{norma del sup})
+
+\textbf{Esercizio.} 
+Se $X$ è aperto in $\R^n$ e $\mu = \mathscr L^n$ e $f \colon X \to \R$ continua, allora $\norm{f}_\infty = \sup_{x \in X} |f(x)|$.
+
+\textbf{Soluzione.}
+Se per assurdo $\exists x \in X$ tale che $\norm{f}_\infty < |f(x)|$ allora la continuità di $f$ implica che esiste un intorno di $x$ in cui $|f| > \norm{f}_\infty$ ma un intorno contiene una palla aperta di misura positiva \absurd
+
+In particolare possiamo anche estenderci a $X \subseteq \R^n$ tali che ogni $A$ aperto relativamente a $X$ abbia misura positiva.
+
+[TODO: Disegnino di $X$ quadrato e quadrato + una linea chiusa]
+
+Per spiegare meglio il perché la Proposizione 3 non si estende al caso $p = +\infty$ consideriamo
+$$
+f(x) =
+\begin{cases}
+	1 & x \geq 0 \\
+	0 & x < 0
+\end{cases}
+$$
+e vediamo che $\nexists f_n \colon \R \to \R$ tale che $f_n \to f$ in $L^\infty$. 
+
+Se esistesse $(f_n)_n$, allora sarebbe di Cauchy rispetto alla norma $\norm{\curry}_\infty$ allora per continuità $(f_n)_n$ è di Cauchy anche rispetto alla norma del sup $\implies f_n \to \tilde f$ uniformemente con $\tilde f$ continua, quindi $\tilde f = f$ quasi ovunque ma questo non è possibile per la $f$ definita sopra.
+
+(In particolare dato $E = \{ x \mid f(x) = \tilde f(x) \}$, prendiamo $x_n, y_n \in E$ tali che $x_n \uparrow 0$ e $y_n \downarrow 0$ ma i limiti di $f$ sono $0$ e $1$ \absurd)
+
+\textbf{Teorema.} (di Lusin)
+Dato $X \subset \R^d, \mu = \mathscr L^d$ e data $f \colon X \to \R$ o $\R^m$ misurabile e $\epsilon > 0$, esiste $E$ aperto in $X$ con $|E| \leq \epsilon$ tale che $f$ è continua su $X \setminus E$ (la restrizione di $f$ a $X \setminus E$ è continua)
+
+\textbf{Osservazione.} 
+In generale $f$ può essere non continua in tutti i punti di $X$, infatti $E$ può essere denso e $X \setminus E$ avere parte interna vuota.
+
+\textbf{Lemma.} (di estensione di Tietze) Dato $X$ spazio metrico e $C \subset X$ chiuso, $f \colon C \to \R$ continua allora $f$ si estende a una funzione continua su $X$.
+
+Usando questo lemma possiamo rienunciare il teorema precedente come segue
+
+\textbf{Teorema.} (di Lusin$'$)
+Data $f \colon X \to \R$ misurabile e $\epsilon > 0$, $\exists E$ aperto con $|E| \leq \epsilon$ e $g \colon X \to \R$ continua tale che $f = g$ su $X \setminus E$, inoltre se $f \in L^p(X)$ e $p < +\infty$ si può anche chiuedere che $\norm{f - g}_p \leq \epsilon$.
+
+\textbf{Dimostrazione.}
+Basta trovare $E$ misurabile (per ottenere $E$ aperto si usa la regolarità della misura)
+\begin{itemize}
+	\item \textit{Caso 1}:
+		$f \in L^1(X)$ e $|X| < +\infty$
+
+		Abbiamo che $f \in L^1 \implies \exists f_n$ continue tali che $f_n \to f$ in $L^1 \implies f_n \to f$ in misura e per Severini-Egorov esiste $E$ tale che $|E| \leq \epsilon$ e $f_n \to f$ uniformemente su $X \setminus E \implies f$ è continua su $X \setminus E$.
+
+	\item \textit{Caso 2}:
+		$f$ qualunque misurabile e $|X| < +\infty$
+
+		\textbf{Lemma.}
+		Dati $X, \mathcal A, \mu$ con $\mu(X) < +\infty$ e data $f \colon X \to \R$ misurabile e $\epsilon > 0$ esiste $F$ misurabile con $\mu(F) \leq \epsilon$ tale che $f$ è limitata su $X \setminus F$.
+		
+		\textbf{Dimostrazione.}
+		$\forall m > 0$ sia $F_m := \{ x \mid |f(x)| > m \}$ allora $F_m \downarrow \varnothing \implies \mu(F_m) \downarrow 0$ e quindi esiste $m$ tale che $\mu(F_m) \leq \epsilon$.
+
+		Quindi data $f$ qualunque misurabile e $|X| < +\infty$ esiste $F$ misurabile tale che $|F| \leq \epsilon / 2$ e con $f$ limitata su $X \setminus F \implies f \in L^\infty(X \setminus F) \subset L^1(X \setminus F)$, dunque per il \textit{Caso 1} esiste $E$ misurabile tale che $|E| \leq \epsilon / 2$ e $f$ è continua su $X \setminus (E \cup F)$ e $\mu(E \cup F) \leq \epsilon$
+
+	\item \textit{Caso 3}:
+		$f$ qualunque misurabile
+
+		Per ogni $n$ poniamo $X_n \coloneqq X \cap B(0, n)$ per il \textit{Caso 2} esistono $E_n$ misurabili con $|E_n| \leq \epsilon / 2^n$ tali che $f$ è continua su $X_n \setminus E_n$, infine prendo $E \coloneqq \bigcup_{n=1}^\infty E_n$ con $\mu(E) \leq \epsilon \implies f$ è continua su $X_n \setminus E$ per ogni $n \implies f$ è continua su $X \setminus E$. 
+
+\end{itemize}
+\qed
 
 
 
