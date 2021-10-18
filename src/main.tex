@@ -171,7 +171,7 @@ $$
 \mathcal S := \left\{ f \colon X \to \R \mymid f = \sum_i \alpha_i \One_{E_i} \text{ con $E_i$ misurabili e $\{\alpha_i\}$ finito} \right\}
 $$
 
-\textbf{Osservazione.} La rappresentazione di una funzione semplice come combinazione lineare di indicatrici di insiemi \textit{non è unica}, però se necessario possiamo prendere gli $E_i$ disgiunti.
+\textbf{Osservazione.} La rappresentazione di una funzione semp/alice come combinazione lineare di indicatrici di insiemi \textit{non è unica}, però se necessario possiamo prendere gli $E_i$ disgiunti.
 
 \section{Integrale}
 
@@ -229,7 +229,7 @@ Scriveremo spesso $\int_E f(x) \dd x$ invece di $\int_E f \dd \mathscr L^n$ .
 		\int_E f \dd \mu \coloneqq \int_X f \cdot \One_E \dd \mu.
 		$$ 
 	
-	\item Si può definire l'integrale anche per $f \colon X \to Y$ con $Y$ \textit{spazio vettoriale normato finito dimensionale}\footnote{È necessario avere uno spazio vettoriale, perchè serve la linearità e la moltiplicazione per scalare} ed $f$ sommabile.
+	\item Si può definire l'integrale anche per $f \colon X \to Y$ con $Y$ \textit{spazio vettoriale normato finito dimensionale}\footnote{È necessario avere uno spazio vettoriale, perché serve la linearità e la moltiplicazione per scalare} ed $f$ sommabile.
 	
 	\item Se $f_1 = f_2$ $\mu$-q.o. allora $\ds \int_X f_1 \dd \mu = \int_X f_2 \dd \mu$.
 	
@@ -644,7 +644,7 @@ $$
 \end{itemize}
 
 % lezione del 4 ottobre 2021
-\section*{Esercitazione del 4 ottobre}
+\section{Esercitazione del 4 ottobre}
 
 \subsection*{Teoria della misura}
 
@@ -926,7 +926,7 @@ Vediamo ora una minorazione.
 $$
 	\int\limits_{\mathclap{[0,1]^n}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
 = \frac{1}{2^n}	\int\limits_{[-1,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-\geq \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+\geq \frac{1}{2^n} \ \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
 \approx \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty 
 \longiff \alpha < n.
 $$
@@ -1443,7 +1443,15 @@ Per la \ref{item:ce_1} basta consideare $\One_{E_n} \to 0$ in misura (in quanto 
 
 \subsection{Approssimazioni di funzioni in $L^p$}
 
+% Ricordiamo la nozione di insieme denso in uno spazio metrico.
+% Sia (X,d) uno spazio metrico e Y ⊆ X. Allora Y è denso in X se solo se
+% per ogni x ∈ X, esiste una successione y_n in Y che tale che x = lim_n y_n.
+
 Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno essere un utile strumento da usare nelle dimostrazioni.
+
+\textbf{Nota.} Ricordiamo la nozione di insieme denso in uno spazio metrico.
+Sia $(X,d)$ uno spazio metrico e $Y \subset X$. Allora Y è denso in X se solo se
+per ogni $x \in X$, esiste una successione $(y_n)_{n \in \N}$ in $Y$ che tale che $x = \lim_n y_n$.
 
 Per ora sia $(X, \mathcal A, \mu)$ in generale.
 
@@ -1576,7 +1584,237 @@ Segue dalla proposizione e dal lemma precedente.
 % Lezione del 13 Ottobre 2021
 % 
 
-% [TODO]
+\section{Esercitazione del 13 ottobre}
+
+\subsection{Esercizi su spazi $L^p(X)$ al variare di $p$ e dello spazio $X$}
+
+Sia $X \subset \R^n$, $\mu$ la misura di Lebesgue e $ 1 \leq p_1 \leq p_2$.
+
+\textbf{Domanda.} Possiamo confrontare gli spazi $L^{p_1}(X)$ e $L^{p_2}(X)$?
+In generale no. 
+
+Vediamo informalmente perché.
+Posto $X = (0,+\infty)$, gli integrali 
+%
+$$
+\int\limits_{\mathclap{0}}^{+\infty} \frac{1}{(1+x)^{\beta p}} \dd x, \qquad \int\limits_{\mathclap{0}}^{+\infty} \frac{1}{x^{\beta p}} \cdot \One_{[0,1]}(x) \dd x = \int\limits_{\mathclap{0}}^{1} \frac{1}{x^{\beta p}} \dd x
+$$
+%
+ sono maggiorati dall'integrale di $1 / x^{\alpha}$ dove l'esponente  $\alpha$ è rispettivamente più piccolo e più grande di $\beta \cdot p$.
+
+Vediamo quanto detto finora più formalmente.
+
+Cerchiamo una funzione $f \in L^{p_1}(0,+\infty) \setminus \, L^{p_2}(0,+\infty)$ e una funzione $g \in L^{p_2}(0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
+La funzione $f$ definita come segue
+%
+$$
+f(x) \coloneqq 
+\begin{cases}
+1 / x^\beta \mquad x \in (0,1) \\
+0 \mquad x \geq 1
+\end{cases} 
+$$
+%
+ha integrale 
+%
+$$
+\int\limits_{\mathclap{0}}^{+\infty} f(x)^{p_1} \dd x = \int\limits_{\mathclap{0}}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \longiff \beta \cdot p_1 < 1, \mquad 0 < p_1 < p_2 \longiff \frac{1}{p_2} < \frac{1}{p_1}
+$$
+e
+$$
+\int\limits_{\mathclap{0}}^{+\infty} f(x)^{p_2} \dd x = \int\limits_{\mathclap{0}}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \longiff \beta \cdot p_2 \geq 1
+$$
+%
+basta prendere $\beta \in [1/p_2, 1/p_1)$.
+
+Ora cerco $g \in L^2 (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
+Definisco $g(x)$ come segue
+$$
+g(x) \coloneqq \frac{1}{(1+x)^\alpha}
+$$
+da cui
+$$
+\int\limits_{\mathclap{0}}^{+\infty} g(x)^{p_2} \dd x < +\infty \longiff \alpha \cdot p_2 > 1
+\quad
+\text{e}
+\quad
+\int\limits_{\mathclap{0}}^{+\infty} g(x)^{p_1} \dd x = +\infty \longiff \alpha \cdot p_1 \leq 1
+$$
+
+\textit{Conclusione.} In generale non c'è confrontabilità fra gli spazi $L^p$. La confrontabilità, dipende infatti dall'insieme $X$ su cui sono definiti.
+
+Un caso particolare è dato ponendo $p_1 < p_2$ e $\mu(X) < +\infty$. In tal caso $L^{p_2}(X) \subset L^{p_1}(X) $.
+
+Data $f \in L^{p_2}(X)$, cioè con $\int_X \left| f \right|^{p_2} \dd \mu < +\infty$ vediamo che  $\int_X \left| f \right|^{p_1} \dd \mu < +\infty$.
+
+Usiamo Holder:
+\begin{align*}
+\int_{X} \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_{X} \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_{X} 1^q \dd \mu  \right)^{1/q}
+\underbrace{\leq}_{\mathclap{p = p_1 / p_2}} \left( \int_{X} \left| f \right|^{p_1} \dd \mu  \right)^{p_1 /p_2} \left( \int_{X} 1^q \dd \mu  \right)^{1/q} \\
+& \underbrace{=}_{\mathclap{q = (1 - \frac{1}{p})^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
+\end{align*}
+Dunque
+ %
+$$
+\norm{f}_{L^{p_1}(X)} \leq \norm{f}_{L^{p_2}(X)}\cdot \mu(X)^{\frac{p_2 - p_1}{p_1 p_2}}.
+$$
+%
+L'inclusione
+%
+\begin{align*}
+i \colon L^{p_2} & \to L^{p_1}(X) \\
+f & \mapsto f
+\end{align*}
+
+è ben definita per quanto fatto sopra. Per esercizio vedere con quale topologia risulta continua. [TO DO]
+
+\textbf{Esercizio.} [TO DO] Dato $p \geq 1$, stabilire se esistono $X, \mu,f \in L^p(X)$ e $f \notin L^q(X)$ per ogni $q \neq p$, $q \geq 1$. \\
+\textit{Suggerimento.} pensare a $X = (0,+\infty)$, $\mu$ misura di Lebesgue.
+
+\textbf{Osservazione.} $L^p(X)$ è uno spazio vettoriale di dimensione infinita, ossia ogni base algebrica ha cardinalità infinita. 
+Vediamo il caso $X = (0,1)$.
+Per trovare una base infinita, cerchiamo per ogni $N \in \N$, $f_1,\ldots , f_N \in L^p(0,1)$ tali che siano linearmente indipendenti.
+Vale a dire, presi $\lambda_1,\ldots ,\lambda_N \in \R$ vale $\lambda_1 f_1 + \ldots +f_N = 0$ se solo se $\lambda_1 = \ldots = \lambda_N = 0$.
+
+Ad esempio, definisco $f_i \coloneqq \One_{i/N, (i+1)/N}$ (questa costruzione si può riprodurre per ogni $N \in \N$).
+
+Ricordiamo che, essendo $L^p(X)$ uno spazio metrico, dato $Y \subset L^p$ vale la seguente caratterizzazione:
+\begin{center}
+$Y$ è compatto $\longiff$ $Y$ è compatto per successioni $\longiff $ $Y$ chiuso e totalmente limitato.
+\end{center}
+
+\textbf{Osservazione.} $Y \subset L^p(X)$ è un sottoinsieme che eredita la norma $\norm{\cdot}_{L^p}$ :
+\begin{center}
+$Y$ è completo $\longiff$ $Y$ è chiuso.
+\end{center}
+
+\textbf{Osservazione.} In $L^p$ i sottoinsiemi chiusi e limitati non sono compatti!
+In particolare le palle
+%
+$$
+Y = \left\{ f \in L^p \mymid \norm{f}_{L^p} \leq 1 \right\}
+$$
+%
+non sono compatte.
+
+Ad esempio, mostriamo che in $L^p(0,1)$ le palle 
+%
+$$
+B = \left\{ f \in L^p \mymid \norm{f}_{L^p} \leq 1 \right\}
+$$
+%
+non sono compatte.
+Per farlo, esibiamo una successione $\left\{ f_n \right\}_{n \in \N} \subset B$ che non ammette sottosuccessioni convergenti.
+La costruiamo in modo che non abbia sottosuccessioni di Cauchy
+%
+$$
+f_n \colon (0,1) \to \R, \quad \norm{f_n - f_m}_{L^p} \geq c_0 > 0 \; \forall n \neq m.
+$$
+%
+Cerco $A_n \subset (0,1)$ tale che $\left| A_n \cap A_m \right| = 0$ per ogni $n \neq m$.
+Definiamo $f_n$ come segue
+%
+$$
+f_n(x) \coloneqq 
+\begin{cases}
+0 \quad  \text{se} \; x \in (0,1) \setminus (1 / (n+1), 1/ n) \\
+c_n > 0 \quad \text{altrimenti}
+\end{cases} 
+$$
+%
+dove $c_n$ è tale che 
+%
+$$
+\left( \int_{1 / n+1}^{1 / n} c_n^p  \right)^{1/p} = 1 \longiff 
+c_n^p \cdot (1/n - 1/(n+1)) = 1 \longiff c_n^p = n \cdot (n+1).
+$$
+%
+Calcoliamo ora $\norm{f_n - f_m}^p_{L^p}$ con $n \neq m$ :
+%
+$$
+\int\limits_{\mathclap{0}}^{1} \left| f_n(x) - f_m(x) \right|^p \dd x = \int\limits_{\mathclap{(1/n,1/n+1) \cup (1/ m+1,1/m)}} \left| f_n - f_m \right|^p \dd x = \int\limits_{\mathclap{1 / n+1}}^{1 / n} \left| f_n \right|^p \dd x + \int\limits_{\mathclap{0}}^{1} \left| f_m \right|^p \dd x = 1 + 1 = 2.
+$$
+%
+
+Si osserva che quanto detto sopra vale anche per $p = + \infty$.
+
+\textbf{Esercizio.} [TO DO] Sia $E = \left\{ f \in L^1(1,+\infty) \mymid \left| f(x) \right| \leq 1 / x^2 \mquad \text{e} \;x \in [1,+\infty) \right\}$.
+
+\begin{itemize}
+
+\item $E$ è limitato in $L^1$?
+
+\item $E$ è chiuso in $L^1$?
+
+\item $E$ è compatto in $L^1$?
+
+\end{itemize}
+
+\textbf{Esercizio.} [TO DO] 
+\begin{itemize}
+\item Dire se $f_n(x) = x^n$, $n = 0,\ldots , N$ è un insieme di funzioni linearmente indipendenti in $L^p([0,1])$.
+
+\item Dire se $\left\{ f_n \right\} \subset L^p(0,1)$ è compatta in $L^p(0,1)$.
+\end{itemize}
+\textit{Suggerimento.} Studiare il limite puntuale.
+
+\subsection{Spazi $\ell^p$}
+
+Prendiamo $X = \N$ e $\mu = \#$ la misura che conta i punti.
+
+\textbf{Osservazione.} Definiamo
+%
+$$
+\ell^p = L^p(\N, \#) = \left\{ \left( x_n \right)_{n \in \N} \mymid \sum_{n=0}^{+\infty} \left| x_n \right|^p < +\infty  \right\}
+$$
+con $p \geq 1$ e $p \neq +\infty$, e
+%
+$$
+l^{\infty} = \left\{ \text{successioni limitate} \right\} = \left\{ \left( x_n \right) \mymid \sup_{n \in \N}\left| x_n \right| < +\infty \right\}.
+$$
+%
+
+\textbf{Esempio} (di insieme non compatto in $\ell^1$). Consideriamo la successione $\left( e_i \right)$ definita come
+%
+$$
+(e_i)_n \coloneqq 
+\begin{cases}
+0 \quad \text{se} \; n \neq i \\
+1 \quad \text{se} \; n = i
+\end{cases} 
+$$
+%
+si osserva inoltre che le successioni così definite sono linearmente indipendenti e generano se sono infiniti.
+
+\textbf{Esempio} (di insieme compatto in $\ell^1$). Sia $F = \left\{ (x_n)_n \in \ell^1 \mymid \left| x_n \right| \leq 1 / n^2 \quad \forall n \in \N \right\}$.
+Noto subito che $F$ è limitato, infatti, presa
+%
+$$
+\underline{x} = (x_n) \in F, \quad  \norm{\underline{x}}_{\ell^1} = \sum_{n=0}^{+\infty} \left| x_n \right| \leq
+\sum_{n=0}^{+\infty} 1 / n^2 < +\infty.  
+$$
+%
+$F$ è anche chiuso.
+
+\textbf{Osservazione.} Data una successione $(\underline{x}^k) \subset \ell^1$, se $\underline{x}^k \xrightarrow{\ell^1} \underline{x}^{\infty}$, vuol dire che
+%
+$$
+\norm{\underline{x}^k - \underline{x}^\infty}_{\ell^1} = \sum_{n = 0}^{+\infty}  \left| x_n^k - x_n^\infty \right| \xrightarrow{k} 0. 
+$$
+%
+In particolare, per ogni $n \in \N$ fissato, $\lim_k (x_n^k - x_n^\infty) = 0$.
+
+$F$ è chiuso perché se $(\underline{x}^k) \subset F$ e $\underline{x}^k \xrightarrow{\ell^1} \underline{x}^\infty$, allora per ogni $n \in \N$ vale 
+%
+$$
+\left| x_n^k \right| \leq 1 / n^2 \quad \text{e} \quad \underbrace{\lim_{n \to +\infty} \left| x_n^k  \right|}_{x_n^\infty} \leq 1/n^2.
+$$
+%
+
+Dimostriamo che è compatto per successioni.
+Prendiamo $( \underline{x}^k ) \subset F$, ogni componente $x_n$ è equilimitata a meno di sottosuccessioni $x_n^{x_j}$ converge a $x_n^\infty$.
+A meno di diagonalizzare, posso supporre che le successione $k_j$ non dipenda da $n$.
+Otteniamo che $x_n^{k_j}$ sono dominate da $y = (1 / n^2)$. Concludiamo usando il teorema di Lebesgue.
 
 % 
 % Lezione del 14 Ottobre 2021
@@ -1603,6 +1841,7 @@ Si vede facilmente che $C_C(\R^n) \subset L^p(\R^n)$.
 \textbf{Domanda.} Vale un risultato analogo per le funzioni $C_C(X)$?
 
 Notiamo che dato $X \subset \R^n$ le funzioni continue su $X$ hanno supporto compatto solo se $X$ è aperto in quanto il supporto ha veramente distanza non nulla dal bordo e possiamo estendere la funzione a $0$ fuori da $X$, altrimenti... [TODO: Esempio con un chiuso in cui le cose non fungono?]
+
 
 [TODO: Disegnino]
 
