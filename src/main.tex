@@ -1926,7 +1926,143 @@ Basta trovare $E$ misurabile (per ottenere $E$ aperto si usa la regolarità dell
 \end{itemize}
 \qed
 
+\section{Appendice}
 
+\textbf{Proposizione.} Siano $V,W$ spazi normati, $T \colon V \to W$ lineare.
+Sono fatti equivalenti
+\begin{enumerate}
+\item $T$ è continua in $0$.
+
+\item $T$ è continua.
+
+\item $T$ è lipschitziana, cioè esiste una costante $c < +\infty$ tale che $\norm{Tv - Tv'}_W \leq \norm{v - v'}_V$.
+
+\item esiste una costante $c$ tale che $\norm{Tv'} \leq c \norm{v}$ per ogni $v \in V$.
+
+\item esiste una costante $c$ tale che $\norm{Tv}_W \leq c$ per ogni $v \in V$, $\norm{v}_V = 1$.
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+v) $\Rightarrow$ iv). Vale la seguente
+%
+$$
+\norm{Tv}_W \underbrace{=}_{v = \lambda \tilde{v}, \norm{v}_V = 1} \left| \lambda \right| \norm{T \tilde{v}}_W \leq c \lambda = c \norm{v}_V \leq 1.
+$$
+%
+iv) $\Rightarrow$ iii). Vale la seguente
+%
+$$
+\norm{Tv - Tv'}_W = \norm{T(v - v')}_W \leq c \norm{v - v'}_W.
+$$
+%
+iii) $\Rightarrow$ ii). \\
+i) $\Rightarrow$ v). $T$ continua in $0$, dunque esiste $\delta > 0$ tale che
+%
+$$
+\norm{Tv - T0}_W \leq 1 \quad \text{se} \quad \norm{v - 0}_V \leq \delta,
+$$
+%
+cioè
+%
+$$
+\norm{Tv} \leq 1 \quad \text{se} \quad \norm{v} \leq \delta,
+$$
+%
+da cui segue che $\norm{Tv} \leq 1/ \delta$ se $\norm{v} \leq 1$.
+\qed
+
+\textbf{Osservazione.} Le costanti ottimali iii), iv), v) sono uguali e valgono
+%
+$$
+c = \sup_{\norm{v}_V \leq 1} \norm{Tv}_W.
+$$
+%
+
+\textbf{Esempi di uso.}
+\begin{enumerate}
+\item Sia $X, \mathcal{A}, \mu$ coma al solito, con $\mu(X) < +\infty$.
+Allora, dati $1 \leq p_1 < p_2 \leq +\infty$, vale
+\begin{equation} \tag{$\star$} \label{eq:star_1}
+L^{p_2}(X) \subset L^{p_1}(X).
+\end{equation}
+Inoltre, l'inclusione $i \colon L^{p_2}(X) \to L^{p_1}(X)$ è continua.
+
+\textbf{Dimostrazione.} La dimostrazione di \eqref{eq:star_1} segue dalla stima
+%
+$$
+\norm{u}_{p_1} \underbrace{\leq}_{\mathclap{\text{Holder generalizzato}}} \norm{\One_X}_q \norm{u}_{p_2} \quad \text{dove} \quad q = \frac{p_1 p_2}{p_2 - p_1}.
+$$
+%
+Dove
+%
+$$
+\norm{\One_X}_{\frac{p_1 p_2}{p_2 - p_1}} \norm{u}_{p_2} = \left( \mu(X) \right)^{\frac{1}{p_1} - \frac{1}{p_2}} \norm{u}_{p_2}.
+$$
+%
+Quanto sopra soddisfa la condizione al punto iv).
+\qed
+
+\item L'applicazione $\ds L^1(X) \ni u \mapsto \int u \dd \mu \in \R$ è continua.
+
+\textbf{Dimostrazione.} Infatti, vale
+%
+$$
+\left| \int\limits_{\mathclap{X}} u \dd \mu \right| \leq \int\limits_{\mathclap{X}} \left| u \right| \dd \mu = \norm{u}_1.
+$$
+%
+Quanto sopra soddisfa la condizione al punto iv).
+\qed
+
+\item Cosa possiamo dire invece dell'applicazione $\ds L^p(X) \ni u \mapsto \int u \dd \mu \in \R$?
+Se $\mu(X) < +\infty$ la continuità segue dagli esempi i) e ii) sopra.
+Se invece $\mu(X) = +\infty$? Per esempio $L^2(\R)$? [TO DO].
+\end{enumerate}
+
+\section{Convoluzione}
+
+\textbf{Definizione.} Date $f_1,f_2 \colon  \R^d \to \R$ misurabili, il \textbf{prodotto di convoluzione} $f_1 \ast f_2$ è la funzione (da $\R^d$ a $\R$) data da
+%
+\begin{equation} \tag{$\star$} \label{eq:star_def_convoluzione}
+	f_1 \ast f_2(x) = \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y
+\end{equation}
+%
+\textbf{Osservazioni.}
+\begin{enumerate}
+\item La definizione \eqref{eq:star_def_convoluzione} è ben posta se $f_1,f_2 \geq 0$ ($f_1 \ast f_2(x)$ può essere anche $+\infty$).
+In generale non è ben posta per funzioni a valori reali (non è detto che l'integrale esista).
+
+\item Se $f_1 \ast f_2(x)$ esiste, allora $\ds f_1 \ast f_2(x) = f_2 \ast f_1(x)$, infatti
+%
+$$
+f_1 \ast f_2 (x) = \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y \underbrace{=}_{t \coloneqq x - y, \dd t = \dd y} \int\limits_{\mathclap{\R^d}} f_1(t) f_2(x-t) \dd t = f_2 \ast f_1(x).
+$$
+%
+
+\item È importante che $f_1,f_2$ siano definite su $\R^d$ e che la misura sia quella di Lebesgue.
+
+In realtà, si può generalizzare quanto sopra rimpiazzando $(\R^d, L^d)$ con $(G,\mu)$, dove $G$ è un gruppo commutativo e $\mu$ una misura su $G$ invariante per traslazione. Per esempio, $\Z$ con la misura che conta i punti. Cioè $f_1,f_2 \colon \Z \to \R$, vale
+%
+$$
+f_1 \ast f_2(n) \coloneqq \sum_{n \in \Z} f_1(n - m) f_2(m). 
+$$
+%
+
+\item Data $f$ distribuzione di massa (continua) su $\R^3$, il potenziale gravitazionale generato è
+%
+$$
+v(x) = \int\limits_{\mathclap{y \in \R^d}} \frac{1}{\left| x - y \right|} \rho(y) \dd y
+$$
+%
+cioè $v = g \ast \rho$, dove  $g (x) = 1 / \left| x \right|$ è il potenziale di una massa puntuale in $0$.
+
+\item Se $X_1, X_2$ sono variabili aleatorie (reali) con distribuzione di probabilità continua $p_1,p_2$ e $X_1,X_2$ sono indipendenti, allora $X_1 + X_2$ ha distribuzione di probabilità $p_1 \ast p_2$. (Facile per $X_1,X_2$ in $\Z$).
+
+
+
+
+
+
+\end{enumerate}
 
 
 
