@@ -43,7 +43,22 @@
 
 % General
 \usepackage{caption}
+\usepackage{wrapfig}
+
+%%% 
+%%% Graphics
+%%% 
 \usepackage{graphicx}
+
+\newcommand{\inputfigure}[1]{\input{#1.pdf_tex}}
+
+% Path per le figure
+\graphicspath{{./figures/.pdf_tex}}
+
+% Magia arcana equivalente a "\graphicspath" ma per "\input"
+\makeatletter
+\def\input@path{{./figures/.pdf_tex}}
+\makeatother
 
 % TikZ
 \usepackage{tikz}

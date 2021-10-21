@@ -16,13 +16,15 @@ https://github.com/aziis98/appunti-analisi-3
 
 ### Compilazione
 
+Questo progetto ha come dipendenze _Inkscape_, _Make_ ed eventualmente _entr_.
+
 Comandi utili
 
-- `make all` &mdash; da eseguire al primo clone per generare la cartella di cache.
+- `make setup; make main.pdf` &mdash; da eseguire al primo clone per generare la cartella di cache ed i file iniziali generati dalle figure.
 
-- `make` &mdash; per compilare il progetto
+- `make` &mdash; per compilare il progetto dopo la prima esecuzione
 
-- `watch` &mdash; controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
+- `./watch` &mdash; controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
 
 	Richiede che sia installato <https://github.com/clibs/entr>
 
