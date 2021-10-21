@@ -1982,7 +1982,7 @@ c = \sup_{\norm{v}_V \leq 1} \norm{Tv}_W.
 $$
 %
 
-\textbf{Esempi di uso.}
+\textbf{Esempi di utilizzo.}
 \begin{enumerate}
 \item Sia $X, \mathcal{A}, \mu$ coma al solito, con $\mu(X) < +\infty$.
 Allora, dati $1 \leq p_1 < p_2 \leq +\infty$, vale
@@ -2026,8 +2026,9 @@ Se invece $\mu(X) = +\infty$? Per esempio $L^2(\R)$? [TO DO].
 
 \textbf{Definizione.} Date $f_1,f_2 \colon  \R^d \to \R$ misurabili, il \textbf{prodotto di convoluzione} $f_1 \ast f_2$ è la funzione (da $\R^d$ a $\R$) data da
 %
-\begin{equation} \tag{$\star$} \label{eq:star_def_convoluzione}
+\begin{equation} \label{eq:star_def_convoluzione}
 	f_1 \ast f_2(x) = \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y
+	\tag{$\star$}
 \end{equation}
 %
 \textbf{Osservazioni.}
@@ -2038,7 +2039,17 @@ In generale non è ben posta per funzioni a valori reali (non è detto che l'int
 \item Se $f_1 \ast f_2(x)$ esiste, allora $\ds f_1 \ast f_2(x) = f_2 \ast f_1(x)$, infatti
 %
 $$
-f_1 \ast f_2 (x) = \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y \underbrace{=}_{t \coloneqq x - y, \dd t = \dd y} \int\limits_{\mathclap{\R^d}} f_1(t) f_2(x-t) \dd t = f_2 \ast f_1(x).
+f_1 \ast f_2 (x) 
+= \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y 
+% \underbrace{=}_{} 
+= \left( 
+{\footnotesize \begin{gathered}
+	t \coloneqq x - y \\ 
+	\dd t = \dd y
+\end{gathered}}
+\right) =
+\int\limits_{\mathclap{\R^d}} f_1(t) f_2(x-t) \dd t 
+= f_2 \ast f_1(x).
 $$
 %
 
@@ -2067,14 +2078,12 @@ cioè $v = g \ast \rho$, dove  $g (x) = 1 / \left| x \right|$ è il potenziale d
 % Lezione dell'20 Ottobre 2021
 %
 
-\section{Convoluzione}
-
-\textbf{Definizione.}
-Date $f_1, f_2 \colon \R^d \to \R$ misurabile allora il \textbf{prodotto di convoluzione} è dato da
-$$
-f_1 \ast f_2 (x) \coloneqq \int_{\R^d} f_1(x - y) f_2(y) \dd y
-$$
-e se $f_1$ e $f_2$ sono positive allora $f_1 \ast f_2(x) \in [0, +\infty]$. Ma ad esempio se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$ allora $f_1 \ast f_2(x)$ non è definito per alcun $x$.
+% \textbf{Definizione.}
+% Date $f_1, f_2 \colon \R^d \to \R$ misurabile allora il \textbf{prodotto di convoluzione} è dato da
+% $$
+% f_1 \ast f_2 (x) \coloneqq \int_{\R^d} f_1(x - y) f_2(y) \dd y
+% $$
+% e se $f_1$ e $f_2$ sono positive allora $f_1 \ast f_2(x) \in [0, +\infty]$. Ma ad esempio se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$ allora $f_1 \ast f_2(x)$ non è definito per alcun $x$.
 
 \textbf{Proposizione 1.}
 Se $|f_1| \ast |f_2| (x) < +\infty$ allora $f_1 \ast f_2(x)$ è ben definito in quanto
@@ -2101,12 +2110,12 @@ Segue subito dalla proposizione precedente.
 Se $f_1 \in L^{p_1}$ e $f_2 \in L^{p_2}$ e preso $r \geq 1$ tale che
 \begin{equation}\label{eqn:conv_th3_cond}
 	\frac{1}{r} = \frac{1}{p_1} + \frac{1}{p_2} - 1
-	\tag{$*$}
+	\tag{$\star$}
 \end{equation}
 allora $f_1 \ast f_2$ è ben definito quasi ovunque e
 \begin{equation}\label{eqn:conv_th3_thesis}
 	\norm{f_1 \ast f_2}_r \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
-	\tag{$**$}
+	\tag{$\star\star$}
 \end{equation}
 
 \textbf{Osservazioni.}
