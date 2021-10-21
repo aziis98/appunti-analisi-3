@@ -58,3 +58,6 @@ debug:
 	@echo -e "CACHE_FIGURES = $(CACHE_FIGURES);"
 	@echo -e "CACHE_FIGURES_PDF = $(CACHE_FIGURES_PDF);"
 	@echo -e "CACHE_FIGURES_PDF_TEX = $(CACHE_FIGURES_PDF_TEX);"
+
+
+
