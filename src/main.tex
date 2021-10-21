@@ -1926,6 +1926,219 @@ Basta trovare $E$ misurabile (per ottenere $E$ aperto si usa la regolarità dell
 \end{itemize}
 \qed
 
+%
+% Lezione dell'18 Ottobre 2021
+%
+
+%
+% Lezione dell'20 Ottobre 2021
+%
+
+\section{Convoluzione}
+
+\textbf{Definizione.}
+Date $f_1, f_2 \colon \R^d \to \R$ misurabile allora il \textbf{prodotto di convoluzione} è dato da
+$$
+f_1 \ast f_2 (x) \coloneqq \int_{\R^d} f_1(x - y) f_2(y) \dd y
+$$
+e se $f_1$ e $f_2$ sono positive allora $f_1 \ast f_2(x) \in [0, +\infty]$. Ma ad esempio se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$ allora $f_1 \ast f_2(x)$ non è definito per alcun $x$.
+
+\textbf{Proposizione 1.}
+Se $|f_1| \ast |f_2| (x) < +\infty$ allora $f_1 \ast f_2(x)$ è ben definito in quanto
+$$
+|f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x)
+$$
+\textbf{Dimostrazione.}
+Basta osservare che
+$$
+\int_{\R^d} |f_1(x - y) \ast f_2(y)| \dd y < +\infty 
+\implies \int_{\R^d} f_1(x - y) f_2(y) \dd y
+$$
+e dunque esiste.
+\qed
+
+\textbf{Corollario 2.}
+Se $|f_1| \ast |f_2| \in L^p(\R^d)$ con $1 \leq p \leq +\infty$ allora $f_1 \ast f_2(x)$ è ben definito per quasi ogni $x \in \R^d$ e $\norm{f_1 \ast f_2}_p \leq \norm{|f_1| \ast |f_2|}_p$.
+
+\textbf{Dimostrazione.}
+Segue subito dalla proposizione precedente.
+\qed
+
+\textbf{Teorema 3} \textit{(Disuguaglianza di Young per la convoluzione)}.
+Se $f_1 \in L^{p_1}$ e $f_2 \in L^{p_2}$ e preso $r \geq 1$ tale che
+\begin{equation}\label{eqn:conv_th3_cond}
+	\frac{1}{r} = \frac{1}{p_1} + \frac{1}{p_2} - 1
+	\tag{$*$}
+\end{equation}
+allora $f_1 \ast f_2$ è ben definito quasi ovunque e
+\begin{equation}\label{eqn:conv_th3_thesis}
+	\norm{f_1 \ast f_2}_r \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
+	\tag{$**$}
+\end{equation}
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item 
+		Nel caso di prima $1$ e $\sin x$ sono solo in $L^\infty$ infatti viene $r = -1$ e la disuguaglianza non ha senso.
+
+	\item
+		Supponiamo di avere $\norm{f_1 \ast f_2} \leq C \cdot \norm{f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2}$ allora vediamo che per ogni $f_1, f_2$ positiva deve valere necessariamente $\alpha_1 = \alpha_2 = 1$ e la condizione (\ref{eqn:conv_th3_cond}).
+
+		\textbf{Dimostrazione.}
+		Per ogni $\lambda > 0$ consideriamo $\lambda f_1$ e $f_2$, allora 
+		$$
+		\norm{(\lambda f_1) \ast f_2}_r = \norm{\lambda (f_1 \ast f_2)}_r = \lambda \norm{f_1 \ast f_2}_r
+		$$
+		ma abbiamo anche
+		$$
+		\norm{(\lambda f_1) \ast f_2}_r \leq C \cdot \norm{f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2} = C \cdot \lambda^{\alpha_1} \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
+		$$
+		A questo punto richiediamo anche che $f_1$ e $f_2$ siano tali che $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} < +\infty$ e $\norm{f_1 \ast f_2} > 0$ (questo possiamo farlo in quanto basta prendere $f_1 = f_2 = \One_B$ con $B$ una palla, nel caso segue proprio che $f_1 \ast f_2 (x) > 0$ se $|x| < 1$).
+
+		Data $f \colon \R^d \to \R$ e $\lambda > 0$ poniamo $R_{\lambda} f(x) \coloneqq f(\frac{x}{\lambda})$ allora abbiamo
+		$$
+		\norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r 
+		= \lambda^{d \left( 1 + \frac{1}{r} \right)} \norm{f_1 \ast f_2}_r 
+		$$
+		ma anche
+		$$
+		\norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r 
+		\leq C \cdot \norm{R_\lambda f_1}_{p_1} \cdot \norm{R_\lambda f_2}_{p_2}
+		= \lambda^{d(\frac{1}{p_1} + \frac{1}{p_2})} \cdot \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
+		$$
+		dunque sicuramente abbiamo $\lambda^{d \left(1 + {1 / r} \right)} \leq C \cdot \lambda^{d\left( {1 / p_1} + {1 / p_2} \right)}$ per ogni $\lambda > 0$ e quindi $1 + {1 / r} = {1 / p_1} + {1 / p_2} \iff$ (\ref{eqn:conv_th3_cond}).
+		\qed
+
+	\item
+		$\norm{R_\lambda f}_p = \lambda^{d / p} \norm{f}_p$ ed in realtà possiamo ricavare l'esponente $d / p$ per \textit{analisi dimensionale}\footnote{Ovvero studiando le potenze delle unità di misura delle varie quantità.}\footnote{In particolare ad Istituzioni di Analisi si vedono le disuguglianze di Sobolev ed anche in quel caso tutte le condizioni sugli esponenti si riescono a ricavare per analisi dimensionale...}. Consideriamo l'espressione
+		$$
+		\norm{f}_p^p = \int_{\R^d} f(x) \dd x
+		$$
+		se $f(x)$ è una \textit{quantità adimensionale} e $\int_{\R^d} f \dd x$ ha dimensione di una \textit{lunghezza} $L^d$ allora $\norm{f}_p$ ha dimensione di $L^{d / p}$.
+
+		Similmente per ottenere $\norm{R_\lambda(f_1 \ast f_2)}_r = \lambda^{d(1 + 1 / r)} \norm{f_1 \ast f_2}_r$ basta osservare che nell'espressione
+		$$
+		f_1 \ast f_2 (x) = \int_{\R^d} f_1(x - y) f_2(y) \dd y
+		$$
+		dunque $f_1 \ast f_2 (x)$ ha dimensione $L^d$ da cui
+		$$
+		\norm{f_1 \ast f_2}_r = \bigg( \int_{\R^d} \underbrace{|f_1 \ast f_2|^r}_{L^{dr}} \underbrace{\dd x}_{L^d} \bigg)^{1 / r}
+		$$
+		e quindi $\norm{f_1 \ast f_2}_r$ ha dimensione di $L^{d(1 + 1/r)}$.
+\end{itemize}
+
+\textbf{Dimostrazione Teorema 3.}
+Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1, f_2 \geq 0$.
+\begin{itemize}
+	\item
+		\textit{Caso facile.} Se $p_1 = p_2 = 1$ e $r = 1$
+		$$
+		\begin{aligned}
+			\norm{f_1 \ast f_2}_1
+			&= \int f_1 \ast f_2 (x) \dd x 
+			= \iint f_1(x - y) f_2(y) \dd y \dd x 
+			= \int f_2(y) \int f_1(x - y) \dd x \dd y = \\
+			&= \int \norm{f_1}_1 \cdot f_2(y) \dd y 
+			= \norm{f_1}_1 \cdot \norm{f_2}_1
+		\end{aligned}
+		$$
+
+	\item
+		\textit{Caso leggermente meno facile.} Se $p_1 = p, p_2 = 1$ e $r = p$.
+		Vogliamo vedere che
+		$$
+		\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \cdot \norm{f_2}_1
+		$$
+		allora
+		$$
+		\begin{aligned}
+			\norm{f_1 \ast f_2}_p
+			&= \int_{\R^d} (\underbrace{f_1 \ast f_2}_{h})^p \dd x
+			= \int h \cdot h^{p-1} \dd x 
+			= \iint f_1(x - y) f_2(y) h^{p-1}(x) \dd y \dd x = \\
+			&= \iint f_1(y - x) h^{p-1}(x) \dd x f_2(y) \dd y 
+			\overset{\text{H\"older}}{\leq} 
+			\int \norm{f_1(y - \curry)}_p {\| h^{p-1} \|}_{p'} f_2(y) \dd y
+		\end{aligned}
+		$$
+		con $p'$ esponente coniugato a $p$. Inoltre notiamo che $\norm{f_1(y - \curry)}_p = \norm{f_1}$ per invarianza di $\mathscr L^d$ per riflessioni e traslazioni, infine otteniamo
+		$$
+		= \norm{f_1}_p {\| h^{p-1} \|}_{p'} \norm{f_2}_1
+		= \norm{f_1}_p \norm{h}_{p'}^{p-1} \norm{f_2}_1
+		$$
+		$\implies \norm{f_1 \ast f_2}_p^p \leq \norm{f_1 \ast f_2}_p^{p-1} \norm{f_1}_p \norm{f_2}_1 \implies \norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \norm{f_2}_1$. Questo però solo nel caso in cui valga $0 < \norm{f_1 \ast f_2}_p < +\infty$, resterebbero da controllare i due casi in cui la norma è $0$ oppure $+\infty$, il primo è ovvio, il secondo invece si fa per approssimazione e passando al limite.
+
+		Consideriamo $f_1, f_2$ e approssimiamole con $f_{1,n}, f_{2,n}$ limitate a supporto compatto, allora vale $\norm{f_{1,n} \ast f_{1,n}}_p \leq \norm{f_{1,n}}_p \cdot \norm{f_{2,n}}_1$ e passando al limite si ottiene la tesi. In particolare possiamo costruire le $f_n$ come
+		$$
+		f_n(x) \coloneqq (f(x) \cdot \One_{\mathcal B(0, n)}(x)) \land n
+		$$
+
+		\textbf{Osservazione.}
+		Se $f_2 \geq 0$ e $\int f_2 \dd x = 1$ allora $\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p$ è una versione semplificata della proposizione precedente, in particolare la dimostrazione si semplifica in quanto possiamo pensare a $f_2$ come distribuzione di probabilità e quindi $f_1 \ast f_2$ è una ``media pesata'' delle traslazioni di $f_1$ o più precisamente una combinazione convessa ``integrale''.
+
+	\item
+		\textit{Caso generale.} Non lo facciamo perché servono mille mila parametri e non è troppo interessante.
+\end{itemize}
+\qed
+
+\textbf{Teorema 4.}
+Se $p_1$ e $p_2$ sono coniugati e $r = +\infty$ abbiamo un risultato più forte ovvero valgono
+\begin{enumerate}
+	\item \label{item:20ott_th4_1} 
+		$f_1 \ast f_2(x)$ è ben definito per ogni $x \in \R^d$
+
+	\item \label{item:20ott_th4_2}
+		$|f_1 \ast f_2(x)| \leq \norm{f_1}_{p_1} \norm{f_2}_{p_2}$
+
+	\item \label{item:20ott_th4_3} 
+		$f_1 \ast f_2$ è uniformemente continua
+
+	\item \label{item:20ott_th4_4}
+		Se $1 < p_1, p_2 < +\infty$ allora $f_1 \ast f_2 \to 0$ per $|x| \to +\infty$
+\end{enumerate}
+
+\textbf{Dimostrazione \ref{item:20ott_th4_1} e \ref{item:20ott_th4_2}.}
+Seguono subito da (\ref{eqn:conv_th3_cond}) per $f_1, f_2 \geq 0$ (con il Corollario 2.), se $f_1, f_2 \geq 0$ allora
+$$
+f_1 \ast f_2 (x) 
+= \int_{\R^d} f_1(x - y) f_2(y) \dd y 
+\leq \norm{f_1(x - \curry)}_{p_1} \norm{f_2}_{p_2} 
+= \norm{f_1}_{p_1} \norm{f_2}_{p_2}
+$$
+
+\textbf{Proposizione 5.}
+Data $f \in L^p(\R^d)$ con $p < +\infty$ la mappa
+$$
+\begin{array}{cccc}
+	\tau_h f : & \R^d & \to & L^p(\R^d) \\
+	& h & \mapsto & f(\curry - h)
+\end{array}
+$$
+è continua.
+
+\textbf{Lemma 6.}
+Lo spazio $C_0(\R^d) = \{ f \colon \R^d \to \R \text{ continue con } f(x) \to 0 \text{ per } |x| \to 0 \}$ è chiuso rispetto alla convergenza uniforme.
+
+\textbf{Dimostrazione \ref{item:20ott_th4_3}.} 
+Supponiamo $p_1 < +\infty$ allora
+$$
+\begin{aligned}
+	|f_1 \ast f_2(x + h) - f_1 \ast f_2(x)|
+	&\leq \int |f_1(x + h - y) - f_1(x - y)| \cdot |f_2(y)| \dd y \\
+	&\leq \norm{f_1(x + h - \curry) - f(x - \curry)}_{p_1} \norm{f_2}_{p_2} \\
+	&= \norm{\tau_h f_1 - f_1}_{p_2} \norm{f_2}_{p_2}
+\end{aligned}
+$$
+\qed
+
+
+
+
+
+
+
+
+
 
 
 
