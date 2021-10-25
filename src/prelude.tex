@@ -50,7 +50,6 @@
 %%% 
 \usepackage{graphicx}
 
-\newcommand{\inputfigure}[1]{\input{#1.pdf_tex}}
 
 % Path per le figure
 \graphicspath{{./figures/.pdf_tex}}
@@ -59,6 +58,8 @@
 \makeatletter
 \def\input@path{{./figures/.pdf_tex}}
 \makeatother
+
+\newcommand{\inputfigure}[1]{\input{#1.pdf_tex}}
 
 % TikZ
 \usepackage{tikz}
@@ -198,13 +199,9 @@
 %%
 %% Nuovi comandi
 %%
+% Utility
 
 % Insiemi numerici
-% \newcommand{\N}{\mathbb{N}}
-% \newcommand{\Z}{\mathbb{Z}}
-% \newcommand{\Q}{\mathbb{Q}}
-% \newcommand{\R}{\mathbb{R}}
-% \newcommand{\C}{\mathbb{C}}
 \newcommand{\restr}[2]{\left.#1\right|_{#2}}
 
 % Dichiarazione lettera Chi maiuscola -> \Chi

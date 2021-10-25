@@ -154,7 +154,7 @@ $$
 	\item Dato $E \subset X$, vale $E \in \mathcal{A}$ se solo se $\One_E$ è misurabile.
 	\item La classe delle funzioni misurabili è chiusa rispetto a molte operazioni
 	\begin{itemize}
-		\item \textit{somma}, \textit{prodotto} (se hanno senso nello spazio immagine della funzione).
+		\item \textit{Somma}, \textit{prodotto} (se hanno senso nello spazio immagine della funzione).
 		\item \textit{Composizione con funzione continua}: Se $f \colon X \to Y$ continua e $g \colon  Y \to Y'$ continua, allora $g \circ f$ è misurabile.
 		\item \textit{Convergenza puntuale}: data una successione di $f_n$ misurabili e $f_n \to f$ puntualmente, allora $f$ è misurabile.
 		\item $\liminf$ e $\limsup$ (almeno nel caso $Y = \R$).
@@ -181,24 +181,24 @@ Diamo la definizione di $\ds\int_X f \dd \mu$ per passi
 	\item \label{item:def_int_1} 
 		Se $f \in \mathcal{S}$ e $f \geq 0$ cioè $f = \sum_i \alpha_i \One_{E_i}$ con $\alpha_i \geq 0$ allora poniamo
 $$
-			\int\limits_{\mathclap{X}} f \dd \mu \coloneqq \sum_{i} \alpha_i \mu(E_i),
+			\int_{X} f \dd \mu \coloneqq \sum_{i} \alpha_i \mu(E_i),
 $$
 		convenendo che $0 \cdot +\infty = 0$ in quanto la misura di un insieme non è necessariamente finita.
 	
 	\item \label{item:def_int_2} 
 		Se $f \colon  X \to [0,+\infty]$ misurabile si pone
 $$
-			\int\limits_{\mathclap{X}} f \dd \mu \coloneqq \sup_{\substack{g \in \mathcal{S} \\ 0 \leq g \leq f}} \int\limits_{\mathclap{X}} g \dd \mu.
+			\int_{X} f \dd \mu \coloneqq \sup_{\substack{g \in \mathcal{S} \\ 0 \leq g \leq f}} \int_{X} g \dd \mu.
 $$
 		
 	\item 
 		$f \colon X \to \overline{\R}$ misurabile si dice \textbf{integrabile} se 
 $$
-			\int\limits_{\mathclap{X}} f^+ \dd \mu < + \infty \quad \text{oppure} \quad \int\limits_{\mathclap{X}} f^- \dd \mu < +\infty.
+			\int_{X} f^+ \dd \mu < + \infty \quad \text{oppure} \quad \int_{X} f^- \dd \mu < +\infty.
 $$
 		e per tali $f$ si pone
 $$
-			\int\limits_{\mathclap{X}} f \dd \mu \coloneqq  \int\limits_{\mathclap{X}} f^+ \dd \mu - \int\limits_{\mathclap{X}} f^- \dd \mu.
+			\int_{X} f \dd \mu \coloneqq  \int_{X} f^+ \dd \mu - \int_{X} f^- \dd \mu.
 $$
 	
 	\item 
@@ -207,11 +207,11 @@ $$
 
 Per tali $f$ si pone
 $$
-	\int\limits_{\mathclap{X}} f \dd \mu \coloneqq  \left( \int_X f_1 \dd \mu, \ldots , \int_X f_n \dd \mu \right).
+	\int_{X} f \dd \mu \coloneqq  \left( \int_X f_1 \dd \mu, \ldots , \int_X f_n \dd \mu \right).
 $$
 
 \textbf{Notazione.}
-Scriveremo spesso $\int_E f(x) \dd x$ invece di $\int_E f \dd \mathscr L^n$ .
+Scriveremo spesso $\ds \int_E f(x) \dd x$ invece di $\ds \int_E f \dd \mathscr L^n$ .
 
 \textbf{Osservazioni.}
 \begin{itemize}
@@ -221,7 +221,7 @@ Scriveremo spesso $\int_E f(x) \dd x$ invece di $\int_E f \dd \mathscr L^n$ .
 	
 	\item La definizione in \ref{item:def_int_2} ha senso per ogni $f \colon X \to [0,+\infty]$ anche non misurabile. Ma in generale vale solo che
 		$$
-		\int\limits_{\mathclap{X}} f_1 + f_2 \dd \mu \geq \int_X f_1 \dd \mu + \int_X f_2 \dd \mu.
+		\int_{X} f_1 + f_2 \dd \mu \geq \int_X f_1 \dd \mu + \int_X f_2 \dd \mu.
 		$$
 	
 	\item Dato $E \in \mathcal{A}$, $f$ misurabile su $E$, notiamo che vale l'uguaglianza
@@ -264,7 +264,7 @@ Scriveremo spesso $\int_E f(x) \dd x$ invece di $\int_E f \dd \mathscr L^n$ .
 		
 	\item Dato $X$ qualunque, $\mu$ misura che conta i punti e $f \colon  X \to [0,+\infty] $ possiamo definire la somma di tutti i valori di $f$ 
 		$$
-		\sum_{x \in X} f(x) \coloneqq \int\limits_{\mathclap{X}} f \dd \mu.  
+		\sum_{x \in X} f(x) \coloneqq \int_{X} f \dd \mu.  
 		$$ 
 \end{itemize}
 
@@ -272,27 +272,24 @@ Scriveremo spesso $\int_E f(x) \dd x$ invece di $\int_E f \dd \mathscr L^n$ .
 
 Sia $(X, \mathcal{A}, \mu)$ come in precedenza.
 
-\textbf{Teorema.}
-\textit{di convergenza monotona o Beppo-Levi.}
+\textbf{Teorema} (di convergenza monotona o Beppo-Levi).
 Date $f_n \colon  X \to [0,+\infty]$ misurabili, tali che $f_n \uparrow f$ ovunque in $X$, allora
 $$
-\lim_{n \to +\infty} \int\limits_{\mathclap{X}} f_n \dd \mu = \int\limits_X f \dd \mu,
+\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \int_X f \dd \mu,
 $$
 dove
 $$
-\lim_{n \to +\infty} \int\limits_{\mathclap{X}} f_n \dd \mu = \sup_n \int f_n \dd \mu.
+\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \sup_n \int f_n \dd \mu.
 $$
 
 
-\textbf{Teorema.}
-\textit{detto lemma di Fatou.}
+\textbf{Teorema} (lemma di Fatou).
 Date $f_n \colon X \to [0,+\infty]$ misurabili, allora
 $$
-\liminf_{n \to +\infty} \int\limits_X f \dd \mu \geq \int\limits_{\mathclap{X}} \left( \liminf_{n \to +\infty} f_n \right) \dd \mu.
+\liminf_{n \to +\infty} \int_X f \dd \mu \geq \int_{X} \left( \liminf_{n \to +\infty} f_n \right) \dd \mu.
 $$ 
 
-\textbf{Teorema.}
-\textit{di convergenza dominata o di Lebesgue.}
+\textbf{Teorema} (di convergenza dominata o di Lebesgue).
 Date $f_n \colon  X \to \R$ (o anche $\R^n$) con le seguenti proprietà
 \begin{itemize}
 	\item \textit{Convergenza puntuale:} $f_n (x) \to f(x)$ per ogni $x \in X$.
@@ -300,7 +297,7 @@ Date $f_n \colon  X \to \R$ (o anche $\R^n$) con le seguenti proprietà
 \end{itemize}
 allora
 $$
-\lim_{n \to \infty} \int\limits_{\mathclap{X}} f_n \dd \mu = \int\limits_X f \dd \mu. 
+\lim_{n \to \infty} \int_{X} f_n \dd \mu = \int_X f \dd \mu. 
 $$ 
 
 \textbf{Nota.}
@@ -309,7 +306,7 @@ La seconda proprietà è essenziale; sostituirla con $\ds \int_X \left| f_n \rig
 \textbf{Definizione.}
 Data una ``densità'' $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la \textbf{misura $\mu$ con densità $\rho$} è data da
 $$
-\forall E \in \mathcal A \quad \mu(E) \coloneqq \int\limits_{\mathclap{E}} \rho \dd x
+\forall E \in \mathcal A \quad \mu(E) \coloneqq \int_{E} \rho \dd x
 $$ 
 
 \textbf{Osservazioni.}
@@ -319,11 +316,10 @@ $$
 \end{itemize}
 
 
-\textbf{Teorema.}
-\textit{di cambio di variabile.}
+\textbf{Teorema} (di cambio di variabile).
 Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
 $$
-\int\limits_{\mathclap{\Omega'}} f(x') \dd x' = \int\limits_{\mathclap{\Omega}} f(\Phi(x)) \left| \det(\nabla \Phi(x)) \right| \dd x.
+\int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(\nabla \Phi(x)) \right| \dd x.
 $$
 
 La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$ a valori in $\R^n$ sommabile.
@@ -342,14 +338,13 @@ La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$
 
 Di seguito riportiamo il teorema di Fubini-Tonelli per la misura di Lebesgue.
 
-\textbf{Teorema.}
-\textit{Fubini-Tonelli.}
+\textbf{Teorema} (di Fubini-Tonelli).
 Sia $\R^{n_1} \times \R^{n_2} \simeq \R^n$ con $n = n_1 + n_2$, $ E \coloneqq E_1 \times E_2 $ dove $E_1, E_2$ sono misurabili e $f$ è una funzione misurabile definita su $E$.
 Se $f$ ha valori in $[0,+\infty]$ allora
 $$
-\int\limits_X f \dd \mu 
-= \int\limits_{\mathclap{E_2}} \int\limits_{\mathclap{E_1}} f(x_1,x_2) \dd x_1 \dd x_2 
-= \int\limits_{\mathclap{E_1}} \int\limits_{\mathclap{E_2}} f(x_1,x_2) \dd x_2 \dd x_1
+\int_X f \dd \mu 
+= \int_{E_2} \int_{E_1} f(x_1,x_2) \dd x_1 \dd x_2 
+= \int_{E_1} \int_{E_2} f(x_1,x_2) \dd x_2 \dd x_1
 $$ 
 
 Vale lo stesso per $f$ a valori in $\R$ o in $\R^n$ sommabile.
@@ -359,19 +354,19 @@ Possiamo generalizzare il teorema di Fubini-Tonelli a misure generiche ed ottene
 \begin{itemize}
 	\item Se $X_1, X_2$ sono spazi con misure $\mu_1,\mu_2$ (con opportune ipotesi) vale:
 		$$
-		\int\limits_{\mathclap{E_2}} \int\limits_{\mathclap{E_1}} f(x_1,x_2) \dd \mu_1(x_1)  \dd \mu_2(x_2) 
-		= \int\limits_{\mathclap{E_1}} \int\limits_{\mathclap{E_2}} f(x_1,x_2) \dd \mu_2(x_2)  \dd \mu_1(x_1).
+		\int_{E_2} \int_{E_1} f(x_1,x_2) \dd \mu_1(x_1)  \dd \mu_2(x_2) 
+		= \int_{E_1} \int_{E_2} f(x_1,x_2) \dd \mu_2(x_2)  \dd \mu_1(x_1).
 		$$ 
-		se $f\geq 0$ oppure $\ds \int\limits_{\mathclap{X_1}} \int\limits_{\mathclap{x_2}} \left| f \right| \dd \mu_2(x_2)  \dd \mu_1(x_1) < + \infty $.
+		se $f\geq 0$ oppure $\ds \int_{X_1} \int_{x_2} \left| f \right| \dd \mu_2(x_2)  \dd \mu_1(x_1) < + \infty $.
 	
-	\item \textit{Teorema di scambio serie-integrale:} Se $X_1 \subset \R$ (oppure $X_1 \subset \R^n$), $\mu_1 = \mathscr L^n$ e $X_2 = \N$, $\mu_2$ è la misura che conta i punti, allora la formula sopra diventa
+	\item \textbf{Teorema} (di scambio serie-integrale). Se $X_1 \subset \R$ (oppure $X_1 \subset \R^n$), $\mu_1 = \mathscr L^n$ e $X_2 = \N$, $\mu_2$ è la misura che conta i punti, allora la formula sopra diventa
 		$$
-		\sum_{n=0}^{\infty} \, \int\limits_{\mathclap{X_1}} f_n(x) \dd x  
-		= \int\limits_{\mathclap{X_1}} \sum_{n=0}^{\infty} f_n(x)  \dd x.
+		\sum_{n=0}^{\infty} \, \int_{X_1} f_n(x) \dd x  
+		= \int_{X_1} \sum_{n=0}^{\infty} f_n(x)  \dd x.
 		$$ 
-		se $f_i \geq 0$ oppure $\ds \sum_{i} \int\limits_{\mathclap{X_1}} \left| f_i(x) \right| \dd x  < + \infty $.
+		se $f_i \geq 0$ oppure $\ds \sum_{i} \int_{X_1} \left| f_i(x) \right| \dd x  < + \infty $.
 	
-	\item \textit{Teorema di scambio di serie:} Se $X_1 = X_2 = \N$ e $\mu_1 = \mu_2$ è la misura che conta i punti la formula sopra diventa
+	\item \textbf{Teorema} (di scambio di serie). Se $X_1 = X_2 = \N$ e $\mu_1 = \mu_2$ è la misura che conta i punti la formula sopra diventa
 		$$
 		\sum_{j=0}^{\infty} \sum_{i=0}^{\infty} a_{i,j}  
 		= \sum_{i=0}^{\infty} \sum_{j=0}^{\infty} a_{i,j} 
@@ -390,7 +385,7 @@ $$
 f \left(\sum_i \lambda_i x_i \right) \leq \sum_i \lambda_i f(x_i)
 $$
 
-\textbf{Teorema} (Jensen),
+\textbf{Teorema} (Jensen).
 Dato $(X, \mathcal A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
 $$
 \int_X f \compose u \dd \mu \geq f \left( \int_X u \dd \mu \right)
@@ -692,7 +687,7 @@ $$
 	\mu(E) \leq \sum_{i}^{} \mu(E_i).
 $$
 
-\textbf{Dimostrazione} (\textit{Idea}).
+\textbf{Dimostrazione} (Idea).
 Basta dimostrare che $\ds \mu \left( \bigcup_i E_i \right) \leq \sum_{i}^{} \mu(E_i)$. Infatti per quanto visto prima $\ds \mu(E) \leq \mu \left( \bigcup_i E_i \right)$. Prima dimostriamo per induzione $\ds \mu \left( \bigcup_{i = 1}^N E_i \right) \leq \sum_{i=1}^{N} \mu(E_i)$. 
 
 Il passo base $n = 2$ è stato visto al punto \ref{item:misura_unione_finita}. Una volta dimostrata la proprietà sopra, si nota che $\ds \sum_{i=1}^{N} \mu(E_i) $ è limitata per ogni $N$, e dunque è limitato anche il suo limite, da cui la tesi.
@@ -708,7 +703,7 @@ Due osservazioni sulle funzioni semicontinue.
 \item La proprietà di misurabilità delle funzioni semicontinue è necessaria per l'enunciato della disuguaglianza di Jensen.
 \end{itemize}
 
-\textbf{Controesempio} (\textit{Disuguaglianza di Jensen}).
+\textbf{Controesempio} (disuguaglianza di Jensen).
 Notiamo che l'ipotesi di semicontinuità inferiore della funzione $f$ è necessaria per la validità della disuguaglianza di Jensen.
 Infatti, definiamo $f$ come segue
 %
@@ -726,7 +721,7 @@ Ora definiamo la funzione $u : X \to \R$ con $X = (0,2)$, come la funzione costa
 Calcoliamo l'integrale di $u(x)$ su $X$.
 %
 $$
-	\int\limits_{\mathclap{X}} u(x) \dd x = 1. 
+	\int_{X} u(x) \dd x = 1. 
 $$
 %
 In tal caso vale $\ds f \left( \int_X u(x) \dd x \right) = + \infty$.
@@ -770,7 +765,7 @@ $$
 Allora possiamo maggiorare come segue
 $$
 	0 = \int_X f \dd \mu 
-	\geq \;\int\limits_{\mathclap{\left\{ f \,\geq\, \frac{1}{n} \right\}}} \; f \dd \mu \geq	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
+	\geq \;\int_{\left\{ f \,\geq\, \frac{1}{n} \right\}} \; f \dd \mu \geq	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
 $$
 Dunque abbiamo
 $$
@@ -790,7 +785,7 @@ $$
 
 \end{itemize}
 
-\textbf{Osservazione.} (sup essenziale di funzioni misurabili).
+\textbf{Osservazione} (sup essenziale di funzioni misurabili).
 Data $f$ misurabile, definiamo
 $$
 	\norm{ f }_{\infty, X} \coloneqq \inf \left\{ m \in [0,+\infty] \mymid \left| f(x) \right| \leq m \quad \text{quasi ovunque}  \right\}.
@@ -821,7 +816,7 @@ $$
 Sia $f \colon [0,+\infty) \to \R$ misurabile (di solito si richiede misurabile e positiva oppure sommabile).
 Vala la seguente
 $$
-	\int\limits_{\mathclap{0}}^{+\infty} f\left( \left| x \right| \right) \dd x = c_n \cdot \int\limits_{\mathclap{0}}^{+\infty} f(\rho) \rho^{n-1} \dd \rho,
+	\int_{0}^{+\infty} f\left( \left| x \right| \right) \dd x = c_n \cdot \int_{0}^{+\infty} f(\rho) \rho^{n-1} \dd \rho,
 $$
 dove $\ds c_n = n \mathscr L^n \left( \mathcal{B}(0,1) \right)$.
 
@@ -837,9 +832,9 @@ su $\mathcal{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1
 Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mathcal{B}(0,1)$.
 %
 $$
-\int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \psi(x) \dd x 
-= c_n \int\limits_{\mathclap{0}}^{1} \frac{1}{\rho^\alpha} \rho^{n -1} \dd \rho 
-= c_n \int\limits_{\mathclap{0}}^{1} \rho^{n-1-\alpha} \dd \rho =
+\int_{\mathcal{B(0,1)}}^{} \psi(x) \dd x 
+= c_n \int_0^1 \frac{1}{\rho^\alpha} \rho^{n -1} \dd \rho 
+= c_n \int_0^1 \rho^{n-1-\alpha} \dd \rho =
 \begin{cases}
 	\log (\rho) \quad n = \alpha \\
 	\dfrac{\rho^{n-\alpha}}{n - \alpha} \quad \text{altrimenti} 
@@ -849,21 +844,21 @@ $$
 Concludendo,
 %
 $$
-	\int\limits_{\mathcal{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n > \alpha.
+	\int_{B}(0,1)^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n > \alpha.
 $$
 %
 \textbf{Esercizio.}
 Con passaggi analoghi al precedente otteniamo
 %
 $$
-	\int\limits_{\R^n \setminus \; \mathcal{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n < \alpha.
+	\int_{\R^n \setminus \; \mathcal{B}(0,1)} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n < \alpha.
 $$
 %
 \textbf{Esercizio.}
 Vediamo per quali valori di $\beta$ l'integrale
 %
 $$
-	\int\limits_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x
+	\int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x
 $$
 %
 converge.
@@ -871,26 +866,26 @@ converge.
 Vale la seguente catena di uguaglianze.
 %
 $$
-\int\limits_{\mathclap{\R^n}}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-= \int\limits_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-+ \int\limits_{\R^n \setminus \; \mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x.
+\int_{\R^n}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+= \int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
++ \int_{\R^n \setminus \; \mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x.
 $$
 %
 Studiamo separatamente i due pezzi dell'integrale.
 %
 \begin{align*}
-	\int\limits_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-	& = c_n \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \frac{1}{(\rho + \rho^2)^\beta} \rho^{n-1} \dd \rho
-	= c_n \int\limits_{\mathclap{0}}^{1} \frac{1}{\rho^\beta} \cdot \frac{\rho^{n-1}}{(1 + \rho)^\beta} \dd \rho \\
-	& \approx \int\limits_{\mathclap{0}}^{1} \rho^{n-1-\beta} \dd \rho < + \infty \longiff  \beta < n.
+	\int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	& = c_n \int_{\mathcal{B}(0,1)}^{} \frac{1}{(\rho + \rho^2)^\beta} \rho^{n-1} \dd \rho
+	= c_n \int_{0}^{1} \frac{1}{\rho^\beta} \cdot \frac{\rho^{n-1}}{(1 + \rho)^\beta} \dd \rho \\
+	& \approx \int_{0}^{1} \rho^{n-1-\beta} \dd \rho < + \infty \longiff  \beta < n.
 \end{align*}
 %
 Inoltre,
 %
 $$
-	\int\limits_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-	= \int\limits_{\mathclap{\R^n \setminus \; \mathcal{B}(0,1)}}^{} \frac{1}{\rho^{2\beta}} \cdot \frac{\rho^{n-1}}{\left( \frac{1}{\rho} + 1 \right)^\beta} \dd \rho 
-	\approx \int\limits_{\mathclap{1}}^{+\infty} \frac{\rho^{n-1}}{\rho^{2\beta}} \dd rho < + \infty \longiff 2\beta > \alpha.  
+	\int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	= \int_{\R^n \setminus \; \mathcal{B}(0,1)}^{} \frac{1}{\rho^{2\beta}} \cdot \frac{\rho^{n-1}}{\left( \frac{1}{\rho} + 1 \right)^\beta} \dd \rho 
+	\approx \int_{1}^{+\infty} \frac{\rho^{n-1}}{\rho^{2\beta}} \dd rho < + \infty \longiff 2\beta > \alpha.  
 $$
 %
 In conclusione, l'integrale è finito se $n > \beta > n / 2$.
@@ -900,7 +895,7 @@ In conclusione, l'integrale è finito se $n > \beta > n / 2$.
 \textbf{Esercizio.}
 Studiare l'insieme di finitezza al variare del parametro $\alpha$ dell'integrale
 $$
-	\int\limits_{\mathclap{[0,1]^n}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
 $$
 Osserviamo che la norma 1 e 2 sono legate dalle seguenti disuguglianze
 $$
@@ -910,28 +905,28 @@ $$
 Studiamo una maggiorazione per l'integrale
 %
 $$
-	\int\limits_{\mathclap{[0,1]^n}}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x 
-	\leq \;\int\limits_{\mathclap{[0,1]^n}}^{} \, \frac{1}{\norm{ x }^\alpha} \dd x 
-	\leq \;\;\int\limits_{\mathclap{B(0,\sqrt{n})}}^{}\;\; \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff \alpha < n,
+	\int_{[0,1]^n}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x 
+	\leq \;\int_{[0,1]^n}^{} \, \frac{1}{\norm{ x }^\alpha} \dd x 
+	\leq \;\;\int_{B(0,\sqrt{n})}^{}\;\; \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff \alpha < n,
 $$
 %
 dunque
 %
 $$
-\int\limits_{\mathclap{[0,1]^n}}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x < +\infty \quad \text{se} \; \alpha < n.
+\int_{[0,1]^n}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x < +\infty \quad \text{se} \; \alpha < n.
 $$
 %
 Vediamo ora una minorazione.
 
 $$
-	\int\limits_{\mathclap{[0,1]^n}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-= \frac{1}{2^n}	\int\limits_{[-1,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-\geq \frac{1}{2^n} \ \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-\approx \int\limits_{\mathclap{\mathcal{B}(0,1)}}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty 
+	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+= \frac{1}{2^n}	\int_{[-1,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+\geq \frac{1}{2^n} \ \int_{\mathcal{B}(0,1)}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+\approx \int_{\mathcal{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty 
 \longiff \alpha < n.
 $$
 
-Dunque l'integrale $\ds \int\limits_{\mathclap{[0,1]^n}}^{} \frac{1}{\norm{x}_1^\alpha} \dd x$ converge se solo se $\alpha < n$.
+Dunque l'integrale $\ds \int_{[0,1]^n}^{} \frac{1}{\norm{x}_1^\alpha} \dd x$ converge se solo se $\alpha < n$.
 
 \newpage
 
@@ -943,7 +938,7 @@ Allora vale
 $$
 	\norm{ f \cdot g }_r \leq \norm{ f }_{p_1} + \norm{ g }_{p_2}.
 $$
-\textit{Suggerimento.} Usare Holder osservando che $\ds 1 = \frac{r}{p_1} + \frac{r}{p_2} = \frac{1}{\left( p_1/r \right)} + \frac{1}{\left( p_2/r \right)}$.
+\textit{Suggerimento.} Usare Hölder osservando che $\ds 1 = \frac{r}{p_1} + \frac{r}{p_2} = \frac{1}{\left( p_1/r \right)} + \frac{1}{\left( p_2/r \right)}$.
 
 \item Dimostrare che date $f_1,\ldots, f_n$ misurabili e $p_i > 0$ tali che $1/p_1 + \ldots + 1/p_n = 1$ si ha
 $$
@@ -1219,7 +1214,7 @@ Valgono le seguenti.
 In i) e ii) l'ipotesi $\mu(X) < +\infty$ è necessaria.
 Infatti, preso $X = \R$ e $f_n = \One_{[n,+\infty)}$ si ha che $f_n \to 0$ ovunque ma $f_n$ non converge a $0$ in misura, e $f_n$ non converge a $0$ uniformemente in $\R \setminus E$ per ogni $E$ di misura finita.
 
-\textbf{Lemma.} (Disuguaglianza di Markov).
+\textbf{Lemma} (disuguaglianza di Markov).
 Data $g \colon X \to [0,+\infty]$ misurabile e $m > 0$ si ha
 %
 $$
@@ -1233,13 +1228,13 @@ Osserviamo che $g \geq m \cdot \One_E$.
 Dunque vale
 %
 $$
-\int\limits_{\mathclap{X}}^{} g \dd \mu \geq \int\limits_{\mathclap{X}} m \cdot \One_E \dd \mu = m \cdot \mu \left( \left\{ x \in X \mymid g(x) \geq m \right\} \right)
+\int_X g \dd \mu \geq \int_X m \cdot \One_E \dd \mu = m \cdot \mu \left( \left\{ x \in X \mymid g(x) \geq m \right\} \right)
 $$
 %
 da cui la tesi.
 \qed
 
-\textbf{Lemma.} (Borel-Cantelli).
+\textbf{Lemma} (Borel-Cantelli).
 Dati $(E_n) \subset \mathcal{A}$ tali che $\sum \mu(E_n) \leq +\infty$, l'insieme
 %
 $$
@@ -1259,7 +1254,7 @@ $$
 Allora
 %
 $$
-\mu(E) \quad \underbrace{=}_{\mathclap{F_m \downarrow E \; \& \; \mu(F_1) < +\infty}} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda di serie convergente}}} = 0.
+\mu(E) \quad \underbrace{=}_{F_m \downarrow E \; \& \; \mu(F_1) < +\infty} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda di serie convergente}}} = 0.
 $$
 %
 
@@ -1303,7 +1298,7 @@ Usando la disuguaglianza di Markov ottengo
 %
 $$
 \mu \Big( A_n^\epsilon= \Big\{ x \Big| \overbrace{\left| f_n(x) - f(x) \right|}^{g} \geq \epsilon^p \Big\} \Big)
-\leq \frac{1}{m} \int\limits_{\mathclap{X}}^{} g \dd \mu = \frac{1}{\epsilon^p} \norm{f_n - f}_p^p \xrightarrow{n \to +\infty} 0.
+\leq \frac{1}{m} \int_{X}^{} g \dd \mu = \frac{1}{\epsilon^p} \norm{f_n - f}_p^p \xrightarrow{n \to +\infty} 0.
 $$
 %
 
@@ -1333,7 +1328,7 @@ Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/
 Date $f_1,f_2 \in L^2(X)$ si pone
 %
 $$
-\left<f_1, f_2 \right> \coloneqq \int\limits_{\mathclap{X}}^{} f_1 \cdot f_2 \dd \mu.
+\left<f_1, f_2 \right> \coloneqq \int_{X}^{} f_1 \cdot f_2 \dd \mu.
 $$
 %
 \textbf{Osservazioni.}
@@ -1343,7 +1338,7 @@ $$
 Infatti, basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$, che segue da H\"{o}lder.
 %
 $$
-\int\limits_{\mathclap{X}}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
+\int_{X}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
 $$
 %
 
@@ -1390,7 +1385,7 @@ Allora
 \vspace{-5mm}
 %
 \begin{align*}
-\norm{f_1 + f_2}_p^p = \int\limits_{\mathclap{-1}}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
+\norm{f_1 + f_2}_p^p = \int_{-1}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
 \norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
 \end{align*}
 %
@@ -1510,7 +1505,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		\textit{Caso 3}:
 		Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
-		\textbf{Proposizione.} (Generalizzata)
+		\textbf{Proposizione} (Generalizzata).
 		Sia $\tilde{\mathscr S} \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mathcal A, \mu(E_i) < +\infty \} \implies \tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 
 		\textbf{Dimostrazione.} (Idea)
@@ -1597,7 +1592,7 @@ Vediamo informalmente perché.
 Posto $X = (0,+\infty)$, gli integrali 
 %
 $$
-\int\limits_{\mathclap{0}}^{+\infty} \frac{1}{(1+x)^{\beta p}} \dd x, \qquad \int\limits_{\mathclap{0}}^{+\infty} \frac{1}{x^{\beta p}} \cdot \One_{[0,1]}(x) \dd x = \int\limits_{\mathclap{0}}^{1} \frac{1}{x^{\beta p}} \dd x
+\int_{0}^{+\infty} \frac{1}{(1+x)^{\beta p}} \dd x, \qquad \int_{0}^{+\infty} \frac{1}{x^{\beta p}} \cdot \One_{[0,1]}(x) \dd x = \int_{0}^{1} \frac{1}{x^{\beta p}} \dd x
 $$
 %
  sono maggiorati dall'integrale di $1 / x^{\alpha}$ dove l'esponente  $\alpha$ è rispettivamente più piccolo e più grande di $\beta \cdot p$.
@@ -1618,11 +1613,11 @@ $$
 ha integrale 
 %
 $$
-\int\limits_{\mathclap{0}}^{+\infty} f(x)^{p_1} \dd x = \int\limits_{\mathclap{0}}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \longiff \beta \cdot p_1 < 1, \mquad 0 < p_1 < p_2 \longiff \frac{1}{p_2} < \frac{1}{p_1}
+\int_{0}^{+\infty} f(x)^{p_1} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \longiff \beta \cdot p_1 < 1, \mquad 0 < p_1 < p_2 \longiff \frac{1}{p_2} < \frac{1}{p_1}
 $$
 e
 $$
-\int\limits_{\mathclap{0}}^{+\infty} f(x)^{p_2} \dd x = \int\limits_{\mathclap{0}}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \longiff \beta \cdot p_2 \geq 1
+\int_{0}^{+\infty} f(x)^{p_2} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \longiff \beta \cdot p_2 \geq 1
 $$
 %
 basta prendere $\beta \in [1/p_2, 1/p_1)$.
@@ -1634,11 +1629,11 @@ g(x) \coloneqq \frac{1}{(1+x)^\alpha}
 $$
 da cui
 $$
-\int\limits_{\mathclap{0}}^{+\infty} g(x)^{p_2} \dd x < +\infty \longiff \alpha \cdot p_2 > 1
+\int_{0}^{+\infty} g(x)^{p_2} \dd x < +\infty \longiff \alpha \cdot p_2 > 1
 \quad
 \text{e}
 \quad
-\int\limits_{\mathclap{0}}^{+\infty} g(x)^{p_1} \dd x = +\infty \longiff \alpha \cdot p_1 \leq 1
+\int_{0}^{+\infty} g(x)^{p_1} \dd x = +\infty \longiff \alpha \cdot p_1 \leq 1
 $$
 
 \textit{Conclusione.} In generale non c'è confrontabilità fra gli spazi $L^p$. La confrontabilità, dipende infatti dall'insieme $X$ su cui sono definiti.
@@ -1647,14 +1642,15 @@ Un caso particolare è dato ponendo $p_1 < p_2$ e $\mu(X) < +\infty$. In tal cas
 
 Data $f \in L^{p_2}(X)$, cioè con $\int_X \left| f \right|^{p_2} \dd \mu < +\infty$ vediamo che  $\int_X \left| f \right|^{p_1} \dd \mu < +\infty$.
 
-Usiamo Holder:
+Usiamo Hölder:
 \begin{align*}
-\int_{X} \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_{X} \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_{X} 1^q \dd \mu  \right)^{1/q}
-\underbrace{\leq}_{\mathclap{p = p_1 / p_2}} \left( \int_{X} \left| f \right|^{p_1} \dd \mu  \right)^{p_1 /p_2} \left( \int_{X} 1^q \dd \mu  \right)^{1/q} \\
-& \underbrace{=}_{\mathclap{q = (1 - \frac{1}{p})^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
+\int_X \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_X \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_X 1^q \dd \mu  \right)^{1/q}
+\underbrace{\leq}_{p = p_1 / p_2} \left( \int_X \left| f \right)^{p_1} \dd \mu  \right)^{p_1 /p_2} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
+& \underbrace{=}_{q = (1 - \frac{1}{p}^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
 \end{align*}
+%
 Dunque
- %
+%
 $$
 \norm{f}_{L^{p_1}(X)} \leq \norm{f}_{L^{p_2}(X)}\cdot \mu(X)^{\frac{p_2 - p_1}{p_1 p_2}}.
 $$
@@ -1732,7 +1728,7 @@ $$
 Calcoliamo ora $\norm{f_n - f_m}^p_{L^p}$ con $n \neq m$ :
 %
 $$
-\int\limits_{\mathclap{0}}^{1} \left| f_n(x) - f_m(x) \right|^p \dd x = \int\limits_{\mathclap{(1/n,1/n+1) \cup (1/ m+1,1/m)}} \left| f_n - f_m \right|^p \dd x = \int\limits_{\mathclap{1 / n+1}}^{1 / n} \left| f_n \right|^p \dd x + \int\limits_{\mathclap{0}}^{1} \left| f_m \right|^p \dd x = 1 + 1 = 2.
+\int_0^1 \left| f_n(x) - f_m(x) \right|^p \dd x = \int\limits_{\mathclap{(1/n,1/n+1) \cup (1/ m+1,1/m)}} \left| f_n - f_m \right|^p \dd x = \int_{1 / n+1}^{1 / n} \left| f_n \right|^p \dd x + \int_{0}^{1} \left| f_m \right|^p \dd x = 1 + 1 = 2.
 $$
 %
 
@@ -1886,17 +1882,17 @@ Se esistesse $(f_n)_n$, allora sarebbe di Cauchy rispetto alla norma $\norm{\cur
 
 (In particolare dato $E = \{ x \mid f(x) = \tilde f(x) \}$, prendiamo $x_n, y_n \in E$ tali che $x_n \uparrow 0$ e $y_n \downarrow 0$ ma i limiti di $f$ sono $0$ e $1$ \absurd)
 
-\textbf{Teorema.} (di Lusin)
+\textbf{Teorema} (di Lusin).
 Dato $X \subset \R^d, \mu = \mathscr L^d$ e data $f \colon X \to \R$ o $\R^m$ misurabile e $\epsilon > 0$, esiste $E$ aperto in $X$ con $|E| \leq \epsilon$ tale che $f$ è continua su $X \setminus E$ (la restrizione di $f$ a $X \setminus E$ è continua)
 
 \textbf{Osservazione.} 
 In generale $f$ può essere non continua in tutti i punti di $X$, infatti $E$ può essere denso e $X \setminus E$ avere parte interna vuota.
 
-\textbf{Lemma.} (di estensione di Tietze) Dato $X$ spazio metrico e $C \subset X$ chiuso, $f \colon C \to \R$ continua allora $f$ si estende a una funzione continua su $X$.
+\textbf{Lemma} (di estensione di Tietze). Dato $X$ spazio metrico e $C \subset X$ chiuso, $f \colon C \to \R$ continua allora $f$ si estende a una funzione continua su $X$.
 
 Usando questo lemma possiamo rienunciare il teorema precedente come segue
 
-\textbf{Teorema.} (di Lusin$'$)
+\textbf{Teorema} (di Lusin$'$).
 Data $f \colon X \to \R$ misurabile e $\epsilon > 0$, $\exists E$ aperto con $|E| \leq \epsilon$ e $g \colon X \to \R$ continua tale che $f = g$ su $X \setminus E$, inoltre se $f \in L^p(X)$ e $p < +\infty$ si può anche chiuedere che $\norm{f - g}_p \leq \epsilon$.
 
 \textbf{Dimostrazione.}
@@ -1994,7 +1990,7 @@ Inoltre, l'inclusione $i \colon L^{p_2}(X) \to L^{p_1}(X)$ è continua.
 \textbf{Dimostrazione.} La dimostrazione di \eqref{eq:star_1} segue dalla stima
 %
 $$
-\norm{u}_{p_1} \underbrace{\leq}_{\mathclap{\text{Holder generalizzato}}} \norm{\One_X}_q \norm{u}_{p_2} \quad \text{dove} \quad q = \frac{p_1 p_2}{p_2 - p_1}.
+\norm{u}_{p_1} \underbrace{\leq}_{\text{Hölder generalizzato}} \norm{\One_X}_q \norm{u}_{p_2} \quad \text{dove} \quad q = \frac{p_1 p_2}{p_2 - p_1}.
 $$
 %
 Dove
@@ -2011,7 +2007,7 @@ Quanto sopra soddisfa la condizione al punto iv).
 \textbf{Dimostrazione.} Infatti, vale
 %
 $$
-\left| \int\limits_{\mathclap{X}} u \dd \mu \right| \leq \int\limits_{\mathclap{X}} \left| u \right| \dd \mu = \norm{u}_1.
+\left| \int_{X} u \dd \mu \right| \leq \int_{X} \left| u \right| \dd \mu = \norm{u}_1.
 $$
 %
 Quanto sopra soddisfa la condizione al punto iv).
@@ -2027,7 +2023,7 @@ Se invece $\mu(X) = +\infty$? Per esempio $L^2(\R)$? [TO DO].
 \textbf{Definizione.} Date $f_1,f_2 \colon  \R^d \to \R$ misurabili, il \textbf{prodotto di convoluzione} $f_1 \ast f_2$ è la funzione (da $\R^d$ a $\R$) data da
 %
 \begin{equation} \label{eq:star_def_convoluzione}
-	f_1 \ast f_2(x) = \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y
+	f_1 \ast f_2(x) = \int_{\R^d} f_1(x-y) f_2(y) \dd y
 	\tag{$\star$}
 \end{equation}
 %
@@ -2040,7 +2036,7 @@ In generale non è ben posta per funzioni a valori reali (non è detto che l'int
 %
 $$
 f_1 \ast f_2 (x) 
-= \int\limits_{\mathclap{\R^d}} f_1(x-y) f_2(y) \dd y 
+= \int_{\R^d} f_1(x-y) f_2(y) \dd y 
 % \underbrace{=}_{} 
 = \left( 
 {\footnotesize \begin{gathered}
@@ -2048,7 +2044,7 @@ f_1 \ast f_2 (x)
 	\dd t = \dd y
 \end{gathered}}
 \right) =
-\int\limits_{\mathclap{\R^d}} f_1(t) f_2(x-t) \dd t 
+\int_{\R^d} f_1(t) f_2(x-t) \dd t 
 = f_2 \ast f_1(x).
 $$
 %
@@ -2065,7 +2061,7 @@ $$
 \item Data $f$ distribuzione di massa (continua) su $\R^3$, il potenziale gravitazionale generato è
 %
 $$
-v(x) = \int\limits_{\mathclap{y \in \R^d}} \frac{1}{\left| x - y \right|} \rho(y) \dd y
+v(x) = \int_{y \in \R^d} \frac{1}{\left| x - y \right|} \rho(y) \dd y
 $$
 %
 cioè $v = g \ast \rho$, dove  $g (x) = 1 / \left| x \right|$ è il potenziale di una massa puntuale in $0$.
@@ -2107,7 +2103,7 @@ Segue subito dalla proposizione precedente.
 \qed
 
 \textbf{Teorema 3} \textit{(Disuguaglianza di Young per la convoluzione)}.
-Se $f_1 \in L^{p_1}$ e $f_2 \in L^{p_2}$ e preso $r \geq 1$ tale che
+Se $f_1^{p_1}$ e $f_2 \in L^{p_2}$ e preso $r \geq 1$ tale che
 \begin{equation}\label{eqn:conv_th3_cond}
 	\frac{1}{r} = \frac{1}{p_1} + \frac{1}{p_2} - 1
 	\tag{$\star$}
@@ -2294,7 +2290,7 @@ $$
 \item Studiamo ora il caso per $p > 1$. Data $u \in L^p(\R^d)$, l'applicazione
 %
 $$
-u \mapsto \int\limits_{\mathclap{\R^d}} u \dd x 
+u \mapsto \int_{\R^d} u \dd x 
 $$
 %
 potrebbe non essere ben definita.
@@ -2311,12 +2307,12 @@ $$
 \textbf{Osservazione.} Dobbiamo cercare una funzione tale per cui non esista $C$ per cui
 %
 $$
-\left| \int\limits_{\mathclap{\R}} u \dd x  \right| \leq C \left( \int\limits_{\mathclap{\R}} \left| u \right|^p \dd x  \right)^{1/p}.
+\left| \int_{\R} u \dd x  \right| \leq C \left( \int_{\R} \left| u \right|^p \dd x  \right)^{1/p}.
 $$
 %
 Studiamo il caso reale, ovvero $d = 1$.
 
-\textbf{Nota.} Le funzioni limitate soddisfano la disuguaglianza sopra (per Holder), dunque non possono essere utilizzate come controesempio. 
+\textbf{Nota.} Le funzioni limitate soddisfano la disuguaglianza sopra (per Hölder), dunque non possono essere utilizzate come controesempio. 
 
 Usiamo la nozione di continuità per successioni per mostrare che la mappa sopra non è continua. Per farlo definiamo una successione di funzioni a supporto compatto (che sappiamo essere in tutti gli spazi $L^p$).
 
@@ -2336,7 +2332,7 @@ Segue che $T(u_n) \equiv 1$ e non è vero che $T(u_\infty = u_n \to 0) = 0$.
 Più in generale, quando $u \in L^p(\R^d)$ con $p > 1$, una costruzione come sopra non funziona, infatti
 %
 $$
-\norm{u_n}_{L^p(\R)}^p = \int\limits_{\mathclap{\R}} u_n^p(x) \dd x = \frac{1}{n^p} \cdot \left| E_n \right| = \frac{n}{n^p} = \frac{1}{n^{p-1}} \xrightarrow{n \to \infty} 0.
+\norm{u_n}_{L^p(\R)}^p = \int_{\R} u_n^p(x) \dd x = \frac{1}{n^p} \cdot \left| E_n \right| = \frac{n}{n^p} = \frac{1}{^{p-1}} \xrightarrow{n \to \infty} 0.
 $$
 %
 
@@ -2345,7 +2341,7 @@ $$
 \textbf{Esercizio.} [TO DO] Fissato $C > 0$, trovare $u \in L^p \cap L^1 (\R)$ tale che
 %
 $$
-\left| \int\limits_{\mathclap{\R}} u \dd x\right| \geq C \norm{u}_{L^p(\R)}
+\left| \int_{\R} u \dd x\right| \geq C \norm{u}_{L^p(\R)}
 $$
 %
 
@@ -2386,13 +2382,13 @@ ha norma $\ds \norm{u}_{L^p}^p = 2 M^p$.
 \item \textit{Caso} $p > 1$. Definiamo l'operatore 
 \begin{align*}
 T \colon L^p(-1,1) & \to \R \\
-u & \mapsto \int\limits_{\mathclap{-1}}^{1} u \dd x 
+u & \mapsto \int_{-1}^{1} u \dd x 
 \end{align*}
 è ben definito.
-Infatti, per Holder vale
+Infatti, per Hölder vale
 %
 $$
-\left| \int\limits_{\mathclap{-1}}^{1} 1 \cdot u \dd x  \right| \leq \left( \int\limits_{\mathclap{-1}}^{1} \left| u \right|^p \dd x  \right)^{1/p} \left( 1^q \right)^{1/q}
+\left| \int_{-1}^{1} 1 \cdot u \dd x  \right| \leq \left( \int_{-1}^{1} \left| u \right|^p \dd x  \right)^{1/p} \left( 1^q \right)^{1/q}
 $$
 %
 dove $q = \frac{p}{p-1}$.
@@ -2407,7 +2403,7 @@ Dunque $T$ è continuo in $L^p$ per ogni $p > 1$.
 \item \textit{Caso} $p = 1$. L'operatore sopra è continuo anche per $p = 1$. Grazie alla stima vista prima
 %
 $$
-\left| T(u) \right| = \left| \int\limits_{\mathclap{-1}}^{1} u \dd x  \right| \leq \int\limits_{\mathclap{-1}}^{1} \left| u \right| \dd x = \norm{u}_{L^1}.
+\left| T(u) \right| = \left| \int_{-1}^{1} u \dd x  \right| \leq \int_{-1}^{1} \left| u \right| \dd x = \norm{u}_{L^1}.
 $$
 %
 Dunque $T$ è continua e $T^{-1}(0) = E$, dunque $E$ è chiuso.
@@ -2419,7 +2415,7 @@ Dunque $T$ è continua e $T^{-1}(0) = E$, dunque $E$ è chiuso.
 \textbf{Esercizio.} [TO DO] Sia $p \geq 1$. Definiamo 
 %
 $$
-F = \left\{ v \in L^p(\R) \mymid \int\limits_{\mathclap{0}}^{1} u(x) \dd x - 2 \int\limits_{\mathclap{-1}}^{0} u(x) \dd x = 3 \right\}.
+F = \left\{ v \in L^p(\R) \mymid \int_{0}^{1} u(x) \dd x - 2 \int_{-1}^{0} u(x) \dd x = 3 \right\}.
 $$
 %
 Dire se $F$ è chiuso in $\left( L^p(\R), \norm{\cdot }_{L^p(\R)} \right)$.
@@ -2428,7 +2424,7 @@ Dire se $F$ è chiuso in $\left( L^p(\R), \norm{\cdot }_{L^p(\R)} \right)$.
 \textbf{Esercizio.} [TO DO] Sia 
 %
 $$
-G = \left\{ v \in L^p(0,2\pi) \mymid \int\limits_{\mathclap{0}}^{2\pi} v(x) \sin(x) \dd x = 1  \right\}.
+G = \left\{ v \in L^p(0,2\pi) \mymid \int_{0}^{2\pi} v(x) \sin(x) \dd x = 1  \right\}.
 $$
 %
 Dire se $G$ è chiuso in $L^2(0,2\pi)$.
@@ -2497,7 +2493,7 @@ Uso la proprietà che essendo ben definita, $f \ast g$ si ha $ f \ast g(x) = g \
 & \leq \int_{\R^d} M \left| x_1 - y - (x_2 - y) \right| \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
 \end{align*}
 
-\textbf{Esercizio.} [TO DO] Se $f \in L^1(\R^d)$ e $g$ a supporto compatto è $\alpha$-Holderiana allora anche $f \ast g$ lo è.
+\textbf{Esercizio.} [TO DO] Se $f \in L^1(\R^d)$ e $g$ a supporto compatto è $\alpha$-Hölderiana allora anche $f \ast g$ lo è.
 
 \textbf{Esercizio.} [TO DO] Presa $f(x) = \One_{[0,1]}$ in $\R$, calcolare $f \ast f$.
 
