@@ -2732,13 +2732,19 @@ $$
 \textbf{Dimostrazione.}
 Dimostriamo il corollario per approssimazione usando il seguente teorema
 
+\begin{wrapfigure}{r}{200pt}
+	\centering
+	\vspace{-1.5\baselineskip}
+	\inputfigure{sigma-delta-transform}
+	\vspace{-2.5\baselineskip}
+\end{wrapfigure}
+
+\textbf{Definizione.} 
 Per prima cosa definiamo data $g \colon \R^d \to \R$ e $\delta \neq 0$ poniamo
 $$
 \sigma_\delta g(x) \coloneqq \frac{1}{\delta^d} g\left( \frac{x}{\delta} \right)
 $$
 e notiamo che questa trasformazione preserva la norma $L^1$.
-
-[TODO: Disegnino di $\sigma_{\frac{1}{2}} g$]
 
 \textbf{Teorema.}
 Data $g \in L^p(\R^d)$ e $g \in L^1(\R^d)$ con $1 \leq p < +\infty$ e posto
