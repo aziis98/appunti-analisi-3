@@ -2562,10 +2562,243 @@ $$
 
 
 
-
-
-
 \chapter{Spazi di Hilbert}
+
+Sia $H$ spazio vettoriale reale con prodotto scalare $\left<\cdot, \cdot \right>$ definito positivo e norma indotta $\norm{\cdot}$ definita come $\norm{x} = \sqrt{\left<x,x \right>}$.
+
+Si ricorda l'identità di polarizzazione
+%
+$$
+\left<x_1,x_2 \right> = \frac{1}{4} \left( \norm{x_1 + x_2}^2 - \norm{x_1 - x_2}^2 \right).
+$$
+%
+
+\textbf{Nota.} Siccome $\norm{\cdot }$ è continua, dalla formula di polarizzazione segue che il prodotto scalare è continuo.
+
+\textbf{Definizione.} $H$ si dice \textbf{spazio di Hilbert} se è completo.
+
+\textbf{Esempi.} 
+\begin{itemize}
+\item Dato $(X, \mathcal{A}, \mu )$, gli spazi $L^2(X), L^2(X, \R^m)$ sono spazi di Hilbert.
+
+\item Lo spazio $\ds \ell^2 = \left\{ (x_n) \mymid \sum_{n=0}^{\infty} x_n^2 < +\infty  \right\}$ è uno spazio di Hilbert.
+
+\end{itemize}
+
+\textbf{Definizione.} $\mathcal{F} \subset H$ è un \textbf{sistema ortonormale} se
+%
+$$
+\norm{e} = 1 \mquad \forall e \in \mathcal{F}, \qquad  \left<e,e' \right> = 0 \mquad \forall e \neq e' \in \mathcal{F}.
+$$
+%
+
+
+\textbf{Definizione.} $\mathcal{F}$ si dice \textbf{completo} se $\overline{\spn(\mathcal{F})} = H$\footnote{lo span sono combinazioni lineari finite}. In tal caso $\mathcal{F}$ si dice \textbf{base di Hilbert}.
+
+\textbf{Osservazione.} Se $H$ ha dimensione infinita non esistono basi ortonormali di Hilbert. \textit{Attenzione.} Le basi algebriche esistono, sono quelle ortonormali a non esistere.
+
+\textbf{Esempi.}
+In $\ell^2$ una base ortonormale è $\mathcal{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\underbrace{1}_{i},0,\ldots )$. \\
+Infatti, il fatto che siano ortonormali è banale; verifichiamo che sia una base. 
+Studiamo $\spn(\mathcal{F}) = \left\{ x = (x_0,x_1,\ldots ) \mymid x_n \quad \text{è definitivamente nullo}  \right\}$: dato $x \in \ell^2$ e $m = 0,1,2,\ldots $, definiamo
+%
+$$
+P_mx \coloneqq (x_0,x_1,\ldots , x_m,0,\ldots ).
+$$
+%
+Allora $\spn(\mathcal{F}) \supset P_m x \xrightarrow{m \to +\infty} x$ in $\ell^2$.
+Infatti, 
+%
+$$
+x - P_m x = (0,\ldots ,0, x_{m+1}, x_{m+2},\ldots ).
+$$
+%
+Dunque
+%
+$$
+\norm{x - P_m x} = \sum_{n = m+1}^{\infty} x_n^2 \xrightarrow{m \to +\infty} 0.
+$$
+%
+
+\textbf{Teorema.} Dato $H$ spazio di Hilbert, $\mathcal{F}$ sistema al più numerabile\footnote{il caso interessante è quello numerabile}, ovvero $\mathcal{F} = \left\{ e_n \mymid n \in \N \right\}$.
+Definiamo per ogni $x \in H$, $n \in \N$ l'elemento $x_n = \left<x, e_n \right>$.
+Allora
+\begin{enumerate}
+\item \label{item:27ott_thm1_1}
+Vale $\ds \sum_{n} x_n^2 \leq \norm{x}^2$ (\textbf{Disuguaglianza di Bessel}).
+
+\item \label{item:27ott_thm1_2}
+La somma $\ds \sum_n x_n e_n$ converge a qualche $\overline{x} \in H$ e $\overline{x}_n = x_n$  per ogni $n$.
+
+\item \label{item:27ott_thm1_3}
+Vale $\ds \norm{\overline{x}}^2 = \sum_n x_n^2 \leq \norm{x}^2$.
+
+\item \label{item:27ott_thm1_4}
+Se $x - \overline{x} \ort \mathcal{F}$, allora $x - \overline{x} \ort \overline{\spn(\mathcal{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mathcal{F})}$.
+
+\item \label{item:27ott_thm1_5}
+Se $\mathcal{F}$ è completo, allora $x = \overline{x}$ e in particolare
+%
+$$
+x = \sum_{n=0}^{\infty} x_n e_n, \qquad \norm{x}^2 = \sum_{n=0}^{\infty} x_n^2  \qquad \text{(\textbf{Identità di Parceval})}.
+$$
+%
+\end{enumerate}
+
+\textbf{Nota.} Il punto \ref{item:27ott_thm1_2} non segue dal fatto che la serie non è assolutamente convergente. Infatti
+%
+$$
+\sum \norm{x_n e_n} = \sum \left| x_n \right|
+$$
+%
+può essere $+\infty$.
+
+
+Alla dimostrazione del teorema premettiamo il seguente lemma.
+
+\vs
+
+\textbf{Lemma.} Siano $H$ e $\mathcal{F}$ come nel teorema.
+Data $(a_n) \in \ell^2$, allora
+\begin{enumerate}
+\item La somma $\ds \sum_n a_n e_n$ converge a qualche $\overline{x} \in H$. 
+
+\item $\overline{x}_n = a_n$.
+
+\item $\ds \norm{\overline{x}}^2 = \sum_n a_n^2$.
+\end{enumerate}
+
+\textbf{Dimostrazione lemma.} 
+\begin{enumerate}
+\item Dimostriamo che $\ds y_n = \sum_{n = 1}^{m} x_n e_n$ è di Cauchy in $H$.
+Se $m' > m$, vale
+%
+$$
+y_{m'} - y_m = \sum_{n = m+1}^{m'} x_n e_n
+\Longrightarrow  \norm{y_{m'} - y_m}^2 = \norm{\sum_{n = m+1}^{m'} x_n e_n}^2 
+= \sum_{n = m+1}^{m'} x_n^2 \leq \sum_{n = m+1}^{\infty} x_n^2 < +\infty.
+$$
+%
+Dunque, per ogni $\epsilon$ esiste $m_\epsilon$ tale che $\ds \sum_{m + 1}^{\infty} x_n^2 \leq \epsilon^2 $, per cui 
+%
+$$
+\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{\infty} x_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} x_n^2 \leq \epsilon^2 \forall m,m' \geq m_\epsilon.
+$$
+%
+
+\item Per ipotesi, $\left<y_m, e_n \right> = x_n$ se $m \geq n$, dunque
+%
+$$
+\left<y_n, e_n \right> \xrightarrow{n \to \infty} \left<\overline{x},e_n \right> = x_n.
+$$
+%
+
+\item Si ha l'uguaglianza $\ds \norm{y_n}^2 = \sum_{n=1}^{m} x_n^2$, per cui passando al limite per $n \to +\infty$ otteniamo 
+%
+$$
+\norm{y_n}^2 \to \norm{\overline{x}}^2, \qquad \sum_{n=0}^{m} x_n^2 \to \sum_{n=0}^{\infty} x_n^2.
+$$
+%
+
+
+\end{enumerate}
+\qed
+
+
+\textbf{Dimostrazione teorema.}
+
+\begin{enumerate}
+\item Studiamo la somma
+%
+$$
+x = \sum_{n=0}^{\infty} x_n e_n + \overbrace{y}^{\text{resto}}
+$$
+%
+notiamo che $x$ è somma di vettori ortogonali, infatti $y$ è ortogonale a $\ds \sum_{n=0}^{\infty} x_n e_n$ :
+%
+$$
+\left<y,e_i \right> = \left<x - \sum_{n=0}^{\infty} x_n e_n, e_i \right>
+= \left<x,e_i \right> - \sum_{n=0}^{\infty} x_n \underbrace{\left<e_n,e_i \right>}_{\delta_{i,n}} = x_i - x_i = 0.
+$$
+%
+Essendo che $x$ è somma di vettori ortogonali abbiamo
+%
+$$
+\norm{x}^2 = \sum_{n=1}^{\infty} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2  
+$$
+%
+Passando al limite per $m \to +\infty$ otteniamo
+%
+$$
+\norm{x}^2 \geq \sum_{n=1}^{\infty} x_n^2. 
+$$
+%
+
+\item Segue dal punto precedente e dal lemma.
+
+\item Segue dal punto precedente e dal lemma.
+
+\item Notiamo che 
+%
+$$
+\left<x - \overline{x}, e_n \right> = \left<x,e_n \right> - \left<\overline{x} , -e_n \right> = x_n - \overline{x}_n 
+\overbrace{=}^{\ref{item:27ott_thm1_2}} x - \overline{x} \ort e_n \mquad \forall n \Longrightarrow x - \overline{x} \ort \spn(\mathcal{F}).
+$$
+%
+Segue che $x - \overline{x} \ort \overline{\spn(\mathcal{F})}$. (dato $y \in$ chiusura span.., prendo $y_m \to y \in span$, $\left< x- \overline{x}, y_n \right> = 0 \Rightarrow  \left<x - \overline{x}, y \right> = 0$).
+
+\item $x - \overline{x} \ort \overline{\spn(\mathcal{F})} \underbrace{=}_{\mathclap{\text{$\mathcal{F}$ è completo}}} H \Longrightarrow x - \overline{x} = 0$, cioè $x = \overline{x}$.
+\end{enumerate}
+\qed
+
+\textbf{Corollario.} Siano $H$ spazio di Hilbert, $\mathcal{F} = \left\{ e_n \mymid n \in \Z \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
+\begin{enumerate}
+\item Se $x_n = x_n'$ per ogni $n \in \N$, allora $x = x'$ ($\Leftarrow$ è ovvia.)
+
+\item $\ds \left<x,x' \right> = \sum_{n=0}^{\infty} x_n  x_n'$ (\textbf{Identità di Parceval}).
+
+\item L'applicazione $H \ni X \mapsto (x_n) \in \ell^2$ è un'isometria surgettiva\footnote{in particolare è bigettiva ma l'iniettività è ovvia}.
+\end{enumerate}
+
+\vs 
+
+\textbf{Dimostrazione.}
+
+\begin{enumerate}
+\item Per l'enunciato \ref{item:27ott_thm1_5} se due vettori hanno la stessa rappresentazione rispetto a una base di Hilbert coincidono.
+
+\item La tesi segue usando l'identità di polarizzazione conigiuntamente all'enunciato \ref{item:27ott_thm1_5} del teorema:
+%
+\begin{align*}
+\left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 + \norm{x - x'}^2 \right)
+= \frac{1}{4} \left( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'}  \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \right) \\
+& = \frac{1}{4} \left( \sum x_n^2 + \sum x_n'^2 + 2 \sum x_n x_n' - \sum x_n^2 - \sum x_n'^2 + 2 \sum x_n x_n' \right).
+\end{align*}
+
+\item TO DO.
+
+\end{enumerate}
+\qed
+
+\textbf{Osservazioni.}
+\begin{itemize}
+\item Se $H$ è uno spazio di Hilbert e $\mathcal{F}$ sistema ortonormale infinito, allora $\mathcal{F}$ non è mai una base algebrica\footnote{per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio}. Dunque combinazioni lineari finite di $H$ non sono mai uguali ad $H$, ovvero $\spn(\mathcal{F}) \subsetneq H $) di $H$.
+
+\textbf{Dimostrazione.} 
+Notiamo che possiamo scrivere $\overline{x}$ come
+%
+$$
+(e_n) \subset \mathcal{F}, \quad  \overline{x} = \sum_{n = 0}^\infty \frac{1}{2^n} e_n, \quad  \overline{x} \notin \spn(\mathcal{F}).
+$$
+%
+\textbf{Nota.} I coefficienti sono univocamente determinati perchè ottenuti tramite prodotto scalare. Notiamo che non si può usare il teorema di albebra lineare sull'unicità della rappesentazione poichè stiamo trattando combinazioni lineari infite.
+\qed
+
+\item Siano $H$ uno spazio di Hilbert di dimensione infinita e $\mathcal{F}$ una base di Hilbert. Allora, $\mathcal{F}$ è numerabile se solo se $H$ è separabile.
+
+Per esempio $H = L^2(X)$, con $X = \R^n$, $\mu $ misura di Lebesgue ha base di Hilbert numerabile.
+\end{itemize}
+
 
 % TODO
 
