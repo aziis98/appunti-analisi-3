@@ -90,6 +90,7 @@
 \usepackage{multicol}
 \usepackage{centernot}
 \usepackage{esint}
+\usepackage{cancel}
 
 %%%
 %%% Enumerations
@@ -213,14 +214,18 @@
 
 % Altri comandi
 % operatori matematici
+\renewcommand{\dim}{\operatorname{dim}}
+% \newcommand{\ker}{\operatorname{ker}}
 \newcommand{\spn}{\operatorname{Span}}
-\newcommand{\ort}{\; \bot \;}
+% \newcommand{\ort}{\; \bot \;}
 
 % utility and spacing
 \renewcommand{\hat}[1]{\widehat{#1}}
-\newcommand{\oline}[1]{\overline{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
 \renewcommand{\vss}{\vspace{5mm}}
 \newcommand{\vs}{\vspace{3mm}}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
 
 % Dichiarazioni nuovi ambienti
 % \theoremstyle{definition}

@@ -26,18 +26,18 @@
 \section{Misure astratte}
 
 \textbf{Definizione.} 
-Uno spazio misurabile è una terna $(X, \mathcal A, \mu)$ tale che
+Uno spazio misurabile è una terna $(X, \mc A, \mu)$ tale che
 \begin{itemize}
 	
 	\item $X$ è un insieme qualunque.
 
-	\item $\mathcal{A}$ è una $\sigma$-algebra di sottoinsiemi di $X$, ovvero una famiglia di sottoinsiemi di $X$ che rispetta le seguenti proprietà:
+	\item $\mc{A}$ è una $\sigma$-algebra di sottoinsiemi di $X$, ovvero una famiglia di sottoinsiemi di $X$ che rispetta le seguenti proprietà:
 		\begin{itemize}
-			\item $\emptyset, X \in \mathcal{A}$.
-			\item $\mathcal{A}$ è chiusa per complementare, unione e intersezione numerabile.
+			\item $\emptyset, X \in \mc{A}$.
+			\item $\mc{A}$ è chiusa per complementare, unione e intersezione numerabile.
 		\end{itemize}
 	
-	\item $\mu$ è una misura su $X$, ossia una funzione $\mu \colon \mathcal A \to [0, +\infty]$ $\sigma$-addittiva, cioè tale che data una famiglia numerabile $\left\{ E_k \right\} \subset \mathcal A$ disgiunta e posto $E \coloneqq \bigcup E_n $, allora
+	\item $\mu$ è una misura su $X$, ossia una funzione $\mu \colon \mc A \to [0, +\infty]$ $\sigma$-addittiva, cioè tale che data una famiglia numerabile $\left\{ E_k \right\} \subset \mc A$ disgiunta e posto $E \coloneqq \bigcup E_n $, allora
 		$$
 		\mu(E) = \sum_{n} \mu (E_n).
 		$$
@@ -51,18 +51,18 @@ Data una crescente di insiemi $E_1 \subset E_2 \subset \cdots E_n \subset \cdots
 \textbf{Proprietà.}
 \begin{itemize}
 	\item $\mu(\emptyset) = 0$
-	\item \textit{Monotonia}: Dati $E,E' \in \mathcal{A}$ e $E \subset E'$, allora $\mu(E) \leq \mu(E')$.
+	\item \textit{Monotonia}: Dati $E,E' \in \mc{A}$ e $E \subset E'$, allora $\mu(E) \leq \mu(E')$.
 	\item Data una successione crescente di insiemi $E_n \uparrow E$, allora $\mu(E) = \lim_{n \to \infty} \mu(E_n) = \sup_{n} \mu(E_n)$.
 	\item Se $E_n \uparrow E$ e $\mu (E_{\bar{n}}) < +\infty$ per qualche $\bar{n}$, allora $\mu(E) = \lim_{n \to + \infty} \mu(E_n) = \inf_{n} \mu(E_n)$.
 	\item \textit{Subadditività}: Se $\bigcup E_n \supset E$, allora $\mu(E) \leq \sum_{n} \mu(E_n)$.
 \end{itemize}
 
 \textbf{Osservazione.} 
-Dato $X' \in \mathcal A$ si possono restringere $\mathcal A$ e $\mu$ a $X'$ nel modo ovvio.
+Dato $X' \in \mc A$ si possono restringere $\mc A$ e $\mu$ a $X'$ nel modo ovvio.
 
 \textbf{Definizioni}.
 \begin{itemize}
-	\item $\mu$ si dice \textbf{completa} se $F \subset E, E \in \mathcal{A}$ e $\mu(E) = 0$, allora $F \in \mathcal{A}$ (e di conseguenza $\mu(F) = 0$).
+	\item $\mu$ si dice \textbf{completa} se $F \subset E, E \in \mc{A}$ e $\mu(E) = 0$, allora $F \in \mc{A}$ (e di conseguenza $\mu(F) = 0$).
 	\item $\mu$ si dice \textbf{finita} se $\mu(X) < + \infty$.
 	\item $\mu$ si dice \textbf{$\sigma$-finita} se esiste una successione $\{ E_n \}$ con $E_n \subset E_{n+1}$ tale che $\bigcup E_n = X$ con $\mu(E_n) < +\infty$ per ogni $n$.
 \end{itemize}
@@ -80,7 +80,7 @@ D'ora in poi consideriamo solo misure complete.
 		$$
 		X \text{ insieme}
 		\qquad
-		\mathcal A \coloneqq \mathcal P(X)
+		\mc A \coloneqq \mc P(X)
 		\qquad
 		\mu(E) \coloneqq \# E \in \N \cup \left\{ +\infty \right\}
 		$$
@@ -89,7 +89,7 @@ D'ora in poi consideriamo solo misure complete.
 		$$
 		X \text{ insieme, } x_0 \in X \text{ fissato}
 		\qquad
-		\mathcal A \coloneqq \mathcal P(X)
+		\mc A \coloneqq \mc P(X)
 		\qquad
 		\mu(E) \coloneqq \delta_{x_0}(E) = \One_E (x_0)
 		$$
@@ -98,7 +98,7 @@ D'ora in poi consideriamo solo misure complete.
 		$$
 		X = \R^n
 		\qquad
-		\mathcal{M}^n \text{ $\sigma$-algebra dei misurabili secondo Lebesgue}
+		\mc{M}^n \text{ $\sigma$-algebra dei misurabili secondo Lebesgue}
 		\qquad
 		\mathscr L^n \text{ misura di Lebesgue}
 		$$
@@ -116,11 +116,11 @@ D'ora in poi consideriamo solo misure complete.
 \textbf{Osservazioni.}
 \begin{itemize}
 	\item $\mathscr L^n(R) = \mathrm{vol}_n (R)$.
-	\item $\mathscr L^n$ è così definita se $\mathcal{P}(\R^n)$ ma non è $\sigma$-addittiva.
-	\item $\mathscr L^n$ è $\sigma$-addittiva su $\mathcal{M}^n$ (è per questo che bisogna introdurre $\mathcal{M}^n$).
+	\item $\mathscr L^n$ è così definita se $\mc{P}(\R^n)$ ma non è $\sigma$-addittiva.
+	\item $\mathscr L^n$ è $\sigma$-addittiva su $\mc{M}^n$ (è per questo che bisogna introdurre $\mc{M}^n$).
 \end{itemize}
 
-Il terzo punto giustifica l'introduzione dei \textbf{misurabili secondo Lebesgue}. Dunque definiamo $\mathcal{M}^n$, dato $E \subset \R^n$ si dice che $E$ è misurabile (secondo Lebesgue) se
+Il terzo punto giustifica l'introduzione dei \textbf{misurabili secondo Lebesgue}. Dunque definiamo $\mc{M}^n$, dato $E \subset \R^n$ si dice che $E$ è misurabile (secondo Lebesgue) se
 $$
 \forall \epsilon > 0 \; \exists A \text{ aperto e } C \text{ chiuso con }
 C \subset E \subset A 
@@ -134,7 +134,7 @@ $$
 $$
 	\mathscr L^n(E) = \inf \left\{ \mathscr L^n \colon A \ \text{aperto}, A \supset E \right\} = \sup \left\{ \mathscr L^n \colon K \ \text{compatto}, K \subset E \right\}.
 $$
-	\item Notiamo che se $F \subset E$ con $E \subset \mathcal{M}^n$ e $\mathscr L^n(E) = 0$, allora $F \in \mathcal{M}^n$. Ovvero la misura di Lebesgue è completa!
+	\item Notiamo che se $F \subset E$ con $E \subset \mc{M}^n$ e $\mathscr L^n(E) = 0$, allora $F \in \mc{M}^n$. Ovvero la misura di Lebesgue è completa!
 \end{itemize}
 
 \textbf{Notazione.} $\left| E \right| \coloneqq \mathscr L^n (E)$
@@ -142,16 +142,16 @@ $$
 \section{Funzioni misurabili}
 
 \textbf{Definizione.}
-Dato $(X, \mathcal{A}, \mu)$ e $f \colon X \to \R$ (o al posto di $\R$ in $Y$ spazio topologico), diciamo che $f$ è \textbf{misurabile} (più precisamente $\mathcal{A}$-misurabile), se
+Dato $(X, \mc{A}, \mu)$ e $f \colon X \to \R$ (o al posto di $\R$ in $Y$ spazio topologico), diciamo che $f$ è \textbf{misurabile} (più precisamente $\mc{A}$-misurabile), se
 $$
-\forall A \text{ aperto} \; f^{-1} (A) \in \mathcal{A}
+\forall A \text{ aperto} \; f^{-1} (A) \in \mc{A}
 $$ 
 
 
 \textbf{Osservazioni.}
 \nopagebreak
 \begin{itemize}
-	\item Dato $E \subset X$, vale $E \in \mathcal{A}$ se solo se $\One_E$ è misurabile.
+	\item Dato $E \subset X$, vale $E \in \mc{A}$ se solo se $\One_E$ è misurabile.
 	\item La classe delle funzioni misurabili è chiusa rispetto a molte operazioni
 	\begin{itemize}
 		\item \textit{Somma}, \textit{prodotto} (se hanno senso nello spazio immagine della funzione).
@@ -164,11 +164,11 @@ $$
 
 \subsection{Funzioni semplici}
 
-% Indico con $\mathcal{S}$ la classe delle funzioni $f \colon  X \to \R$ \textit{semplici}, cioè della forma $f = \sum_{i}^{n} \alpha_i \One_{E_i}$ con $\{E_i \}_{1 \leq i \leq n}$ misurabili e $\alpha_i \in \R$.
+% Indico con $\mc{S}$ la classe delle funzioni $f \colon  X \to \R$ \textit{semplici}, cioè della forma $f = \sum_{i}^{n} \alpha_i \One_{E_i}$ con $\{E_i \}_{1 \leq i \leq n}$ misurabili e $\alpha_i \in \R$.
 \textbf{Definizione.}
 Definiamo la classe delle \textbf{funzione semplici} come
 $$
-\mathcal S := \left\{ f \colon X \to \R \mymid f = \sum_i \alpha_i \One_{E_i} \text{ con $E_i$ misurabili e $\{\alpha_i\}$ finito} \right\}
+\mc S := \left\{ f \colon X \to \R \mymid f = \sum_i \alpha_i \One_{E_i} \text{ con $E_i$ misurabili e $\{\alpha_i\}$ finito} \right\}
 $$
 
 \textbf{Osservazione.} La rappresentazione di una funzione semp/alice come combinazione lineare di indicatrici di insiemi \textit{non è unica}, però se necessario possiamo prendere gli $E_i$ disgiunti.
@@ -179,7 +179,7 @@ $$
 Diamo la definizione di $\ds\int_X f \dd \mu$ per passi
 \begin{enumerate}
 	\item \label{item:def_int_1} 
-		Se $f \in \mathcal{S}$ e $f \geq 0$ cioè $f = \sum_i \alpha_i \One_{E_i}$ con $\alpha_i \geq 0$ allora poniamo
+		Se $f \in \mc{S}$ e $f \geq 0$ cioè $f = \sum_i \alpha_i \One_{E_i}$ con $\alpha_i \geq 0$ allora poniamo
 $$
 			\int_{X} f \dd \mu \coloneqq \sum_{i} \alpha_i \mu(E_i),
 $$
@@ -188,7 +188,7 @@ $$
 	\item \label{item:def_int_2} 
 		Se $f \colon  X \to [0,+\infty]$ misurabile si pone
 $$
-			\int_{X} f \dd \mu \coloneqq \sup_{\substack{g \in \mathcal{S} \\ 0 \leq g \leq f}} \int_{X} g \dd \mu.
+			\int_{X} f \dd \mu \coloneqq \sup_{\substack{g \in \mc{S} \\ 0 \leq g \leq f}} \int_{X} g \dd \mu.
 $$
 		
 	\item 
@@ -224,7 +224,7 @@ Scriveremo spesso $\ds \int_E f(x) \dd x$ invece di $\ds \int_E f \dd \mathscr L
 		\int_{X} f_1 + f_2 \dd \mu \geq \int_X f_1 \dd \mu + \int_X f_2 \dd \mu.
 		$$
 	
-	\item Dato $E \in \mathcal{A}$, $f$ misurabile su $E$, notiamo che vale l'uguaglianza
+	\item Dato $E \in \mc{A}$, $f$ misurabile su $E$, notiamo che vale l'uguaglianza
 		$$
 		\int_E f \dd \mu \coloneqq \int_X f \cdot \One_E \dd \mu.
 		$$ 
@@ -270,7 +270,7 @@ Scriveremo spesso $\ds \int_E f(x) \dd x$ invece di $\ds \int_E f \dd \mathscr L
 
 \section{Teoremi di convergenza}
 
-Sia $(X, \mathcal{A}, \mu)$ come in precedenza.
+Sia $(X, \mc{A}, \mu)$ come in precedenza.
 
 \textbf{Teorema} (di convergenza monotona o Beppo-Levi).
 Date $f_n \colon  X \to [0,+\infty]$ misurabili, tali che $f_n \uparrow f$ ovunque in $X$, allora
@@ -306,7 +306,7 @@ La seconda proprietà è essenziale; sostituirla con $\ds \int_X \left| f_n \rig
 \textbf{Definizione.}
 Data una ``densità'' $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la \textbf{misura $\mu$ con densità $\rho$} è data da
 $$
-\forall E \in \mathcal A \quad \mu(E) \coloneqq \int_{E} \rho \dd x
+\forall E \in \mc A \quad \mu(E) \coloneqq \int_{E} \rho \dd x
 $$ 
 
 \textbf{Osservazioni.}
@@ -319,14 +319,14 @@ $$
 \textbf{Teorema} (di cambio di variabile).
 Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
 $$
-\int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(\nabla \Phi(x)) \right| \dd x.
+\int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(\Lambda \Phi(x)) \right| \dd x.
 $$
 
 La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$ a valori in $\R^n$ sommabile.
 
 \textbf{Osservazioni.}
 \begin{itemize}
-	\item Se $n = 1$, $\left| \det(\nabla \Phi(x)) \right| = \left| \Phi'(x) \right|$ e non $\Phi'(x)$ come nella formula vista ad Analisi 1 (l'informazione del segno viene data dall'inversione degli estremi).
+	\item Se $n = 1$, $\left| \det(\Lambda \Phi(x)) \right| = \left| \Phi'(x) \right|$ e non $\Phi'(x)$ come nella formula vista ad Analisi 1 (l'informazione del segno viene data dall'inversione degli estremi).
 	
 	\item Indebolire le ipotesi su $\Phi$ è delicato. Basta $\Phi$ di classe $C^1$ e $\foralmostall x' \in \Omega' \; \# \Phi^{-1}(x') = 1$ (supponendo $\Phi$ iniettiva la proprietà precedente segue immediatamente).
 	Se $\Phi$ non è "quasi" iniettiva bisogna correggere la formula per tenere conto della molteplicità.
@@ -386,7 +386,7 @@ f \left(\sum_i \lambda_i x_i \right) \leq \sum_i \lambda_i f(x_i)
 $$
 
 \textbf{Teorema} (Jensen).
-Dato $(X, \mathcal A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
+Dato $(X, \mc A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
 $$
 \int_X f \compose u \dd \mu \geq f \left( \int_X u \dd \mu \right)
 $$
@@ -457,7 +457,7 @@ $$
 $$
 convenendo che $\sfrac{1}{\infty} = 0$.
 
-Fissiamo $p \in [1, +\infty]$ detto ``esponente di sommabilità'' e sia $(X, \mathcal A, \mu)$ come sempre.
+Fissiamo $p \in [1, +\infty]$ detto ``esponente di sommabilità'' e sia $(X, \mc A, \mu)$ come sempre.
 
 \textbf{Definizione.} $f \colon X \to \overline \R$ o $\R^d$ misurabile, allora la \textbf{norma $p$ di $f$} è per $p \in [1, +\infty)$
 $$
@@ -570,7 +570,7 @@ $$
 \subsection{Disuguaglianza di Minkowski}
 
 \textbf{Proposizione.} 
-Consideriamo sempre $(X, \mathcal A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$ allora vale la disuguaglianza triangolare
+Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$ allora vale la disuguaglianza triangolare
 $$
 \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
 $$
@@ -682,7 +682,7 @@ $$
 \end{enumerate}
 
 \textbf{Esercizio} (Numerabile subaddittività).
-Dato $\ds E \in \mathcal{A}, E \subset \bigcup_i E_i$ dove $E_i \in \mathcal{A}$. Allora
+Dato $\ds E \in \mc{A}, E \subset \bigcup_i E_i$ dove $E_i \in \mc{A}$. Allora
 $$
 	\mu(E) \leq \sum_{i}^{} \mu(E_i).
 $$
@@ -818,7 +818,7 @@ Vala la seguente
 $$
 	\int_{0}^{+\infty} f\left( \left| x \right| \right) \dd x = c_n \cdot \int_{0}^{+\infty} f(\rho) \rho^{n-1} \dd \rho,
 $$
-dove $\ds c_n = n \mathscr L^n \left( \mathcal{B}(0,1) \right)$.
+dove $\ds c_n = n \mathscr L^n \left( \mc{B}(0,1) \right)$.
 
 Applichiamo questa formula alla stima di integrali di funzioni positive.
 
@@ -827,12 +827,12 @@ Sia
 $$
 	\psi (x) = \frac{1}{\norm{ x }^{\alpha}}
 $$
-% X @aziis98: Boh secondo me possiamo usare anche solo B(0, 1) invece di \mathcal B(0, 1), sempre sul tema di fare con \mathcal solo l'insieme delle parti e le sigma-algebre?
-su $\mathcal{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1 / t^\alpha$.
-Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mathcal{B}(0,1)$.
+% X @aziis98: Boh secondo me possiamo usare anche solo B(0, 1) invece di \mc B(0, 1), sempre sul tema di fare con \mc solo l'insieme delle parti e le sigma-algebre?
+su $\mc{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1 / t^\alpha$.
+Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mc{B}(0,1)$.
 %
 $$
-\int_{\mathcal{B(0,1)}}^{} \psi(x) \dd x 
+\int_{\mc{B(0,1)}}^{} \psi(x) \dd x 
 = c_n \int_0^1 \frac{1}{\rho^\alpha} \rho^{n -1} \dd \rho 
 = c_n \int_0^1 \rho^{n-1-\alpha} \dd \rho =
 \begin{cases}
@@ -851,14 +851,14 @@ $$
 Con passaggi analoghi al precedente otteniamo
 %
 $$
-	\int_{\R^n \setminus \; \mathcal{B}(0,1)} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n < \alpha.
+	\int_{\R^n \setminus \; \mc{B}(0,1)} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n < \alpha.
 $$
 %
 \textbf{Esercizio.}
 Vediamo per quali valori di $\beta$ l'integrale
 %
 $$
-	\int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x
 $$
 %
 converge.
@@ -867,15 +867,15 @@ Vale la seguente catena di uguaglianze.
 %
 $$
 \int_{\R^n}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-= \int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-+ \int_{\R^n \setminus \; \mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x.
+= \int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
++ \int_{\R^n \setminus \; \mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x.
 $$
 %
 Studiamo separatamente i due pezzi dell'integrale.
 %
 \begin{align*}
-	\int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-	& = c_n \int_{\mathcal{B}(0,1)}^{} \frac{1}{(\rho + \rho^2)^\beta} \rho^{n-1} \dd \rho
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	& = c_n \int_{\mc{B}(0,1)}^{} \frac{1}{(\rho + \rho^2)^\beta} \rho^{n-1} \dd \rho
 	= c_n \int_{0}^{1} \frac{1}{\rho^\beta} \cdot \frac{\rho^{n-1}}{(1 + \rho)^\beta} \dd \rho \\
 	& \approx \int_{0}^{1} \rho^{n-1-\beta} \dd \rho < + \infty \longiff  \beta < n.
 \end{align*}
@@ -883,8 +883,8 @@ Studiamo separatamente i due pezzi dell'integrale.
 Inoltre,
 %
 $$
-	\int_{\mathcal{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
-	= \int_{\R^n \setminus \; \mathcal{B}(0,1)}^{} \frac{1}{\rho^{2\beta}} \cdot \frac{\rho^{n-1}}{\left( \frac{1}{\rho} + 1 \right)^\beta} \dd \rho 
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	= \int_{\R^n \setminus \; \mc{B}(0,1)}^{} \frac{1}{\rho^{2\beta}} \cdot \frac{\rho^{n-1}}{\left( \frac{1}{\rho} + 1 \right)^\beta} \dd \rho 
 	\approx \int_{1}^{+\infty} \frac{\rho^{n-1}}{\rho^{2\beta}} \dd rho < + \infty \longiff 2\beta > \alpha.  
 $$
 %
@@ -921,8 +921,8 @@ Vediamo ora una minorazione.
 $$
 	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
 = \frac{1}{2^n}	\int_{[-1,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-\geq \frac{1}{2^n} \ \int_{\mathcal{B}(0,1)}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
-\approx \int_{\mathcal{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty 
+\geq \frac{1}{2^n} \ \int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+\approx \int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty 
 \longiff \alpha < n.
 $$
 
@@ -956,7 +956,7 @@ $$
 
 \section{Costruzione spazi $L^p$}
 
-Fissiamo $(X, \mathcal A, \mu)$ come sempre.
+Fissiamo $(X, \mc A, \mu)$ come sempre.
 
 \textbf{Definizione.}
 Sia $\mathscr L^p$ l'insieme delle funzioni $f \colon X \to \R$ o $\R^d$ misurabili tali che $\norm{f}_p < +\infty$.
@@ -976,7 +976,7 @@ Sia $\mathscr L^p$ l'insieme delle funzioni $f \colon X \to \R$ o $\R^d$ misurab
 			\item Dalla disuguaglianza di Minkowski segue che $\norm{\curry}_p$ è una semi-norma.
 		\end{itemize}
 
-	\item In particolare non è una norma se $\{ 0 \} \subsetneq \{ f \mid \norm{f}_p = 0 \}$ ovvero se $\mathcal A$ contiene insiemi non vuoti di misura nulla.
+	\item In particolare non è una norma se $\{ 0 \} \subsetneq \{ f \mid \norm{f}_p = 0 \}$ ovvero se $\mc A$ contiene insiemi non vuoti di misura nulla.
 
 	\item In generale dato $V$ spazio vettoriale e $\norm{\curry}$ semi-norma su $V$ possiamo inotrdurre $N \coloneqq \{ v \mid \norm{v} = 0 \}$. $N$ risulta essere un sottospazio di $V$ e la norma data da $\norm{[v]} \coloneqq \norm{v}$ per $[v] \in \sfrac{V}{N}$ è ben definita ed è proprio una norma su $\sfrac{V}{N}$.
 
@@ -994,7 +994,7 @@ $$
 \textbf{Notazione.}
 Ogni tanto serve precisare meglio l'insieme di partenza e di arrivo degli spazi $L^p$ ed in tal caso useremo le seguenti notazioni
 $$
-L^p = L^p(X) = L^p(X, \mu) = L^p(X, \mathcal A, \mu) = L^p(X, \mu; \R^d)
+L^p = L^p(X) = L^p(X, \mu) = L^p(X, \mc A, \mu) = L^p(X, \mu; \R^d)
 $$
 
 \textbf{Nota.}
@@ -1166,7 +1166,7 @@ $$
 \qed
 
 \section{Nozioni di convergenza per successioni di funzioni}
-Fissiamo $X,\mathcal{A},\mu$ e prendiamo $f, f_n \colon X \to \R$ (o $\R^k$) misurabili.
+Fissiamo $X,\mc{A},\mu$ e prendiamo $f, f_n \colon X \to \R$ (o $\R^k$) misurabili.
 
 \textbf{Definizione.}
 Riportiamo le definizioni di alcune nozioni di convergenza.
@@ -1198,7 +1198,7 @@ Valgono le seguenti.
 
 \item \label{item:convergenza_i} Data $f_n \to f$ q.o. e $\mu(X) < +\infty$, allora $f_n \to f$ in misura.
 
-\item \label{item:convergenza_ii} (\textit{Severini-Egorov}): Data $f_n \to f$ q.o. e $\mu(X) < +\infty$, allora $\forall \delta > 0$ esiste  $E \in \mathcal{A}$ tale che $\mu(E) < \delta$ e $f_n \to f$ uniformemente su $X \setminus E$.
+\item \label{item:convergenza_ii} (\textit{Severini-Egorov}): Data $f_n \to f$ q.o. e $\mu(X) < +\infty$, allora $\forall \delta > 0$ esiste  $E \in \mc{A}$ tale che $\mu(E) < \delta$ e $f_n \to f$ uniformemente su $X \setminus E$.
 
 \item \label{item:convergenza_iii} $f_n \to f $ in $L^p$, $p < +\infty$, allora $f_n \to f$ in misura.
 
@@ -1235,7 +1235,7 @@ da cui la tesi.
 \qed
 
 \textbf{Lemma} (Borel-Cantelli).
-Dati $(E_n) \subset \mathcal{A}$ tali che $\sum \mu(E_n) \leq +\infty$, l'insieme
+Dati $(E_n) \subset \mc{A}$ tali che $\sum \mu(E_n) \leq +\infty$, l'insieme
 %
 $$
 E \coloneqq \left\{ x \in X \mymid x \in E_n \; \text{frequentemente} \right\}
@@ -1402,7 +1402,7 @@ $$
 $$
 %
 
-\textbf{Domanda.} Per quali $X,\mathcal{A},\mu$ vale la stessa conclusione?
+\textbf{Domanda.} Per quali $X,\mc{A},\mu$ vale la stessa conclusione?
 
 %
 % Lezione dell'11 Ottobre 2021
@@ -1448,7 +1448,7 @@ Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno essere un 
 Sia $(X,d)$ uno spazio metrico e $Y \subset X$. Allora Y è denso in X se solo se
 per ogni $x \in X$, esiste una successione $(y_n)_{n \in \N}$ in $Y$ che tale che $x = \lim_n y_n$.
 
-Per ora sia $(X, \mathcal A, \mu)$ in generale.
+Per ora sia $(X, \mc A, \mu)$ in generale.
 
 \textbf{Esercizio.} 
 Le funzioni limitate in $L^p$ sono dense in $L^p$.
@@ -1468,7 +1468,7 @@ Per concludere basta applicare \textit{convergenza dominata} usando come dominaz
 \qed
 
 \textbf{Proposizione.}
-Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \operatorname{Span}(\{ \One_E \mid E \in \mathcal A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \operatorname{Span}(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
 
 \textbf{Dimostrazione.}
 Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mathscr S}$.
@@ -1506,17 +1506,17 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
 		\textbf{Proposizione} (Generalizzata).
-		Sia $\tilde{\mathscr S} \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mathcal A, \mu(E_i) < +\infty \} \implies \tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+		Sia $\tilde{\mathscr S} \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \} \implies \tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 
 		\textbf{Dimostrazione.} (Idea)
 		Basta approssimare componente per componente.
 \end{itemize}
 \qed
 
-Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mathcal A$.
+Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mc A$.
 
 \textbf{Proposizione.}
-Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mathcal A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
+Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
 
 \textbf{Osservazione.} 
 In generale l'enunciato non vale per $p = +\infty$. Ad esempio preso $L^\infty(\R)$ e $f = 1$ non si può approssimare con funzioni a supporto limitato (come quelle in $\tilde{\mathscr S}_\ell$. In particolare data $g$ con supporto $A$ limitato $|f - g| = 1$ su $\R \setminus A$ e siccome $|\R \setminus A| > 0$ abbiamo $\norm{f - g}_\infty \geq 1$).
@@ -1527,10 +1527,10 @@ Per prima cosa vediamo un lemma che useremo assieme alla proposizione precedente
 % @aziis98: Boh questo lemma non so se metterlo prima o se lasciarlo qua
 
 \textbf{Lemma.}
-Dato $E \in \mathcal A, \mu(E) < +\infty$ esiste $E_n \in \mathcal A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
+Dato $E \in \mc A, \mu(E) < +\infty$ esiste $E_n \in \mc A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
 
 \textbf{Dimostrazione.}
-Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E \cap \mathcal B(x_0, n)$; $E_n \subset E$ e $E \setminus E_n \downarrow \varnothing \implies \mu(E \setminus E_n) \xrightarrow{n} 0$.
+Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E \cap \mc B(x_0, n)$; $E_n \subset E$ e $E \setminus E_n \downarrow \varnothing \implies \mu(E \setminus E_n) \xrightarrow{n} 0$.
 
 Intuitivamente $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta è denso in $L^p$ (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
 \qed
@@ -1916,7 +1916,7 @@ Basta trovare $E$ misurabile (per ottenere $E$ aperto si usa la regolarità dell
 		$f$ qualunque misurabile e $|X| < +\infty$
 
 		\textbf{Lemma.}
-		Dati $X, \mathcal A, \mu$ con $\mu(X) < +\infty$ e data $f \colon X \to \R$ misurabile e $\epsilon > 0$ esiste $F$ misurabile con $\mu(F) \leq \epsilon$ tale che $f$ è limitata su $X \setminus F$.
+		Dati $X, \mc A, \mu$ con $\mu(X) < +\infty$ e data $f \colon X \to \R$ misurabile e $\epsilon > 0$ esiste $F$ misurabile con $\mu(F) \leq \epsilon$ tale che $f$ è limitata su $X \setminus F$.
 		
 		\textbf{Dimostrazione.}
 		$\forall m > 0$ sia $F_m := \{ x \mid |f(x)| > m \}$ allora $F_m \downarrow \varnothing \implies \mu(F_m) \downarrow 0$ e quindi esiste $m$ tale che $\mu(F_m) \leq \epsilon$.
@@ -1989,7 +1989,7 @@ $$
 
 \textbf{Esempi di utilizzo.}
 \begin{enumerate}
-\item Sia $X, \mathcal{A}, \mu$ coma al solito, con $\mu(X) < +\infty$.
+\item Sia $X, \mc{A}, \mu$ coma al solito, con $\mu(X) < +\infty$.
 Allora, dati $1 \leq p_1 < p_2 \leq +\infty$, vale
 \begin{equation} \tag{$\star$} \label{eq:star_1}
 L^{p_2}(X) \subset L^{p_1}(X).
@@ -2217,7 +2217,7 @@ Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_
 
 		Consideriamo $f_1, f_2$ e approssimiamole con $f_{1,n}, f_{2,n}$ limitate a supporto compatto, allora vale $\norm{f_{1,n} \ast f_{1,n}}_p \leq \norm{f_{1,n}}_p \cdot \norm{f_{2,n}}_1$ e passando al limite si ottiene la tesi. In particolare possiamo costruire le $f_n$ come
 		$$
-		f_n(x) \coloneqq (f(x) \cdot \One_{\mathcal B(0, n)}(x)) \land n
+		f_n(x) \coloneqq (f(x) \cdot \One_{\mc B(0, n)}(x)) \land n
 		$$
 
 		\textbf{Osservazione.}
@@ -2475,7 +2475,7 @@ In tal caso, l'insieme $L^p \cap L^1 (\R)$ è un sottospazio denso in $\left( L^
 Infatti, 
 %
 $$
-\mathcal{C}_C^0(\R) \subset L^2(\R) \cap L^1(\R).
+\mc{C}_C^0(\R) \subset L^2(\R) \cap L^1(\R).
 $$
 %
 
@@ -2489,7 +2489,7 @@ $$
 %
 
 
-\textbf{Esercizio.} Dimostrare che $f \ast g$ è ben definita e lipschitziana, dove $f \in L^1(\R^d)$ e $g \in \mathcal{C}_C^0 (\R^d)$.
+\textbf{Esercizio.} Dimostrare che $f \ast g$ è ben definita e lipschitziana, dove $f \in L^1(\R^d)$ e $g \in \mc{C}_C^0 (\R^d)$.
 
 Prendo $x_1,x_2 \in \R^d$
 %
@@ -2516,17 +2516,17 @@ Uso la proprietà che essendo ben definita, $f \ast g$ si ha $ f \ast g(x) = g \
 Sia $1 \leq p < +\infty$, $L^p(\R^d, \mu)$ con $\mu$ la misura di Lebesgue.
 Le funzioni semplici costituite da somme finite di insiemi di misura finita sono dense in $L^p(\R^d)$.
 
-Prendiamo una base numerabile di $\R^d$ e la indichiamo con $\mathcal{B}$. L'insieme
+Prendiamo una base numerabile di $\R^d$ e la indichiamo con $\mc{B}$. L'insieme
 %
 $$
-Y = \left\{ \sum_{i=1}^{n} \alpha_i \One_{B_i} \mymid B_i \in \mathcal{B}, \alpha_i \in \Q \right\}
+Y = \left\{ \sum_{i=1}^{n} \alpha_i \One_{B_i} \mymid B_i \in \mc{B}, \alpha_i \in \Q \right\}
 $$
 %
 è numerabile. Vediamo che è denso in $L^p(\R^d)$.
 
 \textit{Idea.} È sufficiente approssimare le funzioni semplici a somma finita $\sum_{i=1}^{N} \alpha_i \One_{E_i} $. In particolare, mi basta approssimare $\alpha \cdot \One_E$. Essendo $\alpha \in \R$ trovo una successione di razionali $\alpha_j$ tali che $\alpha_j \xrightarrow{j \to \infty} \alpha$. Dunque, rimane da approssimare l'insieme $E$.
 
-Fissiamo $E$ e supponiamo dapprima $E$ aperto. Possiamo scrivere $E$ come unione arbitraria di elementi della base $\mathcal{B}$
+Fissiamo $E$ e supponiamo dapprima $E$ aperto. Possiamo scrivere $E$ come unione arbitraria di elementi della base $\mc{B}$
 %
 $$
 E = \bigcup_{i = 1}^\infty B_i.
@@ -2600,9 +2600,9 @@ dimostriamo ora la proposizione in due passi
 			\item
 				La convergenza puntuale, ovvero $|f(x - h) - f(x)|^p \xrightarrow{|h| \to 0} 0$ segue direttamente dalla continuità di $f$.
 			\item
-				Come dominazione invece usiamo $|f(x - h) - f(x)|^p \leq (2 \norm{f}_\infty)^p \cdot \One_{\mathcal B(0, R + 1)}$ usando che $f \in C_C \implies \operatorname{supp}(f) \subset \overline{B(0, R)}$ e poi che 
+				Come dominazione invece usiamo $|f(x - h) - f(x)|^p \leq (2 \norm{f}_\infty)^p \cdot \One_{\mc B(0, R + 1)}$ usando che $f \in C_C \implies \operatorname{supp}(f) \subset \overline{B(0, R)}$ e poi che 
 				$$
-				\operatorname{supp}(f(\curry - h) - f(\curry)) \subset \overline{\mathcal B(0, R + |h|)}
+				\operatorname{supp}(f(\curry - h) - f(\curry)) \subset \overline{\mc B(0, R + |h|)}
 				$$
 				infine se $|h| < 1$ come raggio ci basta prendere $R + 1$.
 		\end{enumerate}
@@ -2633,9 +2633,9 @@ $$
 Prendiamo $f_{1,n}, f_{2, n} \in C_C(\R^d)$ tali che $f_{1, n} \to f_1$ in $L^{p_1}$ e $f_{2, n} \to f_2$ in $L^{p_2}$.
 \begin{itemize}
 	\item 
-		Per prima cosa notiamo che $f_{1,n} \ast f_{2,n}$ ha supporto limitato, infatti se $\supp(f_{i,n}) \subset \overline{\mathcal B(0, r_{i,n})}$ per $i = 1, 2$ allora
+		Per prima cosa notiamo che $f_{1,n} \ast f_{2,n}$ ha supporto limitato, infatti se $\supp(f_{i,n}) \subset \overline{\mc B(0, r_{i,n})}$ per $i = 1, 2$ allora
 		$$
-		\supp(f_{1,n} \ast f_{2,n}) \subset \overline{\mathcal B(0, r_{1,n} + r_{2,n})}
+		\supp(f_{1,n} \ast f_{2,n}) \subset \overline{\mc B(0, r_{1,n} + r_{2,n})}
 		$$
 		e basta notare che l'espressione
 		$$
@@ -2687,9 +2687,9 @@ Vediamo ora di formalizzare questo risultato
 \textbf{Teorema.}
 Dati $p_1$ e $p_2$ esponenti coniugati
 \begin{itemize}
-	\item se $f_1 \in C^1(\R^d)$ allora $f_1, \nabla f_1 \in L^{p_1}(\R^d)$
+	\item se $f_1 \in C^1(\R^d)$ allora $f_1, \Lambda f_1 \in L^{p_1}(\R^d)$
 
-	\item se $f_2 \in L^{p_2}(\R^d)$ allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$ cioè
+	\item se $f_2 \in L^{p_2}(\R^d)$ allora $f_1 \ast f_2 \in C^1$ con $\Lambda(f_1 \ast f_2) = (\Lambda f_1) \ast f_2$ cioè
 		$$
 		\frac{\pd}{\pd x}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 
 		\quad
@@ -2733,9 +2733,9 @@ Dati $p_1$ e $p_2$ esponenti coniugati
 \end{itemize}
 
 \textbf{Corollario.}
-Data $f_1 \in C_C^\infty(\R^d)$ (da cui segue $\nabla^k \in L^q(\R^d)$ per ogni $k = 0, 1, \dots$ e $1 \leq q < +\infty$) e $f_2 \in L^p(\R^d)$ allora $f_1 \ast f_2 \in C^\infty(\R^d)$ (anzi $\nabla^k(f_1 \ast f_2) \in C_0(\R^d)$ per ogni $k$) e vale la formula nota\footnote{Vista in termini di gradienti la formulazione è più compatta ma non poi così intuitiva, bisognerebbe definire la convoluzione tre una funzione a valori vettoriali ed uno scalare etc... Altrimenti basta scrivere le singole identità usando \textit{derivate parziali e multiindici}.}
+Data $f_1 \in C_C^\infty(\R^d)$ (da cui segue $\Lambda^k \in L^q(\R^d)$ per ogni $k = 0, 1, \dots$ e $1 \leq q < +\infty$) e $f_2 \in L^p(\R^d)$ allora $f_1 \ast f_2 \in C^\infty(\R^d)$ (anzi $\Lambda^k(f_1 \ast f_2) \in C_0(\R^d)$ per ogni $k$) e vale la formula nota\footnote{Vista in termini di gradienti la formulazione è più compatta ma non poi così intuitiva, bisognerebbe definire la convoluzione tre una funzione a valori vettoriali ed uno scalare etc... Altrimenti basta scrivere le singole identità usando \textit{derivate parziali e multiindici}.}
 $$
-\nabla^k (f_1 \ast f_2) = (\nabla^k f_1) \ast f_2
+\Lambda^k (f_1 \ast f_2) = (\Lambda^k f_1) \ast f_2
 $$
 
 \textbf{Dimostrazione.}
@@ -2811,33 +2811,9 @@ per \textit{convergenza dominata}, verifichiamone le ipotesi
 Sia $g \in C_C^\infty(\R^d)$ con $\int g \dd x = 1$ e $f \in L^p(\R^d)$ e $1 \leq p < +\infty$ allora $\sigma_\delta g \ast f \xrightarrow{\delta \to 0} f$ in $L^p(\R^d)$ e $\sigma_\delta g \ast f \in C^\infty(\R^d)$.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%
+% Lezioni del 27-28 Ottobre 2021
+%
 
 \chapter{Spazi di Hilbert}
 
@@ -2856,34 +2832,34 @@ $$
 
 \textbf{Esempi.} 
 \begin{itemize}
-\item Dato $(X, \mathcal{A}, \mu )$, gli spazi $L^2(X), L^2(X, \R^m)$ sono spazi di Hilbert.
+\item Dato $(X, \mc{A}, \mu )$, gli spazi $L^2(X), L^2(X, \R^m)$ sono spazi di Hilbert.
 
 \item Lo spazio $\ds \ell^2 = \left\{ (x_n) \mymid \sum_{n=0}^{\infty} x_n^2 < +\infty  \right\}$ è uno spazio di Hilbert.
 
 \end{itemize}
 
-\textbf{Definizione.} $\mathcal{F} \subset H$ è un \textbf{sistema ortonormale} se
+\textbf{Definizione.} $\mc{F} \subset H$ è un \textbf{sistema ortonormale} se
 %
 $$
-\norm{e} = 1 \mquad \forall e \in \mathcal{F}, \qquad  \left<e,e' \right> = 0 \mquad \forall e \neq e' \in \mathcal{F}.
+\norm{e} = 1 \mquad \forall e \in \mc{F}, \qquad  \left<e,e' \right> = 0 \mquad \forall e \neq e' \in \mc{F}.
 $$
 %
 
 
-\textbf{Definizione.} $\mathcal{F}$ si dice \textbf{completo} se $\overline{\spn(\mathcal{F})} = H$\footnote{lo span sono combinazioni lineari finite}. In tal caso $\mathcal{F}$ si dice \textbf{base di Hilbert}.
+\textbf{Definizione.} $\mc{F}$ si dice \textbf{completo} se $\overline{\spn(\mc{F})} = H$\footnote{lo span sono combinazioni lineari finite}. In tal caso $\mc{F}$ si dice \textbf{base di Hilbert}.
 
 \textbf{Osservazione.} Se $H$ ha dimensione infinita non esistono basi ortonormali di Hilbert. \textit{Attenzione.} Le basi algebriche esistono, sono quelle ortonormali a non esistere.
 
 \textbf{Esempi.}
-In $\ell^2$ una base ortonormale è $\mathcal{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\underbrace{1}_{i},0,\ldots )$. \\
+In $\ell^2$ una base ortonormale è $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\underbrace{1}_{i},0,\ldots )$. \\
 Infatti, il fatto che siano ortonormali è banale; verifichiamo che sia una base. 
-Studiamo $\spn(\mathcal{F}) = \left\{ x = (x_0,x_1,\ldots ) \mymid x_n \quad \text{è definitivamente nullo}  \right\}$: dato $x \in \ell^2$ e $m = 0,1,2,\ldots $, definiamo
+Studiamo $\spn(\mc{F}) = \left\{ x = (x_0,x_1,\ldots ) \mymid x_n \quad \text{è definitivamente nullo}  \right\}$: dato $x \in \ell^2$ e $m = 0,1,2,\ldots $, definiamo
 %
 $$
 P_mx \coloneqq (x_0,x_1,\ldots , x_m,0,\ldots ).
 $$
 %
-Allora $\spn(\mathcal{F}) \supset P_m x \xrightarrow{m \to +\infty} x$ in $\ell^2$.
+Allora $\spn(\mc{F}) \supset P_m x \xrightarrow{m \to +\infty} x$ in $\ell^2$.
 Infatti, 
 %
 $$
@@ -2897,7 +2873,7 @@ $$
 $$
 %
 
-\textbf{Teorema.} Dato $H$ spazio di Hilbert, $\mathcal{F}$ sistema al più numerabile\footnote{il caso interessante è quello numerabile}, ovvero $\mathcal{F} = \left\{ e_n \mymid n \in \N \right\}$.
+\textbf{Teorema 1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema al più numerabile\footnote{il caso interessante è quello numerabile}, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
 Definiamo per ogni $x \in H$, $n \in \N$ l'elemento $x_n = \left<x, e_n \right>$.
 Allora
 \begin{enumerate}
@@ -2911,10 +2887,10 @@ La somma $\ds \sum_n x_n e_n$ converge a qualche $\overline{x} \in H$ e $\overli
 Vale $\ds \norm{\overline{x}}^2 = \sum_n x_n^2 \leq \norm{x}^2$.
 
 \item \label{item:27ott_thm1_4}
-Se $x - \overline{x} \ort \mathcal{F}$, allora $x - \overline{x} \ort \overline{\spn(\mathcal{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mathcal{F})}$.
+Se $x - \overline{x} \perp \mc{F}$, allora $x - \overline{x} \perp \overline{\spn(\mc{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mc{F})}$.
 
 \item \label{item:27ott_thm1_5}
-Se $\mathcal{F}$ è completo, allora $x = \overline{x}$ e in particolare
+Se $\mc{F}$ è completo, allora $x = \overline{x}$ e in particolare
 %
 $$
 x = \sum_{n=0}^{\infty} x_n e_n, \qquad \norm{x}^2 = \sum_{n=0}^{\infty} x_n^2  \qquad \text{(\textbf{Identità di Parceval})}.
@@ -2935,7 +2911,7 @@ Alla dimostrazione del teorema premettiamo il seguente lemma.
 
 \vs
 
-\textbf{Lemma.} Siano $H$ e $\mathcal{F}$ come nel teorema.
+\textbf{Lemma.} Siano $H$ e $\mc{F}$ come nel teorema.
 Data $(a_n) \in \ell^2$, allora
 \begin{enumerate}
 \item La somma $\ds \sum_n a_n e_n$ converge a qualche $\overline{x} \in H$. 
@@ -2959,7 +2935,7 @@ $$
 Dunque, per ogni $\epsilon$ esiste $m_\epsilon$ tale che $\ds \sum_{m + 1}^{\infty} x_n^2 \leq \epsilon^2 $, per cui 
 %
 $$
-\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{\infty} x_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} x_n^2 \leq \epsilon^2 \forall m,m' \geq m_\epsilon.
+\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{\infty} x_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} x_n^2 \leq \epsilon^2 \quad \forall m,m' \geq m_\epsilon.
 $$
 %
 
@@ -3001,7 +2977,7 @@ $$
 Essendo che $x$ è somma di vettori ortogonali abbiamo
 %
 $$
-\norm{x}^2 = \sum_{n=1}^{\infty} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2  
+\norm{x}^2 = \sum_{n=1}^{\infty} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2.
 $$
 %
 Passando al limite per $m \to +\infty$ otteniamo
@@ -3019,16 +2995,16 @@ $$
 %
 $$
 \left<x - \overline{x}, e_n \right> = \left<x,e_n \right> - \left<\overline{x} , -e_n \right> = x_n - \overline{x}_n 
-\overbrace{=}^{\ref{item:27ott_thm1_2}} x - \overline{x} \ort e_n \mquad \forall n \Longrightarrow x - \overline{x} \ort \spn(\mathcal{F}).
+\overbrace{=}^{\ref{item:27ott_thm1_2}} x - \overline{x} \perp e_n \mquad \forall n \Longrightarrow x - \overline{x} \perp \spn(\mc{F}).
 $$
 %
-Segue che $x - \overline{x} \ort \overline{\spn(\mathcal{F})}$. (dato $y \in$ chiusura span.., prendo $y_m \to y \in span$, $\left< x- \overline{x}, y_n \right> = 0 \Rightarrow  \left<x - \overline{x}, y \right> = 0$).
+Segue che $x - \overline{x} \perp \overline{\spn(\mc{F})}$. (dato $y \in$ chiusura span.., prendo $y_m \to y \in span$, $\left< x- \overline{x}, y_n \right> = 0 \Rightarrow  \left<x - \overline{x}, y \right> = 0$).
 
-\item $x - \overline{x} \ort \overline{\spn(\mathcal{F})} \underbrace{=}_{\mathclap{\text{$\mathcal{F}$ è completo}}} H \Longrightarrow x - \overline{x} = 0$, cioè $x = \overline{x}$.
+\item $x - \overline{x} \perp \overline{\spn(\mc{F})} \underbrace{=}_{\mathclap{\text{$\mc{F}$ è completo}}} H \Longrightarrow x - \overline{x} = 0$, cioè $x = \overline{x}$.
 \end{enumerate}
 \qed
 
-\textbf{Corollario.} Siano $H$ spazio di Hilbert, $\mathcal{F} = \left\{ e_n \mymid n \in \Z \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
+\textbf{Corollario.} Siano $H$ spazio di Hilbert, $\mc{F} = \left\{ e_n \mymid n \in \Z \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
 \begin{enumerate}
 \item Se $x_n = x_n'$ per ogni $n \in \N$, allora $x = x'$ ($\Leftarrow$ è ovvia.)
 
@@ -3048,8 +3024,8 @@ Segue che $x - \overline{x} \ort \overline{\spn(\mathcal{F})}$. (dato $y \in$ ch
 %
 \begin{align*}
 \left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 + \norm{x - x'}^2 \right)
-= \frac{1}{4} \left( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'}  \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \right) \\
-& = \frac{1}{4} \left( \sum x_n^2 + \sum x_n'^2 + 2 \sum x_n x_n' - \sum x_n^2 - \sum x_n'^2 + 2 \sum x_n x_n' \right).
+= \frac{1}{4} \Big( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'}  \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \Big) \\
+& = \frac{1}{4} \left( \cancel{\sum x_n^2} + \cancel{\sum x_n'^2} + 2 \sum x_n x_n' - \cancel{\sum x_n^2} - \cancel{\sum x_n'^2} + 2 \sum x_n x_n' \right).
 \end{align*}
 
 \item TO DO.
@@ -3059,23 +3035,166 @@ Segue che $x - \overline{x} \ort \overline{\spn(\mathcal{F})}$. (dato $y \in$ ch
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Se $H$ è uno spazio di Hilbert e $\mathcal{F}$ sistema ortonormale infinito, allora $\mathcal{F}$ non è mai una base algebrica\footnote{per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio}. Dunque combinazioni lineari finite di $H$ non sono mai uguali ad $H$, ovvero $\spn(\mathcal{F}) \subsetneq H $) di $H$.
+\item Gli enunciati \ref{item:27ott_thm1_1} e \ref{item:27ott_thm1_5} non richiedono $H$ completo.
+
+\item Se $H$ è uno spazio di Hilbert e $\mc{F}$ sistema ortonormale infinito, allora $\mc{F}$ non è mai una base algebrica\footnote{per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio}. Dunque combinazioni lineari finite di $H$ non sono mai uguali ad $H$, ovvero $\spn(\mc{F}) \subsetneq H $) di $H$.
 
 \textbf{Dimostrazione.} 
 Notiamo che possiamo scrivere $\overline{x}$ come
 %
 $$
-(e_n) \subset \mathcal{F}, \quad  \overline{x} = \sum_{n = 0}^\infty \frac{1}{2^n} e_n, \quad  \overline{x} \notin \spn(\mathcal{F}).
+(e_n) \subset \mc{F}, \quad  \overline{x} = \sum_{n = 0}^\infty \frac{1}{2^n} e_n, \quad  \overline{x} \notin \spn(\mc{F}).
 $$
 %
 \textbf{Nota.} I coefficienti sono univocamente determinati perchè ottenuti tramite prodotto scalare. Notiamo che non si può usare il teorema di albebra lineare sull'unicità della rappesentazione poichè stiamo trattando combinazioni lineari infite.
 \qed
 
-\item Siano $H$ uno spazio di Hilbert di dimensione infinita e $\mathcal{F}$ una base di Hilbert. Allora, $\mathcal{F}$ è numerabile se solo se $H$ è separabile.
+\item Siano $H$ uno spazio di Hilbert di dimensione infinita e $\mc{F}$ una base di Hilbert. Allora, $\mc{F}$ è numerabile se solo se $H$ è separabile.
 
-Per esempio $H = L^2(X)$, con $X = \R^n$, $\mu $ misura di Lebesgue ha base di Hilbert numerabile.
+\textbf{Dimostrazione.}
+
+\begin{itemize}
+
+\item[$\boxed{\Rightarrow}$] Vale $ H = \overline{\spn(\mc{F})} = \overline{\spn_\Q (\mc{F})} $ e notando che $\overline{\spn_\Q (\mc{F})}$ è numerabile se  $\mc{F}$ è numerabile.
+
+\item[$\boxed{\Leftarrow}$] Se $\mc{F}$ non è numerabile, siccome $\norm{e - e'} = \sqrt{2}  \quad \forall e,e' \in \mc{F}$ allora $H$ non è separabile.
+
+\end{itemize}
+\qed
+
+\textbf{Esempio.} Lo spazio $H = L^2(X)$, con $X = \R^n$, $\mu $ misura di Lebesgue ha base di Hilbert numerabile.
+
+\item Dato $\mc{F}$ sistema ortonormale in $H$, allora $\mc{F}$ è completo se solo se $\mc{F}$ è massimale (nella classe dei sistemi ortonormali rispetto all'inclusione).
+
+\textbf{Dimostrazione.}
+\begin{itemize}
+
+\item[$\boxed{\Rightarrow}$] Dato che $\mc{F}$ è completo segue che $\overline{\spn(\mc{F})} = X$, quindi
+%
+$$
+\mc{F}^{\perp} = \left( \spn(\mc{F}) \right)^\perp
+\underbrace{=}_{\mathclap{\substack{\text{continuità del} \\ \text{prodotto scalare}}}} \overline{\spn(\mc{F})}^\perp = H^\perp = \{ 0 \}.
+$$
+%
+dunque $\mc{F}$ è massimale.
+
+\item[$\boxed{\Leftarrow}$] Se  $\mc{F}$ non è completo, esiste $c \in H \setminus \spn(\mc{F})$.
+Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp \spn(\mc{F})$, dunque $x - \overline{x} \perp \mc{F}$ e $x - \overline{x} \neq \{ 0 \}$, da cui $\ds \mc{F} \; \cup \; \left\{ \frac{x - \overline{x}}{\norm{x - \overline{x}}} \right\}$ è un sistema ortonormale che include strettamente $\mc{F}$. \absurd
+
 \end{itemize}
 
+
+\textbf{Osservazione.} Nell'implicazione $\boxed{\Rightarrow}$ non abbiamo usato la completezza di $H$.
+
+\end{itemize}
+
+\vs
+
+\textbf{Corollario.} Ogni sistema ortonormale $\mc{F}$ si completa a $\tilde{\mc{F}}$ base di Hilbert di $H$.
+
+\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$
+Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. Allora $\tilde{\mc{F}}$ è una base di Hilbert.
+\qed
+
+\vs
+
+\textbf{Nota.} Aggiungere le note a caso.
+
+\vs
+
+\textbf{Teorema 2.} Dato $V$ sottospazio vettoriale chiuso di $H$. Allora
+\begin{enumerate}
+\item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\tilde{x} \in V$ tale che $x = \overline{x} + \tilde{x}$.
+
+\item Gli elementi $\overline{x}$ e $\tilde{x}$ sono univocamente determinati (e indicati con $x_V$ e $x_V^\perp$).
+
+\item $\overline{x}$ è caratterizzato come l'elemento di $V$ più vicino a $X$.
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+\begin{enumerate}
+\item Dato che $V$ è chiuso, $V$ è completo, cioè $V$ è un sottospazio di $H$, dunque $V$ ammette base ortonormale $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
+Definiamo $\overline{x} \in \overline{\spn(\mc{F})}$ come nel Teorema 1 e $\tilde{x} \coloneqq x - \overline{x} \in \overline{\spn(\mc{F})} = V^\perp$ (per \ref{item:27ott_thm1_4}).
+
+\item Se $x = \overline{x} + \tilde{x} = \overline{x}' + \tilde{x}'$, dove $\overline{x}, \overline{x}' \in V$ e $\tilde{x}, \tilde{x}' \in V^\perp$, allora
+%
+$$
+\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} \underbrace{\Longrightarrow}_{V \cap V^\perp = \{0 \} }
+\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} = 0.
+$$
+%
+
+\item Per ogni $y \in V$ sia $f(y) = \norm{x - y}^2$. Mostriamo che $\overline{x}$ è l'unico minimo di $f$.
+%
+$$
+f(y) = \norm{x - y}^2 = \lVert{\overbrace{x - \overline{x}}^{\in V^\perp} + \overbrace{\overline{x} - y}^{\in V}}\rVert^2 = \norm{x - \overline{x}}^2 + \norm{\overline{x} - y}^2
+= f(\overline{x}) + \norm{\overline{x} - y}^2 \geq f(\overline{x}).
+$$
+%
+\qed
+\end{enumerate}
+
+\vs
+
+\textbf{Osservazione.}
+Serve $V$ chiuso. Dato $\mc{F}$ base di Hilbert di $H$ ($H$ dimensione infinita), $V \coloneqq \spn(\mc{F})$, so che $V = \spn(\mc{F}) \subset \overline{V} = H$. Allora
+%
+$$
+\overline{V^\perp} = \overline{V}^\perp = H^\perp = \{0\} \Longrightarrow V + V^\perp = V \subsetneq H.
+$$
+%
+
+\textbf{Teorema 3.} Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
+
+\begin{equation} \tag{$\ast$}
+	\Lambda(x) = \left<x,x_0 \right> \quad \text{per ogni} \; x \in H.
+\end{equation}
+
+\textbf{Dimostrazione.}
+Supponiamo $\Lambda \not\equiv 0$. Dato che $\Lambda$ è continuo, $\ker \Lambda$ è chiuso in $H$. Definiamo $V \coloneqq \ker \Lambda$.
+Per il primo enunciato del teorema precedente, $H = V + V^\perp$ e per quanto supposto $V^\perp \neq \{0\}$.
+
+Notiamo che $\dim V^\perp = 1$. Infatti, se per assurdo $\dim(V^\perp) > 1$, allora esisterebbe $W \subset V^\perp$ con $\dim W = 2$, da cui seguirebbe che $\Lambda \colon  W \to \R$ ha $\ker$ banale. \absurd
+
+Allora $V^\perp = \spn \left\{ x_1 \right\}$ con $\norm{x_1} = 1$. Definiamo $c \coloneqq \Lambda(x_1), x_0 = c x_1$.
+
+Dimostriamo ora l'uguaglianza $\ast$ per passi.
+
+\begin{enumerate}
+\item Vale per $x \in V$ tale che $x \in \ker \Lambda$. Infatti $\Lambda(x)=x_0$ e $\left<x,x_0 \right> = 0$ perchè $x_0 \in V^\perp$.
+
+\item Vale per $x = x_1$ (e quindi per $x \in V^\perp$). Infatti, 
+%
+$$
+\Lambda(x_1) = c \quad \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c.
+$$
+%
+
+\item Vale su $V + V^\perp = H$.
+\end{enumerate}
+
+\textbf{Osservazioni.}
+\begin{itemize}
+\item Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensine infinita.
+
+\textbf{Dimostrazione.} Prendo $\Lambda \colon H \to \R$ lineare definito come
+%
+$$
+\begin{cases}
+\Lambda(e_n) = n \quad \forall n \\
+\Lambda(e) = \text{qualsiasi } e \in \mc{G} \setminus \left\{ e_n \right\}.
+\end{cases} 
+$$
+%
+Allora
+%
+$$
++\infty = \sup_n \left| \Lambda(e_n) \right| \leq \sup_{\norm{x} \leq 1} \left| \Lambda(x) \right| 
+$$
+%
+da cui segue che $\Lambda$ non è continuo.
+
+\end{itemize}
 
 % TODO
 
