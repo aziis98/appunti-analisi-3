@@ -3196,7 +3196,185 @@ da cui segue che $\Lambda$ non è continuo.
 
 \end{itemize}
 
-% TODO
+%
+% Lezione del 3 Novembre 2021
+%
+
+\section{Esercitazione del 3 Novembre 2021}
+
+\subsection{Basi Hilbertiane e proiezioni}
+
+\textbf{Esercizio 1.}
+Sia $H = L^2(-1, 1)$ e sia $V = \operatorname{Span}\{ 1, x, x^2 \}$, verificare che sia un sottospazio chiudo e calcolare la proiezione di $\sin x$ su $V$.
+
+\textbf{Osservazione.}
+Su $L^2(\R)$ e su $L^2(-1, 1)$ esistono di sicuro basi Hilbertiane di cardinalità numerabile in quanto abbiamo già visto che sono spazi separabili.
+
+\textbf{Soluzione.}
+Vediamo come trovare le proiezioni su dei sottospazi $V$ di $H$ spazi di Hilbert separabili.
+
+\begin{itemize}
+	\item Bisgona controllare che $V$ sia chiuso.
+
+	\item Si calcola una ``base hilbertiana di $V$'', se $\{ e_1, \dots, e_n, \dots \}$ è una base di $V$ allora 
+		$$
+		p_V(x) = \sum_n \langle x, e_n \rangle e_n
+		$$
+
+\end{itemize}
+
+Indichiamo con $\norm{\curry}_{L^2}$ la norma $\norm{\curry}_{L^2(-1, 1)}$ e con $\langle \curry, \curry \rangle$ il prodotto scalare su $L^2$. Notiamo che se $V$ è chiuso in $L^2(-1, 1)$ in quanto ha dimensione finita. 
+
+Abbiamo una base di $V$ data da $1, x, x^2$ in quanto sono linearmente indipendenti (si può verficare mostrando che $\forall x \in [-1, 1] \; \lambda_1 + \lambda_2 x + \lambda_3 x^2 = 0 \implies \lambda_1 = \lambda_2 = \lambda_3 = 0$ usando la teoria sulle equazioni di II grado oppure si può derivare e man mano ottenere più informazioni su $\lambda_3, \lambda_2, \lambda_1$)
+
+Una prima tecnica sarebbe di applicare direttamente il processo di ortonormalizzazione di Gram-Schmidt a questa base ed ottenere
+$$
+\begin{aligned}
+	e_1 &= \frac{1}{\norm{1}_{L^2}} = \frac{1}{\sqrt{2}}
+	&\norm{1}_{L^2} = \sqrt{2} \\
+	e_2 &= \frac{x - \langle x, \frac{1}{\sqrt 2} \rangle \cdot 1}{\norm{x - \langle x, \frac{1}{\sqrt 2} \rangle \cdot 1}_{L^2}} \\
+	e_3 &= \frac{x^2 - \langle x^2, e_1 \rangle \cdot e_1 - \langle x^2, e_2 \rangle \cdot e_2}{\norm{x^2 - \langle x^2, e_1 \rangle \cdot e_1 - \langle x^2, e_2 \rangle \cdot e_2}_{L^2}} \\
+\end{aligned}
+$$
+
+Alternativamente possiamo direttamente cercare la proiezione su $V$ di $\sin x$. Cerchiamo $a, b, c$ tali che $a + b x + c x^2$ sia $p_V(x) = \sin x$ allora posto $f(x) \coloneqq \sin x - a - b x - c x^2$ abbiam $f(x) \in V^\perp \iff $ si verficano le seguenti condizioni
+$$
+\langle f(x), 1 \rangle = 0
+\qquad
+\langle f(x), x \rangle = 0
+\qquad
+\langle f(x), x^2 \rangle = 0
+$$
+Ad esempio da $\langle f(x), 1 \rangle = 0$ otteniamo
+$$
+0 = \int_{-1}^1 (\sin x - a - b x - c x^2) \cdot 1 \dd x 
+= \underbrace{\int_{-1}^1 \sin x \dd x}_{=0} - 2a - b \underbrace{\int_{-1}^1 x \dd x}_{=0} - c \int_{-1}^1 x^2
+\implies 0 = -2a - \frac{2}{3}c
+$$
+ed analogamente si procede con $x$ e $x^2$... [TODO: Magari finire questo esercizio veramente]
+
+Un altro modo è considerare la funzione $g(a, b, c) \coloneqq \norm{\sin x - a - bx - cx^2}_{L^2(-1, 1)}$ che è continua, coerciva, etc. e imponendo $\nabla_{a,b,c,} g = 0$ si minimizza e si ottengono $\bar a, \bar b, \bar c$ che verficano $p_V(\sin x)$.
+
+\textbf{Esercizio 2.}
+Sia $X = \{ u \in L^2(\R) \mid \int_0^2 u \dd x = 0 \}$, dire se è un sottospazio chiuso, calcolare $X^\perp$ per una generica $u \in L^2(\R)$ e determinare le proiezioni $p_X(u)$ e $p_{X^\perp}(u)$.
+
+\textbf{Soluzione.}
+Consideriamo la mappa $T$ lineare data da
+$$
+u \mapsto \int_0^2 u \dd x
+$$
+è ben definita, lineare e continua, allora $X$ è proprio $T^{-1}(0)$ dunque è un sottospazio chiuso. 
+
+Osserviamo anche che
+$$
+T(u) 
+= \int_\R u(x) \cdot \One_{[0, 2]}(x) \dd x
+= \langle u, g \rangle_{L^2(\R)}
+$$
+con $g = \One_{[0, 2]}(x) \dd x \in L^2(\R)$. E dunque $X = \{ u \in L^2 \mid \langle u, g \rangle = 0 \}$.
+
+Calcoliamo ora $X^\perp$ e le proiezioni $p_X$, $p_{X^\perp}$. 
+$$
+L^2(\R) = \operatorname{Span}_\R\left\{\frac{g}{\norm{g}_{L^2}}\right\} \oplus \left\{ \frac{g^\perp}{\norm{g}_{L^2}} \right\}
+$$
+quindi
+$$
+\norm{g}_{L^2} = \left( \int_\R \One_{[0, 2]}(x)^2 \dd x \right)^{1/2} = \sqrt 2
+$$
+e dunque
+$$
+p_X(u) = u - \frac{1}{2} \int_0^2 u \dd x \cdot \One_{[0, 2]}
+$$
+[TODO: Ricontrollare i conti]
+
+\textbf{Esercizio.}
+Sia $V = \{ \underline x = (x_n)_{n \in \N} \in \ell^2 \mid x_1 + x_3 + x_5 = 0 \}$, dire se $V$ è chiuso in $\ell^2$ e calcolare $p_V$ e $p_{V^\perp}$.
+
+\subsection{Approssimazioni per convoluzione}
+
+Abbiamo visto che data $g \in L^1(\R^d)$ con $\int g \dd x = 1$ allora per ogni $f \in L^p(\R^d)$ abbiamo $f_\delta \coloneqq f \ast \sigma_\delta g \xrightarrow{\delta \to 0} f$ in $L^p(\R^d)$ per $p \neq \infty$.
+
+\textbf{Esercizio.}
+Dire se esiste $v \in L^1(\R)$ tale che sia elemento neutro della convoluzione ovvero
+$$
+\forall f \in L^1(\R) \qquad f \ast v = f
+$$
+Non esiste tale $v$, per vederlo scegliamo opportunamente $\bar f$ e usiamo l'equazione. Prendiamo $g$ a supporto compatto, allora vorremmo avere $\sigma_\delta g \ast v = \sigma_\delta g$ per ogni $\delta$. Ma questo tende a $0$ in quanto il supporto diventa sempre più piccolo...
+
+[TODO: Aggiustare]
+
+\textbf{Osservazione.} 
+Abbiamo già visto in passato che se $f$ è Lebesgue-misurabile tale che $\int_E f \dd x = 0$ per ogni $E$ misurabile di $\R^d$ allora $f = 0$ quasi ovunque su $\R^d$.
+
+\textbf{Esercizio.}
+Sia $f$ Lebesgue-misurabile su $\R^d$ tale che $\forall B$ palla su $\R^d$
+$$
+\int_B f \dd x = 0
+$$
+è vero allora che $f = 0$ quasi ovunque su $\R^d$?
+
+\textbf{Hint.}
+Si usa la convoluzione con un opportuno nucleo. In particolare $f \ast \One_B$...
+
+\subsection{Esempi di basi Hilbertiane}
+
+\subsubsection{Polinomi}
+
+La base data da
+$$
+\{ 1, x, x^2, \dots, x^n, \dots \}
+$$
+opportunamente ortonormalizzata è una base di $L^2[0, 1]$... si ricollega al teorema di Stone-Weierstrass...
+
+\subsubsection{Base di Haar}
+
+[TODO: Disegnino super wow]
+
+Vediamo la base di Haar data da due indici $n, k$ dove $n$ indica l'ampiezza delle ``onde'' (wavelet) e $k$ il posizionamento dell'onda. Sia $n \in \N$ e $k = 0, \dots, 2^n$ e poniamo
+$$
+g^{0,0} \coloneqq 1
+\qquad
+g^{n,k} \coloneqq 2^\frac{n-1}{2} \left( \One_{\left[ \frac{2k - 2}{2^n}, \frac{2k - 1}{2^n} \right]} - \One_{\left[ \frac{2k - 1}{2^n}, \frac{2k}{2^n} \right]} \right)
+$$
+Inoltre $\| g^{n, k} \|_{L^2[0, 1]} = 1$ ed anche $\| g^{0,0} \|_{L^2[0, 1]} = 1$. Vedremo che $\{ g^n,k \}_{n,k} \cup \{ g^{0,0} \}$ formano un sistema ortonormale.
+
+\begin{itemize}
+	\item $\langle g^{n,k}, g^{0,0} \rangle = 0$: È ovvio in quanto le $g^{n,k}$ hanno media nulla.
+
+	\item $\langle g^{n,k}, g^{n',k'} \rangle = 0$: Se $n = n'$ i supporti sono sempre disgiunti altrimenti $n \neq n'$, se supponiamo $n < n'$ allora i supporti o sono disgiunti e si conclude come prima o il supporto di $g^{n',k'}$ è contenuto in quello di $g^{n,k}$. In tal caso però $g^{n,k}$ è costante su $g^{n',k'}$ e dunque l'integrale è sempre nullo.
+\end{itemize}
+
+Inoltre è anche una base hilbertiana, per combinazioni algebriche si ottengono tutti gli intervalli della forma
+$$
+\One_{\left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right]}
+$$
+ad esempio normalizzando $g^{n,k} + 2^\frac{n-1}{2} g^{0, 0}$ otteniamo uno degli intervalli di sopra di lunghezza $1 / 2^{n+1}$.
+
+Vedremo che possiamo estendere la base di Haar a tutto $\R$ però è più difficile... [TODO: Ehm aggiungere la parte dopo quando verrà fatta]
+
+\textbf{Esercizio.}
+Sia $p \geq 1$ allora $\{ u \in L^p(\R) \mid \int u \dd x = 0 \} \subseteq L^p(\R)$ è denso in $L^p(\R)$?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \chapter{Serie di Fourier}
 
