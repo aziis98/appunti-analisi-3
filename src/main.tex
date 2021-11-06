@@ -1468,7 +1468,7 @@ Per concludere basta applicare \textit{convergenza dominata} usando come dominaz
 \qed
 
 \textbf{Proposizione.}
-Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \operatorname{Span}(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
 
 \textbf{Dimostrazione.}
 Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mathscr S}$.
@@ -3205,7 +3205,7 @@ da cui segue che $\Lambda$ non è continuo.
 \subsection{Basi Hilbertiane e proiezioni}
 
 \textbf{Esercizio 1.}
-Sia $H = L^2(-1, 1)$ e sia $V = \operatorname{Span}\{ 1, x, x^2 \}$, verificare che sia un sottospazio chiudo e calcolare la proiezione di $\sin x$ su $V$.
+Sia $H = L^2(-1, 1)$ e sia $V = \spn\{ 1, x, x^2 \}$, verificare che sia un sottospazio chiudo e calcolare la proiezione di $\sin x$ su $V$.
 
 \textbf{Osservazione.}
 Su $L^2(\R)$ e su $L^2(-1, 1)$ esistono di sicuro basi Hilbertiane di cardinalità numerabile in quanto abbiamo già visto che sono spazi separabili.
@@ -3275,7 +3275,7 @@ con $g = \One_{[0, 2]}(x) \dd x \in L^2(\R)$. E dunque $X = \{ u \in L^2 \mid \l
 
 Calcoliamo ora $X^\perp$ e le proiezioni $p_X$, $p_{X^\perp}$. 
 $$
-L^2(\R) = \operatorname{Span}_\R\left\{\frac{g}{\norm{g}_{L^2}}\right\} \oplus \left\{ \frac{g^\perp}{\norm{g}_{L^2}} \right\}
+L^2(\R) = \spn_\R\left\{\frac{g}{\norm{g}_{L^2}}\right\} \oplus \left\{ \frac{g^\perp}{\norm{g}_{L^2}} \right\}
 $$
 quindi
 $$
@@ -3486,18 +3486,22 @@ Vogliamo vedere che
 		\end{cases}
 		$$
 
-	\item $\mathcal F$ è completo (richiede Stone-Weierstrass)
+	\item $\mathcal F$ è completo
+
+		Questo punto richiede il teorema di Stone-Weierstrass che enunciamo
 
 		\textbf{Teorema di Stone-Weierstrass.}
 		Sia $K$ uno spazio compatto e $T_2$ (essenzialmente è uno spazio metrico compatto) e siano $C(K)$ le funzioni continue reali su $K$, mentre $C(K; \C)$ le funzioni continue complesse su $K$ (con la norma del $\sup$).
 
 		Dato $\mathcal A \subset C(K)$ diciamo che è una \textbf{sottoalgebra} se è uno spazio vettoriale e chiuso rispetto al prodotto e diciamo che \textbf{separa i punti} se $\forall x_1, x_2 \in K$ con $x_1 \neq x_2$ allora $\exists f \in \mathcal A$ tale che $f(x_1) \neq f(x_2)$.
-
-		\textbf{Caso reale:}
-		Se $\mathcal A$ è una sottoalgebra di $C(K)$ che separa i punti e contiene le costanti, allora $\overline{\mathcal A} = C(K)$.
-		
-		\textbf{Caso complesso:}
-		Se $\mathcal A$ è una sottoalgebra di $C(K; \C)$ che separa i punti, contiene le costanti e \textit{chiusa per coniugio} allora $\overline{\mathcal A} = C(K; \C)$.
+		\begin{itemize}
+			\item \textit{Caso reale:}
+			se $\mathcal A$ è una sottoalgebra di $C(K)$ che separa i punti e contiene le costanti allora $\overline{\mathcal A} = C(K)$.
+			
+			\item \textit{Caso complesso:}
+			se $\mathcal A$ è una sottoalgebra di $C(K; \C)$ che separa i punti, contiene le costanti e \textit{chiusa per coniugio} allora $\overline{\mathcal A} = C(K; \C)$.
+			
+		\end{itemize}
 
 		\textbf{Osservazioni.}
 		\begin{itemize}
@@ -3510,52 +3514,51 @@ Vogliamo vedere che
 			\item Anche la chiusura per coniugio è necessaria, infatti ad esempio preso $K = \{ z \in \C \mid |z| \leq 1 \}$, $\mathcal A = \text{``polinomi complessi''}$, $\mathcal A$ separa i punti e contiene le costanti però $\overline{\mathcal A}$ sono solo le funzioni olomorfe su $K$.
 		\end{itemize}
 
-		In particolare noi vorremmo usare questo teorema applicandolo alle funzioni $2\pi$-periodiche ristrette a $[-\pi, \pi]$, però queste non verificano la separazione dei punti in quanto per la periodicità $f(-\pi) = f(\pi)$.
-
-		Vediamo però nel seguente corollario che possiamo estendere leggermente il teorema passando dai quozienti topologici.
+		In particolare vorremmo applicare questo teorema alle funzioni $2\pi$-periodiche ristrette a $[-\pi, \pi]$ che però non verificano la separazione dei punti in quanto per la periodicità $f(-\pi) = f(\pi)$. Nel seguente corollario vediamo come possiamo estendere leggermente il teorema passando ai quozienti topologici.
 
 		\textbf{Corollario.}
-		Sia $\mathcal A$ una sottoalgebra di $C(K)$ (o analogamente per $C(K; \C)$) che contiene le costanti (e nel caso complesso chiusa per coniugio). Definiamo la relazione $x_1 \sim x_2$ se $f(x_1) = f(x_2)$ per ogni $f \in \mathcal A$ allora 
+		Sia $\mathcal A$ una sottoalgebra di $C(K)$ (o analogamente per $C(K; \C)$) che contiene le costanti (e nel caso complesso anche chiusa per coniugio) e definiamo la seguente relazione di equivalenza $x_1 \sim x_2$ se $f(x_1) = f(x_2)$ per ogni $f \in \mathcal A$ allora 
 		$$
-		\overline{\mathcal A} = \{ f \in C(K) \mid x_1 \sim x_2 \Rightarrow f(x_1) = f(x_2) \} \eqqcolon X
+		\overline{\mathcal A} = \{ f \in C(K) \mid x_1 \sim x_2 \Rightarrow f(x_1) = f(x_2) \}
 		$$
-		
-		\textbf{Dimostrazione.}
-
 		\begin{minipage}{\textwidth}
 		\parskip 1ex
 		\setlength{\parindent}{0pt}
 
-
 		\begin{wrapfigure}{r}{100pt}
 			\centering
-			\vspace{-0.5\baselineskip}
+			\vspace{-1.5\baselineskip}
 			\begin{tikzcd}
 				K \ar[r, "g"] \ar[d, "\pi"] & \C \\
 				\sfrac{K}{\sim} \ar[ru, dashed, swap, "\tilde g"]
 			\end{tikzcd}
 			\vspace{-1.5\baselineskip}
 		\end{wrapfigure}
-
-		Si applica Stone-Weierstrass a $\sfrac{K}{\sim}$, è chiaro che $\overline{\mathcal A} \subset X$, vediamo che $X \subset \overline{\mathcal A}$. 
+		
+		\textbf{Dimostrazione del corollario.}
+		Diciamo $X \coloneqq \{ f \in C(K) \mid x_1 \sim x_2 \Rightarrow f(x_1) = f(x_2) \}$ allora applichiamo	il teorema di Stone-Weierstrass a $\sfrac{K}{\sim}$, è chiaro che $\overline{\mathcal A} \subset X$, vediamo che $X \subset \overline{\mathcal A}$. 
 
 		Data $g \in X$ troviamo $g_n \in \mathcal A$ tale che $g_n \to g$ uniformemente allora $\exists \tilde g \colon \sfrac{K}{\sim} \to \C$ tale che $g = \tilde g \compose \pi$, consideriamo $\mathcal A = \{ \tilde f \mid f \in \mathcal A \}$ che è una sottoalgebra di $C(\overline{\sfrac{K}{\sim}}; \C)$ che separa i punti, etc. 
 		\qed
+		\end{minipage}
 
-		Sia ora $K = [-\pi, \pi]$ e consideriamo
+		Torniamo alla dimostrazione della completezza di $\mathcal F$, $K = [-\pi, \pi]$ e consideriamo
 		$$
-		\mathcal A = \operatorname{Span}_\C(\mathcal F) = \left\{ \sum_{n \in \Z} c_n e^{inx} \right\} = \{ p(e^{inx}) \mid p \text{ polinomio a esponenti interi} \}
+		\mathcal A = \spn_\C(\mathcal F) = \left\{ \sum_{n \in \Z} c_n e^{inx} \right\} = \{ p(e^{inx}) \mid p \text{ polinomio a esponenti interi} \}
 		$$
 		segue che $\mathcal A$ è una sottoalgebra, separa i punti di $K$ tranne $-\pi$ e $\pi$ ed è chiuso per coniugio.
 
-		Per il corollario $\overline{\mathcal A}^{\,C} = \{ f \in C([-\pi, \pi]; \C) \mid f(-\pi) = f(\pi) \}$. Se invece facciamo la chiusura rispetto ad $L^2$ abbiamo che $\overline{\mathcal A}^{\,L^2} \supseteq \{ f \in C([-\pi, \pi]; \C) \mid f(-\pi) = f(\pi) \}$ per il fatto che convergenza uniforme $\implies$ convergenza in $L^2$ per spazi di misura finita.
+		Per il corollario\footnote{Notiamo che la topologia su $\mathcal A$ è quella data dalla norma del $\sup$ delle funzioni continue quindi la chiusura è rispetto a tale norma e la indichiamo con $\overline{\mathcal A}^{\,C}$.} $\overline{\mathcal A}^{\,C} = \{ f \in C([-\pi, \pi]; \C) \mid f(-\pi) = f(\pi) \}$. Se invece facciamo la chiusura rispetto ad $L^2$ abbiamo che 
+		$$
+		\overline{\mathcal A}^{\,L^2} \supseteq \{ f \in C([-\pi, \pi]; \C) \mid f(-\pi) = f(\pi) \}
+		$$
+		in quanto la convergenza uniforme implica la convergenza in $L^2$ per spazi di misura finita.
 
-		Poi $\overline{\mathcal A}^{\,L^2} \supseteq \{ f \in C([-\pi, \pi]; \C) \}$, data $f \in C([-\pi, \pi]; \C)$ la approssimiamo in $L^2$ con $f_n = f \cdot \varphi_n$, dove le $\varphi_n$ sono tali che $\varphi_n(-\pi) = \varphi_n(\pi) = 0$, $\varphi_n = 1$ su $[1/n - \pi, \pi - 1/n]$ e interpolata linearmente nell'intervallo rimanete.
+		Inoltre $\overline{\mathcal A}^{\,L^2} \supseteq \{ f \in C([-\pi, \pi]; \C) \}$, data $f \in C([-\pi, \pi]; \C)$ la approssimiamo in $L^2$ con $f_n = f \cdot \varphi_n$, dove le $\varphi_n$ sono tali che $\varphi_n(-\pi) = \varphi_n(\pi) = 0$, $\varphi_n = 1$ su $[1/n - \pi, \pi - 1/n]$ e interpolata linearmente nell'intervallo rimanete.
 
 		[TODO: Disegnino delle $\varphi_n$]
 
 		Infine poiché le funzioni continue sono dense in $L^2$ rispetto alla sua norma segue che $\overline{\mathcal A}^{L^2} = L^2$.
-		\end{minipage}
 
 
 \end{enumerate}
