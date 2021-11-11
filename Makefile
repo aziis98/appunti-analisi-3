@@ -28,7 +28,7 @@ main.pdf: .cache/main.pdf
 	cp .cache/main.pdf main.pdf
 
 # Regola per creare il pdf principale
-.cache/main.pdf: .cache/main.tex $(CACHE_FIGURES_PDF)
+.cache/main.pdf: $(CACHE_TEX) $(CACHE_FIGURES_PDF)
 	cd .cache; latexmk -pdf -halt-on-error main.tex
 
 .cache/main.tex: $(SOURCES_TEX) $(SOURCES_FIGURES)
