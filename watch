@@ -7,5 +7,4 @@ build() {
 
 export -f build
 
-find "$(dirname "$0")/src" -type f | entr -s 'build'
-
+find "$(dirname "$0")/src" -type f | SHELL=/bin/bash entr -s 'build'
