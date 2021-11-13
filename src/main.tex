@@ -3521,7 +3521,7 @@ Vogliamo vedere che
 		$$
 		\overline{\mathcal A} = \{ f \in C(K) \mid x_1 \sim x_2 \Rightarrow f(x_1) = f(x_2) \}
 		$$
-		\begin{minipage}{\textwidth}
+		\begin{minipage}{\textwidth - 2.5em}
 		\parskip 1ex
 		\setlength{\parindent}{0pt}
 
@@ -3563,20 +3563,230 @@ Vogliamo vedere che
 \end{enumerate}
 
 %
+% Lezione dell'8 Novembre 2021
+%
+
+% inserire recap ?
+
+% TODO: Magari mettere tutto in display style
+\textbf{Esempio.} (calcolo coefficienti di Fourier).
+\begin{itemize}
+\item $\cos x = \frac{e^{ix} - e^{-ix}}{2} = \frac{1}{2} e^{ix} + \frac{1}{2} e^{-ix}$, allora $ c_n =
+\begin{cases}
+\frac{1}{2} \quad n = \pm 1 \\
+0 \quad \text{altrimenti} 
+\end{cases}. 
+$
+
+\item $(\sin x)^2 = (\frac{e^{ix} - e^{-ix}}{2i})^2 = \frac{1}{4} e^{2ix} + \frac{1}{2} - \frac{1}{4} e^{-2ix}$, allora $c_n =
+\begin{cases}
+-\frac{1}{4} \quad n = \pm 2 \\
+\frac{1}{2} \quad n = 0 \\
+0 \quad \text{altrimenti} 
+\end{cases} $.
+
+\item $f(x) = x, c_0 = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) \dd x = 0$. Per $n \neq 0$ :
+%
+$$
+c_n = \frac{1}{2\pi} \int_{-\pi}^\pi x xe^{-inx} \dd x = \frac{1}{2\pi} \left| \frac{x e^{-inx}}{-in} \right|_{-\pi}^\pi - \frac{1}{2\pi} \int_{-\pi}^\pi \frac{e^{-inx}}{-in} \dd x = \frac{(-1)^n i}{n}.
+$$
+%
+
+Calcoliamo ora  $\ds \sum_{n \in \Z} \left| c_n \right|^2$.
+Valgono le uguaglianze
+%
+\begin{align*}
+\sum_{n \in \Z} \left| c_n \right|^2i & = 2 \sum_{n=1}^{+\infty} \frac{1}{n^2} \\
+\sum_{n \in \Z} \left| c_n \right|^2i & = \frac{1}{2\pi } \norm{x}_2^2 = \frac{1}{2\pi } \int_{-\pi}^\pi x^2 \dd x = \frac{2}{2\pi} \cdot \frac{\pi^3}{3} = \frac{\pi^2}{3}.
+\end{align*}
+%
+Dunque $\ds \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^3}{6}$.
+
+\end{itemize}
+
+\subsection{Regolarità di $f$ e dei coefficienti}
+
+\textbf{Proposizione 1.} Data $f \in [-\pi,\pi] \to \C$ tale che
+\begin{itemize}
+\item[(R)] $f \in C^1$ (basta $f$ continua e  $C^1$ a tratti).
+
+\item[(CB)] $f(-\pi) = f(\pi)$.
+\end{itemize}
+
+Allora $\ds c_n(f') = in \ c_n(f) (\ast)$.
+
+Derivazione formale della formula
+%
+$$
+f(x) = \sum_{n \in \Z} c_n e^{inx} \xrightarrow{\text{derivata}} f'(x) = \sum_{n \in \Z} in \ c_n e^{inx} 
+$$
+%
+
+\textbf{Dimostrazione.} Vale quanto segue
+\begin{align*}
+c_n(f') & = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x \\
+& \underbrace{=}_{\text{int. per parti}} \frac{1}{2\pi} \overbrace{\cancel{\left| f(x) e^{-inx} \right|_{-\pi}^\pi}}^{f(-\pi) = f(\pi), \; e^{-in\pi} = e^{-in (-\pi)}} - \frac{1}{2\pi} \int_{-\pi}^\pi f(x) (-in) e^{-inx} \dd x \\
+& = (in) \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x = in \ c_n(f).
+\end{align*} 
+\qed
+
+\textbf{Esercizio.} Trovare l'analogo della formula della derivata nel caso di cui non valga la condizione al bordo (CB). [TO DO]
+
+\textbf{Osservazione.} In verità, basta ancora meno. Possiamo riformulare la Proposizione 1 come segue.
+\begin{itemize}
+\item[(R')] Data $f$ continua ed esiste $\ds g \in L^1([-\pi,\pi], \C) $ tale che $\ds f(x) = f(-\pi) + \int_{-x}^x g(t) \dd t $ 
+
+\item[(CB)] $\ds f(-\pi) = f(\pi) \longiff \int_{-x}^x g(t) \dd t = 0 $.
+\end{itemize}
+Allora la formula $(\ast)$ diventa $\ds c_n(g) = in \ c_n(f)$.
+
+\textbf{Proposizione 2.} Data $f$ come nella Proposizione 1, valgono le seguenti
+\begin{enumerate}
+\item $\ds \sum_{n \in \Z} n^2 \left| c_n(f) \right|^2 = \frac{\norm{f'}_2^2}{2\pi} < +\infty$.
+
+\item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| < +\infty $ per ogni $\alpha < 1/2$.
+
+\item La serie di Fourier converge \footnote{$\sum a_n(x)$ converge totalmente se converge la serie $\sum \norm{a_n (x)}_\infty$.}{totalmente}.
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+\begin{enumerate}
+
+\item $\ds \sum n^2 \left| c_n(f) \right|^2 \overbrace{=}^{(\ast)} \sum \left| c_n(f) \right|^2
+\overbrace{=}^{\text{Parceval} } 2\pi \norm{f'}_2^2 \underbrace{<}_{\mathclap{f' \in L^1([-\pi,\pi], \C) \subset L^2([-\pi,\pi], \C) }} +\infty$.
+
+\item $\ds \sum \left| n \right|^\alpha \left| c_n(f) \right| 
+\underbrace{\leq}_{(n \neq 0)} \sum_{n \in \Z} \left| n \right| \left| c_n(f) \right| \cdot \frac{1}{\left| n \right|^{1-\alpha }}
+\underbrace{\leq}_{C-S} \overbrace{\left( \sum_{n \in \Z} \left| n \right|^2 \left| c_n(f) \right|^2  \right)^{1/2}}^{< +\infty \text{ per il punto ii)}} \cdot \left( \sum_{n \in \Z} \frac{1}{\left| n \right|^{2-\alpha }}  \right)^{1/2}. 
+$
+
+\item Dal punto precedente con $\alpha = 0$ otteniamo $\ds \norm{c_n(f) e^{inx}}_\infty \sum_{n \in \Z} \left| c_n(f) \right| < +\infty $.
+\end{enumerate}
+
+\textbf{Proposizione 3.} Data $f \in [-\pi,\pi] \to \C$ tale che
+\begin{itemize}
+\item[$(R_k)$] $f \in C^k$ (oppure $f \in C^{k-1}$ e $D^{k-1}f$ è $C^1$ a tratti).
+
+\item[$(CB_{k-1})$] $D^h f(-\pi) = D^h f(\pi)$ per $h = 0,1,\ldots, k-1$.
+\end{itemize}
+Allora
+\begin{enumerate}
+\item $\ds c_n (D^h f) = (in)^h c_n(f)$ per ogni $n \in \Z$ per ogni $h = 1,\ldots,k$.
+
+\item $\ds \sum \left| n \right|^{2k} \left| c_n(f) \right|^2 \leq \frac{\norm{D^k f}_2^2}{2\pi} < +\infty$.
+
+\item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| < +\infty $ per ogni $\alpha < k - 1/2$.
+
+\item La serie di Fourier di $f$ converge totalmente con tutte le derivate fino all'ordine $k-1$.
+\end{enumerate}
+
+\textbf{Proposizione 4.} Se $f$ è continua e $\ds \sum_{n \in \Z} \left| n \right|^{k-1} \left| c_n(f) \right| < +\infty $ allora $f \in C^{k-1}$ e soddisfa $(CB_{k-1})$.
+
+\textbf{Dimostrazione.} Preso $h=0,1,\ldots,,k-1$ vale
+\begin{align*}
+D^k (c_n(f) e^{inx}) & = c_n(f) (in)^h e^{inx} \\
+\norm{D^k (c_n(f) e^{inx})} & = \left| c_n(f) \right| \left| n \right|^h \leq \left| c_n(f) \right| \left| n \right|^{k-1}.
+\end{align*}
+Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente e quindi uniformemente per ogni $h \leq k-1$ ad $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
+Ma
+%
+$$
+\frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
+\leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \Longrightarrow +\infty} 0.
+$$
+%
+Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
+Allora $f = \tilde{f}$ nel senso $L^2$. Siccome $f,\tilde{f}$ sono continue e coincidono quasi ovunque, vale $f = \tilde{f}$.
+Abbiamo usato il lemma
+
+\vs
+
+\textbf{Lemma.} Date $f,\tilde{f}$ continue e $f(x) = \tilde{f}(x)$ per quasi ogni $x$, allora  $f(x) = \tilde{f}(x)$ per ogni $x$.
+\qed
+
+\vs
+
+\textbf{Osservazione.} $f \in C^{k-1}([-\pi,\pi]) + (CB_{k-1})$ se solo se $f $ è la restrizione a $[-pi,\pi]$ di una funzione $2\pi$-periodica e $C^{k-1}$.
+
+
+\subsection{Convergenza puntuale della serie di Fourier}
+
+\textbf{Teorema.} Data $f \in L^1([-\pi,\pi], \C) $ (estesa in modo $2\pi$-periodico a tutto $\R$) tale che esiste $\ol{x} \in \R$ ed esiste $\alpha > 0$ tale che $f$ è $\alpha$-Holderiana in $\ol{x}$, cioè esiste $\delta > 0 $, $M < +\infty$ per cui
+%
+$$
+\left| f(\ol{x} +t) - f(\ol{x}) \right| \leq M \left| t \right|^\alpha \qquad \forall t \colon \left| t \right| < \delta \longiff \limsup_{t \to 0} \frac{\left| f(\ol{x} + t) - f(\ol{x}) \right|}{\left| t \right|^\alpha } < +\infty.
+$$
+%
+Allora $\ds \sum_{-\infty}^\infty c_n(f) e^{in\ol{x}}$ converge a $f(\ol{x})$.
+Cioè $\ds \sum_{-N}^N c_n(f) e^{in\ol{x}}\xrightarrow{N \to \infty} f(\ol{x})$ 
+
+\textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con "convoluzione":
+
+Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots,\ldots,\ldots,$ (estesa a funzioni $2\pi$-periodiche su $\R$).
+%
+$$
+S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx}  
+$$
+%
+Riscriviamo
+%
+\begin{align*}
+S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx} & = \sum_{-N}^N \frac{1}{2\pi} \left( \int_{-\pi}^\pi f(y) e^{-iny} \dd y \right) e^{inx} \\
+& = \frac{1}{2\pi} \in_{-\pi}^\pi f(y) \left( \sum_{n=-N}^{N} e^{in(x-y)}  \right) \dd y.
+\end{align*}
+
+Poniamo $\ds D_N(z) \coloneqq \sum_{n=-N}^{N} e^{inz} $ che si definisce \textbf{nucleo di Dirichlet}. Allora
+%
+\begin{align*}
+S_n f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{\mathclap{x-y=t, \dd y = \dd t}} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
+& \overbrace{=}^{(\star)} \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \dd t 
+\end{align*}
+
+Dove $(\star)$ è il seguente lemma.
+
+\textbf{Lemma.} Se $g$ è $T$-periodica e $g \in L^1([-\pi,\pi], \C) $, allora
+%
+$$
+\int_0^T g(\tau) \dd \tau = \int_c^{c+T} g(\tau-s) \dd \tau \quad \forall s \; \forall c.
+$$
+%
+Ne segue che
+%
+$$
+S_N f(x) \coloneqq \sum_{-N}^{N} c_n(f) e^{inx} = \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \dd t 
+$$
+%
+dove
+%
+$$
+D_N(t) = \sum_{-N}^{N} e^{int} = \frac{\sin( (N+ 1/2)t)}{\sin(t/2)}.
+$$
+%
+Infatti,
+%
+\begin{align*}
+D_N(t) & = \sum_{-N}^N e^{int} = \sum_{-N}^N ( e^{it} )^t = e^{-iNt} \cdot \sum_{n=0}^{2N} ( e^{it} )^n \\
+& = \frac{e^{-i(N + 1/2)t}}{e^{-i t/2}} \cdot \frac{e^{(2N+1) it} - 1}{e^{it} - 1} = \frac{e^{(N+1/2)it} - e^{-(N+1)it}}{e^{i t/2} - e^{-i t/2}} \\
+& = \frac{\sin ( (N+1/2)t)}{\sin(t/2)}.
+\end{align*}
+
+%
 % Lezione del 10 Novembre 2021
 %
 
-\section{Convergenza puntuale della serie di Fourier}
+% @aziis98: Ok alla fine ho commentato questa parte qua sotto che è uguale a sopra ed ho lasciato il lemma di recap tipo
 
-\textbf{Teorema.} (di convergenza puntuale della serie di Fourier).
-Data $f \in L^1([-\pi, \pi])$ estesa a $\R$ per periodicità e dato $\bar x \in \R$ tale che $f$ è $\alpha$-H\"olderiana in $\bar x$ con $\alpha > 0$ (cioè $\exists M < +\infty, \delta > 0$ tali che $|f(\bar x + t) - f(\bar x)| \leq M |t|^\alpha$ se $|t| \leq \delta$) allora
-$$
-S_n f(\bar x) \xrightarrow{N \to \infty}  f(\bar x)
-$$
-dove $S_n f(\bar x) = \ds \sum_{n=-N}^N c_n e^{inx}$.
+% \section{Convergenza puntuale della serie di Fourier}
+
+% \textbf{Teorema.} (di convergenza puntuale della serie di Fourier).
+% Data $f \in L^1([-\pi, \pi])$ estesa a $\R$ per periodicità e dato $\bar x \in \R$ tale che $f$ è $\alpha$-H\"olderiana in $\bar x$ con $\alpha > 0$ (cioè $\exists M < +\infty, \delta > 0$ tali che $|f(\bar x + t) - f(\bar x)| \leq M |t|^\alpha$ se $|t| \leq \delta$) allora
+% $$
+% S_n f(\bar x) \xrightarrow{N \to \infty}  f(\bar x)
+% $$
+% dove $S_n f(\bar x) = \ds \sum_{n=-N}^N c_n e^{inx}$.
 
 \textbf{Lemma.} (di rappresentazione di $S_n f$ come convoluzione)
-Data $f$ come sopra abbiamo visto che
+Ricapitolando data $f$ come sopra abbiamo visto che
 $$
 S_n f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_n(t) \dd t
 \qquad
