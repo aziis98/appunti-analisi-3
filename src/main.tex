@@ -31,7 +31,7 @@ Uno spazio misurabile è una terna $(X, \mc A, \mu)$ tale che
 	
 	\item $X$ è un insieme qualunque.
 
-	\item $\mc{A}$ è una $\sigma$-algebra di sottoinsiemi di $X$, ovvero una famiglia di sottoinsiemi di $X$ che rispetta le seguenti proprietà:
+	\item $\mc{A}$ è una $\sigma$-algebra di sottoinsiemi di $X$ (chiamata $\sigma$-algebra dei misurabili) ovvero una famiglia di sottoinsiemi di $X$ che rispetta le seguenti proprietà:
 		\begin{itemize}
 			\item $\emptyset, X \in \mc{A}$.
 			\item $\mc{A}$ è chiusa per complementare, unione e intersezione numerabile.
@@ -46,15 +46,15 @@ Uno spazio misurabile è una terna $(X, \mc A, \mu)$ tale che
 
 
 \textbf{Notazione.}
-Data una crescente di insiemi $E_1 \subset E_2 \subset \cdots E_n \subset \cdots$ con $\bigcup E_n = E$, scriviamo $E_n \uparrow E$.
+Data una successione crescente di insiemi $E_1 \subset E_2 \subset \cdots E_n \subset \cdots$ con $\bigcup E_n = E$, scriviamo $E_n \uparrow E$.
 
 \textbf{Proprietà.}
 \begin{itemize}
 	\item $\mu(\emptyset) = 0$
 	\item \textit{Monotonia}: Dati $E,E' \in \mc{A}$ e $E \subset E'$, allora $\mu(E) \leq \mu(E')$.
-	\item Data una successione crescente di insiemi $E_n \uparrow E$, allora $\mu(E) = \lim_{n \to \infty} \mu(E_n) = \sup_{n} \mu(E_n)$.
-	\item Se $E_n \uparrow E$ e $\mu (E_{\bar{n}}) < +\infty$ per qualche $\bar{n}$, allora $\mu(E) = \lim_{n \to + \infty} \mu(E_n) = \inf_{n} \mu(E_n)$.
-	\item \textit{Subadditività}: Se $\bigcup E_n \supset E$, allora $\mu(E) \leq \sum_{n} \mu(E_n)$.
+	\item Data $E_n \uparrow E$, vale $\ds \mu(E) = \lim_{n \to \infty} \mu(E_n) = \sup_{n} \mu(E_n)$.
+	\item Se $E_n \uparrow E$ e $\mu (E_{\bar{n}}) < +\infty$ per qualche $\bar{n}$, allora $\ds \mu(E) = \lim_{n \to \infty} \mu(E_n) = \inf_{n} \mu(E_n)$.
+	\item \textit{Subadditività}: Se $\ds E \subset \bigcup E_n $, allora $\ds \mu(E) \leq \sum_{n} \mu(E_n)$.
 \end{itemize}
 
 \textbf{Osservazione.} 
@@ -116,16 +116,16 @@ D'ora in poi consideriamo solo misure complete.
 \textbf{Osservazioni.}
 \begin{itemize}
 	\item $\mathscr L^n(R) = \mathrm{vol}_n (R)$.
-	\item $\mathscr L^n$ è così definita se $\mc{P}(\R^n)$ ma non è $\sigma$-addittiva.
-	\item $\mathscr L^n$ è $\sigma$-addittiva su $\mc{M}^n$ (è per questo che bisogna introdurre $\mc{M}^n$).
+
+	\item $\mathscr L^n$ non è $\sigma $-addittiva su $\mc{P}(\R^n)$.
 \end{itemize}
 
-Il terzo punto giustifica l'introduzione dei \textbf{misurabili secondo Lebesgue}. Dunque definiamo $\mc{M}^n$, dato $E \subset \R^n$ si dice che $E$ è misurabile (secondo Lebesgue) se
+Il secondo punto giustifica l'introduzione della $\sigma $-algebra dei \textbf{misurabili secondo Lebesgue} che denotiamo con $\mc{M}^n$.
+
+Dato $E \subset \R^n$ si dice che $E$ è misurabile (secondo Lebesgue) se
 $$
-\forall \epsilon > 0 \; \exists A \text{ aperto e } C \text{ chiuso con }
-C \subset E \subset A 
-\text{tali che}
-\mathscr L^n (A \smallsetminus C) \leq \epsilon
+\forall \epsilon > 0 \; \exists A \text{ aperto e } C \text{ chiuso, tali che }
+C \subset E \subset A \; \text{e} \; \mathscr L^n (A \smallsetminus C) \leq \epsilon.
 $$
 
 \textbf{Osservazioni.}
@@ -171,7 +171,7 @@ $$
 \mc S := \left\{ f \colon X \to \R \mymid f = \sum_i \alpha_i \One_{E_i} \text{ con $E_i$ misurabili e $\{\alpha_i\}$ finito} \right\}
 $$
 
-\textbf{Osservazione.} La rappresentazione di una funzione semp/alice come combinazione lineare di indicatrici di insiemi \textit{non è unica}, però se necessario possiamo prendere gli $E_i$ disgiunti.
+\textbf{Osservazione.} La rappresentazione di una funzione semplice come combinazione lineare di indicatrici di insiemi \textit{non è unica}, però se necessario possiamo prendere gli $E_i$ disgiunti.
 
 \section{Integrale}
 
@@ -304,7 +304,7 @@ $$
 La seconda proprietà è essenziale; sostituirla con $\ds \int_X \left| f_n \right| \dd \mu \leq C < + \infty$ non basta!
 
 \textbf{Definizione.}
-Data una ``densità'' $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la \textbf{misura $\mu$ con densità $\rho$} è data da
+Data una \textit{densità} $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la \textbf{misura $\mu$ con densità $\rho$} è data da
 $$
 \forall E \in \mc A \quad \mu(E) \coloneqq \int_{E} \rho \dd x
 $$ 
@@ -317,9 +317,9 @@ $$
 
 
 \textbf{Teorema} (di cambio di variabile).
-Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
+Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo \footnote{funzione differenziabile con inversa differenziabile.} di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
 $$
-\int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(\Lambda \Phi(x)) \right| \dd x.
+\int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(J_{\Phi(x)}) \right| \dd x.
 $$
 
 La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$ a valori in $\R^n$ sommabile.
@@ -357,7 +357,7 @@ Possiamo generalizzare il teorema di Fubini-Tonelli a misure generiche ed ottene
 		\int_{E_2} \int_{E_1} f(x_1,x_2) \dd \mu_1(x_1)  \dd \mu_2(x_2) 
 		= \int_{E_1} \int_{E_2} f(x_1,x_2) \dd \mu_2(x_2)  \dd \mu_1(x_1).
 		$$ 
-		se $f\geq 0$ oppure $\ds \int_{X_1} \int_{x_2} \left| f \right| \dd \mu_2(x_2)  \dd \mu_1(x_1) < + \infty $.
+		se $f\geq 0$ oppure $\ds \int_{X_1} \int_{X_2} \left| f \right| \dd \mu_2(x_2)  \dd \mu_1(x_1) < + \infty $.
 	
 	\item \textbf{Teorema} (di scambio serie-integrale). Se $X_1 \subset \R$ (oppure $X_1 \subset \R^n$), $\mu_1 = \mathscr L^n$ e $X_2 = \N$, $\mu_2$ è la misura che conta i punti, allora la formula sopra diventa
 		$$
@@ -396,9 +396,9 @@ e $f \compose u$ è integrabile.
 \begin{itemize}
 	\item $(f \compose u)^-$ ha integrale finito.
 
-	\item Interpretando $\mu$ come probabilità si riscrive come $\mathbb E[f \compose \mu] \geq f(\mathbb[u])$.
+	\item Interpretando $\mu$ come probabilità si riscrive come $\mathbb E[f \compose \mu] \geq f(\mathbb{E}[u])$.
 
-	\item Se $u$ è una funzione semplice, cioè $u = \sum_i y_i \cdot \One_{E_i}$ con $E_i$ disgiunti e $\bigcup E_i = X$ allora posti $\lambda_i = \mu(E_i)$ abbiamo
+	\item Se $u$ è una funzione semplice, cioè $\ds u = \sum_i y_i \cdot \One_{E_i}$ con $E_i$ disgiunti e $\bigcup E_i = X$ allora posti $\lambda_i = \mu(E_i)$ abbiamo
 		$$
 		\int_X f \compose u \dd \mu = \int_X \sum_i f(y_i) \cdot \One_{E_i} \dd \mu = \sum_i \lambda_i f(y_i) \geq f \left( \sum_i \lambda_i y_i \right) = f \left( \int_X u \dd \mu \right)
 		$$
@@ -428,7 +428,7 @@ $$
 \end{itemize}
 
 \textbf{Dimostrazione.}
-Poniamo $y_0 \coloneqq \int_X u \dd \mu$, allora la tesi diventa
+Poniamo $\ds y_0 \coloneqq \int_X u \dd \mu$, allora la tesi diventa
 $$
 \int_X f \compose u \dd \mu \geq f(y_0)
 $$
@@ -445,7 +445,7 @@ $$
 \forall y_0 \in \R^d \quad \sup_{\substack{\phi \text{ affine} \\ \phi \leq f}} \phi(y_0) = f(y_0)
 $$
 
-Nel caso $d = 1$ e $f \colon \R \to \R$ possiamo appoggiarci al fatto che le funzioni convesse sono ammettono sempre derivata destra o sinistra, il $\sup$ diventa un massimo e ci basta prendere come $\phi$ la retta tangente in $(y_0, f(y_0))$ o una con pendenza compresa tra $f'(y_0^-)$ e $f'(y_0^+)$.
+Nel caso $d = 1$ e $f \colon \R \to \R$ possiamo appoggiarci al fatto che le funzioni convesse ammettono sempre derivata destra o sinistra, il $\sup$ diventa un massimo e ci basta prendere come $\phi$ la retta tangente in $(y_0, f(y_0))$ o una con pendenza compresa tra $f'(y_0^-)$ e $f'(y_0^+)$.
 
 Rileggendo meglio la dimostrazione segue che $(f \compose u)^- < (\phi \compose u)^- \implies (f \compose u)^-$. 
 
@@ -457,17 +457,17 @@ $$
 $$
 convenendo che $\sfrac{1}{\infty} = 0$.
 
-Fissiamo $p \in [1, +\infty]$ detto ``esponente di sommabilità'' e sia $(X, \mc A, \mu)$ come sempre.
+Fissiamo $p \in [1, +\infty]$ detto \textit{esponente di sommabilità} e sia $(X, \mc A, \mu)$ come sempre.
 
 \textbf{Definizione.} $f \colon X \to \overline \R$ o $\R^d$ misurabile, allora la \textbf{norma $p$ di $f$} è per $p \in [1, +\infty)$
 $$
-\norm{f}_p \coloneqq \left( \int_X |f|^p \dd \mu \right)^p
+\norm{f}_p \coloneqq \left( \int_X |f|^p \dd \mu \right)^{1/p}
 $$
 mentre per $p = +\infty$ poniamo
 $$
-\norm{f}_\infty \coloneqq \inf \{ m \in [0, +\infty] \mid |f(x)| \leq m \text{ per $\mu$-q.o. } x \}
+\norm{f}_\infty = \mathrm{supess} f(x) \coloneqq \inf \{ m \in [0, +\infty] \mid |f(x)| \leq m \text{ per $\mu$-q.o. } x \}.
 $$
-in realtà queste sono solo delle semi-norme\footnote{Vedremo meglio più avanti questo dettaglio}.
+\textbf{Nota.} In realtà queste sono solo delle semi-norme\footnote{Vedremo meglio più avanti questo dettaglio}.
 
 \begin{itemize}
 	\item $\ds \norm{f}_\infty \leq \sup_{x \in X} |f(x)|$
@@ -506,12 +506,12 @@ $$
 inoltre vale l'uguale se e solo se $a_1 = a_2$.
 
 \textbf{Dimostrazione.}
-Se $a_1 = a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$, ma sappiamo che 
+Se $a_1 = a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$. Per la concavità del logaritmo abbiamo
 % e passiamo $a_1^{\lambda_1} a_2^{\lambda_2}$ al logaritmo
 $$
-\lambda_1 \log a_1 + \lambda_2 \log a_2 \leq \log(\lambda_1 a_2 + \lambda_2 a_2)
+\lambda_1 \log a_1 + \lambda_2 \log a_2 \leq \log(\lambda_1 a_2 + \lambda_2 a_2),
 $$
-per concavità del logaritmo e quindi segue la tesi.
+da cui segue la tesi.
 
 Il se e solo se per l'uguale segue dal fatto che il logaritmo è \textit{strettamente concavo}. 
 \qed
@@ -832,7 +832,7 @@ su $\mc{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1 / t^
 Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mc{B}(0,1)$.
 %
 $$
-\int_{\mc{B(0,1)}}^{} \psi(x) \dd x 
+\int_{\mc{B}(0,1)}^{} \psi(x) \dd x 
 = c_n \int_0^1 \frac{1}{\rho^\alpha} \rho^{n -1} \dd \rho 
 = c_n \int_0^1 \rho^{n-1-\alpha} \dd \rho =
 \begin{cases}
@@ -844,7 +844,7 @@ $$
 Concludendo,
 %
 $$
-	\int_{B}(0,1)^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n > \alpha.
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n > \alpha.
 $$
 %
 \textbf{Esercizio.}
@@ -883,9 +883,9 @@ Studiamo separatamente i due pezzi dell'integrale.
 Inoltre,
 %
 $$
-	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	\int_{\R^n \setminus \mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
 	= \int_{\R^n \setminus \; \mc{B}(0,1)}^{} \frac{1}{\rho^{2\beta}} \cdot \frac{\rho^{n-1}}{\left( \frac{1}{\rho} + 1 \right)^\beta} \dd \rho 
-	\approx \int_{1}^{+\infty} \frac{\rho^{n-1}}{\rho^{2\beta}} \dd rho < + \infty \longiff 2\beta > \alpha.  
+	\approx \int_{1}^{+\infty} \frac{\rho^{n-1}}{\rho^{2\beta}} \dd \rho < + \infty \longiff 2\beta > n.  
 $$
 %
 In conclusione, l'integrale è finito se $n > \beta > n / 2$.
@@ -895,7 +895,7 @@ In conclusione, l'integrale è finito se $n > \beta > n / 2$.
 \textbf{Esercizio.}
 Studiare l'insieme di finitezza al variare del parametro $\alpha$ dell'integrale
 $$
-	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x .
 $$
 Osserviamo che la norma 1 e 2 sono legate dalle seguenti disuguglianze
 $$
@@ -936,7 +936,7 @@ Dunque l'integrale $\ds \int_{[0,1]^n}^{} \frac{1}{\norm{x}_1^\alpha} \dd x$ con
 \item Dimostrare che date $f,g$ misurabili ed $r,p_1,p_2 > 0$ tali che  $1 / r = 1 / p_1 + 1 / p_2$.
 Allora vale
 $$
-	\norm{ f \cdot g }_r \leq \norm{ f }_{p_1} + \norm{ g }_{p_2}.
+	\norm{ f \cdot g }_r \leq \norm{ f }_{p_1} \cdot \norm{ g }_{p_2}.
 $$
 \textit{Suggerimento.} Usare Hölder osservando che $\ds 1 = \frac{r}{p_1} + \frac{r}{p_2} = \frac{1}{\left( p_1/r \right)} + \frac{1}{\left( p_2/r \right)}$.
 
@@ -947,6 +947,8 @@ $$
 \textit{Suggerimento.} Fare il primo passo dell'induzione e usare la formula precedente scegliendo $r$ in modo corretto.
 
 \end{enumerate}
+
+[TO DO: Aggiungere soluzione]
 
 % @aziis98: Forse ci conviene aggiungere commenti del genere almeno per noi, poi magari aggiungiamo meglio i link per lezione con le date.
 
@@ -967,9 +969,9 @@ Sia $\mathscr L^p$ l'insieme delle funzioni $f \colon X \to \R$ o $\R^d$ misurab
 
 		\textbf{Dimostrazione.}
 		\begin{itemize}
-			\item $\mathscr L^p$ è chiuso per moltiplicazione per scalari.
+			\item $\mathscr L^p$ è chiuso per somma e moltiplicazione per scalari.
 
-			\item $f_1, f_2 \in \mathscr L^p \implies f_1 + f_2 \in \mathscr L^p$
+			% \item $f_1, f_2 \in \mathscr L^p \implies f_1 + f_2 \in \mathscr L^p$
 
 			\item Dalla definizione segue subito $\norm{\lambda f}_p = |\lambda| \cdot \norm{f}_p$ l'omogeneità della norma.
 
@@ -978,7 +980,7 @@ Sia $\mathscr L^p$ l'insieme delle funzioni $f \colon X \to \R$ o $\R^d$ misurab
 
 	\item In particolare non è una norma se $\{ 0 \} \subsetneq \{ f \mid \norm{f}_p = 0 \}$ ovvero se $\mc A$ contiene insiemi non vuoti di misura nulla.
 
-	\item In generale dato $V$ spazio vettoriale e $\norm{\curry}$ semi-norma su $V$ possiamo inotrdurre $N \coloneqq \{ v \mid \norm{v} = 0 \}$. $N$ risulta essere un sottospazio di $V$ e la norma data da $\norm{[v]} \coloneqq \norm{v}$ per $[v] \in \sfrac{V}{N}$ è ben definita ed è proprio una norma su $\sfrac{V}{N}$.
+	\item In generale dato $V$ spazio vettoriale e $\norm{\curry}$ semi-norma su $V$ possiamo introdurre $N \coloneqq \{ v \mid \norm{v} = 0 \}$. $N$ risulta essere un sottospazio di $V$ e la norma data da $\norm{[v]} \coloneqq \norm{v}$ per $[v] \in \sfrac{V}{N}$ è ben definita ed è proprio una norma su $\sfrac{V}{N}$.
 
 	\item Nel caso della della norma $\norm{\curry}_p$ abbiamo che $[f_1] = [f_2] \iff [f_1 - f_2] = 0 \iff f_1 - f_2 = 0$ quasi ovunque. 
 \end{itemize}
@@ -994,15 +996,15 @@ $$
 \textbf{Notazione.}
 Ogni tanto serve precisare meglio l'insieme di partenza e di arrivo degli spazi $L^p$ ed in tal caso useremo le seguenti notazioni
 $$
-L^p = L^p(X) = L^p(X, \mu) = L^p(X, \mc A, \mu) = L^p(X, \mu; \R^d)
+L^p = L^p(X) = L^p(X, \mu) = L^p(X, \mc A, \mu) = L^p(X, \mu; \R^d).
 $$
 
 \textbf{Nota.}
-Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttamente parlando di ``funzioni in $L^p$''. Le ``operazioni'' comuni non creano problemi però in certi casi bisogna stare attenti di star lavorando con oggetti ben definiti ad esempio:
+Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttamente parlando di ``funzioni in $L^p$''. Le ``operazioni'' comuni non creano problemi però in certi casi bisogna stare attenti di star lavorando con oggetti ben definiti. Ad esempio:
 \begin{itemize}
-	\item Preso $x_0 \in X$ consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$ non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$) di $L^p$ in quanto possiamo variare $f$ su un insieme di misura nulla.
+	\item Preso $x_0 \in X$, consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$. Notiamo che non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$ ovvero che la misura sia atomica) di $L^pa$, in quanto possiamo variare $f$ su un insieme di misura nulla.
 
-	\item Invece l'insieme $\{ f \in L^1 \mid \int_X f \dd \mu = 0 \}$ è ben definito.
+	\item Invece l'insieme $\{\ds  f \in L^1 \mid \int_X f \dd \mu = 0 \}$ è ben definito.
 \end{itemize}
 
 \section{Completezza degli spazi $L^p$}
@@ -1010,7 +1012,7 @@ Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttament
 Vediamo ora la proprietà più importante degli spazi $L^p$.
 
 \textbf{Teorema.}
-Per $p \in [1, +\infty]$ lo spazio $L^p$ è completo.
+Lo spezio $L^p$ è completo per ogni $p \in [1,+\infty]$.
 
 % @aziis98: Per ora mi pare non si possano usare direttamente \label e \ref in questi punti, cioè linka alla sezione.
 \hypertarget{prop:completeness_lemma_1}{}
@@ -1020,21 +1022,22 @@ Dato $(Y, d)$ spazio metrico, allora
 	\item
 		Ogni successione $(y_n)$ tale che
 		$$
-		\sum{\infty}_{n=1} d(y_n, y_{n+1}) < +\infty
+		\sum^{\infty}_{n=1} d(y_n, y_{n+1}) < +\infty
 		$$
-		è di Cauchy, e in particolare converge a qualche $y \in Y$ se $Y$ è completo.
+		è di Cauchy.
 
 	\item \label{item:def_completeness_1}
-		Se ogni $(y_n)$ tale che $\sum{\infty}_{n=1} d(y_n, y_{n+1}) < +\infty$ converge allora $Y$ è completo.	
+		Se ogni $(y_n)$ tale che $\ds \sum^{\infty}_{n=1} d(y_n, y_{n+1}) < +\infty$ converge allora $Y$ è completo.
 \end{enumerate}
 
-\textbf{Osservazione.} Non tutte le successioni di Cauchy $(y_n)$ soddisfano quella condizione, ad esempio su $\R$ la successione $\sfrac{(-1)^n)}{n}$ è di Cauchy però
+\textbf{Osservazione.} Non tutte le successioni di Cauchy $(y_n)$ soddisfano quella condizione. Ad esempio la successione $(-1)^n / n$ definita su $\R$ è di Cauchy però
 $$
 \sum_{n=1}^\infty \left| \frac{(-1)^{n+1}}{n+1} - \frac{(-1)^n}{n} \right| 
 = \sum_{n=1}^\infty \frac{2n + 1}{n^2 + n}
-\approx \sum_{n=1}^\infty \frac{1}{n} \to \infty
+\approx \sum_{n=1}^\infty \frac{1}{n} \to \infty.
 $$
-ma come abbiamo visto nella \ref{item:def_completeness_1} ci basta per mostrare la completezza dello spazio che è ciò che ci interessa veramente.
+
+\textbf{Nota.} Per mostrare la completezza degli spazi $L^p$ è sufficiente verificare la convergenza per una sottoclasse propria delle successioni di Cauchy.
 
 \textbf{Dimostrazione.}
 \begin{enumerate}
@@ -1043,9 +1046,9 @@ ma come abbiamo visto nella \ref{item:def_completeness_1} ci basta per mostrare 
 		$$
 		d(y_m, y_n) \leq \sum_{k=m}^{n-1} d(y_k, y_{k+1}) \leq \sum_{k=m}^\infty d(y_k, y_{k+1}) \to 0
 		$$
-		in quanto è la \textit{coda di una serie convergente} quindi 
+		in quanto è la \textit{coda di una serie convergente}, quindi 
 		$$
-		\forall \epsilon > 0 \; \exists m_\epsilon \text{ tale che } \sum_{k = m_\epsilon}^\infty d(y_k, y_{k+1})< \epsilon \implies \forall n > m \geq m_\epsilon \; d(y_m, y_n) \leq \epsilon
+		\forall \epsilon > 0 \mquad \exists m_\epsilon \text{ tale che } \sum_{k = m_\epsilon}^\infty d(y_k, y_{k+1})< \epsilon \implies \forall n > m \geq m_\epsilon \; d(y_m, y_n) \leq \epsilon
 		$$ 
 
 	\item
@@ -1053,11 +1056,12 @@ ma come abbiamo visto nella \ref{item:def_completeness_1} ci basta per mostrare 
 		$$
 		\sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty
 		$$
-		ma $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq \frac{1}{2^k}$ dunque $d(y_{n_k}, y_{n_{k+1}}) \leq \frac{1}{2^k}$.
+		ma $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
 
 		Quindi per ipotesi $y_{n_k}$ converge a qualche $y \in Y$ ed anche $y_n \to y$.
+		\qed
 \end{enumerate}
-\qed
+
 
 % @aziis98: Il latex mi vuole male e mi metteva solo Corollario e la prima frase alla fine della pagina e l'enumerate alla nuova, però se aggiungiamo cose prima poi lo togliamo.
 \newpage
@@ -1068,7 +1072,8 @@ Dato $Y$ spazio normato, i seguenti fatti sono equivalenti
 \begin{enumerate}
 	\item $Y$ è completo.
 
-	\item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero $\norm{y - \sum_{n=1}^N y_n} \to 0$.
+	% \item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero 
+	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{$\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
 \end{enumerate}
 
 \textbf{Dimostrazione.} 
@@ -1096,8 +1101,9 @@ $$
 \norm{\sum_{n=1}^N g_n}_p^p 
 = \int_X \left( \sum_{n=1}^N g_n(x) \right)^p \dd \mu(x)
 \xrightarrow{\;N\;} \int_X \left( \sum_{n=1}^\infty g_n(x) \right)^p \dd \mu(x)
+= \norm{\sum_{n=1}^\infty g_n}_p^p
 $$
-per \textit{convergenza monotona}.
+per convergenza monotona.
 \qed
 
 \textbf{Dimostrazione} (Completezza spazi $L^p$).
