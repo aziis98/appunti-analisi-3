@@ -8,25 +8,27 @@
 
 ## Development
 
-Questo progetto è stato generato dal template <https://github.com/aziis98/template-latex>, per clonarlo basta fare
+Questo progetto è basato sul template <https://github.com/aziis98/template-latex>. Per clonare questo repo basta fare
 
 ```bash
-https://github.com/aziis98/appunti-analisi-3
+git clone https://github.com/aziis98/appunti-analisi-3
 ```
 
-### Compilazione
+Questo progetto dipende da _Texlive_, _Inkscape_, _Make_ ed opzionalmente anche _entr_ per ricompilare automaticamente i file quando si scrive.
 
-Questo progetto ha come dipendenze _Inkscape_, _Make_ ed eventualmente _entr_.
+### Comandi
 
-Comandi utili
+- `make setup; make main.pdf` 
+	
+    Da eseguire al primo clone per generare la cartella di _cache_ ed i file iniziali generati dalle figure.
 
-- `make setup; make main.pdf` &mdash; da eseguire al primo clone per generare la cartella di cache ed i file iniziali generati dalle figure.
+- `make` 
+    
+    Per compilare il progetto dopo la prima esecuzione
 
-- `make` &mdash; per compilare il progetto dopo la prima esecuzione
+- `./watch` (richiede <https://github.com/clibs/entr>)
 
-- `./watch` &mdash; controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
-
-	Richiede che sia installato <https://github.com/clibs/entr>
+    Controlla se ci sono cambiamenti nei file sorgente e li ricompila se cambiano (e forse mostra addirittura una notifica).
 
 ## Struttura
 
