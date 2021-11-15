@@ -1440,7 +1440,7 @@ e chiamiamo $E_n \coloneqq p(I_n)$. Per ogni $n$ abbiamo che $|I_n| = |E_n| = 1 
 Per la \ref{item:ce_1} basta notare che $\One_{E_n} \to 0$ in misura (in quanto $|E_n| \to 0$) ma $\One_{E_n} \centernot\to 0$ q.o., anzi $\forall x \in [0, 1) \; \One_{E_n}(x) \centernot\to 0$ e la \ref{item:ce_2} segue analogamente.
 \qed
 
-\subsection{Approssimazioni di funzioni in $L^p$}
+\section{Approssimazioni di funzioni in $L^p$}
 
 % Ricordiamo la nozione di insieme denso in uno spazio metrico.
 % Sia (X,d) uno spazio metrico e Y ⊆ X. Allora Y è denso in X se solo se
@@ -1657,7 +1657,7 @@ Usiamo Hölder:
 \begin{align*}
 \int_X \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_X \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_X 1^q \dd \mu  \right)^{1/q}
 \underbrace{\leq}_{p = p_1 / p_2} \left( \int_X \left| f \right|^{p_2} \dd \mu  \right)^{p_2 /p_1} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
-& \underbrace{=}_{q = \left( 1 - \frac{1}{p} \right)^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
+& \underbrace{=}_{\mathclap{q = \left( 1 - \frac{1}{p} \right)^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
 \end{align*}
 %
 Dunque
@@ -1682,22 +1682,22 @@ f & \mapsto f
 
 \textbf{Osservazione.} $L^p(X)$ è uno spazio vettoriale di dimensione infinita, ossia ogni base algebrica ha cardinalità infinita. 
 Vediamo il caso $X = (0,1)$.
-Per trovare una base infinita, cerchiamo per ogni $N \in \N$, $f_1,\ldots , f_N \in L^p(0,1)$ tali che siano linearmente indipendenti.
+Per trovare una base infinita, cerchiamo per ogni $N \in \N$, un insieme di funzioni $f_1,\ldots , f_N \in L^p(0,1)$ tali che siano linearmente indipendenti.
 Vale a dire, presi $\lambda_1,\ldots ,\lambda_N \in \R$ vale $\lambda_1 f_1 + \ldots +f_N = 0$ se solo se $\lambda_1 = \ldots = \lambda_N = 0$.
 
-Ad esempio, definisco $f_i \coloneqq \One_{i/N, (i+1)/N}$ (questa costruzione si può riprodurre per ogni $N \in \N$).
+Ad esempio, definiamo $f_i \coloneqq \One_{i/N, (i+1)/N}$ (questa costruzione si può riprodurre per ogni $N \in \N$).
 
 Ricordiamo che, essendo $L^p(X)$ uno spazio metrico, dato $Y \subset L^p$ vale la seguente caratterizzazione:
 \begin{center}
 $Y$ è compatto $\longiff$ $Y$ è compatto per successioni $\longiff $ $Y$ chiuso e totalmente limitato.
 \end{center}
 
-\textbf{Osservazione.} $Y \subset L^p(X)$ è un sottoinsieme che eredita la norma $\norm{\cdot}_{L^p}$ :
+\textbf{Osservazione.} $Y \subset L^p(X)$ è un sottoinsieme che eredita la norma $\norm{\curry}_{L^p}$ :
 \begin{center}
 $Y$ è completo $\longiff$ $Y$ è chiuso.
 \end{center}
 
-\textbf{Osservazione.} In $L^p$ i sottoinsiemi chiusi e limitati non sono compatti!
+\textbf{Osservazione.} In $L^p$ i sottoinsiemi chiusi e limitati non sono compatti\footnote{Uno spazio metrico è compatto se solo se è completo e totalmente limitato. Inoltre, uno spazio metrico $X$ si dice totalmente limitato se $\forall \epsilon > 0$ esiste $B_\epsilon^1,\ldots,B_\epsilon^n$ tale che $X \subset \bigcup_{i=1}^n B_\epsilon^i$.}!
 In particolare le palle
 %
 $$
@@ -1717,7 +1717,7 @@ Per farlo, esibiamo una successione $\left\{ f_n \right\}_{n \in \N} \subset B$ 
 La costruiamo in modo che non abbia sottosuccessioni di Cauchy
 %
 $$
-f_n \colon (0,1) \to \R, \quad \norm{f_n - f_m}_{L^p} \geq c_0 > 0 \; \forall n \neq m.
+f_n \colon (0,1) \to \R, \quad \norm{f_n - f_m}_{L^p} \geq c_0 > 0 \quad  \forall n \neq m.
 $$
 %
 Cerco $A_n \subset (0,1)$ tale che $\left| A_n \cap A_m \right| = 0$ per ogni $n \neq m$.
@@ -1821,9 +1821,9 @@ $$
 %
 
 Dimostriamo che è compatto per successioni.
-Prendiamo $( \underline{x}^k ) \subset F$, ogni componente $x_n$ è equilimitata a meno di sottosuccessioni $x_n^{x_j}$ converge a $x_n^\infty$.
+Prendiamo $( \underline{x}^k ) \subset F$, ogni componente $x_n$ è equilimitata a meno di sottosuccessioni $x_n^{k_j}$ converge a $x_n^\infty$.
 A meno di diagonalizzare, posso supporre che le successione $k_j$ non dipenda da $n$.
-Otteniamo che $x_n^{k_j}$ sono dominate da $y = (1 / n^2)$. Concludiamo usando il teorema di Lebesgue.
+Otteniamo che $x_n^{k_j}$ sono dominate da $y = (1 / n^2)$. Concludiamo usando il teorema di convergenza dominata di Lebesgue.
 
 % 
 % Lezione del 14 Ottobre 2021
