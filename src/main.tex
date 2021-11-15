@@ -1127,7 +1127,7 @@ per convergenza monotona.
 				\geq \norm{\sum_{n=1}^\infty |f_n|}_p 
 				= \left( \int \left( \sum_{n=1}^\infty |f_n(x)| \right)^p \dd \mu(x) \right)^{1/p}
 				$$
-				quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero\footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ per funzioni definite quasi ovunque.}.
+				quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero in $E$ \footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ per funzioni definite quasi ovunque.}.
 			
 			\item 
 				\textit{Passo 2:}
@@ -1151,10 +1151,10 @@ per convergenza monotona.
 				$$
 				\norm{f}_p \leq \sum_{n=1}^\infty \norm{f_n}_p < +\infty \implies f \in L^p
 				$$
+				\qed
 
 		\end{itemize}
 \end{itemize}
-\qed
 
 \textbf{Esercizio.}\footnote{In questo corso non è strettamente necessario ricordarsi come si facciano tutti questi esercizietti di teoria della misura ma è bene saperli applicare in automatico quando serve.}
 Sia $f \colon X \to [0, +\infty]$ allora $\ds \int_X f \dd \mu < +\infty \implies f(x) < +\infty$ per quasi ogni $x$.
@@ -1162,9 +1162,9 @@ Sia $f \colon X \to [0, +\infty]$ allora $\ds \int_X f \dd \mu < +\infty \implie
 \textbf{Dimostrazione.}
 Sia $E := \{ x \mid f(x) = +\infty \}$, allora l'idea è che
 $$
-\infty > \int_X f \dd \mu \geq \int_E f \dd \mu = +\infty \cdot \mu(E)
+\infty > \int_X f \dd \mu \geq \int_E f \dd \mu = +\infty \cdot \mu(E).
 $$
-più precisamente osserviamo che $\forall m \in [0, +\infty)$ abbiamo $f \cdot \One_E \geq m \cdot \One_E$ quindi integrando ricaviamo
+Oppure, osserviamo che $\forall m \in [0, +\infty)$ abbiamo $f \cdot \One_E \geq m \cdot \One_E$ per ogni $x \in E$ quindi integrando ricaviamo
 $$
 \underbrace{\int_E f \dd \mu}_{I} \geq m \cdot \mu(E) 
 \implies \mu(E) \leq \frac{I}{m} \xrightarrow{m \to +\infty} 0
@@ -1179,13 +1179,13 @@ Riportiamo le definizioni di alcune nozioni di convergenza.
 
 \begin{itemize}
 
-\item \textbf{Uniforme} : $\forall \epsilon \; \exists n_{\epsilon}$ tale che $\norm{f(x) - f_n(x)} < \epsilon \mquad n > n_\epsilon$.
+\item \textbf{Uniforme} : $\forall \epsilon \; \exists n_{\epsilon}$ tale che $\norm{f(x) - f_n(x)} < \epsilon \mquad \forall n > n_\epsilon$.
 
-\item \textbf{Puntuale} : $f_n \to f \mquad \forall x \in X$.
+\item \textbf{Puntuale} : $f_n(x) \to f(x) \mquad \forall x \in X$.
 
-\item \textbf{Puntuale} $\mu$\textbf{-quasi ovunque} : $f_n \to f$ per $\mu$-q.o. $x \in X$.
+\item \textbf{Puntuale} $\mu$\textbf{-quasi ovunque} : $f_n(x) \to f(x)$ per $\mu$-q.o. $x \in X$.
 
-\item \textbf{In} $L^p$ : $\norm{f_n - f}_p \to 0$.
+\item \textbf{In} $L^p$ : $\norm{f_n - f}_p \xrightarrow{n \to \infty} 0$.
 
 \item \textbf{In misura} : $\ds \forall \epsilon > 0 \quad \mu \left( \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\} \right) \xrightarrow{n \to +\infty} 0$.
 
@@ -1197,6 +1197,7 @@ Abbiamo le seguenti implicazioni ovvie delle diverse nozioni di convergenza:
 \begin{center}
 	uniforme $\Rightarrow$ puntuale $\Rightarrow$ puntuale $\mu \almosteverywhere$
 \end{center}
+
 
 \textbf{Proposizione.}
 Valgono le seguenti.
@@ -1234,10 +1235,9 @@ Osserviamo che $g \geq m \cdot \One_E$.
 Dunque vale
 %
 $$
-\int_X g \dd \mu \geq \int_X m \cdot \One_E \dd \mu = m \cdot \mu \left( \left\{ x \in X \mymid g(x) \geq m \right\} \right)
+\int_X g \dd \mu \geq \int_X m \cdot \One_E \dd \mu = m \cdot \mu \left( \left\{ x \in X \mymid g(x) \geq m \right\} \right).
 $$
 %
-da cui la tesi.
 \qed
 
 \textbf{Lemma} (Borel-Cantelli).
@@ -1260,7 +1260,7 @@ $$
 Allora
 %
 $$
-\mu(E) \quad \underbrace{=}_{F_m \downarrow E \; \& \; \mu(F_1) < +\infty} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda di serie convergente}}} = 0.
+\mu(E) \quad \underbrace{=}_{\mathclap{F_m \downarrow E \; \& \; \mu(F_1) < +\infty}} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda serie convergente}}} = 0.
 $$
 %
 
@@ -1269,13 +1269,11 @@ L'ipotesi $\sum \mu(E_n) < +\infty$ non può essere sostituita con $\mu(E_n) \to
 
 Ora dimostriamo la proposizione.
 
-\textbf{Dimostrazione.}
-
-Definiamo gli insiemi
+\textbf{Dimostrazione.} Definiamo gli insiemi
 \begin{align*}
 A_n^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\}, \\
 B_m^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \; \text{per qualche} \; n \geq m\right\} = \bigcup_{n = m}^\infty A_n^\epsilon, \\
-A_n^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \; \text{frequentemente}  \right\} = \left\{ x \in A_n^\epsilon \; \text{frequentemente}  \right\} = \bigcap_{m = 1}^\infty B_m^\epsilon.
+B^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \; \text{frequentemente}  \right\} = \left\{ x \in A_n^\epsilon \; \text{frequentemente}  \right\} = \bigcap_{m = 1}^\infty B_m^\epsilon.
 \end{align*}
 
 \begin{enumerate}
@@ -1283,19 +1281,19 @@ A_n^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \eps
 Allora
 %
 $$
-\lim_{m \to +\infty} \mu(B_m^\epsilon) = \mu(B^\epsilon) = 0 \Rightarrow \lim_{m \to \infty} \mu(A_m^\epsilon) = 0.
+\lim_{m \to +\infty} \mu(B_m^\epsilon) = \mu(B^\epsilon) = 0 \Longrightarrow \lim_{m \to \infty} \mu(A_m^\epsilon) = 0.
 $$
 %
 
 \item Dalla dimostrazione precedente, abbiamo $\ds \lim_{m \to \infty} \mu(B_m^\epsilon) = 0$. 
-Allora per ogni $k$ esiste un $m_k$ tale che $\mu \left( B_m^{1/k} \right) \leq \delta / 2^k$.
-Pongo $E \coloneqq  \bigcup_{k} B_{m_k}^{1/k}$ per ogni $k$; allora $\mu(E) \leq \delta$.
+Allora per ogni $k$ esiste un $m_k$ tale che $\mu \left( B_{m_k}^{1/k} \right) \leq \delta / 2^k$.
+Poniamo $\ds E \coloneqq  \bigcup_{k} B_{m_k}^{1/k}$ per ogni $k$; allora $\mu(E) \leq \delta$.
 Inoltre,
 \begin{align*}
-x \in X \setminus E & \Rightarrow x \notin B_{m_k}^{1/k} \; \forall k \iff x \notin A_n^{1/k} \mquad \forall k,n \geq m_ k \\
-& \Rightarrow \left| f(x) f_n(x) \right| < \frac{1}{k} \mquad \forall k,n \geq m_k \\
-& \Rightarrow \sup_{x \in X \setminus E} \left| f(x) - f_n(x) \right| \leq \frac{1}{k} \mquad \forall k,n \geq m_k \\
-& \Rightarrow f - f_m \; \text{uniformemente su} \; X \setminus E.
+x \in X \setminus E & \Longrightarrow x \notin B_{m_k}^{1/k} \; \forall k \iff x \notin A_n^{1/k} \mquad \forall k,n \geq m_ k \\
+& \Longrightarrow \left| f(x) - f_n(x) \right| < \frac{1}{k} \mquad \forall k,n \geq m_k \\
+& \Longrightarrow \sup_{x \in X \setminus E} \left| f(x) - f_n(x) \right| \leq \frac{1}{k} \mquad \forall k,n \geq m_k \\
+& \Longrightarrow f - f_m \; \text{uniformemente su} \; X \setminus E.
 \end{align*}
 
 \item Dobbiamo mostrare che per ogni $\epsilon > 0$ $\mu(A_n^\epsilon) \xrightarrow{n} 0$.
@@ -1312,16 +1310,16 @@ $$
 Poniamo $E = \bigcup_{n} E_n$ e $\mu(E) = 0$, dunque
 %
 $$
-\sup_{x \in X\setminus E} \left| f_n(x) - f(x) \right| \leq \norm{f_n - f}_\infty \to 0.
+\sup_{x \in X\setminus E} \left| f_n(x) - f(x) \right| \leq \norm{f_n - f}_\infty \xrightarrow{n \to \infty} 0.
 $$
 %
 
 
-\item per ipotesi, $f_n \to f$ in misura, cioè
+\item Per ipotesi, $f_n \to f$ in misura, cioè
 \begin{align*}
 & \forall \epsilon > 0 \quad \mu \left( A_n^\epsilon \right) \xrightarrow{n \to +\infty} 0 \\
-& \Rightarrow \forall k \; \exists n_k \colon \mu \left( A_{n_k}^{1/k} \right) \leq \frac{1}{2^k} \\
-& \Rightarrow \sum_{k}^{} \mu \left( A_{n_k}^{1/k} \right) < +\infty. 
+& \Longrightarrow \forall k \; \exists n_k \colon \mu \left( A_{n_k}^{1/k} \right) \leq \frac{1}{2^k} \\
+& \Longrightarrow \sum_{k}^{} \mu \left( A_{n_k}^{1/k} \right) < +\infty. 
 \end{align*}
 Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/k}$ definitivamente in $k$, cioè $\norm{f_{n_k}(x) - f(x)} < 1/k$ definitivamente in $k$, cioè $\ds f_{n_k}(x) \xrightarrow{k} f(x)$.
 
@@ -1363,7 +1361,7 @@ $$
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Dato $C$ spazio vettoriale reale con prodotto scalare $\left<\ ,\ \right>$, allora $\left<\ ,\ \right>$ si ricava dalla norma associata $\norm{\cdot}$ tramite l'identità di polarizzazione:
+\item Dato $C$ spazio vettoriale reale con prodotto scalare $\left<\ ,\ \right>$, allora $\left<\ ,\ \right>$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
 %
 $$
 \left<v_1, v_2 \right> = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
@@ -1439,7 +1437,7 @@ e chiamiamo $E_n \coloneqq p(I_n)$. Per ogni $n$ abbiamo che $|I_n| = |E_n| = 1 
 
 [TODO: Disegnino]
 
-Per la \ref{item:ce_1} basta consideare $\One_{E_n} \to 0$ in misura (in quanto $|E_n| \to 0$) ma $\One_{E_n} \centernot\to 0$ q.o., anzi $\forall x \in [0, 1) \; \One_{E_n}(x) \centernot\to 0$ e la \ref{item:ce_2} segue analogamente.
+Per la \ref{item:ce_1} basta notare che $\One_{E_n} \to 0$ in misura (in quanto $|E_n| \to 0$) ma $\One_{E_n} \centernot\to 0$ q.o., anzi $\forall x \in [0, 1) \; \One_{E_n}(x) \centernot\to 0$ e la \ref{item:ce_2} segue analogamente.
 \qed
 
 \subsection{Approssimazioni di funzioni in $L^p$}
@@ -1456,24 +1454,24 @@ per ogni $x \in X$, esiste una successione $(y_n)_{n \in \N}$ in $Y$ che tale ch
 
 Per ora sia $(X, \mc A, \mu)$ in generale.
 
-\textbf{Esercizio.} 
+\textbf{Proposizione 1.} 
 Le funzioni limitate in $L^p$ sono dense in $L^p$.
 
 \textbf{Dimostrazione.}
 Data $f \in L^p(X)$ cerchiamo una successione di funzioni $f_n \in L^p(X)$ limitate tali che $f_n \to f$ in $L^p$, consideriamo
 $$
-f(x) (\coloneqq f(x) \land n) \lor (-n)
+f(x) \coloneqq (f(x) \land n) \lor (-n)
 $$
 vorremmo mostrare che $f_n \to f$ in $L^p$ ovvero
 $$
 \norm{f_n - f}_p^p = \int_X |f_n - f|^p \dd \mu \to 0
 $$
-intanto vediamo che per la \textit{convergenza puntuale} basta osservare che se $n \geq |f(x)|$ abbiamo che $\forall x \; f_n(x) = f(x) \implies f_n(x) \xrightarrow{n} f(x) \implies |f_n(x) - f(x)|^p \to 0$.
+intanto osserviamo che, per la \textit{convergenza puntuale}, basta osservare che se $n \geq |f(x)|$ abbiamo che $\forall x \; f_n(x) = f(x) \implies f_n(x) \xrightarrow{n} f(x) \implies |f_n(x) - f(x)|^p \to 0$.
 
 Per concludere basta applicare \textit{convergenza dominata} usando come dominazione direttamente $|f(x) - f_n(x)| \leq |f(x)| \implies |f(x) - f_n(x)|^p \leq |f(x)|^p$ e notiamo che $|f|^p \in L^1(X)$.
 \qed
 
-\textbf{Proposizione.}
+\textbf{Proposizione 2.}
 Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
 
 \textbf{Dimostrazione.}
@@ -1482,15 +1480,15 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 	\item 
 		\textit{Caso 1}: Se $f \geq 0$ allora fissiamo $\epsilon > 0$ e per ogni $k = 1, 2, \dots$ e poniamo
 		$$
-		A_k^\epsilon := \{ x \mid k \epsilon \leq f(x) \leq (k+1) \epsilon \}
+		A_\epsilon^k := \{ x \mid k \epsilon \leq f(x) \leq (k+1) \epsilon \}
 		$$
-		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
+		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita\footnote{È misurabile in quanto preimmagine di un misurabile, ed ha misura finita in quanto $f \in L^p(X)$.}. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
 		$$
 		f_\epsilon(x) := \sum_{1 \leq k \leq 1 / \epsilon^2} k \epsilon \cdot \One_{A_\epsilon^k}(x) \in \tilde{\mathscr S}
 		$$
 		[TODO: Disegnino]
 
-		Osserviamo che vale anche $f_\epsilon(x) = \max\{ k \epsilon \mid k \epsilon \leq f(x) \text{ e } k \leq 1 / \epsilon^2 \}$ e mostriamo la seguente\footnote{Notiamo che qui stiamo applicando il teorema di \textit{convergenza dominata} su una famiglia parametrizzata da $\epsilon$ e non su una successione ma si può verificare facilmente che il teorema (ed anche gli altri risultati di convergenza di successioni di funzioni) si può estendere semplicemente prendendo $\epsilon = 1 / n$ per $n \to \infty$.}
+		Osserviamo che vale anche $\max f_\epsilon(x) = \max\{ k \epsilon \mid k \epsilon \leq f(x) \text{ e } k \leq 1 / \epsilon^2 \}$ e mostriamo la seguente\footnote{Notiamo che qui stiamo applicando il teorema di \textit{convergenza dominata} su una famiglia parametrizzata da $\epsilon$ e non su una successione ma si può verificare facilmente che il teorema (ed anche gli altri risultati di convergenza di successioni di funzioni) si può estendere semplicemente prendendo $\epsilon = 1 / n$ per $n \to \infty$.}
 		$$
 		\int_X |f(x) - f_\epsilon(x)|^p \dd \mu(x) \xrightarrow{\epsilon \to 0} 0
 		$$
@@ -1511,8 +1509,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		\textit{Caso 3}:
 		Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
-		\textbf{Proposizione} (Generalizzata).
-		Sia $\tilde{\mathscr S} \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \} \implies \tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+		\textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 
 		\textbf{Dimostrazione.} (Idea)
 		Basta approssimare componente per componente.
@@ -1521,7 +1518,9 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 
 Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mc A$.
 
-\textbf{Proposizione.}
+
+\hypertarget{prop:apprfunz_prop3}{}
+\textbf{Proposizione 3.}
 Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
 
 \textbf{Osservazione.} 
@@ -1532,7 +1531,7 @@ Per prima cosa vediamo un lemma che useremo assieme alla proposizione precedente
 
 % @aziis98: Boh questo lemma non so se metterlo prima o se lasciarlo qua
 
-\textbf{Lemma.}
+\textbf{Lemma 1.}
 Dato $E \in \mc A, \mu(E) < +\infty$ esiste $E_n \in \mc A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
 
 \textbf{Dimostrazione.}
@@ -1545,41 +1544,47 @@ Ora sia $X \subset \R^n, \mu = \mathscr L^n$ e
 $$
 C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}
 $$
-notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
+% notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
 
-\textbf{Proposizione.}
+\textbf{Proposizione 4.}
 Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense in $L^p(X)$ per $p < +\infty$.
 
 Vediamo prima alcuni lemmi.
 
-\textbf{Lemma.}
-Dato $E \subset \R^n$ limitato (e quindi di misura finita) esiste $f_\epsilon \in C_C(\R^n)$ tale che $f_\epsilon \xrightarrow{\epsilon \to 0} \One_E$ in $L^p(\R^n)$ e quindi in $L^p(X)$.
-
-\textbf{Dimostrazione.}
-Per regolarità della misura di Lebesgue abbiamo che per ogni $\epsilon$ esistono $C_\epsilon \subset E \subset A_\epsilon$ tali che $|A_\epsilon \setminus C_\epsilon| \leq \epsilon$ e prendiamo $f_\epsilon \colon \R^n \to [0, 1]$ continua tale che
-$$
-f_\epsilon = 1 \text{ su $C_\epsilon$}
-\qquad
-f_\epsilon = 0 \text{ su $\R^n \setminus A_\epsilon$}
-$$
-in particolare sappiamo che su $A_\epsilon \setminus C_\epsilon$ vale $|f_\epsilon - \One_E| \leq 1$
-$$
-\implies \norm{f_\epsilon - \One_E}_p^p = \int_{A_\epsilon \setminus C_\epsilon} |f_\epsilon - \One_E|^p \dd x
-$$
-
-\textbf{Lemma.} (di Urysohn)
+\hypertarget{prop:apprfunz_lemma2}{}
+\textbf{Lemma 2.} (di Urysohn)
 Dati $C_0, C_1$ chiusi disgiunti in $X$ spazio metrico esiste una funzione $f \colon X \to [0, 1]$ continua tale che $f = 0$ su $C_0$ e $f = 1$ su $C_1$.
 
 \textbf{Dimostrazione.}
-Posta $d(x, C) = \inf \{ d(x, y) \mid y \in C \}$ basta consideare
+Posta $d(x, C) = \inf \{ d(x, y) \mid y \in C \}$ basta considerare
 $$
 f(x) =
-\frac{d(x, C_0)}{d(x, C_0) + d(x, C_1)}
+\frac{d(x, C_0)}{d(x, C_0) + d(x, C_1)}.
 $$
+\qed
 
-\textbf{Dimostrazione.} ($C_C(\R^n)$ è denso in $L^p(X)$)
+\hypertarget{prop:apprfunz_lemma3}{}
+\textbf{Lemma 3.}
+Dato $E \subset \R^n$ limitato (e quindi di misura finita) esiste $f_\epsilon \in C_C(\R^n)$ tale che $f_\epsilon \xrightarrow{\epsilon \to 0} \One_E$ in $L^p(\R^n)$ e quindi in $L^p(X)$.
 
-Segue dalla proposizione e dal lemma precedente.
+\textbf{Dimostrazione.}
+Per regolarità della misura di Lebesgue abbiamo che per ogni $\epsilon$ esistono $C_\epsilon \subset E \subset A_\epsilon$ tali che $|A_\epsilon \setminus C_\epsilon| \leq \epsilon$. Per il \hyperlink{prop:apprfunz_lemma2}{Lemma 1} possiamo definire la classe di funzioni $f_\epsilon \colon \R^n \to [0, 1]$ continue tali che
+$$
+f_\epsilon = 1 \text{ su $C_\epsilon$}
+\qquad
+f_\epsilon = 0 \text{ su $\R^n \setminus A_\epsilon$}.
+$$
+In particolare, sappiamo che su $A_\epsilon \setminus C_\epsilon$ vale $|f_\epsilon - \One_E| \leq 1$. Allora,
+%
+\begin{align*}
+\norm{f_\epsilon - \One_E}_p^p & = \int_{A_\epsilon \setminus C_\epsilon} |f_\epsilon - \One_E|^p \dd x \leq \int_{A_\epsilon \setminus C_\epsilon } \One_{A_\epsilon \setminus C_\epsilon } \dd x = \left| A_\epsilon \setminus C_\epsilon  \right|^{1/p} \leq \epsilon^{1/p} \\
+& \implies \norm{f_\epsilon - \One_E}_p^p \xrightarrow{\epsilon \to 0} 0.
+\end{align*}
+\qed
+
+
+\textbf{Dimostrazione Proposizione 4.} 
+Per la \hyperlink{prop:apprfunz_prop3}{Proposizione 3} basta approssimare la classe delle funzioni a supporto limitato (e finito). Dunque, per il \hyperlink{prop:apprfunz_lemma3}{Lemma 3} si ha la tesi.
 
 % 
 % Lezione del 13 Ottobre 2021
@@ -1603,7 +1608,7 @@ $$
 %
  sono maggiorati dall'integrale di $1 / x^{\alpha}$ dove l'esponente  $\alpha$ è rispettivamente più piccolo e più grande di $\beta \cdot p$.
 
-Vediamo quanto detto finora più formalmente.
+Utilizziamo questa intuizione per vedere formalmente che gli spazi $L^p(0,+\infty)$ non sono confrontabili.
 
 Cerchiamo una funzione $f \in L^{p_1}(0,+\infty) \setminus \, L^{p_2}(0,+\infty)$ e una funzione $g \in L^{p_2}(0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
 La funzione $f$ definita come segue
@@ -1619,17 +1624,17 @@ $$
 ha integrale 
 %
 $$
-\int_{0}^{+\infty} f(x)^{p_1} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \longiff \beta \cdot p_1 < 1, \mquad 0 < p_1 < p_2 \longiff \frac{1}{p_2} < \frac{1}{p_1}
+\int_{0}^{+\infty} f(x)^{p_1} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \longiff \beta \cdot p_1 < 1
 $$
 e
 $$
-\int_{0}^{+\infty} f(x)^{p_2} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \longiff \beta \cdot p_2 \geq 1
+\int_{0}^{+\infty} f(x)^{p_2} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \longiff \beta \cdot p_2 \geq 1.
 $$
 %
-basta prendere $\beta \in [1/p_2, 1/p_1)$.
+Dunque, basta prendere $\beta \in [1/p_2, 1/p_1)$.
 
-Ora cerco $g \in L^2 (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
-Definisco $g(x)$ come segue
+Ora cerchiamo $g \in L^2 (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
+Definiamo $g(x)$ come segue
 $$
 g(x) \coloneqq \frac{1}{(1+x)^\alpha}
 $$
@@ -1651,8 +1656,8 @@ Data $f \in L^{p_2}(X)$, cioè con $\int_X \left| f \right|^{p_2} \dd \mu < +\in
 Usiamo Hölder:
 \begin{align*}
 \int_X \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_X \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_X 1^q \dd \mu  \right)^{1/q}
-\underbrace{\leq}_{p = p_1 / p_2} \left( \int_X \left| f \right)^{p_1} \dd \mu  \right)^{p_1 /p_2} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
-& \underbrace{=}_{q = (1 - \frac{1}{p}^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
+\underbrace{\leq}_{p = p_1 / p_2} \left( \int_X \left| f \right|^{p_2} \dd \mu  \right)^{p_2 /p_1} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
+& \underbrace{=}_{q = \left( 1 - \frac{1}{p} \right)^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
 \end{align*}
 %
 Dunque
@@ -1668,7 +1673,9 @@ i \colon L^{p_2} & \to L^{p_1}(X) \\
 f & \mapsto f
 \end{align*}
 
-è ben definita per quanto fatto sopra. Per esercizio vedere con quale topologia risulta continua. [TO DO]
+è ben definita per quanto fatto sopra.
+
+\textbf{Esercizio.} [TO DO] Vedere con quale topologia l'inclusione risulta continua. [TO DO]
 
 \textbf{Esercizio.} [TO DO] Dato $p \geq 1$, stabilire se esistono $X, \mu,f \in L^p(X)$ e $f \notin L^q(X)$ per ogni $q \neq p$, $q \geq 1$. \\
 \textit{Suggerimento.} pensare a $X = (0,+\infty)$, $\mu$ misura di Lebesgue.
@@ -3967,6 +3974,143 @@ $$
 \implies c_2 \frac{\pd u}{\pd t} = c_1 \Delta u 
 \implies \frac{\pd u}{\pd t} = \frac{c_1}{c_2} \cdot \Delta u
 $$
+
+%
+% Lezione 11 novembre @ar-lli
+%
+
+\section{Esercitazione del 11 novembre}
+
+Consideriamo $L^2([-\pi,\pi], \C) $. Ricordiamo che $e^{inx} = \cos(nx) + i \sin(nx)$. 
+Abbiamo
+%
+\begin{align*}
+\sum_{n=-N}^N c_n e^{inx} & = c_0(f) + \sum_{n=1}^N \left( c_n(f) e^{inx} + c_{-n} e^{inx} \right) 
+& = c_0(f) + \sum_{n=1}^{N} \left[ \left( c_n(f) + c_{-n}(f) \right) \cos(nx) + i\left( c_n(f) - c_{-n}(f) \right) \sin(nx) \right] \\
+& = c_0(f) + \sum_{n=1}^{N} a_n(f) \cos(nx) + b_n(f) \sin(nx)  
+\end{align*}
+con
+%
+$$
+\begin{cases}
+a_n(f) = c_n(f) + c_{-n}(f) \\
+b_n(f) = i c_n(f) - i c_{-n} (f) \\
+a_0(f) = c_0(f)
+\end{cases} 
+$$
+%
+
+Passiamo al limite la serie
+%
+$$
+f(x) \overbrace{=}{L^2} \sum_{n=-N}^N c_n e^{inx} = c_0(f) + \sum_{n=1}^{+\infty} a_n(f) + \cos(nx) + b_n(f) \sin(nx) 
+$$
+%
+
+\textbf{Osservazione.} Gli elementi $\left\{ 1, \sin(nx), \cos(nx) \right\}$ sono ortogonali per $n \geq 1$ in $L^2([-\pi,\pi], \C) $.
+Infatti, ricordiamo che
+\begin{align*}
+\sin(nx) & = \frac{e^{inx} - e^{-inx}}{2i} = \frac{i e^{-inx} - i e^{inx}}{2} \\
+\cos(nx) & = \frac{1}{2} \left( e^{inx} + e^{-inx} \right).
+\end{align*}
+
+È banale verificare che $\left<1,\cos(nx) \right> = \left<1, \sin(nx) \right> = 0$ per ogni  $n$, perchè integro $\cos$ e $\sin$ sul periodo. Anche $\left<\cos(nx), \sin(mx) \right> = 0$ per ogni $n,m$.
+
+Dunque, calcoliamo
+%
+$$
+\left<\sin(nx), \sin(mx) \right> = \frac{1}{4} \left<e^{-inx} - e^{inx}, e^{-imx} - e^{imx} \right> = 0.
+$$
+%
+
+
+Ora normalizziamo: $\ds \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}}, n \geq 1 \right\}$.
+
+Dunque abbiamo ottenuto [aggiungere]
+
+\textbf{Esercizio.}  Se $f$ è a valori reali, dimostrare che $a_n(f)$ e $b_n(f)$ sono anch'essi reali. [TO DO]
+
+\textbf{Esercizio.} Trovare la base di Fourier complessa e reale di $L^2([-\pi,\pi], \C) $ [TO DO]
+
+
+\textbf{Esercizio.} Sia $f \in L^1([-\pi,\pi], \C) $ (l'estensione di) $f$ è $2\pi / N$ periodica. Dimostrare che $c_n(f) \neq 0$ se solo se $n$ multiplo di $N$.
+
+\textbf{Esercizi classici.} Fissata una funzione $f \in L^2$, calcolare i coefficienti di Fourier complessi (e reali).
+
+Calcoliamo i coefficienti di $f(x) = x^2$.
+
+\begin{align*}
+c_n(f) & = \frac{1}{2\pi} \int_{-\pi}^\pi x^2 e^{-inx} \dd x = \frac{1}{2\pi} \left| \frac{e^{-inx}}{-in} x^2 \right|_{-\pi}^\pi - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} 2x \dd x \\
+& = - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} 2x \dd x = -\frac{i}{\pi n} \left[ \left| \frac{e^{-inx}}{-in} \right|_{-\pi}^\pi - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} \dd x  \right] \\
+& = \frac{-i \pi}{\pi n} \frac{\cos(-n\pi) + \cos(-n (-\pi))}{-in} + \frac{i}{\pi n} \int_{-\pi}^\pi \frac{e^{-inx}}{-inx} \dd x \\
+& = \frac{2}{n^2} + \frac{i}{\pi n} \cdot 0 = \frac{2}{n^2} (-1)^n \\
+& \Longrightarrow c_n(f) = \frac{2}{n^2} (-1)^n.
+\end{align*}
+
+Infine
+%
+$$
+c_0(f) = \frac{1}{2\pi} \int_{-\pi}^\pi x^2 \dd x = \frac{1}{2\pi} \frac{2}{3} \pi^3 = \frac{1}{3} \pi^2.
+$$
+%
+
+Per Parseval $\ds \norm{f}_{L^2}^2 = 2\pi \sum_{n \in \Z} \left| c_n(f) \right|^2$.
+Da cui
+%
+$$
+\int_{-\pi}^\pi x^4 \dd x = \norm{x^2}_{L^2}^2 = 2\pi \cdot \left[ \sum_{n=1}^{+\infty} \frac{4}{n^4} + \frac{\pi^2}{3}  \right].
+$$
+%
+
+\textbf{Nota.} Potevamo ottenere i coefficienti di $f(x) = x^2$, applicando il teorema della derivata \textbf{vedere che valgono le ipotesi}.
+
+\textbf{Domande.}
+\begin{itemize}
+
+\item Abbiamo visto che $c_n(x^2) = \frac{2 (-1)}{n^2}$ e dedotto che 
+%
+$$
+c_n(2x) = in \frac{2(-1)^n}{n^2} = \frac{2(-1)^n i}{n}
+$$
+%
+
+\item Vorremmo calcolare $c_n(2)$, possiamo applicare il teorema sulla formula della derivata?
+
+\end{itemize}
+
+\textbf{Esercizio.}
+\begin{enumerate}
+\item Calcolare i coefficienti di Fourier complessi di $x^3$ e vedere che se vale $c_n(3x^2) = i n c_n(x^3)$.
+
+\item Calcolare i coefficienti reali di $x^2$.
+\end{enumerate}
+
+\textbf{Esercizio.} Sia $f(x)$ definita da $\ds \sum_{n \in \Z} \gamma_n e^{inx} $ con $\ds  %
+\begin{cases}
+\gamma_n = \frac{\cos(n)}{\left| n \right|^{\beta / 2}} \\
+\gamma_0 = 1
+\end{cases}
+$
+
+\textbf{Domande.}
+\begin{enumerate}
+\item $f$ è ben definita?
+
+\item $f$ è continua?
+
+\item $f$ è derivabile?
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+\begin{enumerate}
+\item Sì, infatti $\ds 2 \sum_{n=1}^{+\infty} \left| \gamma_n \right|^2 \leq 2 \sum_{n=1}^{+\infty} \frac{1}{n^3} < +\infty $.
+
+\item [TO DO]
+
+\end{enumerate}
+
+
+\textbf{da ascoltare il resto della lezione.}
 
 
 
