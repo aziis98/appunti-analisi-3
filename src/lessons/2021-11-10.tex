@@ -1,0 +1,192 @@
+%
+% Lezione del 10 Novembre 2021
+%
+
+% @aziis98: Ok alla fine ho commentato questa parte qua sotto che è uguale a sopra ed ho lasciato il lemma di recap tipo
+
+% \section{Convergenza puntuale della serie di Fourier}
+
+% \textbf{Teorema.} (di convergenza puntuale della serie di Fourier).
+% Data $f \in L^1([-\pi, \pi])$ estesa a $\R$ per periodicità e dato $\bar x \in \R$ tale che $f$ è $\alpha$-H\"olderiana in $\bar x$ con $\alpha > 0$ (cioè $\exists M < +\infty, \delta > 0$ tali che $|f(\bar x + t) - f(\bar x)| \leq M |t|^\alpha$ se $|t| \leq \delta$) allora
+% $$
+% S_n f(\bar x) \xrightarrow{N \to \infty}  f(\bar x)
+% $$
+% dove $S_n f(\bar x) = \ds \sum_{n=-N}^N c_n e^{inx}$.
+
+\textbf{Lemma.} (di rappresentazione di $S_n f$ come convoluzione)
+Ricapitolando data $f$ come sopra abbiamo visto che
+$$
+S_n f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_n(t) \dd t
+\qquad
+\text{con }
+D_N(t) \coloneqq \sum_{n=-N}^N e^{int} = \frac{\sin\left(\left(N + \frac{1}{2}\right)t\right)}{\sin \left(\frac{t}{2}\right)}
+$$
+\textbf{Osservazione.}
+In particolare vale $\ds \frac{1}{2\pi} \int_{-\pi}^\pi D_N(t) \dd t = 1$.
+
+\textbf{Lemma.} (di Riemann-Lebesgue (generalizzato)).
+Data $g \in L^1(\R)$ e $h \in L^\infty(\R)$ con $h$ $T$-periodica, allora
+$$
+\int_\R g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty}
+\underbrace{\left(\int_\R g(x) \dd x \right)}_a
+\underbrace{\left(\avint_0^T h(x) \dd x \right)}_m
+$$
+
+Se supponiamo $\supp g \subseteq [0, 1]$ allora $\int_0^1 g(x) h(yx) \dd x \to \int_0^1 g(x) \dd x \cdot \avint_0^T h(x) \dd x \approx \int_0^1 g(x) \dd x \cdot \avint_0^1 h(yx) \dd y$.
+
+In particolare è abbastanza intuitivo il risultato per $g$ costante a tratti infatti su un intervallo otterremmo
+$$
+\int_0^{x_1} g(x) h(yx) \dd x = c \int_0^{x_1} h(yx) \dd x = (c x_1) m
+$$
+Però ci sarebbero delle correzzioni da fare per dimostrare le cose in questo modo in generale. Vediamo invece un'altra dimostrazione un po' più elegante.
+
+[TODO: Disegnino nel caso $g$ costante a tratti]
+
+\textbf{Dimostrazione.}
+Per ogni $s, y$ poniamo $\Phi(y, s) \coloneqq \int_\R g(x) h(yx + s) \dd x$ con $s, y \in \R$ allora la tesi è che $\Phi(y, 0) \xrightarrow{y \to \pm\infty} a m$.
+Vedremo che valgono le seguenti
+\begin{enumerate}
+	\item $\forall y \; \ds \avint_0^T \Phi(y, s) \dd s = am$.
+	\item $\forall s \; \Phi(y, s) - \Phi(y, 0) \xrightarrow{y \to \pm \infty} 0$.
+\end{enumerate}
+da cui segue subito che
+$$
+\Phi(y, 0) - ma = \avint_0^T \Phi(y, 0) - \Phi(y, s) \dd s \xrightarrow{y \to \pm \infty} 0
+$$
+per convergenza dominata dove dalla ii). segue la convergenza puntuale e come dominazione usiamo
+$$
+|\Phi(y, 0) - \Phi(y, s)| \leq 2 \norm{g}_1 \norm{h}_\infty
+$$
+da cui segue la tesi. Mostriamo ora i due punti.
+\begin{enumerate}
+	\item Esplicitiamo e applichiamo Fubini-Tonelli
+		$$
+		\begin{aligned}
+			\int_0^T \Phi(y, s) \dd s
+			&= \int_0^T \int_\R g(x) h(yx + s) \dd x \dd s \\
+			&= \int_\R \underbrace{\avint_0^T h(yx + s) \dd s}_m \cdot g(x) \dd x \\
+			&= m \int_\R g(x) \dd x = m a
+		\end{aligned}
+		$$
+		e possiamo usare Fubini-Tonelli in quanto 
+		$$
+		\ds \int_\R \avint_0^T |h(yx - s)| \dd s \cdot |g(x)| \dd x \leq \int_\R \norm{f}_\infty |g(x)| \dd x = \norm{h}_\infty \cdot \norm{g}_1
+		$$
+
+	\item {} [TODO: inventare delle parole a caso]
+		$$
+		\Phi(y, s) 
+		= \int_\R g(x) h\left(y \left( x + \frac{s}{y} \right)\right) \dd x 
+		$$
+		ora applichiamo la sostituzione $\ds t = x + \frac{s}{y}$ da cui $\dd t = \dd x$
+		$$
+		= \int_\R g \left( t - \frac{s}{y} \right) h(yt) \dd t
+		$$
+		ed a questo punto otteniamo
+		$$
+		\Phi(y, s) - \Phi(y, 0) = \int_\R \left(g\left( t - \frac{s}{y}\right) - g(t) \right) h(yt) \dd t 
+		$$
+		$$
+		\implies
+		|\Phi(y, s) - \Phi(y, 0)| = \int_\R |\tau_{\frac{s}{y}} g - g| \cdot |h(yt)| \dd t
+		\leq \norm{\tau_{\frac{s}{y}} g - g}_1 \cdot \norm{h}_\infty \xrightarrow{y \to \pm \infty} 0
+		$$
+\end{enumerate}
+\qed
+
+\textbf{Dimostrazione del Teorema.}
+$$
+\begin{aligned}
+	S_N f(\bar x) - f(\bar x) 
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi f(\bar x - t) D_N(t) \dd t - \frac{1}{2\pi} \int_{-\pi}^\pi f(\bar x) D_N(t) \dd t \\
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi (f(\bar x - t) - f(\bar x)) D_N(t) \dd t \\
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi \frac{f(\bar x - t) - f(\bar x)}{\sin \frac{t}{2}} \sin \left(\left(N + \frac{1}{2}\right) t\right) \dd t \\
+	&= \int_{-\pi}^\pi g(t) \cdot \sin \left(\left(N + \frac{1}{2}\right) t\right)
+	\xrightarrow{\text{RL}} \left(\int g(x) \dd x\right) \cdot \avint_0^\pi \sin x \dd x
+\end{aligned}
+$$
+in particolare per applicare Riemann-Lebesgue serve $g \in L^1([-\pi, \pi])$ ma infatti per $|t| \leq \delta$
+$$
+|g(t)| \leq \frac{|f(\bar x - t) - f(\bar x)|}{|\sin \frac{t}{2}|} \leq \frac{M |t|^\alpha}{|t| / \pi} = \frac{M \pi}{|t|^{1 - \alpha}} \in L^1([-\delta, \delta])
+$$
+invece per $\delta \leq |t| \leq \pi$ basta
+$$
+|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi])
+$$
+\qed
+
+Data $f \in L^1([-\pi, \pi])$ estesa per periodicità e dato $\bar x$ tale che esistano i limiti a destra e sinistra di $f$ in $\bar x$ detti $L^+$ e $L^-$ ed $f$ $\alpha$-H\"olderiana a sinistra e destra si può vedere che vale
+$$
+S_N f(\bar x) \xrightarrow{N} \frac{L^+ + L^-}{2}
+$$
+
+\chapter{Applicazioni della serie di Fourier}
+
+\section{Equazione del calore}
+
+Sia $\Omega$ un aperto di $\R^d$ e $u(t, x) \colon [0, T) \times \Omega \to \R$ e chiamiamo $x$ la \textit{variabile spaziale} e $t$ la \textit{variabile temporale}. In dimensione $3$ l'insieme $\Omega$ rappresenta un solito di materiale conduttore omogeneo  e $u(t, x) = $ temperatura in $x$ all'istante $t \implies u$ risolve l'equazione del calore
+$$
+u_t = c \cdot \Delta u
+$$
+dove con $u_t$ indichiamo la derivata parziale di $u$ rispetto al tempo, $c$ è una costante fisica che porremo uguale ad $1$ e $\Delta u$ è il laplaciano rispetto alle dimensioni spaziali ovvero
+$$
+\Delta u = \sum_{i=1}^d \frac{\pd^2 u}{\pd x_i^2} = \operatorname{div}(\nabla_x u)
+$$
+
+Vedremo che la soluzione di $u_t = \Delta u$ esiste ed è unica specificando $u(0, \curry) = u_0$ condizione iniziale con $u_0 \colon \Omega \to \R$ data e delle condizioni al bordo come ad esempio
+\begin{itemize}
+	\item \textit{Condizioni di Dirichlet}: $u = v_0$ su $[0, T) \times \pd \Omega$ con $v_0$ funzione fissata. Possiamo pensare come fissare delle sorgenti di calore costanti sul bordo.
+	\item \textit{Condizioni di Neumann:} $\ds \frac{\pd u}{\pd \nu}$ con $\nu$ direzione normale al bordo. Essenzialmente ci sta dicendo che non c'è scambio di calore con l'esterno.
+\end{itemize}
+In particolare scriveremo
+$$
+\left\{
+\begin{aligned}
+	& u_t = \Delta u \quad \text{su $\Omega$} \\
+	& u(0, \curry) = u_0 \\
+	& \text{\footnotesize Una delle condizioni al bordo su $\pd \Omega$...}
+\end{aligned}
+\right.
+$$
+
+\subsection{Derivazione dell'equazione del calore}
+
+Partiamo da due leggi fisiche
+\begin{itemize}
+	\item \textit{Trasmissione del calore attraverso pareti sottili:}
+
+		Siano $u^-$ e $u^+$ le temperature a sinistra e destra di una parete di spessore $\delta$ ed area $a$. Allora ``la quantità di calore che attraversa la parete per unità di tempo è proporzionale a $u^- - u^+$, all'area della parete e inversamente proporzionale allo spessore.
+		$$
+		\Delta E = c_1 \frac{\Delta u}{\delta} a \Delta t
+		$$
+		In particolare per $\delta \to 0$ otteniamo che su una superficie $\Sigma$ vale
+		$$
+		\Delta E = c_1 \frac{\pd u}{\pd \nu} |\Sigma| \Delta t
+		$$
+		Passando ulteriormente al caso continuo otteniamo
+		$$
+		\frac{\Delta E}{\Delta t} = c_1 \frac{\pd u}{\pd \nu} |\Sigma| 
+		\implies \frac{\pd E}{\pd t} = \int_{\pd A} \frac{\pd u}{\pd \nu}
+		$$
+
+	\item \textit{Legge fisica 2:}
+
+		L'aumento di temperatura in un solito è proporzionale alla quantità di calore immessa e inversamente proporzionale al volume.
+		$$
+		\Delta u = \frac{1}{c_2} \frac{\Delta E}{V}
+		$$
+		passando al continuo otteniamo $\ds \frac{\pd E}{\pd t} = \int_A c_2 \frac{\pd u}{\pd t}$.
+\end{itemize}
+Dunque infine otteniamo che
+$$
+\forall A \subseteq \Omega \, \forall t
+\qquad
+\int_A c_2 \frac{\pd u}{\pd t} = \int_{\pd A} \frac{\pd u}{\pd \nu} = \int_A \operatorname{div}(\nabla u) = \int_A \Delta u
+$$
+dove abbiamo usato il teorema della divergenza. Ed infine
+$$
+\implies \int_A c_2 \frac{\pd u}{\pd t} = \int_A c_1 \Delta u 
+\implies c_2 \frac{\pd u}{\pd t} = c_1 \Delta u 
+\implies \frac{\pd u}{\pd t} = \frac{c_1}{c_2} \cdot \Delta u
+$$
+

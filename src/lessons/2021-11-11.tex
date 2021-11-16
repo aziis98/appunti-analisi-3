@@ -1,0 +1,137 @@
+%
+% Lezione 11 novembre
+%
+
+\section{Esercitazione del 11 novembre}
+
+Consideriamo $L^2([-\pi,\pi], \C) $. Ricordiamo che $e^{inx} = \cos(nx) + i \sin(nx)$. 
+Abbiamo
+%
+\begin{align*}
+\sum_{n=-N}^N c_n e^{inx} & = c_0(f) + \sum_{n=1}^N \left( c_n(f) e^{inx} + c_{-n} e^{inx} \right) 
+& = c_0(f) + \sum_{n=1}^{N} \left[ \left( c_n(f) + c_{-n}(f) \right) \cos(nx) + i\left( c_n(f) - c_{-n}(f) \right) \sin(nx) \right] \\
+& = c_0(f) + \sum_{n=1}^{N} a_n(f) \cos(nx) + b_n(f) \sin(nx)  
+\end{align*}
+con
+%
+$$
+\begin{cases}
+a_n(f) = c_n(f) + c_{-n}(f) \\
+b_n(f) = i c_n(f) - i c_{-n} (f) \\
+a_0(f) = c_0(f)
+\end{cases} 
+$$
+%
+
+Passiamo al limite la serie
+%
+$$
+f(x) \overbrace{=}{L^2} \sum_{n=-N}^N c_n e^{inx} = c_0(f) + \sum_{n=1}^{+\infty} a_n(f) + \cos(nx) + b_n(f) \sin(nx) 
+$$
+%
+
+\textbf{Osservazione.} Gli elementi $\left\{ 1, \sin(nx), \cos(nx) \right\}$ sono ortogonali per $n \geq 1$ in $L^2([-\pi,\pi], \C) $.
+Infatti, ricordiamo che
+\begin{align*}
+\sin(nx) & = \frac{e^{inx} - e^{-inx}}{2i} = \frac{i e^{-inx} - i e^{inx}}{2} \\
+\cos(nx) & = \frac{1}{2} \left( e^{inx} + e^{-inx} \right).
+\end{align*}
+
+È banale verificare che $\left<1,\cos(nx) \right> = \left<1, \sin(nx) \right> = 0$ per ogni  $n$, perchè integro $\cos$ e $\sin$ sul periodo. Anche $\left<\cos(nx), \sin(mx) \right> = 0$ per ogni $n,m$.
+
+Dunque, calcoliamo
+%
+$$
+\left<\sin(nx), \sin(mx) \right> = \frac{1}{4} \left<e^{-inx} - e^{inx}, e^{-imx} - e^{imx} \right> = 0.
+$$
+%
+
+
+Ora normalizziamo: $\ds \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}}, n \geq 1 \right\}$.
+
+Dunque abbiamo ottenuto [aggiungere]
+
+\textbf{Esercizio.}  Se $f$ è a valori reali, dimostrare che $a_n(f)$ e $b_n(f)$ sono anch'essi reali. [TO DO]
+
+\textbf{Esercizio.} Trovare la base di Fourier complessa e reale di $L^2([-\pi,\pi], \C) $ [TO DO]
+
+
+\textbf{Esercizio.} Sia $f \in L^1([-\pi,\pi], \C) $ (l'estensione di) $f$ è $2\pi / N$ periodica. Dimostrare che $c_n(f) \neq 0$ se solo se $n$ multiplo di $N$.
+
+\textbf{Esercizi classici.} Fissata una funzione $f \in L^2$, calcolare i coefficienti di Fourier complessi (e reali).
+
+Calcoliamo i coefficienti di $f(x) = x^2$.
+
+\begin{align*}
+c_n(f) & = \frac{1}{2\pi} \int_{-\pi}^\pi x^2 e^{-inx} \dd x = \frac{1}{2\pi} \left| \frac{e^{-inx}}{-in} x^2 \right|_{-\pi}^\pi - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} 2x \dd x \\
+& = - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} 2x \dd x = -\frac{i}{\pi n} \left[ \left| \frac{e^{-inx}}{-in} \right|_{-\pi}^\pi - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} \dd x  \right] \\
+& = \frac{-i \pi}{\pi n} \frac{\cos(-n\pi) + \cos(-n (-\pi))}{-in} + \frac{i}{\pi n} \int_{-\pi}^\pi \frac{e^{-inx}}{-inx} \dd x \\
+& = \frac{2}{n^2} + \frac{i}{\pi n} \cdot 0 = \frac{2}{n^2} (-1)^n \\
+& \Longrightarrow c_n(f) = \frac{2}{n^2} (-1)^n.
+\end{align*}
+
+Infine
+%
+$$
+c_0(f) = \frac{1}{2\pi} \int_{-\pi}^\pi x^2 \dd x = \frac{1}{2\pi} \frac{2}{3} \pi^3 = \frac{1}{3} \pi^2.
+$$
+%
+
+Per Parseval $\ds \norm{f}_{L^2}^2 = 2\pi \sum_{n \in \Z} \left| c_n(f) \right|^2$.
+Da cui
+%
+$$
+\int_{-\pi}^\pi x^4 \dd x = \norm{x^2}_{L^2}^2 = 2\pi \cdot \left[ \sum_{n=1}^{+\infty} \frac{4}{n^4} + \frac{\pi^2}{3}  \right].
+$$
+%
+
+\textbf{Nota.} Potevamo ottenere i coefficienti di $f(x) = x^2$, applicando il teorema della derivata \textbf{vedere che valgono le ipotesi}.
+
+\textbf{Domande.}
+\begin{itemize}
+
+\item Abbiamo visto che $c_n(x^2) = \frac{2 (-1)}{n^2}$ e dedotto che 
+%
+$$
+c_n(2x) = in \frac{2(-1)^n}{n^2} = \frac{2(-1)^n i}{n}
+$$
+%
+
+\item Vorremmo calcolare $c_n(2)$, possiamo applicare il teorema sulla formula della derivata?
+
+\end{itemize}
+
+\textbf{Esercizio.}
+\begin{enumerate}
+\item Calcolare i coefficienti di Fourier complessi di $x^3$ e vedere che se vale $c_n(3x^2) = i n c_n(x^3)$.
+
+\item Calcolare i coefficienti reali di $x^2$.
+\end{enumerate}
+
+\textbf{Esercizio.} Sia $f(x)$ definita da $\ds \sum_{n \in \Z} \gamma_n e^{inx} $ con $\ds  %
+\begin{cases}
+\gamma_n = \frac{\cos(n)}{\left| n \right|^{\beta / 2}} \\
+\gamma_0 = 1
+\end{cases}
+$
+
+\textbf{Domande.}
+\begin{enumerate}
+\item $f$ è ben definita?
+
+\item $f$ è continua?
+
+\item $f$ è derivabile?
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+\begin{enumerate}
+\item Sì, infatti $\ds 2 \sum_{n=1}^{+\infty} \left| \gamma_n \right|^2 \leq 2 \sum_{n=1}^{+\infty} \frac{1}{n^3} < +\infty $.
+
+\item [TO DO]
+
+\end{enumerate}
+
+
+\textbf{da ascoltare il resto della lezione.}
+

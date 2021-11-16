@@ -1,0 +1,315 @@
+%
+% Lezione del 4 ottobre
+%
+
+\section{Esercitazione del 4 ottobre}
+
+\subsection{Esercizi di teoria della misura}
+
+Di seguito riportiamo alcune proprietà di base di teoria della misura.
+
+\textbf{Proprietà.}
+
+\begin{enumerate}
+\item Se $A \subset B$, allora $\mu(A) \leq \mu(B)$.
+
+\textbf{Dimostrazione.}
+Scomponiamo $B = (B \setminus A) \cup (A \cap B)$. Per ipotesi $A \cap B = A$ ed essendo la misura positiva segue che
+$$
+	\mu(B) = \underbrace{\mu(B \setminus A)}_{\geq 0} + \mu(A) \geq \mu(A).
+$$
+
+\item \label{item:misura_unione_finita} Dati due insiemi $A,B$ misurabili, vale
+$$
+	\mu(A \cup B) \leq \mu(A) + \mu(B).
+$$
+
+\textbf{Dimostrazione.}
+La disuguaglianza segue dalle seguenti uguaglianze.
+
+\begin{align*}
+	\mu(A) & = \mu(A \setminus B) + \mu(A \cap B) \\
+	\mu(B) & = \mu(B \setminus A) + \mu(A \cap B) \\
+	\mu(A \cup B) & = \mu(A \setminus B ) + \mu(B \setminus A) + \mu(A \cap B).
+\end{align*}
+
+\item Data una successione di insiemi $E_1 \subset E_2 \subset \cdots \subset \cdots$, si ha
+$$
+	\mu \left( \bigcup_{i} E_i \right) = \sup_i \mu(E_i) = \lim_i \mu (E_i).
+$$
+
+\item Data una successione di insiemi $E_1 \supset E_2 \supset \cdots \supset \cdots$ e $\mu(E_1) < +\infty$, si ha
+$$
+	\mu \left( \bigcap_{i} E_i \right) = \lim_i \mu (E_i).
+$$
+\end{enumerate}
+
+\textbf{Esercizio} (Numerabile subaddittività).
+Dato $\ds E \in \mc{A}, E \subset \bigcup_i E_i$ dove $E_i \in \mc{A}$. Allora
+$$
+	\mu(E) \leq \sum_{i}^{} \mu(E_i).
+$$
+
+\textbf{Dimostrazione} (Idea).
+Basta dimostrare che $\ds \mu \left( \bigcup_i E_i \right) \leq \sum_{i}^{} \mu(E_i)$. Infatti per quanto visto prima $\ds \mu(E) \leq \mu \left( \bigcup_i E_i \right)$. Prima dimostriamo per induzione $\ds \mu \left( \bigcup_{i = 1}^N E_i \right) \leq \sum_{i=1}^{N} \mu(E_i)$. 
+
+Il passo base $n = 2$ è stato visto al punto \ref{item:misura_unione_finita}. Una volta dimostrata la proprietà sopra, si nota che $\ds \sum_{i=1}^{N} \mu(E_i) $ è limitata per ogni $N$, e dunque è limitato anche il suo limite, da cui la tesi.
+\qed
+
+\subsection{Funzioni misurabili rispetto alla misura di Lebesgue}
+
+Si ricorda che le funzioni \textit{continue}, \textit{semplici} e \textit{semicontinue} sono classi di funzioni misurabili.
+Due osservazioni sulle funzioni semicontinue.
+\begin{itemize}
+\item Le funzioni semicontinue sono \textit{boreliane}.
+
+\item La proprietà di misurabilità delle funzioni semicontinue è necessaria per l'enunciato della disuguaglianza di Jensen.
+\end{itemize}
+
+\textbf{Controesempio} (disuguaglianza di Jensen).
+Notiamo che l'ipotesi di semicontinuità inferiore della funzione $f$ è necessaria per la validità della disuguaglianza di Jensen.
+Infatti, definiamo $f$ come segue
+%
+$$
+f(x) = 
+\begin{cases}
+0 \qquad \; x \in (0,1) \\
++ \infty \quad \text{altrimenti} 
+\end{cases}.
+$$
+%
+Osserviamo che la funzione $f$ così definita è convessa ma non semicontinua inferiormente.
+
+Ora definiamo la funzione $u : X \to \R$ con $X = (0,2)$, come la funzione costante di valore $1/2$.
+Calcoliamo l'integrale di $u(x)$ su $X$.
+%
+$$
+	\int_{X} u(x) \dd x = 1. 
+$$
+%
+In tal caso vale $\ds f \left( \int_X u(x) \dd x \right) = + \infty$.
+D'altra parte $\ds \int_X f \compose u \dd x = 0$, dunque l'ipotesi di semicontinuità inferiore è necessaria.
+
+\textbf{Fatto.}
+Date $\myphi_1, \myphi_2$ funzioni semplici su $\R$ con misura di Lebesgue.
+Allora $\myphi_1 \vee \myphi_2$ e $\myphi_1 \wedge \myphi_2$ sono ancora funzioni semplici.
+
+\textbf{Lemma.}
+Data $f \colon X \to [0, +\infty]$ misurabile
+$$
+\int_X f \dd \mu = 0 \quad \longiff \quad f = 0 \; \text{q.o. su } X.
+$$
+
+\textbf{Dimostrazione.}
+\begin{itemize}
+
+\item[$\boxed{\Rightarrow}$] Dato che $f$ è non negativa, il dominio $X$ può essere riscritto come
+$$
+	X = \left\{ x \in X \mymid f(x) \geq 0 \right\} = \left\{ x \in X \mymid f(x) > 0 \right\} \cup \left\{ x \in X \mymid f(x) = 0 \right\}
+$$
+ricordiamo che $(0, +\infty) = \bigcup_{n \geq 1} (\frac{1}{n}, +\infty)$ da cui segue
+$$
+	\left\{ x \in X \mymid f(x) > 0 \right\} =  \bigcup_{n \in \N \setminus \left\{ 0 \right\}} \left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\},
+$$
+e passiamo alle misure
+$$
+	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) 
+	= \lim_{n \to +\infty} \mu\left(\left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\}\right),
+$$
+in questo modo otteniamo la seguente caratterizzazione dell'insieme su cui $f$ è positiva
+$$
+	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) >0 
+	\longiff
+	\exists \bar{n} \mid \mu \left( \left\{ x \in X \mymid f(x) \geq 1 / \bar{n} \right\} \right) > 0.
+$$
+
+% X @aziis98: Boh magari potremmo definire tipo L_n := { blob sotto l'integrale } per rendere un po' più leggibile quel dominio di integrazione.
+% OK @aziis98: Oppure anche in notazione "probabilistica" $\{ f \geq \frac{1}{n} \}$ che è più corto
+Allora possiamo maggiorare come segue
+$$
+	0 = \int_X f \dd \mu 
+	\geq \;\int_{\left\{ f \,\geq\, \frac{1}{n} \right\}} \; f \dd \mu \geq	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
+$$
+Dunque abbiamo
+$$
+	\mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0 \qquad \forall n.
+$$
+Si conclude osservando che
+$$
+	\mu \left(  \left\{ x \mymid f(x) > 0 \right\} \right) = \lim_n \mu \left( \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0.
+$$
+
+\item[$\boxed{\Leftarrow}$]
+Dal fatto che $f$ è positiva possiamo scrivere
+$$
+	\int_X f \dd \mu = \sup_{\substack{g \leq f \\ g \; \text{semplice}}} \int_X g \dd \mu = \sup \sum_{i}^{} \alpha_i \mu(E_i) = 0. 
+$$
+\qed
+
+\end{itemize}
+
+\textbf{Osservazione} (sup essenziale di funzioni misurabili).
+Data $f$ misurabile, definiamo
+$$
+	\norm{ f }_{\infty, X} \coloneqq \inf \left\{ m \in [0,+\infty] \mymid \left| f(x) \right| \leq m \quad \text{quasi ovunque}  \right\}.
+$$
+
+Se $\norm{ f }_{\infty} < + \infty$, allora diciamo che esiste una costante $L > 0$ con $L = \norm{ f }_{\infty, X}$, tale che 
+$$
+	\left| f(x) \right| \leq L
+$$
+quasi ovunque. 
+Infatti, per definizione di $\inf$, $L = \lim_n m_n$, dove $m_n$ verificano
+$$
+	\left| f(x) \right| \leq m_n \quad \forall x \in X \setminus N_m, \quad \mu(N_m) = 0.
+$$
+Definiamo $N = \bigcup_{m} N_m$, da cui si ottiene
+$$
+	\mu(N) \leq \sum_{n=1}^{\infty} \mu (N_m) = 0. 
+$$
+Ovvero $N$ è trascurabile.
+Preso $x \in X \setminus N$, vale
+$$
+	\left| f(x) \right| \leq m_n \quad \forall n \in \N.
+$$
+
+
+\subsection{Formula di cambio di variabile applicata a funzioni radiali}
+
+Sia $f \colon [0,+\infty) \to \R$ misurabile (di solito si richiede misurabile e positiva oppure sommabile).
+Vala la seguente
+$$
+	\int_{0}^{+\infty} f\left( \left| x \right| \right) \dd x = c_n \cdot \int_{0}^{+\infty} f(\rho) \rho^{n-1} \dd \rho,
+$$
+dove $\ds c_n = n \mathscr L^n \left( \mc{B}(0,1) \right)$.
+
+Applichiamo questa formula alla stima di integrali di funzioni positive.
+
+\textbf{Esercizio.}
+Sia
+$$
+	\psi (x) = \frac{1}{\norm{ x }^{\alpha}}
+$$
+% X @aziis98: Boh secondo me possiamo usare anche solo B(0, 1) invece di \mc B(0, 1), sempre sul tema di fare con \mc solo l'insieme delle parti e le sigma-algebre?
+su $\mc{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1 / t^\alpha$.
+Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mc{B}(0,1)$.
+%
+$$
+\int_{\mc{B}(0,1)}^{} \psi(x) \dd x 
+= c_n \int_0^1 \frac{1}{\rho^\alpha} \rho^{n -1} \dd \rho 
+= c_n \int_0^1 \rho^{n-1-\alpha} \dd \rho =
+\begin{cases}
+	\log (\rho) \quad n = \alpha \\
+	\dfrac{\rho^{n-\alpha}}{n - \alpha} \quad \text{altrimenti} 
+\end{cases} 
+$$
+%
+Concludendo,
+%
+$$
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n > \alpha.
+$$
+%
+\textbf{Esercizio.}
+Con passaggi analoghi al precedente otteniamo
+%
+$$
+	\int_{\R^n \setminus \; \mc{B}(0,1)} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n < \alpha.
+$$
+%
+\textbf{Esercizio.}
+Vediamo per quali valori di $\beta$ l'integrale
+%
+$$
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x
+$$
+%
+converge.
+
+Vale la seguente catena di uguaglianze.
+%
+$$
+\int_{\R^n}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+= \int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
++ \int_{\R^n \setminus \; \mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x.
+$$
+%
+Studiamo separatamente i due pezzi dell'integrale.
+%
+\begin{align*}
+	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	& = c_n \int_{\mc{B}(0,1)}^{} \frac{1}{(\rho + \rho^2)^\beta} \rho^{n-1} \dd \rho
+	= c_n \int_{0}^{1} \frac{1}{\rho^\beta} \cdot \frac{\rho^{n-1}}{(1 + \rho)^\beta} \dd \rho \\
+	& \approx \int_{0}^{1} \rho^{n-1-\beta} \dd \rho < + \infty \longiff  \beta < n.
+\end{align*}
+%
+Inoltre,
+%
+$$
+	\int_{\R^n \setminus \mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x 
+	= \int_{\R^n \setminus \; \mc{B}(0,1)}^{} \frac{1}{\rho^{2\beta}} \cdot \frac{\rho^{n-1}}{\left( \frac{1}{\rho} + 1 \right)^\beta} \dd \rho 
+	\approx \int_{1}^{+\infty} \frac{\rho^{n-1}}{\rho^{2\beta}} \dd \rho < + \infty \longiff 2\beta > n.  
+$$
+%
+In conclusione, l'integrale è finito se $n > \beta > n / 2$.
+
+% @aziis98: Molto probabilmente metterò un disegnino con assi $n$ e $\beta$ per far vedere "meglio" l'insieme dei valori buoni
+
+\textbf{Esercizio.}
+Studiare l'insieme di finitezza al variare del parametro $\alpha$ dell'integrale
+$$
+	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x .
+$$
+Osserviamo che la norma 1 e 2 sono legate dalle seguenti disuguglianze
+$$
+	\frac{\norm{ x }_1}{n} \leq \norm{ x }_2 \leq \norm{ x }_1.
+$$
+%
+Studiamo una maggiorazione per l'integrale
+%
+$$
+	\int_{[0,1]^n}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x 
+	\leq \;\int_{[0,1]^n}^{} \, \frac{1}{\norm{ x }^\alpha} \dd x 
+	\leq \;\;\int_{B(0,\sqrt{n})}^{}\;\; \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff \alpha < n,
+$$
+%
+dunque
+%
+$$
+\int_{[0,1]^n}^{} \, \frac{1}{\norm{ x }_1^\alpha} \dd x < +\infty \quad \text{se} \; \alpha < n.
+$$
+%
+Vediamo ora una minorazione.
+
+$$
+	\int_{[0,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+= \frac{1}{2^n}	\int_{[-1,1]^n}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+\geq \frac{1}{2^n} \ \int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }_1^\alpha} \dd x 
+\approx \int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty 
+\longiff \alpha < n.
+$$
+
+Dunque l'integrale $\ds \int_{[0,1]^n}^{} \frac{1}{\norm{x}_1^\alpha} \dd x$ converge se solo se $\alpha < n$.
+
+\newpage
+
+\textbf{Esercizi per casa.}
+\begin{enumerate}[label=(\arabic*)]
+
+\item Dimostrare che date $f,g$ misurabili ed $r,p_1,p_2 > 0$ tali che  $1 / r = 1 / p_1 + 1 / p_2$.
+Allora vale
+$$
+	\norm{ f \cdot g }_r \leq \norm{ f }_{p_1} \cdot \norm{ g }_{p_2}.
+$$
+\textit{Suggerimento.} Usare Hölder osservando che $\ds 1 = \frac{r}{p_1} + \frac{r}{p_2} = \frac{1}{\left( p_1/r \right)} + \frac{1}{\left( p_2/r \right)}$.
+
+\item Dimostrare che date $f_1,\ldots, f_n$ misurabili e $p_i > 0$ tali che $1/p_1 + \ldots + 1/p_n = 1$ si ha
+$$
+	\norm{ f_1 \cdots f_n }_1 \leq \norm{ f_1 }_{p_1} \cdots \norm{ f_n }_{p_n}.
+$$
+\textit{Suggerimento.} Fare il primo passo dell'induzione e usare la formula precedente scegliendo $r$ in modo corretto.
+
+\end{enumerate}
+
+[TO DO: Aggiungere soluzione]
+
