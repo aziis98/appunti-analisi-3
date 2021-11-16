@@ -98,15 +98,18 @@ Se invece $\mu(X) = +\infty$? Per esempio $L^2(\R)$? [TO DO].
 
 \textbf{Definizione.} Date $f_1,f_2 \colon  \R^d \to \R$ misurabili, il \textbf{prodotto di convoluzione} $f_1 \ast f_2$ è la funzione (da $\R^d$ a $\R$) data da
 %
-\begin{equation} \label{eq:star_def_convoluzione}
-	f_1 \ast f_2(x) = \int_{\R^d} f_1(x-y) f_2(y) \dd y
-	\tag{$\star$}
-\end{equation}
+$$
+f_1 \ast f_2(x) = \int_{\R^d} f_1(x-y) f_2(y) \dd y
+$$
+%
 %
 \textbf{Osservazioni.}
 \begin{enumerate}
-\item La definizione \eqref{eq:star_def_convoluzione} è ben posta se $f_1,f_2 \geq 0$ ($f_1 \ast f_2(x)$ può essere anche $+\infty$).
-In generale non è ben posta per funzioni a valori reali (non è detto che l'integrale esista).
+\item La definizione sopra è ben posta se $f_1,f_2 \geq 0$ ($f_1 \ast f_2(x)$ può essere anche $+\infty$).
+In generale non è ben posta per funzioni a valori reali (non è detto che l'integrale esista). 
+
+Ad esempio, se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$, allora $f_1 \ast f_2(x)$ non è definito per alcun $x$.
+
 
 \item Se $f_1 \ast f_2(x)$ esiste, allora $\ds f_1 \ast f_2(x) = f_2 \ast f_1(x)$, infatti
 %
