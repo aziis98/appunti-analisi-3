@@ -1,0 +1,190 @@
+
+
+\section{Risoluzione dell'equazione del calore (su $\mathbb S^1$)}
+
+Come conduttore consideriamo un anello di materiale omogeneo e sottile che parametrizziamo con $[-\pi, \pi]$. Dunque consideriamo $u \colon [0, T) \times [-\pi, \pi] \to \R$ con le condizioni
+\begin{equation}
+\tag{P} \label{eq:15nov2021_problem_1}
+\left\{
+\begin{aligned}
+	& u_t = u_{xx} \\
+	& u(\curry, \pi) = u(\curry, -\pi) \\
+	& u_x(\curry, \pi) = u_x(\curry, -\pi) \\
+	& u(0, \curry) = u_0
+\end{aligned}
+\right.
+\end{equation}
+in particolare la (ii) e la (iii) condizione non sono né quelle di Dirichlet né di Neumann, sono delle condizioni che effettivamente ci dicono che siamo ``su $\mathbb S^1$''\footnote{Bastano solo queste condizioni sulla funzione e sulla sua derivata perché intuitivamente le altre seguono applicando la (i).}; invece l'ultima è la condizione iniziale ed $u_0$ è data.
+
+\subsection{Risoluzione formale}
+
+Scriviamo $u$ in serie di Fourier rispetto a $x$ cioè
+$$
+u(t, x) = \sum_{n \in \Z} c_n e^{inx}
+$$
+con $c_n \coloneqq c_n(u(t, \curry))$ da cui derivando formalmente dentro le sommatorie otteniamo che $u_x$ e $u_{xx}$ sono
+$$
+\begin{gathered}
+	\sum_{n \in \Z} \dot c_n(t) e^{inx} = u_t = u_{xx} = \sum_{n \in \Z} -n^2 c_n(t) e^{inx} \\
+	u_t = u_{xx} \Leftrightarrow \forall n \, \forall t \;\; \dot c_n(t) = -n^2 c_n(t)
+	\quad
+	\text{e} 
+	\quad
+	u(0, \curry) = u_0 \Leftrightarrow c_n(0) = c_n^0 \coloneqq c_n(u_0)
+\end{gathered}
+$$
+Dunque risolvere \ref{eq:15nov2021_problem_1} equivale per ogni $n$ a $c_n$ che risolve il problema di Cauchy dato da
+\begin{equation}
+	\tag{P$'$} \label{eq:15nov2021_problem_2}
+	\left\{
+	\begin{aligned}
+		& \dot y = -n^2 y \\
+		& y(0) = c_n^0
+	\end{aligned}
+	\right.
+\end{equation}
+con soluzione $y(t) = \alpha e^{-n^2 t}$ cioè $c_n(t) = c_n^0 e^{-n^2 t}$ e quindi abbiamo
+\begin{equation}
+	\tag{$*$} \label{eq:15nov2021_solution}
+	u(t, x) = \sum_{n \in \Z} c_n^0 e^{-n^2 t} e^{inx}
+\end{equation}
+
+Studiando questa soluzione formale possiamo fare le seguenti osservazioni che poi diventeranno dei teoremi
+\begin{itemize}
+	\item \textit{La soluzione esiste per $t \in [0, +\infty)$ ed è molto regolare per $t > 0$}
+
+		Vedremo che la soluzione formale è proprio una soluzione al problema per $t \geq 0$, in particolare il termine $e^{-n^2 t} \to 0$ in modo più che polinomiale ed infatti vedremo che la soluzione sarà proprio $C^\infty$ per $t > 0$.
+
+	\item \textit{La soluzione è unica}
+
+		Tutti i problemi di Cauchy per i coefficienti $c_n(t)$ hanno un'unica soluzione dunque anche la soluzione $u$ è unica.
+
+	\item \textit{In generale non esiste soluzione nel passato.}
+
+		Se il numero di coefficienti $c_n^0 \neq 0$ è infinito allora il termine $e^{-n^2 t} \to +\infty$ molto velocemente per $t < 0$ e la serie diverge.
+
+\end{itemize}
+
+\textbf{Teorema. 1} (Esistenza e Regolarità).
+
+Se $u_0$ (presa in $L^2$) è tale che $\ds \sum_{n \in \Z} |c_n| < +\infty$ (ad esempio se $u_0 \in C^1$ ed è $2\pi$-periodica) allora
+$$
+u(t, x) = \sum_{n \in \Z} c_n^0 e^{-n^2 t} e^{inx}
+$$
+definisce una funzione $u \colon [0, +\infty) \times \R \to \C$ tale che
+\begin{enumerate}
+	\item $u$ è $2\pi$-periodica in $x$ ed è reale se $u_0$ è reale.
+	\item $u$ è continua.
+	\item $u$ è $C^\infty$ su $(0, +\infty) \times \R$.
+	\item Risolve (\ref{eq:15nov2021_problem_1}) per $t > 0$ sulla condizione al bordo, $u(0, \curry) = u_0$ su $[-\pi, \pi]$ e $u_t = u_{xx}$ su $t > 0$.
+\end{enumerate}
+
+Vediamo alcuni lemmi tecnici preparatori e sia $R$ un rettangolo di $\R^d$ ovvero prodotto di intervalli con estremi aperti o chiusi.
+
+\textbf{Lemma 4.}
+Date $v_n \colon R \to \C$ di classe $C^k$ con $k = 1, 2, \dots, +\infty$ tali che
+\begin{itemize}
+	\item $v_n \to v$ uniformemente.
+
+	\item $\forall \underline h = (h_1, \dots, h_d) \in \N^d$ con $|\underline h| \coloneqq h_1 + \dots + h_d \leq k$ (se $k = +\infty$ allora basta $|\underline h| < +\infty$) posto
+		$$
+		D^{\underline h} \, v_n \coloneqq
+		\frac{\pd^k}{\pd x_1^{h_1} \cdots \pd x_d^{h_d}} v_n
+		$$
+		$D^{\underline h} \, v_n \to D^{\underline h} \, v$ converge uniformemente.
+\end{itemize}
+allora $v \in C^k$ e $D^{\underline h} v = \lim_{n} D^{\underline h} v_n$.
+
+\textbf{Dimostrazione.}
+Si parte dal caso $d = 1$ e $k = 1$ e si procede per induzione. [TODO: Esercizio]
+\qed
+
+\textbf{Corollario. 5}
+Date $u_n \colon R \to \C$ di classe $C^k$ con $k = 1, \dots, +\infty$ tali che
+$$
+\forall \underline h \text{ con } |\underline h| \leq k \qquad \sum_n \norm{D^{\underline h} \, u_n} < +\infty
+$$
+allora $u \coloneqq \sum_n u_n$ è una funzione ben definita su $R$ e $C^k$ e $D^{\underline u} \, u = \sum_n D^{\underline h} u_n$ per ogni $\underline h$ con $|\underline h| \leq k$.
+
+\textbf{Lemma. 6}
+Data $u \colon R \to \C$ e rettangoli $R_i \subset R$ relativamente aperti in $R$ tali che $u$ è $C^k$ sugli $R_i$ per ogni $i$ allora $u$ è di classe $C^k$ su $\tilde R \coloneqq \bigcup_i R_i$.
+
+\textbf{Dimostrazione.}
+Intuitivamente essere $C^k$ è una proprietà locale ma preso $x \in R \implies \exists i \; x \in R_i$ e dunque segue per l'ipotesi sugli $R_i$.
+\qed
+
+\textbf{Lemma. 7}
+Data $f \in L^2((-\pi, \pi); \C)$
+$$
+f \text{ è reale q.o.} \iff c_{-n}(f) = \overline{c_n(f)}
+$$
+
+\textbf{Osservazione.}
+Notiamo che se $f \in L^1$ la freccia $\boxed{\Leftarrow}$ è molto più difficile.
+
+\textbf{Dimostrazione Teorema 1.}
+\begin{enumerate}
+	\item $u_0$ reale $\implies c_{-n}^0 = \overline{c_n^0} \implies c_{-n}^0 e^{-(-n)^2 t} = \overline{c_n^0 e^{-n^2 t}} \iff c_{-n}(u(t, \curry))$.
+
+	\item Sia $R \coloneqq [0, +\infty) \times \R$, $\norm{u_n}_{L^\infty(R)} = |c_n^0|$ dunque
+		$\ds\sum_{n \in \Z} u_n$ conv. totalmente su $R$ e quindi $u$ ben definita e continua su $R$.
+
+	\item Presi $h, k = 0, 1, 2, \dots$, se proviamo a calcolare $D_t^h D_x^k u_n = c_n^0 (-n)^{2h} (in)^k e^{-n^2 t} e^{inx}$ vediamo non si riesce a stimare per $t \to 0$ infatti
+		$$
+		\norm{D_t^h D_x^k u_n}_{L^\infty(R)}
+		= |c_n^0| \cdot |n|^{2h + k}
+		$$
+		serve prendere $\delta > 0$ e sia $R_\delta \coloneqq (\delta, +\infty) \times \R$
+		$$
+		\norm{D_t^h D_x^k u_n}_{L^\infty(R_\delta)}
+		= |c_n^0| \cdot |n|^{2h + k} e^{-n^2 \delta}
+		$$
+		in particolare per ogni $h, k$ abbiamo che $|n|^{2h + k} e^{-n^2 \delta} \xrightarrow{n} 0 \implies |n|^{2h + k} e^{-n^2 \delta} \leq m_{h,k} \implies \norm{D_t^h D_x^k u_n}_{L^\infty(R_\delta)} \leq m_{h,k} \cdot |c_n^0|$ e quindi $\sum_n D_t^h D_x^k u_n$ converge totalmente su $R_\delta$.
+
+		Quindi $u$ è $C^\infty$ su $R_\delta$ per ogni $\delta > 0$ e siccome $R_\delta$ è aperto in $R$ per il Lemma. 6 $u$ è $C^\infty$ su $\bigcup_{\delta > 0} R_\delta = (0, +\infty) \times \R$.
+
+	\item $u$ è $2\pi$-periodica in $x \implies$ valgono le condizioni al bordo $u(0, \curry) =$ serie di Fourier di $u_0 = u_0$. Inoltre $(u_n)_t = (u_n)_{xx} \implies \sum (u_n)_t = \sum (u_n)_{xx} \implies u_t = u_{xx}$ per $t \gneq 0$.
+\end{enumerate}
+\qed
+
+Ora enunciamo il teorema di unicità, vogliamo un teorema con il minor numero di ipotesi possibile e che ci dà più informazioni; quindi in questo caso cerchiamo la più grande famiglia di funzioni (quindi la meno regolare possibile) sulla quale vale l'unicità della soluzione.
+
+\textbf{Teorema. 2} (Unicità)
+Sia $u \colon [0, T) \times [-\pi, \pi] \to \C$ continua, $C^1$ nel tempo e $C^2$ nello spazio per $t > 0$. Se $u$ risolve \ref{eq:15nov2021_problem_1} su $t > 0$ allora $u$ è unica.
+
+\textbf{Definizione.}
+Dato $R$ un rettangolo e $u \colon R \to \C$ diciamo che $u$ è $C^k$ nella variabile $x_i$ se $\left(\frac{\pd}{\pd x_i}\right)^h u$ esiste per $h = 1, \dots, k$ ed è continua su $R$.
+
+\textbf{Lemma. 8}
+Data $u \colon I \times [-\pi, \pi] \to \C$ di classe $C^k$ in $t \implies c_n(D_t^h u(t, \curry)) = D_t^h c_n(u(t, \curry))$ per $h \leq k$.
+
+\textbf{Dimostrazione.}
+$$
+c_n(t) = \frac{1}{2\pi} \int_{-\pi}^\pi u(t, x) e^{-inx} \dd x
+\implies \dot c_n(t) = \frac{1}{2\pi} \int_{-\pi}^\pi u_t(t, x) e^{-inx} \dd x = c_n(u_t(t, \curry))
+$$
+per il teorema di derivazione sotto il segno di integrale (Analisi 2?)
+\qed
+
+\textbf{Dimostrazione Teorema 2.}
+Poniamo $c_n(t) \coloneqq c_n(u(t, \curry))$. Sappiamo che per $t > 0$ vale $\dot c_n(t) = c_n(u_t(t, \curry)) = c_n(u_{xx}(t, \curry)) = -n^2 c_n(t) \implies c_n$ risolve il problema di Cauchy
+$$
+\left\{
+\begin{aligned}
+	& \dot y = -n^2 y \\
+	& y(0) = c_n^0
+\end{aligned}
+\right.
+$$ 
+$\implies c_n$ è unico. (in particolare abbiamo usato che $\dot y = f(t, y)$ per $t > 0$ e $y(0) = y_0$ e $y$ è continua in $0 \implies y$ è $C^1$ anche in $0$ e risolve $\dot y = f(t, y)$ per $t \geq 0$)
+\qed
+
+
+
+
+
+
+
+
+
+
