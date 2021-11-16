@@ -388,7 +388,7 @@ $$
 \textbf{Teorema} (Jensen).
 Dato $(X, \mc A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
 $$
-\int_X f \compose u \dd \mu \geq f \left( \int_X u \dd \mu \right)
+f \left( \int_X u \dd \mu \right) \leq \int_X f \compose u \dd \mu
 $$
 e $f \compose u$ è integrabile.
 
@@ -641,7 +641,7 @@ $$
 % lezione del 4 ottobre 2021
 \section{Esercitazione del 4 ottobre}
 
-\subsection*{Teoria della misura}
+\subsection{Esercizi di teoria della misura}
 
 Di seguito riportiamo alcune proprietà di base di teoria della misura.
 
@@ -693,7 +693,7 @@ Basta dimostrare che $\ds \mu \left( \bigcup_i E_i \right) \leq \sum_{i}^{} \mu(
 Il passo base $n = 2$ è stato visto al punto \ref{item:misura_unione_finita}. Una volta dimostrata la proprietà sopra, si nota che $\ds \sum_{i=1}^{N} \mu(E_i) $ è limitata per ogni $N$, e dunque è limitato anche il suo limite, da cui la tesi.
 \qed
 
-\subsection*{Funzioni misurabili rispetto alla misura di Lebesgue}
+\subsection{Funzioni misurabili rispetto alla misura di Lebesgue}
 
 Si ricorda che le funzioni \textit{continue}, \textit{semplici} e \textit{semicontinue} sono classi di funzioni misurabili.
 Due osservazioni sulle funzioni semicontinue.
@@ -811,7 +811,7 @@ $$
 $$
 
 
-\subsection*{Formula di cambio di variabile applicata a funzioni radiali}
+\subsection{Formula di cambio di variabile applicata a funzioni radiali}
 
 Sia $f \colon [0,+\infty) \to \R$ misurabile (di solito si richiede misurabile e positiva oppure sommabile).
 Vala la seguente
@@ -1007,6 +1007,88 @@ Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttament
 	\item Invece l'insieme $\{\ds  f \in L^1 \mid \int_X f \dd \mu = 0 \}$ è ben definito.
 \end{itemize}
 
+\subsection{Prodotto scalare su $L^2$}
+
+Date $f_1,f_2 \in L^2(X)$ si pone
+%
+$$
+\left<f_1, f_2 \right> \coloneqq \int_{X}^{} f_1 \cdot f_2 \dd \mu.
+$$
+%
+\textbf{Osservazioni.}
+
+\begin{itemize}
+\item La definizione di $\left<f_1, f_2 \right>$ è ben posta.
+Infatti, basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$, che segue da H\"{o}lder.
+%
+$$
+\int_{X}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
+$$
+%
+
+\item $\norm{f}_2^2 = \left<f,f \right>$ per ogni $f \in L^2(X)$.
+
+\item Inoltre, $\ds \left| \int_X f_1 f_2 \right| \dd \mu \leq \int_X \left| f_1 f_2 \right| \dd \mu$ quindi
+%
+$$
+\left| \left<f_1, f_2 \right> \right| \leq \norm{f_1}_2 \norm{f_2}_2 \quad \; \text{(\textit{Cauchy-Schwartz})}.
+$$
+%
+
+\item L'operatore $\left< \ , \ \right>$ è un prodotto scalare definito positivo.
+
+\end{itemize}
+
+\textbf{Osservazioni.}
+\begin{itemize}
+\item Dato $C$ spazio vettoriale reale con prodotto scalare $\left<\ ,\ \right>$, allora $\left<\ ,\ \right>$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
+%
+$$
+\left<v_1, v_2 \right> = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
+$$
+%
+
+\item  Dato $V$ come sopra, vale l'identità del parallelogramma:
+%
+$$
+\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V.
+$$
+%
+ Usando questa identità di dimostra che la norma di $L^p$ deriva da un prodotto scalare solo per $p=2$.
+
+\end{itemize}
+
+\textbf{Proprietà.}
+Sia $V$ uno spazio vettoriale normato con norma $\norm{\cdot}$. Allora vale l'identità del parallelogramma se solo se $\norm{\cdot}$ deriva da un prodotto scalare.
+
+\textbf{Esempio.}
+La norma di $L^p \left( [-1,1] \right)$, deriva da un prodotto scalare solo per $p=2$.
+Prendiamo $f_1 = \One_{[-1,0]}$ e $f_2 = \One_{[0,+1]}$.
+Allora
+%
+\vspace{-5mm}
+%
+\begin{align*}
+\norm{f_1 + f_2}_p^p = \int_{-1}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
+\norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
+\end{align*}
+%
+Se vale l'identità del parallelogramma allora
+%
+$$
+\norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
+$$
+%
+cioè
+%
+$$
+2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
+$$
+%
+
+\textbf{Domanda.} Per quali $X,\mc{A},\mu$ vale la stessa conclusione?
+
+
 \section{Completezza degli spazi $L^p$}
 
 Vediamo ora la proprietà più importante degli spazi $L^p$.
@@ -1064,7 +1146,6 @@ $$
 
 
 % @aziis98: Il latex mi vuole male e mi metteva solo Corollario e la prima frase alla fine della pagina e l'enumerate alla nuova, però se aggiungiamo cose prima poi lo togliamo.
-\newpage
 
 \hypertarget{prop:completeness_lemma_2}{}
 \textbf{Lemma 2.} 
@@ -1327,86 +1408,6 @@ Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/
 
 \end{enumerate}
 
-\subsection{Prodotto scalare su $L^2$}
-
-Date $f_1,f_2 \in L^2(X)$ si pone
-%
-$$
-\left<f_1, f_2 \right> \coloneqq \int_{X}^{} f_1 \cdot f_2 \dd \mu.
-$$
-%
-\textbf{Osservazioni.}
-
-\begin{itemize}
-\item La definizione di $\left<f_1, f_2 \right>$ è ben posta.
-Infatti, basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$, che segue da H\"{o}lder.
-%
-$$
-\int_{X}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
-$$
-%
-
-\item $\norm{f}_2^2 = \left<f,f \right>$ per ogni $f \in L^2(X)$.
-
-\item Inoltre, $\ds \left| \int_X f_1 f_2 \right| \dd \mu \leq \int_X \left| f_1 f_2 \right| \dd \mu$ quindi
-%
-$$
-\left| \left<f_1, f_2 \right> \right| \leq \norm{f_1}_2 \norm{f_2}_2 \quad \; \text{(\textit{Cauchy-Schwartz})}.
-$$
-%
-
-\item L'operatore $\left< \ , \ \right>$ è un prodotto scalare definito positivo.
-
-\end{itemize}
-
-\textbf{Osservazioni.}
-\begin{itemize}
-\item Dato $C$ spazio vettoriale reale con prodotto scalare $\left<\ ,\ \right>$, allora $\left<\ ,\ \right>$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
-%
-$$
-\left<v_1, v_2 \right> = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
-$$
-%
-
-\item  Dato $V$ come sopra, vale l'identità del parallelogramma:
-%
-$$
-\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V.
-$$
-%
- Usando questa identità di dimostra che la norma di $L^p$ deriva da un prodotto scalare solo per $p=2$.
-
-\end{itemize}
-
-\textbf{Proprietà.}
-Sia $V$ uno spazio vettoriale normato con norma $\norm{\cdot}$. Allora vale l'identità del parallelogramma se solo se $\norm{\cdot}$ deriva da un prodotto scalare.
-
-\textbf{Esempio.}
-La norma di $L^p \left( [-1,1] \right)$, deriva da un prodotto scalare solo per $p=2$.
-Prendiamo $f_1 = \One_{[-1,0]}$ e $f_2 = \One_{[0,+1]}$.
-Allora
-%
-\vspace{-5mm}
-%
-\begin{align*}
-\norm{f_1 + f_2}_p^p = \int_{-1}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
-\norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
-\end{align*}
-%
-Se vale l'identità del parallelogramma allora
-%
-$$
-\norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
-$$
-%
-cioè
-%
-$$
-2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
-$$
-%
-
-\textbf{Domanda.} Per quali $X,\mc{A},\mu$ vale la stessa conclusione?
 
 %
 % Lezione dell'11 Ottobre 2021
@@ -1540,10 +1541,10 @@ Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E
 Intuitivamente $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta è denso in $L^p$ (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
 \qed
 
-Ora sia $X \subset \R^n, \mu = \mathscr L^n$ e 
-$$
-C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}
-$$
+\vss
+
+Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}$, dove il \textbf{supporto} è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero $ \operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}} $, in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
+
 % notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
 
 \textbf{Proposizione 4.}
@@ -1561,14 +1562,13 @@ $$
 f(x) =
 \frac{d(x, C_0)}{d(x, C_0) + d(x, C_1)}.
 $$
-\qed
 
 \hypertarget{prop:apprfunz_lemma3}{}
 \textbf{Lemma 3.}
 Dato $E \subset \R^n$ limitato (e quindi di misura finita) esiste $f_\epsilon \in C_C(\R^n)$ tale che $f_\epsilon \xrightarrow{\epsilon \to 0} \One_E$ in $L^p(\R^n)$ e quindi in $L^p(X)$.
 
 \textbf{Dimostrazione.}
-Per regolarità della misura di Lebesgue abbiamo che per ogni $\epsilon$ esistono $C_\epsilon \subset E \subset A_\epsilon$ tali che $|A_\epsilon \setminus C_\epsilon| \leq \epsilon$. Per il \hyperlink{prop:apprfunz_lemma2}{Lemma 1} possiamo definire la classe di funzioni $f_\epsilon \colon \R^n \to [0, 1]$ continue tali che
+Per regolarità della misura di Lebesgue abbiamo che per ogni $\epsilon$ esistono $C_\epsilon \subset E \subset A_\epsilon$ tali che $|A_\epsilon \setminus C_\epsilon| \leq \epsilon$. Per il \hyperlink{prop:apprfunz_lemma2}{Lemma 2} possiamo definire la classe di funzioni $f_\epsilon \colon \R^n \to [0, 1]$ continue tali che
 $$
 f_\epsilon = 1 \text{ su $C_\epsilon$}
 \qquad
@@ -1821,9 +1821,9 @@ $$
 %
 
 Dimostriamo che è compatto per successioni.
-Prendiamo $( \underline{x}^k ) \subset F$, ogni componente $x_n$ è equilimitata a meno di sottosuccessioni $x_n^{k_j}$ converge a $x_n^\infty$.
-A meno di diagonalizzare, posso supporre che le successione $k_j$ non dipenda da $n$.
-Otteniamo che $x_n^{k_j}$ sono dominate da $y = (1 / n^2)$. Concludiamo usando il teorema di convergenza dominata di Lebesgue.
+Prendiamo $( \underline{x}^k ) \subset F$, ogni componente $x_n$ è equilimitata, quindi a meno di sottosuccessioni $x_n^{k_j}$ converge a $x_n^\infty$.
+A meno di diagonalizzare, possiamo supporre che le successione $k_j$ non dipenda da $n$.
+Inoltre gli elementi $x_n^{k_j}$ sono dominati da $y = (1 / n^2)$. Concludiamo usando il teorema di convergenza dominata di Lebesgue.
 
 % 
 % Lezione del 14 Ottobre 2021
@@ -1831,20 +1831,11 @@ Otteniamo che $x_n^{k_j}$ sono dominate da $y = (1 / n^2)$. Concludiamo usando i
 
 \section{Complementi su approssimazioni di funzioni in $L^p$}
 
-Sia $X$ misurabile in $\R^n$ con $\mu = \mathscr L^n$ su $X$, in precedenza abbiamo visto che
+Sia $X$ misurabile in $\R^n$ con $\mu = \mathscr L^n$ su $X$. In precedenza abbiamo visto che
 
 \textbf{Proposizione 3.} Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense in $L^p$ se $p < +\infty$.
 
-[TODO: la seguente osservazione è da rilocare probabilmente]
-
-\textbf{Osservazione.} 
-Le funzioni $C_C(\R^n)$ sono le funzioni a supporto compatto, dove il supporto è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero
-$$
-\operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}}
-$$
-in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto a parte quando è vuoto.
-
-\begin{wrapfigure}{r}{150pt}
+\begin{wrapfigure}{r}{130pt}
 	\centering
 	\vspace{-2.5\baselineskip}
 	\inputfigure{supporto-compatto}
@@ -1856,7 +1847,7 @@ Si vede facilmente che $C_C(\R^n) \subset L^p(\R^n)$.
 
 \textbf{Domanda.} Vale un risultato analogo per le funzioni $C_C(X)$?
 
-Notiamo che dato $X \subset \R^n$ le funzioni continue su $X$ hanno supporto compatto solo se $X$ è aperto in quanto il supporto ha veramente distanza non nulla dal bordo e possiamo estendere la funzione a $0$ fuori da $X$, altrimenti... [TODO: Esempio con un chiuso in cui le cose non fungono?]
+Notiamo che dato $X \subset \R^n$ le funzioni continue su $X$ hanno supporto compatto solo se $X$ è aperto in quanto il supporto ha veramente distanza non nulla dal bordo e possiamo estendere la funzione a $0$ fuori da $X$. [TODO: Esempio con un chiuso in cui le cose non fungono?]
 
 \textbf{Proposizione 4.} 
 Sia $X$ aperto di $\R^n, \mu = \mathscr L^n$ allora $C_C(X)$ è denso in $L^p$ per ogni $p < +\infty$
@@ -1867,7 +1858,7 @@ Sia $X$ aperto di $\R^n, \mu = \mathscr L^n$ allora $C_C(X)$ è denso in $L^p$ p
 		$\mathscr S_C := \{ \text{funzioni semplici con supporto compatto in $X$} \}$ è denso in $L^p(X)$ per ogni $p < +\infty$.
 
 	\item
-		Dato $E$ relativamente compatto in $X$ esiste $f_n \in C_C(X)$ tale che $f_n \to \One_E$ in $L^p$ per ogni $p < +\infty$.
+		Dato $E$ relativamente compatto\footnote{Un sottospazio relativamente compatto di uno spazio topologico è un sottoinsieme dello spazio topologico la cui chiusura è compatta.} in $X$ esiste $f_n \in C_C(X)$ tale che $f_n \to \One_E$ in $L^p$ per ogni $p < +\infty$.
 \end{itemize}
 
 La Proposizione 3 non vale per $p = +\infty$, intuitivamente in quanto data $f \in L^\infty(X)$ discontinua, se trovassimo $f_n \to f$ in $L^\infty(X)$ con $f_n$ continue avremmo $f_n \to f$ \textit{uniformemente} e dunque $f$ continua.
@@ -1879,7 +1870,7 @@ In generale vale che data $f \colon X \to \R$ misurabile, $\norm{f}_\infty \leq 
 Se $X$ è aperto in $\R^n$ e $\mu = \mathscr L^n$ e $f \colon X \to \R$ continua, allora $\norm{f}_\infty = \sup_{x \in X} |f(x)|$.
 
 \textbf{Soluzione.}
-Se per assurdo $\exists x \in X$ tale che $\norm{f}_\infty < |f(x)|$ allora la continuità di $f$ implica che esiste un intorno di $x$ in cui $|f| > \norm{f}_\infty$ ma un intorno contiene una palla aperta di misura positiva \absurd
+Se per assurdo $\exists x \in X$ tale che $\norm{f}_\infty < |f(x)|$ allora la continuità di $f$ implica che esiste un intorno di $x$ in cui $\norm{f}_\infty < |f(x)|$; ma un intorno contiene una palla aperta di misura positiva. \absurd
 
 \begin{wrapfigure}{r}{125pt}
 	\centering
@@ -1957,18 +1948,18 @@ Sono fatti equivalenti
 
 \item $T$ è continua.
 
-\item $T$ è lipschitziana, cioè esiste una costante $c < +\infty$ tale che $\norm{Tv - Tv'}_W \leq \norm{v - v'}_V$.
+\item $T$ è lipschitziana, cioè esiste una costante $c < +\infty$ tale che $\norm{Tv - Tv'}_W \leq c \norm{v - v'}_V$.
 
-\item esiste una costante $c$ tale che $\norm{Tv'} \leq c \norm{v}$ per ogni $v \in V$.
+\item Esiste una costante $c$ tale che $\norm{Tv}_W \leq c \norm{v}_V$ per ogni $v \in V$.
 
-\item esiste una costante $c$ tale che $\norm{Tv}_W \leq c$ per ogni $v \in V$, $\norm{v}_V = 1$.
+\item Esiste una costante $c$ tale che $\norm{Tv}_W \leq c$ per ogni $v \in V$, $\norm{v}_V = 1$.
 \end{enumerate}
 
 \textbf{Dimostrazione.}
 v) $\Rightarrow$ iv). Vale la seguente
 %
 $$
-\norm{Tv}_W \underbrace{=}_{v = \lambda \tilde{v}, \norm{v}_V = 1} \left| \lambda \right| \norm{T \tilde{v}}_W \leq c \lambda = c \norm{v}_V \leq 1.
+\norm{Tv}_W \underbrace{=}_{v = \lambda \tilde{v}, \norm{\tilde{v}}_V = 1} \left| \lambda \right| \norm{T \tilde{v}}_W \leq c \lambda = c \norm{v}_V \leq 1.
 $$
 %
 iv) $\Rightarrow$ iii). Vale la seguente
@@ -2000,7 +1991,7 @@ c = \sup_{\norm{v}_V \leq 1} \norm{Tv}_W.
 $$
 %
 
-\textbf{Esempi di utilizzo.}
+\textbf{Esempi.}
 \begin{enumerate}
 \item Sia $X, \mc{A}, \mu$ coma al solito, con $\mu(X) < +\infty$.
 Allora, dati $1 \leq p_1 < p_2 \leq +\infty$, vale
@@ -2012,7 +2003,7 @@ Inoltre, l'inclusione $i \colon L^{p_2}(X) \to L^{p_1}(X)$ è continua.
 \textbf{Dimostrazione.} La dimostrazione di \eqref{eq:star_1} segue dalla stima
 %
 $$
-\norm{u}_{p_1} \underbrace{\leq}_{\text{Hölder generalizzato}} \norm{\One_X}_q \norm{u}_{p_2} \quad \text{dove} \quad q = \frac{p_1 p_2}{p_2 - p_1}.
+\norm{u}_{p_1} \underbrace{\leq}_{\mathclap{\text{Hölder generalizzato}}} \norm{\One_X}_q \norm{u}_{p_2} \quad \text{dove} \quad q = \frac{p_1 p_2}{p_2 - p_1}.
 $$
 %
 Dove
@@ -2112,7 +2103,7 @@ $$
 Basta osservare che
 $$
 \int_{\R^d} |f_1(x - y) \ast f_2(y)| \dd y < +\infty 
-\implies \int_{\R^d} f_1(x - y) f_2(y) \dd y
+\implies \int_{\R^d} f_1(x - y) f_2(y) \dd y <+\infty
 $$
 e dunque esiste.
 \qed
@@ -2124,8 +2115,8 @@ Se $|f_1| \ast |f_2| \in L^p(\R^d)$ con $1 \leq p \leq +\infty$ allora $f_1 \ast
 Segue subito dalla proposizione precedente.
 \qed
 
-\textbf{Teorema 3} \textit{(Disuguaglianza di Young per la convoluzione)}.
-Se $f_1^{p_1}$ e $f_2 \in L^{p_2}$ e preso $r \geq 1$ tale che
+\textbf{Teorema 3} (Disuguaglianza di Young per la convoluzione).
+Se $f_1 \in L^{p_1}$ e $f_2 \in L^{p_2}$ e preso $r \geq 1$ tale che
 \begin{equation}\label{eqn:conv_th3_cond}
 	\frac{1}{r} = \frac{1}{p_1} + \frac{1}{p_2} - 1
 	\tag{$\star$}
