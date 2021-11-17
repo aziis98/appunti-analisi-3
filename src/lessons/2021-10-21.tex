@@ -62,19 +62,48 @@ $$
 Un altro modo per dimostrare quanto sopra è verificare che, per ogni $C > 0$, esiste una funzione $u \in L^p(\R^d) \cap L^1(\R^d)$ tale per cui 
 %
 $$
-\left| \int_{\R} u \dd x  \right| \nleq C \left( \int_{\R} \left| u \right|^p \dd x  \right)^{1/p}.
+\left| \int_{\R} u \dd x  \right| > C \left( \int_{\R} \left| u \right|^p \dd x  \right)^{1/p}.
 $$
-%       
-[TO DO: aggiungere soluzione] Notiamo che questo è proprio l'esercizio che segue.
+%
+
+Notiamo che questo è proprio l'esercizio che segue.
+
 \end{enumerate}
 
 
-\textbf{Esercizio.} [TO DO] Fissato $C > 0$, trovare $u \in L^p \cap L^1 (\R)$ tale che
+\textbf{Esercizio.} Fissato $C > 0$, trovare $u \in L^p \cap L^1 (\R)$ tale che
+
+\begin{equation} \tag{$\star$} \label{eq:lez-21ott_es1}
+	\left| \int_{\R} u \dd x\right| > C \norm{u}_{L^p(\R)}
+\end{equation}
+
+\textbf{Dimostrazione.} Fissato $C > 0$, cerchiamo una funzione in $L^p$ il cui integrale in modulo sia maggiore di $C$ per la sua norma $L^p$.
+Per trovare $u$ consideriamo la successione di funzioni definita come segue
 %
 $$
-\left| \int_{\R} u \dd x\right| \geq C \norm{u}_{L^p(\R)}
+f_n = 
+\begin{cases}
+1/x \quad & 1 \leq x \leq n \\
+0 \quad  & \text{altrimenti} 
+\end{cases}. 
 $$
 %
+Le funzioni $f_n$ sono a supporto compatto e stanno in ogni $L^p$.
+Notiamo che $f_n \uparrow f$ definita come
+%
+$$
+f = 
+\begin{cases}
+1/x \quad & x > 1 \\
+0 \quad & \text{altrimenti}
+\end{cases}
+$$
+%
+ed $f \in L^p$ per ogni $p > 1$.
+In particolare, $\ds \left( \int_\R |f_n|^p \right)^{1/p} \leq \left( \int_\R |f|^p \right)^{1/p} \underbrace{\leq}_{\mathclap{f \in L^p \; \forall p > 1}} +\infty$ per ogni $n$.
+
+Quindi il secondo membro di \eqref{eq:lez-21ott_es1} è maggiorato da una costante che non dipende da $n$. D'altra parte, per Beppo Levi $\ds \lim_n \int_{\R} f_n \dd x = \int_{\R} f \dd x$ che non sta in $L^1$. In conclusione, esiste un $n$ abbastanza grande per cui vale \eqref{eq:lez-21ott_es1}.
+\qed
 
 %%%
 \textbf{Esercizio.} Sia $p \geq 1$ e $\ds E = \left\{ u \in L^p(-1,1) \colon \fint_{-1}^1 u \dd x = 0 \right\}$.
@@ -209,7 +238,15 @@ $$
 
 \textbf{Esercizio.} Dimostrare che $f \ast g$ è ben definita e lipschitziana, dove $f \in L^1(\R^d)$ e $g \in \mc{C}_C^0 (\R^d)$.
 
-Prendo $x_1,x_2 \in \R^d$
+Verifichiamo che la convoluzione è ben definita.
+Dal fatto che $g \in \mc{C}_C^0(\R^d)$ abbiamo in particolare che $g$ è limitata, da cui
+%
+$$
+f \ast g = \int_{\R^d} f(x-y) \cdot g(y) \dd y \overset{|g| \leq M}{\leq} M \cdot \int_{\R^d} f(x-y) \dd y \overset{f \in L^1(\R^d)}{<} +\infty.
+$$
+%
+
+Ora verifichiamo che $f \ast g$ è lipschitziana. Consideriamo $x_1,x_2 \in \R^d$
 %
 $$
 \left| f \ast g (x_1) - f \ast g(x_2) \right| = \left| \int_{\R^d} f(x_1 - x) g(y) \dd y  - \int_{\R^d} f(x_2 - y) g(y) \dd y  \right|
