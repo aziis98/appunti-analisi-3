@@ -4,7 +4,7 @@
 
 \chapter{Spazi di Hilbert}
 
-Sia $H$ spazio vettoriale reale con prodotto scalare $\left<\cdot, \cdot \right>$ definito positivo e norma indotta $\norm{\cdot}$ definita come $\norm{x} = \sqrt{\left<x,x \right>}$.
+Sia $H$ spazio vettoriale reale con prodotto scalare $\left<\cdot, \cdot \right>$ definito positivo e norma indotta $\norm{\curry}$ definita come $\norm{x} = \sqrt{\left<x,x \right>}$.
 
 Si ricorda l'identità di polarizzazione
 %
@@ -13,7 +13,7 @@ $$
 $$
 %
 
-\textbf{Nota.} Siccome $\norm{\cdot }$ è continua, dalla formula di polarizzazione segue che il prodotto scalare è continuo.
+\textbf{Nota.} Siccome $\norm{\curry}$ è continua, dalla formula di polarizzazione segue che il prodotto scalare è continuo.
 
 \textbf{Definizione.} $H$ si dice \textbf{spazio di Hilbert} se è completo.
 
@@ -33,14 +33,19 @@ $$
 %
 
 
-\textbf{Definizione.} $\mc{F}$ si dice \textbf{completo} se $\overline{\spn(\mc{F})} = H$\footnote{lo span sono combinazioni lineari finite}. In tal caso $\mc{F}$ si dice \textbf{base di Hilbert}.
+\textbf{Definizione.} $\mc{F}$ si dice \textbf{completo} se $\overline{\spn(\mc{F})} = H$\footnote{Lo span sono combinazioni lineari finite.}. In tal caso $\mc{F}$ si dice \textbf{base di Hilbert}.
 
-\textbf{Osservazione.} Se $H$ ha dimensione infinita non esistono basi ortonormali di Hilbert. \textit{Attenzione.} Le basi algebriche esistono, sono quelle ortonormali a non esistere.
+\vs
 
-\textbf{Esempi.}
-In $\ell^2$ una base ortonormale è $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\underbrace{1}_{i},0,\ldots )$. \\
+\textbf{Osservazione.} In generale una base di Hilbert $\mc{F} \subset H$ non è anche una base algebrica di $H$.
+
+L'esempio che segue spiega quanto appena detto.
+
+\textbf{Esempio.}
+In $\ell^2$ una base ortonormale è $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\overset{(n)}{1},0,\ldots )$. \\
 Infatti, il fatto che siano ortonormali è banale; verifichiamo che sia una base. 
-Studiamo $\spn(\mc{F}) = \left\{ x = (x_0,x_1,\ldots ) \mymid x_n \quad \text{è definitivamente nullo}  \right\}$: dato $x \in \ell^2$ e $m = 0,1,2,\ldots $, definiamo
+
+Studiamo $\spn(\mc{F}) = \left\{ x = (x_0,x_1,\ldots ) \mymid x_n \quad \text{è definitivamente nullo}  \right\}$: dato $x \in \ell^2$ e $m = \N$, definiamo
 %
 $$
 P_mx \coloneqq (x_0,x_1,\ldots , x_m,0,\ldots ).
@@ -60,7 +65,7 @@ $$
 $$
 %
 
-\textbf{Teorema 1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema al più numerabile\footnote{il caso interessante è quello numerabile}, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
+\textbf{Teorema 1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema al più numerabile, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
 Definiamo per ogni $x \in H$, $n \in \N$ l'elemento $x_n = \left<x, e_n \right>$.
 Allora
 \begin{enumerate}
@@ -85,13 +90,13 @@ $$
 %
 \end{enumerate}
 
-\textbf{Nota.} Il punto \ref{item:27ott_thm1_2} non segue dal fatto che la serie non è assolutamente convergente. Infatti
-%
-$$
-\sum \norm{x_n e_n} = \sum \left| x_n \right|
-$$
-%
-può essere $+\infty$.
+%\textbf{Nota.} Il punto \ref{item:27ott_thm1_2} non segue dal fatto che la serie è assolutamente convergente. Infatti
+%%
+%$$
+%\sum \norm{x_n e_n} = \sum \left| x_n \right|
+%$$
+%%
+%può essere $+\infty$.
 
 
 Alla dimostrazione del teorema premettiamo il seguente lemma.
@@ -101,70 +106,65 @@ Alla dimostrazione del teorema premettiamo il seguente lemma.
 \textbf{Lemma.} Siano $H$ e $\mc{F}$ come nel teorema.
 Data $(a_n) \in \ell^2$, allora
 \begin{enumerate}
-\item La somma $\ds \sum_n a_n e_n$ converge a qualche $\overline{x} \in H$. 
+\item La serie $\ds \sum_n a_n e_n$ converge a qualche $\overline{x} \in H$. 
 
-\item $\overline{x}_n = a_n$.
+\item $\overline{x}_n = a_n$ per ogni $n$.
 
 \item $\ds \norm{\overline{x}}^2 = \sum_n a_n^2$.
 \end{enumerate}
 
 \textbf{Dimostrazione lemma.} 
 \begin{enumerate}
-\item Dimostriamo che $\ds y_n = \sum_{n = 1}^{m} x_n e_n$ è di Cauchy in $H$.
+\item Dimostriamo che $\ds y_n = \sum_{n = 1}^{m} a_n e_n$ è di Cauchy in $H$.
 Se $m' > m$, vale
 %
 $$
-y_{m'} - y_m = \sum_{n = m+1}^{m'} x_n e_n
-\Longrightarrow  \norm{y_{m'} - y_m}^2 = \norm{\sum_{n = m+1}^{m'} x_n e_n}^2 
-= \sum_{n = m+1}^{m'} x_n^2 \leq \sum_{n = m+1}^{\infty} x_n^2 < +\infty.
+y_{m'} - y_m = \sum_{n = m+1}^{m'} a_n e_n
+\Longrightarrow  \norm{y_{m'} - y_m}^2 = \norm{\sum_{n = m+1}^{m'} a_n e_n}^2 
+= \sum_{n = m+1}^{m'} a_n^2 \leq \sum_{n = m+1}^{\infty} a_n^2 < +\infty.
 $$
 %
-Dunque, per ogni $\epsilon$ esiste $m_\epsilon$ tale che $\ds \sum_{m + 1}^{\infty} x_n^2 \leq \epsilon^2 $, per cui 
+Dunque, per ogni $\epsilon$ esiste $m_\epsilon$ tale che $\ds \sum_{m + 1}^{\infty} a_n^2 \leq \epsilon^2 $, per cui 
 %
 $$
-\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{\infty} x_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} x_n^2 \leq \epsilon^2 \quad \forall m,m' \geq m_\epsilon.
-$$
-%
-
-\item Per ipotesi, $\left<y_m, e_n \right> = x_n$ se $m \geq n$, dunque
-%
-$$
-\left<y_n, e_n \right> \xrightarrow{n \to \infty} \left<\overline{x},e_n \right> = x_n.
+\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{\infty} a_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} a_n^2 \leq \epsilon^2 \quad \forall m,m' \geq m_\epsilon.
 $$
 %
 
-\item Si ha l'uguaglianza $\ds \norm{y_n}^2 = \sum_{n=1}^{m} x_n^2$, per cui passando al limite per $n \to +\infty$ otteniamo 
+\item Se $m \geq n$, $\left<y_m, e_n \right> = a_n$, dunque
 %
 $$
-\norm{y_n}^2 \to \norm{\overline{x}}^2, \qquad \sum_{n=0}^{m} x_n^2 \to \sum_{n=0}^{\infty} x_n^2.
+a_n = \left<y_m, e_n \right> \xrightarrow{m \to \infty} \left<\overline{x},e_n \right> = \ol{x}_n.
 $$
 %
 
+\item Si ha l'uguaglianza $\ds \norm{y_m}^2 = \sum_{n=1}^{m} a_n^2$, per cui passando al limite per $m \to +\infty$ otteniamo 
+\begin{align*}
+& \norm{y_m}^2 \xrightarrow{m \to \infty} \norm{\ol{x}}^2 \\
+& \quad \rotatebox[origin=c]{90}{=} \\
+& \sum_{n=0}^{m} a_n^2 \xrightarrow{m \to \infty} \sum_{n=0}^{\infty} a_n^2 
+\end{align*}
+\qed
 
 \end{enumerate}
-\qed
 
 
 \textbf{Dimostrazione teorema.}
 
 \begin{enumerate}
-\item Studiamo la somma
+\item Studiamo la somma $\ds x = \sum_{n=0}^{m} x_n e_n + \overbrace{y}^{\text{resto}}$.
+
+Notiamo che $x$ è somma di vettori ortogonali, infatti $y$ è ortogonale a $\ds \sum_{n=0}^{m} x_n e_n$ :
 %
 $$
-x = \sum_{n=0}^{\infty} x_n e_n + \overbrace{y}^{\text{resto}}
-$$
-%
-notiamo che $x$ è somma di vettori ortogonali, infatti $y$ è ortogonale a $\ds \sum_{n=0}^{\infty} x_n e_n$ :
-%
-$$
-\left<y,e_i \right> = \left<x - \sum_{n=0}^{\infty} x_n e_n, e_i \right>
-= \left<x,e_i \right> - \sum_{n=0}^{\infty} x_n \underbrace{\left<e_n,e_i \right>}_{\delta_{i,n}} = x_i - x_i = 0.
+\left<y,e_i \right> = \left<x - \sum_{n=0}^{m} x_n e_n, e_i \right>
+= \left<x,e_i \right> - \sum_{n=0}^{m} x_n \underbrace{\left<e_n,e_i \right>}_{\delta_{i,n}} = x_i - x_i = 0.
 $$
 %
 Essendo che $x$ è somma di vettori ortogonali abbiamo
 %
 $$
-\norm{x}^2 = \sum_{n=1}^{\infty} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2.
+\norm{x}^2 = \sum_{n=1}^{m} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2.
 $$
 %
 Passando al limite per $m \to +\infty$ otteniamo
@@ -178,14 +178,13 @@ $$
 
 \item Segue dal punto precedente e dal lemma.
 
-\item Notiamo che 
+\item Notiamo che $\left<x - \ol{x}, e_n \right> = x_n - \ol{x}_n \overset{\text{ii)}}{=} 0$ per ogni $n$. Cioè
 %
 $$
-\left<x - \overline{x}, e_n \right> = \left<x,e_n \right> - \left<\overline{x} , -e_n \right> = x_n - \overline{x}_n 
-\overbrace{=}^{\ref{item:27ott_thm1_2}} x - \overline{x} \perp e_n \mquad \forall n \Longrightarrow x - \overline{x} \perp \spn(\mc{F}).
+x - \ol{x} \perp e_n \Longrightarrow x - \ol{x} \perp \spn(\mc{F})
+\Longrightarrow x - \ol{x} \underset{\substack{\text{continuità} \\ \text{pr. scalare}}}{\perp} \ol{\spn(\mc{F})}
 $$
 %
-Segue che $x - \overline{x} \perp \overline{\spn(\mc{F})}$. (dato $y \in$ chiusura span.., prendo $y_m \to y \in span$, $\left< x- \overline{x}, y_n \right> = 0 \Rightarrow  \left<x - \overline{x}, y \right> = 0$).
 
 \item $x - \overline{x} \perp \overline{\spn(\mc{F})} \underbrace{=}_{\mathclap{\text{$\mc{F}$ è completo}}} H \Longrightarrow x - \overline{x} = 0$, cioè $x = \overline{x}$.
 \end{enumerate}
@@ -197,7 +196,7 @@ Segue che $x - \overline{x} \perp \overline{\spn(\mc{F})}$. (dato $y \in$ chiusu
 
 \item $\ds \left<x,x' \right> = \sum_{n=0}^{\infty} x_n  x_n'$ (\textbf{Identità di Parceval}).
 
-\item L'applicazione $H \ni X \mapsto (x_n) \in \ell^2$ è un'isometria surgettiva\footnote{in particolare è bigettiva ma l'iniettività è ovvia}.
+\item L'applicazione $H \ni x \mapsto (x_n) \in \ell^2$ è un'isometria surgettiva\footnote{In particolare è bigettiva ma l'iniettività è ovvia.}.
 \end{enumerate}
 
 \vs 
@@ -207,7 +206,7 @@ Segue che $x - \overline{x} \perp \overline{\spn(\mc{F})}$. (dato $y \in$ chiusu
 \begin{enumerate}
 \item Per l'enunciato \ref{item:27ott_thm1_5} se due vettori hanno la stessa rappresentazione rispetto a una base di Hilbert coincidono.
 
-\item La tesi segue usando l'identità di polarizzazione conigiuntamente all'enunciato \ref{item:27ott_thm1_5} del teorema:
+\item La tesi segue usando l'identità di polarizzazione congiuntamente all'enunciato \ref{item:27ott_thm1_5} del teorema:
 %
 \begin{align*}
 \left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 + \norm{x - x'}^2 \right)
@@ -215,39 +214,32 @@ Segue che $x - \overline{x} \perp \overline{\spn(\mc{F})}$. (dato $y \in$ chiusu
 & = \frac{1}{4} \left( \cancel{\sum x_n^2} + \cancel{\sum x_n'^2} + 2 \sum x_n x_n' - \cancel{\sum x_n^2} - \cancel{\sum x_n'^2} + 2 \sum x_n x_n' \right).
 \end{align*}
 
-\item TO DO.
+\item Segue da Parseval e dal punto \ref{item:27ott_thm1_3}.
 
 \end{enumerate}
 \qed
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Gli enunciati \ref{item:27ott_thm1_1} e \ref{item:27ott_thm1_5} non richiedono $H$ completo.
+\item Gli enunciati \ref{item:27ott_thm1_1} e \ref{item:27ott_thm1_5} non richiedono $H$ completo, mentre \ref{item:27ott_thm1_2} è vero anche se $H$ non è completo.
 
-\item Se $H$ è uno spazio di Hilbert e $\mc{F}$ sistema ortonormale infinito, allora $\mc{F}$ non è mai una base algebrica\footnote{per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio}. Dunque combinazioni lineari finite di $H$ non sono mai uguali ad $H$, ovvero $\spn(\mc{F}) \subsetneq H $) di $H$.
+\item Se $H$ è uno spazio di Hilbert e $\mc{F}$ sistema ortonormale infinito, allora $\mc{F}$ non è mai una base algebrica\footnote{Per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio.}. Dunque, combinazioni lineari finite di $H$ non sono mai uguali ad $H$, ovvero $\spn(\mc{F}) \subsetneq H $) di $H$.
 
-\textbf{Dimostrazione.} 
-Notiamo che possiamo scrivere $\overline{x}$ come
+\textbf{Dimostrazione.} Presi $(e_n) \subset \mc{F}$, consideriamo $\ds \ol{x} = \sum_{n=0}^{\infty} 2^{-n}e_n $. Allora  $\ds \ol{x} \in H \setminus \spn(\mc{F})$.
 %
-$$
-(e_n) \subset \mc{F}, \quad  \overline{x} = \sum_{n = 0}^\infty \frac{1}{2^n} e_n, \quad  \overline{x} \notin \spn(\mc{F}).
-$$
-%
-\textbf{Nota.} I coefficienti sono univocamente determinati perchè ottenuti tramite prodotto scalare. Notiamo che non si può usare il teorema di albebra lineare sull'unicità della rappesentazione poichè stiamo trattando combinazioni lineari infite.
-\qed
+% \textbf{Nota.} I coefficienti sono univocamente determinati perché ottenuti tramite prodotto scalare. Notiamo che non si può usare il teorema di algebra lineare sull'unicità della rappresentazione poiché stiamo trattando combinazioni lineari infinite.
 
-\item Siano $H$ uno spazio di Hilbert di dimensione infinita e $\mc{F}$ una base di Hilbert. Allora, $\mc{F}$ è numerabile se solo se $H$ è separabile.
+\item Siano $H$ uno spazio di Hilbert di dimensione infinita e $\mc{F}$ una base di Hilbert. Allora $\mc{F}$ è numerabile se solo se $H$ è separabile.
 
 \textbf{Dimostrazione.}
 
 \begin{itemize}
 
-\item[$\boxed{\Rightarrow}$] Vale $ H = \overline{\spn(\mc{F})} = \overline{\spn_\Q (\mc{F})} $ e notando che $\overline{\spn_\Q (\mc{F})}$ è numerabile se  $\mc{F}$ è numerabile.
+\item[$\boxed{\Rightarrow}$] Vale $ H = \overline{\spn(\mc{F})} = \overline{\spn_\Q (\mc{F})} $. Concludiamo notando che $\overline{\spn_\Q (\mc{F})}$ è numerabile se  $\mc{F}$ è numerabile.
 
-\item[$\boxed{\Leftarrow}$] Se $\mc{F}$ non è numerabile, siccome $\norm{e - e'} = \sqrt{2}  \quad \forall e,e' \in \mc{F}$ allora $H$ non è separabile.
+\item[$\boxed{\Leftarrow}$] Se $\mc{F}$ non fosse numerabile, siccome $\norm{e - e'} = \sqrt{2}  \quad \forall e,e' \in \mc{F}$ allora $H$ non è separabile.
 
 \end{itemize}
-\qed
 
 \textbf{Esempio.} Lo spazio $H = L^2(X)$, con $X = \R^n$, $\mu $ misura di Lebesgue ha base di Hilbert numerabile.
 
@@ -279,13 +271,12 @@ Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp
 
 \textbf{Corollario.} Ogni sistema ortonormale $\mc{F}$ si completa a $\tilde{\mc{F}}$ base di Hilbert di $H$.
 
-\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$
+\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$.
 Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. Allora $\tilde{\mc{F}}$ è una base di Hilbert.
-\qed
 
 \vs
 
-\textbf{Nota.} Aggiungere le note a caso.
+\textbf{Nota.} Aggiungere le note a caso. [TO DO: ?]
 
 \vs
 
@@ -324,12 +315,13 @@ $$
 \vs
 
 \textbf{Osservazione.}
-Serve $V$ chiuso. Dato $\mc{F}$ base di Hilbert di $H$ ($H$ dimensione infinita), $V \coloneqq \spn(\mc{F})$, so che $V = \spn(\mc{F}) \subset \overline{V} = H$. Allora
+Serve $V$ chiuso. Se per esempio $V$ è denso in $H$ ma $V \neq H$, allora
 %
 $$
-\overline{V^\perp} = \overline{V}^\perp = H^\perp = \{0\} \Longrightarrow V + V^\perp = V \subsetneq H.
+\overline{V^\perp} = \overline{V}^\perp = H^\perp = \{0\} \Longrightarrow V \subseteq V + V^\perp \subseteq V + \ol{V^\perp} = V \subsetneq H.
 $$
 %
+Un esempio di tale $V$ è $\spn(\mc{F})$ con $\mc{F}$ base di $H$ ($H$ di dimensione infinita).
 
 \textbf{Teorema 3.} Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
 
@@ -348,7 +340,7 @@ Allora $V^\perp = \spn \left\{ x_1 \right\}$ con $\norm{x_1} = 1$. Definiamo $c 
 Dimostriamo ora l'uguaglianza $\ast$ per passi.
 
 \begin{enumerate}
-\item Vale per $x \in V$ tale che $x \in \ker \Lambda$. Infatti $\Lambda(x)=x_0$ e $\left<x,x_0 \right> = 0$ perchè $x_0 \in V^\perp$.
+\item Vale per $x \in V$ tale che $x \in \ker \Lambda$. Infatti $\Lambda(x)=x_0$ e $\left<x,x_0 \right> = 0$ perché $x_0 \in V^\perp$.
 
 \item Vale per $x = x_1$ (e quindi per $x \in V^\perp$). Infatti, 
 %
@@ -362,7 +354,7 @@ $$
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensine infinita.
+\item Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensione infinita.
 
 \textbf{Dimostrazione.} Prendo $\Lambda \colon H \to \R$ lineare definito come
 %

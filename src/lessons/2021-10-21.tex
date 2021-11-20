@@ -6,8 +6,7 @@
 
 % Piccolo recap di quanto fatto le scorse lezioni.
 
-Data $T \colon X \to Y$ lineare tra $X,Y$ spazi normati, allora $T$ è continua se solo se $T$ è limitata.
-In altre parole, $T$ è continua se solo se esiste  $C > 0$ tale che $\norm{T(x)}_Y \leq C \norm{x}_X$ per ogni $x \in X$.
+Data $T \colon X \to Y$ lineare tra $X,Y$ spazi normati, allora $T$ è continua se solo se esiste  $C > 0$ tale che $\norm{T(x)}_Y \leq C \norm{x}_X$ per ogni $x \in X$.
 
 Applichiamo questo risultato.
 
@@ -36,17 +35,10 @@ $$
 %
 è lineare ma non continua.
 
-\textbf{Osservazione.} Dobbiamo cercare una funzione tale per cui non esista $C$ per cui
-%
-$$
-\left| \int_{\R} u \dd x  \right| \leq C \left( \int_{\R} \left| u \right|^p \dd x  \right)^{1/p}.
-$$
-%
 Studiamo il caso reale, ovvero $d = 1$.
 
-\textbf{Nota.} Le funzioni limitate soddisfano la disuguaglianza sopra (per Hölder), dunque non possono essere utilizzate come controesempio. 
-
-Usiamo la nozione di continuità per successioni per mostrare che la mappa sopra non è continua. Per farlo definiamo una successione di funzioni a supporto compatto (che sappiamo essere in tutti gli spazi $L^p$).
+Per verificare quanto sopra, utilizziamo la definizione di continuità per successioni.
+Definiamo una successione di funzioni a supporto compatto $u_n$, che sappiamo essere in tutti gli spazi $L^p$, e verifichiamo che $\lim_n T(u_n) \neq T(u_\infty)$ dove $u_\infty \coloneqq \lim_n u_n$.
 
 Definiamo la successione come segue (fare disegno):
 %
@@ -54,7 +46,7 @@ $$
 u_n (x) =
 \begin{cases}
 \frac{1}{n} \quad \text{se} \quad n \leq x \leq 2n \\
-0 \quad \text{altrimenti} 
+0 \quad \text{altrimenti}. 
 \end{cases} 
 $$
 %
@@ -66,16 +58,52 @@ Più in generale, quando $u \in L^p(\R^d)$ con $p > 1$, una costruzione come sop
 $$
 \norm{u_n}_{L^p(\R)}^p = \int_{\R} u_n^p(x) \dd x = \frac{1}{n^p} \cdot \left| E_n \right| = \frac{n}{n^p} = \frac{1}{^{p-1}} \xrightarrow{n \to \infty} 0.
 $$
+%                    
+Un altro modo per dimostrare quanto sopra è verificare che, per ogni $C > 0$, esiste una funzione $u \in L^p(\R^d) \cap L^1(\R^d)$ tale per cui 
 %
+$$
+\left| \int_{\R} u \dd x  \right| > C \left( \int_{\R} \left| u \right|^p \dd x  \right)^{1/p}.
+$$
+%
+
+Notiamo che questo è proprio l'esercizio che segue.
 
 \end{enumerate}
 
-\textbf{Esercizio.} [TO DO] Fissato $C > 0$, trovare $u \in L^p \cap L^1 (\R)$ tale che
+
+\textbf{Esercizio.} Fissato $C > 0$, trovare $u \in L^p \cap L^1 (\R)$ tale che
+
+\begin{equation} \tag{$\star$} \label{eq:lez-21ott_es1}
+	\left| \int_{\R} u \dd x\right| > C \norm{u}_{L^p(\R)}
+\end{equation}
+
+\textbf{Dimostrazione.} Fissato $C > 0$, cerchiamo una funzione in $L^p$ il cui integrale in modulo sia maggiore di $C$ per la sua norma $L^p$.
+Per trovare $u$ consideriamo la successione di funzioni definita come segue
 %
 $$
-\left| \int_{\R} u \dd x\right| \geq C \norm{u}_{L^p(\R)}
+f_n = 
+\begin{cases}
+1/x \quad & 1 \leq x \leq n \\
+0 \quad  & \text{altrimenti} 
+\end{cases}. 
 $$
 %
+Le funzioni $f_n$ sono a supporto compatto e stanno in ogni $L^p$.
+Notiamo che $f_n \uparrow f$ definita come
+%
+$$
+f = 
+\begin{cases}
+1/x \quad & x > 1 \\
+0 \quad & \text{altrimenti}
+\end{cases}
+$$
+%
+ed $f \in L^p$ per ogni $p > 1$.
+In particolare, $\ds \left( \int_\R |f_n|^p \right)^{1/p} \leq \left( \int_\R |f|^p \right)^{1/p} \underbrace{\leq}_{\mathclap{f \in L^p \; \forall p > 1}} +\infty$ per ogni $n$.
+
+Quindi il secondo membro di \eqref{eq:lez-21ott_es1} è maggiorato da una costante che non dipende da $n$. D'altra parte, per Beppo Levi $\ds \lim_n \int_{\R} f_n \dd x = \int_{\R} f \dd x$ che non sta in $L^1$. In conclusione, esiste un $n$ abbastanza grande per cui vale \eqref{eq:lez-21ott_es1}.
+\qed
 
 %%%
 \textbf{Esercizio.} Sia $p \geq 1$ e $\ds E = \left\{ u \in L^p(-1,1) \colon \fint_{-1}^1 u \dd x = 0 \right\}$.
@@ -147,7 +175,7 @@ Dunque $T$ è continua e $T^{-1}(0) = E$, dunque $E$ è chiuso.
 \textbf{Esercizio.} [TO DO] Sia $p \geq 1$. Definiamo 
 %
 $$
-F = \left\{ v \in L^p(\R) \mymid \int_{0}^{1} u(x) \dd x - 2 \int_{-1}^{0} u(x) \dd x = 3 \right\}.
+F = \left\{ v \in L^p(\R) \mymid \int_{0}^{1} v(x) \dd x - 2 \int_{-1}^{0} v(x) \dd x = 3 \right\}.
 $$
 %
 Dire se $F$ è chiuso in $\left( L^p(\R), \norm{\cdot }_{L^p(\R)} \right)$.
@@ -171,7 +199,7 @@ $$
 V = \left\{ \left\{ x_n \right\} \mymid x_n = 0 \quad \text{definitivamente}  \right\}.
 $$
 %
-Vediamo che non è chiuso. Sia $\underline{x} \in \ell^2$, definita come $\underline{x} = \{ 1 / n \}_{n \in \N \setminus \{0 \}}$, dico che $\ds \underline{x} = \lim_{n \to +\infty} \underline{x}^n$ dove
+Vediamo che non è chiuso. Sia $\underline{x} \in \ell^2$, definita come $\underline{x} = \{ 1 / n \}_{n \in \N \setminus \{0 \}}$, diciamo che $\ds \underline{x} = \lim_{n \to +\infty} \underline{x}^n$ dove
 %
 $$
 x_n^k = 
@@ -181,7 +209,7 @@ x_n^k =
 \end{cases} 
 $$
 %
-ho che
+abbiamo che
 %
 $$
 \norm{\underline{x} - \underline{x}^k}_{\ell^2}^2 = \sum_{n=1}^{\infty} \left| x_n -x_n^k \right|^2 = \sum_{n = k+1}^{+\infty} \left| x_n \right|^2 = \sum_{n = k+1}^{\infty} \frac{1}{n^2} \xrightarrow{k \to +\infty} 0.   
@@ -201,28 +229,35 @@ $$
 
 \subsection{Convoluzione}
 
-Sia $f \in L^1(\R^d)$ e sia $g$ supporto compatto $K$ e lipschitziana, vale a dire esiste $M > 0$ tale che per ogni $x,y $ vale
+Sia $f \in L^1(\R^d)$ e sia $g \colon \R^d \to \R$ continua a supporto compatto\footnote{In tal caso $g$ è lipschitziana.}.
 %
 $$
 \left| g(x) - g(y) \right| \leq M \left| x - y \right|_{\R^d}.
 $$
 %
 
-
 \textbf{Esercizio.} Dimostrare che $f \ast g$ è ben definita e lipschitziana, dove $f \in L^1(\R^d)$ e $g \in \mc{C}_C^0 (\R^d)$.
 
-Prendo $x_1,x_2 \in \R^d$
+Verifichiamo che la convoluzione è ben definita.
+Dal fatto che $g \in \mc{C}_C^0(\R^d)$ abbiamo in particolare che $g$ è limitata, da cui
+%
+$$
+f \ast g = \int_{\R^d} f(x-y) \cdot g(y) \dd y \overset{|g| \leq M}{\leq} M \cdot \int_{\R^d} f(x-y) \dd y \overset{f \in L^1(\R^d)}{<} +\infty.
+$$
+%
+
+Ora verifichiamo che $f \ast g$ è lipschitziana. Consideriamo $x_1,x_2 \in \R^d$
 %
 $$
 \left| f \ast g (x_1) - f \ast g(x_2) \right| = \left| \int_{\R^d} f(x_1 - x) g(y) \dd y  - \int_{\R^d} f(x_2 - y) g(y) \dd y  \right|
 $$
 %
-Uso la proprietà che essendo ben definita, $f \ast g$ si ha $ f \ast g(x) = g \ast f(x) $, dai cui
+Usiamo la proprietà che, essendo $f \ast g$ ben definita, si ha $ f \ast g(x) = g \ast f(x) $. Da cui
 \begin{align*}
 \left| f \ast g(x_1) - f \ast g(x_2) \right|  & = \left| \int_{\R^d} g(x_1 - y) f(y) \dd y \int_{\R^d} g(x_2 - y) f(y) \dd y   \right| \\
 & = \left| \int_{\R^d} \left( g(x_1 - y) - g(x_2 - y) \right) f(y) \dd y  \right| \\
 & \leq \int_{\R^d} \left| g(x_1 - y) - g(x_2 - y) \right| \left| f(y) \right| \dd y \\
-& \leq \int_{\R^d} M \left| x_1 - y - (x_2 - y) \right| \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
+& \leq \int_{\R^d} M \left| (x_1 - y) - (x_2 - y) \right| \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
 \end{align*}
 
 \textbf{Esercizio.} [TO DO] Se $f \in L^1(\R^d)$ e $g$ a supporto compatto è $\alpha$-Hölderiana allora anche $f \ast g$ lo è.
@@ -232,6 +267,8 @@ Uso la proprietà che essendo ben definita, $f \ast g$ si ha $ f \ast g(x) = g \
 \subsection{Separabilità degli spazi $L^p$}
 
 \textbf{Proposizione.} Si ha che $L^p\left( \R^d, \mu \right)$ con $\mu $ la misura di Lebesgue, è separabile se solo se $p \neq +\infty$. Lo stesso risultato vale per $\ell^p$.
+
+\textbf{Osservazione.} La proposizione è valida anche per $L^p(X,\mu)$ con $X \subset \R^d$ aperto.
 
 Sia $1 \leq p < +\infty$, $L^p(\R^d, \mu)$ con $\mu$ la misura di Lebesgue.
 Le funzioni semplici costituite da somme finite di insiemi di misura finita sono dense in $L^p(\R^d)$.
@@ -244,7 +281,7 @@ $$
 %
 è numerabile. Vediamo che è denso in $L^p(\R^d)$.
 
-\textit{Idea.} È sufficiente approssimare le funzioni semplici a somma finita $\sum_{i=1}^{N} \alpha_i \One_{E_i} $. In particolare, mi basta approssimare $\alpha \cdot \One_E$. Essendo $\alpha \in \R$ trovo una successione di razionali $\alpha_j$ tali che $\alpha_j \xrightarrow{j \to \infty} \alpha$. Dunque, rimane da approssimare l'insieme $E$.
+\textit{Idea.} È sufficiente approssimare le funzioni semplici a somma finita $\sum_{i=1}^{N} \alpha_i \One_{E_i} $. In particolare, ci basta approssimare $\alpha \cdot \One_E$. Essendo $\alpha \in \R$ troviamo una successione di razionali $\alpha_j$ tali che $\alpha_j \xrightarrow{j \to \infty} \alpha$. Dunque, rimane da approssimare l'insieme $E$.
 
 Fissiamo $E$ e supponiamo dapprima $E$ aperto. Possiamo scrivere $E$ come unione arbitraria di elementi della base $\mc{B}$
 %
@@ -252,13 +289,13 @@ $$
 E = \bigcup_{i = 1}^\infty B_i.
 $$
 %
-Per approssimare $E$ considero gli insiemi $E_N = \bigcup_{i = 1}^N B_i$.
+Per approssimare $E$ consideriamo gli insiemi $E_N = \bigcup_{i = 1}^N B_i$.
 Otteniamo $\ds \left| E \right| = \lim_N \left| E_N \right|$, da cui $\left| E \setminus E_N \right| \xrightarrow{N \to +\infty} 0$.
 Concludiamo notando che il caso $E$ arbitrario si fa approssimandolo con una famiglia di aperti.
 
 \vspace{3mm}
 
-Per $\ell^p$ con $p < +\infty$ definisco
+Per $\ell^p$ con $p < +\infty$ definiamo
 %
 $$
 Y = \left\{ \left\{ x_n \right\} \mymid x_n = 0 \quad \text{definitivamente}, x_n \in \Q \right\}
@@ -268,8 +305,8 @@ e verifico che è numerabile e separabile.
 
 \textbf{Domanda.} Cosa succede per $p = +\infty$?
 
-Considero $L^\infty ([0,+\infty], \mu)$ con $\mu$ di Lebesgue e $E_n = [n,n+1]$.
-Definisco l'insieme
+Consideriamo $L^\infty ([0,+\infty], \mu)$ con $\mu$ di Lebesgue e $E_n = [n,n+1]$.
+Definiamo l'insieme
  %
 $$
 Z = \left\{ \forall J \subset \N \quad u = \sum_{j \in J} \One_{E_j} \right\}.
@@ -290,3 +327,5 @@ z_n =
 2 \quad \text{se} \quad | x_n^n | \leq 1
 \end{cases}. 
 $$
+
+
