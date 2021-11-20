@@ -8,7 +8,7 @@ Consideriamo $L^2([-\pi,\pi], \C) $. Ricordiamo che $e^{inx} = \cos(nx) + i \sin
 Abbiamo
 %
 \begin{align*}
-\sum_{n=-N}^N c_n e^{inx} & = c_0(f) + \sum_{n=1}^N \left( c_n(f) e^{inx} + c_{-n} e^{inx} \right) 
+\sum_{n=-N}^N c_n e^{inx} & = c_0(f) + \sum_{n=1}^N \left( c_n(f) e^{inx} + c_{-n} e^{inx} \right) \\
 & = c_0(f) + \sum_{n=1}^{N} \left[ \left( c_n(f) + c_{-n}(f) \right) \cos(nx) + i\left( c_n(f) - c_{-n}(f) \right) \sin(nx) \right] \\
 & = c_0(f) + \sum_{n=1}^{N} a_n(f) \cos(nx) + b_n(f) \sin(nx)  
 \end{align*}
@@ -26,7 +26,7 @@ $$
 Passiamo al limite la serie
 %
 $$
-f(x) \overbrace{=}{L^2} \sum_{n=-N}^N c_n e^{inx} = c_0(f) + \sum_{n=1}^{+\infty} a_n(f) + \cos(nx) + b_n(f) \sin(nx) 
+f(x) \overbrace{=}^{L^2} \sum_{n=-N}^N c_n e^{inx} = c_0(f) + \sum_{n=1}^{+\infty} a_n(f) + \cos(nx) + b_n(f) \sin(nx) 
 $$
 %
 
@@ -110,7 +110,7 @@ $$
 
 \textbf{Esercizio.} Sia $f(x)$ definita da $\ds \sum_{n \in \Z} \gamma_n e^{inx} $ con $\ds  %
 \begin{cases}
-\gamma_n = \frac{\cos(n)}{\left| n \right|^{\beta / 2}} \\
+\ds \gamma_n = \frac{\cos(n)}{\left| n \right|^{\beta / 2}} \\
 \gamma_0 = 1
 \end{cases}
 $

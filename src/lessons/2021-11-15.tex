@@ -104,7 +104,7 @@ Date $u_n \colon R \to \C$ di classe $C^k$ con $k = 1, \dots, +\infty$ tali che
 $$
 \forall \underline h \text{ con } |\underline h| \leq k \qquad \sum_n \norm{D^{\underline h} \, u_n} < +\infty
 $$
-allora $u \coloneqq \sum_n u_n$ è una funzione ben definita su $R$ e $C^k$ e $D^{\underline u} \, u = \sum_n D^{\underline h} u_n$ per ogni $\underline h$ con $|\underline h| \leq k$.
+allora $u \coloneqq \sum_n u_n$ è una funzione ben definita su $R$ e $C^k$ e $D^{\underline u} \, u = \sum_n D^{\underline h} \, u_n$ per ogni $\underline h$ con $|\underline h| \leq k$.
 
 \textbf{Lemma. 6}
 Data $u \colon R \to \C$ e rettangoli $R_i \subset R$ relativamente aperti in $R$ tali che $u$ è $C^k$ sugli $R_i$ per ogni $i$ allora $u$ è di classe $C^k$ su $\tilde R \coloneqq \bigcup_i R_i$.
@@ -127,12 +127,12 @@ Notiamo che se $f \in L^1$ la freccia $\boxed{\Leftarrow}$ è molto più diffici
 	\item $u_0$ reale $\implies c_{-n}^0 = \overline{c_n^0} \implies c_{-n}^0 e^{-(-n)^2 t} = \overline{c_n^0 e^{-n^2 t}} \iff c_{-n}(u(t, \curry))$.
 
 	\item Sia $R \coloneqq [0, +\infty) \times \R$, $\norm{u_n}_{L^\infty(R)} = |c_n^0|$ dunque
-		$\ds\sum_{n \in \Z} u_n$ conv. totalmente su $R$ e quindi $u$ ben definita e continua su $R$.
+		$\ds\sum_{n \in \Z} u_n$ conv. totalmente su $R$ e quindi $u$ è ben definita e \textit{continua} su $R$.
 
-	\item Presi $h, k = 0, 1, 2, \dots$, se proviamo a calcolare $D_t^h D_x^k u_n = c_n^0 (-n)^{2h} (in)^k e^{-n^2 t} e^{inx}$ vediamo non si riesce a stimare per $t \to 0$ infatti
+	\item Presi $h, k = 0, 1, 2, \dots$ se proviamo a calcolare $D_t^h D_x^k u_n = c_n^0 (-n)^{2h} (in)^k e^{-n^2 t} e^{inx}$ vediamo non si riesce a stimare per $t \to 0$ infatti
 		$$
 		\norm{D_t^h D_x^k u_n}_{L^\infty(R)}
-		= |c_n^0| \cdot |n|^{2h + k}
+		= |c_n^0| \cdot |n|^{2h + k} \xrightarrow{n} \infty
 		$$
 		serve prendere $\delta > 0$ e sia $R_\delta \coloneqq (\delta, +\infty) \times \R$
 		$$
