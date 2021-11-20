@@ -5,7 +5,7 @@
 % inserire recap ?
 
 % TODO: Magari mettere tutto in display style
-\textbf{Esempio.} (calcolo coefficienti di Fourier).
+\textbf{Esempio} (calcolo coefficienti di Fourier).
 \begin{itemize}
 \item $\cos x = \frac{e^{ix} - e^{-ix}}{2} = \frac{1}{2} e^{ix} + \frac{1}{2} e^{-ix}$, allora $ c_n =
 \begin{cases}
@@ -24,7 +24,7 @@ $
 \item $f(x) = x, c_0 = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) \dd x = 0$. Per $n \neq 0$ :
 %
 $$
-c_n = \frac{1}{2\pi} \int_{-\pi}^\pi x xe^{-inx} \dd x = \frac{1}{2\pi} \left| \frac{x e^{-inx}}{-in} \right|_{-\pi}^\pi - \frac{1}{2\pi} \int_{-\pi}^\pi \frac{e^{-inx}}{-in} \dd x = \frac{(-1)^n i}{n}.
+c_n = \frac{1}{2\pi} \int_{-\pi}^\pi xe^{-inx} \dd x = \frac{1}{2\pi} \left| \frac{x e^{-inx}}{-in} \right|_{-\pi}^\pi - \frac{1}{2\pi} \int_{-\pi}^\pi \frac{e^{-inx}}{-in} \dd x = \frac{(-1)^n i}{n}.
 $$
 %
 
@@ -49,7 +49,7 @@ Dunque $\ds \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^3}{6}$.
 \item[(CB)] $f(-\pi) = f(\pi)$.
 \end{itemize}
 
-Allora $\ds c_n(f') = in \ c_n(f) (\ast)$.
+Allora $\ds c_n(f') \overset{(\star)}{=} in \ c_n(f)$.
 
 Derivazione formale della formula
 %
@@ -74,7 +74,7 @@ c_n(f') & = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x \\
 
 \item[(CB)] $\ds f(-\pi) = f(\pi) \longiff \int_{-x}^x g(t) \dd t = 0 $.
 \end{itemize}
-Allora la formula $(\ast)$ diventa $\ds c_n(g) = in \ c_n(f)$.
+Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 
 \textbf{Proposizione 2.} Data $f$ come nella Proposizione 1, valgono le seguenti
 \begin{enumerate}
@@ -88,7 +88,7 @@ Allora la formula $(\ast)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 \textbf{Dimostrazione.}
 \begin{enumerate}
 
-\item $\ds \sum n^2 \left| c_n(f) \right|^2 \overbrace{=}^{(\ast)} \sum \left| c_n(f) \right|^2
+\item $\ds \sum n^2 \left| c_n(f) \right|^2 \overbrace{=}^{(\ast)} \sum \left| c_n(f') \right|^2
 \overbrace{=}^{\text{Parceval} } 2\pi \norm{f'}_2^2 \underbrace{<}_{\mathclap{f' \in L^1([-\pi,\pi], \C) \subset L^2([-\pi,\pi], \C) }} +\infty$.
 
 \item $\ds \sum \left| n \right|^\alpha \left| c_n(f) \right| 

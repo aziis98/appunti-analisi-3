@@ -171,6 +171,23 @@ Si osserva che quanto detto sopra vale anche per $p = + \infty$.
 
 \end{itemize}
 
+\textbf{Soluzione.}
+\begin{enumerate}
+
+	\item Dimostriamo che $\norm{f}_{L^1} < C$ per ogni $f \in E$.
+	%
+	$$
+	\norm{f}_{L^1} = \int_1^\infty |f(x)| \dd x \leq \int_1^\infty 1/x^2 \dd x < C.
+	$$
+	%
+
+	\item $E$ è chiuso. Ci basta dimostrare che se $\left\{ f_n \right\} \in E$ è convergente a $f$ allora $f \in E$. Questo equivale a dimostrare che $|f(x)| < 1/x^2$.
+	Dal fatto che $\{f_n\} \in E$ è convergente in $L^1$, abbiamo che esiste una sottosuccessione $\{f_{n_k}\}$ che converge puntualmente a $f$. Essendo che $|f_{n_k}| < 1/x^2$ per ogni $x \in [1,+\infty)$, per la continuità del modulo segue la tesi.
+
+	\item [TO DO]
+
+\end{enumerate}
+
 \textbf{Esercizio.} [TO DO] 
 \begin{itemize}
 \item Dire se $f_n(x) = x^n$, $n = 0,\ldots , N$ è un insieme di funzioni linearmente indipendenti in $L^p([0,1])$.
@@ -178,6 +195,24 @@ Si osserva che quanto detto sopra vale anche per $p = + \infty$.
 \item Dire se $\left\{ f_n \right\} \subset L^p(0,1)$ è compatta in $L^p(0,1)$.
 \end{itemize}
 \textit{Suggerimento.} Studiare il limite puntuale.
+
+\textbf{Soluzione.}
+\begin{enumerate}
+
+	\item Dimostriamolo per induzione.
+	\textit{Passo base.} [TO DO]
+
+	\textit{Passo induttivo.} ($n-1 \geq n$)
+	Vediamo che se $a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n = 0 \Longrightarrow a_1 = \ldots = a_n = 0$.
+	\begin{align*}
+		& a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} = - a_n \cdot x^n \\
+		& \qquad \qquad \qquad \downarrow + a_n \cdot x^n \\
+		& (a_1 + a_n) \cdot 1 + (a_2 + a_n) \cdot x + \cdots + (a_{n-1} + a_n) \cdot x^{n-1} = 0
+	\end{align*}
+	essendo che $1,x^1,\ldots,x^{n-1}$ sono linearmente indipendenti per ipotesi induttiva, vale $(a_i + a_n) = 0$ per ogni $i = 1,\ldots,n-1$, da cui $a_i = 0$ per ogni $i = 1,\ldots,n$.
+
+	\item Dimostriamo che non è compatto. Se per assurdo lo fosse, dalla successione $(f_n)$ potremmo estrarre una sottosuccessione convergente $(f_{n_k})$ in $L^p([0,1])$; denotiamo il limite con $f$. Per i risultati visti sulla convergenza, da $(f_{n_k})$ potremmo estrarre una sottosuccessione convergente quasi ovunque a $f$. Ma questo è assurdo perchè $\lim_n f_n = +\infty$.
+\end{enumerate}
 
 \subsection{Spazi $\ell^p$}
 

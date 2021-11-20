@@ -27,10 +27,11 @@ Dato $\mathcal F = \{ e_n \}$ sistema ortonormale in $H$ e $x \in H$ allora per 
 $$
 x_n = \langle x; e_n \rangle
 $$
-Vale anche l'identità di Parceval $\norm{x^2} = \sum |x_n|^2$ dove $|\curry|$ è il modulo di un numero complesso, in particolare nella versione con prodotto scalare diventa
+Vale anche l'identità di Parseval $\norm{x^2} = \sum |x_n|^2$ dove $|\curry|$ è il modulo di un numero complesso, in particolare nella versione con prodotto scalare diventa
 $$
 \langle x, x' \rangle = \sum_n x_n \overline{x_n'}.
 $$
+
 
 \chapter{Serie di Fourier}
 
@@ -38,7 +39,7 @@ Lo scopo della serie di Fourier (complessa) è di rappresentare una funzione $f 
 $$
 f(x) = \sum_{n=-\infty}^\infty c_n e^{i n x}
 $$
-In particolare chiamiamo i coefficienti $c_n$ \textit{coefficienti di Fourier} di $f(x)$ e tutta l'espressione a destra \textit{serie di Fourier} di $f(x)$.
+In particolare, chiamiamo i coefficienti $c_n$ \textbf{coefficienti di Fourier} di $f(x)$ e tutta l'espressione a destra \textbf{serie di Fourier} di $f(x)$.
 
 \textbf{Motivazione.}
 La rappresentazione in serie di Fourier serve ad esempio a risolvere certe equazioni alle derivate parziali ed è anche utilizzata per la ``compressione dati''.
@@ -57,7 +58,7 @@ $$
 ed ogni tanto scriveremo anche $\ds \sum_{n \in \Z} a_n$ per brevità.
 
 \textbf{Teorema 1.}
-Sia $\ds\mathcal F = \left\{ e_n(x) \coloneqq \frac{e^{inx}}{\sqrt{2\pi}} \right\}$ allora è una base ortonormale di $L^2([-\pi, \pi]; \C)$.
+L'insieme $\ds\mathcal F = \left\{ e_n(x) \coloneqq \frac{e^{inx}}{\sqrt{2\pi}} \right\}$ è una base ortonormale di $L^2([-\pi, \pi]; \C)$.
 
 Da cui \textit{formalmente} segue che
 $$
@@ -72,9 +73,9 @@ $$
 \textbf{Definizione.}
 Data $f \in L^2([-\pi, \pi]; \C)$ i coefficienti di Fourier di $f$ sono
 $$
-c_n = c_n(f) \coloneqq \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x
+	c_n = c_n(f) \coloneqq \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x.
 $$
-e notiamo in particolare che è anche ben definito per $f \in L^1$ (anche se per ora non ci dice molto in quanto $L^1$ non è uno spazio di Hilbert).
+Notiamo in particolare che è anche ben definito anche per $f \in L^1$ (anche se per ora non ci dice molto in quanto $L^1$ non è uno spazio di Hilbert).
 
 \textbf{Corollario.}
 Per ogni $f \in L^2([-\pi, \pi]; \C)$ abbiamo
@@ -82,7 +83,7 @@ Per ogni $f \in L^2([-\pi, \pi]; \C)$ abbiamo
 	\item \label{item:4nov2021_cor1_1} 
 		La serie $\ds \sum_{n \in \Z} c_n e^{inx}$ converge a $f$ in $L^2$.
 
-	\item Vale l'identità di Parceval
+	\item Vale l'identità di Parseval
 		$$
 		\norm{f}_2^2 = 2 \pi \sum_{n \in \Z} |c_n|^2
 		\qquad
@@ -121,7 +122,7 @@ Vogliamo vedere che
 
 	\item $\mathcal F$ è completo
 
-		Questo punto richiede il teorema di Stone-Weierstrass che enunciamo
+		Questo punto richiede il teorema di Stone-Weierstrass che enunciamo.
 
 		\textbf{Teorema di Stone-Weierstrass.}
 		Sia $K$ uno spazio compatto e $T_2$ (essenzialmente è uno spazio metrico compatto) e siano $C(K)$ le funzioni continue reali su $K$, mentre $C(K; \C)$ le funzioni continue complesse su $K$ (con la norma del $\sup$).

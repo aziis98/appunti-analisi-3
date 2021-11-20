@@ -10,6 +10,7 @@
 Sia $H = L^2(-1, 1)$ e sia $V = \spn\{ 1, x, x^2 \}$. Verificare che $V$ è un sottospazio chiuso e calcolare la proiezione di $\sin x$ su $V$. \\
 \textit{Notazione.} Indichiamo con $\norm{\curry}$ la norma $\norm{\curry}_{L^2(-1, 1)}$ e con $\langle \curry, \curry \rangle$ il prodotto scalare su $L^2$.
 
+\textbf{Soluzione.}
 Vediamo come risolvere questo esercizio in tre modi diversi.
 
 \begin{enumerate}
@@ -112,7 +113,7 @@ ed analogamente si procede con $x$ e $x^2$... [TODO: Da finire]
 % Un altro modo è considerare la funzione $g(a, b, c) \coloneqq \norm{\sin x - a - bx - cx^2}_{L^2(-1, 1)}$ che è continua, coerciva, etc. e imponendo $\nabla_{a,b,c,} g = 0$ si minimizza e si ottengono $\bar a, \bar b, \bar c$ che verficano $p_V(\sin x)$.
 
 
-\textbf{Esercizio 2.}
+\textbf{Esercizio.}
 Sia $X = \{ u \in L^2(\R) \mid \int_0^2 u \dd x = 0 \}$, dire se è un sottospazio chiuso, calcolare $X^\perp$ per una generica $u \in L^2(\R)$ e determinare le proiezioni $p_X(u)$ e $p_{X^\perp}(u)$.
 
 \textbf{Soluzione.}
@@ -122,7 +123,7 @@ u \mapsto \int_0^2 u \dd x
 $$
 è ben definita, lineare e continua, allora $X$ è proprio $T^{-1}(0)$ dunque è un sottospazio chiuso. 
 
-\textbf{Osservazione.} La continuità di $T$ si può verificare anche usando il teorema di Rietz \textbf{riferimento.}. Infatti,
+\textbf{Osservazione.} La continuità di $T$ si può verificare anche usando il teorema di Rietz \hyperlink{thm:lez2728ott-teo3}{teorema di Rietz}. Infatti,
 $$
 T(u) 
 = \int_\R u(x) \cdot \One_{[0, 2]}(x) \dd x
@@ -184,7 +185,7 @@ $$
 $$
 Una tale $v$ non esiste, per vederlo scegliamo opportunamente $\bar f$ e usiamo l'equazione. 
 Scelgo $g \in C_C(\R)$ e defiamo $\sigma_\delta g = 1 / \delta g(1/\delta)$. Abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g$ per ogni $\delta$.
-Per il teorema  \textbf{riferimento} abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g \xrightarrow{\delta \to 0} v$ in $L^1(\R)$, ma $\sigma_\delta g \xrightarrow{\delta \to 0} 0$ quasi ovunque in $L^1(\R)$. Allora $v = 0$ q.o. in $L^1(\R)$, dunque non può valere $f \ast v = v$ per ogni $f \in L^1(\R)$.
+Per il \hyperlink{thm:lez25ott_teodelta}{teorema} abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g \xrightarrow{\delta \to 0} v$ in $L^1(\R)$, ma $\sigma_\delta g \xrightarrow{\delta \to 0} 0$ quasi ovunque in $L^1(\R)$. Allora $v = 0$ q.o. in $L^1(\R)$, dunque non può valere $f \ast v = v$ per ogni $f \in L^1(\R)$.
 
 \textbf{Esercizio.} [TO DO: per casa.] 
 Sia $f$ misurabile su $\R^d$ tale che $\int_E f \dd x = 0$ per ogni $E$ misurabile di $\R^d$. Dimostrare che $f = 0$ q.o. su $\R^d$.
