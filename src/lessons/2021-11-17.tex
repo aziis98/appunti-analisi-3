@@ -2,8 +2,6 @@
 % Lezione del 17 novembre
 %
 
-[DA AGGIUSTARE SOTTO]
-
 \textbf{Notazione.} $\cper^k = \{ f\colon  \R \to \C \; \pi\text{-periodiche e } \mc{C}^k \} $.
 
 \textbf{Teorema 3} (di non esistenza nel passato).
@@ -17,14 +15,14 @@ Quindi $c_n(t) = c_n^0 e^{-n^2 t}$. Scelgliamo $c_n^0$ (cioè $u_0$) in modo che
 
 \begin{itemize}
 
-	\item $c_n^0 = O(|n|^{-a})$ per $n \to \pm \infty$ per ogni $a > 0$. ($\Rightarrow \sum |c_n| |n|^k < +\infty \mquad \forall k \Rightarrow u_0 \in \cper^\infty$).
+	\item $c_n^0 = O(|n|^{-a})$ per $n \to \pm \infty$ per ogni $a > 0$. ($\Rightarrow \sum |n|^k |c_n| < +\infty \mquad \forall k \Rightarrow u_0 \in \cper^\infty$).
 
 
-	\item $c_n^0 e^{-n^3 t} \nrightarrow 0$ per ogni $t < 0$.
+	\item $c_n^0 e^{-n^2 t} \nrightarrow 0$ per ogni $t < 0$.
 
 \end{itemize}
 
-Con un tale $c_n^0$ la soluzione non esiste al tempo $t$. Infatti, se per assurdo esistesse, i coefficienti di Fourier sarebbero almeno $L^2$, dunque sarebbero quadrato sommabili, ovvero dovrebbero tendere a zero \absurd.
+Con un tale $c_n^0$ la soluzione non esiste al tempo $t$. Infatti, se per assurdo esistesse, i coefficienti di Fourier sarebbero quadrato sommabili, ovvero dovrebbero tendere a zero \absurd.
 
 Prendiamo $c_n^0 = e^{-|n|}$.
 \qed
@@ -74,14 +72,14 @@ $$
 %
 
 
+
 \section{Derivazione dell'equazione delle onde}
 
 [TO DO: da aggiungere (non viene chiesto all'esame.)]
 
 \section{Risoluzione dell'equazione delle onde}
 
-Consideriamo il seguente problema
-(ricopiare la cosa delle equazioni del calore).
+Consideriamo il caso uno dimensionale. In tal caso l'equazione delle onde è la seguente.
 %
 \begin{equation}
 \tag{P} \label{eq:17nov2021_problem_1}

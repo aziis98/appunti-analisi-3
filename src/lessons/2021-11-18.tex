@@ -31,12 +31,12 @@ $$
 	a_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos(nx) \dd x
 	\qquad
 	b_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin(nx) \dd x \\
-	\text{e con base hilbertiana } \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{2\pi}}, \frac{\sin(nx)}{\sqrt{2\pi}} \,\middle|\, n \geq 1 \right\}
+	\text{e con base hilbertiana } \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \,\middle|\, n \geq 1 \right\}
 \end{gathered}
 $$
 
 \textbf{Esercizio.}
-Sia $f(x) = \cos^2(x) \sin(3x)$, calcolare i coefficienti di Fourier
+Sia $f(x) = \cos^2(x) \sin(3x)$, calcolare i coefficienti di Fourier\footnote{Con funzioni ottenute come combinazioni di prodotti di potenze di funzioni trigonometriche (anche con argomento moltiplicato per un naturale) conviene calcolare lo sviluppo complesso e poi passare a quello reale.}.
 
 \textbf{Svolgimento.}
 Usiamo lo sviluppo complesso
@@ -50,7 +50,7 @@ $$
 \begin{aligned}
 	&= \frac{i}{8} \left( e^{i2x} + e^{-i2x} + 2 \right) \left( e^{-i3x} - e^{i3x} \right) = \\
 	&= \frac{i}{8} \left( e^{-ix} + e^{-i5x} + 2e^{-i3x} - e^{i5x} - e^{ix} - 2e^{i3x} \right) = \\
-	&= \frac{i}{8} e^{-ix} + \frac{i}{8} e^{-i5x} + \frac{i}{4} e^{-i3x} - \frac{i}{8} e^{i5x} - \frac{i}{8} e^{ix} - \frac{i}{4} e^{i3x} \\
+	&= \frac{i}{8} e^{-ix} + \frac{i}{8} e^{-i5x} + \frac{i}{4} e^{-i3x} - \frac{i}{8} e^{i5x} - \frac{i}{8} e^{ix} - \frac{i}{4} e^{i3x}. 
 \end{aligned}
 $$
 Dunque possiamo già scrivere i coefficienti di Fourier complessi di $f(x)$
@@ -61,20 +61,22 @@ $$
 	\quad
 	c_{\pm 3}(f) = \mp\frac{i}{4}
 	\quad
-	c_{\pm 5}(f) = \mp\frac{i}{8}
+	c_{\pm 5}(f) = \mp\frac{i}{8}.
 \end{gathered}
 $$
-continuiamo ora il conto precedente e ricostruiamo la serie di Fourier reale ricomponendo i termini
+Continuiamo ora il conto precedente e ricostruiamo la serie di Fourier reale ricomponendo i termini
 $$
 \begin{aligned}
 	&= -\frac{1}{4}\left( \frac{e^{ix} - e^{-ix}}{2i} \right) -\frac{i^2}{4}\left( \frac{e^{i3x} - e^{-i3x}}{2i} \right) -\frac{i^2}{4}\left( \frac{e^{i5x} - e^{-i5x}}{2i} \right) = \\
-	&= \frac{1}{4} \sin(x) + \frac{1}{2} \sin(3x) + \frac{1}{4} \sin(5x)
+	&= \frac{1}{4} \sin(x) + \frac{1}{2} \sin(3x) + \frac{1}{4} \sin(5x),
 \end{aligned}
 $$
 in particolare possiamo notare che $f(\pi) = f(-\pi) = 0$ dunque potevamo già dedurre che la serie di Fourier reale sarebbe stata composta solo da seni.
 
 \textbf{Esercizio.}
-Caratterizzare i coefficienti $c_n(f)$ di una $f \colon [-\pi, \pi] \to \C$ in $L^2$ tale che $\operatorname{Im}(f) \subseteq \R$ (Hint: si usa che per $z \in \C$ vale $z \in \R \iff z = \overline z$)
+Caratterizzare i coefficienti $c_n(f)$ di una $f \colon [-\pi, \pi] \to \C$ in $L^2$ tale che $\operatorname{Im}(f) \subseteq \R$.
+
+\textit{Suggerimento.} Si usa che per $z \in \C$ vale $z \in \R \iff z = \overline z$.
 
 \textbf{Esercizio.}
 Determinare la soluzione di (P) e stabilire unicità e regolarità della soluzione $u \colon [0, T) \times [-\pi, \pi] \to \R$ o $\C$.
