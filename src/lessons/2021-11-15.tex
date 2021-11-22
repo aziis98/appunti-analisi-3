@@ -4,7 +4,7 @@
 
 Come conduttore consideriamo un anello di materiale omogeneo e sottile che parametrizziamo con $[-\pi, \pi]$. Dunque consideriamo $u \colon [0, T) \times [-\pi, \pi] \to \R$ con le condizioni
 \begin{equation}
-\tag{P} \label{	qeq:15nov2021_problem_1}
+\tag{P} \label{eq:15nov2021_problem_1}
 \left\{
 \begin{aligned}
 	& u_t = u_{xx} \\
@@ -30,10 +30,10 @@ $$
 	\quad
 	\text{e} 
 	\quad
-	u(0, \curry) = u_0 \longiff c_n(0) = c_n^0 \coloneqq c_n(u_0)
+	u(0, \curry) = u_0 \longiff c_n(0) = c_n(u_0) \eqqcolon c_n^0
 \end{gathered}
 $$
-Dunque risolvere \ref{eq:15nov2021_problem_1} equivale per ogni $n$ a $c_n$ che risolve il problema di Cauchy dato da
+Dunque risolvere \eqref{eq:15nov2021_problem_1} equivale per ogni $n$ che $c_n$ che risolva il problema di Cauchy dato da
 \begin{equation}
 	\tag{P$'$} \label{eq:15nov2021_problem_2}
 	\left\{
@@ -65,7 +65,7 @@ Studiando questa soluzione formale possiamo fare le seguenti osservazioni che po
 
 \end{itemize}
 
-\textbf{Teorema. 1} (Esistenza e Regolarità).
+\textbf{Teorema 1} (Esistenza e Regolarità).
 
 Se $u_0 \colon [-\pi, \pi] \to \C$ (presa in $L^2$) è tale che $\ds \sum_{n \in \Z} |c_n^0| < +\infty$ (ad esempio se $u_0 \in C^1$ ed è $2\pi$-periodica) allora
 $$
@@ -76,7 +76,8 @@ definisce una funzione $u \colon [0, +\infty) \times \R \to \C$ tale che
 	\item $u$ è $2\pi$-periodica in $x$ ed è reale se $u_0$ è reale.
 	\item $u$ è continua.
 	\item $u$ è $C^\infty$ su $(0, +\infty) \times \R$.
-	\item Risolve (\ref{eq:15nov2021_problem_1}) per $t > 0$ sulla condizione al bordo, $u(0, \curry) = u_0$ su $[-\pi, \pi]$ e $u_t = u_{xx}$ su $t > 0$.
+	% \item Risolve (\ref{eq:15nov2021_problem_1}) per $t > 0$ sulla condizione al bordo, $u(0, \curry) = u_0$ su $[-\pi, \pi]$ e $u_t = u_{xx}$ su $t > 0$.
+	\item Risolve \eqref{eq:15nov2021_problem_1}. In particolare vale $u_{tt} = u_{xx}$ e valgono le condizioni di periodicità per $t > 0$; e infine vale $u(0, \curry) = u_0$ su $[-\pi,\pi]$.
 \end{enumerate}
 
 Vediamo alcuni lemmi tecnici preparatori e sia $R$ un rettangolo di $\R^d$ ovvero prodotto di intervalli con estremi aperti o chiusi.
@@ -177,7 +178,12 @@ $$
 \end{aligned}
 \right.
 $$ 
-$\implies c_n$ è unico. (in particolare abbiamo usato che $\dot y = f(t, y)$ per $t > 0$ e $y(0) = y_0$ e $y$ è continua in $0 \implies y$ è $C^1$ anche in $0$ e risolve $\dot y = f(t, y)$ per $t \geq 0$)
+
+\textbf{Nota.} Sia $y \colon [0,T) \to \R^k$ funzione continua su $[0,T)$ e derivabile su $(0,T)$ che risolve l'equazione differenziale ordinaria $\dot y = f(t,y)$ su $(0,T)$ con $f\colon  [0,T) \times \R^k \to \R^k$ continua.
+Allora $y$ è $\mc{C}^1$ su $[0,T)$ e risolve $\dot y = f(t,y)$ su $[0,T)$.
+
+Dalla nota sopra otteniamo che $c_n$ è unico.
+% $\implies c_n$ è unico. (in particolare abbiamo usato che $\dot y = f(t, y)$ per $t > 0$ e $y(0) = y_0$ e $y$ è continua in $0 \implies y$ è $C^1$ anche in $0$ e risolve $\dot y = f(t, y)$ per $t \geq 0$)
 \qed
 
 
