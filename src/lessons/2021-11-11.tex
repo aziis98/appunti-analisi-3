@@ -54,20 +54,22 @@ Ora normalizziamo: $\ds \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi
 Dunque abbiamo ottenuto che
 \begin{itemize}
 
-	\item $L^2( [-\pi,\pi], \C)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(n\pi)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\C}$
+	\item $L^2( [-\pi,\pi], \C)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\C}$
 
 
-	\item $L^2( [-\pi,\pi], \R)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(n\pi)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\R}$ 
+	\item $L^2( [-\pi,\pi], \R)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\R}$ 
 
 \end{itemize}
 
 \textbf{Esercizio.}  Se $f$ è a valori reali, dimostrare che $a_n(f)$ e $b_n(f)$ sono anch'essi reali. [TO DO]
 
+\textit{Sketch.} Si dimostra che $a_n(f) = \ol{a_n(f)}, b_n(f) = \ol{b_n(f)}$ e per farlo si usano le espressioni di $a_n, b_n$ in funzione dei coefficienti di Fourier complessi scritte sopra.
+
 
 \textbf{Esercizio.} Trovare la base di Fourier complessa e reale di $L^2([a,b], \C) $ [TO DO]
 
 
-\textbf{Esercizio.} Sia $f \in L^1([-\pi,\pi], \C) $ (l'estensione di) $f$ è $2\pi / N$ periodica. Dimostrare che $c_n(f) \neq 0$ se solo se $n$ multiplo di $N$. [TP DO]
+\textbf{Esercizio.} Sia $f \in L^2([-\pi,\pi], \C) $ (l'estensione di) $f$ è $2\pi / N$ periodica. Dimostrare che $c_n(f) \neq 0$ se solo se $n$ multiplo di $N$. [TO DO]
 
 
 \textbf{Esercizi classici.} Fissata una funzione $f \in L^2$, calcolare i coefficienti di Fourier complessi (e reali).
@@ -102,12 +104,8 @@ $$
 \textbf{Domande.}
 \begin{itemize}
 
-	\item Abbiamo visto che $\ds c_n(x^2) = \frac{2 (-1)}{n^2}$ e dedotto che 
-	%
-	$$
-		c_n(2x) = in \frac{2(-1)^n}{n^2} = \frac{2(-1)^n i}{n}
-	$$
-	%
+	\item Abbiamo visto che $\ds c_n(x^2) = \frac{2 (-1)^n}{n^2}$ e dedotto che $\ds c_n(2x) = in \frac{2(-1)^n}{n^2} = \frac{2(-1)^n i}{n}$.
+
 
 	\item Vorremmo calcolare $c_n(2)$, possiamo applicare il teorema sulla formula della derivata?
 
@@ -125,7 +123,7 @@ $$
 
 \textbf{Esercizio.} Sia $f(x)$ definita da $\ds \sum_{n \in \Z} \gamma_n e^{inx} $ con $\ds  %
 \begin{cases}
-	\ds \gamma_n = \frac{\cos(n)}{\left| n \right|^{\beta / 2}} \\
+	\ds \gamma_n = \frac{\cos(n)}{\left| n \right|^{3 / 2}} \\
 	\gamma_0 = 1
 \end{cases}
 $
