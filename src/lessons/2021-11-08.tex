@@ -159,7 +159,7 @@ Cioè $\ds \sum_{-N}^N c_n(f) e^{in\ol{x}}\xrightarrow{N \to \infty} f(\ol{x})$
 
 \textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con "convoluzione":
 
-Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots,\ldots,\ldots,$ (estesa a funzioni $2\pi$-periodiche su $\R$).
+Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots$ (estesa a funzioni $2\pi$-periodiche su $\R$).
 %
 $$
 S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx}  
@@ -168,14 +168,15 @@ $$
 Riscriviamo
 %
 \begin{align*}
-S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx} & = \sum_{-N}^N \frac{1}{2\pi} \left( \int_{-\pi}^\pi f(y) e^{-iny} \dd y \right) e^{inx} \\
-& = \frac{1}{2\pi} \in_{-\pi}^\pi f(y) \left( \sum_{n=-N}^{N} e^{in(x-y)}  \right) \dd y.
+S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx} 
+& = \sum_{-N}^N \frac{1}{2\pi} \left( \int_{-\pi}^\pi f(y) e^{-iny} \dd y \right) e^{inx} \\
+& = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) \left( \sum_{n=-N}^{N} e^{in(x-y)}  \right) \dd y.
 \end{align*}
 
 Poniamo $\ds D_N(z) \coloneqq \sum_{n=-N}^{N} e^{inz} $ che si definisce \textbf{nucleo di Dirichlet}. Allora
 %
 \begin{align*}
-S_n f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{\mathclap{x-y=t, \dd y = \dd t}} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
+S_n f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{x-y=t, \dd y = \dd t} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
 & \overbrace{=}^{(\star)} \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \dd t 
 \end{align*}
 

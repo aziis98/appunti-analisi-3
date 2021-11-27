@@ -32,8 +32,12 @@ $$
 \underbrace{\left(\avint_0^T h(x) \dd x \right)}_m
 $$
 
-Se supponiamo $\supp g \subseteq [0, 1]$ allora $\int_0^1 g(x) h(yx) \dd x \to \int_0^1 g(x) \dd x \cdot \avint_0^T h(x) \dd x \approx \int_0^1 g(x) \dd x \cdot \avint_0^1 h(yx) \dd y$.
-
+Se supponiamo $\supp g \subseteq [0, 1]$ allora
+%
+$$
+	 \int_0^1 g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty} \int_0^1 g(x) \dd x \cdot \avint_0^T h(x) \dd x \approx \int_0^1 g(x) \dd x \cdot \avint_0^1 h(yx) \dd y.
+$$
+%
 In particolare è abbastanza intuitivo il risultato per $g$ costante a tratti infatti su un intervallo otterremmo
 $$
 \int_0^{x_1} g(x) h(yx) \dd x = c \int_0^{x_1} h(yx) \dd x = (c x_1) m

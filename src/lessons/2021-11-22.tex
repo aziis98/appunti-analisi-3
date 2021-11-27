@@ -17,26 +17,29 @@ Consideriamo il problema
 ed abbiamo visto che ha soluzione
 \begin{equation}
 	\tag{$*$}
-	u(t,x) = c_0^0 + c_0^1 t + \sum_{n \neq  0} (\alpha^+ e^{in(x + vt)} + \alpha^- e^{in(x - vt)})
+	u(t,x) = c_0^0 + c_0^1 t + \sum_{n \neq  0} (\alpha_n^+ e^{in(x + vt)} + \alpha_n^- e^{in(x - vt)})
 \end{equation}
 $$
-\alpha^{\pm}_n = \frac{1}{2}\left( c_n^0 \pm \frac{c^1_n}{i n v} \right)
+	\alpha^{\pm}_n = \frac{1}{2}\left( c_n^0 \pm \frac{c^1_n}{i n v} \right).
 $$
-o anche prese $\varphi^+, \varphi^-$ funzioni $2\pi$-periodiche
+
+Inoltre, possiamo scrivere l'equazione $(*)$ come
 \begin{equation}
 	\tag{$**$}
 	u(t,x) = c_0^0 + c_0^1 t + \myphi^+(x + vt) + \myphi^-(x - vt)
 \end{equation}
+dove $\varphi^+, \varphi^-$ sono funzioni $2\pi$-periodiche.
+
 Vedremo i seguenti risultati
 
 \begin{itemize}
 	\item Esistenza usando la forma ($**$), specifico per equazione delle onde.
 	\item Esistenza usando la forma ($*$), che però richiede maggiore regolarità su $u_0$ e $u_1$.
-	\item Unitcità.
+	\item Unicità.
 \end{itemize}
 
 \textbf{Teorema 1.}
-Dati $u_0 \in C^1_{\text{per}}$ allora $\exists c_0^0, c_0^1$ e $\varphi^+, \varphi^- \in C^2_{\text{per}}$ tali che la $u$ in ($**$) è di classe $C^2$ su $\R \times \R$, $2\pi$-periodica in $x$ e risolve (P).
+Dati $u_0 \in C^1_{\text{per}}$ allora esistono $c_0^0, c_0^1$ e $\varphi^+, \varphi^- \in C^2_{\text{per}}$ tali che la $u$ in ($**$) è di classe $C^2$ su $\R \times \R$, $2\pi$-periodica in $x$ e risolve (P).
 
 \textbf{Lemma 4.}
 Date $h, g \in C^1(\R)$ con $g$ primitiva di $h$ e $T > 0$ allora $g$ è $T$-periodica $\iff h$ è $T$-periodica e $\int_0^T h(x) \dd x = 0$.
@@ -85,8 +88,9 @@ $$
 $$
 \qed
 
-\textbf{Osservazione.}
-Il termine ``$c_0^1 t$'' rappresenta il caso in cui è l'anello di base a ruotare.
+% ??
+% \textbf{Osservazione.}
+% Il termine ``$c_0^1 t$'' rappresenta il caso in cui è l'anello di base a ruotare.
 
 \textbf{Teorema 2.}
 Siano $u_0, u_1 \in C^0_\text{per}$ tali che $\sum n^2 |c_n^0| < +\infty$ e $\sum |n| \cdot |c_n^1| < +\infty$. Allora ($*$) definisce una funzione $u \colon \R \times \R \to \C$ di classe $C^2$, $2\pi$-periodica in $x$ che risolve (P).
@@ -102,27 +106,35 @@ u(t,x) = c_0^0 + c_0^1 t + \sum_{n \neq  0}
 $$
 
 \textit{Passo 1.}
-Se $u \in C^0(\R \times \R)$ e $2\pi$-periodica in $x$, ad esempio basta mostrare che la serie converga totalmente su $\R \times \R$.
+Dimostriamo che $u \in C^0(\R \times \R)$ e $2\pi$-periodica in $x$. 
+
+La funzione $u$ soddisfa le condizioni di periodicità. Per mostrare la continuità è sufficiente mostrare che la serie converga totalmente su $\R \times \R$.
 $$
 \norm{v^\pm_n}_{L^\infty(\R \times \R)} = |\alpha^\pm| = O\left( |c_n^0| + \frac{|c_n^1|}{n} \right)
 $$
 che sono sommabili in $n$.
 
 \textit{Passo 2.}
-Se $u \in C^2(\R \times \R)$, $D_t^h D_x^k v_n^\pm = \alpha^\pm_n e^{in(x \pm vt)} (in)^k (ivn)^h$ da cui
-$$
-\norm{D_t^h D_x^k v^\pm_n}_{L^\infty(\R \times \R)} = |\alpha^\pm_n| \cdot |v|^h \cdot |n|^{k+h} 
-= O(|c_n^0| \cdot |n|^{k+h} + |c_n^1| \cdot |n|^{k + h - 1}) 
-$$
+Mostriamo che $u \in C^2(\R \times \R)$. 
+
+Abbiamo 
+%
+\begin{align*}
+	& D_t^h D_x^k v_n^\pm = \alpha^\pm_n e^{in(x \pm vt)} (in)^k (ivn)^h \\
+	\Longrightarrow & \norm{D_t^h D_x^k v^\pm_n}_{L^\infty(\R \times \R)} = |\alpha^\pm_n| \cdot |v|^h \cdot |n|^{k+h}
+	= O(|c_n^0| \cdot |n|^{k+h} + |c_n^1| \cdot |n|^{k + h - 1}) 
+\end{align*}
+%
 che è sommabile se $k + h \leq 2$ in $n$. La serie in ($*$) converge totalmente su $\R \times \R$ con tutte le derivate di ordine $\leq 2 \implies u$ è $C^2$.
 
 \textit{Passo 3.}
-$u$ risolve l'equazione $u_{tt} = v^2 u_{xx}$ perché la risolve $c_0^0 + c_0^1 t$ e $v^\pm_n(x, t)$ e derivate e serie commutano. Per come abbiamo impostato (P$'$) $c_n(u(0, \curry)) = c_n(u_0) \implies u(0, \curry) = u_0$. $c_n(u_t(0, \curry)) = c_n(u_1) \implies u_t(0, \curry) = u_1$.
+Dimostriamo che $u$ risolve l'equazione $u_{tt} = v^2 u_{xx}$.
 
-\textbf{Teorema 3.}
-(Unicità)
+% Infatti $u$ la risolve $c_0^0 + c_0^1 t$ e $v^\pm_n(x, t)$ e derivate e serie commutano. 
+$u$ risolve l'equazione perché derivata e serie commutano e per come abbiamo impostato (P$'$) $c_n(u(0, \curry)) = c_n(u_0) \implies u(0, \curry) = u_0$. $c_n(u_t(0, \curry)) = c_n(u_1) \implies u_t(0, \curry) = u_1$.
 
-Se $u \colon I \times [-\pi, \pi] \to \C$ è $C^2$ e risolve (P) allora è unica.
+\textbf{Teorema 3.} (Unicità)
+Se $u \colon I \times [-\pi, \pi] \to \C$ è $C^2$ in $x$ e $t$ e risolve (P) allora è unica.
 
 \textbf{Dimostrazione.}
 Si ripercorre la stessa dell'equazione del calore. Dimostriamo che i coefficienti $c_n(t) = c_n(u(t, \curry))$ definiti per $t \in I$ risolvono (P$'$)...
