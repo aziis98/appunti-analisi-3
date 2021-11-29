@@ -60,7 +60,7 @@ $$
 
 \textbf{Dimostrazione.} Vale quanto segue
 \begin{align*}
-c_n(f') & = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x \\
+c_n(f') & = \frac{1}{2\pi} \int_{-\pi}^\pi f(x)' e^{-inx} \dd x \\
 & \underbrace{=}_{\text{int. per parti}} \frac{1}{2\pi} \overbrace{\cancel{\left| f(x) e^{-inx} \right|_{-\pi}^\pi}}^{f(-\pi) = f(\pi), \; e^{-in\pi} = e^{-in (-\pi)}} - \frac{1}{2\pi} \int_{-\pi}^\pi f(x) (-in) e^{-inx} \dd x \\
 & = (in) \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x = in \ c_n(f).
 \end{align*} 
@@ -93,7 +93,7 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 
 \item $\ds \sum \left| n \right|^\alpha \left| c_n(f) \right| 
 \underbrace{\leq}_{(n \neq 0)} \sum_{n \in \Z} \left| n \right| \left| c_n(f) \right| \cdot \frac{1}{\left| n \right|^{1-\alpha }}
-\underbrace{\leq}_{C-S} \overbrace{\left( \sum_{n \in \Z} \left| n \right|^2 \left| c_n(f) \right|^2  \right)^{1/2}}^{< +\infty \text{ per il punto ii)}} \cdot \left( \sum_{n \in \Z} \frac{1}{\left| n \right|^{2-\alpha }}  \right)^{1/2}. 
+\underbrace{\leq}_{C-S} \overbrace{\left( \sum_{n \in \Z} \left| n \right|^2 \left| c_n(f) \right|^2  \right)^{1/2}}^{< +\infty \text{ per il punto ii)}} \cdot \left( \sum_{n \in \Z} \frac{1}{\left| n \right|^{2-2\alpha }}  \right)^{1/2}. 
 $
 
 \item Dal punto precedente con $\alpha = 0$ otteniamo $\ds \norm{c_n(f) e^{inx}}_\infty \sum_{n \in \Z} \left| c_n(f) \right| < +\infty $.
@@ -119,7 +119,7 @@ Allora
 
 \textbf{Proposizione 4.} Se $f$ è continua e $\ds \sum_{n \in \Z} \left| n \right|^{k-1} \left| c_n(f) \right| < +\infty $ allora $f \in C^{k-1}$ e soddisfa $(CB_{k-1})$.
 
-\textbf{Dimostrazione.} Preso $h=0,1,\ldots,,k-1$ vale
+\textbf{Dimostrazione.} Preso $h=0,1,\ldots,k-1$ vale
 \begin{align*}
 D^k (c_n(f) e^{inx}) & = c_n(f) (in)^h e^{inx} \\
 \norm{D^k (c_n(f) e^{inx})} & = \left| c_n(f) \right| \left| n \right|^h \leq \left| c_n(f) \right| \left| n \right|^{k-1}.
@@ -129,7 +129,7 @@ Ma
 %
 $$
 \frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
-\leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \Longrightarrow +\infty} 0.
+\leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \rightarrow +\infty} 0.
 $$
 %
 Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
@@ -159,7 +159,7 @@ Cioè $\ds \sum_{-N}^N c_n(f) e^{in\ol{x}}\xrightarrow{N \to \infty} f(\ol{x})$
 
 \textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con "convoluzione":
 
-Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots,\ldots,\ldots,$ (estesa a funzioni $2\pi$-periodiche su $\R$).
+Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots$ (estesa a funzioni $2\pi$-periodiche su $\R$).
 %
 $$
 S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx}  
@@ -168,14 +168,15 @@ $$
 Riscriviamo
 %
 \begin{align*}
-S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx} & = \sum_{-N}^N \frac{1}{2\pi} \left( \int_{-\pi}^\pi f(y) e^{-iny} \dd y \right) e^{inx} \\
-& = \frac{1}{2\pi} \in_{-\pi}^\pi f(y) \left( \sum_{n=-N}^{N} e^{in(x-y)}  \right) \dd y.
+S_N f(x) \coloneqq \sum_{-N}^N c_n e^{inx} 
+& = \sum_{-N}^N \frac{1}{2\pi} \left( \int_{-\pi}^\pi f(y) e^{-iny} \dd y \right) e^{inx} \\
+& = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) \left( \sum_{n=-N}^{N} e^{in(x-y)}  \right) \dd y.
 \end{align*}
 
 Poniamo $\ds D_N(z) \coloneqq \sum_{n=-N}^{N} e^{inz} $ che si definisce \textbf{nucleo di Dirichlet}. Allora
 %
 \begin{align*}
-S_n f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{\mathclap{x-y=t, \dd y = \dd t}} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
+S_n f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{x-y=t, \dd y = \dd t} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
 & \overbrace{=}^{(\star)} \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \dd t 
 \end{align*}
 
