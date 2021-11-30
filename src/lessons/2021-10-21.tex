@@ -44,6 +44,7 @@ Definiamo la successione come segue (fare disegno):
 %
 $$
 u_n (x) =
+\frac{1}{n} \One_{[n, 2n]} =
 \begin{cases}
 \frac{1}{n} \quad \text{se} \quad n \leq x \leq 2n \\
 0 \quad \text{altrimenti}. 
@@ -51,12 +52,19 @@ u_n (x) =
 $$
 %
 Dunque, $\ds T(u_n) = \int_{\R} u_n \dd x = \frac{1}{n} \left| E_n \right| = 1$, dove $E_n = [n,2n]$.
-Segue che $T(u_n) \equiv 1$ e non è vero che $T(u_\infty = u_n \to 0) = 0$.
+Segue che $T(u_n) \equiv 1$ ma rispetto alla convergenza in $L^p$, $T(u_n) \not\to T(u_\infty) = T(0) = 0$.
+
+% e non è vero che $T(u_\infty = u_n \to 0) = 0$.
 
 Più in generale, quando $u \in L^p(\R^d)$ con $p > 1$, una costruzione come sopra non funziona, infatti
 %
 $$
-\norm{u_n}_{L^p(\R)}^p = \int_{\R} u_n^p(x) \dd x = \frac{1}{n^p} \cdot \left| E_n \right| = \frac{n}{n^p} = \frac{1}{^{p-1}} \xrightarrow{n \to \infty} 0.
+\norm{u_n}_{L^p(\R)}^p 
+= \int_{\R} u_n^p(x) \dd x 
+= \frac{1}{n^p} \cdot \left| E_n \right| 
+= \frac{n}{n^p} 
+= \frac{1}{n^{p-1}} 
+\xrightarrow{n \to \infty} 0.
 $$
 %                    
 Un altro modo per dimostrare quanto sopra è verificare che, per ogni $C > 0$, esiste una funzione $u \in L^p(\R^d) \cap L^1(\R^d)$ tale per cui 
@@ -178,7 +186,7 @@ $$
 F = \left\{ v \in L^p(\R) \mymid \int_{0}^{1} v(x) \dd x - 2 \int_{-1}^{0} v(x) \dd x = 3 \right\}.
 $$
 %
-Dire se $F$ è chiuso in $\left( L^p(\R), \norm{\cdot }_{L^p(\R)} \right)$.
+Dire se $F$ è chiuso in $\left( L^p(\R), \norm{\curry}_{L^p(\R)} \right)$.
 
 
 \textbf{Esercizio.} [TO DO] Sia 
@@ -219,7 +227,7 @@ $$
 Vediamo un altro esempio. Siano $X = \R$, $\mu$ la misura di Lebesgue e $p > 1$.
 In tal caso, l'insieme $L^p \cap L^1 (\R)$ è un sottospazio denso in $\left( L^1(\R), \norm{\cdot }_{L^1} \right)$ e $\left( L^p(\R), \norm{\cdot }_{L^p} \right)$.
 
-\textbf{Nota.} L'insieme $L^2(\R) \cap L^1(\R)$ è un sottospazio proprio di $L^1(\R)$. Dico che non è chiuso in $\norm{\cdot }_{L^1(\R)}$ perché è denso.
+\textbf{Nota.} L'insieme $L^2(\R) \cap L^1(\R)$ è un sottospazio proprio di $L^1(\R)$. Diciamo che non è chiuso in $\norm{\curry}_{L^1(\R)}$ perché è denso.
 Infatti, 
 %
 $$
