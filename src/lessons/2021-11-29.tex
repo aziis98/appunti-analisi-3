@@ -1,0 +1,90 @@
+\subsection{Considerazioni finali su SdF e serie in seni}
+
+Notiamo che l'efficacia èer la soluzione di certe EDP dipende dal fatto che
+%
+$$
+	c_n(u) = in c_n(u) \qquad b_n(\ddot u) = -n^2 b_n(u)
+$$
+%
+che segue (almeno formalmente) da $(e^{inx})' = in e^{inx}$ e $(\sin(nx))'' = -n^2 \sin(nx)$.
+
+Cioè che $\left\{ e^{inx} / \sqrt{2\pi} \right\}$ è una base ortonormale di $L^2([-\pi,\pi],\C)$ di autovettori di $D$ e $\left\{ \sqrt{2/\pi} \sin(x)  \right\}$ è una base ortonormal di autovettori di $D^2$.
+
+Analogamente per risolvere $u_t = \Delta u$ su $\Omega$, basterebbe avere $\{ e_n \}$ base ortonormale di $L^2(\Omega)$ fatta di autovettori del laplaciano.
+
+Per avere una base ortonormale di autovettori di un operatore $T$ serve che $T$ sia autoaggiunto (almeno in dimensione finita).
+
+\textbf{Definizione.} Dato $H$ spazio di Hilbert complesso o reale, $D$ sottospazio denso di $H$, $T \colon D \to H$ lineare (non necessariamente continuo), dico che $T$ è \textbf{autoaggiunto} se $\left<Tx,y \right> = \left<x,Ty \right>$ per ogni $x,y \in D$.
+
+\textbf{Proposizione.} Dato $T$ come sopra
+\begin{enumerate}
+
+	\item Se $\lambda$ è autovalore di $T$ (ovvero tale che $\exists x \neq 0$ tale che $Tx = \lambda x$) allora $\lambda$ è reale.
+
+
+	\item Dati $\lambda_1 \neq \lambda_2$ autovalori allora $V_{\lambda_1} \perp V_{\lambda_2}$ dove $V_\lambda \coloneqq \{ x \mid Tx = \lambda x \}$.
+
+\end{enumerate}
+
+\textbf{Nota.} In dimensione infinita manca un teorema spettrale, ovvero tale che $\ds \ol{\bigoplus_\lambda V_\lambda} = H$.
+
+
+\textbf{Esempio 1.} Sia $H = L^2([-\pi,\pi],\C)$, $D = \left\{ u \in \mc{C}^2 (-\pi,\pi) \mymid u(-\pi) = u(\pi) \right\}$ e $T \colon D \to H$ tale che $u \mapsto iu$.
+Mostrare che
+\begin{enumerate}
+
+	\item $T$ è autoaggiunto
+
+	\item Gli autovalori di $T$ sono $\lambda_n = n$ con $n \in \Z$ $V_{\lambda_n} = V_n = \spn \left\{ e^{inx} \right\}$.
+
+	\item $T$ non è continuo
+
+\end{enumerate}
+
+
+In questo caso esiste una base ortonormale di $L^2$ di autovettori di $T$. [TO DO: aggiustare].
+
+\textbf{Dimostrazione.} 
+\begin{enumerate}
+
+	\item Dati $u,c \in D (= \cper^1)$, allora
+	\begin{align*}
+		& \left<Tu,v \right> = \int_{-\pi}^\pi i \dot u \ol{v} \dd x = \left| i u \ol{v} \right|_{-\pi}^\pi - \int_{-\pi}^\pi i u \ol{v} \dd x \\
+		& = \int_{-\pi}^\pi u \ol{iv} \dd x 
+		= \left<u, Tv \right>
+	\end{align*}
+
+
+	\item Questo è un esercizio di equazioni differenziali ordinarie. Risolviamo il problema
+	%
+	$$
+	\begin{cases}
+		-iu = \lambda u \quad \text{su } [-\pi,\pi] \\
+		u(\pi) = u(-\pi)
+	\end{cases} 
+	$$
+	%
+	da cui $\dot u - i \lambda u = 0$, che ha polinomio associaot $t - i\lambda = 0$ con radice  $i\lambda$. In conclusione la soluzione del problema sopra è $\alpha e^{i\lambda x}$.
+
+	Dalla condizione al bordo abbiamo che $\alpha e^{i\lambda \pi} = e^{-i\lambda \pi}$ dunque $e^{i\lambda \pi} = e^{- i\lambda \pi} \longiff e^{2i\lambda \pi} = 1 \longiff \lambda \in \Z$.
+
+
+	\item Siccome gli autovalori sono illimitati, $T$ non è continuo.
+\qed
+
+\end{enumerate}
+
+
+\textbf{Esempio 3.} Sia $H = L^2([-\pi,\pi], \C)$ $D = \{ u \in \mc{C}^1(-\pi,\pi) \}$ e $T \colon D \to H$ tale che $u \mapsto i\dot u$.
+
+\textbf{Dimostrazione.} Dati $u,v \in D$ abbiamo
+\begin{align*}
+	\left<Tu,v \right> & = \int_{-\pi}^{\pi} i \dot u \ol{v} \dd x  = \left| i u \ol{v} \right|_{-\pi}^\pi - \int_{-\pi}^\pi i u \ol{\dot v} \dd x \\
+	& = i (u(\pi) \ol{v}(\pi) - u(- \pi) \ol{v}(-\pi)) + \left<u, Tv \right> \neq \left<u, Tv \right>.
+\end{align*}
+In quanto, in generale, il termine $u(\pi) \ol{v}(\pi) - u(- \pi) \ol{v}(-\pi)$ è diverso da zero.
+
+
+\textbf{Esercizio.} Cercare $T \colon L^2([0,1]) \to L^2([0,1])$ continuo autoaggiunto senza autovalori.
+
+\textit{Suggerimento.} Cercare $T$ del tipo $T \colon u \mapsto gu$ con $g \in L^\infty$.
