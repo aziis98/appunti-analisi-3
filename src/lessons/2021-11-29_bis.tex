@@ -2,7 +2,7 @@ Data $f \colon \R \to \C$ poniamo
 %
 $$
 	f(x) \overset{(\ast)}{=} \frac{1}{2\pi} \int_{-\infty}^\infty \hat{f}(y) e^{iyx} \dd y 
-	\qquad \hat{f} \coloneqq \int_{-\infty}^\infty f(x) e^{-iyx} \dd x.
+	\qquad \hat{f}(y) \coloneqq \int_{-\infty}^\infty f(x) e^{-iyx} \dd x.
 $$
 %
 Dove $\hat{u}$ si chiama \textit{trasformata di Fourier}\footnote{Sostituisce la serie di Fourier quando si passa da funzioni su $\R$ $2\pi$-periodiche a funzioni su $\R$.} di $u$ e la formula $(\ast)$ si dice \textit{formula di inversione}.
@@ -44,6 +44,8 @@ $$
 $$
 %
 
+\newpage
+
 \textbf{Teorema.} Data $f \in L^1(\R;\C)$, allora
 \begin{enumerate}
 
@@ -70,7 +72,7 @@ $$
 	%
 
 
-	\item $\norm{\hat{f}_\infty} \leq \norm{f}_1$. Infatti,
+	\item $\norm{\hat{f}}_\infty \leq \norm{f}_1$. Infatti,
 	%
 	$$
 		|\hat{f}|_\infty \leq \int \left| f(x) e^{-iyx} \right| \dd x = \norm{f}_1
@@ -81,7 +83,7 @@ $$
 	\item $\hat{f}$ è continua. Se $y_n \to y$, allora
 	%
 	$$
-		\hat{f}(y_n) = \int_{-\infty}^\infty f(x) e^{-ixy} \dd x \xrightarrow{n \to \infty}
+		\hat{f}(y_n) = \int_{-\infty}^\infty f(x) e^{-ixy_n} \dd x \xrightarrow{n \to \infty}
 		\int_{-\infty}^\infty f(x) e^{-iny} \dd x = \hat{f}(y)
 	$$
 	%
