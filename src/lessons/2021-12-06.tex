@@ -19,12 +19,12 @@ $$
 $$
 allora coincide con $\hat f(y)$.
 
-Infatti per ogni $n$ posto $f_n \coloneqq f \cdot \One_{[-n, n]}$ abbiamo che $f_n \to f$ in $L^2$.
-(da controllare per esercizio) e quindi $\hat f_n \to \hat f$ in $L^2$. Siccome per ipotesi $\hat f_n$ converge puntualmente quasi ovunque allora $\hat f_n \to \hat f$ puntualmente quasi ovunque.
+Infatti, per ogni $n$ posto $f_n \coloneqq f \cdot \One_{[-n, n]}$ abbiamo che $\lim_n \int_{-n}^n f(x) e^{-ixy} \dd x = \hat{f_n}(x)$.
+A questo punto, osserviamo che $f_n \to f$ in $L^2$ (da controllare per esercizio) e quindi $\hat f_n \to \hat f$ in $L^2$ (segue dalla continuità della trasformata). Siccome per ipotesi $\hat f_n$ converge puntualmente quasi ovunque allora $\hat f_n \to \hat f$ puntualmente quasi ovunque.
 
-Intuitivamente il Teorema 2 e l'identità di polarizzazione danno il Corollario 3. mentre il Teorema 2 segue dalla Proposizione 1. più un fatto noto danno ed il fatto che $L^1 \cap L^2$ è denso in $L^2$.
+Intuitivamente, il Teorema 2 e l'identità di polarizzazione danno il Corollario 3. mentre il Teorema 2 segue dalla Proposizione 1. più un fatto noto usando che $L^1 \cap L^2$ è denso in $L^2$.
 
-\textbf{Fatto Noto.} Dati $X$ e $Y$ spazi metrici, $Y$ completo e $D$ denso in $X$, $g \colon D \to Y$ uniformemente continua allora $g$ ammette un'unica estensione $G \colon X \to Y$ continua. (Inoltre se $X$ e $Y$ sono spazi normati, se $f$ è lineare allora anche $F$ è lineare)
+\textbf{Fatto Noto.} Dati $X$ e $Y$ spazi metrici, $Y$ completo e $D$ denso in $X$, $g \colon D \to Y$ uniformemente continua allora $g$ ammette un'unica estensione $G \colon X \to Y$ continua. (Inoltre se $X$ e $Y$ sono spazi normati e $g$ è lineare allora anche $G$ è lineare)
 
 \textbf{Dimostrazione Proposizione 1.}
 
@@ -116,10 +116,10 @@ $$
 Le identità valgono in $L^1 \cap L^2$ che è denso in $L^2$ e dunque si estendono per continuità ad $L^2$.
 
 \textbf{Proposizione 5.}
-Se $f \in C^1(\R; \C)$ e $f \in L^1 \cup L^2$ e $f' \in L^1 \cup L^2 \implies \hat f \in C^1$ e $\hat{f'} = iy \hat f$.
+Se $f \in C^1(\R; \C)$ e $f \in L^1 \cup L^2$ e $f' \in L^1 \cup L^2 \implies \hat{f'} = iy\hat{f}$.
 
 \textbf{Dimostrazione.}
-La stessa fatta per $f, xf \in L^1$. Si parte da $a_n, b_n$ tali che $a_n \to -\infty$ e $b_n \to +\infty$ con $f(a_n) \to 0$ e $f(b_n) \to 0$ e si integra per parti
+La stessa fatta per $f, f' \in L^1$. Si parte da $a_n, b_n$ tali che $a_n \to -\infty$ e $b_n \to +\infty$ con $f(a_n) \to 0$ e $f(b_n) \to 0$ e si integra per parti
 $$
 \begin{aligned}
 	\mathcal F(f' \cdot \One_{[a_n, b_n]})
@@ -164,11 +164,3 @@ ed usando che $\mathcal F^*$ è iniettiva otteniamo che $2\pi \hat{f_1} \ast \ha
 
 Per $f_1, f_2 \in L^2$ si procede per continuità e si approssimano $f_1$ ed $f_2$ con $f_{1,n}$ e $f_{2,n}$ in $C_C^1$.
 \qed
-
-
-
-
-
-
-
-

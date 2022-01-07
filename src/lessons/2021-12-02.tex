@@ -6,26 +6,30 @@ $$
 	\mc{F}(f) = \hat{f}(y) = \int_{\R} f(x) e^{-ixy} \dd x, \quad f \in L^1(\R;\C), \mquad f \in L^1(\R)
 $$
 %
-dove $\ds \mc{F} \colon L^1(\R;\C) \to L^\infty(\R) \cap C_0(\R)$ (\textbf{da controllare}), in quanto $\norm{\hat{f}}_\infty \leq \norm{f}_1$.
+dove $\ds \mc{F} \colon L^1(\R;\C) \to L^\infty(\R) \cap C_0(\R)$, in quanto $\norm{\hat{f}}_\infty \leq \norm{f}_1$.
 
 
 \textbf{Proprietà.} Ricordiamo le proprietà viste a lezione.
+
 \begin{enumerate}
-	\item $\ds \hat{\sigma_h f}(y) = e^{-iyh} \hat{f}(y)$ per ogni $h \in \R$, dove $\sigma_h f(x) = f(x - h)$.
+	\item $\ds \hat{\tau_h f}(y) = e^{-iyh} \hat{f}(y)$ per ogni $h \in \R$, dove $\sigma_h f(x) = f(x - h)$
 
 
-	\item $\ds \hat{e^{ixh} f(y)} = $
+	\item $\ds \hat{e^{ihx} f}(y) = \tau_h \hat{f}(y) $
 
 
 	\item Legame tra trasformata e derivata.
+
 	\begin{itemize}
 
-		\item $f \in C^1(\R)$, $f,f' \in L^1(\R)$, $f,f' \in L^1(\R,\C)$, allora $\ds \hat{f'}(y) = iy \ol{f}(y)$.
+		\item $f \in C^1(\R)$, $f,f' \in L^1(\R,\C)$, allora $\ds \hat{f'}(y) = iy \hat{f}(y)$.
 
 
-		\item $f \in L^1(\R;\C)$ e $xf(x) \in L^1(\R;\C)$, $(1 + |x|) f(x) \in L^1(\R;\C)$, allora $\ds \hat{f} \in C^1(\R)$ e $\hat{f}' = -l \hat{xf(x)}$.
+		\item $f \in L^1(\R;\C)$ e $xf(x) \in L^1(\R;\C)$, $(1 + |x|) f(x) \in L^1(\R;\C)$, allora $\ds \hat{f} \in C^1(\R)$ e $(\hat{f})' = -i \hat{xf(x)}$.
 
 	\end{itemize}
+
+	\textbf{Nota.} Le ipotesi $f \in L^1(\R;\C)$ e $xf(x) \in L^1(\R;\C)$ sono equivalenti a $(1 + |x|) f(x) \in L^1(\R;\C)$.
 
 
 	\item  Vale $\hat{f \ast g} = \hat{f} \ast \hat{g}$.
@@ -34,9 +38,31 @@ dove $\ds \mc{F} \colon L^1(\R;\C) \to L^\infty(\R) \cap C_0(\R)$ (\textbf{da co
 
 Riportiamo un esercizio già posto con una soluzione alternativa. 
 
-\textbf{Esercizio.} Dire se esiste $v \in L^1$ tale che $g \ast v = g$ per ogni $g \in L^1$.
+\textbf{Esercizio.} Dire se esiste $v \in L^1$ non banale tale che 
+\begin{itemize}
 
-\textbf{Soluzione.} No! Dalle proprietà sopra segue che $\hat{g} \cdot \hat{v} = \hat{g}$, dunque $\hat{v} = c$ è costante. L'equazione ha soluzione se e solo se $c = 0$e dunque $v = 0$. In quanto le costanti non possono essere una trasformata, perchè se $v \in L^1(\R)$ allora $\hat{v} \in C_0(\R)$.
+	\item $v \ast v = v$
+
+	\item $g \ast v = g$ per ogni $g \in L^1$.
+
+\end{itemize}
+
+\textbf{Soluzione.} La risposta è no per entrambi i punti. Infatti,
+
+\begin{itemize}
+
+	\item Se per assurdo valesse tale identità, passando alle trasformate si avrebbe 
+	%
+	$$
+		\hat{v \ast v } = (\hat{v})^2 \Longrightarrow \hat{v}(\hat{v} - 1) = 0.
+	$$
+	%
+	Ovvero, $\hat{v} = \{0,1\}$. Osserviamo subito che non è possibile che $\hat{v}$ assuma entrambi i valori in quanto funzione continua; d'altra parte non è possibile che $\hat{v} = 1$, in quanto è anche infinitesima, dunque $\hat{v} = 0 \Longrightarrow v = 0$.
+
+
+	\item Analogamente al punto precedente si avrebbe $\hat{v} = 1$ ma ciò non è possibile.
+
+\end{itemize}
 
 \vss
 
@@ -45,14 +71,14 @@ Riportiamo un esercizio già posto con una soluzione alternativa.
 \textbf{Soluzione.}
 Abbiamo
 \begin{align*}
-	\hat{f}(y) & = \int_{-\infty}^\infty e^{-|x|} e^{ixy} \dd x 
+	\hat{f}(y) & = \int_{-\infty}^\infty e^{-|x|} e^{-ixy} \dd x 
 	= \int_{-\infty}^\infty e^{-|x|} \cos(xy) \dd x 
 	- i \int_{-\infty}^\infty \overbrace{e^{-|x|} \sin(xy)}^{\substack{\text{integrale definito} \\ \text{di fuzione dispari}} \; = \; 0 } \dd x
 	= 2 \int_{0}^{\infty} e^{-|x|} \cos(xy) \dd x \\
 	& = 2 \int_0^\infty e^{-x} \re e^{ixy} \dd x
 	= 2 \int_0^\infty \re \left( e^{-x} \cdot e^{ixy} \right) \dd x
 	= 2 \re \left[ \int_0^\infty e^{-x} e^{ixy} \right] \dd x
-	= 2 \re \left| \frac{e^{x(iy - 1)}}{(iy - 2)} \right|_0^\infty \\
+	= 2 \re \left| \frac{e^{x(iy - 1)}}{(iy - 1)} \right|_0^\infty \\
 	& = 2 \re \left[ -\frac{1}{iy - 1} + \underbrace{\lim_{x \to \pm \infty} \frac{e^{x(iy -1)}}{iy - 1}}_{= 0}\right]
 	= 2 \re \left[ -\frac{1}{iy - 1} \right]
 	= 2\re \left[ -\frac{1}{iy-1} \cdot \frac{iy + 1}{iy + 1} \right] \\
@@ -67,50 +93,56 @@ In conclusione, $\ds \hat{f}(y) = \frac{2}{1 + y^2}$.
 
 \textbf{Soluzione.}
 Calcoliamo $\hat{f}(y) = \int_\R \frac{e^{-ixy}}{1 + x^2} \dd x$.
-Dal fatto che $f \in L^1$ e usando il teorema di Lebesgue, possiamo scrivere $\hat{f}(y)$ come
+Dal fatto che $f \in L^1$ e usando il teorema di convergenza dominata, possiamo scrivere $\hat{f}(y)$ come
 %
 $$
 	\hat{f}(y) = \lim_{R \to +\infty} \int_{-R}^R \frac{e^{-ixy}}{1 + x^2} \dd x
 $$
 %
 
-\textit{Idea.} Calcolare questo integrale con il metodo dei residui, ponendo $\ds \frac{e^{-ixy}}{1 + x^2} = \left. \frac{e^{-izy}}{1 + z^2} \right|_{z \text{ reale}}$.
+\textit{Idea.} Calcolare questo integrale con il metodo dei residui, ponendo $\ds \frac{e^{-ixy}}{1 + x^2} = \left. \frac{e^{-izy}}{1 + z^2} \right|_{z \text{ reale}}$
 
-Per il teorema dei residui
+Per il teorema dei residui:
 %
 $$
-	\int_{B_r} g(z) \dd z = 2\pi i \sum_{z_i \text{ singolarità di } g \text{ su } B_r} \operatorname{res} (g,z_i) 
+	\int_{B_r} g(z) \dd z = 2\pi i \sum_{\mathclap{\substack{z_i \text{ singolarità} \\ \text{di } g \text{ in } B_r}}} \; \operatorname{res} (g,z_i) 
 $$
 %
 Dove
 %
 $$
-	\int_{B_r} g(z) \dd z = \int_{\gamma_r \coloneqq \text{bordo sotto}} g(z) \dd x 
-	+ \overbrace{\int_{\gamma_1 \coloneqq \text{bordo sopra}} g(x)}_{\xrightarrow{r \to \infty} 0}
-	= \int_{-r}^{r} \frac{e^{-ixy}}{1 + x^2} \dd x 
+	\int_{B_r} g(z) \dd z = \int\limits_{\mathclap{\gamma_r \coloneqq \text{bordo \\ sotto}}} g(z) \dd x \quad 
+	+ \quad \underbrace{\int\limits_{\mathclap{\gamma \coloneqq \text{bordo sopra}}} g(x)}_{\xrightarrow{r \to \infty} 0}
+	= \int_{-r}^{r} \frac{e^{-ixy}}{1 + x^2} \dd x.
 $$
 %
 
-Studio delle singolarità. Poniamo $z = x + it$, dunque $yz = xy + yit$, da cui $\ds g(z) = g(x + it) = \left( e^{-ixy} e^{ty} \right) / (1 + (x + it)^2)$.
+\begin{itemize}
 
-Calcoliamo l'integrale $\int_\gamma g(z) \dd z$ dove $\theta \xmapsto{\gamma} r e^{i\theta}$.
-Si ottiene
-%
-$$
-	\int_0^\pi g(e^{i\theta}r) r \dd \theta \xrightarrow{r \to \pm \infty} 0
-	\Longrightarrow \int_0^\pi \frac{e^{-ri\cos \theta} e^{r \sin\theta y}}{(1 + r^2 e^{i2\theta})} r \dd \theta
-$$
-%
-Nel caso in cui $y < 0$ l'integrale sopra in modulo va a 0.
+	\item Verifichiamo che $\ds \int_{\gamma} g(x) \xrightarrow{r \to \infty} 0$ dove $[0,\pi] \ni \theta \xmapsto{\gamma} r e^{i\theta}$.
 
-Con $y > 0$ avremmo dovuto considerare la curva sotto.
-L'unico residuo di $g$ è nel punto $i$.
-%
-$$
-	\lim_{r \to \pm \infty} 2\pi i \operatorname{res}(g,i) = \pi e^{y}
-$$
-%
-Fare lo stesso conto in $-i$ con la curva sotto. [TO DO: rincontrollare l'esercizio 2.]
+	Poniamo $z = x + it$, dunque $yz = xy + yit$, da cui $\ds g(z) = g(x + it) = \left( e^{-ixy} e^{ty} \right) / (1 + (x + it)^2)$.
+
+	Dunque,
+	%
+	$$
+		\int_0^\pi g(e^{i\theta}r) r \dd \theta
+		\Longrightarrow \int_0^\pi \frac{e^{-ri\cos \theta} e^{r \sin\theta y}}{(1 + r^2 e^{i2\theta})} r \dd \theta
+		\xrightarrow{r \to \pm \infty} 0 \quad \text{se } y < 0. 
+	$$
+	%
+	Per il caso $y > 0$ si ripercorre lo stesso procedimento ma si utilizza la curva $[\pi,2\pi] \ni \theta \xmapsto{\gamma} r e^{i\theta}$.
 
 
+	\item Calcoliamo i residui: l'unico residuo di $g$ è nel punto $i$ (nel caso $y > 0$ la singolarità è in $-i$).
+	%
+	$$
+		\lim_{r \to \pm \infty} 2\pi i \operatorname{res}(g,i) = \pi e^{y}
+	$$
+	%
+	Considerando anche il caso $y > 0$ la trasformata di Fourier diviene $\pi e^{-|y|}$.
+
+\end{itemize}
+
+[TO DO]. Riportare il teorema dei residui con i metodi di base per calcolare i residui?
 

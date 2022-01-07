@@ -1,9 +1,9 @@
 \section{Conclusione sulla TdF}
 
 \textbf{Proposizione 4.} (di 2 lezioni fa)
-Se $f,xf \in L^1(\R;\C)$, allora $\hat{f} \in C^1(\R;\C)$ e $(\hat{f})' = - \hat{ixf}$.
+Se $f,xf \in L^1(\R;\C)$, allora $\hat{f} \in C^1(\R;\C)$ e $(\hat{f})' = \hat{-ixf}$.
 
-\textbf{Corollario.} Se $f,x^kf \in L^1$ con $k=1,2,\ldots,$, allora $x^hf \in L^1$ per ogni $h=0,\ldots,k$ e $\hat{f} \in C_0^k$ e $D^h \hat{f} = \hat{(-ix)^h f}$.
+\textbf{Corollario.} Se $f,x^kf \in L^1$ con $k=1,2,\ldots$, allora $x^hf \in L^1$ per ogni $h=0,\ldots,k$ e $\hat{f} \in C_0^k$ e $D^h \hat{f} = \hat{(-ix)^h f}$.
 
 \textbf{Dimostrazione.} Vale $|x^h| \leq 1 + |x|^k$ per ogni $x$ e per ogni $h=1,\ldots,k$.
 Allora $|x^hf| \leq (1 + |x|^k)|f| \in L^1$.
@@ -11,12 +11,12 @@ Il resto dell'enunciato è per induzione su $k$.
 
 \vs
 
-\textbf{Corollario.} Se $x^k f \in L^1$ per ogni $k=0,1,\ldots,$ \footnote{Questa condizione è implicata, ad esempio, dall'ipotesi $f \in C_C$} allora $\hat{f} \in C^\infty$ (anzi $C_0^\infty$).
+\textbf{Corollario.} Se $x^k f \in L^1$ per ogni $k=0,1,\ldots,$ \footnote{Questa condizione è implicata, ad esempio, dall'ipotesi $f \in C_C$} allora $\hat{f} \in C^\infty$ (anzi $C_0^\infty$ siccome le derivate sono trasformate).
 
 \vs
 
 \textbf{Teorema} (Paley-Weiner).
-Se $e^{\alpha |x|}, f(x) \in L^1$ per qualche $\alpha > 0$, allora $\hat{f}$ è analitica\footnote{Restrizione di $g \colon \underbrace{\R \times (-\alpha,\alpha)}_{\R \times \R \simeq \C} \to \C$ olomorfa}.
+Se $e^{\alpha |x|} \cdot f(x) \in L^1$ per qualche $\alpha > 0$, allora $\hat{f}$ è analitica\footnote{Restrizione di $g \colon \underbrace{\R \times (-\alpha,\alpha)}_{\R \times \R \simeq \C} \to \C$ olomorfa}.
 
 \textbf{Dimostrazione.} In $\underset{y}{\R} \times \underset{t}{\R} \simeq \underset{z=x+it}{\C}$ definisco $g(z)$.
 
@@ -28,7 +28,7 @@ $$
 $$
 %
 
-\textit{Passo 1.} $g(x)$ è definita per ogni $z \in \R \times [-\alpha,\alpha]$.
+\textit{Passo 1.} $g(z)$ è definita per ogni $z \in \R \times [-\alpha,\alpha]$.
 Infatti,
 %
 $$
@@ -108,16 +108,19 @@ Quindi, per ogni $y$, $\hat{u}(\cdot,y)$ risolve
 \end{cases} 
 \end{equation}
 
-Soluzione generale $z = \alpha e^{-y^2 t}$, da cui la soluzione per \eqref{eq:09dic_prob1} è $\hat{u}(t,y) = \hat{u_0}(y) e^{-y^2 t}$
+Soluzione generale $z = \alpha e^{-y^2 t}$, da cui la soluzione per \eqref{eq:09dic_prob1} è $\hat{u}(t,y) = \hat{u_0}(y) e^{-y^2 t}$.
 
-Siano $\ds \rho(x) \coloneqq \frac{e^{-x^2 / 2}}{\sqrt{2\pi}}, \hat{\sigma_{\sqrt{2\pi}}\rho} = \hat{\rho}(\sqrt{2t}y)$.
-Però $\hat{\rho}(y) = e^{-y^2/2}$ dunque $\ds \hat{\rho}(\sqrt{2t}y) = e^{-(\sqrt{2t}y)^2 / 2} = e^{-y^2 t}$.
-
-Da cui
+Siano 
 %
 $$
-	\hat{u}(t,y) = \hat{u_0} (y) e^{-y^2t} = \hat{u_0}(y) \hat{\sigma_{\sqrt{2t}}} \rho(y)
-	= \hat{u_0 \ast \sigma_{\sqrt{2t}}} \rho
+	\rho(x) \coloneqq \frac{e^{-x^2 / 2}}{\sqrt{2\pi}}, \quad  \hat{\sigma_{\sqrt{2\pi}}\rho} = \hat{\rho}(\sqrt{2t}y).
+$$
+%
+Però è noto che\footnote{Si vede all'esercitazione che segue?} $\ds \hat{\rho}(y) = e^{-y^2/2} \implies \hat{\rho}(\sqrt{2t}y) = e^{-(\sqrt{2t}y)^2 / 2} = e^{-y^2 t}$. Da cui
+%
+$$
+	\hat{u}(t,y) = \hat{u_0} (y) e^{-y^2t} = \hat{u_0}(y) \cdot \hat{\sigma_{\sqrt{2t}} \rho}(y)
+	= \mathcal{F}(u_0 \ast \sigma_{\sqrt{2t}} \rho)
 	\Longrightarrow u(t,y) = u_0 \ast \left( \sigma_{\sqrt{2t}} \rho \right)
 $$
 %
@@ -132,7 +135,7 @@ Dunque
 	\end{cases} 
 \end{equation}
 
-\textbf{Teorema.} Se $u_0 \colon \R \to \R$ è continua e limitata, allora $u$ data in \eqref{eq:09dic_prob2} è ben definita su $[0,+\infty) \times \R$ è continua, $C^\infty$ per $t>0$ e risolve \eqref{eq:09dic_prob1}.
+\textbf{Teorema.} Se $u_0 \colon \R \to \R$ è continua e limitata, allora $u$ data in \eqref{eq:09dic_prob2} è ben definita su $[0,+\infty) \times \R$, continua, $C^\infty$ per $t>0$ e risolve \eqref{eq:09dic_prob1}.
 
 \vss
 
@@ -144,5 +147,5 @@ $$
 %
 allora $\hat{u}(\cdot,y)$ è univocamente determinata su $[0,T)$, dunque $u$ è univocamente determinata per l'iniettività di TdF.
 
-
-
+% A seguire è stato fatto quanto segue, che però è fuori programma e pertanto non viene riportato
+% Disuguaglianza di Heisemberg

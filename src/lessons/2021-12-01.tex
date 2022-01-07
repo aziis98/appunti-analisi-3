@@ -17,15 +17,15 @@ Data $f \in L^1(\R; \C)$ allora
 \begin{enumerate}
 	\item $\forall h \in \R$ vale $\hat{\tau_h f} = e^{-ihy} \hat f$
 	\item $\forall h \in \R$ vale $\hat{e^{ihx} f} =  \tau_h \hat f$
-	\item $\forall \delta \neq 0$ vale $\hat{\sigma_h f} = \hat f(\delta y)$
+	\item $\forall \delta \neq 0$ vale $\hat{\sigma_\delta f} = \hat f(\delta y)$
 \end{enumerate}
 
 \textit{Derivazione.}
 Partendo dalla formula di inversione
 $$
 \begin{aligned}
-	f(x) &= \frac{1}{2\pi} \int \hat f(y) e^{iyx} \dd x \\
-	f(x - h) &= \frac{1}{2\pi} \int \underbrace{\hat f(y) e^{-ihy}}_{=\hat{f(x-h)}} e^{iyx} \dd x \\
+	f(x) &= \frac{1}{2\pi} \int \hat f(y) e^{iyx} \dd y \\
+	f(x - h) &= \frac{1}{2\pi} \int \underbrace{\hat f(y) e^{-ihy}}_{=\hat{f(x-h)}} e^{iyx} \dd y \\
 \end{aligned}
 $$
 
@@ -58,7 +58,7 @@ $$
 = \int_{-\infty}^{+\infty} f'(x) e^{-iyx} \dd x
 = \underbrace{\left[ f(x) e^{-iyx} \right]_{-\infty}^{+\infty}}_{=0} + i y \int_{-\infty}^{+\infty} f(x) e^{-iyx} \dd x = iy \hat f(y)
 $$
-serve che $f(x) \to 0$ per $|x| \to +\infty$ (solo che $f \in C \cap L^1$ lo implica), in realtà $f \in C^1$ e $f, f' \in L^1$ basta ma la dimostrazione è più complicato.
+serve che $f(x) \to 0$ per $|x| \to +\infty$ (ad esempio $f \in C \cap L^1$ lo implica), in realtà $f \in C^1$ e $f, f' \in L^1$ basta, ma la dimostrazione è più complicata.
 
 Argomentiamo come segue, $f \in L^1 \implies \liminf_{|x| \to \infty} |f(x)| = 0$ (in quanto se $\liminf_{|x| \to \infty} |f(x)| = \delta > 0$ allora la funzione sarebbe $> \delta$ per $|x| \to +\infty$ ed avrebbe integrale $+\infty$) dunque esistono due successioni $a_n \to -\infty, b_n \to +\infty$ tali che $f(a_n) \to 0$ e $f(b_n) \to 0$ quindi come prima abbiamo
 $$
@@ -74,7 +74,7 @@ $$
 \qed
 
 \textbf{Proposizione 4.}
-Sia $f \in L^1$ con $xf \in L^1$, allora $(\hat f)' = - \hat{i x f}$.
+Sia $f \in L^1$ con $xf \in L^1$, allora $\hat{f} \in C^1(\R; \C)$ e $(\hat f)' = - \hat{i x f}$.
 
 \textbf{Dimostrazione.}
 $$
@@ -93,7 +93,7 @@ Sia $I$ un intervallo di $\R$, $E$ misurabile in $\R^d$ e $g \colon I \times E \
 		\quad
 		\text{e}
 		\quad
-		\left|\frac{\pd g}{\pd t}(t, x)\right| \leq h(x)
+		\left|\frac{\pd g}{\pd t}(t, x)\right| \leq h_1(x)
 		$$
 \end{enumerate}
 allora $G(t) \coloneqq \int_E g(t, x) \dd x$ è ben definita per ogni $t \in I$ e $G \in C^1(I)$ e
@@ -123,37 +123,39 @@ $$
 	\hat{f_1 \ast f_2}(y)
 	&= \int f_1 \ast f_2 (x) e^{-ixy} \dd x = \\
 	&= \iint f_1(x - t) f_2(t) \dd t \, e^{-ixy} \dd x = \\
-	&= \int \left(\int f_1(x - t) e^{-i(x - t)y} \dd x \right) f_2(t) e^{-ity} \dd x = \\
-	&= \iint f_1(x - t) e^{-i(x-t)} \dd x \, f_2(t) e^{-ity} \dd t = \\
+	&= \int \left(\int f_1(x - t) e^{-i(x - t)y} \dd x \right) f_2(t) e^{-ity} \dd t = \\
 	&= \int \hat f_1(y) f_2(t) e^{-ity} \dd t = \hat{f_1}(y) \cdot \hat{f_2}(y)
 \end{aligned}
 $$
 
-\textbf{Definizione.} (Formula di inversione).
-Data $g \in L^1(\R; \C)$ definiamo
+\textbf{Definizione.}
+Data $g \in L^1(\R; \C)$ definiamo l'\textbf{antitrasformata di Fourier} di $g$ la funzione
 $$
-\check g(x) \coloneqq \int_{-\infty}^{+\infty} g(y) e^{ixy} \dd x
+	\check g(x) \coloneqq \int_{-\infty}^{+\infty} g(y) e^{ixy} \dd y.
 $$
-cioè $\check g(x) = \hat g(-x)$ e scriviamo anche $\check g = \mathcal F^* g$. Effettivamente $\mathcal F^*$ è l'aggiunto di $\mathcal F$, almeno formalmente infatti abbiamo
+Cioè $\check g(x) = \hat g(-x)$ e scriviamo anche $\check g = \mathcal F^* g$. Effettivamente $\mathcal F^*$ è l'aggiunto di $\mathcal F$, almeno formalmente\footnote{In $L^1$ non è definito il prodotto scalare.} infatti abbiamo
 $$
-\langle \mathcal F f, g \rangle
-= \iint f \overline{e^{ixy} g(y)} \dd x \dd y
-= \int f(x) \overline{\check g(x)} \dd x
-= \langle f, \mathcal F^* g \rangle
+	\langle \mathcal F f, g \rangle
+	= \iint f \overline{e^{ixy} g(y)} \dd x \dd y
+	= \int f(x) \overline{\check g(x)} \dd x
+	= \langle f, \mathcal F^* g \rangle.
 $$
 
 \textbf{Teorema 7.}
 Data $f \in L^1(\R; \C)$ tale che $\hat f \in L^1(\R; \C)$ allora
 $$
-\foralmostall x \in \R
-\qquad
-\mathcal F^* \mathcal F f = 2 \pi f
-\qquad
-\text{cioè }
-\int \hat f(x) e^{ixy} \dd y = 2\pi f(x)
+	\foralmostall x \in \R
+	\qquad
+	\mathcal F^* \mathcal F f = 2 \pi f
+	\qquad
+	\text{cioè }
+	\int \hat f(x) e^{ixy} \dd y = 2\pi f(x)
 $$
+
+\textbf{Nota.} Una funzione continua e infinitesima non è, in generale, una funzione $L^1$; in particolare, l'ipotesi $\hat{f} \in L^1$ è necessaria e non deriva dalle proprietà già note.
+
 \textbf{Dimostrazione.}
-\textit{Dimostrazione diretta} (passando dalla Delta di Dirac):
+\textit{Dimostrazione diretta} (passando dalla Delta di Dirac dei fisici):
 $$
 \begin{aligned}
 	\mathcal F^* \mathcal F f 
@@ -162,7 +164,7 @@ $$
 	&= \int f(t) \underbrace{\int e^{i(x-t)y} \dd y}_{\text{``$\delta(x-t)$''}} \dd t = f(x)
 \end{aligned}
 $$
-\textit{Dimostrazione vera:} scegliamo $\varphi \colon \R \to \R$ tale che
+\textit{Dimostrazione vera:} scegliamo una funzione ausiliaria $\varphi \colon \R \to \R$ tale che
 \begin{enumerate}
 	\item $\varphi(0) = 1$ continua in $0$ e $\varphi$ limitata
 	\item $\varphi \in L^1$
@@ -179,18 +181,18 @@ e poniamo $g_\delta(x) \coloneqq \ds \int_{-\infty}^{+\infty} \hat f(y) \varphi(
 		e come dominazione usiamo $|\hat f(y) e^{iyx} \varphi(\delta y)| \leq |\hat f(y)| \cdot \norm{\varphi}_\infty$
 
 	\item \textit{Passo 2:}
-		$\ds g_\delta(x) 0 \iint f(t) e^{-ity} \dd t e^{ixy} \varphi(\delta y) \dd y$, per Fubini-Tonelli otteniamo
+		$\ds g_\delta(x) = \int \left( \int f(t) e^{-ity} \dd t \right) e^{ixy} \varphi(\delta y) \dd y$, per Fubini-Tonelli otteniamo
 			$$
 			\begin{aligned}
 				&= \iint \varphi(\delta y) e^{i(x-t)y} \dd y f(t) \dd t = \\
-				&= \int \sigma_\delta \check \varphi(x - t) f(t) \dd t = \sigma_\delta \check \varphi \ast f(x) \xrightarrow{\delta \to 0} f(x)
+				&= \int \sigma_\delta \check \varphi(x - t) f(t) \dd t = \sigma_\delta \check \varphi \ast f(x).
 			\end{aligned}
 			$$
 	\item \textit{Passo 3:}
 		$g_\delta \to m f$ in $L^1$ con $\ds m = \int_\R \check \varphi(x) \dd x$ (per il teorema di approssimazione e per ipotesi).
 
 	\item \textit{Passo 4:}
-		Usando il primo ed il terzo passo otteniamo $\mathcal F^* \mathcal F f = m f$ per quasi ogni $x$ ed osserviamo che in $L^1$ a meno di sottosuccessioni equivale alla convergenza puntuale e dunque coincidono.
+		Usando il primo ed il terzo passo otteniamo $\mathcal F^* \mathcal F f = m f$ per quasi ogni $x$, in quanto la convergenza puntuale e quella in $L^1$ devono essere compatibili; in particolare, la convergenza in $L^1$ a meno di sottosuccessioni equivale alla convergenza puntuale e dunque coincidono.
 
 	\item \textit{Passo 5:}
 		$m = 2\pi$ ad esempio prendendo $\varphi(y) = e^{-|y|}$, segue che
@@ -199,7 +201,9 @@ e poniamo $g_\delta(x) \coloneqq \ds \int_{-\infty}^{+\infty} \hat f(y) \varphi(
 		$$
 		e dunque $m = 2\pi$. In realtà vale per ogni $\varphi$ che verifica le condizioni dell'ipotesi.
 
-		Verifica di Fubini-Tonelli:
+		\vs
+
+		In conclusione, riportiamo la verifica di Fubini-Tonelli:
 		$$
 		\iint |f(t) e^{-ity} e^{ixy} \varphi(\delta y)| \dd t \dd y = \iint |f(t)| \cdot |\varphi(\delta y)| \dd t \dd y = \norm{f}_1 \cdot \norm{\varphi(\delta y)}_1 < +\infty
 		$$
@@ -209,8 +213,19 @@ e poniamo $g_\delta(x) \coloneqq \ds \int_{-\infty}^{+\infty} \hat f(y) \varphi(
 \textbf{Corollario 8.}
 Date $f_1, f_2 \in L^1$ tali che $\hat f_1 = \hat f_2 \implies f_1 = f_2$ quasi ovunque cioè $\mathcal F$ è iniettiva, cioè $f$ è univocamente determinata da $\hat f$.
 
+\textbf{Dimostrazione.} Per ipotesi, $\hat{f_1} - \hat{f_2} = \hat{f_1 - f_2} = 0$.
+Applicando il Teorema 7 a $\hat{f_1 - f_2}$ (possiamo farlo perchè $0 \in L^1$) otteniamo
+%
+$$
+	0 = \int \hat{f_1 - f_2}(x) e^{ixy} \dd y = 2\pi (f_1(x) - f_2(x)) 
+	\Rightarrow f_1(x) = f_2(x) \quad \foralmostall x \in \R.
+$$
+%
+\qed
+
+
 \textbf{Esercizio.}
-Date $f_1, f_2 \in L^1([-\pi, \pi]; \C)$ e tali che per ogni $n \in \Z$ vale $c_n(f_1) = c_n(f_2)$ allora $f_1 = f_2$ quasi ovunque (e $c_n(f) = 0$ per ogni $n \implies f = 0$ q.o.)
+Date $f_1, f_2 \in L^1([-\pi, \pi]; \C)$ e tali che per ogni $n \in \Z$ vale $c_n(f_1) = c_n(f_2)$ allora $f_1 = f_2$ quasi ovunque (e $c_n(f) = 0$ per ogni $n \implies f = 0$ q.o.).
 
 
 

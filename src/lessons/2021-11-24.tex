@@ -115,7 +115,7 @@ Introduciamo delle varianti della serie di Fourier.
 \textbf{Esempio.} Risolvere
 %
 \begin{equation}
-\label{eq:24nov_problema_1} \tag{P}
+\label{eq:24nov-problema-1} \tag{P}
 	\begin{cases}
 		u_t = u_{xx} \quad \text{su} \mquad [0,\pi] \\
 		u(\curry, 0) = u(\curry,\pi) = 0 \\
@@ -141,27 +141,28 @@ $$
 %
 Cioè $b_n(t)$ risolve il problema di Cauchy.
 \begin{equation}
-\label{eq:24nov_problema_2} \tag{P'}
-	\dot y = -n^2 y \\
-	y(0) = \dot b_n
+	\label{eq:24nov-problema-2} \tag{P'}
+	\begin{cases}
+		\dot y = -n^2 y \\
+		y(0) = \dot b_n
+	\end{cases}
 \end{equation}
 
 Ovvero $b_n(t) = b_n^0 e^{-n^2 t}$, da cui  
 \begin{equation}
-\label{eq:24nov_soluzione_1} \tag{$\ast$}
+\label{eq:24nov-soluzione-1} \tag{$\ast$}
 	u(t,x) = \sum_{n=1}^\infty \underbrace{b_n^0 e^{-n^2t} \sin(nx)}_{u_n}.
 \end{equation}
 
 
 \textbf{Teorema 1} (di esistenza nel futuro).
 Se $u_0 \colon [0,\pi] \to \R$ è continua è $\ds \sum_n |b_n^0| < +\infty$ (basta $u_0 \in \mc{C}^1$ e $u(0) = u(\pi) = 0$).
-Allora la $u$ in \eqref{eq:24nov_soluzione_1} è ben definita e continua su $[0,+\infty) \times \R$ e risolve \eqref{eq:24nov_problema_1}.
+Allora la $u$ in \eqref{eq:24nov-soluzione-1} è ben definita e continua su $[0,+\infty) \times \R$ e risolve \eqref{eq:24nov-problema-1}.
 
 \textbf{Dimostrazione.} Dimostriamo il teorema per passi.
 
 \textit{Passo 1.}
-Mostriamo che $u$ è ben definita e continua su $(0,+\infty) \times \R$.
-Studiamo la norma del sup. Sia $R = [0, +\infty) \times \R$.
+Mostriamo che $u$ è ben definita e continua su $(0,+\infty) \times \R$: studiamo la norma del sup. Sia $R = [0, +\infty) \times \R$.
 %
 $$
 	\norm{u_n}_{L^\infty(R)} \leq |b_n^0| \Longrightarrow u_n \mquad \text{converge totalmente su } \R.
@@ -178,7 +179,7 @@ Stimiamo le derivate.
 \end{align*}
 Allora le norme delle derivate sono sommabili per ogni $n$, dunque $u \in \mc{C}^\infty(R_\delta)$ per ogni $\delta$, da cui $u \in \mc{C}^\infty( (0,+\infty),\R)$.
 
-\textit{Passo 3.} Mostriamo che la $u(t,x)$ definita in \eqref{eq:24nov_soluzione_1} risolve \eqref{eq:24nov_problema_1}.
+\textit{Passo 3.} Mostriamo che la $u(t,x)$ definita in \eqref{eq:24nov-soluzione-1} risolve \eqref{eq:24nov-problema-1}.
 \begin{itemize}
 
 	\item $u$ risolve $u_t = u_{xx}$ per $t > 0$.
@@ -200,6 +201,6 @@ Allora le norme delle derivate sono sommabili per ogni $n$, dunque $u \in \mc{C}
 \textbf{Domanda.} Quale ipotesi su $u_0$ garantisce $\sum_n |b_n^0| < +\infty$? Basta $u_0 \in \mc{C}^1$ e $u(0) = u(\pi) = 0$.
 
 \textbf{Teorema 2} (non esistenza nel passato).
-Esiste $u_0 \colon [0,\pi] \to \R$ $\mc{C}^\infty$ (+ condizioni al bordo) tale che per ogni $\delta > 0$ \eqref{eq:24nov_problema_1} non ha alcuna soluzione $u \colon (-\delta,0] \times [0,\pi] \to \R$ continua e $\mc{C}^1$ in $t$ e $\mc{C}^2 $ in $x$.
+Esiste $u_0 \colon [0,\pi] \to \R$ $\mc{C}^\infty$ (+ condizioni al bordo) tale che per ogni $\delta > 0$ \eqref{eq:24nov-problema-1} non ha alcuna soluzione $u \colon (-\delta,0] \times [0,\pi] \to \R$ continua e $\mc{C}^1$ in $t$ e $\mc{C}^2 $ in $x$.
 
 \textbf{Teorema 3} (di unicità). [TO DO: aggiungere (è sempre lo stesso).]

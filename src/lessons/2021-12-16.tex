@@ -1,0 +1,196 @@
+\section{Superfici $k$-dimensionali in $\R^d$ di classe $C^1$}
+
+\textbf{Definizione.} Un insieme $E \subset \Sigma$ è \textbf{misurabile} (secondo Lebesgue) se $\forall \phi \colon D \to \Sigma \cap U$ parametrizzazione regolare e $D \subset \R^k$, l'insieme $\phi^{-1}(E \cap U) \subset \R^k$ è misurabile secondo Lebesgue.
+
+\textbf{Notazione.} $\mc{M}(\Sigma) \coloneqq  \{ E \subset \Sigma \text{ misurabili} \}$.
+
+\textbf{Proposizione 1.} Esiste un'unica misura $\sigma_k$ su $\mc{M}(\Sigma)$ tale che per ogni $E$ misurabile e per ogni $\phi \colon D \to \Sigma \cap U$ parametrizzazione regolare
+%
+\begin{equation}
+	\label{eq:16dic_formula1} \tag{1}
+	\sigma_k (E \cap U) = \int\limits_{\mathclap{\phi^{-1}(E \cap U)}} \overbrace{\det (\dd_s \phi)}^{J\phi (s)} \dd s
+\end{equation}
+
+\textbf{Commenti.} 
+\begin{itemize}
+
+	\item $\sigma_k$ misura di volume $k$-dimensionale su $\Sigma$
+
+	\item $\sigma_k$ coincide con la misura di Hausdorff $\mc{H}^k$ ristretta a $\Sigma$
+
+	\item $\ds J\phi (s) = \sqrt{\det (\nabla^t \phi(s) \nabla \phi(s))} = \sqrt{\sum_Q (\det Q)^2} $ dove $Q$ sono i minori $k \times k$ si $\nabla \phi(s)$
+
+	\item Se $k = 1$, vale $J\phi(s) = \sqrt{\det(\phi'(s))^t \phi'(s)} = |\phi'(s)| $
+
+\end{itemize}
+
+
+\textbf{Dimostrazione.} 
+
+\textit{Passo 1:} costruzione di $\sigma_k$.
+
+Prendiamo $\sigma_i \colon  D_i \to \Sigma \cap U_i$ parametrizzazioni regolari, dove $\{D_i\}$ è una famiglia numerabile, tale che $\Sigma \subset \bigcup U_i$.
+Prendiamo $\Sigma_i$ misurabili e disgiunti tali che $\bigcup \Sigma_i = \Sigma$ e $\Sigma_i \subset U_i$.
+
+Per ogni $E \in \mc{M}(\Sigma)$ poniamo 
+%
+$$
+	\sigma_k (E) = \sum_i \quad  \int\limits_{\mathclap{\phi^{-1}(E \cap \Sigma_i)}} J \phi_i(s) \dd s
+$$
+%
+Evitiamo di verificare che sia una misura $\sigma$-addittiva.
+
+Per dimostrare la proposizione si usa il seguente lemma.
+
+\textbf{Lemma.} Date $\phi \colon D \to \Sigma \cap U$ e $\tilde{\phi} \colon \tilde{D} \to \Sigma \cap \tilde{U}$ e $E$ misurabili contenuto in $U \cap \tilde{U}$, allora
+%
+\begin{equation}
+	\label{eq:16dic_formula2} \tag{2}
+	\int_{\phi^{-1}(E)} J\phi(s) \dd s = \int_{\tilde{\phi}(E)} J\tilde{\phi}(\tilde{s}) \dd \tilde{s}
+\end{equation}
+%
+
+\textbf{Dimostrazione lemma.} Usiamo il cambio di variabile $s = \phi^{-1}(\tilde{\phi}(\tilde{s})) =: g(\tilde{s})$.
+
+\begin{align*}
+	\int_F J\phi(s) \dd s & = \int_{g^{-1}(F) = \tilde{F}} J\phi(s) Jg(\tilde{s}) \dd \tilde{s}
+	= \int_{\tilde{F}} |\det(\dd_s \phi)| \cdot | \det(\dd_{\tilde{s}}g)| \dd \tilde{s} \\
+	& = \int_{\tilde{F}} \left| \det (d_{\tilde{s}}(\phi \circ g)) \right| \dd \tilde{s}
+	= \int_{\tilde{F}} J \tilde{\phi}(\tilde{s}) \dd \tilde(s)
+\qed
+\end{align*}
+%
+Da cui la tesi.
+\qed
+
+\textbf{Corollario 2.} Data $\phi \colon D \to \Sigma \cap U$ $C^1$ parametrizzazione bigettiva (non necessariamente regolare) , $f \colon \Sigma \cap U \to \ol{\R}$ misurabile e integrabile rispetto a $\sigma_k$.
+%
+\begin{equation}
+	\label{eq:16dic_formula3} \tag{3}
+	\int_{\Sigma \cap U} f(x) \dd \sigma_k(x) = \int_D f(\phi(s)) J\phi(s) \dd s
+\end{equation}
+
+Se $\phi \colon D \to \Sigma \cap U$ è solo $C^1$, come vanno corrette \eqref{eq:16dic_formula1} e \eqref{eq:16dic_formula3}?
+\begin{equation}
+	\tag{1'}
+	\int_{E \cap U} \# \phi^{-1}(x) \dd \sigma_k(x) = \int_{\phi^{-1}(E \cap U)} J\phi(s) \dd s
+\end{equation}
+e
+\begin{equation}
+	\tag{3'}
+	\int_{E \cap U} f(x) \# \phi^{-1}(x) \dd \sigma_k (x) = \int_D f(\phi(s)) J\phi(s) \dd s
+\end{equation}
+
+\textbf{Nota.} Le formula sopra giustificano il fatto che parametrizzazione non esattamente bigettive possono essere usate lo stesso per il calcolo dei volumi.
+
+\textbf{Esempio.} Parametrizzazione di $\mathbb{S}^d \subset \R^{d+1}$ con coordinate sferiche.
+
+Consideriamo $\phi_d \colon \R^d > \mathbb{S}^d$ definita come 
+%
+\begin{align*}
+	\phi_d(\alpha_1,\ldots,\alpha_d) = & ( \cos \alpha_1, \sin \alpha_1 \cos \alpha_2, \sin \alpha_1 \sin \alpha_2 \cos \alpha_3,\ldots, \\
+	& \sin \alpha_1 \cdots \sin \alpha_{d-1} \cos \alpha_d, \sin \alpha_1 \cdots \sin \alpha_d ) 
+\end{align*}
+
+Definizione ricorsiva
+%
+$$
+\phi_1 (\alpha_1) = (\cos \alpha_1, \sin \alpha_1), \quad 
+\phi_d(\alpha) = (\cos \alpha_1, \sin \alpha_1 \cdot \phi_{d-1}(\alpha_2,\ldots,\alpha_d))
+$$
+%
+Dunque 
+\begin{itemize}
+
+	\item $\phi_d \left( [0,\pi]^{d-1} \times [0,2\pi] \right) = \mathbb{S}^d$ è una parametrizzazione in coordinate sferiche ed è iniettiva.
+
+	\item $J\phi_d(\alpha) = \sin(\alpha_1)^{d-1} \sin(\alpha_2)^{d-2} \cdots \sin(\alpha_{d-1})^1$
+
+\end{itemize}
+
+
+\textbf{Proposizione 3.} Sia $\Sigma$ superficie come al solito. Allora esiste un'unica misura $\mu$ sui $\mc{M}(\Sigma)$ tale che per ogni $\epsilon > 0$ esiste $\delta > 0$ tale che data $f \colon \Sigma \cap U \to \R^k \in C^1$ che è $\delta$-isometria, cioè
+%
+\begin{equation}
+	\label{16dic_prop3} \tag{P}
+	\frac{1}{1 + \delta} |x-x'| \leq |f(x) - f(x')| \leq (1+\delta)|x-x'| \quad \forall x,x' \in \Sigma \cap U
+\end{equation}
+Allora
+%
+$$
+	\frac{1}{1+\epsilon} \sigma_k(E) \leq |f(E)| \leq (1+\epsilon)\sigma_k(E) \quad \forall E \text{ mis } \subset \Sigma \cap U
+$$
+%
+
+\textbf{Corollario 4.} Poichè $\sigma_k$ e la restrizione di $\mc{H}^k$ a $\Sigma$ hanno la proprietà \eqref{16dic_prop3}, coincidono.
+
+\textbf{Dimostrazione} (unicità). 
+Prendiamo $\mu,\mu'$ che soddisfano \eqref{eq:16dic_prop3}.
+Fissiamo $E,\epsilon > 0$ e $\delta$ di conseguenza usando \eqref{eq:16dic_prop3}. Allora
+\begin{itemize}
+
+	\item Per ogni $x \in \Sigma$ esiste $\phi_x \colon U_x \cap \Sigma \to \R^k$ tale che $\dd_x \phi_x \colon T_x \Sigma \to \R^k$ è un'isometria
+
+
+	\item per ogni $x$ esiste $V_x \subset U_x$ tale che $\phi_x \colon \Sigma \cap V_x \to \R^k$ è $\delta$-isometria
+
+
+	\item Ricopro $\Sigma$ con una successione $V_i \coloneqq V_{x_i}$
+
+
+	\item Scrivo $\ds E = \bigsqcup_i E_i$ con $E_i \subset V_i$
+
+\end{itemize}
+ 
+Per \eqref{eq:16dic_prop3} ho che
+%
+\begin{gather*}
+	\frac{1}{1+\epsilon} \mu(E_i) \leq |f(E_i)| \leq (1+\epsilon) \mu(E_i), \quad 
+	\frac{1}{1+\epsilon} \tilde{\mu}(E_i) \leq |f(E_i)| \leq (1+\epsilon) \tilde{\mu}(E_i) \\
+	\Longrightarrow \frac{1}{(1+\epsilon)^2} \mu(E) \leq \tilde{E} \leq (1+\epsilon)^2 \mu(E)
+\end{gather*}
+
+Per arbitrarietà di $\epsilon$ vale $\mu(E) = \tilde{\mu}(E)$. Per arbitrarietà di $E$ otteniamo $\mu = \tilde{\mu}$.
+\qed
+
+
+\section{$k$-covettori}
+
+Dato $V$ spazio vettoriale su $\R$ e fissato $k=1,2,\ldots$, l'applicazione $\alpha \colon  V^k \to \R$ si dice \textbf{$k$-covettore o $k$-lineare e alternante} se
+\begin{itemize}
+
+	\item è lineare in ogni variabile
+
+	\item per ogni $\sigma$ permutazione in $S_k$, $\alpha(v_{\sigma(1)},\ldots,v_{\sigma(k)}) = \sgn(\sigma) \alpha(v_1,\ldots,v_k)$ (equivalentemente, $\alpha$ cambia segno scambiando due variabili).
+
+\end{itemize}
+
+\textbf{Notazione.} $\Lambda^k (V) \coloneqq  \{\alpha \text{ $k$-covettori su } V \}$. Formalmente $\Lambda^0(V) \coloneqq \{0\}$.
+
+\textbf{Osservazione.} 
+\begin{itemize}
+
+	\item $\Lambda^k(V)$ è uno spazio vettoriale. 
+
+	\item $\Lambda^1(V) = V^*$ duale di $V$
+
+	\item $\det$ è $n$-lineare alternante nelle colonne (o righe)
+
+	\item Se $v_1,\ldots,v_k$ sono linearmente dipendenti, allora $\alpha(v_1,\ldots,v_k) = 0$
+
+	\item Se $k > \dim V$, allora $\Lambda^k(V) = \{0\}$
+
+\end{itemize}
+
+\textbf{Definizione.} Dati $V,V'$ spazi vettoriali, $T \colon V \to V'$ lineare, $\alpha \in \Lambda^k (V')$, il \textbf{pull-back} di $\alpha$ secondo $T$ è
+%
+$$
+T^\# \alpha \in \Lambda^k(V) \quad \text{dato da} \quad T^\# \alpha(v_1,\ldots,v_k) = \alpha(Tv_1,\ldots,Tv_n)
+$$
+%
+Inoltre, dati $\alpha \in \Lambda^k(V), \beta \in \Lambda^h(V)$ si definisce \textbf{prodotto esterno} e si indica con $\alpha \wedge \beta \in \Lambda^{k+h}(V)$ quanto segue
+%
+$$
+	\alpha \wedge \beta (v_1,\ldots,v_{k+h}) = \frac{1}{k!h!} \sum_{\sigma \in S_{k+h}} \sgn (\sigma) \alpha(v_{\sigma(1)},\ldots,v_{\sigma(k)}) \beta(v_{\sigma(k+1)},\ldots,v_{\sigma(k+h)})
+$$
+%

@@ -1,0 +1,173 @@
+\section{Superfici}
+
+\textbf{Definizione.} Data $f \colon \Omega \subset \R^k \to \R^d$ di classe $C^1$ e dato $x \in \Omega$, la mappa lineare da $\R^k$ a $\R^d$ associata alla matrice $\nabla f(x)$ si dice \textbf{differenziale di $f$ in $x$} e si indica con $\dd_x f$.
+
+\textbf{Nota.} La mappa $\dd_x f$ è univocamente determinata  da
+%
+$$
+	f(x+h) = f(x) + \dd_x f(h) + o(|h|)
+$$
+%
+dove $\dd_x f$ è il termine di primo grado dello sviluppo di Taylor di $f$.
+
+\textbf{Definizione.} Siano $1 \leq k \leq d$ e $m = 1,2,\ldots$. L'insieme $\Sigma \subset \R^d$ si definisce \textbf{superficie} (senza bordo) di dimensione $k$ e classe $C^m$ se per ogni $x \in \Sigma$ esiste $U$ intorno aperto\footnote{D'ora in avanti gli intorni saranno sempre aperti.} di $x \in \R^d$ ed esiste una mappa $\phi \colon D \to \R^d$ con $D$ aperto di $\R^k$ tale che
+\begin{itemize}
+
+	\item $\phi(D) = \Sigma \cap U$
+
+	\item $\phi \colon D \to \Sigma \cap U$ è un omeomorfismo
+
+	\item $\nabla \phi(s)$ ha rango massimo ($=k$) per ogni $s \in D$
+
+\end{itemize}
+Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
+
+\textbf{Osservazione.} Se $k = d$ abbiamo che $\Sigma$ è una superficie se e solo se $\Sigma$ è aperto.
+
+\textbf{Proposizione.} Dati $k,d,m$ come sopra, $\Sigma \subset \R^d$ e $x \in \Sigma$ sono fatti equivalenti
+\begin{itemize}
+
+	\item Esistono $U$ e $\phi \colon D \to \Sigma \cap U$ tale che $\phi$ è una parametrizzazione regolare
+
+
+	\item Esistono $U$ intorno di $x$ e $g \colon U \to \R^{d-k} \in C^m$ tale che 
+	\begin{itemize}
+
+		\item $\Sigma \cap U = g^{-1}(0)$
+
+		\item $\nabla g$ ha rango massimo, ovvero $n-k$ 
+
+	\end{itemize}
+
+
+	\item Esistono $U$ intorno di $x$ e $h \colon \R^k \to \R^{d-k}$ di classe $C^m$ tale che $\Sigma \cap U = \Gamma_h \cap U$ (dove $\Gamma_h$ è il grafico di $h$) avendo identificato $\R^k \times \R^{d-k}$ con $\R^d$ tramite una scelta di $k$ coordinate tra le $d$ di $\R^d$
+
+\end{itemize}
+
+\newpage
+
+\textbf{Esempi.}
+\begin{itemize}
+
+	\item $\mathbb{S}^{d-1} = \left\{ x \in \R^d \mymid |x| = 1 \right\}$ è una superficie senza bordo di dimensione $d-1$ e classe $C^\infty$ in $\R^d$
+
+
+	\item $\mathbb{D} = \left\{ x \in \R^3 \mymid x_3 = 0 \; \text{e} \; |x| < 1 \right\}$ è una superficie 2-dimensionale in $\R^3$
+
+
+	\item $\ol{D}$ non lo è! (È una superficie con bordo)
+
+\end{itemize}
+
+\textbf{[TO DO]: disegni} in blu sul quaderno
+
+
+\textbf{Definizione.} Data $\Sigma$ superficie e fissato $x \in \Sigma$, lo \textbf{spazio tangente} a $\Sigma$ in $x$ è $ T_x \Sigma \coloneqq \imm (\dd_s \phi)$ dove $\phi \colon D \to \Sigma \cap U$ è una parametrizzazione regolare e $x = \phi(s)$ con $s \in D$.
+
+\textbf{Proposizione.} 
+\begin{itemize}
+
+	\item $T_x \Sigma = \left\{ \dot \gamma(0) \mymid \gamma \colon [0,\delta) \to \Sigma \text{ cammino } C^1 \text{ con } \gamma(0) = x \right\}$ 
+
+
+	\item Data $g \colon U \to \R^{d-k}$ tale che $\Sigma \cap U = g^{-1}(0)$, $\rk(\nabla g) = d-k$ su $U$, allora 
+	%
+	$$
+		T_x \Sigma = \ker(\dd_x g) = \{\nabla g_1(x),\ldots, \nabla g_{n-k}(x) \}^\perp
+	$$
+	%
+	
+
+\end{itemize}
+
+
+\textbf{Definizione.} Data $\Sigma$ superficie in $\R^d$ di classe $C^m$, $f \colon \Sigma \to \R^{d'}$, diciamo che $f$ è di classe $C^{m'}$, con $m' \leq m$ se per ogni $x \in \Sigma$ se esistono $U$ e $\phi \colon D \to \Sigma \cap U$ parametrizzazione regolare, tale che $f \circ \phi \colon D \to \R^d$ è di classe $C^{m'}$ con $D$ aperto di $\R^k$.
+
+
+\textbf{Proposizione.} $f \in C^{m'} \longiff \exists A$ aperto di $\R^d$ che contiene $\Sigma$ e $F \colon A \to \R^d$ estensione di $f$ di classe $C^{m'}$.
+
+\textbf{Osservazione.} Se $\phi \colon D \to \Sigma \cap U$ è una parametrizzazione regolare, allora $\phi^{-1} \colon \Sigma \cap U \to D \subset \R^k$ è $C^m$. La mappa $\phi^{-1}$ viene definita \textbf{carta}.
+
+\textbf{Definizione.} Data $f \colon \Sigma \to \R^{d}$ di classe (almeno) $C^1$ e $x \in \Sigma$, 
+%
+\begin{align*}
+	\dd_x f \colon  T_z \Sigma & \longrightarrow \R^{d} \\
+	\dot \gamma(0) & \longmapsto (f \circ \gamma)' (0) \quad \gamma \colon [0,\delta) \to \Sigma, \; \gamma \in C^1, \; \gamma(0) = x
+\end{align*}
+
+
+\textbf{Proposizione.} Data $F \colon A \to \R^{d'}$ estensione $C^1$ di $f$, con $A \subset \R^d$, allora
+%
+$$
+	\dd_x f = \restr{\dd_x F}{T_x \Sigma}
+$$
+%
+
+\textbf{Osservazione.} Se $f \colon \Sigma \to \Sigma'$, dove $\Sigma \subset \R^d$ e $\Sigma' \subset \R^{d'}$ allora $\imm(\dd_x f) \subset T_{f(x)} \Sigma'$.
+Quindi, $\dd_x f \colon T_x \Sigma \to T_{f(x)} \Sigma'$.
+
+
+\section{Misure su superfici}
+
+In questa sezione studiamo la misura di Lebesgue su superfici definite tramite parametrizzazione\footnote{Coincide con la definizione di Hausdorff}.
+
+\textbf{Definizione.} Dati $V$ spazio vettoriale $k$-dimensionale dotato di prodotto scalare (per esempio $V$ sottospazi di $\R^d$), la \textbf{misura di Lebesgue} $\sigma_k$ su $V$ è data dall'identificazione di $V$ con $\R^k$ tramite la scelta di una base ortonormale.
+
+\textbf{Nota.} $\sigma_k$ non dipende dalla scelta della base.
+
+
+\textbf{Definizione.} Siano $V,V'$ spazi vettoriali di dimensione $k$ dotati di prodotto scalare e $\Lambda \colon V \to V'$ lineare. Poniamo
+%
+$$
+	|\det \Lambda| \coloneqq |\det M|,
+$$
+%
+dove $M$ è una matrice $k \times k$ associata a $\Lambda$ dalla scelta di basi ortonormali su $V$ e $V'$.
+
+\textbf{Nota.} Si verifica che la definizione è ben posta, ovvero non dipende dalla scelta delle basi. Inoltre, si verifica che per ogni $E \subset V$ misurabile si ha $\sigma_k(\Lambda(E)) = |\det \Lambda| \cdot \sigma_k(E)$ (formula di cambio di variabile negli integrali).
+
+\textbf{Definizione.} Sia $\Lambda \colon V \to W$, con $V,W$ spazi vettoriali, non necessariamente di stessa dimensione. Poniamo $V' \coloneqq \imm(\Lambda)$ e 
+%
+$$
+|\det \Lambda| \coloneqq 
+\begin{cases}
+	0 \qquad \qquad \quad \mquad \text{se } \rk (\Lambda) < k \\
+	\text{come prima} \quad \text{se } \rk(\Lambda) = k \text{ e } \dim V' = \dim V
+\end{cases} 
+$$
+
+\textbf{Proposizione 1.} Se $\Lambda : \R^k \to \R^d$ allora
+%
+\begin{equation}
+	\tag{1}
+	|\det \Lambda |^2 = \det (N^t N)
+\end{equation}
+%
+dove $N$ è una matrice $d \times k$ associata a $\Lambda$.
+E inoltre
+%
+\begin{equation}
+	\tag{2}
+	|\det \Lambda |^2 = \sum_{\substack{Q \text{ minore} \\ k \times k \text { di } N}} \det(Q)^2
+\end{equation}
+%
+
+\textbf{Osservazione.} Questa proposizione implica che non è necessario trovare una base ortormale dell'immagine di $\Lambda$ per calcolarne il determinante.
+
+\textbf{Dimostrazione.} 
+\begin{itemize}
+
+	\item[(1)] Supponiamo $\Lambda$ iniettiva (il caso $\Lambda$ non iniettivo per esercizio), scegliamo una base ortonormale $e_1,\ldots,e_k$ di $\imm(\Lambda)$ e una matrice $M$ $k \times k$ associata a $\Lambda$.
+	Sia $B \in \R^{d \times k}$ una matrice avente colonne uguali a $e_1,\ldots,e_k$. Allora $N = BM$.
+	Dunque, 
+	%
+	$$
+		\det(N^t N) = \det(M^t \underbrace{B^t B}_{= I} M) = \det (M^t M) = (\det M)^2 =: |\det \Lambda|^2.
+	$$
+	%
+	
+
+	\item[(2)] La seconda formula richiede la formula di Binet generalizzata.
+
+\end{itemize}
+\qed

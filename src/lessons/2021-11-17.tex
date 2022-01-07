@@ -96,12 +96,12 @@ Consideriamo il caso uno dimensionale. In tal caso l'equazione delle onde è la 
 
 Scriviamo $\ds u(t,x) = \sum_{n \in \Z} c_n(t) e^{inx}$. Deriviamo in $t$ e due volte in $x$.
 \begin{align*}
-	u_{tt} & = \sum_{n \in \Z} \dot c_n e^{inx} \\
+	u_{tt} & = \sum_{n \in \Z} \ddot c_n e^{inx} \\
 	u_{xx} & = \sum_{n \in \Z} - v^2 n^2 c_n e^{inx}
 \end{align*}
 Abbiamo che
 \begin{gather*}
-	u_{tt} = v^2 u_{xx} \longiff c_n = -v^2 n^2 c_n \\
+	u_{tt} = v^2 u_{xx} \longiff \ddot c_n = -v^2 n^2 c_n \\
 	u(0, \cdot) = u_0 \longiff c_n(0) = c_n^0 \coloneqq c_n(u_0)
 	\qquad
 	u_t(0, \cdot) = u_1 \longiff \dot c_n(0) = c_n^1 \coloneqq c_n(u_1)
