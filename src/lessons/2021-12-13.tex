@@ -117,5 +117,91 @@ Sia $H = L^2([0, \pi] \times [0, \pi]; \R)$ e $T u = -\Delta u = -u_{xx} -u_{yy}
 	\item $D_2 = \{ u \in C^2([0, \pi] \times [0, \pi]; \R) \mid \nabla u|_{\pd Q} = 0 \}$
 	\item $D_3 = \{ u \in C^2([0, \pi] \times [0, \pi]; \R) \mid \text{$u = 0$ su due lati paralleli e $\nabla u = 0$ sugli altri due} \}$
 \end{itemize}
+e dire se l'operatore è autoaggiunto ed eventualmente trovare gli autovalori.
 
-\subsection{Calcolo trasformate di fourier}
+\subsection{Calcolo Trasformate di Fourier}
+
+Abbiamo visto che le trasformate di $f(x) = e^{-|x|}$ e $g(x) = 1 / (1 + x^2)$ sono rispettivamente
+$$
+\hat f(y) = \frac{2}{1 + y^2}
+\qquad
+\hat g(y) = \pi e^{-|y|}
+$$
+Vorremo provare a trovare ora le trasformate funzioni come $x^2 e^{-|x|}$ o $x / (1 + x^2)$ usando le proprietà delle trasformate con le derivate. Ricordiamo che
+$$
+\begin{gathered}
+	f, f' \in L^1 \implies \hat{f'\,}(y) = i y \hat f(y) \\
+	f, x f \in L^1 \implies \hat{f}'(y) = \hat{-i x f\,}(y)
+\end{gathered}
+$$
+dunque intuitivamente per $x^2 e^{-|x|}$ possiamo fare
+$$
+x^2 e^{-|x|} = i (-i) x (x e^{-|x|}) \implies \mathcal F(i (-i) x (x e^{-|x|})) = i (\mathcal F(x e^{-|x|}))'(y)
+$$
+ora dobbiamo calcolare $\mathcal F(x e^{-|x|})(y)$
+$$
+\mathcal F(x e^{-|x|})(y) = i \mathcal F(-ix e^{-|x|}) = i \mathcal F(e^{-|x|})'(y) = i \left(\frac{2}{1 + y^2}\right)' = \frac{-4iy}{(1+y^2)^2}
+$$
+dunque in conclusione abbiamo
+$$
+\mathcal F(x^2 e^{-|x|})(y) = i \left(\frac{-4iy}{(1 + y^2)^2}\right)' = 4 \left(\frac{y}{(1 + y^2)^2}\right)'
+$$
+Invece per quanto riguarda
+$$
+g(x) = \frac{x}{1+x^2} \notin L^1
+$$
+però è in $L^2$ ma per poterne calcolare la trasformata di Fourier dovremmo passare per delle troncate di $g(x)$. Possiamo però vedere chi dovrebbe essere il candidato formale usando le tecniche di prima
+$$
+\frac{x}{1+x^2} = \frac{i (-ix)}{1+x^2} \rightsquigarrow 
+i \mathcal F \left( (-ix) \frac{1}{1+x^2} \right)(y)
+= i \mathcal F \left( \frac{1}{1+x^2} \right)'(y) = i \pi (e^{-|y|})'(y)
+$$
+però notiamo che la derivata di $e^{-|y|}$ non è ben definita in $0$.
+
+\textbf{Esercizio.}
+Calcolare la trasformata di Fourier di
+$$
+f(x) = \One_{[-r, r]}(x)
+$$
+Iniziamo a svolgere il conto
+$$
+\hat f(y) = \int_{-\infty}^\infty \One_{[-r, r]}(x) e^{-ixy} \dd x = \int_{-r}^r e^{-ixy} \dd x
+=
+\begin{cases}
+	2r & xy=0 \\
+	\ds \int_{-r}^r e^{-ixy} \dd x & xy \neq 0 \\
+\end{cases}
+$$
+nel caso $xy \neq 0$ contiuiamo a svolgere il conto
+$$
+\int_{-ry}^{ry} \frac{e^{-it}}{y} \dd t 
+= \frac{1}{y} \int_{-ry}^{ry} [\cos(t) - i\underbrace{\sin(t)}_{\text{dispari}}] \dd t
+= \frac{2}{y} \sin(ry)
+$$
+dunque in conclusione abbiamo
+$$
+\mathcal F(\One_{[-r, r]}(x)) =
+\begin{cases}
+	2r & y=0 \\
+	\ds \frac{2}{y} \sin(ry) & y \neq 0 \\
+\end{cases}
+$$
+
+\textbf{Esercizio.}
+Un esercizio simile è calcolare $\mathcal F(\One_{[0, r]}(x))$, ovvero il caso non centrato e poi provare a calcolare (come integrale improprio di Analisi 1) l'integrale
+$$
+\int_{0}^{\infty} \frac{\sin(t)}{t} \dd t = \lim_{r \to \infty}\int_{0}^{r} \frac{\sin(t)}{t} \dd t
+$$
+
+\subsubsection{Trasformata della Gaussiana}
+
+Calcoliamo ora la trasformata della funzione gaussiana $e^{-x^2 / 2}$.
+
+\begin{itemize}
+	\item \textbf{Metodo I:} Troviamo un'equazione differenziale (lineare) risolta dalla gaussiana, sia $f(x) = e^{-x^2 / 2}$ allora vale
+		$$
+		f'(x) = -x e^{-x^2/2} = -x f(x)
+		$$
+		e per il decadimento della gaussiana abbiamo che $f, f' \in L^1$ dunque
+\end{itemize}
+
