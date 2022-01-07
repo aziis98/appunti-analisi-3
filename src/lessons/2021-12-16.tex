@@ -14,13 +14,13 @@
 \textbf{Commenti.} 
 \begin{itemize}
 
-	\item $\sigma_k$ misura di volume $k$-dimensionale su $\Sigma$
+	\item $\sigma_k$ misura di volume $k$-dimensionale su $\Sigma$.
 
-	\item $\sigma_k$ coincide con la misura di Hausdorff $\mc{H}^k$ ristretta a $\Sigma$
+	\item $\sigma_k$ coincide con la misura di Hausdorff $\mc{H}^k$ ristretta a $\Sigma$.
 
-	\item $\ds J\phi (s) = \sqrt{\det (\nabla^t \phi(s) \nabla \phi(s))} = \sqrt{\sum_Q (\det Q)^2} $ dove $Q$ sono i minori $k \times k$ si $\nabla \phi(s)$
+	\item $\ds J\phi (s) = \sqrt{\det (\nabla^t \phi(s) \nabla \phi(s))} = \sqrt{\sum_Q (\det Q)^2} $ dove $Q$ sono i minori $k \times k$ si $\nabla \phi(s)$.
 
-	\item Se $k = 1$, vale $J\phi(s) = \sqrt{\det(\phi'(s))^t \phi'(s)} = |\phi'(s)| $
+	\item Se $k = 1$, vale $J\phi(s) = \sqrt{\det(\phi'(s))^t \phi'(s)} = |\phi'(s)| $.
 
 \end{itemize}
 
@@ -51,13 +51,11 @@ Per dimostrare la proposizione si usa il seguente lemma.
 %
 
 \textbf{Dimostrazione lemma.} Usiamo il cambio di variabile $s = \phi^{-1}(\tilde{\phi}(\tilde{s})) =: g(\tilde{s})$.
-
 \begin{align*}
 	\int_F J\phi(s) \dd s & = \int_{g^{-1}(F) = \tilde{F}} J\phi(s) Jg(\tilde{s}) \dd \tilde{s}
 	= \int_{\tilde{F}} |\det(\dd_s \phi)| \cdot | \det(\dd_{\tilde{s}}g)| \dd \tilde{s} \\
 	& = \int_{\tilde{F}} \left| \det (d_{\tilde{s}}(\phi \circ g)) \right| \dd \tilde{s}
 	= \int_{\tilde{F}} J \tilde{\phi}(\tilde{s}) \dd \tilde(s)
-\qed
 \end{align*}
 %
 Da cui la tesi.
@@ -81,7 +79,7 @@ e
 	\int_{E \cap U} f(x) \# \phi^{-1}(x) \dd \sigma_k (x) = \int_D f(\phi(s)) J\phi(s) \dd s
 \end{equation}
 
-\textbf{Nota.} Le formula sopra giustificano il fatto che parametrizzazione non esattamente bigettive possono essere usate lo stesso per il calcolo dei volumi.
+\textbf{Nota.} Le formule sopra giustificano il fatto che parametrizzazione non esattamente bigettive possono essere usate lo stesso per il calcolo dei volumi.
 
 \textbf{Esempio.} Parametrizzazione di $\mathbb{S}^d \subset \R^{d+1}$ con coordinate sferiche.
 
@@ -112,7 +110,7 @@ Dunque
 \textbf{Proposizione 3.} Sia $\Sigma$ superficie come al solito. Allora esiste un'unica misura $\mu$ sui $\mc{M}(\Sigma)$ tale che per ogni $\epsilon > 0$ esiste $\delta > 0$ tale che data $f \colon \Sigma \cap U \to \R^k \in C^1$ che è $\delta$-isometria, cioè
 %
 \begin{equation}
-	\label{16dic_prop3} \tag{P}
+	\label{eq:16dic_prop3} \tag{P}
 	\frac{1}{1 + \delta} |x-x'| \leq |f(x) - f(x')| \leq (1+\delta)|x-x'| \quad \forall x,x' \in \Sigma \cap U
 \end{equation}
 Allora
@@ -122,41 +120,47 @@ $$
 $$
 %
 
-\textbf{Corollario 4.} Poichè $\sigma_k$ e la restrizione di $\mc{H}^k$ a $\Sigma$ hanno la proprietà \eqref{16dic_prop3}, coincidono.
+\textbf{Corollario 4.} Poichè $\sigma_k$ e la restrizione di $\mc{H}^k$ a $\Sigma$ hanno la proprietà \eqref{eq:16dic_prop3}, coincidono.
 
-\textbf{Dimostrazione} (unicità). 
+\textbf{Dimostrazione} (Unicità). 
 Prendiamo $\mu,\mu'$ che soddisfano \eqref{eq:16dic_prop3}.
 Fissiamo $E,\epsilon > 0$ e $\delta$ di conseguenza usando \eqref{eq:16dic_prop3}. Allora
 \begin{itemize}
 
-	\item Per ogni $x \in \Sigma$ esiste $\phi_x \colon U_x \cap \Sigma \to \R^k$ tale che $\dd_x \phi_x \colon T_x \Sigma \to \R^k$ è un'isometria
+	\item Per ogni $x \in \Sigma$ esiste $\phi_x \colon U_x \cap \Sigma \to \R^k$ tale che $\dd_x \phi_x \colon T_x \Sigma \to \R^k$ è un'isometria.
 
 
-	\item per ogni $x$ esiste $V_x \subset U_x$ tale che $\phi_x \colon \Sigma \cap V_x \to \R^k$ è $\delta$-isometria
+	\item per ogni $x$ esiste $V_x \subset U_x$ tale che $\phi_x \colon \Sigma \cap V_x \to \R^k$ è $\delta$-isometria.
 
 
-	\item Ricopro $\Sigma$ con una successione $V_i \coloneqq V_{x_i}$
+	\item Ricopriamo $\Sigma$ con una successione $V_i \coloneqq V_{x_i}$.
 
 
-	\item Scrivo $\ds E = \bigsqcup_i E_i$ con $E_i \subset V_i$
+	\item Scriviamo $\ds E = \bigsqcup_i E_i$ con $E_i \subset V_i$.
 
 \end{itemize}
  
-Per \eqref{eq:16dic_prop3} ho che
+Per \eqref{eq:16dic_prop3} abbiamo che
 %
 \begin{gather*}
-	\frac{1}{1+\epsilon} \mu(E_i) \leq |f(E_i)| \leq (1+\epsilon) \mu(E_i), \quad 
-	\frac{1}{1+\epsilon} \tilde{\mu}(E_i) \leq |f(E_i)| \leq (1+\epsilon) \tilde{\mu}(E_i) \\
-	\Longrightarrow \frac{1}{(1+\epsilon)^2} \mu(E) \leq \tilde{E} \leq (1+\epsilon)^2 \mu(E)
+	\frac{1}{1+\epsilon} \mu(E_i) \leq |f(E_i)| \leq (1+\epsilon) \mu(E_i) \\
+	\frac{1}{1+\epsilon} \tilde{\mu}(E_i) \leq |f(E_i)| \leq (1+\epsilon) \tilde{\mu}(E_i)
 \end{gather*}
-
-Per arbitrarietà di $\epsilon$ vale $\mu(E) = \tilde{\mu}(E)$. Per arbitrarietà di $E$ otteniamo $\mu = \tilde{\mu}$.
+da cui incrociando le disuguaglianze otteniamo
+$$
+\Longrightarrow \;
+\begin{gathered}
+	\frac{1}{(1+\epsilon)^2} \mu(E_i) \leq \tilde \mu(E_i) \leq (1+\epsilon)^2 \mu(E_i) \\
+	\frac{1}{(1+\epsilon)^2} \tilde \mu(E_i) \leq \mu(E_i) \leq (1+\epsilon)^2 \tilde \mu(E_i)
+\end{gathered}
+$$
+e per arbitrarietà di $\epsilon$ ricaviamo $\mu(E) = \tilde{\mu}(E)$. Per arbitrarietà di $E$ otteniamo $\mu = \tilde{\mu}$.
 \qed
 
 
 \section{$k$-covettori}
 
-Dato $V$ spazio vettoriale su $\R$ e fissato $k=1,2,\ldots$, l'applicazione $\alpha \colon  V^k \to \R$ si dice \textbf{$k$-covettore o $k$-lineare e alternante} se
+Dato $V$ spazio vettoriale su $\R$ e $k=1,2,\ldots$, l'applicazione $\alpha \colon  V^k \to \R$ si dice \textbf{$k$-covettore o $k$-lineare e alternante} se
 \begin{itemize}
 
 	\item è lineare in ogni variabile
@@ -172,13 +176,13 @@ Dato $V$ spazio vettoriale su $\R$ e fissato $k=1,2,\ldots$, l'applicazione $\al
 
 	\item $\Lambda^k(V)$ è uno spazio vettoriale. 
 
-	\item $\Lambda^1(V) = V^*$ duale di $V$
+	\item $\Lambda^1(V) = V^*$ duale di $V$.
 
-	\item $\det$ è $n$-lineare alternante nelle colonne (o righe)
+	\item $\det$ è $n$-lineare alternante nelle colonne (o righe).
 
-	\item Se $v_1,\ldots,v_k$ sono linearmente dipendenti, allora $\alpha(v_1,\ldots,v_k) = 0$
+	\item Se $v_1,\ldots,v_k$ sono linearmente dipendenti, allora $\alpha(v_1,\ldots,v_k) = 0$.
 
-	\item Se $k > \dim V$, allora $\Lambda^k(V) = \{0\}$
+	\item Se $k > \dim V$, allora $\Lambda^k(V) = \{0\}$.
 
 \end{itemize}
 
