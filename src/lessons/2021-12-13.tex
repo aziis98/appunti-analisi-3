@@ -203,5 +203,56 @@ Calcoliamo ora la trasformata della funzione gaussiana $e^{-x^2 / 2}$.
 		f'(x) = -x e^{-x^2/2} = -x f(x)
 		$$
 		e per il decadimento della gaussiana abbiamo che $f, f' \in L^1$ dunque
+		$$
+		i y \hat f(y) = \hat{f'(x)}(y) = -i \mathcal F(-i x f(x))(y) = i (\hat{f})' (y)
+		$$
+		dunque $\hat f = h(y)$ con $h$ tale che $h'(y) = -y h(y) \implies h(y) = k e^{-y^2 / 2}$, rimane da trovare $k$. Calcoliamo direttamente $h(0)$
+		$$
+		\begin{gathered}
+			h(0) 
+			= \hat{e^{-x^2/2}(0)} 
+			= \int_{-\infty}^\infty e^{-x^2 / 2} e^{-ix \cdot 0} \dd x
+			= \int_{-\infty}^\infty e^{-x^2 / 2} \dd x = \sqrt{2\pi} \\
+			\implies \hat{e^{-x^2/2}} = \sqrt{2\pi} e^{-y^2 / 2}
+		\end{gathered}
+		$$
+
+	\item \textbf{Metodo II:} Studiamo la funzione di variabile complessa $g(z) = e^{-z^2/2}$ e integriamola lungo un percorso che passi per $[-r, r] \times \{ 0 \} \subset \R^2 \approx \C$.
+		$$
+		\begin{aligned}
+			\mathcal F(\hat{-x^2/2})(y) 
+			&= \int_\R e^{-x^2 / 2} \cdot e^{-ixy} \dd x
+			= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy)} \dd x \\
+			&= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2 - y^2)} \dd x 
+			= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2)} \cdot e^{-y^2 / 2} \dd x \\
+			&= e^{-y^2 / 2} \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2)} \dd x 
+			= e^{-y^2 / 2} \lim_{r \to \infty} \int_{-r}^r \underbrace{e^{-\frac{1}{2}(x + iy)^2}}_{g(x + iy)} \dd x
+		\end{aligned}
+		$$
+		Consideriamo ora il rettangolo $D_r \coloneqq \{ z \mid \operatorname{Im} z \in [0, iy] \text{ e } \operatorname{Re} z \in [-r, r] \}$ dunque poiché $g(z)$ non ha poli su $D_r$ abbiamo
+		$$
+		\begin{gathered}
+			\int_{\pd D_r} g = \sum \text{Res. su $D_r$} = 0 \\
+			0 = \int_{-r}^r g(x + it) \dd x - \int_{-r}^r g(x + iy) \dd x 
+			+ \int_{0}^{iy} g(r + iy) \dd t - \int_{0}^{iy} \underbrace{g(-r + iy)}_{\mathclap{\sim \, e^{-(r+it)^2} \xrightarrow{r \to \infty} 0}} \dd t
+		\end{gathered}
+		$$
+		infatti più precisamente i termini verticali vanno a zero
+		$$
+		\int_0^y e^{-(r+it)^2 / 2} \dd t 
+		= e^{-r^2 / 2} \int_0^y e^{-itr - t^2/2} \dd t = y e^{-r^2 / 2} \xrightarrow{r \to +\infty} 0
+		$$
+		In conclusione abbiamo
+		$$
+		\begin{aligned}
+			\hat{e^{-x^2 / 2}} (y) 
+			&= \lim_{r \to +\infty} \int_{-r}^r e^{-y^2 / 2} e^{-(x + iy)^2 / 2} \dd x 
+			= e^{-y^2 / 2} \left[ \lim_{r \to +\infty} \int_{-r}^r e^{-x^2 / 2} \dd x + o(1) \right] = \\
+			&= e^{-y^2 / 2} \int_{-\infty}^\infty e^{-x^2 / 2} \dd x = \sqrt{2\pi} e^{-y^2 / 2} 
+		\end{aligned}
+		$$
+		\qed
+
 \end{itemize}
+
 
