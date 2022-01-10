@@ -240,13 +240,26 @@ $$
 			\norm{f_1 + f_2}_p^p 
 			&= \int_X |f_1 + f_2|^p 
 			\leq \int_X (|f_1| + |f_2|) \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
-			&= \int_X |f_1| \cdot |f_1 + f_2|^{p-1} \dd \mu + \int_X |f_2| \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
-			&\overset{\text{H\"older}}{\leq} \norm{f_1}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q + \norm{f_2}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q = \\
+			&= \int_X |f_1| \cdot |f_1 + f_2|^{p-1} \dd \mu + \int_X |f_2| \cdot |f_1 + f_2|^{p-1} \dd \mu =
+		\end{aligned}
+		$$
+		ora introduciamo $q$ esponente coniugato di $p$ e notiamo
+		$$
+		q = \frac{p - 1}{p} 
+		\quad
+		\text{e}
+		\quad
+		\norm{|f|^{p-1}}_q = \norm{f}_p^{p-1}
+		$$
+		ora continuiamo a svolgere il conto di prima usando H\"older con esponenti $p$ e $q$
+		$$
+		\begin{aligned}
+		&\overset{\text{H\"older}}{\leq} \norm{f_1}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q + \norm{f_2}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q = \\
 			& = (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{|f_1 + f_2|^{p-1}}_q 
 			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
 		\end{aligned}
 		$$
-		e poiché $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte
+		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte ed ottenere la tesi
 		$$
 		\implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
 		\implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
@@ -256,16 +269,25 @@ $$
 		$$
 		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
 		$$
-		che si ottiene usando la convessità della funzione $x \mapsto x^p$ e la combinazione affine $\frac{1}{2}x_1 + \frac{1}{2}x_2$
+		che si ottiene usando la convessità della funzione $x \mapsto x^p$ e la combinazione affine $\frac{1}{2}x_1 + \frac{1}{2}x_2$ infatti
 		$$
-		\norm{f_1 + f_2}_p^p 
-		= \int_X |f_1 + f_2|^p \dd \mu 
-		= 2^p \int_X \left| \frac{f_1 + f_2}{2} \right|^p \dd \mu 
+		\left( \frac{x}{2} + \frac{y}{2} \right)^p \leq \frac{1}{2} x^p + \frac{1}{2} y^p 
+		\implies \frac{1}{2^{p-1}} (x+y)^p \leq x^p + y^p 
+		\implies (x+y)^p \leq 2^{p-1} (x^p + y^p)
 		$$
+		ma sostituendo con $f_1$ e $f_2$, integrando e poi sostituendo le norme otteniamo
 		$$
-		\leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
-		= 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
 		$$
+		% $$
+		% \norm{f_1 + f_2}_p^p 
+		% = \int_X |f_1 + f_2|^p \dd \mu 
+		% = 2^p \int_X \left| \frac{f_1 + f_2}{2} \right|^p \dd \mu 
+		% $$
+		% $$
+		% \leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
+		% = 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		% $$
 		da cui possiamo ricavare subito che almeno uno dei due termini deve essere $+\infty$.
 
 \end{itemize}

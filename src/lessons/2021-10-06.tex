@@ -48,9 +48,12 @@ $$
 \textbf{Nota.}
 Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttamente parlando di ``funzioni in $L^p$''. Le ``operazioni'' comuni non creano problemi però in certi casi bisogna stare attenti di star lavorando con oggetti ben definiti. Ad esempio:
 \begin{itemize}
-	\item Preso $x_0 \in X$, consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$. Notiamo che non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$ ovvero che la misura sia atomica) di $L^pa$, in quanto possiamo variare $f$ su un insieme di misura nulla.
+	\item Preso $x_0 \in X$, consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$. Notiamo che non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$ ovvero che la misura sia atomica) di $L^p$, in quanto possiamo variare $f$ su un insieme di misura nulla.
 
-	\item Invece l'insieme $\{\ds  f \in L^1 \mid \int_X f \dd \mu = 0 \}$ è ben definito.
+	\item Invece ad esempio il seguente insieme è ben definito
+		$$
+		\left\{ f \in L^1 \;\middle|\; \int_X f \dd \mu = 0 \right\}
+		$$
 \end{itemize}
 
 \subsection{Prodotto scalare su $L^2$}
@@ -58,39 +61,37 @@ Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttament
 Date $f_1,f_2 \in L^2(X)$ si pone
 %
 $$
-\left<f_1, f_2 \right> \coloneqq \int_{X}^{} f_1 \cdot f_2 \dd \mu.
+\langle f_1, f_2 \rangle \coloneqq \int_{X}^{} f_1 \cdot f_2 \dd \mu.
 $$
 %
 \textbf{Osservazioni.}
 
 \begin{itemize}
-\item La definizione di $\left<f_1, f_2 \right>$ è ben posta.
-Infatti, basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$, che segue da H\"{o}lder.
+\item La definizione di $\langle f_1, f_2 \rangle$ è ben posta, infatti basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$ ma per H\"older abbiamo
 %
 $$
 \int_{X}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
 $$
 %
 
-\item $\norm{f}_2^2 = \left<f,f \right>$ per ogni $f \in L^2(X)$.
+\item $\norm{f}_2^2 = \langle f,f \rangle$ per ogni $f \in L^2(X)$.
 
-\item Inoltre, $\ds \left| \int_X f_1 f_2 \right| \dd \mu \leq \int_X \left| f_1 f_2 \right| \dd \mu$ quindi
+\item Inoltre, $\ds \left| \int_X f_1 f_2 \dd \mu \, \right| \leq \int_X \left| f_1 f_2 \right| \dd \mu$ quindi
 %
 $$
-\left| \left<f_1, f_2 \right> \right| \leq \norm{f_1}_2 \norm{f_2}_2 \quad \; \text{(\textit{Cauchy-Schwartz})}.
+\left| \langle f_1, f_2 \rangle \right| \leq \norm{f_1}_2 \norm{f_2}_2 \quad \; \text{(\textit{Cauchy-Schwartz})}.
 $$
-%
 
-\item L'operatore $\left< \ , \ \right>$ è un prodotto scalare definito positivo.
+\item L'operatore $\langle \curry, \curry \rangle$ è un prodotto scalare definito positivo.
 
 \end{itemize}
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Dato $C$ spazio vettoriale reale con prodotto scalare $\left<\ ,\ \right>$, allora $\left<\ ,\ \right>$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
+\item Dato $C$ spazio vettoriale reale con prodotto scalare $\langle \curry, \curry \rangle$, allora $\langle \curry, \curry \rangle$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
 %
 $$
-\left<v_1, v_2 \right> = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
+\langle v_1, v_2 \rangle = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
 $$
 %
 
@@ -105,32 +106,25 @@ $$
 \end{itemize}
 
 \textbf{Proprietà.}
-Sia $V$ uno spazio vettoriale normato con norma $\norm{\cdot}$. Allora vale l'identità del parallelogramma se solo se $\norm{\cdot}$ deriva da un prodotto scalare.
+Sia $V$ uno spazio vettoriale con norma $\norm{\curry}$. Allora vale l'identità del parallelogramma se solo se $\norm{\curry}$ deriva da un prodotto scalare.
 
 \textbf{Esempio.}
 La norma di $L^p \left( [-1,1] \right)$, deriva da un prodotto scalare solo per $p=2$.
 Prendiamo $f_1 = \One_{[-1,0]}$ e $f_2 = \One_{[0,+1]}$.
 Allora
-%
 \vspace{-5mm}
-%
 \begin{align*}
-\norm{f_1 + f_2}_p^p = \int_{-1}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
-\norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
+	\norm{f_1 + f_2}_p^p = \int_{-1}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
+	\norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
 \end{align*}
-%
 Se vale l'identità del parallelogramma allora
-%
 $$
 \norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
 $$
-%
 cioè
-%
 $$
 2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
 $$
-%
 
 \textbf{Domanda.} Per quali $X,\mc{A},\mu$ vale la stessa conclusione?
 
@@ -169,12 +163,12 @@ $$
 
 \textbf{Dimostrazione.}
 \begin{enumerate}
-	\item 
-		Dati $n > m$ abbiamo che 
+	\item Vorremmo vedere che $\forall \epsilon \, \exists N$ tale che $\forall m, n > N$ si ha $d(y_m, y_n) \leq \epsilon$. 
+		Presi $n > m$ abbiamo che 
 		$$
 		d(y_m, y_n) \leq \sum_{k=m}^{n-1} d(y_k, y_{k+1}) \leq \sum_{k=m}^\infty d(y_k, y_{k+1}) \to 0
 		$$
-		in quanto è la \textit{coda di una serie convergente}, quindi 
+		in quanto \textit{coda di una serie convergente}, quindi 
 		$$
 		\forall \epsilon > 0 \mquad \exists m_\epsilon \text{ tale che } \sum_{k = m_\epsilon}^\infty d(y_k, y_{k+1})< \epsilon \implies \forall n > m \geq m_\epsilon \; d(y_m, y_n) \leq \epsilon
 		$$ 
@@ -184,10 +178,21 @@ $$
 		$$
 		\sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty
 		$$
-		ma $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
+		ma a quel punto per ipotesi questa successione converge ad $y \in Y$ e dunque anche $y_n \to y$. 
 
-		Quindi per ipotesi $y_{n_k}$ converge a qualche $y \in Y$ ed anche $y_n \to y$.
+		Questa sottosuccessione esiste in quanto $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ e dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
 		\qed
+
+		% @aziis98: In realtà non so se era più chiaro come stava prima boh
+
+		% Basta far vedere che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
+		% $$
+		% \sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty
+		% $$
+		% ma $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
+
+		% Quindi per ipotesi $y_{n_k}$ converge a qualche $y \in Y$ ed anche $y_n \to y$.
+		% \qed
 \end{enumerate}
 
 
@@ -200,7 +205,7 @@ Dato $Y$ spazio normato, i seguenti fatti sono equivalenti
 	\item $Y$ è completo.
 
 	% \item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero 
-	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{$\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
+	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
 \end{enumerate}
 
 \textbf{Dimostrazione.} 
@@ -223,14 +228,13 @@ $$
 \leq \left( \,\sum_{n=1}^N \norm{g_n}_p \right)^p 
 \leq \left( \,\sum_{n=1}^\infty \norm{g_n}_p \right)^p 
 $$
-e
+e per convergenza monotona possiamo passare il termine di sinistra al limite
 $$
-\norm{\sum_{n=1}^N g_n}_p^p 
-= \int_X \left( \sum_{n=1}^N g_n(x) \right)^p \dd \mu(x)
-\xrightarrow{\;N\;} \int_X \left( \sum_{n=1}^\infty g_n(x) \right)^p \dd \mu(x)
+\lim_N \norm{\sum_{n=1}^N g_n}_p^p 
+= \lim_N \int_X \left( \sum_{n=1}^N g_n \right)^p \dd \mu
+= \int_X \left( \lim_N \sum_{n=1}^N g_n \right)^p \dd \mu
 = \norm{\sum_{n=1}^\infty g_n}_p^p
 $$
-per convergenza monotona.
 \qed
 
 \textbf{Dimostrazione} (Completezza spazi $L^p$).
