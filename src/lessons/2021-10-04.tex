@@ -97,7 +97,7 @@ Allora $\myphi_1 \vee \myphi_2$ e $\myphi_1 \wedge \myphi_2$ sono ancora funzion
 \textbf{Lemma.}
 Data $f \colon X \to [0, +\infty]$ misurabile
 $$
-\int_X f \dd \mu = 0 \quad \longiff \quad f = 0 \; \text{q.o. su } X.
+\int_X f \dd \mu = 0 \quad \longiff \quad f = 0 \; \text{q.o. su } X
 $$
 
 \textbf{Dimostrazione.}
@@ -107,36 +107,32 @@ $$
 $$
 	X = \left\{ x \in X \mymid f(x) \geq 0 \right\} = \left\{ x \in X \mymid f(x) > 0 \right\} \cup \left\{ x \in X \mymid f(x) = 0 \right\}
 $$
-ricordiamo che $(0, +\infty) = \bigcup_{n \geq 1} (\frac{1}{n}, +\infty)$ da cui segue
+ricordiamo che $(0, +\infty) = \bigcup_{n \geq 1} (\frac{1}{n}, +\infty)$, dunque possiamo riscrivere una parte di $X$ come segue e poi passare alle misure
 $$
-	\left\{ x \in X \mymid f(x) > 0 \right\} =  \bigcup_{n \in \N \setminus \left\{ 0 \right\}} \left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\},
-$$
-e passiamo alle misure
-$$
-	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) 
-	= \lim_{n \to +\infty} \mu\left(\left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\}\right),
+\begin{gathered}
+	\left\{ x \in X \mymid f(x) > 0 \right\} =  \bigcup_{n \in \N \setminus \left\{ 0 \right\}} \left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\} \\
+	\implies \mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) 
+	= \lim_{n \to +\infty} \mu\left(\left\{ x \in X \mymid f(x) \geq \frac{1}{n} \right\}\right)
+\end{gathered}
 $$
 in questo modo otteniamo la seguente caratterizzazione dell'insieme su cui $f$ è positiva
 $$
-	\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) >0 
-	\longiff
-	\exists \bar{n} \mid \mu \left( \left\{ x \in X \mymid f(x) \geq 1 / \bar{n} \right\} \right) > 0.
+\mu \left( \left\{ x \in X \mymid f(x) > 0 \right\} \right) >0 
+\longiff
+\exists \bar{n} \text{ tale che } \mu \left( \left\{ x \in X \mymid f(x) \geq 1 / \bar{n} \right\} \right) > 0
 $$
-
-% X @aziis98: Boh magari potremmo definire tipo L_n := { blob sotto l'integrale } per rendere un po' più leggibile quel dominio di integrazione.
-% OK @aziis98: Oppure anche in notazione "probabilistica" $\{ f \geq \frac{1}{n} \}$ che è più corto
-Allora possiamo maggiorare come segue
+A questo punto possiamo maggiorare come segue
 $$
-	0 = \int_X f \dd \mu 
-	\geq \;\int_{\left\{ f \,\geq\, \frac{1}{n} \right\}} \; f \dd \mu \geq	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
+0 = \int_X f \dd \mu 
+\geq \;\int_{\left\{ f \,\geq\, \frac{1}{n} \right\}} \; f \dd \mu \geq	\frac{1}{n} \mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right). 
 $$
-Dunque abbiamo
+da cui ricaviamo che $\forall n$ vale
 $$
-	\mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0 \qquad \forall n.
+\mu \left(  \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0
 $$
-Si conclude osservando che
+e si conclude osservando che
 $$
-	\mu \left(  \left\{ x \mymid f(x) > 0 \right\} \right) = \lim_n \mu \left( \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0.
+\mu \left(  \left\{ x \mymid f(x) > 0 \right\} \right) = \lim_n \mu \left( \left\{ x \mymid f(x) \geq \frac{1}{n} \right\} \right) = 0
 $$
 
 \item[$\boxed{\Leftarrow}$]
@@ -176,8 +172,7 @@ $$
 
 \subsection{Formula di cambio di variabile applicata a funzioni radiali}
 
-Sia $f \colon [0,+\infty) \to \R$ misurabile (di solito si richiede misurabile e positiva oppure sommabile).
-Vala la seguente
+Sia $f \colon [0,+\infty) \to \R$ misurabile (di solito si richiede misurabile e positiva oppure sommabile). Allora per il teorema di cambio di variabili vale la seguente
 $$
 	\int_{\R^n} f\left( \left| x \right| \right) \dd x = c_n \cdot \int_{0}^{+\infty} f(\rho) \rho^{n-1} \dd \rho,
 $$
@@ -190,10 +185,8 @@ Sia
 $$
 	\psi (x) = \frac{1}{\norm{ x }^{\alpha}}
 $$
-% X @aziis98: Boh secondo me possiamo usare anche solo B(0, 1) invece di \mc B(0, 1), sempre sul tema di fare con \mc solo l'insieme delle parti e le sigma-algebre?
 su $\mc{B}(0,1) \in \R^n$. Notiamo che $\psi(x) = f(\norm{ x })$ con $f = 1 / t^\alpha$.
 Usiamo la formula appena introdotta per determinare gli $\alpha \in \R$ per i quali $\psi$ è sommabile su $\mc{B}(0,1)$.
-%
 $$
 \int_{\mc{B}(0,1)}^{} \psi(x) \dd x 
 = c_n \int_0^1 \frac{1}{\rho^\alpha} \rho^{n -1} \dd \rho 
@@ -203,28 +196,21 @@ $$
 	\dfrac{\rho^{n-\alpha}}{n - \alpha} \quad \text{altrimenti} 
 \end{cases} 
 $$
-%
 Concludendo,
-%
 $$
 	\int_{\mc{B}(0,1)}^{} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n > \alpha.
 $$
-%
+
 \textbf{Esercizio.}
 Con passaggi analoghi al precedente otteniamo
-%
 $$
 	\int_{\R^n \setminus \; \mc{B}(0,1)} \frac{1}{\norm{ x }^\alpha} \dd x < + \infty \longiff n < \alpha.
 $$
-%
 \textbf{Esercizio.}
-Vediamo per quali valori di $\beta$ l'integrale
-%
+Vediamo per quali valori di $\beta$ il seguente integrale converge
 $$
 	\int_{\mc{B}(0,1)}^{} \frac{1}{\left( \norm{ x } + \norm{ x }^2 \right)^\beta} \dd x
 $$
-%
-converge.
 
 Vale la seguente catena di uguaglianze.
 %

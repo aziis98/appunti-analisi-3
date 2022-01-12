@@ -39,7 +39,7 @@ e $f \compose u$ è integrabile.
 		\quad\rightsquigarrow\quad
 		\tilde f(y) = 
 		\begin{cases}
-$$
+			+\infty & y \leq 0 \\[5pt]
 			\dfrac{1}{y} & y > 0
 		\end{cases}
 		$$
@@ -58,6 +58,10 @@ $$
 \textbf{Dimostrazione.}
 Poniamo $\ds y_0 \coloneqq \int_X u \dd \mu$, allora la tesi diventa
 $$
+f \bigg( \int_X u \dd \mu \bigg) \leq \int_X f \compose u \dd \mu
+\quad
+\rightsquigarrow
+\quad
 \int_X f \compose u \dd \mu \geq f(y_0)
 $$
 Prendiamo $\phi \colon \R^d \to \R$ affine (ovvero $\phi(y) = a \cdot y + b$ con $a \in \R^d$ e $b \in \R$) tale che $\phi \leq f$, allora
@@ -151,7 +155,7 @@ Date $f_1, f_2 \colon X \to \overline\R$ o $\R^d$ e $p_1, p_2$ esponenti coniuga
 $$
 \int_X |f_1| \cdot |f_2| \dd \mu \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
 $$ 
-vale anche per $p = +\infty$ convenendo che $+\infty \cdot 0 = 0$ a destra dell'uguale.
+vale anche per $p = +\infty$ convenendo che $+\infty \cdot 0 = 0$ nel membro di destra.
 
 \textbf{Dimostrazione.}
 Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$ la dimostrazione è immediata, supponiamo dunque $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} > 0$ e finiti.
@@ -192,7 +196,7 @@ In particolare, vale l'uguaglianza se prendiamo un valore di $\gamma$ tale che $
 \textbf{Osservazione.}
 La disuguaglianza di H\"older può essere generalizzata a $n$ funzioni, date $f_1, \dots, f_n$ e $p_1, \dots, p_n$ con $\frac{1}{p_1} + \dots + \frac{1}{p_2} = 1$ allora
 $$
-\int_X \prod_i |f_i| \dd \mu \leq \prod_i \norm{f_i}_{p_i} 
+\int_X \prod_i^n |f_i| \dd \mu \leq \prod_i^n \norm{f_i}_{p_i} 
 $$
 
 \subsection{Disuguaglianza di Minkowski}
@@ -205,7 +209,7 @@ $$
 %
 \textbf{Dimostrazione.}
 \begin{itemize}
-	\item \textit{Caso 1:} se $p = 1$ o $p = +\infty$, allora basta fare il calcolo diretto
+	\item \textit{Caso 1:} se $p = 1$ o $p = +\infty$, allora svolgiamo il calcolo diretto
 		
 		\begin{itemize}
 			\item Se $p = 1$
@@ -216,15 +220,15 @@ $$
 				= \int_X |f_1| \dd \mu + \int_X |f_2| \dd \mu
 				= \norm{f_1}_1 + \norm{f_2}_1
 				$$
-			\item Se $p = +\infty$
+			\item Se $p = +\infty$ allora poniamo $D$ l'insieme di \textit{misura nulla} che realizza su $X \setminus D$ il supess ovvero $\mathrm{supess}_X |f_1 + f_2| = \mathrm{sup}_{X \,\setminus\, D} |f_1 + f_2|$
 				$$
 				\norm{f_1 + f_2}_\infty
 				= \mathrm{supess}_X |f_1 + f_2| 
-				= \mathrm{supess}_{X \setminus D} 
-				\leq \mathrm{supess}_{X \setminus D} (|f_1| + |f_2|)
+				= \mathrm{supess}_{X \,\setminus\, D} |f_1 + f_2| 
+				\leq \mathrm{supess}_{X \,\setminus\, D} (|f_1| + |f_2|)
 				$$
 				$$
-				= \mathrm{supess}_{X \setminus D} |f_1| + \mathrm{supess}_{X \setminus D} |f_2|
+				= \mathrm{supess}_{X \,\setminus\, D} |f_1| + \mathrm{supess}_{X \,\setminus\, D} |f_2|
 				= \mathrm{supess}_X |f_1| + \mathrm{supess}_X |f_2|
 				= \norm{f_1}_\infty + \norm{f_2}_\infty
 				$$
@@ -236,13 +240,26 @@ $$
 			\norm{f_1 + f_2}_p^p 
 			&= \int_X |f_1 + f_2|^p 
 			\leq \int_X (|f_1| + |f_2|) \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
-			&= \int_X |f_1| \cdot |f_1 + f_2|^{p-1} \dd \mu + \int_X |f_2| \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
-			&\overset{\text{H\"older}}{\leq} \norm{f_1}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q + \norm{f_2}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q = \\
+			&= \int_X |f_1| \cdot |f_1 + f_2|^{p-1} \dd \mu + \int_X |f_2| \cdot |f_1 + f_2|^{p-1} \dd \mu =
+		\end{aligned}
+		$$
+		ora introduciamo $q$ esponente coniugato di $p$ e notiamo
+		$$
+		q = \frac{p - 1}{p} 
+		\quad
+		\text{e}
+		\quad
+		\norm{|f|^{p-1}}_q = \norm{f}_p^{p-1}
+		$$
+		ora continuiamo a svolgere il conto di prima usando H\"older con esponenti $p$ e $q$
+		$$
+		\begin{aligned}
+		&\overset{\text{H\"older}}{\leq} \norm{f_1}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q + \norm{f_2}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q = \\
 			& = (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{|f_1 + f_2|^{p-1}}_q 
 			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
 		\end{aligned}
 		$$
-		e poiché $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte
+		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte ed ottenere la tesi
 		$$
 		\implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
 		\implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
@@ -252,16 +269,25 @@ $$
 		$$
 		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
 		$$
-		che si ottiene usando la convessità della funzione $y \mapsto y^p$
+		che si ottiene usando la convessità della funzione $x \mapsto x^p$ e la combinazione affine $\frac{1}{2}x_1 + \frac{1}{2}x_2$ infatti
 		$$
-		\norm{f_1 + f_2}_p^p 
-		= \int_X |f_1 + f_2|^p \dd \mu 
-		= 2^p \int_X \left| \frac{f_1 + f_2}{2} \right|^p \dd \mu 
+		\left( \frac{x}{2} + \frac{y}{2} \right)^p \leq \frac{1}{2} x^p + \frac{1}{2} y^p 
+		\implies \frac{1}{2^{p-1}} (x+y)^p \leq x^p + y^p 
+		\implies (x+y)^p \leq 2^{p-1} (x^p + y^p)
 		$$
+		ma sostituendo con $f_1$ e $f_2$, integrando e poi sostituendo le norme otteniamo
 		$$
-		\leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
-		= 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
 		$$
+		% $$
+		% \norm{f_1 + f_2}_p^p 
+		% = \int_X |f_1 + f_2|^p \dd \mu 
+		% = 2^p \int_X \left| \frac{f_1 + f_2}{2} \right|^p \dd \mu 
+		% $$
+		% $$
+		% \leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
+		% = 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		% $$
 		da cui possiamo ricavare subito che almeno uno dei due termini deve essere $+\infty$.
 
 \end{itemize}

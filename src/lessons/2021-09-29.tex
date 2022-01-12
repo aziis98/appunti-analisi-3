@@ -136,15 +136,12 @@ Scriveremo spesso $\ds \int_E f(x) \dd x$ invece di $\ds \int_E f \dd \mathscr L
 Sia $(X, \mc{A}, \mu)$ come in precedenza.
 
 \textbf{Teorema} (di convergenza monotona o Beppo-Levi).
-Date $f_n \colon  X \to [0,+\infty]$ misurabili, tali che $f_n \uparrow f$ ovunque in $X$, allora
+Date $f_n \colon  X \to [0,+\infty]$ misurabili, tali che $f_n \uparrow f$ ovunque in $X$, allora\footnote{\textit{Mnemonica:} $\ds \sup_n \int_X f_n \dd \mu = \int_X \sup_n f_n \dd \mu$}
 $$
-\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \int_X f \dd \mu,
+\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \int_X f \dd \mu
 $$
-dove
-$$
-\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \sup_n \int f_n \dd \mu.
-$$
-
+ed in particolare il termine a sinistra è crescente quindi è proprio un $\sup$ ovvero
+$\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \sup_n \int_X f_n \dd \mu.$
 
 \textbf{Teorema} (lemma di Fatou).
 Date $f_n \colon X \to [0,+\infty]$ misurabili, allora
@@ -180,7 +177,7 @@ $$
 
 
 \textbf{Teorema} (di cambio di variabile).
-Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo \footnote{funzione differenziabile con inversa differenziabile.} di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
+Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo\footnote{funzione differenziabile con inversa differenziabile.} di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
 $$
 \int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(\nabla \Phi(x)) \right| \dd x.
 $$
