@@ -124,9 +124,22 @@ $$
 \begin{aligned}
 	\mathcal F(f' \cdot \One_{[a_n, b_n]})
 	&= \int_{a_n}^{b_n} f'(x) e^{-ixy} \dd x \\
-	&= \underbrace{\left[f(x) e^{-ixy}\right]_{a_n}^{b_n}}_{\to 0} + iy \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x = iy \mathcal F(f \cdot \One_{[a_n, b_n]})
+	&= \underbrace{\left[f(x) e^{-ixy}\right]_{a_n}^{b_n}}_{\to 0} + iy \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x = iy \mathcal F(f \cdot \One_{[a_n, b_n]}).
 \end{aligned}
 $$
+Per concludere si dimostra che 
+%
+\begin{gather*}
+	\mc{F}(f' \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f') \text{ in } L^2 \\
+	\mc{F}(f \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f) \text{ in } L^2
+\end{gather*}
+
+Ovvero si dimostra che
+\begin{gather*}
+	\int_{b_n}^{+\infty} |f(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
+	\int_{b_n}^{+\infty} |f'(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f'(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
+\end{gather*}
+Ma questo è vero in quanto $f,f' \in L^2$.
 
 \textbf{Proposizione 6.}
 Se $f \in C^1, f \in L^1, f' \in L^2 \implies \hat f \in L^1$ e soddisfa le ipotesi del teorema di inversione.
@@ -136,10 +149,10 @@ Sappiamo che $iy \hat f = \hat{f'} \in L^2 \implies y \hat f \in L^2$.
 $$
 \begin{aligned}
 	\int_{\R} |\hat f(y)| \dd y 
-	&= \int_{|y| \leq 1} |\hat f(y)| \dd y + \int_{|y| \geq 1} |\hat f(y)| \dd y \\
-	&\leq 2 \| \hat f\, \|_\infty + \int_{|y| \geq 1} |\hat f(y) y| \frac{1}{|y|} \dd y \\
-	&\leq 2 \norm{f}_1 + \| \hat f y \|_2 \left( \int_{|y| \geq 1} \frac{1}{|y|^2} \dd y \right) \\
-	&\leq 2 \norm{f}_1 + 2 \sqrt{\pi} \norm{f}_2
+	& = \int_{|y| \leq 1} |\hat f(y)| \dd y + \int_{|y| \geq 1} |\hat f(y)| \dd y \\
+	& \leq 2 \| \hat f\, \|_\infty + \int_{|y| \geq 1} |\hat f(y) y| \frac{1}{|y|} \dd y \\
+	& \leq 2 \norm{f}_1 + \| \hat f y \|_2 \left( \int_{|y| \geq 1} \frac{1}{|y|^2} \dd y \right)^{1/2} \\
+	& \leq 2 \norm{f}_1 + 2 \norm{f'}_2
 \end{aligned}
 $$
 
@@ -147,20 +160,20 @@ $$
 $f \in C_C^1 \implies f, \hat f \in L^1$
 
 \textbf{Proposizione 7.}
-Se $f_1, f_2 \in L^2(\R; \C)$ (e dunque $f_1, f_2 \in L^1(\R; \C)$ per H\"older) allora
+Se $f_1, f_2 \in L^2(\R; \C)$ (e dunque $f_1 f_2 \in L^1(\R; \C)$ per H\"older) allora
 $$
-\hat{f_1 f_2} = 2\pi \hat{f_1} \ast \hat{f_2}
+2\pi \hat{f_1 f_2} = \hat{f_1} \ast \hat{f_2}
 $$
 
 \textbf{Dimostrazione.}
-$f_1, f_2 \in L^2 \implies f_1, f_2 \in L^1$ segue da H\"older. Dimostriamo la proposizione per $f_1, f_2 \in C_C^1 \implies f_1, f_2, f_1 f_2 \in C_C^1 \implies$ tutte in $L^1$ e con trasformate in $L^1$.
+$f_1, f_2 \in L^2 \implies f_1 f_2 \in L^1$ segue da H\"older. Dimostriamo la proposizione per $f_1, f_2 \in C_C^1 \implies f_1, f_2, f_1 f_2 \in C_C^1 \implies$ tutte in $L^1$ e con trasformate in $L^1$.
 $$
-\mathcal F^*(2\pi \hat{f_1} \ast \hat{f_2})
-= 2\pi \mathcal F^*(\hat{f_1}) \mathcal F^*(\hat{f_2})
-= 2\pi \frac{1}{2\pi} f_1 \frac{1}{2\pi} f_2
-= \frac{1}{2\pi} f_1 \cdot f_2 = \mathcal F^*(\hat{f_1 f_2})
+\mathcal F^* \left( \frac{1}{2\pi} \hat{f_1} \ast \hat{f_2} \right)
+= \frac{1}{2\pi} \mathcal F^*(\hat{f_1}) \mathcal F^*(\hat{f_2})
+= \frac{1}{2\pi} (2\pi f_1) \cdot (2\pi f_2)
+= 2\pi f_1 \cdot f_2 = \mathcal F^*(\hat{f_1 f_2})
 $$
-ed usando che $\mathcal F^*$ è iniettiva otteniamo che $2\pi \hat{f_1} \ast \hat{f_2} = \hat{f_1 f_2}$. 
+ed usando che $\mathcal F^*$ è iniettiva otteniamo che $2 \pi \hat{f_1 f_2} = \hat{f_1} \ast \hat{f_2} $. 
 
 Per $f_1, f_2 \in L^2$ si procede per continuità e si approssimano $f_1$ ed $f_2$ con $f_{1,n}$ e $f_{2,n}$ in $C_C^1$.
 \qed

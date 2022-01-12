@@ -1,5 +1,3 @@
-
-
 \section{Risoluzione dell'equazione del calore (su $\mathbb S^1$)}
 
 Come conduttore consideriamo un anello di materiale omogeneo e sottile che parametrizziamo con $[-\pi, \pi]$. Dunque consideriamo $u \colon [0, T) \times [-\pi, \pi] \to \R$ con le condizioni
@@ -9,7 +7,7 @@ Come conduttore consideriamo un anello di materiale omogeneo e sottile che param
 \begin{aligned}
 	& u_t = u_{xx} \\
 	& u(\curry, \pi) = u(\curry, -\pi) \\
-	& u_x(\curry, \pi) = u_x(\curry, -\pi) \\
+	% & u_x(\curry, \pi) = u_x(\curry, -\pi) \\
 	& u(0, \curry) = u_0
 \end{aligned}
 \right.
@@ -169,15 +167,14 @@ per il teorema di derivazione sotto il segno di integrale (Analisi 2?)
 \qed
 
 \textbf{Dimostrazione Teorema 2.}
-Poniamo $c_n(t) \coloneqq c_n(u(t, \curry))$. Sappiamo che per $t > 0$ vale $\dot c_n(t) = c_n(u_t(t, \curry)) = c_n(u_{xx}(t, \curry)) = -n^2 c_n(t) \implies c_n$ risolve il problema di Cauchy
+Poniamo $c_n(t) \coloneqq c_n(u(t, \curry))$. Sappiamo che per $t > 0$ vale $\dot c_n(t) \stackrel{(\ast)}{=} c_n(u_t(t, \curry)) \stackrel{(\ast \ast)}{=} c_n(u_{xx}(t, \curry)) = -n^2 c_n(t)$, dove $(\ast)$ segue dal Lemma 8 e $(\ast \ast)$ segue dalla regolarità dei coefficienti. Dunque i coefficienti $c_n$ risolvono il problema di Cauchy
 $$
-\left\{
-\begin{aligned}
-	& \dot y = -n^2 y \\
-	& y(0) = c_n^0
-\end{aligned}
-\right.
+\begin{cases}
+	\dot y = -n^2 y \\
+	y(0) = c_n^0
+\end{cases} 
 $$ 
+che ha un'unica soluzione.
 
 \textbf{Nota.} Sia $y \colon [0,T) \to \R^k$ funzione continua su $[0,T)$ e derivabile su $(0,T)$ che risolve l'equazione differenziale ordinaria $\dot y = f(t,y)$ su $(0,T)$ con $f\colon  [0,T) \times \R^k \to \R^k$ continua.
 Allora $y$ è $\mc{C}^1$ su $[0,T)$ e risolve $\dot y = f(t,y)$ su $[0,T)$.
