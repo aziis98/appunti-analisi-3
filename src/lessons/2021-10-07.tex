@@ -10,15 +10,15 @@ Riportiamo le definizioni di alcune nozioni di convergenza.
 
 \begin{itemize}
 
-\item \textbf{Uniforme} : $\forall \epsilon \; \exists n_{\epsilon}$ tale che $\norm{f(x) - f_n(x)} < \epsilon \mquad \forall n > n_\epsilon$.
+\item \textbf{Uniforme}: $\forall \epsilon \; \exists n_{\epsilon}$ tale che $\norm{f(x) - f_n(x)} < \epsilon \mquad \forall n > n_\epsilon$.
 
-\item \textbf{Puntuale} : $f_n(x) \to f(x) \mquad \forall x \in X$.
+\item \textbf{Puntuale}: $f_n(x) \to f(x) \mquad \forall x \in X$.
 
-\item \textbf{Puntuale} $\mu$\textbf{-quasi ovunque} : $f_n(x) \to f(x)$ per $\mu$-q.o. $x \in X$.
+\item \textbf{Puntuale} $\mu$\textbf{-quasi ovunque}: $f_n(x) \to f(x)$ per $\mu$-q.o. $x \in X$.
 
-\item \textbf{In} $L^p$ : $\norm{f_n - f}_p \xrightarrow{n \to \infty} 0$.
+\item \textbf{In} $L^p$: $\norm{f_n - f}_p \xrightarrow{n \to \infty} 0$.
 
-\item \textbf{In misura} : $\ds \forall \epsilon > 0 \quad \mu \left( \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\} \right) \xrightarrow{n \to +\infty} 0$.
+\item \textbf{In misura}: $\ds \forall \epsilon > 0 \quad \mu \left( \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\} \right) \xrightarrow{n \to +\infty} 0$.
 
 \end{itemize}
 
@@ -40,7 +40,7 @@ Valgono le seguenti.
 
 \item \label{item:convergenza_iii} $f_n \to f $ in $L^p$, $p < +\infty$, allora $f_n \to f$ in misura.
 
-\item[iii')] \label{item:convergenza_iv} $f_n \to f \in L^\infty$, allora $\exists E $ tale che $\mu(E) = 0$ e $f_n \to f$ uniformemente su $X \setminus E$.
+\item[iii')] \label{item:convergenza_iv} $f_n \to f$ in $L^\infty$, allora $\exists E $ tale che $\mu(E) = 0$ e $f_n \to f$ uniformemente su $X \setminus E$.
 
 \item $f_n \to f$ in misura, allora $\exists n_k$ tale che $f_{n_k} \to f$ $\mu$-q.o.
 
@@ -91,7 +91,7 @@ $$
 Allora
 %
 $$
-\mu(E) \quad \underbrace{=}_{\mathclap{F_m \downarrow E \; \& \; \mu(F_1) < +\infty}} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda serie convergente}}} = 0.
+\mu(E) \quad \underbrace{=}_{\mathclap{F_m \downarrow E \text{ e } \mu(F_1) < +\infty}} \quad  \lim_{m \to \infty} \mu(F_m) \leq \lim_{m \to \infty} \underbrace{\sum_{n=m}^{\infty} \mu(E_n)}_{\mathclap{\text{coda serie convergente}}} = 0.
 $$
 %
 

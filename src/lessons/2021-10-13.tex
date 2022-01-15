@@ -13,18 +13,19 @@ In generale no.
 
 Vediamo informalmente perché.
 Posto $X = (0,+\infty)$, gli integrali 
-%
 $$
-\int_{0}^{+\infty} \frac{1}{(1+x)^{\beta p}} \dd x, \qquad \int_{0}^{+\infty} \frac{1}{x^{\beta p}} \cdot \One_{[0,1]}(x) \dd x = \int_{0}^{1} \frac{1}{x^{\beta p}} \dd x
+\int_{0}^{+\infty} \frac{1}{(1+x)^{\beta p}} \dd x
+\qquad 
+\int_{0}^{+\infty} \frac{1}{x^{\beta p}} \cdot \One_{[0,1]} (x) \dd x 
+= \int_{0}^{1} \frac{1}{x^{\beta p}} \dd x
 $$
 %
- sono maggiorati dall'integrale di $1 / x^{\alpha}$ dove l'esponente  $\alpha$ è rispettivamente più piccolo e più grande di $\beta \cdot p$.
+sono maggiorati dall'integrale di $1 / x^{\alpha}$ dove l'esponente  $\alpha$ è rispettivamente più piccolo e più grande di $\beta \cdot p$.
 
 Utilizziamo questa intuizione per vedere formalmente che gli spazi $L^p(0,+\infty)$ non sono confrontabili.
 
 Cerchiamo una funzione $f \in L^{p_1}(0,+\infty) \setminus \, L^{p_2}(0,+\infty)$ e una funzione $g \in L^{p_2}(0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
-La funzione $f$ definita come segue
-%
+Sia $\beta$ un parametro e sia funzione $f$ definita come segue
 $$
 f(x) \coloneqq 
 \begin{cases}
@@ -32,20 +33,18 @@ f(x) \coloneqq
 0 \mquad x \geq 1
 \end{cases} 
 $$
-%
-ha integrale 
-%
+ed ora imponiamo i vincoli sulle due norme 
 $$
-\int_{0}^{+\infty} f(x)^{p_1} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \longiff \beta \cdot p_1 < 1
+\begin{aligned}
+	\norm{f}_{p_1}^{p_1} &= \int_{0}^{+\infty} f(x)^{p_1} \dd x
+	= \int_{0}^{1} \frac{1}{x^{\beta p_1}} \dd x < +\infty \iff \beta \cdot p_1 < 1 \\
+	\norm{f}_{p_2}^{p_2} &= \int_{0}^{+\infty} f(x)^{p_2} \dd x
+	= \int_{0}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \iff \beta \cdot p_2 \geq 1
+\end{aligned}
 $$
-e
-$$
-\int_{0}^{+\infty} f(x)^{p_2} \dd x = \int_{0}^{1} \frac{1}{x^{\beta p_2}} \dd x = +\infty \longiff \beta \cdot p_2 \geq 1.
-$$
-%
-Dunque, basta prendere $\beta \in [1/p_2, 1/p_1)$.
+dunque poiché $p_1 < p_2$ basta prendere $\beta \in [1/p_2, 1/p_1)$.
 
-Ora cerchiamo $g \in L^2 (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
+Ora cerchiamo $g \in L^{p_2} (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
 Definiamo $g(x)$ come segue
 $$
 g(x) \coloneqq \frac{1}{(1+x)^\alpha}
@@ -65,31 +64,35 @@ $$
 
 Data $f \in L^{p_2}(X)$, cioè con $\int_X \left| f \right|^{p_2} \dd \mu < +\infty$ vediamo che  $\int_X \left| f \right|^{p_1} \dd \mu < +\infty$.
 
-Usiamo Hölder:
+% TODO(aziis98): Poi riaggiusto meglio questo conto
+
+Usiamo H\"older:
 \begin{align*}
 \int_X \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_X \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_X 1^q \dd \mu  \right)^{1/q}
 \underbrace{\leq}_{p = p_1 / p_2} \left( \int_X \left| f \right|^{p_2} \dd \mu  \right)^{p_2 /p_1} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
 & \underbrace{=}_{\mathclap{q = \left( 1 - \frac{1}{p} \right)^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
 \end{align*}
-%
+
+% [...]
+
 Dunque
-%
 $$
-\norm{f}_{L^{p_1}(X)} \leq \norm{f}_{L^{p_2}(X)}\cdot \mu(X)^{\frac{p_2 - p_1}{p_1 p_2}}.
+\norm{f}_{p_1} \leq \norm{f}_{p_2} \cdot \mu(X)^{\frac{p_2 - p_1}{p_1 p_2}}
 $$
-%
 L'inclusione
-%
-\begin{align*}
-i \colon L^{p_2} & \to L^{p_1}(X) \\
-f & \mapsto f
-\end{align*}
+$$
+\begin{array}{rccc}
+	i \colon & L^{p_2}(X) & \to & L^{p_1}(X) \\
+	& f & \mapsto & f
+\end{array}
+$$
+
 
 è ben definita per quanto fatto sopra.
 
 \textbf{Esercizio.} [TO DO] Vedere con quale topologia l'inclusione risulta continua.
 
-\textbf{Esercizio.} [TO DO] Dato $p \geq 1$, stabilire se esistono $X, \mu,f \in L^p(X)$ e $f \notin L^q(X)$ per ogni $q \neq p$, $q \geq 1$. \\
+\textbf{Esercizio.} [TO DO] Dato $p \geq 1$, stabilire se esistono $X, \mu$ tali che $f \in L^p(X)$ e $\forall q \geq 1$ con $q \neq p$ valga $f \notin L^q(X)$ (ovvero se esiste una funzione che appartiene ad un solo $L^p$). \\
 \textit{Suggerimento.} Pensare a $X = (0,+\infty)$, $\mu$ misura di Lebesgue.
 
 \textbf{Osservazione.} $L^p(X)$ è uno spazio vettoriale di dimensione infinita, ossia ogni base algebrica ha cardinalità infinita. 
@@ -104,12 +107,12 @@ Ricordiamo che, essendo $L^p(X)$ uno spazio metrico, dato $Y \subset L^p$ vale l
 $Y$ è compatto $\longiff$ $Y$ è compatto per successioni $\longiff $ $Y$ chiuso e totalmente limitato.
 \end{center}
 
-\textbf{Osservazione.} $Y \subset L^p(X)$ è un sottoinsieme che eredita la norma $\norm{\curry}_{L^p}$ :
+\textbf{Osservazione.} $Y \subset L^p(X)$ è un sottoinsieme che eredita la norma $\norm{\curry}_{L^p}$:
 \begin{center}
 $Y$ è completo $\longiff$ $Y$ è chiuso.
 \end{center}
 
-\textbf{Osservazione.} In $L^p$ i sottoinsiemi chiusi e limitati non sono compatti\footnote{Uno spazio metrico è compatto se solo se è completo e totalmente limitato. Inoltre, uno spazio metrico $X$ si dice totalmente limitato se $\forall \epsilon > 0$ esiste $B_\epsilon^1,\ldots,B_\epsilon^n$ tale che $X \subset \bigcup_{i=1}^n B_\epsilon^i$.}!
+\textbf{Osservazione.} In $L^p$ i sottoinsiemi chiusi e limitati non sono compatti\footnote{Uno spazio metrico è compatto se solo se è completo e totalmente limitato. Ricordiamo che uno spazio metrico $X$ si dice \textbf{totalmente limitato} se $\forall \epsilon > 0$ esiste $B_\epsilon^1,\ldots,B_\epsilon^n$ tale che $X \subset \bigcup_{i=1}^n B_\epsilon^i$.}!
 In particolare le palle
 %
 $$
@@ -125,29 +128,26 @@ B = \left\{ f \in L^p \mymid \norm{f}_{L^p} \leq 1 \right\}
 $$
 %
 non sono compatte.
-Per farlo, esibiamo una successione $\left\{ f_n \right\}_{n \in \N} \subset B$ che non ammette sottosuccessioni convergenti.
+Per farlo, esibiamo una successione $\left\{ f_n \right\}_{n \in \N} \subset B$ che non ammetta sottosuccessioni convergenti.
 La costruiamo in modo che non abbia sottosuccessioni di Cauchy
-%
 $$
 f_n \colon (0,1) \to \R, \quad \norm{f_n - f_m}_{L^p} \geq c_0 > 0 \quad  \forall n \neq m.
 $$
-%
-Cerco $A_n \subset (0,1)$ tale che $\left| A_n \cap A_m \right| = 0$ per ogni $n \neq m$.
+Cerchiamo $A_n \subset (0,1)$ tale che $\left| A_n \cap A_m \right| = 0$ per ogni $n \neq m$.
 Definiamo $f_n$ come segue
-%
 $$
 f_n(x) \coloneqq 
 \begin{cases}
-0 \quad  \text{se} \; x \in (0,1) \setminus (1 / (n+1), 1/ n) \\
-c_n > 0 \quad \text{altrimenti}
+0 & \text{se } x \in (0,1) \setminus (1 / (n+1), 1/ n) \\
+c_n > 0 & \text{altrimenti}
 \end{cases} 
 $$
 %
 dove $c_n$ è tale che 
 %
 $$
-\left( \int_{1 / n+1}^{1 / n} c_n^p  \right)^{1/p} = 1 \longiff 
-c_n^p \cdot (1/n - 1/(n+1)) = 1 \longiff c_n^p = n \cdot (n+1).
+\left( \int_{1 / n+1}^{1 / n} c_n^{\,p}  \right)^{1/p} = 1 \longiff 
+c_n^{\,p} \cdot (1/n - 1/(n+1)) = 1 \longiff c_n^{\,p} = n \cdot (n+1).
 $$
 %
 Calcoliamo ora $\norm{f_n - f_m}^p_{L^p}$ con $n \neq m$ :
@@ -200,9 +200,10 @@ Si osserva che quanto detto sopra vale anche per $p = + \infty$.
 \begin{enumerate}
 
 	\item Dimostriamolo per induzione.
+	
 	\textit{Passo base.} [TO DO]
 
-	\textit{Passo induttivo.} ($n-1 \geq n$)
+	\textit{Passo induttivo.} ($n-1 \Rightarrow n$)
 	Vediamo che se $a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n = 0 \Longrightarrow a_1 = \ldots = a_n = 0$.
 	\begin{align*}
 		& a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} = - a_n \cdot x^n \\

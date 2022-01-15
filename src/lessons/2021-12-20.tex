@@ -1,6 +1,6 @@
 \section{Integrazione di $k$-forme su superfici}
 
-\textbf{Proposizione 0.} Il prodotto esterno $\wedge$ è distributivo (rispetto a +), associativo e anticommutativo, ovvero $\alpha \wedge \beta = (-1)^{hk} \beta \wedge \alpha$.
+\textbf{Proposizione 0.} Il prodotto esterno $\wedge$ è distributivo (rispetto a $+$), associativo e anticommutativo, ovvero $\alpha \wedge \beta = (-1)^{hk} \beta \wedge \alpha$.
 
 Data $e_1,\ldots,e_d$ base di $V$, $e_1^*,\ldots,e_d^*$ è una base di $V^*$.
 Denotiamo con $I(d,k) \coloneqq \{ \underline{i} = (i_1,\ldots,i_k) \text{ con } 1 \leq i_1 \leq \ldots \leq i_k \leq i_d \}$ l'insieme di multiindici.
@@ -77,8 +77,8 @@ $$
 
 \textbf{Esempio.}
 \begin{align*}
-	(\dd x_1 + 2 \dd x_2) & \wedge (2 \dd x_1 \wedge \dd x_3 - \dd x_2 \wedge\dd x_4) \\
-	& = 2 \dd x_1 \wedge\dd x_1 \wedge\dd x_3 - \dd x_1 \wedge\dd x_2 \dd x_4 + 4 \dd x_2 \wedge\dd x_1 \wedge\dd x_3 - 2 \dd x_2 \wedge\dd x_2 \wedge\dd x_4 \\
+	& (\dd x_1 + 2 \dd x_2) \wedge (2 \dd x_1 \wedge \dd x_3 - \dd x_2 \wedge\dd x_4) = \\
+	& = 2 \dd x_1 \wedge\dd x_1 \wedge\dd x_3 - \dd x_1 \wedge\dd x_2 \dd x_4 + 4 \dd x_2 \wedge\dd x_1 \wedge\dd x_3 - 2 \dd x_2 \wedge\dd x_2 \wedge\dd x_4 = \\
 	& = - \dd x_1 \wedge\dd x_2 \wedge\dd x_4 - 4 \dd x_1 \wedge\dd x_2 \wedge\dd x_3.
 \end{align*}
 
@@ -86,17 +86,17 @@ $$
 
 \textbf{Definizione.} Dato $\Omega \subset \R^d$ aperto, una \textbf{$k$-forma} $\omega$ su $\Omega$ è una "funzione"  da $\Omega$ in $\Lambda^k(\R^d)$. In coordinate, $\ds \omega(x) = \sum_{\underline{i} \in I(d,k)} w_{\underline{i}}(x) \cdot \dd x_{\underline{i}}$.
 
-Il \textbf{differenziale esterno} di una $k$-forma $\omega$ su $\Omega$ di classe $C^1$ è la $k+1$-forma su $\Omega$ di classe almeno $C^0$ data da
+Il \textbf{differenziale esterno} di una $k$-forma $\omega$ su $\Omega$ di classe $C^1$ è la $(k+1)$-forma su $\Omega$ di classe almeno $C^0$ data da
 \begin{itemize}
 
-	\item $k=0$. In tal caso $f$ è una funzione (0-forma) e $\ds \dd f(x) = \dd_x f = \sum \frac{\partial w_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$
+	\item $k=0$. In tal caso $f$ è una funzione (0-forma) e $\ds \dd f(x) = \dd_x f = \sum_{j=1}^d \frac{\partial w_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$
 
 
 	\item $k > 0$ $\ds \dd \omega \coloneqq \sum_{\underline{i} \in I(d,k)} \dd \omega_{\underline{i}} (x) \wedge \dd x_{\underline{i}} = \sum_{\underline{i} \in I(d,k)} \sum_{j=1}^d \frac{\partial \omega_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$.
 
 \end{itemize}
 
-\textbf{Proposizione} (Leibniz). Valgono le seguenti.
+\textbf{Proposizione} (Leibniz). Valgono le seguenti
 \begin{itemize}
 
 	\item $\ds \dd (\omega_1 \wedge \omega_2) = \dd \omega_1 \wedge \omega_2 + (-1)^{k_1} \omega_1 \wedge \omega_2$

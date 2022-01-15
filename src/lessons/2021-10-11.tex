@@ -32,10 +32,6 @@ Per la \ref{item:ce_1} basta notare che $\One_{E_n} \to 0$ in misura (in quanto 
 
 \section{Approssimazioni di funzioni in $L^p$}
 
-% Ricordiamo la nozione di insieme denso in uno spazio metrico.
-% Sia (X,d) uno spazio metrico e Y ⊆ X. Allora Y è denso in X se solo se
-% per ogni x ∈ X, esiste una successione y_n in Y che tale che x = lim_n y_n.
-
 Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno essere un utile strumento da usare nelle dimostrazioni.
 
 \textbf{Nota.} Ricordiamo la nozione di insieme denso in uno spazio metrico.
@@ -99,7 +95,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		\textit{Caso 3}:
 		Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
-		\textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+		\textbf{Proposizione 2'} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 
 		\textbf{Dimostrazione.} (Idea)
 		Basta approssimare componente per componente.
@@ -130,14 +126,16 @@ Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E
 Intuitivamente $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta è denso in $L^p$ (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
 \qed
 
-\vss
-
-Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}$, dove il \textbf{supporto} è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero $ \operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}} $, in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
+Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}$, precisiamo che il \textbf{supporto} di una funzione è definito come la chiusura dell'insieme dei punti in cui è non zero 
+$$
+\operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}}
+$$
+in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
 
 % notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
 
 \textbf{Proposizione 4.}
-Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense\footnote{È denso anche l'insieme delle funzioni continue a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.} in $L^p(X)$ per $p < +\infty$.
+Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense\footnote{È denso anche l'insieme delle funzioni \textit{continue} a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.} in $L^p(X)$ per $p < +\infty$.
 
 Vediamo prima alcuni lemmi.
 

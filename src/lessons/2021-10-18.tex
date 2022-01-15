@@ -2,7 +2,7 @@
 % Lezione dell'18 Ottobre 2021
 %
 
-\section{Appendice}
+\section{Alcune proprietà degli spazi normati}
 
 \textbf{Proposizione.} Siano $V,W$ spazi normati, $T \colon V \to W$ lineare.
 Sono fatti equivalenti
@@ -130,7 +130,7 @@ $$
 
 \item È importante che $f_1,f_2$ siano definite su $\R^d$ e che la misura sia quella di Lebesgue.
 
-In realtà, si può generalizzare quanto sopra rimpiazzando $(\R^d, \mathscr L^d)$ con $(G,\mu)$, dove $G$ è un gruppo commutativo e $\mu$ una misura su $G$ invariante per traslazione. Per esempio, $\Z$ con la misura che conta i punti. Cioè $f_1,f_2 \colon \Z \to \R$, vale
+In realtà, si può generalizzare quanto sopra rimpiazzando $(\R^d, \mathscr L^d)$ con $(G,\mu)$, dove $G$ è un gruppo commutativo e $\mu$ una misura su $G$ invariante per traslazione\footnote{Ovvero per ogni $g \in G$ e $E \subset G$, posto $E + g \coloneqq \{ x + g \mid x \in E \}$, allora vale $\mu(E) = \mu(E + g)$}. Per esempio, $\Z$ con la misura che conta i punti. Cioè $f_1,f_2 \colon \Z \to \R$, vale
 %
 $$
 f_1 \ast f_2(n) \coloneqq \sum_{n \in \Z} f_1(n - m) f_2(m).
