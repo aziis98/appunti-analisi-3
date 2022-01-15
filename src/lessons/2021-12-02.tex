@@ -100,29 +100,31 @@ $$
 $$
 %
 
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\centering
+	\vspace{-1cm}
+	\inputfigure{esercizio-teo-residui} 
+	\vspace{-5cm}
+\end{wrapfigure}
+
+
+
 \textit{Idea.} Calcolare questo integrale con il metodo dei residui, ponendo $\ds \frac{e^{-ixy}}{1 + x^2} = \left. \frac{e^{-izy}}{1 + z^2} \right|_{z \text{ reale}}$
 
 Per il teorema dei residui:
-%
-$$
-	\int_{B_r} g(z) \dd z = 2\pi i \sum_{\mathclap{\substack{z_i \text{ singolarità} \\ \text{di } g \text{ in } B_r}}} \; \operatorname{res} (g,z_i) 
-$$
-%
-Dove
-%
-$$
-	\int_{B_r} g(z) \dd z = \int\limits_{\mathclap{\gamma_r \coloneqq \text{bordo  sotto}}} g(z) \dd x \quad 
-	+ \quad \underbrace{\int\limits_{\mathclap{\gamma \coloneqq \text{bordo sopra}}} g(x)}_{\xrightarrow{r \to \infty} 0}
+\begin{align*}
+	& \int_{B_r} g(z) \dd z = 2\pi i \sum_{\mathclap{\substack{z_i \text{ singolarità} \\ \text{di } g \text{ in } B_r}}} \; \operatorname{res} (g,z_i) \\
+	\text{Inoltre} &
+	\int_{B_r} g(z) \dd z = \int\limits_{\mathclap{I_r \coloneqq \text{bordo  sotto}}} g(z) \dd x \quad 
+	+ \quad \underbrace{\int\limits_{\mathclap{\gamma_r \coloneqq \text{semicirconferenza}}} g(x)}_{\xrightarrow{r \to \infty} 0}
 	= \int_{-r}^{r} \frac{e^{-ixy}}{1 + x^2} \dd x.
-$$
-%
+\end{align*}
 
 \begin{itemize}
 
-	\item Verifichiamo che $\ds \int_{\gamma} g(x) \xrightarrow{r \to \infty} 0$ dove $[0,\pi] \ni \theta \xmapsto{\gamma} r e^{i\theta}$.
+	\item Verifichiamo che $\ds \int_{\gamma_r} g(x) \xrightarrow{r \to \infty} 0$ dove $[0,\pi] \ni \theta \xmapsto{\gamma_r} r e^{i\theta}$.
 
 	Poniamo $z = x + it$, dunque $yz = xy + yit$, da cui $\ds g(z) = g(x + it) = \left( e^{-ixy} e^{ty} \right) / (1 + (x + it)^2)$.
-
 	Dunque,
 	%
 	$$
@@ -131,10 +133,10 @@ $$
 		\xrightarrow{r \to \pm \infty} 0 \quad \text{se } y < 0. 
 	$$
 	%
-	Per il caso $y > 0$ si ripercorre lo stesso procedimento ma si utilizza la curva $[\pi,2\pi] \ni \theta \xmapsto{\gamma} r e^{i\theta}$.
+	Per il caso $y > 0$ si ripercorre lo stesso procedimento ma si utilizza la curva $[\pi,2\pi] \ni \theta \xmapsto{\gamma_r} r e^{i\theta}$.
 
 
-	\item Calcoliamo i residui: l'unico residuo di $g$ è nel punto $i$ (nel caso $y > 0$ la singolarità è in $-i$).
+	\item Calcoliamo i residui: l'unico residuo di $g$ è nel punto $i$ che si tratta di una singolarità semplice (nel caso $y > 0$ la singolarità è in $-i$).
 	%
 	$$
 		\lim_{r \to \pm \infty} 2\pi i \operatorname{res}(g,i) = \pi e^{y}

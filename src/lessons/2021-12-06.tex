@@ -33,7 +33,7 @@ Proviamo a svolgere il calcolo diretto
 $$
 \begin{aligned}
 	\|\hat f\,\|_2^2 
-	&= \int_{-\infty}^{+\infty} \hat f(y) \hat f(y) \dd y \\
+	&= \int_{-\infty}^{+\infty} \hat f(y) \overline{\hat f(y)} \dd y \\
 	&= \iiint f(x) e^{-ixy} \overline{f(t) e^{-ity}} \dd t \dd x \dd y = \\
 	&= \iint f(x) \overline{f(t)} \bigg( \underbrace{\int_{-\infty}^{+\infty} e^{-iy(t-x)} \dd y}_{\delta(x-t)} \bigg) \dd t \dd x = \\
 	&= \int \left( \int f(x) \delta(x - t) \dd x \right) \overline{f(t)} \dd t = \\
