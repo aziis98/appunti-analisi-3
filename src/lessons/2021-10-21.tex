@@ -30,7 +30,7 @@ Ad esempio se restringiamo il dominio a $L^p(\R^d) \cap L^1(\R^d)$ l'applicazion
 Più formalmente, la mappa
 %
 $$
-T \colon \left( L^p \cap L^1(\R^d), \norm{\cdot}_{L^p} \right) \to \R
+T \colon \left( L^p \cap L^1(\R^d), \norm{\curry}_{L^p} \right) \to \R
 $$
 %
 è lineare ma non continua.
@@ -46,7 +46,7 @@ $$
 u_n (x) =
 \frac{1}{n} \One_{[n, 2n]} =
 \begin{cases}
-\frac{1}{n} \quad \text{se} \quad n \leq x \leq 2n \\
+\dfrac{1}{n} \quad \text{se} \quad n \leq x \leq 2n \\[2ex]
 0 \quad \text{altrimenti}. 
 \end{cases} 
 $$
@@ -208,7 +208,6 @@ V = \left\{ \left\{ x_n \right\} \mymid x_n = 0 \quad \text{definitivamente}  \r
 $$
 %
 Vediamo che non è chiuso. Sia $\underline{x} \in \ell^2$, definita come $\underline{x} = \{ 1 / n \}_{n \in \N \setminus \{0 \}}$, diciamo che $\ds \underline{x} = \lim_{n \to +\infty} \underline{x}^n$ dove
-%
 $$
 x_n^k = 
 \begin{cases}
@@ -216,16 +215,14 @@ x_n^k =
 0 \quad n > k, n = 0
 \end{cases} 
 $$
-%
 abbiamo che
-%
 $$
-\norm{\underline{x} - \underline{x}^k}_{\ell^2}^2 = \sum_{n=1}^{\infty} \left| x_n -x_n^k \right|^2 = \sum_{n = k+1}^{+\infty} \left| x_n \right|^2 = \sum_{n = k+1}^{\infty} \frac{1}{n^2} \xrightarrow{k \to +\infty} 0.   
+\norm{\underline{x} - \underline{x}^k}_{\ell^2}^2 = \sum_{n=1}^{\infty} \left| x_n -x_n^k \right|^2 = \sum_{n = k+1}^{+\infty} \left| x_n \right|^2 = \sum_{n = k+1}^{\infty} \frac{1}{n^2} \xrightarrow{k \to +\infty} 0
 $$
-%
+abbiamo così trovato una successione che converge fuori da $V$ segue che $V$ non è chiuso.
 
 Vediamo un altro esempio. Siano $X = \R$, $\mu$ la misura di Lebesgue e $p > 1$.
-In tal caso, l'insieme $L^p \cap L^1 (\R)$ è un sottospazio denso in $\left( L^1(\R), \norm{\cdot }_{L^1} \right)$ e $\left( L^p(\R), \norm{\cdot }_{L^p} \right)$.
+In tal caso, l'insieme $L^p \cap L^1 (\R)$ è un sottospazio denso in $\left( L^1(\R), \norm{\curry }_{L^1} \right)$ e $\left( L^p(\R), \norm{\curry }_{L^p} \right)$.
 
 \textbf{Nota.} L'insieme $L^2(\R) \cap L^1(\R)$ è un sottospazio proprio di $L^1(\R)$. Diciamo che non è chiuso in $\norm{\curry}_{L^1(\R)}$ perché è denso.
 Infatti, 
