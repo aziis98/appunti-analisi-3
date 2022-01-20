@@ -10,7 +10,7 @@ $$
 %
 dove $\dd_x f$ è il termine di primo grado dello sviluppo di Taylor di $f$.
 
-\textbf{Definizione.} Siano $1 \leq k \leq d$ e $m = 1,2,\ldots$. L'insieme $\Sigma \subset \R^d$ si definisce \textbf{superficie} (senza bordo) di dimensione $k$ e classe $C^m$ se per ogni $x \in \Sigma$ esiste $U$ intorno aperto\footnote{D'ora in avanti gli intorni saranno sempre aperti.} di $x \in \R^d$ ed esiste una mappa $\phi \colon D \to \R^d$ con $D$ aperto di $\R^k$ tale che
+\textbf{Definizione.} Siano $1 \leq k \leq d$ e $m = 1,2,\ldots$. L'insieme $\Sigma \subset \R^d$ si definisce \textbf{superficie} (senza bordo) di dimensione $k$ e classe $C^m$ se per ogni $x \in \Sigma$ esiste $U$ intorno aperto\footnote{D'ora in avanti gli intorni saranno sempre aperti.} di $x \in \Sigma$ ed esiste una mappa $\phi \colon D \to \R^d \in C^m$ con $D$ aperto di $\R^k$ tale che
 \begin{itemize}
 
 	\item $\phi(D) = \Sigma \cap U$
@@ -35,7 +35,7 @@ Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
 
 		\item $\Sigma \cap U = g^{-1}(0)$
 
-		\item $\nabla g$ ha rango massimo, ovvero $n-k$ 
+		\item $\nabla g$ ha rango massimo, ovvero $d-k$ 
 
 	\end{itemize}
 
@@ -64,6 +64,8 @@ Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
 
 \textbf{Definizione.} Data $\Sigma$ superficie e fissato $x \in \Sigma$, lo \textbf{spazio tangente} a $\Sigma$ in $x$ è $ T_x \Sigma \coloneqq \imm (\dd_s \phi)$ dove $\phi \colon D \to \Sigma \cap U$ è una parametrizzazione regolare e $x = \phi(s)$ con $s \in D$.
 
+\textbf{Nota.} Lo spazio tangente è uno spazio vettoriale di stessa dimensione della superficie.
+
 \textbf{Proposizione.} 
 \begin{itemize}
 
@@ -77,7 +79,6 @@ Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
 	$$
 	%
 	
-
 \end{itemize}
 
 

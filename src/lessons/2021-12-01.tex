@@ -63,7 +63,7 @@ serve che $f(x) \to 0$ per $|x| \to +\infty$ (ad esempio $f \in C \cap L^1$ lo i
 Argomentiamo come segue, $f \in L^1 \implies \liminf_{|x| \to \infty} |f(x)| = 0$ (in quanto se $\liminf_{|x| \to \infty} |f(x)| = \delta > 0$ allora la funzione sarebbe $> \delta$ per $|x| \to +\infty$ ed avrebbe integrale $+\infty$) dunque esistono due successioni $a_n \to -\infty, b_n \to +\infty$ tali che $f(a_n) \to 0$ e $f(b_n) \to 0$ quindi come prima abbiamo
 $$
 \begin{aligned}
-	\hat f(y) 
+	\hat{f'}(y) 
 	&= \lim_n \int_{a_n}^{b_n} f'(x) e^{iyx} \dd x = \\
 	&= \lim_n \int \One_{[a_n, b_n]} f'(x) e^{iyx} \dd x = \\
 	&= \lim_n \bigg( \underbrace{\left[ f(x) e^{-iyx} \right]_{a_n}^{b_n}}_{\to 0} + i y \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x \bigg) = \\
