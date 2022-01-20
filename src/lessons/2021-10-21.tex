@@ -259,10 +259,11 @@ $$
 %
 Usiamo la proprietà che, essendo $f \ast g$ ben definita, si ha $ f \ast g(x) = g \ast f(x) $. Da cui
 \begin{align*}
-\left| f \ast g(x_1) - f \ast g(x_2) \right|  & = \left| \int_{\R^d} g(x_1 - y) f(y) \dd y \int_{\R^d} g(x_2 - y) f(y) \dd y   \right| \\
+\left| f \ast g(x_1) - f \ast g(x_2) \right|
+&= \left| \int_{\R^d} g(x_1 - y) f(y) \dd y - \int_{\R^d} g(x_2 - y) f(y) \dd y \right| \\
 & = \left| \int_{\R^d} \left( g(x_1 - y) - g(x_2 - y) \right) f(y) \dd y  \right| \\
-& \leq \int_{\R^d} \left| g(x_1 - y) - g(x_2 - y) \right| \left| f(y) \right| \dd y \\
-& \leq \int_{\R^d} M \left| (x_1 - y) - (x_2 - y) \right| \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
+& \leq \int_{\R^d} \left| g(x_1 - y) - g(x_2 - y) \right| \cdot \left| f(y) \right| \dd y \\
+& \leq \int_{\R^d} M \left| (x_1 - y) - (x_2 - y) \right| \cdot \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
 \end{align*}
 
 \textbf{Esercizio.} [TO DO] Se $f \in L^1(\R^d)$ e $g$ a supporto compatto è $\alpha$-Hölderiana allora anche $f \ast g$ lo è.
@@ -271,7 +272,7 @@ Usiamo la proprietà che, essendo $f \ast g$ ben definita, si ha $ f \ast g(x) =
 
 \subsection{Separabilità degli spazi $L^p$}
 
-\textbf{Proposizione.} Si ha che $L^p\left( \R^d, \mu \right)$ con $\mu $ la misura di Lebesgue, è separabile se solo se $p \neq +\infty$. Lo stesso risultato vale per $\ell^p$.
+\textbf{Proposizione.} Si ha che $L^p ( \R^d, \mu)$ con $\mu $ la misura di Lebesgue, è separabile se solo se $p \neq +\infty$. Lo stesso risultato vale per $\ell^p$.
 
 \textbf{Osservazione.} La proposizione è valida anche per $L^p(X,\mu)$ con $X \subset \R^d$ aperto.
 
