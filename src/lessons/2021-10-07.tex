@@ -100,7 +100,7 @@ L'ipotesi $\sum \mu(E_n) < +\infty$ non può essere sostituita con $\mu(E_n) \to
 
 Ora dimostriamo la proposizione.
 
-\textbf{Dimostrazione.} Definiamo gli insiemi
+\textbf{Dimostrazione della Proposizione.} Definiamo gli insiemi
 \begin{align*}
 A_n^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \right\}, \\
 B_m^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsilon \; \text{per qualche} \; n \geq m\right\} = \bigcup_{n = m}^\infty A_n^\epsilon, \\
@@ -132,7 +132,8 @@ Usando la disuguaglianza di Markov ottengo
 
 %
 $$
-\mu \Big( A_n^\epsilon= \Big\{ x \Big| \overbrace{\left| f_n(x) - f(x) \right|}^{g} \geq \epsilon^p \Big\} \Big)
+\mu(A_n^\epsilon) 
+= \mu \Big( \Big\{ x \Big| \overbrace{\left| f_n(x) - f(x) \right|^p}^{g} \geq \epsilon^p \Big\} \Big)
 \leq \frac{1}{m} \int_{X}^{} g \dd \mu = \frac{1}{\epsilon^p} \norm{f_n - f}_p^p \xrightarrow{n \to +\infty} 0.
 $$
 %
@@ -154,7 +155,12 @@ $$
 \end{align*}
 Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/k}$ definitivamente in $k$, cioè $\norm{f_{n_k}(x) - f(x)} < 1/k$ definitivamente in $k$, cioè $\ds f_{n_k}(x) \xrightarrow{k} f(x)$.
 
-\item[v)] [TODO].
+\item[v)] Vogliamo mostrare che $f_n \to f$ in $L^p \Rightarrow \exists n_k$ tale che $f_{n_k} \to f$ quasi ovunque. Consideriamo due casi
+	\begin{itemize}
+		\item Se $p < +\infty$, allora $f_n \to f$ in $L^p \implies f_n \to f$ in misura da cui $\exists n_k$ tale che $f_{n_k} \to f$ quasi ovunque.
+
+		\item Se $p = +\infty$, allora $f_n \to f$ uniformemente su $X \setminus E$ con $\mu(E) = 0 \implies f_n \to f$ puntualmente su $X \setminus E \implies f_n \to f$ quasi ovunque (quindi semplicemente con $n_k = k$). 
+	\end{itemize}
 
 \end{enumerate}
 

@@ -174,12 +174,11 @@ $$
 		$$ 
 
 	\item
-		Basta far vedere che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
+		Vogliamo vedere che ogni successione di Cauchy converge, ma osserviamo che basta mostrare che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
 		$$
 		\sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty
 		$$
-		ma a quel punto per ipotesi questa successione converge ad $y \in Y$ e dunque anche $y_n \to y$. 
-
+		ma a quel punto per ipotesi questa sottosuccessione converge ad $y \in Y$ e dunque anche $y_n \to y$. 
 		Questa sottosuccessione esiste in quanto $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ e dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
 		\qed
 
@@ -205,7 +204,7 @@ Dato $Y$ spazio normato, i seguenti fatti sono equivalenti
 	\item $Y$ è completo.
 
 	% \item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero 
-	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
+	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge\footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
 \end{enumerate}
 
 \textbf{Dimostrazione.} 
