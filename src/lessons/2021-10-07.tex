@@ -108,59 +108,51 @@ B^\epsilon & \coloneqq \left\{ x \mymid \left| f_n(x) - f(x) \right| \geq \epsil
 \end{align*}
 
 \begin{enumerate}
-\item Per ipotesi, $f_n \to f$ quasi ovunque, cioè $\mu(B^\epsilon) = 0$ per ogni $\epsilon > 0$, ma $B_m^\epsilon \downarrow B^\epsilon$ e $\mu(X) < +\infty$.
-Allora
-%
-$$
-\lim_{m \to +\infty} \mu(B_m^\epsilon) = \mu(B^\epsilon) = 0 \Longrightarrow \lim_{m \to \infty} \mu(A_m^\epsilon) = 0.
-$$
-%
+	\item Per ipotesi, $f_n \to f$ quasi ovunque, cioè $\mu(B^\epsilon) = 0$ per ogni $\epsilon > 0$, ma $B_m^\epsilon \downarrow B^\epsilon$ e $\mu(X) < +\infty$.
+	Allora
+	$$
+	\lim_{m \to +\infty} \mu(B_m^\epsilon) = \mu(B^\epsilon) = 0 \Longrightarrow \lim_{m \to \infty} \mu(A_m^\epsilon) = 0.
+	$$
 
-\item Dalla dimostrazione precedente, abbiamo $\ds \lim_{m \to \infty} \mu(B_m^\epsilon) = 0$. 
-Allora per ogni $k$ esiste un $m_k$ tale che $\mu \left( B_{m_k}^{1/k} \right) \leq \delta / 2^k$.
-Poniamo $\ds E \coloneqq  \bigcup_{k} B_{m_k}^{1/k}$ per ogni $k$; allora $\mu(E) \leq \delta$.
-Inoltre,
-\begin{align*}
-x \in X \setminus E & \Longrightarrow x \notin B_{m_k}^{1/k} \; \forall k \iff x \notin A_n^{1/k} \mquad \forall k,n \geq m_ k \\
-& \Longrightarrow \left| f(x) - f_n(x) \right| < \frac{1}{k} \mquad \forall k,n \geq m_k \\
-& \Longrightarrow \sup_{x \in X \setminus E} \left| f(x) - f_n(x) \right| \leq \frac{1}{k} \mquad \forall k,n \geq m_k \\
-& \Longrightarrow f - f_m \; \text{uniformemente su} \; X \setminus E.
-\end{align*}
+	\item Dalla dimostrazione precedente, abbiamo $\ds \lim_{m \to \infty} \mu(B_m^\epsilon) = 0$. 
+	Allora per ogni $k$ esiste un $m_k$ tale che $\mu \left( B_{m_k}^{1/k} \right) \leq \delta / 2^k$.
+	Poniamo $\ds E \coloneqq  \bigcup_{k} B_{m_k}^{1/k}$ per ogni $k$; allora $\mu(E) \leq \delta$.
+	Inoltre,
+	\begin{align*}
+	x \in X \setminus E & \Longrightarrow x \notin B_{m_k}^{1/k} \; \forall k \iff x \notin A_n^{1/k} \mquad \forall k,n \geq m_ k \\
+	& \Longrightarrow \left| f(x) - f_n(x) \right| < \frac{1}{k} \mquad \forall k,n \geq m_k \\
+	& \Longrightarrow \sup_{x \in X \setminus E} \left| f(x) - f_n(x) \right| \leq \frac{1}{k} \mquad \forall k,n \geq m_k \\
+	& \Longrightarrow f - f_m \; \text{uniformemente su} \; X \setminus E.
+	\end{align*}
 
-\item Dobbiamo mostrare che per ogni $\epsilon > 0$ $\mu(A_n^\epsilon) \xrightarrow{n} 0$.
-Usando la disuguaglianza di Markov ottengo
+	\item Dobbiamo mostrare che per ogni $\epsilon > 0$ $\mu(A_n^\epsilon) \xrightarrow{n} 0$.
+	Usando la disuguaglianza di Markov otteniamo
+		$$
+		\mu(A_n^\epsilon) 
+		= \mu \Big( \Big\{ x \Big| \overbrace{\left| f_n(x) - f(x) \right|^p}^{g} \geq \epsilon^p \Big\} \Big)
+		\leq \frac{1}{m} \int_{X}^{} g \dd \mu = \frac{1}{\epsilon^p} \norm{f_n - f}_p^p \xrightarrow{n \to +\infty} 0.
+		$$
 
-%
-$$
-\mu(A_n^\epsilon) 
-= \mu \Big( \Big\{ x \Big| \overbrace{\left| f_n(x) - f(x) \right|^p}^{g} \geq \epsilon^p \Big\} \Big)
-\leq \frac{1}{m} \int_{X}^{} g \dd \mu = \frac{1}{\epsilon^p} \norm{f_n - f}_p^p \xrightarrow{n \to +\infty} 0.
-$$
-%
+	\item[iii')] Definiamo $\ds E_n \coloneqq  \left\{ x \mymid \left| f_n(x) - f(x) \right| > \norm{f_n - f}_\infty \right\}$ per ogni $n$, allora $\mu(E_n) = 0$.
+	Poniamo $E = \bigcup_{n} E_n$ e $\mu(E) = 0$, dunque
+		$$
+		\sup_{x \in X\setminus E} \left| f_n(x) - f(x) \right| \leq \norm{f_n - f}_\infty \xrightarrow{n \to \infty} 0.
+		$$
 
-\item[iii')] Definiamo $\ds E_n \coloneqq  \left\{ x \mymid \left| f_n(x) - f(x) \right| > \norm{f_n - f}_\infty \right\}$ per ogni $n$, allora $\mu(E_n) = 0$.
-Poniamo $E = \bigcup_{n} E_n$ e $\mu(E) = 0$, dunque
-%
-$$
-\sup_{x \in X\setminus E} \left| f_n(x) - f(x) \right| \leq \norm{f_n - f}_\infty \xrightarrow{n \to \infty} 0.
-$$
-%
+	\item Per ipotesi, $f_n \to f$ in misura, cioè
+		\begin{align*}
+		& \forall \epsilon > 0 \quad \mu \left( A_n^\epsilon \right) \xrightarrow{n \to +\infty} 0 \\
+		& \Longrightarrow \forall k \; \exists n_k \colon \mu \left( A_{n_k}^{1/k} \right) \leq \frac{1}{2^k} \\
+		& \Longrightarrow \sum_{k}^{} \mu \left( A_{n_k}^{1/k} \right) < +\infty. 
+		\end{align*}
+		Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/k}$ definitivamente in $k$, cioè $\norm{f_{n_k}(x) - f(x)} < 1/k$ definitivamente in $k$, cioè $\ds f_{n_k}(x) \xrightarrow{k} f(x)$.
 
+	\item[v)] Vogliamo mostrare che $f_n \to f$ in $L^p \Rightarrow \exists n_k$ tale che $f_{n_k} \to f$ quasi ovunque. Consideriamo due casi
+		\begin{itemize}
+			\item Se $p < +\infty$, allora $f_n \to f$ in $L^p \implies f_n \to f$ in misura da cui $\exists n_k$ tale che $f_{n_k} \to f$ quasi ovunque.
 
-\item Per ipotesi, $f_n \to f$ in misura, cioè
-\begin{align*}
-& \forall \epsilon > 0 \quad \mu \left( A_n^\epsilon \right) \xrightarrow{n \to +\infty} 0 \\
-& \Longrightarrow \forall k \; \exists n_k \colon \mu \left( A_{n_k}^{1/k} \right) \leq \frac{1}{2^k} \\
-& \Longrightarrow \sum_{k}^{} \mu \left( A_{n_k}^{1/k} \right) < +\infty. 
-\end{align*}
-Allora per Borel-Cantelli, si ha per $\mu$-quasi ogni $x$, $x \notin A_{n_k}^{1/k}$ definitivamente in $k$, cioè $\norm{f_{n_k}(x) - f(x)} < 1/k$ definitivamente in $k$, cioè $\ds f_{n_k}(x) \xrightarrow{k} f(x)$.
-
-\item[v)] Vogliamo mostrare che $f_n \to f$ in $L^p \Rightarrow \exists n_k$ tale che $f_{n_k} \to f$ quasi ovunque. Consideriamo due casi
-	\begin{itemize}
-		\item Se $p < +\infty$, allora $f_n \to f$ in $L^p \implies f_n \to f$ in misura da cui $\exists n_k$ tale che $f_{n_k} \to f$ quasi ovunque.
-
-		\item Se $p = +\infty$, allora $f_n \to f$ uniformemente su $X \setminus E$ con $\mu(E) = 0 \implies f_n \to f$ puntualmente su $X \setminus E \implies f_n \to f$ quasi ovunque (quindi semplicemente con $n_k = k$). 
-	\end{itemize}
+			\item Se $p = +\infty$, allora $f_n \to f$ uniformemente su $X \setminus E$ con $\mu(E) = 0 \implies f_n \to f$ puntualmente su $X \setminus E \implies f_n \to f$ quasi ovunque (quindi semplicemente con $n_k = k$). 
+		\end{itemize}
 
 \end{enumerate}
 
