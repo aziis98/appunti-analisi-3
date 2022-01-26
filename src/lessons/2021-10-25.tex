@@ -194,7 +194,7 @@ Se $g_2 \geq 0$ con $\int g \dd x = 1$ (dunque $g$ distribuzione di probabilità
 
 % minuto 1:28:00 definire la funzione e fare disegnino (questa funzione si usa anche
 % in altri casi per vedere che una certa proprietà non vale in $L^\infty$
-Inoltre per $p = +\infty$ non vale ed il controesempio è sempre il solito. [TO DO: scrivere la funzione].
+Inoltre per $p = +\infty$ non vale ed il controesempio è sempre il solito. [TODO: scrivere la funzione].
 
 \textbf{Dimostrazione.}
 Per ora consideriamo $g$ generica e ripercorriamo una dimostrazione simile a quella fatta per la disuguaglianza di Young
@@ -225,11 +225,11 @@ $$
 \norm{f \ast \sigma_\delta g - m f}_p
 \leq \int_{\R^d} \norm{\tau_y f - f}_p \cdot |\sigma_\delta g(y)| \dd y
 $$
-infine ponendo $z = y / \delta$ e $\dd z = 1/\delta^d \dd y$ e sostituendo nell'integrale
+infine ponendo $z = y / \delta$ e $\dd z = 1/\delta^d \dd y$ e sostituendo nell'integrale otteniamo
 $$
-= \int_{\R^d} \norm{\tau_{\delta z} f - f}_p \cdot |\sigma_\delta g(y)| \dd y \xrightarrow{\delta \to 0} 0
+= \int_{\R^d} \norm{\tau_{\delta z} f - f}_p \cdot |g(z)| \dd z \xrightarrow{\delta \to 0} 0
 $$
-per \textit{convergenza dominata}, verifichiamone le ipotesi
+usando \textit{convergenza dominata} in quest'ultimo passaggio, verifichiamone le ipotesi
 \begin{enumerate}
 	\item La convergenza puntuale segue in quanto $\norm{\tau_{\delta z} f - f}_p \xrightarrow{\delta \to 0} 0$ per ogni $z$.
 	\item Come dominazione prendiamo $2 \norm{f}_p \cdot |g| \in L^1$.
