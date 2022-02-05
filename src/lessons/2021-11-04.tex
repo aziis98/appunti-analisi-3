@@ -8,7 +8,7 @@
 Sia $H$ una spazio vettoriale su $\C$ con prodotto hermitiano $\langle\curry; \curry\rangle$, ovvero tale che
 \begin{itemize}
 	\item $\langle \curry; \curry \rangle$ è lineare nella prima variabile
-	\item $\langle x; x' \rangle = \overline{\langle x', x \rangle}$ ovvero è antilineare nella seconda variabile.
+	\item $\langle x; x' \rangle = \overline{\langle x'; x \rangle}$ ovvero è antilineare nella seconda variabile.
 	\item $\langle x; x \rangle \geq 0$ per ogni $x$ e vale $0$ se e solo se $x = 0$.
 \end{itemize}
 
@@ -25,7 +25,7 @@ $$
 \textbf{Teorema.} (della base di Hilbert per spazi complessi)
 Dato $\mathcal F = \{ e_n \}$ sistema ortonormale in $H$ e $x \in H$ allora per ogni $n$ si pone\footnote{E non $\langle e_n; x \rangle$!}
 $$
-x_n = \langle x; e_n \rangle
+x_n \coloneqq \langle x; e_n \rangle
 $$
 Vale anche l'identità di Parseval $\norm{x^2} = \sum |x_n|^2$ dove $|\curry|$ è il modulo di un numero complesso, in particolare nella versione con prodotto scalare diventa
 $$
@@ -88,7 +88,7 @@ Per ogni $f \in L^2([-\pi, \pi]; \C)$ abbiamo
 		\norm{f}_2^2 = 2 \pi \sum_{n \in \Z} |c_n|^2
 		\qquad
 		\qquad
-		\langle f, g \rangle = \sum_{n \in \Z} c_n(f) \overline{c_n(g)}
+		\langle f, g \rangle = 2\pi \sum_{n \in \Z} c_n(f) \overline{c_n(g)}
 		$$
 \end{enumerate}
 
@@ -175,6 +175,8 @@ Vogliamo vedere che
 		Data $g \in X$ troviamo $g_n \in \mathcal A$ tale che $g_n \to g$ uniformemente allora $\exists \tilde g \colon \sfrac{K}{\sim} \to \C$ tale che $g = \tilde g \compose \pi$, consideriamo $\mathcal A = \{ \tilde f \mid f \in \mathcal A \}$ che è una sottoalgebra di $C(\overline{\sfrac{K}{\sim}}; \C)$ che separa i punti, etc. 
 		\qed
 		\end{minipage}
+
+		\ 
 
 		Torniamo alla dimostrazione della completezza di $\mathcal F$, $K = [-\pi, \pi]$ e consideriamo
 		$$

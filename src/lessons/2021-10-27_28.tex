@@ -190,7 +190,7 @@ $$
 \end{enumerate}
 \qed
 
-\textbf{Corollario.} Siano $H$ spazio di Hilbert, $\mc{F} = \left\{ e_n \mymid n \in \Z \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
+\textbf{Corollario.} Siano $H$ spazio di Hilbert, $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
 \begin{enumerate}
 \item Se $x_n = x_n'$ per ogni $n \in \N$, allora $x = x'$ ($\Leftarrow$ è ovvia.)
 
@@ -209,8 +209,8 @@ $$
 \item La tesi segue usando l'identità di polarizzazione congiuntamente all'enunciato \ref{item:27ott_thm1_5} del teorema:
 %
 \begin{align*}
-\left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 + \norm{x - x'}^2 \right)
-= \frac{1}{4} \Big( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'}  \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \Big) \\
+\left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 - \norm{x - x'}^2 \right)
+= \frac{1}{4} \Big( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'} - \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \Big) \\
 & = \frac{1}{4} \left( \cancel{\sum x_n^2} + \cancel{\sum x_n'^2} + 2 \sum x_n x_n' - \cancel{\sum x_n^2} - \cancel{\sum x_n'^2} + 2 \sum x_n x_n' \right).
 \end{align*}
 
@@ -271,7 +271,7 @@ Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp
 
 \textbf{Corollario.} Ogni sistema ortonormale $\mc{F}$ si completa a $\tilde{\mc{F}}$ base di Hilbert di $H$.
 
-\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$.
+\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \text{ sistema ortonormale } H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$.
 Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. Allora $\tilde{\mc{F}}$ è una base di Hilbert.
 
 \vs
@@ -336,7 +336,7 @@ Per il primo enunciato del teorema precedente, $H = V + V^\perp$ e per quanto su
 
 Notiamo che $\dim V^\perp = 1$. Infatti, se per assurdo $\dim(V^\perp) > 1$, allora esisterebbe $W \subset V^\perp$ con $\dim W = 2$, da cui seguirebbe che $\Lambda \colon  W \to \R$ ha $\ker$ banale. \absurd
 
-Allora $V^\perp = \spn \left\{ x_1 \right\}$ con $\norm{x_1} = 1$. Definiamo $c \coloneqq \Lambda(x_1), x_0 = c x_1$.
+Allora $V^\perp = \spn \left\{ x_1 \right\}$ con $\norm{x_1} = 1$. Definiamo $c \coloneqq \Lambda(x_1)$ e poniamo $x_0 \coloneqq c x_1$.
 
 Dimostriamo ora l'uguaglianza $\ast$ per passi.
 
