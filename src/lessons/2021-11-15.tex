@@ -1,3 +1,32 @@
+\chapter{Applicazioni della serie di Fourier}
+
+\section{Equazione del calore}
+
+Sia $\Omega$ un aperto di $\R^d$ e $u(t, x) \colon [0, T) \times \Omega \to \R$ e chiamiamo $x$ la \textit{variabile spaziale} e $t$ la \textit{variabile temporale}. In dimensione $3$ l'insieme $\Omega$ rappresenta un solido di materiale conduttore omogeneo  e $u(t, x)$ rappresenta la temperatura in $x$ all'istante $t$. Dunque $u$ risolve l'equazione del calore
+$$
+	u_t = c \cdot \Delta u
+$$
+dove con $u_t$ indichiamo la derivata parziale di $u$ rispetto al tempo, $c$ è una costante fisica che porremo uguale ad $1$ e $\Delta u$ è il laplaciano rispetto alle dimensioni spaziali ovvero
+$$
+	\Delta u = \sum_{i=1}^d \frac{\pd^2 u}{\pd x_i^2} = \operatorname{div}(\nabla_x u).
+$$
+
+Vedremo che la soluzione di $u_t = \Delta u$ esiste ed è unica specificando $u(0, \curry) = u_0$ condizione iniziale con $u_0 \colon \Omega \to \R$ data e delle condizioni al bordo come ad esempio
+\begin{itemize}
+	\item \textit{Condizioni di Dirichlet}: $u = v_0$ su $[0, T) \times \pd \Omega$ con $v_0$ funzione fissata. Possiamo pensare come fissare delle sorgenti di calore costanti sul bordo.
+	\item \textit{Condizioni di Neumann:} $\ds \frac{\pd u}{\pd \nu}$ con $\nu$ direzione normale al bordo. Essenzialmente ci sta dicendo che non c'è scambio di calore con l'esterno.
+\end{itemize}
+In particolare scriveremo
+$$
+\left\{
+\begin{aligned}
+	& u_t = \Delta u \quad \text{su $\Omega$} \\
+	& u(0, \curry) = u_0 \\
+	& \text{\footnotesize Una delle condizioni al bordo su $\pd \Omega$...}
+\end{aligned}
+\right.
+$$
+
 \section{Risoluzione dell'equazione del calore (su $\mathbb S^1$)}
 
 Come conduttore consideriamo un anello di materiale omogeneo e sottile che parametrizziamo con $[-\pi, \pi]$. Dunque consideriamo $u \colon [0, T) \times [-\pi, \pi] \to \R$ con le condizioni
@@ -7,7 +36,7 @@ Come conduttore consideriamo un anello di materiale omogeneo e sottile che param
 \begin{aligned}
 	& u_t = u_{xx} \\
 	& u(\curry, \pi) = u(\curry, -\pi) \\
-	% & u_x(\curry, \pi) = u_x(\curry, -\pi) \\
+	& u_x(\curry, \pi) = u_x(\curry, -\pi) \\
 	& u(0, \curry) = u_0
 \end{aligned}
 \right.
