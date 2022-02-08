@@ -1,0 +1,125 @@
+%
+% Lezione del 10 Novembre 2021
+%
+
+% @aziis98: Ok alla fine ho commentato questa parte qua sotto che è uguale a sopra ed ho lasciato il lemma di recap tipo
+
+% \section{Convergenza puntuale della serie di Fourier}
+
+% \textbf{Teorema.} (di convergenza puntuale della serie di Fourier).
+% Data $f \in L^1([-\pi, \pi])$ estesa a $\R$ per periodicità e dato $\bar x \in \R$ tale che $f$ è $\alpha$-H\"olderiana in $\bar x$ con $\alpha > 0$ (cioè $\exists M < +\infty, \delta > 0$ tali che $|f(\bar x + t) - f(\bar x)| \leq M |t|^\alpha$ se $|t| \leq \delta$) allora
+% $$
+% S_n f(\bar x) \xrightarrow{N \to \infty}  f(\bar x)
+% $$
+% dove $S_n f(\bar x) = \ds \sum_{n=-N}^N c_n e^{inx}$.
+Il seguente lemma riassume quanto detto finora.
+
+\textbf{Lemma.} (di rappresentazione di $S_n f$ come convoluzione)
+Data $f \in L^1([-\pi,\pi;\C])$ (estesa a funzioni $2\pi$-periodiche su $\R$) vale
+Ricapitolando data $f$ come sopra abbiamo visto che
+$$
+	S_N f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_N(t) \dd t
+\qquad
+\text{con }
+D_N(t) \coloneqq \sum_{n=-N}^N e^{int} = \frac{\sin\left(\left(N + \frac{1}{2}\right)t\right)}{\sin \left(\frac{t}{2}\right)}
+$$
+\textbf{Osservazione.}
+In particolare: $\ds \frac{1}{2\pi} \int_{-\pi}^\pi D_N(t) \dd t = 1$.
+
+\textbf{Lemma.} (di Riemann-Lebesgue (generalizzato)).
+Data $g \in L^1(\R)$ e $h \in L^\infty(\R)$ con $h$ $T$-periodica, allora
+$$
+\int_\R g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty}
+\underbrace{\left(\int_\R g(x) \dd x \right)}_a
+\underbrace{\left(\avint_0^T h(x) \dd x \right)}_m
+$$
+
+%Se supponiamo $\supp g \subseteq [0, 1]$ allora
+%%
+%$$
+%	 \int_0^1 g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty} \int_0^1 g(x) \dd x \cdot \avint_0^T h(x) \dd x \approx \int_0^1 g(x) \dd x \cdot \avint_0^1 h(yx) \dd y.
+%$$
+%%
+%In particolare è abbastanza intuitivo il risultato per $g$ costante a tratti infatti su un intervallo otterremmo
+%$$
+%\int_0^{x_1} g(x) h(yx) \dd x = c \int_0^{x_1} h(yx) \dd x = (c x_1) m
+%$$
+%Però ci sarebbero delle correzzioni da fare per dimostrare le cose in questo modo in generale. Vediamo invece un'altra dimostrazione un po' più elegante.
+
+\textbf{Dimostrazione.}
+Per ogni $s, y$ poniamo $\Phi(y, s) \coloneqq \int_\R g(x) h(yx + s) \dd x$ con $s, y \in \R$. Dunque, vogliamo dimostrare che $\Phi(y, 0) \xrightarrow{y \to \pm\infty} a m$.
+Vedremo che valgono le seguenti
+\begin{enumerate}
+	\item $\forall y \; \ds \avint_0^T \Phi(y, s) \dd s = am$.
+	\item $\forall s \; \Phi(y, s) - \Phi(y, 0) \xrightarrow{y \to \pm \infty} 0$.
+\end{enumerate}
+da cui segue subito che
+$$
+\Phi(y, 0) - ma = \avint_0^T \Phi(y, 0) - \Phi(y, s) \dd s \xrightarrow{y \to \pm \infty} 0
+$$
+per convergenza dominata; dove dalla ii) segue la convergenza puntuale e come dominazione usiamo
+$$
+	\Phi(y, 0) - \Phi(y, s)| \leq 2 \norm{g}_1 \norm{h}_\infty.
+$$
+Mostriamo ora i due punti.
+\begin{enumerate}
+	\item Esplicitiamo e applichiamo Fubini-Tonelli
+		$$
+		\begin{aligned}
+			\avint_0^T \Phi(y, s) \dd s
+			&= \avint_0^T \int_\R g(x) h(yx + s) \dd x \dd s
+			= \int_\R \underbrace{\avint_0^T h(yx + s) \dd s}_m \cdot g(x) \dd x \\
+			&= m \int_\R g(x) \dd x = m a
+		\end{aligned}
+		$$
+		e possiamo usare Fubini-Tonelli in quanto 
+		$$
+			\ds \int_\R \avint_0^T |h(yx - s)| \dd s \cdot |g(x)| \dd x \leq \int_\R \norm{h}_\infty |g(x)| \dd x = \norm{h}_\infty \cdot \norm{g}_1.
+		$$
+
+	\item Notiamo che
+		\begin{align*}
+			\Phi(y, s) 
+			& = \int_\R g(x) h\left(y \left( x + s/y \right)\right) \dd x
+			= \begin{pmatrix}
+				t = x + s/y \\
+				\dd t = \dd x
+			\end{pmatrix} 
+			= \int_\R g \left( t - s/y \right) h(yt) \dd t \\
+			& \Longrightarrow \Phi(y, s) - \Phi(y, 0) = \int_\R \left(g\left( t - \frac{s}{y}\right) - g(t) \right) h(yt) \dd t \\
+			& \Longrightarrow 
+			|\Phi(y, s) - \Phi(y, 0)| = \int_\R |\tau_{s/y} g - g| \cdot |h(yt)| \dd t
+			\leq \norm{\tau_{s/y} g - g}_1 \cdot \norm{h}_\infty \xrightarrow{y \to \pm \infty} 0.
+		\end{align*}
+\qed
+\end{enumerate}
+
+\textbf{Dimostrazione del Teorema.}
+\begin{align*}
+	S_N f(\bar x) - f(\bar x) 
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi f(\bar x - t) D_N(t) \dd t - \frac{1}{2\pi} \int_{-\pi}^\pi f(\bar x) D_N(t) \dd t \\
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi (f(\bar x - t) - f(\bar x)) D_N(t) \dd t \\
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi \frac{f(\bar x - t) - f(\bar x)}{\sin \frac{t}{2}} \sin \left(\left(N + \frac{1}{2}\right) t\right) \dd t \\
+	&= \int_{-\pi}^\pi g(t) \cdot \sin \left(\left(N + \frac{1}{2}\right) t\right)
+\end{align*}
+Applicando il Lemma di Riemann-Lebesgue otteniamo:
+%
+$$
+	S_N f(\bar{x}) - f(\bar{x}) \xrightarrow{N \to +\infty} \left(\int g(x) \dd x\right) \cdot \avint_0^\pi \sin x \dd x = 0.
+$$
+%
+
+In particolare, per applicare il lemma serve $g \in L^1([-\pi, \pi])$; ma infatti per $|t| \leq \delta$
+$$
+	|g(t)| \leq \frac{|f(\bar x - t) - f(\bar x)|}{|\sin \frac{t}{2}|} \leq \frac{M |t|^\alpha}{|t| / \pi} = \frac{M \pi}{|t|^{1 - \alpha}} \in L^1([-\delta, \delta]).
+$$
+Invece per $\delta \leq |t| \leq \pi$ basta
+$$
+	|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi]).
+$$
+\qed
+
+\textbf{Proposizione.} Data $f \in L^1([-\pi, \pi])$ estesa per periodicità e dato $\bar x$ tale che esistano i limiti a destra e sinistra di $f$ in $\bar x$ detti $L^+$ e $L^-$ ed $f$ $\alpha$-H\"olderiana a sinistra e destra si può vedere che vale
+$$
+	S_N f(\bar x) \xrightarrow{N} \frac{L^+ + L^-}{2}.
+$$

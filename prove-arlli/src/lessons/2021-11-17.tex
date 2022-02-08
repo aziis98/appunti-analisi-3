@@ -1,0 +1,142 @@
+%
+% Lezione del 17 novembre
+%
+
+\textbf{Notazione.} $\cper^k = \{ f\colon  \R \to \C \; \pi\text{-periodiche e } \mc{C}^k \} $.
+
+\textbf{Teorema 3} (di non esistenza nel passato).
+Esiste $u_0 \in \cper^\infty$ tale che per ogni $\delta > 0$ non esiste $u \colon (-\delta,0] \times [-\pi,\pi] \to \C$ soluzione di \eqref{eq:15nov2021_problem_1} ($u$ continua, $\mc{C}^1$ in $t$ e $\mc{C}^2$ in $x$ per $t < 0$)
+
+\textbf{Dimostrazione.} Sia $u$ su $(-\delta,0) \times [-\pi,\pi]$ un'eventuale soluzione.
+Sia $c_n(t)$ al solito.
+Dalla dimostrazione del \hyperlink{thm:lez15nov_teo2}{Teorema 2} abbiamo che $c_n$ risolve \eqref{eq:15nov2021_problem_2}.
+
+Quindi $c_n(t) = c_n^0 e^{-n^2 t}$. Scelgliamo $c_n^0$ (cioè $u_0$) in modo che
+
+\begin{itemize}
+
+	\item $c_n^0 = O(|n|^{-a})$ per $n \to \pm \infty$ per ogni $a > 0$. ($\Rightarrow \sum |n|^k |c_n^0| < +\infty \mquad \forall k \Rightarrow u_0 \in \cper^\infty$).
+
+
+	\item $c_n^0 e^{-n^2 t} \nrightarrow 0$ per ogni $t < 0$.
+
+\end{itemize}
+
+Con un tale $c_n^0$ la soluzione non esiste al tempo $t$. Infatti, se per assurdo esistesse, i coefficienti di Fourier $c_n(t)$ sarebbero quadrato sommabili, ovvero dovrebbero tendere a zero \absurd.
+
+Prendiamo $c_n^0 = e^{-|n|}$.
+\qed
+
+\textbf{Esercizio.} Dato $u_0$ sia $T_\ast $ il massimo $T$ per cui \eqref{eq:15nov2021_problem_1} ammette soluzione su $(-T,0] \times [-\pi,\pi]$.
+Caratterizzare $T_\ast$ in termini del comportamento asintotico di $c_n^0$ per $n \to \pm \infty$.
+
+\textit{Suggerimento.} Guardare $\ds \log(|c_n^0|) / n^2$.
+
+
+\section{Equazione delle onde}
+
+Sia $\Omega \subset \R^d$ aperto, $I$ intervallo temporale, $u \colon I \times \ol{\Omega} \to \R$, l' equazione delle onde è
+%
+$$
+	u_{tt} = v^2 \nabla u = \nabla_x u = \sum_{i=1}^{d} \frac{\partial^2 u}{\partial x_i^2}
+$$
+%
+dove $v$ si chiama \textbf{velocità di propagazione}.
+
+La soluzione è univocamente determinata specificando
+
+\begin{itemize}
+
+	\item Le condizioni al bordo (come per il calore), ad esempio quelle di Dirichlet: $u = v_0$ su $I \times \partial \Omega$ oppure di Neumann: $\partial u / \partial \nu = 0$ su $I \times \partial \Omega$.
+
+
+	\item Condizioni iniziali: $u(0,\cdot) = u_0, u_t(0,\cdot) = u_1$.
+
+\end{itemize}
+
+\textbf{Esempio 1.} Per $d = 1$, $\Omega = [0,1]$ rappresenta una sbarra sottile di materiale elastico. La sbarra è soggetta a vibrazioni longitudinali (onde sonore).
+La funzione $u(t,x)$ rappresenta lo spostamento dalla posizione di riposo $x$ al tempo $t$.
+In tal caso, l'equazione delle onde è
+%
+$$
+	u_{tt} = v^2 u_{xx}.
+$$
+%
+
+
+\textbf{Esempio 2.} Per $d=2$, $\Omega$ rappresenta una sbarra sottile di materiale elastico che vibra trasversalmente. La funzione $u(t,x)$ rappresenta lo spostamento verticale del punto di coordinata $x \in \Omega$ a riposo. Allora $u$ soddisfa\footnote{Per oscillazioni piccole.}
+%
+$$
+	u_{tt} = v^2 \nabla v.
+$$
+%
+
+
+\section{Risoluzione dell'equazione delle onde}
+
+Consideriamo il caso uno dimensionale. In tal caso l'equazione delle onde è la seguente.
+%
+\begin{equation}
+\tag{P} \label{eq:17nov2021_problem_1}
+\begin{cases}
+	u_{tt} = v^2 u_{xx} \\
+	u(\cdot, \pi) = u(\cdot, -\pi) \\
+	u_x(\cdot, \pi) = u_x(\cdot, -\pi) \\
+	u(0,\cdot) = u_0 \\
+	u_t(0,\cdot) = u_1
+\end{cases} 
+\end{equation}
+
+\subsection{Risoluzione formale}
+
+Scriviamo $\ds u(t,x) = \sum_{n \in \Z} c_n(t) e^{inx}$. Deriviamo in $t$ e due volte in $x$.
+\begin{align*}
+	u_{tt} & = \sum_{n \in \Z} \ddot c_n e^{inx} \\
+	u_{xx} & = \sum_{n \in \Z} - v^2 n^2 c_n e^{inx}
+\end{align*}
+Abbiamo che
+\begin{gather*}
+	u_{tt} = v^2 u_{xx} \longiff \ddot c_n = -v^2 n^2 c_n \\
+	u(0, \cdot) = u_0 \longiff c_n(0) = c_n^0 \coloneqq c_n(u_0)
+	\qquad
+	u_t(0, \cdot) = u_1 \longiff \dot c_n(0) = c_n^1 \coloneqq c_n(u_1)
+\end{gather*}
+Quindi $u$ risolve \eqref{eq:17nov2021_problem_1} se solo se per ogni $n$, $c_n$ risolve
+%
+\begin{equation}
+\tag{P$'$} \label{eq:17nov2021_problem_2}
+\begin{cases}
+	\ddot y = -n^2 v^2 y \\
+	y(0) = c_n^0 \\
+	\dot y(0) = c_n^1
+\end{cases} 
+\end{equation}
+%
+Dunque,
+\begin{itemize}
+
+	\item Per $n = 0$, $\ddot y = 0$ se solo se $y$ è un polinomio di primo grado, ovvero $c_0(t) = c_0^0 + c_0^1 t$.
+
+
+	\item Per $n \neq 0$, $y = \alpha_{n}^+ e^{invt} + \alpha_n^- e^{-invt} $ con 
+	%
+	$$
+		\alpha_n^{\pm} = \frac{1}{2} \left( c_n^0 \pm \frac{c_n^1}{inv} \right)
+	$$                                 
+
+\end{itemize}
+%
+Quindi, la soluzione è
+\begin{equation}
+ \tag{$\ast$} \label{eq:17nov2021_solution_1}
+	u(t,x) = c_0^0 + c_0^1 t + \sum_{n\neq 0} \left[ \alpha_n^+ e^{in(x + vt)} + \alpha_n^- e^{in(x - vt)} \right]
+\end{equation}
+
+Inoltre,
+\begin{equation}
+\tag{$\ast \ast$} \label{eq:17nov2021_solution_2}
+	u(t,x) = c_0^0 + c_0^1 t + \myphi^+(x + vt) + \myphi^-(x - vt)
+\end{equation}
+con $\myphi^{\pm}$ funzioni con coefficienti di Fourier $\alpha_n^{\pm}$ che si dicono \textbf{onde viaggianti}.
+
+\textbf{Nota.} La \eqref{eq:17nov2021_solution_2} è specifica delle equazioni delle onde.

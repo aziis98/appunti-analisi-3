@@ -1,0 +1,183 @@
+%
+% Lezione 11 novembre
+%
+
+\section{Esercitazione del 11 novembre}
+
+Consideriamo $L^2([-\pi,\pi], \C) $. Ricordiamo che $e^{inx} = \cos(nx) + i \sin(nx)$. 
+Abbiamo
+%
+\begin{align*}
+\sum_{n=-N}^N c_n e^{inx} & = c_0(f) + \sum_{n=1}^N \left( c_n(f) e^{inx} + c_{-n} e^{inx} \right) \\
+& = c_0(f) + \sum_{n=1}^{N} \left[ \left( c_n(f) + c_{-n}(f) \right) \cos(nx) + i\left( c_n(f) - c_{-n}(f) \right) \sin(nx) \right] \\
+& = c_0(f) + \sum_{n=1}^{N} a_n(f) \cos(nx) + b_n(f) \sin(nx)  
+\end{align*}
+con
+%
+$$
+\begin{cases}
+a_n(f) = c_n(f) + c_{-n}(f) \\
+b_n(f) = i c_n(f) - i c_{-n} (f) \\
+a_0(f) = c_0(f)
+\end{cases} 
+$$
+%
+
+Passando al limite per $N \to +\infty$
+%
+$$
+f(x) \overbrace{=}^{L^2} \sum_{n=-N}^N c_n e^{inx} 
+\overset{(\star)}{=} c_0(f) + \sum_{n=1}^{+\infty} a_n(f) \cos(nx) + b_n(f) \sin(nx) 
+$$
+%
+
+\textbf{Nota.} L'uguaglianza $(\star)$ ha bisogno di qualche spiegazione: come sappiamo che la serie a destra converge? Usiamo il fatto, che mostriamo sotto, che $\{1, \cos(nx), \sin(nx), n > 1 \}$ sono un sistema ortogonale, dunque per la disuguaglianza di Bessel segue la convergenza.
+
+\textbf{Osservazione.} Gli elementi $\left\{ 1, \sin(nx), \cos(nx) \right\}$ sono ortogonali per $n \geq 1$ in $L^2([-\pi,\pi], \C) $.
+Infatti, ricordiamo che
+\begin{align*}
+\cos(nx) & = \frac{e^{inx} + e^{-inx}}{2}\\
+\sin(nx) & = \frac{e^{inx} - e^{-inx}}{2i}. 
+\end{align*}
+
+\begin{itemize}
+
+	\item È banale verificare che $\left<1,\cos(nx) \right> = \left<1, \sin(nx) \right> = 0$; 
+
+	\item Verifichiamo ora che valga $\left<\cos(nx), \sin(mx) \right> = 0$ per ogni $n,m$, dunque calcoliamo:
+	%
+	$$
+		\left<\sin(nx), \sin(mx) \right> = \frac{1}{4} \left<e^{-inx} - e^{inx}, e^{-imx} - e^{imx} \right> = 0.
+	$$
+	%
+
+\end{itemize}
+
+Ora normalizziamo: $\ds \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}}, n \geq 1 \right\}$.
+
+In conclusione, abbiamo ottenuto che
+\begin{itemize}
+
+	\item $L^2( [-\pi,\pi], \C)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\C}$
+
+
+	\item $L^2( [-\pi,\pi], \R)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\R}$ 
+
+\end{itemize}
+
+\textbf{Esercizio.}  Se $f$ è a valori reali, dimostrare che $a_n(f)$ e $b_n(f)$ sono anch'essi reali. [TO DO]
+
+\textit{Sketch.} Si dimostra che $a_n(f) = \ol{a_n(f)}, b_n(f) = \ol{b_n(f)}$ e per farlo si usano le espressioni di $a_n, b_n$ in funzione dei coefficienti di Fourier complessi scritte sopra.
+
+
+\textbf{Esercizio.} Trovare la base di Fourier complessa e reale di $L^2([a,b], \C) $.
+
+\textbf{Soluzione.}
+Data $f(x) \in L^2([a,b],\C)$, definiamo la funzione
+%
+$$
+	F(y) \coloneqq  f\left( (y+\pi)\frac{b-a}{2\pi} + a \right) = f(x).
+$$
+%
+Notiamo che $F \in L^2([-\pi,\pi],\C)$, dunque ha espansione in serie di Fourier:
+%
+\begin{align*}
+	F(y) = \sum_{n \in \Z} c_n(F) e^{iny}, \qquad 
+	c_n(F) & = \frac{1}{2\pi} \int_{-\pi}^\pi F(y) e^{-iny} \dd y \\
+	& = \frac{1}{2\pi} \int_{-\pi}^\pi f \left( (y+ \pi) \frac{b-a}{2\pi} + a \right) e^{-iny} \dd y.
+\end{align*}
+Usando il cambio di variabile $\ds y = (x-a) \frac{2\pi}{b-a} - \pi$ si ottiene
+\begin{align*}
+	c_n(f) & = \frac{1}{b-a} \int_a^b f(x) \exp{\left[ \left((x-a)\frac{2\pi}{b-a} - \pi\right)(-in)\right]} \dd x \\
+	& = \frac{(-1)^n}{b-a}\exp{\left[ \frac{2\pi a}{b-a} in \right]} \int_a^b f(x) \exp{\left[ \frac{2\pi x}{b-a} (-in) \right]} \dd x 
+\end{align*}
+Da cui
+%
+$$
+	f(x) = \sum_{n \in \Z} c_n(f) \exp{\left[ \frac{2\pi}{b-a}x in \right]}, \qquad 
+	c_n(f) = \frac{1}{b-a} \int_a^b f(x) \exp{\left[- \frac{2\pi}{b-a}x in \right]}.
+$$
+%
+
+
+
+
+
+
+\textbf{Esercizio.} Sia $f \in L^2([-\pi,\pi], \C) $ (l'estensione di) $f$ è $2\pi / N$ periodica. Dimostrare che $c_n(f) \neq 0$ se solo se $n$ multiplo di $N$. [TO DO]
+
+
+\textbf{Esercizi classici.} Fissata una funzione $f \in L^2$, calcolare i coefficienti di Fourier complessi (e reali).
+
+Calcoliamo i coefficienti di $f(x) = x^2$.
+
+\begin{align*}
+	c_n(f) & = \frac{1}{2\pi} \int_{-\pi}^\pi x^2 e^{-inx} \dd x = \frac{1}{2\pi} \left| \frac{e^{-inx}}{-in} x^2 \right|_{-\pi}^\pi - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} 2x \dd x \\
+	& = - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} 2x \dd x = -\frac{i}{\pi n} \left[ \left| \frac{e^{-inx}}{-in} \right|_{-\pi}^\pi - \int_{-\pi}^\pi \frac{e^{-inx}}{-in} \dd x  \right] \\
+	& = \frac{-i \pi}{\pi n} \frac{\cos(-n\pi) + \cos(-n (-\pi))}{-in} + \frac{i}{\pi n} \int_{-\pi}^\pi \frac{e^{-inx}}{-inx} \dd x \\
+	& = \frac{2}{n^2} + \frac{i}{\pi n} \cdot 0 = \frac{2}{n^2} (-1)^n \\
+	& \Longrightarrow c_n(f) = \frac{2}{n^2} (-1)^n.
+\end{align*}
+
+Infine
+%
+$$
+c_0(f) = \frac{1}{2\pi} \int_{-\pi}^\pi x^2 \dd x = \frac{1}{2\pi} \frac{2}{3} \pi^3 = \frac{1}{3} \pi^2.
+$$
+%
+
+Per Parseval $\ds \norm{f}_{L^2}^2 = 2\pi \sum_{n \in \Z} \left| c_n(f) \right|^2$.
+Da cui
+%
+$$
+\int_{-\pi}^\pi x^4 \dd x = \norm{x^2}_{L^2}^2 = 2\pi \cdot \left[ \sum_{n=1}^{+\infty} \frac{4}{n^4} + \frac{\pi^2}{3}  \right].
+$$
+%
+
+\textbf{Nota.} Potevamo ottenere i coefficienti di $f(x) = x^2$, applicando il teorema della derivata.
+
+\textbf{Domande.}
+\begin{itemize}
+
+	\item Abbiamo visto che $\ds c_n(x^2) = \frac{2 (-1)^n}{n^2}$ e dedotto che $\ds c_n(2x) = in \frac{2(-1)^n}{n^2} = \frac{2(-1)^n i}{n}$.
+
+
+	\item Vorremmo calcolare $c_n(2)$, possiamo applicare il teorema sulla formula della derivata?
+
+\end{itemize}
+
+\textbf{Esercizio.}
+\begin{enumerate}
+
+	\item Calcolare i coefficienti di Fourier complessi di $x^3$ e vedere se vale $c_n(3x^2) = i n c_n(x^3)$.
+
+
+	\item Calcolare i coefficienti reali di $x^2$.
+
+\end{enumerate}
+
+\textbf{Esercizio.} Sia $f(x)$ definita da $\ds \sum_{n \in \Z} \gamma_n e^{inx} $ con $\ds  %
+\begin{cases}
+	\ds \gamma_n = \frac{\cos(n)}{\left| n \right|^{3 / 2}} \\
+	\gamma_0 = 1
+\end{cases}
+$
+
+\textbf{Domande.}
+\begin{enumerate}
+\item $f$ è ben definita?
+
+\item $f$ è continua?
+
+\item $f$ è derivabile?
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+\begin{enumerate}
+
+	\item Sì, infatti $\ds 2 \sum_{n=1}^{+\infty} \left| \gamma_n \right|^2 \leq 2 \sum_{n=1}^{+\infty} \frac{1}{n^3} < +\infty $.
+
+
+	\item \textit{Suggerimento.} Usare la \hyperlink{prop:2021-08nov_prop_3}{Proposizione 3} della parte della regolarità dei coefficienti della serie di Fourier.
+
+\end{enumerate}
