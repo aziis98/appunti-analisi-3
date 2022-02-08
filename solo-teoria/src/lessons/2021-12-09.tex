@@ -1,0 +1,151 @@
+\section{Conclusione sulla TdF}
+
+\textbf{Proposizione 4.} (di 2 lezioni fa)
+Se $f,xf \in L^1(\R;\C)$, allora $\hat{f} \in C^1(\R;\C)$ e $(\hat{f})' = \hat{-ixf}$.
+
+\textbf{Corollario.} Se $f,x^kf \in L^1$ con $k=1,2,\ldots$, allora $x^hf \in L^1$ per ogni $h=0,\ldots,k$ e $\hat{f} \in C_0^k$ e $D^h \hat{f} = \hat{(-ix)^h f}$.
+
+\textbf{Dimostrazione.} Vale $|x^h| \leq 1 + |x|^k$ per ogni $x$ e per ogni $h=1,\ldots,k$.
+Allora $|x^hf| \leq (1 + |x|^k)|f| \in L^1$.
+Il resto dell'enunciato è per induzione su $k$.
+
+\vs
+
+\textbf{Corollario.} Se $x^k f \in L^1$ per ogni $k=0,1,\ldots,$ \footnote{Questa condizione è implicata, ad esempio, dall'ipotesi $f \in C_C$} allora $\hat{f} \in C^\infty$ (anzi $C_0^\infty$ siccome le derivate sono trasformate).
+
+\vs
+
+\textbf{Teorema} (Paley-Weiner).
+Se $e^{\alpha |x|} \cdot f(x) \in L^1$ per qualche $\alpha > 0$, allora $\hat{f}$ è analitica\footnote{Restrizione di $g \colon \underbrace{\R \times (-\alpha,\alpha)}_{\R \times \R \simeq \C} \to \C$ olomorfa}.
+
+\textbf{Dimostrazione.} In $\underset{y}{\R} \times \underset{t}{\R} \simeq \underset{z=x+it}{\C}$ definisco $g(z)$.
+
+Ricordiamo che $\hat{f}(y) = \int_{-\infty}^\infty f(x) e^{-iyx} \dd x $.
+Poniamo
+%
+$$
+	g(z) \coloneqq \int_{-\infty}^\infty f(x) e^{-izx} \dd x 
+$$
+%
+
+\textit{Passo 1.} $g(z)$ è definita per ogni $z \in \R \times [-\alpha,\alpha]$.
+Infatti,
+%
+$$
+	\int_{-\infty}^\infty f(x) e^{-izx} \dd x 
+	= \int_{-\infty}^\infty |f(x)| e^{tx} \dd t
+	\leq \int_{-\infty}^\infty |f(x)| e^{\alpha |x|} \dd x < +\infty
+$$
+%
+
+\textit{Passo 2.} Mostriamo che $g(z)$ è olomorfa su $\R \times (-\alpha,\alpha)$.
+Sviluppo $g$ in serie di potenze in $0$.
+
+\textbf{Nota.} Questo mi serve per dire che è olomorfa in una palla di raggio $\alpha $ centrata in $0$. Per concludere bisogna traslare il centro la palla per tutta la retta reale e mostrare la stessa cosa [TO DO: spiegare meglio + disegno palla].
+
+%
+$$
+	g(z) = \int_\R f(x) e^{-izx} \dd x 
+	= \int_\R f(x) \sum_{n=0}^\infty \frac{(-izx)^n}{n!} \dd x
+	\overset{(\star)}{=} \sum_{n=0}^{\infty} \left( \int_\R \frac{(-ix)^n}{n!} f(x) \dd x \right) z^n
+	= \sum_{n=0}^\infty a_n z^n
+$$
+%
+
+La serie $\sum_n a_n z^n$ è convergente per $|z| \leq \alpha$, quindi $g$ è olomorfa su $B(0,\alpha)$.
+Notiamo che in $(\star)$ abbiamo usato Fubini-Tonelli; controlliamo che potevamo applicarlo, dunque verifichiamo quanto segue.
+%
+$$
+	\int_{\R} |f(x)| \sum_{n=0}^{\infty} \left| \frac{(-izx)^n}{n!} \right| \dd x < + \infty
+$$
+%
+Abbiamo
+%
+$$
+	\int_\R |f(x)| \sum_{n=0}^{\infty} \frac{|zx|^n}{n!} \dd x
+	= \int_\R |f(x)| e^{|z| |x|} \dd x
+	\underset{\text{se } |z| \leq \alpha}{\leq} \int_R |f(x)| e^{\alpha |x|} \dd x
+$$
+%
+
+Per concludere si dimostra (allo stesso modo) che $g$ si sviluppa in serie in ogni punto $y_0 \in \R$ con raggio di convergenza $\alpha$.
+\qed
+
+\vs
+
+\textbf{Corollario.} Se $f \in L^1$ è olomorfa e a supporto compatto allora $\hat{f}$ è la restrizione di $g \colon \C \to \C$ olomorfa \textbf{[TO DO: controllare]}.
+
+\textbf{Nota.} Se $f \in L^1$ e a supporto compatto, si ha $f(x) e^{\alpha |x|} \in L^1$ per ogni $\alpha$.
+
+\section{Applicazioni TdF}
+
+Risoluzione equazioni del calore su $\R$.
+%
+$$
+\begin{cases}
+u_t = u_{xx} (x \in \R) \\
+u(0,\cdot) = u_0
+\end{cases} 
+$$
+%
+
+\textbf{Risoluzione formale.}
+Denotiamo con $\hat{u} \coloneqq \hat{u}(t,y)$ la trasformata di Fourier rispetto alla variabile $x$ 
+%
+$$
+\hat{u_t}(t,y) = \int \frac{\partial}{\partial t} u(t,x) e^{-ixy} \dd x 
+	= \frac{\partial}{\partial t} \left( \int u(t,x) e^{-ixy} \dd x \right) = \hat{u}_t
+$$
+%
+Inoltre, $\hat{u_t} = \hat{u_{xx}} = (iy)^2 \hat{u} = -y^2\hat{u}$.
+Quindi, per ogni $y$, $\hat{u}(\cdot,y)$ risolve
+%
+\begin{equation}
+\label{eq:09dic_prob1}\tag{P}
+\begin{cases}
+	\dot z = -y^2 z \\
+	z(0) = \hat{u_0}(y)
+\end{cases} 
+\end{equation}
+
+Soluzione generale $z = \alpha e^{-y^2 t}$, da cui la soluzione per \eqref{eq:09dic_prob1} è $\hat{u}(t,y) = \hat{u_0}(y) e^{-y^2 t}$.
+
+Siano 
+%
+$$
+	\rho(x) \coloneqq \frac{e^{-x^2 / 2}}{\sqrt{2\pi}}, \quad  \hat{\sigma_{\sqrt{2t}}\rho} = \hat{\rho}(\sqrt{2t}y).
+$$
+%
+Però è noto che\footnote{Si vede all'esercitazione che segue?} $\ds \hat{\rho}(y) = e^{-y^2/2} \implies \hat{\rho}(\sqrt{2t}y) = e^{-(\sqrt{2t}y)^2 / 2} = e^{-y^2 t}$. Da cui
+%
+$$
+	\hat{u}(t,y) = \hat{u_0} (y) e^{-y^2t} = \hat{u_0}(y) \cdot \hat{\sigma_{\sqrt{2t}} \rho}(y)
+	= \mathcal{F}(u_0 \ast \sigma_{\sqrt{2t}} \rho)
+	\Longrightarrow u(t,y) = u_0 \ast \left( \sigma_{\sqrt{2t}} \rho \right)
+$$
+%
+Dunque
+%
+\begin{equation}
+\label{eq:09dic_prob2} \tag{$\ast$}
+	u(t,x) \coloneqq 
+	\begin{cases}
+		u_0(x) \quad \text{per } t=0 \\
+		u_0 \ast \sigma_{\sqrt{2t}} \rho(x) \quad \text{per } t > 0
+	\end{cases} 
+\end{equation}
+
+\textbf{Teorema.} Se $u_0 \colon \R \to \R$ è continua e limitata, allora $u$ data in \eqref{eq:09dic_prob2} è ben definita su $[0,+\infty) \times \R$, continua, $C^\infty$ per $t>0$ e risolve \eqref{eq:09dic_prob1}.
+
+\vss
+
+Data $u \colon [0,T) \times \R \to \R$ soluzione di \eqref{eq:09dic_prob1} tale che esiste $h_0,h_1 \in L^1(\R)$ tali che 
+%
+$$
+	|u(t,x)| \leq h_0(x), \quad |u_t(t,x)| \leq h_1(x)
+$$
+%
+allora $\hat{u}(\cdot,y)$ è univocamente determinata su $[0,T)$, dunque $u$ è univocamente determinata per l'iniettività di TdF.
+
+% A seguire è stato fatto quanto segue, che però è fuori programma e pertanto non viene riportato
+% Disuguaglianza di Heisemberg

@@ -1,0 +1,192 @@
+%
+% Lezione del 25 Novembre 2021
+%
+
+\section{Esercitazione del 25 Novembre 2021}
+
+\textbf{Esercizio.}
+Consideriamo l'equazione alle derivate parziali
+\begin{equation}
+	\tag{P}
+	\begin{cases}
+		u_{ttt}(t, x) = u_{xx}(t, x) & x \in [-\pi, \pi] \\
+		u(\curry, \pi) = u(\curry, -\pi) \\
+		u_x(\curry, \pi) = u_x(\curry, -\pi) \\
+		u(0, \curry) = u_0 \\
+		u_{x}(0, \curry) = u_1 \\
+		u_{xx}(0, \curry) = u_2 \\
+	\end{cases}
+\end{equation}
+ponendo $c_n^i \coloneqq c_n(u_i) \text{ per } n \in \Z$ per $i = 1, 2, 3$. Segue subito che il problema di Cauchy sui coefficienti è
+\begin{equation}
+	\tag{P$'$}
+	\begin{cases}
+		\dddot c_n(t) = -n^2c_n(t) \\
+		c_n(0) = c_n^0 \\
+		\dot c_n(0) = c_n^1 \\
+		\ddot c_n(0) = c_n^2 \\
+	\end{cases}
+	\qquad
+	\forall n \in \Z
+\end{equation}
+che ha polinomio caratteristico $p(\lambda) = \lambda^3 + n^2 \implies \lambda^3 = -n^2$ e dunque le soluzioni sono $\lambda_i = n^{2/3} \zeta_6^{2i - 1}$ con $\zeta_6$ una radice sesta dell'unità. Per comodità per $i = 1, 2, 3$ poniamo $z_i \coloneqq n^{2/3} \omega_i$ con $\omega_i$ soluzioni di $\omega^3 = -1$ che possiamo anche riscrivere come
+$$
+\omega_1 = \frac{1}{2} + \frac{\sqrt 3}{2}i
+\qquad
+\omega_2 = \frac{1}{2} - \frac{\sqrt 3}{2}i
+\qquad
+\omega_3 = -1
+$$
+Dunque per $n \in \Z$ e $n \neq 0$ la soluzione sarà
+$$
+\left\{
+\begin{aligned}
+	& c_n(t) = A_n e^{-z_1^n t} + B_n e^{-z_2^n t} + C_n e^{-z_3^n t} \\[1ex]
+	& c_n(0) = c_n^0 = A_n + B_n + C_n \\[1ex]
+	& c_n(1) = c_n^1 = A_n z_1^n + B_n z_2^n + C_n z_3^n \\[1ex]
+	& c_n(2) = c_n^2 = A_n (z_1^n)^2 + B_n (z_2^n)^2 + C_n (z_3^n)^2
+\end{aligned}
+\right.
+$$
+e quindi otteniamo il sistema
+$$
+\implies
+\left\{
+\begin{aligned}
+	& c_n^0 = A_n + B_n + C_n \\[1ex]
+	& n^{-2/3} c_n^1 = A_n \omega_1 + B_n \omega_2 + C_n \omega_3 \\[1ex]
+	& n^{-4/3} c_n^2 = A_n \omega_1^2 + B_n \omega_2^2 + C_n \omega_3^2
+\end{aligned}
+\right.
+\qquad
+\textcolor{lightgray}{\rightsquigarrow
+\begin{pmatrix}
+	1 & 1 & 1 \\
+	\omega_1 & \omega_2 & \omega_3 \\
+	\omega_1^2 & \omega_2^2 & \omega_3^2
+\end{pmatrix}
+\begin{pmatrix}
+	A_n \\
+	B_n \\
+	C_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+	c_n^0 \\
+	n^{-2/3} c_n^1 \\
+	n^{-4/3} c_n^2
+\end{pmatrix}}
+$$
+e facendo conti si ottengono $A_n, B_n$ e $C_n$ e si scopre che 
+[TODO: Controllare i conti con Mathematica]
+$$
+\begin{aligned}
+	A_n e^{n^{2/3}(t/2 + i \sqrt 3 t / 2)} &\sim e^{n^{2/3}t / 2}
+	&\xrightarrow{\;\,t \to \infty\,\;} \;\, \infty \\
+	B_n e^{n^{2/3}(t/2 - i \sqrt 3 t / 2)} &\sim e^{n^{2/3}t / 2}
+	&\xrightarrow{\;\,t \to \infty\,\;} \;\, \infty \\
+	C_n e^{-n^{2/3}} &\sim e^{-n^{2/3} t}
+	&\xrightarrow{t \to -\infty} \;\, \infty \\
+\end{aligned}
+$$
+dunque in realtà anche se il problema in partenza sembrava ben definito in realtà non ha soluzione per alcun $t \in \R$.
+
+\textit{Conti esatti con Mathematica:}
+$$
+\begin{aligned}
+	& A_n \to \frac{c_n^0}{3}-\frac{c_n^2}{3 n^{4/3}}-\frac{(-1)^{2/3} c_n^2}{3 n^{4/3}}-\frac{(-1)^{2/3} c_n^1}{3
+	n^{2/3}}, \\
+	& B_n \to \frac{c_n^0}{3}-\frac{c_n^2}{6 n^{4/3}}+\frac{i c_n^2}{2 \sqrt{3} n^{4/3}}+\frac{c_n^1}{6 n^{2/3}}+\frac{i
+	c_n^1}{2 \sqrt{3} n^{2/3}}, \\
+	& C_n \to \frac{c_n^0}{3}+\frac{c_n^2}{3 n^{4/3}}-\frac{c_n^1}{3 n^{2/3}}
+\end{aligned}
+$$
+
+\textbf{Esercizio.}
+(Equazione del calore senza una condizione al bordo)
+\begin{equation}
+	\tag{P}
+	\begin{cases}
+		u_t = u_{xx} & x \in [-\pi, \pi] \\
+		u(\curry, -\pi) = u(\curry, \pi) \\
+		u(0, \curry) = u_0 = \cos(x / 2)
+	\end{cases}
+\end{equation}
+\begin{enumerate}
+	\item \textit{Esiste una soluzione?}
+
+		Sì in quanto esiste anche con una condizione in più
+
+	\item \textit{È unica?}
+
+		Senza periodicità per $u_x$ non è vero in generale che $c_n(u_{xx}(t, \curry)) = -n^2 c_n(u(t, \curry))$.
+
+\end{enumerate}
+Cerchiamo una soluzione della forma $u(t, x) = \cos(x/2) \psi(t)$. Abbiamo che $u_t(t, x) = \dot \psi(t) \cos(x / 2)$ e $u_{xx}(t, x) = - \cos(x / 2) \psi(t) / 4$. Dunque $\dot \psi(t) = - \psi(t) / 4$ e $\psi(0) = 1 \implies \psi(t) = e^{-t / 4}$.
+
+\textbf{Esercizio.}
+\begin{equation}
+	\tag{P}
+	\begin{cases}
+		u_t = u_{xx} & x \in [0, \pi] \\
+		u(t, 0) = 0 & t \in \R \\
+		u(t, \pi) = t & t \in \R \\
+		u(0, \curry) = u_0
+	\end{cases}
+\end{equation}
+L'equazione è lineare, cerchiamo $u(t, x) = v(t, x) + \psi(t, x)$ in modo che $v(t, x) = 0$ se $x = 0, \pi$ e $\psi(t, 0) = 0$ e $\psi(t, \pi) = t$ e $\psi(t, x) = t x / \pi$.
+
+\textbf{Esercizio.}
+\begin{equation}
+	\tag{P}
+	\begin{cases}
+		u_t = u_{xxxx} & x \in [-\pi, \pi] \\
+		u(\curry, \pi) = u(\curry, -\pi) \\
+		u_x(\curry, \pi) = u_x(\curry, -\pi) \\
+		u_{xx}(\curry, \pi) = u_{xx}(\curry, -\pi) \\
+		u_{xxx}(\curry, \pi) = u_{xxx}(\curry, -\pi) \\
+		u(0, \curry) = u_0
+	\end{cases}
+\end{equation}
+
+\textbf{Esercizio.}
+\begin{equation}
+	\tag{P}
+	\begin{cases}
+		u_t = u_{xxxx} & x \in [0, \pi] \\
+		u(\curry, 0) = u(\curry, \pi) = 0 \\
+		u_{xx}(\curry, 0) = u_{xx}(\curry, \pi) = 0 \\
+		u(0, \curry) = u_0
+	\end{cases}
+\end{equation}
+
+\textbf{Esercizio.}
+Sia $V$ il seguente insieme
+$$
+V \coloneqq \left\{ f \in L^1([1, +\infty]) \;\middle|\; |f(x)| \leq \frac{1}{x^2} \text{ per q.o. } x \right\}
+$$
+è compatto in $L^1$? e se al posto di $L^1$ avessimo $L^2$?
+
+[TODO: Espandere]
+
+Intuitivamente $V \supseteq \{ f \mid |f(x)| \leq 1 / 2 \text{ q.o. in } [1, 2] \}$ che non è compatto in quanto contiene famiglie di funzioni che ``oscillano molto'' costruite sull'idea della base di Haar.
+
+\textbf{Esercizio.}
+Trovare una funzione in $L^p([0, +\infty))$ tale però che $f \notin L^q$ per $q \neq p$.
+
+Cercare $f$ della forma
+$$
+f(x) = \frac{1}{x^\alpha (a + (\ln x)^\beta)}
+$$
+
+
+
+
+
+
+
+
+
+
+
+

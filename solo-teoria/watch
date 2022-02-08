@@ -1,0 +1,10 @@
+#!/bin/bash
+
+build() {
+    notify-send -t 250 -i system-run-symbolic 'make' 'Building "main.pdf"...'
+    time make
+}
+
+export -f build
+
+find "$(dirname "$0")/src" -type f | SHELL=/bin/bash entr -s 'build'

@@ -1,0 +1,258 @@
+
+\section{Esercitazione del 13 Dicembre 2021}
+
+\subsection{Operatori autoaggiunti}
+
+[TODO: Pezzo iniziale mancante]
+
+\textbf{Esercizi.}
+\begin{enumerate}
+	\item[1)] Esempio classico di $H = L^2([-\pi, \pi]; \C)$ e $D = \{ u \in C^1([-\pi, \pi]; \C) \mid u(-\pi) = u(\pi) \}$ e $T u = i u$ allora $T$ è un operatore autoaggiunto ed ha autovalori $\lambda = n \in \Z$.
+	
+	\item[2)] $H = L^2([0, \pi]; \R)$ e $D = \{ u \in C^2([0, \pi]) \mid u(0) = 0 \text{ e } u(\pi) = 0 \}$ sono dette condizioni di Dirichlet con $T u = - \ddot u$.
+\end{enumerate}
+
+Ora usiamo sempre $T u = -\ddot u$ ma su domini differrenti.
+
+\begin{enumerate}
+	\item[3)] $D_3 = \{ u \in C^2([0, \pi]) \mid \dot u(0) = 0 \text{ e } \dot u(\pi) = 0 \}$ sono dette condizioni di Neumann.
+	
+	\item[4)] $D_4 = \{ u \in C^2([0, \pi]) \mid u(0) = 0 \text{ e } \dot u(\pi) = 0 \}$ sono dette condizioni di Robin.
+\end{enumerate}
+Dire per 2), 3) e 4) rispondere alle seguenti
+\begin{itemize}
+	\item L'operatore $T$ è autoaggiunto e controllare se il relativo $D$ è denso in $L^2$
+	\item Controllare se esistono autovalori ed eventualmente dire chi sono gli autovettori.
+	\item Stabilire se esiste una base Hilbertiana di autovettori.
+\end{itemize}
+
+\textbf{Risoluzione.}
+\begin{enumerate}
+	\item[2)] $D_2$ è denso. Vediamo l'operatore è autoaggiunto
+		$$
+		\begin{aligned}
+			\langle Tu, v \rangle 
+			&= \int_0^\pi (-\ddot u(x)) v(x) \dd x 
+			= \underbrace{-\dot u(x) v(x) \bigg|_0^\pi}_{v(0) = v(\pi) = 0} - \int_0^\pi (-\dot u(x)) \dot v(x) \dd x 
+			= \int_0^\pi \dot u(x) \dot v(x) \dd x \\
+			\langle u, Tv \rangle 
+			&= \int_0^\pi u(x) (-\ddot v(x)) \dd x 
+			= \underbrace{u(x) (-\dot v(x)) \bigg|_0^\pi}_{u(0) = u(\pi) = 0} - \int_0^\pi \dot u(x)) (-\dot v(x)) \dd x 
+			= \int_0^\pi \dot u(x) \dot v(x) \dd x \\
+		\end{aligned}
+		$$
+		dunque $\langle Tu, v \rangle = \langle \dot u, \dot v \rangle = \langle u, Tv \rangle$.
+
+		Inoltre $T$ è anche definito positivo infatti $\langle T u, u \rangle = \langle \dot u, \dot u \rangle = \| \dot u \|_{L^2} \geq 0$.
+
+		Cerchiamo gli autovalori quindi poniamo $-\ddot u = Tu = \lambda u$ con $\lambda \geq 0$ e $u \in D_2$. Segue $p(t) = t^2 + \lambda \implies t = \pm i \sqrt{\lambda}$ se $\lambda \neq 0$. 
+
+		Se $\lambda = 0$ invece otteniamo $\ddot u = 0 \implies u(x) = a x + b$ ma per le condizioni al bordo segue $a, b = 0$ e dunque $u = 0 \implies \lambda = 0$ non è autovalore.
+
+		Invece se $\lambda > 0$ abbiamo $u(x) = A \cos(\sqrt{\lambda} x) + B \sin(\sqrt{\lambda} x)$ e segue $A = 0$ e $\lambda = n^2$ per $n \in \N \setminus \{ 0 \}$.
+
+	\item[3)] $D_2$ è denso e similmente si vede che anche in questo caso $T$ è autoaggiunto. Anche in questo caso $T$ è definito positivo perché vale sempre $\langle Tu, v \rangle = \langle \dot u, \dot v \rangle$.
+
+		Per cercare gli autovalori risolviamo il seguente sistema
+		$$
+		\begin{cases}
+			-\ddot u = \lambda u \\
+			\dot u(0) = 0 \\
+			\dot u(\pi) = 0
+		\end{cases}
+		$$
+		Se $\lambda = 0$ allora $u(x) = \text{cost.}$ è un autovettore per l'autovalore $0$.
+
+		Se invece $\lambda \neq 0$ allora $u(x) = A \cos(\sqrt{\lambda} x) + B \sin(\sqrt{\lambda} x) \implies \cos(nx)$ è un autovettore e $\lambda = n^2$ per $n = 1, 2, \dots$.
+
+	\item[4)]
+		In questo caso vediamo che vale sempre $\langle Tu, v \rangle = \langle \dot u, \dot v \rangle$ ma per motivi diversi infatti
+		$$
+		\begin{aligned}
+			\langle Tu, v \rangle 
+			&= \int_0^\pi (-\ddot u(x)) v(x) \dd x 
+			= \underbrace{-\dot u(x) v(x) \bigg|_0^\pi}_{\dot u(\pi) = 0, \; v(0) = 0} - \int_0^\pi (-\dot u(x)) \dot v(x) \dd x 
+			= \int_0^\pi \dot u(x) \dot v(x) \dd x \\
+			\langle u, Tv \rangle 
+			&= \int_0^\pi u(x) (-\ddot v(x)) \dd x 
+			= \underbrace{u(x) (-\dot v(x)) \bigg|_0^\pi}_{\dot v(\pi) = 0, \; u(0) = 0} - \int_0^\pi \dot u(x)) (-\dot v(x)) \dd x 
+			= \int_0^\pi \dot u(x) \dot v(x) \dd x \\
+		\end{aligned}
+		$$
+		Considerando il sistema $-\ddot u = \lambda u$ con le condizioni al bordo di Robin caso $\lambda = 0$ non è un autovalore mentre se $\lambda \neq 0$ abbiamo che $\dot u(x) = \sqrt{\lambda} B \cos(\sqrt{\lambda} x) = 0$ per $x = \pi$ dunque $\sqrt{\lambda} = n + 1/2$ per $n = 0, 1, 2, \dots$ e gli autovettori sono
+		$$
+		u_n(x) = \sin\left(\left( n + \frac{1}{2} \right)x\right)
+		$$
+\end{enumerate}
+
+\textbf{Osservazione.}
+$T \colon D \to L^2$ operatore lineare e continuo $\iff \exists M > 0$ tale che $\norm{Tu}_2 \leq M\norm{u}$ per ogni $u \in D$.
+
+Vediamo ad esempio che $D_1$ non è continuo infatti gli autovalori sono $\lambda_n = n^2 \implies n^2 \norm{u_n}_2 \leq M \norm{u_n}_2 \implies M \geq n^2$ per ogni $n$. Dunque $M$ è illimitato e l'operatore non può essere continuo.
+
+\textbf{Esempio.} Se ad esempio abbiamo $T u = -\ddot u$ con $\tilde D = \{ u \in C^2 \mid u(0) = u(\pi) = 1 \}$ allora $T$ non è autoaggiunto e basta trovare $u, v$ tali che
+$$
+\langle T u, v \rangle \neq \langle u, T v \rangle
+$$
+
+\textbf{Esercizio.}
+\begin{enumerate}
+	\item Sia $T_1 \colon \ell^2 \to \ell^2$ dato da
+		$$
+		T_1((x_n)_{n > 0}) = (0, x_1, x_2, \dots)
+		$$
+	\item Sia $T_2 \colon \ell^2 \to \ell^2$ dato da
+		$$
+		T_2((x_n)_{n > 0}) = (x_2, x_3, \dots)
+		$$
+\end{enumerate}
+Dire se sono autoaggiunti ed eventualmente chi sono gli autovalori.
+
+\textit{Esericizi più da compito sono invece cose del tipo...}
+
+\textbf{Esercizio.}
+Sia $H = L^2([0, \pi] \times [0, \pi]; \R)$ e $T u = -\Delta u = -u_{xx} -u_{yy}$
+\begin{itemize}
+	\item $D_1 = \{ u \in C^2([0, \pi] \times [0, \pi]; \R) \mid u|_{\pd Q} = 0 \}$
+	\item $D_2 = \{ u \in C^2([0, \pi] \times [0, \pi]; \R) \mid \nabla u|_{\pd Q} = 0 \}$
+	\item $D_3 = \{ u \in C^2([0, \pi] \times [0, \pi]; \R) \mid \text{$u = 0$ su due lati paralleli e $\nabla u = 0$ sugli altri due} \}$
+\end{itemize}
+e dire se l'operatore è autoaggiunto ed eventualmente trovare gli autovalori.
+
+\subsection{Calcolo Trasformate di Fourier}
+
+Abbiamo visto che le trasformate di $f(x) = e^{-|x|}$ e $g(x) = 1 / (1 + x^2)$ sono rispettivamente
+$$
+\hat f(y) = \frac{2}{1 + y^2}
+\qquad
+\hat g(y) = \pi e^{-|y|}
+$$
+Vorremo provare a trovare ora le trasformate funzioni come $x^2 e^{-|x|}$ o $x / (1 + x^2)$ usando le proprietà delle trasformate con le derivate. Ricordiamo che
+$$
+\begin{gathered}
+	f, f' \in L^1 \implies \hat{f'\,}(y) = i y \hat f(y) \\
+	f, x f \in L^1 \implies \hat{f}'(y) = \hat{-i x f\,}(y)
+\end{gathered}
+$$
+dunque intuitivamente per $x^2 e^{-|x|}$ possiamo fare
+$$
+x^2 e^{-|x|} = i (-i) x (x e^{-|x|}) \implies \mathcal F(i (-i) x (x e^{-|x|})) = i (\mathcal F(x e^{-|x|}))'(y)
+$$
+ora dobbiamo calcolare $\mathcal F(x e^{-|x|})(y)$
+$$
+\mathcal F(x e^{-|x|})(y) = i \mathcal F(-ix e^{-|x|}) = i \mathcal F(e^{-|x|})'(y) = i \left(\frac{2}{1 + y^2}\right)' = \frac{-4iy}{(1+y^2)^2}
+$$
+dunque in conclusione abbiamo
+$$
+\mathcal F(x^2 e^{-|x|})(y) = i \left(\frac{-4iy}{(1 + y^2)^2}\right)' = 4 \left(\frac{y}{(1 + y^2)^2}\right)'
+$$
+Invece per quanto riguarda
+$$
+g(x) = \frac{x}{1+x^2} \notin L^1
+$$
+però è in $L^2$ ma per poterne calcolare la trasformata di Fourier dovremmo passare per delle troncate di $g(x)$. Possiamo però vedere chi dovrebbe essere il candidato formale usando le tecniche di prima
+$$
+\frac{x}{1+x^2} = \frac{i (-ix)}{1+x^2} \rightsquigarrow 
+i \mathcal F \left( (-ix) \frac{1}{1+x^2} \right)(y)
+= i \mathcal F \left( \frac{1}{1+x^2} \right)'(y) = i \pi (e^{-|y|})'(y)
+$$
+però notiamo che la derivata di $e^{-|y|}$ non è ben definita in $0$.
+
+\textbf{Esercizio.}
+Calcolare la trasformata di Fourier di
+$$
+f(x) = \One_{[-r, r]}(x)
+$$
+Iniziamo a svolgere il conto
+$$
+\hat f(y) = \int_{-\infty}^\infty \One_{[-r, r]}(x) e^{-ixy} \dd x = \int_{-r}^r e^{-ixy} \dd x
+=
+\begin{cases}
+	2r & xy=0 \\
+	\ds \int_{-r}^r e^{-ixy} \dd x & xy \neq 0 \\
+\end{cases}
+$$
+nel caso $xy \neq 0$ contiuiamo a svolgere il conto
+$$
+\int_{-ry}^{ry} \frac{e^{-it}}{y} \dd t 
+= \frac{1}{y} \int_{-ry}^{ry} [\cos(t) - i\underbrace{\sin(t)}_{\text{dispari}}] \dd t
+= \frac{2}{y} \sin(ry)
+$$
+dunque in conclusione abbiamo
+$$
+\mathcal F(\One_{[-r, r]}(x)) =
+\begin{cases}
+	2r & y=0 \\
+	\ds \frac{2}{y} \sin(ry) & y \neq 0 \\
+\end{cases}
+$$
+
+\textbf{Esercizio.}
+Un esercizio simile è calcolare $\mathcal F(\One_{[0, r]}(x))$, ovvero il caso non centrato e poi provare a calcolare (come integrale improprio di Analisi 1) l'integrale
+$$
+\int_{0}^{\infty} \frac{\sin(t)}{t} \dd t = \lim_{r \to \infty}\int_{0}^{r} \frac{\sin(t)}{t} \dd t
+$$
+
+\subsubsection{Trasformata della Gaussiana}
+
+Calcoliamo ora la trasformata della funzione gaussiana $e^{-x^2 / 2}$.
+
+\begin{itemize}
+	\item \textbf{Metodo I:} Troviamo un'equazione differenziale (lineare) risolta dalla gaussiana, sia $f(x) = e^{-x^2 / 2}$ allora vale
+		$$
+		f'(x) = -x e^{-x^2/2} = -x f(x)
+		$$
+		e per il decadimento della gaussiana abbiamo che $f, f' \in L^1$ dunque
+		$$
+		i y \hat f(y) = \hat{f'(x)}(y) = -i \mathcal F(-i x f(x))(y) = i (\hat{f})' (y)
+		$$
+		dunque $\hat f = h(y)$ con $h$ tale che $h'(y) = -y h(y) \implies h(y) = k e^{-y^2 / 2}$, rimane da trovare $k$. Calcoliamo direttamente $h(0)$
+		$$
+		\begin{gathered}
+			h(0) 
+			= \hat{e^{-x^2/2}(0)} 
+			= \int_{-\infty}^\infty e^{-x^2 / 2} e^{-ix \cdot 0} \dd x
+			= \int_{-\infty}^\infty e^{-x^2 / 2} \dd x = \sqrt{2\pi} \\
+			\implies \hat{e^{-x^2/2}} = \sqrt{2\pi} e^{-y^2 / 2}
+		\end{gathered}
+		$$
+
+	\item \textbf{Metodo II:} Studiamo la funzione di variabile complessa $g(z) = e^{-z^2/2}$ e integriamola lungo un percorso che passi per $[-r, r] \times \{ 0 \} \subset \R^2 \approx \C$.
+		$$
+		\begin{aligned}
+			\mathcal F(\hat{-x^2/2})(y) 
+			&= \int_\R e^{-x^2 / 2} \cdot e^{-ixy} \dd x
+			= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy)} \dd x \\
+			&= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2 - y^2)} \dd x 
+			= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2)} \cdot e^{-y^2 / 2} \dd x \\
+			&= e^{-y^2 / 2} \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2)} \dd x 
+			= e^{-y^2 / 2} \lim_{r \to \infty} \int_{-r}^r \underbrace{e^{-\frac{1}{2}(x + iy)^2}}_{g(x + iy)} \dd x
+		\end{aligned}
+		$$
+		Consideriamo ora il rettangolo $D_r \coloneqq \{ z \mid \operatorname{Im} z \in [0, iy] \text{ e } \operatorname{Re} z \in [-r, r] \}$ dunque poiché $g(z)$ non ha poli su $D_r$ abbiamo
+		$$
+		\begin{gathered}
+			\int_{\pd D_r} g = \sum \text{Res. su $D_r$} = 0 \\
+			0 = \int_{-r}^r g(x + it) \dd x - \int_{-r}^r g(x + iy) \dd x 
+			+ \int_{0}^{iy} g(r + iy) \dd t - \int_{0}^{iy} \underbrace{g(-r + iy)}_{\mathclap{\sim \, e^{-(r+it)^2} \xrightarrow{r \to \infty} 0}} \dd t
+		\end{gathered}
+		$$
+		infatti più precisamente i termini verticali vanno a zero
+		$$
+		\int_0^y e^{-(r+it)^2 / 2} \dd t 
+		= e^{-r^2 / 2} \int_0^y e^{-itr - t^2/2} \dd t = y e^{-r^2 / 2} \xrightarrow{r \to +\infty} 0
+		$$
+		In conclusione abbiamo
+		$$
+		\begin{aligned}
+			\hat{e^{-x^2 / 2}} (y) 
+			&= \lim_{r \to +\infty} \int_{-r}^r e^{-y^2 / 2} e^{-(x + iy)^2 / 2} \dd x 
+			= e^{-y^2 / 2} \left[ \lim_{r \to +\infty} \int_{-r}^r e^{-x^2 / 2} \dd x + o(1) \right] = \\
+			&= e^{-y^2 / 2} \int_{-\infty}^\infty e^{-x^2 / 2} \dd x = \sqrt{2\pi} e^{-y^2 / 2} 
+		\end{aligned}
+		$$
+		\qed
+
+\end{itemize}
+
+
