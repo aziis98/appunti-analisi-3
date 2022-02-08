@@ -25,12 +25,16 @@ p(x) \coloneqq x - \lfloor x \rfloor
 $$
 e chiamiamo $E_n \coloneqq p(I_n)$. Per ogni $n$ abbiamo che $|I_n| = |E_n| = 1 / n$ e $\bigcup_n I_n = [1, +\infty)$ (in quanto $\sum_{k=1}^\infty \frac{1}{k} = +\infty$) e quindi ogni $x \in [0, 1)$ appartiene ad $E_n$ per infiniti $n$ ed in particolare questo mostra la \ref{item:ce_3}. 
 
-[TODO: Disegnino]
+% [TODO: Disegnino]
 
 Per la \ref{item:ce_1} basta notare che $\One_{E_n} \to 0$ in misura (in quanto $|E_n| \to 0$) ma $\One_{E_n} \centernot\to 0$ q.o., anzi $\forall x \in [0, 1) \; \One_{E_n}(x) \centernot\to 0$ e la \ref{item:ce_2} segue analogamente.
 \qed
 
 \section{Approssimazioni di funzioni in $L^p$}
+
+% Ricordiamo la nozione di insieme denso in uno spazio metrico.
+% Sia (X,d) uno spazio metrico e Y ⊆ X. Allora Y è denso in X se solo se
+% per ogni x ∈ X, esiste una successione y_n in Y che tale che x = lim_n y_n.
 
 Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno essere un utile strumento da usare nelle dimostrazioni.
 
@@ -57,6 +61,8 @@ intanto osserviamo che, per la \textit{convergenza puntuale}, basta osservare ch
 Per concludere basta applicare \textit{convergenza dominata} usando come dominazione direttamente $|f(x) - f_n(x)| \leq |f(x)| \implies |f(x) - f_n(x)|^p \leq |f(x)|^p$ e notiamo che $|f|^p \in L^1(X)$.
 \qed
 
+\vs
+
 \textbf{Proposizione 2.}
 Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
 
@@ -68,11 +74,11 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		$$
 		A_\epsilon^k := \{ x \mid k \epsilon \leq f(x) \leq (k+1) \epsilon \}
 		$$
-		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita\footnote{È misurabile in quanto preimmagine di un misurabile ed ha misura finita in quanto se così non fosse esisterebbero $\epsilon > 0, k \geq 1$ tali che $\mu(A_\epsilon^k) = +\infty$ da cui $\norm{f}_p^p \geq \norm{k \epsilon \One_{A_\epsilon^k}}_p^p \geq +\infty \implies f \notin L^p(X)$ \absurd.}. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
+		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita\footnote{È misurabile in quanto preimmagine di un misurabile, ed ha misura finita in quanto $f \in L^p(X)$.}. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
 		$$
 		f_\epsilon(x) := \sum_{1 \leq k \leq 1 / \epsilon^2} k \epsilon \cdot \One_{A_\epsilon^k}(x) \in \tilde{\mathscr S}
 		$$
-		[TODO: Disegnino]
+		% [TODO: Disegnino]
 
 		Osserviamo che vale anche $\max f_\epsilon(x) = \max\{ k \epsilon \mid k \epsilon \leq f(x) \text{ e } k \leq 1 / \epsilon^2 \}$ e mostriamo la seguente\footnote{Notiamo che qui stiamo applicando il teorema di \textit{convergenza dominata} su una famiglia parametrizzata da $\epsilon$ e non su una successione ma si può verificare facilmente che il teorema (ed anche gli altri risultati di convergenza di successioni di funzioni) si può estendere semplicemente prendendo $\epsilon = 1 / n$ per $n \to \infty$.}
 		$$
@@ -85,7 +91,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 			\item \textit{Dominazione}: Possiamo usare nuovamente $|f(x) - f_\epsilon(x)|^p \leq |f(x)|^p < +\infty$ in quanto $f \in L^p(X)$.
 		\end{itemize}
 
-		[TODO: Disegnino]
+		% [TODO: Disegnino]
 
 	\item 
 		\textit{Caso 2}:
@@ -95,7 +101,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		\textit{Caso 3}:
 		Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
-		\textbf{Proposizione 2'} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+		\textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 
 		\textbf{Dimostrazione.} (Idea)
 		Basta approssimare componente per componente.
@@ -126,16 +132,14 @@ Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E
 Intuitivamente $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta è denso in $L^p$ (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
 \qed
 
-Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}$, precisiamo che il \textbf{supporto} di una funzione è definito come la chiusura dell'insieme dei punti in cui è non zero 
-$$
-\operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}}
-$$
-in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
+\vss
+
+Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}$, dove il \textbf{supporto} è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero $ \operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}} $, in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
 
 % notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
 
 \textbf{Proposizione 4.}
-Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense\footnote{È denso anche l'insieme delle funzioni \textit{continue} a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.} in $L^p(X)$ per $p < +\infty$.
+Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense\footnote{È denso anche l'insieme delle funzioni continue a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.} in $L^p(X)$ per $p < +\infty$.
 
 Vediamo prima alcuni lemmi.
 

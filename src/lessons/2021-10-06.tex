@@ -134,7 +134,7 @@ $$
 Vediamo ora la proprietà più importante degli spazi $L^p$.
 
 \textbf{Teorema.}
-Lo spezio $L^p$ è completo per ogni $p \in [1,+\infty]$.
+Lo spazio $L^p$ è completo per ogni $p \in [1,+\infty]$.
 
 % @aziis98: Per ora mi pare non si possano usare direttamente \label e \ref in questi punti, cioè linka alla sezione.
 \hypertarget{prop:completeness_lemma_1}{}
@@ -174,12 +174,14 @@ $$
 		$$ 
 
 	\item
-		Vogliamo vedere che ogni successione di Cauchy converge, ma osserviamo che basta mostrare che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
+		Sia $(y_n)$ una successione di Cauchy, mostriamo che converge.
+		Osserviamo che esiste una sottosuccessione $\left( y_{n_k} \right)$ tale che
+		% Basta far vedere che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
 		$$
-		\sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty
+			\sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty.
 		$$
-		ma a quel punto per ipotesi questa sottosuccessione converge ad $y \in Y$ e dunque anche $y_n \to y$. 
-		Questa sottosuccessione esiste in quanto $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ e dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
+		Infatti, $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \mquad d(y_m, y_n) \leq 1 /2 ^k$ e dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
+		Per ipotesi $\left( y_{n_k} \right)$ converge a un qualche $y \in Y$, da cui la tesi\footnote{Data una successione di Cauchy $x_n$, se una sottosuccessione $x_{n_k}$ converge, allora converge anche la successione.}.
 		\qed
 
 		% @aziis98: In realtà non so se era più chiaro come stava prima boh
@@ -204,11 +206,34 @@ Dato $Y$ spazio normato, i seguenti fatti sono equivalenti
 	\item $Y$ è completo.
 
 	% \item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero 
-	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge\footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
+	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
 \end{enumerate}
 
 \textbf{Dimostrazione.} 
-È un corollario del lemma precedente. 
+ii) $\Rightarrow$ i). Dobbiamo mostrare che $\sum_{n=1}^\infty y_n$ è di Cauchy.
+Per il Lemma~1 basta mostrare che la successione
+%
+$$
+	z_n \coloneqq  \sum_{k=1}^n y_k \quad \text{soddisfa la proprietà} \quad
+	\sum_{n=1}^\infty d(z_{n+1},z_n).
+$$
+%
+Espandendo la formula sopra
+%
+$$
+	\sum_{n=1}^\infty d(z_{n+1},z_n) = \sum_{n=1}^{\infty} \norm{\sum_k^{n+1} y_k - \sum_k^n y_k} 
+	= \sum_{n=1}^{\infty} \norm{y_{n+1}}
+$$
+%
+che è finito per ipotesi.
+
+\vs
+
+ii) $\Rightarrow$ i). Utilizziamo l'enunciato ii) del Lemma~2: mostriamo ogni $(y_n)$ che soddisfa la proprietà $\sum_n d(y_n,y_{n+1}) < +\infty$ converge.
+Definiamo la successione $z_n \coloneqq y_{n+1} - y_n$. Per ipotesi, essendo che $\sum_n \norm{z_n} < +\infty$, la serie $\sum_n z_n$ converge.
+Indicando con $L$ il limite della serie, abbiamo che $\lim_n y_n = L + y_1$.
+
+
 \qed
 
 \hypertarget{prop:completeness_lemma_3}{}
@@ -257,7 +282,7 @@ $$
 				\geq \norm{\sum_{n=1}^\infty |f_n|}_p 
 				= \left( \int \left( \sum_{n=1}^\infty |f_n(x)| \right)^p \dd \mu(x) \right)^{1/p}
 				$$
-				quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero in $E$ \footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ a funzioni definite quasi ovunque.}.
+				quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero in $E$ \footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ per funzioni definite quasi ovunque.}.
 			
 			\item 
 				\textit{Passo 2:}
@@ -286,7 +311,7 @@ $$
 		\end{itemize}
 \end{itemize}
 
-\textbf{Esercizio.}\footnote{In questo corso non è strettamente necessario ricordarsi come si facciano tutti questi esercizi tecnici di teoria della misura ma è bene saperli applicare in automatico quando serve.}
+\textbf{Esercizio.}\footnote{In questo corso non è strettamente necessario ricordarsi come si facciano tutti questi esercizietti di teoria della misura ma è bene saperli applicare in automatico quando serve.}
 Sia $f \colon X \to [0, +\infty]$ allora $\ds \int_X f \dd \mu < +\infty \implies f(x) < +\infty$ per quasi ogni $x$.
 
 \textbf{Dimostrazione.}

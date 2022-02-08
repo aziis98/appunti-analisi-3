@@ -51,6 +51,7 @@ Dimostriamo ora la proposizione in due passi.
 \end{itemize}
 \qed
 
+[TO DO: il teorema sotto non è già stato dimostrato?]
 \textbf{Teorema.}
 Siano $f_1 \in L^{p_1}(\R^d)$ e $f_2 \in L^{p_2}(\R^d)$ con $p_1$ e $p_2$ esponenti coniugati, allora $f_1 \ast f_2$ è definita per ogni $x$ e uniformemente continua
 $$
@@ -116,18 +117,18 @@ Vediamo ora di formalizzare questo risultato.
 Dati $p_1$ e $p_2$ esponenti coniugati, se
 
 \begin{itemize}
-	\item $f_1 \in C^1(\R^d)$, $\nabla f_1 \in L^{p_1}(\R^d)$
+	\item $f_1 \in C^1(\R^d)$, $f_1$ e $\nabla f_1 \in L^{p_1}(\R^d)$
 
 	\item $f_2 \in L^{p_2}(\R^d)$ 
 \end{itemize}
 
-allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$\footnote{Ha senso anche se $\nabla f_1$ è a valori vettoriali. In tal caso  $\frac{\pd}{\pd x}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 
+allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$\footnote{Ha senso anche se $\nabla f_1$ è a valori vettoriali. In tal caso  $\frac{\pd}{\pd x_i}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 
 		\quad \text{per } i = 1, \dots, d $.}. 
 
 \textbf{Dimostrazione.}
 \begin{itemize}
 	\item $d = 1$:
-		Sappiamo che $f_1 \ast f_2$ è continua e $f_1' \ast f_2$ è continua. Vediamo che coincidono usando il teorema fondamentale del calcolo integrale. L'uguaglianza $(f_1 \ast f_2)' = f_1' \ast f_2$ segue da
+		Sappiamo che $f_1 \ast f_2$ ed $f_1' \ast f_2$ sono continue. Vediamo che coincidono usando il teorema fondamentale del calcolo integrale. L'uguaglianza $(f_1 \ast f_2)' = f_1' \ast f_2$ segue da
 		$$
 		\int_a^b f_1' \ast f_2 \dd x = f_1 \ast f_2(b) - f_1 \ast f_2(a)
 		\quad \forall a < b
@@ -145,7 +146,7 @@ allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$
 		$$
 		In particolare in ($*$) stiamo usando Fubini-Tonelli in quanto
 		$$
-		\int_a^b \int_{-\infty}^\infty |f_1'(x-y)| \cdot |f_2(y)| \dd y
+		\int_a^b \int_{-\infty}^\infty |f_1'(x-y)| \cdot |f_2(y)| \dd y \dd x
 		\leq \int_a^b \norm{f_1'(x - \curry)}_{p_1} \cdot \norm{f_2}_{p_2} \dd x 
 		= \norm{f_1'}_{p_1} \cdot \norm{f_2}_{p_2} \cdot (b - a).
 		$$
@@ -160,20 +161,15 @@ allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$
 \end{itemize}
 
 \textbf{Corollario.}
-Data $f_1 \in C_C^\infty(\R^d)$ (da cui segue $\nabla^k \in L^q(\R^d)$ per ogni $k = 0, 1, \dots$ e $1 \leq q < +\infty$) e $f_2 \in L^p(\R^d)$ allora $f_1 \ast f_2 \in C^\infty(\R^d)$ (anzi $\nabla^k(f_1 \ast f_2) \in C_0(\R^d)$ per ogni $k$) e vale la formula nota\footnote{Vista in termini di gradienti la formulazione è più compatta ma non poi così intuitiva: bisognerebbe definire la convoluzione tre una funzione a valori vettoriali ed uno scalare etc... Altrimenti basta scrivere le singole identità usando \textit{derivate parziali e multiindici}.}
+Data $f_1 \in C_C^\infty(\R^d)$ (da cui segue $\nabla^k \in L^q(\R^d)$ per ogni $k = 0, 1, \dots$ e $1 \leq q < +\infty$) e $f_2 \in L^p(\R^d)$ allora $f_1 \ast f_2 \in C^\infty(\R^d)$ (anzi $\nabla^k(f_1 \ast f_2) \in C_0(\R^d)$ per ogni $k$) e vale la formula nota\footnote{dato che $\nabla^k f_1$ ha valori in $\R^k$ e $f_2$ in $\R$, dobbiamo definire $\nabla^k f_1 \ast f_2$ [TO DO: da fare].}
 $$
-\nabla^k (f_1 \ast f_2) = (\nabla^k f_1) \ast f_2.
+	\nabla^k (f_1 \ast f_2) = (\nabla^k f_1) \ast f_2 \quad \forall k = 1,\ldots
 $$
 
 \textbf{Dimostrazione.}
-Dimostriamo il corollario per approssimazione usando il seguente teorema.
+Si dimostra per induzione su $k$. [TO DO: da fare]
 
-\begin{wrapfigure}{r}{200pt}
-	\centering
-	\vspace{-1.5\baselineskip}
-	\inputfigure{sigma-delta-transform}
-	\vspace{-2.5\baselineskip}
-\end{wrapfigure}
+\section{Approssimazione per convoluzione}
 
 \textbf{Definizione.} 
 Per prima cosa data una funzione $g \colon \R^d \to \R$ e $\delta \neq 0$ poniamo
@@ -182,19 +178,26 @@ $$
 $$
 e notiamo che questa trasformazione preserva la norma $L^1$. Infatti, il valore $1/\delta^d$ è proprio il modulo del determinante dello Jacobiano del cambio di variabile.
 
+\begin{wrapfigure}{r}{200pt}
+	\centering
+	\vspace{-1.5\baselineskip}
+	\inputfigure{sigma-delta-transform}
+	\vspace{-2.5\baselineskip}
+\end{wrapfigure}
+
 \hypertarget{thm:lez25ott_teodelta}{%
 \textbf{Teorema.}}
 Data $f \in L^p(\R^d)$ e $g \in L^1(\R^d)$ con $1 \leq p < +\infty$ e posto $\ds m \coloneqq \int_{\R^d} g(x) \dd x$, allora 
 $$
-f \ast \sigma_\delta g \xrightarrow{\delta \to 0} m f \in L^p(\R^d).
+f \ast \sigma_\delta g \xrightarrow{\delta \to 0} m f \mquad \text{in } L^p(\R^d).
 $$
 
-\textbf{Osservazione.}
+\textbf{Interpretazione.}
 Se $g_2 \geq 0$ con $\int g \dd x = 1$ (dunque $g$ distribuzione di probabilità) allora $f \ast g$ possiamo pensarla come media pesata di traslate di $f$, dunque facendo $f \ast \sigma_\delta g$ stiamo pesando sempre di più i valori delle traslate vicino a $0$. 
 
 % minuto 1:28:00 definire la funzione e fare disegnino (questa funzione si usa anche
 % in altri casi per vedere che una certa proprietà non vale in $L^\infty$
-Inoltre per $p = +\infty$ non vale ed il controesempio è sempre il solito. [TODO: scrivere la funzione].
+\textbf{Nota.} Per $p = +\infty$ il teorema non vale. Infatti, la funzione $f = \One_{[0,+\infty]} \in L^\infty$; le funzioni $f \ast \sigma_\delta g$ sono continue ma non convergono in $L^\infty$ a $mf = f$. Infatti, le successioni continue convergono in $L^\infty$ a funzioni che coincidono, a meno di insiemi di misura nulla, con funzioni continue, ed $f$ non è possibile modificarla in un insieme di misura nulla in modo che coincida con una funzione continua.
 
 \textbf{Dimostrazione.}
 Per ora consideriamo $g$ generica e ripercorriamo una dimostrazione simile a quella fatta per la disuguaglianza di Young
@@ -203,7 +206,7 @@ $$
 	\norm{f \ast g - m f}_p^p 
 	&= \int_{\R^d} {\underbrace{|f \ast g - m f|}_h}^p \dd x \\
 	&= \int |f \ast g - m f| \cdot h^{p-1} \dd x \\
-	&= \int \left| \int \left( f(x - y) g(y) - f(x) \int g(y) \right) \dd y \right| \cdot h^{p-1}(x) \dd x \\
+	&= \int \left| \int f(x - y) g(y) \dd y - f(x) \int g(y) \dd y \right| \cdot h^{p-1}(x) \dd x \\
 	&\leq \int \int |f(x - y) - f(x)| \cdot |g(y)| \dd y \cdot h^{p-1}(x) \dd x \\
 	&\overset{\text{($*$)}}{=} \int \left(\int |f(x - y) - f(x)| h^{p-1}(x) \dd x \right) |g(y)| \dd y,
 \end{aligned}
@@ -223,13 +226,13 @@ $$
 ed ora applicando questa stima a $\sigma_\delta g$ invece che a $g$ otteniamo
 $$
 \norm{f \ast \sigma_\delta g - m f}_p
-\leq \int_{\R^d} \norm{\tau_y f - f}_p \cdot |\sigma_\delta g(y)| \dd y
+\leq \int_{\R^d} \norm{\tau_y f - f}_p \cdot |\sigma_\delta g(y)| \dd y,
 $$
-infine ponendo $z = y / \delta$ e $\dd z = 1/\delta^d \dd y$ e sostituendo nell'integrale otteniamo
+infine ponendo $z = y / \delta$ e $\dd z = 1/\delta^d \dd y$ e sostituendo nell'integrale
 $$
 = \int_{\R^d} \norm{\tau_{\delta z} f - f}_p \cdot |g(z)| \dd z \xrightarrow{\delta \to 0} 0
 $$
-usando \textit{convergenza dominata} in quest'ultimo passaggio, verifichiamone le ipotesi
+per \textit{convergenza dominata}, verifichiamone le ipotesi
 \begin{enumerate}
 	\item La convergenza puntuale segue in quanto $\norm{\tau_{\delta z} f - f}_p \xrightarrow{\delta \to 0} 0$ per ogni $z$.
 	\item Come dominazione prendiamo $2 \norm{f}_p \cdot |g| \in L^1$.

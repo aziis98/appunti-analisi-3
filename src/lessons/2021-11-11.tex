@@ -36,22 +36,26 @@ $$
 \textbf{Osservazione.} Gli elementi $\left\{ 1, \sin(nx), \cos(nx) \right\}$ sono ortogonali per $n \geq 1$ in $L^2([-\pi,\pi], \C) $.
 Infatti, ricordiamo che
 \begin{align*}
-\sin(nx) & = \frac{e^{inx} - e^{-inx}}{2i} = \frac{i e^{-inx} - i e^{inx}}{2} \\
-\cos(nx) & = \frac{1}{2} \left( e^{inx} + e^{-inx} \right).
+\cos(nx) & = \frac{e^{inx} + e^{-inx}}{2}\\
+\sin(nx) & = \frac{e^{inx} - e^{-inx}}{2i}. 
 \end{align*}
 
-È banale verificare che $\left<1,\cos(nx) \right> = \left<1, \sin(nx) \right> = 0$ per ogni  $n$, perchè integro $\cos$ e $\sin$ sul periodo. Anche $\left<\cos(nx), \sin(mx) \right> = 0$ per ogni $n,m$.
+\begin{itemize}
 
-Dunque, calcoliamo
-%
-$$
-\left<\sin(nx), \sin(mx) \right> = \frac{1}{4} \left<e^{-inx} - e^{inx}, e^{-imx} - e^{imx} \right> = 0.
-$$
-%
+	\item È banale verificare che $\left<1,\cos(nx) \right> = \left<1, \sin(nx) \right> = 0$; 
+
+	\item Verifichiamo ora che valga $\left<\cos(nx), \sin(mx) \right> = 0$ per ogni $n,m$, dunque calcoliamo:
+	%
+	$$
+		\left<\sin(nx), \sin(mx) \right> = \frac{1}{4} \left<e^{-inx} - e^{inx}, e^{-imx} - e^{imx} \right> = 0.
+	$$
+	%
+
+\end{itemize}
 
 Ora normalizziamo: $\ds \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}}, n \geq 1 \right\}$.
 
-Dunque abbiamo ottenuto che
+In conclusione, abbiamo ottenuto che
 \begin{itemize}
 
 	\item $L^2( [-\pi,\pi], \C)$ ha base Hilbertiana $\left\{ \frac{1}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\}_{\C}$
@@ -66,7 +70,38 @@ Dunque abbiamo ottenuto che
 \textit{Sketch.} Si dimostra che $a_n(f) = \ol{a_n(f)}, b_n(f) = \ol{b_n(f)}$ e per farlo si usano le espressioni di $a_n, b_n$ in funzione dei coefficienti di Fourier complessi scritte sopra.
 
 
-\textbf{Esercizio.} Trovare la base di Fourier complessa e reale di $L^2([a,b], \C) $ [TO DO]
+\textbf{Esercizio.} Trovare la base di Fourier complessa e reale di $L^2([a,b], \C) $.
+
+\textbf{Soluzione.}
+Data $f(x) \in L^2([a,b],\C)$, definiamo la funzione
+%
+$$
+	F(y) \coloneqq  f\left( (y+\pi)\frac{b-a}{2\pi} + a \right) = f(x).
+$$
+%
+Notiamo che $F \in L^2([-\pi,\pi],\C)$, dunque ha espansione in serie di Fourier:
+%
+\begin{align*}
+	F(y) = \sum_{n \in \Z} c_n(F) e^{iny}, \qquad 
+	c_n(F) & = \frac{1}{2\pi} \int_{-\pi}^\pi F(y) e^{-iny} \dd y \\
+	& = \frac{1}{2\pi} \int_{-\pi}^\pi f \left( (y+ \pi) \frac{b-a}{2\pi} + a \right) e^{-iny} \dd y.
+\end{align*}
+Usando il cambio di variabile $\ds y = (x-a) \frac{2\pi}{b-a} - \pi$ si ottiene
+\begin{align*}
+	c_n(f) & = \frac{1}{b-a} \int_a^b f(x) \exp{\left[ \left((x-a)\frac{2\pi}{b-a} - \pi\right)(-in)\right]} \dd x \\
+	& = \frac{(-1)^n}{b-a}\exp{\left[ \frac{2\pi a}{b-a} in \right]} \int_a^b f(x) \exp{\left[ \frac{2\pi x}{b-a} (-in) \right]} \dd x 
+\end{align*}
+Da cui
+%
+$$
+	f(x) = \sum_{n \in \Z} c_n(f) \exp{\left[ \frac{2\pi}{b-a}x in \right]}, \qquad 
+	c_n(f) = \frac{1}{b-a} \int_a^b f(x) \exp{\left[- \frac{2\pi}{b-a}x in \right]}.
+$$
+%
+
+
+
+
 
 
 \textbf{Esercizio.} Sia $f \in L^2([-\pi,\pi], \C) $ (l'estensione di) $f$ è $2\pi / N$ periodica. Dimostrare che $c_n(f) \neq 0$ se solo se $n$ multiplo di $N$. [TO DO]
@@ -99,7 +134,7 @@ $$
 $$
 %
 
-\textbf{Nota.} Potevamo ottenere i coefficienti di $f(x) = x^2$, applicando il teorema della derivata. [TO DO: vedere che valgono le ipotesi]
+\textbf{Nota.} Potevamo ottenere i coefficienti di $f(x) = x^2$, applicando il teorema della derivata.
 
 \textbf{Domande.}
 \begin{itemize}
@@ -114,7 +149,7 @@ $$
 \textbf{Esercizio.}
 \begin{enumerate}
 
-	\item Calcolare i coefficienti di Fourier complessi di $x^3$ e vedere che se vale $c_n(3x^2) = i n c_n(x^3)$.
+	\item Calcolare i coefficienti di Fourier complessi di $x^3$ e vedere se vale $c_n(3x^2) = i n c_n(x^3)$.
 
 
 	\item Calcolare i coefficienti reali di $x^2$.

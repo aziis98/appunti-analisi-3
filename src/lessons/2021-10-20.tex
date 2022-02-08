@@ -34,9 +34,7 @@ Se $|f_1| \ast |f_2| \in L^p(\R^d)$ con $1 \leq p \leq +\infty$ allora $f_1 \ast
 Segue subito dalla proposizione precedente.
 \qed
 
-\subsection{Disuguaglianza di Young per convoluzione}
-
-\textbf{Teorema 3}
+\textbf{Teorema 3} (disuguaglianza di Young per convoluzione.)
 Se $f_1 \in L^{p_1}(\R^d)$ e $f_2 \in L^{p_2}(\R^d)$ e preso $r \geq 1$ tale che
 \begin{equation}\label{eqn:conv_th3_cond}
 	\frac{1}{r} = \frac{1}{p_1} + \frac{1}{p_2} - 1,
@@ -74,12 +72,12 @@ allora $f_1 \ast f_2$ è ben definito quasi ovunque e
         \norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r
         & = \norm{\int_{\R^d} f_1 \left( \frac{x-y}{\lambda} \right) \cdot f_2\left( \frac{y}{\lambda} \right) \dd y} 
         = 
-        \footnotesize \begin{pmatrix}
-        t = y / \lambda \\
+        \begin{pmatrix}
+        t = \frac{y}{\lambda} \\
         \lambda \dd t = \dd y
-        \end{pmatrix}\\
-        & = \lambda^d \cdot \norm{\int_{\R^d} f_1 \left( \frac{x}{\lambda} - t \right) \cdot f_2(t) \dd t}\\
-        & = \lambda^d \cdot \norm{R_\lambda (f_1 \ast f_2)}_r
+        \end{pmatrix} \\
+        & = \lambda^d \cdot \norm{\int_{\R^d} f_1 \left( \frac{x}{\lambda} - t \right) \cdot f_2(t) \dd t} \\
+        & = \lambda^d \cdot \norm{R_\lambda (f_1 \ast f_2)}_r.
         \end{align*}
         Per il punto successivo abbiamo $\norm{R_\lambda(g)}_r = \lambda^{d/r} \norm{g}_r$, da cui otteniamo
 		$$
@@ -113,13 +111,10 @@ allora $f_1 \ast f_2$ è ben definito quasi ovunque e
 		\norm{f_1 \ast f_2}_r = \bigg( \int_{\R^d} \underbrace{|f_1 \ast f_2|^r}_{\mathsf L^{dr}} \underbrace{\dd x}_{\mathsf L^d} \bigg)^{1 / r}
 		$$
 		ha dimensione di $\mathsf L^{d(1 + 1/r)}$.
-		\qed
 \end{itemize}
 
-\newpage 
-
 \textbf{Dimostrazione Teorema 3.}
-Per via del Corollario 2 ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1, f_2 \geq 0$.
+Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1, f_2 \geq 0$.
 \begin{itemize}
 	\item
 		\textit{Caso facile.} Se $p_1 = p_2 = 1$ e $r = 1$
@@ -133,6 +128,7 @@ Per via del Corollario 2 ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1
 			= \norm{f_1}_1 \cdot \norm{f_2}_1
 		\end{aligned}
 		$$
+
 	\item
 		\textit{Caso leggermente meno facile.} Se $p_1 = p, p_2 = 1$ e $r = p$.
 		Vogliamo vedere che
@@ -146,7 +142,7 @@ Per via del Corollario 2 ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1
 			&= \int_{\R^d} (\underbrace{f_1 \ast f_2}_{h})^p \dd x
 			= \int h \cdot h^{p-1} \dd x 
 			= \iint f_1(x - y) f_2(y) h^{p-1}(x) \dd y \dd x = \\
-			&= \int f_2(y) \int f_1(y - x) h^{p-1}(x) \dd x \dd y 
+			&= \iint f_1(y - x) h^{p-1}(x) \dd x f_2(y) \dd y 
 			\overset{\text{H\"older}}{\leq} 
 			\int \norm{f_1(y - \curry)}_p {\| h^{p-1} \|}_{p'} f_2(y) \dd y
 		\end{aligned}
@@ -154,7 +150,7 @@ Per via del Corollario 2 ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1
 		con $p'$ esponente coniugato a $p$. Inoltre notiamo che $\norm{f_1(y - \curry)}_p = \norm{f_1}$ per invarianza di $\mathscr L^d$ per riflessioni e traslazioni. Infine otteniamo
 		$$
 		\norm{f_1}_p {\| h^{p-1} \|}_{p'} \norm{f_2}_1
-		= \norm{f_1}_p \norm{h}_{p'}^{p-1} \norm{f_2}_1.
+		= \norm{f_1}_p \norm{h}_{p}^{p-1} \norm{f_2}_1.
 		$$
 		Dunque, $\norm{f_1 \ast f_2}_p^p \leq \norm{f_1 \ast f_2}_p^{p-1} \norm{f_1}_p \norm{f_2}_1 \implies \norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \norm{f_2}_1$. Quest'ultima implicazione però è valida solo nel caso in cui $0 < \norm{f_1 \ast f_2}_p < +\infty$. Resterebbero da controllare i due casi in cui la norma è $0$ oppure $+\infty$. Il primo è ovvio; il secondo invece si fa per approssimazione e passando al limite.
 
@@ -186,13 +182,13 @@ Dati $p_1$ e $p_2$ esponenti coniugati e $f_1 \in L^{p_1}(\R^d), f_2 \in L^{p_2}
 		$f_1 \ast f_2$ è uniformemente continua
 
 	\item \label{item:20ott_th4_4}
-		Se $1 < p_1, p_2 < +\infty$ allora $f_1 \ast f_2 \to 0$ per $|x| \to +\infty$, ovvero è infinitesima a $\pm\infty$.
+		Se $1 < p_1, p_2 < +\infty$ allora $f_1 \ast f_2 \to 0$ per $|x| \to +\infty$
 \end{enumerate}
 
 Premettiamo i seguenti risultati.
 
 \textbf{Proposizione 5.}
-Data $f \in L^p(\R^d)$ con $p < +\infty$ la mappa di traslazione
+Data $f \in L^p(\R^d)$ con $p < +\infty$ la mappa
 $$
 \begin{array}{cccc}
 	\tau_h f : & \R^d & \to & L^p(\R^d) \\
@@ -221,17 +217,18 @@ e concludiamo per la Proposizione 1.
 Fissiamo $x,h \in \R^d$
 %
 $$
-f_1 \ast f_2(x+h) - f_1 \ast f_2(x) = \int_{\R^d} \left( f_1(x+h-y) - f_1(x-y) \right) f_2(y) \dd y
+	f_1 \ast f_2(x+h) - f_1 \ast f_2(x) = \int_{\R^d} \left( f_1(x+h-y) - f_1(x-y) \right) f_2(y) \dd y,
 $$
 %
 quindi
 \begin{align*}
-\left| f_1 \ast f_2(x+h) - f_1 \ast f_2(x) \right|
-& \leq \int \left| f_1(x+h - y) - f_1(x - y) \right| | f_2| \dd y  \\
-& \overset{\text{H\"older}}{\leq} \norm{f_1(x+h - \curry) - f_1(x - \curry)}_{p_1} \norm{f_2}_{p_2} \\
-& = \norm{f_1(\curry - h) - f_1(\curry)}_{p_1} \norm{f_2}_{p_2} \\
-& = \underbrace{\norm{\tau_h f_1 - f_1}_{p_1}}_{\xrightarrow[\text{Proposizione 5}]{h \to 0} 0} \norm{f_2}_{p_2}.
+	\left| f_1 \ast f_2(x+h) - f_1 \ast f_2(x) \right|
+	& \leq \int \left| f_1(x+h - y) - f_1(x - y) \right| | f_2| \dd y  \\
+	& \underset{\text{Holder}}{\leq} \norm{f_1(x+h - \curry) - f_1(x - \curry)}_{p_1} \norm{f_2}_{p_2} \\
+	& = \norm{f_1(\curry - h) - f_1(\curry)}_{p_1} \norm{f_2}_{p_2} \\
+	& = \underbrace{\norm{\tau_h f_1 - f_1}_{p_1}}_{\xrightarrow[\text{Proposizione 5}]{h \to 0} 0} \norm{f_2}_{p_2}
 \end{align*}
+da cui segue la tesi\footnote{\textit{Nota.} In generale, quanto appena mostrato ci direbbe che la funzione è continua, ma essendo che stiamo maggiorando con una quantità indipendente da $x$ segue l'uniforme continuità.}.
 
 \item Approssimiamo $f_1$  e $f_2$ con $f_{1,n}$ e $f_{2,n} \in \mc{C}_C(\R^d)$ in $L^{p_1}$ e $L^{p_2}$ rispettivamente.
 
@@ -239,10 +236,10 @@ Osserviamo che $f_{1,n} \ast f_{2,n} \in \mc{C}_C(\R^d) \subset \mc{C}_0(\R^d)$.
 Per il Lemma 6 basta dimostrare che $f_{1,n} \ast f_{2,n} \longrightarrow f_1 \ast f_2$ uniformemente
 %
 \begin{align*}
-\norm{f_{1,n} \ast f_{2,n} - f_1 \ast f_2}_\infty
-& = \norm{\left( f_{1,n} \ast f_{2,n} - f_{1,n} \ast f_2 \right) + \left( f_{1,n} \ast f_2 - f_1 \ast f_2 \right)}_\infty \\
-& \overset{\mathclap{\text{lin della conv}}}{\leq} \norm{f_{1,n} \ast \left( f_{2,n} - f_2 \right)}_\infty + \norm{\left( f_{1,n} - f_1 \right) \ast f_2}_\infty \\
-& \overset{ii)}{\leq} \underbrace{\norm{f_{1,n}}_{p_1}}_{\to \norm{f_1}_{p_1}} \underbrace{\norm{f_{2,n} - f_2}_{p_2}}_{\to 0} + \underbrace{\norm{f_{1,n} - f_1}_{p_1}}_{\to 0} \norm{f_2}_{p_2}.
+	\norm{f_{1,n} \ast f_{2,n} - f_1 \ast f_2}_\infty
+	& = \norm{\left( f_{1,n} \ast f_{2,n} - f_{1,n} \ast f_2 \right) + \left( f_{1,n} \ast f_2 - f_1 \ast f_2 \right)}_\infty \\
+	& \underset{\mathclap{\text{lin della conv}}}{\leq} \norm{f_{1,n} \ast \left( f_{2,n} - f_2 \right)}_\infty + \norm{\left( f_{1,n} - f_1 \right) \ast f_2}_\infty \\
+	& \underset{ii)}{\leq} \underbrace{\norm{f_{1,n}}_{p_1}}_{\to \norm{f_1}_{p_1}} \underbrace{\norm{f_{2,n} - f_2}_{p_2}}_{\to 0} + \underbrace{\norm{f_{1,n} - f_1}_{p_1}}_{\to 0} \norm{f_2}_{p_2}.
 \end{align*}
 
 Quindi $\norm{f_{1,n} \ast f_{2,n} - f_1 \ast f_2}_\infty \to 0$.

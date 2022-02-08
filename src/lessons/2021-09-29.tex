@@ -150,7 +150,7 @@ $$
 $$ 
 
 \textbf{Teorema} (di convergenza dominata o di Lebesgue).
-Date $f_n \colon  X \to \R$ (o anche $\R^n$) con le seguenti proprietà
+Date $f_n \colon  X \to \R$ (o anche $\R^n$) misurabili con le seguenti proprietà
 \begin{itemize}
 	\item \textit{Convergenza puntuale:} $f_n (x) \to f(x)$ per ogni $x \in X$.
 	\item \textit{Dominazione:} Esiste $g \colon X \to [0,+\infty]$ sommabile tale che $\left| f_n (x) \right| \leq g(x)$ per ogni $x \in X$ e per ogni $n \in \N$.
@@ -202,7 +202,7 @@ Di seguito riportiamo il teorema di Fubini-Tonelli per la misura di Lebesgue.
 Sia $\R^{n_1} \times \R^{n_2} \simeq \R^n$ con $n = n_1 + n_2$, $ E \coloneqq E_1 \times E_2 $ dove $E_1, E_2$ sono misurabili e $f$ è una funzione misurabile definita su $E$.
 Se $f$ ha valori in $[0,+\infty]$ allora
 $$
-\int_X f \dd \mu 
+\int_E f \dd \mu 
 = \int_{E_2} \int_{E_1} f(x_1,x_2) \dd x_1 \dd x_2 
 = \int_{E_1} \int_{E_2} f(x_1,x_2) \dd x_2 \dd x_1
 $$ 

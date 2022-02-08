@@ -44,8 +44,6 @@ $$
 $$
 Però ci sarebbero delle correzzioni da fare per dimostrare le cose in questo modo in generale. Vediamo invece un'altra dimostrazione un po' più elegante.
 
-[TODO: Disegnino nel caso $g$ costante a tratti]
-
 \textbf{Dimostrazione.}
 Per ogni $s, y$ poniamo $\Phi(y, s) \coloneqq \int_\R g(x) h(yx + s) \dd x$ con $s, y \in \R$ allora la tesi è che $\Phi(y, 0) \xrightarrow{y \to \pm\infty} a m$.
 Vedremo che valgono le seguenti
@@ -67,8 +65,8 @@ da cui segue la tesi. Mostriamo ora i due punti.
 		$$
 		\begin{aligned}
 			\int_0^T \Phi(y, s) \dd s
-			&= \int_0^T \int_\R g(x) h(yx + s) \dd x \dd s \\
-			&= \int_\R \underbrace{\avint_0^T h(yx + s) \dd s}_m \cdot g(x) \dd x \\
+			&= \avint_0^T \int_\R g(x) h(yx + s) \dd x \dd s
+			= \int_\R \underbrace{\avint_0^T h(yx + s) \dd s}_m \cdot g(x) \dd x \\
 			&= m \int_\R g(x) \dd x = m a
 		\end{aligned}
 		$$
@@ -77,14 +75,14 @@ da cui segue la tesi. Mostriamo ora i due punti.
 		\ds \int_\R \avint_0^T |h(yx - s)| \dd s \cdot |g(x)| \dd x \leq \int_\R \norm{f}_\infty |g(x)| \dd x = \norm{h}_\infty \cdot \norm{g}_1
 		$$
 
-	\item {} [TODO: inventare delle parole a caso]
+	\item Notiamo che
 		$$
 		\Phi(y, s) 
-		= \int_\R g(x) h\left(y \left( x + \frac{s}{y} \right)\right) \dd x 
+		= \int_\R g(x) h\left(y \left( x + s/y \right)\right) \dd x,
 		$$
-		ora applichiamo la sostituzione $\ds t = x + \frac{s}{y}$ da cui $\dd t = \dd x$
+		ed ora applichiamo la sostituzione $\ds t = x + s/y$ da cui $\dd t = \dd x$
 		$$
-		= \int_\R g \left( t - \frac{s}{y} \right) h(yt) \dd t
+		= \int_\R g \left( t - s/y \right) h(yt) \dd t
 		$$
 		ed a questo punto otteniamo
 		$$
@@ -92,11 +90,11 @@ da cui segue la tesi. Mostriamo ora i due punti.
 		$$
 		$$
 		\implies
-		|\Phi(y, s) - \Phi(y, 0)| = \int_\R |\tau_{\frac{s}{y}} g - g| \cdot |h(yt)| \dd t
-		\leq \norm{\tau_{\frac{s}{y}} g - g}_1 \cdot \norm{h}_\infty \xrightarrow{y \to \pm \infty} 0
+		|\Phi(y, s) - \Phi(y, 0)| = \int_\R |\tau_{s/y} g - g| \cdot |h(yt)| \dd t
+		\leq \norm{\tau_{s/y} g - g}_1 \cdot \norm{h}_\infty \xrightarrow{y \to \pm \infty} 0
 		$$
-\end{enumerate}
 \qed
+\end{enumerate}
 
 \textbf{Dimostrazione del Teorema.}
 $$
@@ -111,17 +109,17 @@ $$
 $$
 in particolare per applicare Riemann-Lebesgue serve $g \in L^1([-\pi, \pi])$ ma infatti per $|t| \leq \delta$
 $$
-|g(t)| \leq \frac{|f(\bar x - t) - f(\bar x)|}{|\sin \frac{t}{2}|} \leq \frac{M |t|^\alpha}{|t| / \pi} = \frac{M \pi}{|t|^{1 - \alpha}} \in L^1([-\delta, \delta])
+	|g(t)| \leq \frac{|f(\bar x - t) - f(\bar x)|}{|\sin \frac{t}{2}|} \leq \frac{M |t|^\alpha}{|t| / \pi} = \frac{M \pi}{|t|^{1 - \alpha}} \in L^1([-\delta, \delta])
 $$
 invece per $\delta \leq |t| \leq \pi$ basta
 $$
-|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi])
+	|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi])
 $$
 \qed
 
-Data $f \in L^1([-\pi, \pi])$ estesa per periodicità e dato $\bar x$ tale che esistano i limiti a destra e sinistra di $f$ in $\bar x$ detti $L^+$ e $L^-$ ed $f$ $\alpha$-H\"olderiana a sinistra e destra si può vedere che vale
+\textbf{Proposizione.} Data $f \in L^1([-\pi, \pi])$ estesa per periodicità e dato $\bar x$ tale che esistano i limiti a destra e sinistra di $f$ in $\bar x$ detti $L^+$ e $L^-$ ed $f$ $\alpha$-H\"olderiana a sinistra e destra si può vedere che vale
 $$
-S_N f(\bar x) \xrightarrow{N} \frac{L^+ + L^-}{2}
+	S_N f(\bar x) \xrightarrow{N} \frac{L^+ + L^-}{2}.
 $$
 
 \chapter{Applicazioni della serie di Fourier}

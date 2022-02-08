@@ -88,7 +88,7 @@ Per ogni $f \in L^2([-\pi, \pi]; \C)$ abbiamo
 		\norm{f}_2^2 = 2 \pi \sum_{n \in \Z} |c_n|^2
 		\qquad
 		\qquad
-		\langle f, g \rangle = \sum_{n \in \Z} c_n(f) \overline{c_n(g)}
+		\langle f, g \rangle = 2\pi \sum_{n \in \Z} c_n(f) \overline{c_n(g)}
 		$$
 \end{enumerate}
 
@@ -103,12 +103,12 @@ $$
 \sum_{n = -N}^N c_n e^{inx} \xrightarrow{\;\;N\;\;} f(x) \qquad \foralmostall x
 $$
 
-\textbf{Dimostrazione Teorema 1.}
+\textbf{Dimostrazione Teorema~1.}
 Vogliamo vedere che
 \begin{enumerate}
 	\item $\mathcal F$ è un sistema ortonormale.
 
-		\textbf{Dimostrazione.}
+		\textit{Dimostrazione.}
 		Basta calcolare $\langle e_n; e_m \rangle$ per ogni $n, m \in \Z$
 		$$
 		\langle e_n; e_m \rangle
@@ -169,7 +169,7 @@ Vogliamo vedere che
 			\vspace{-1.5\baselineskip}
 		\end{wrapfigure}
 		
-		\textbf{Dimostrazione del corollario.}
+		\textbf{Dimostrazione Corollario.}
 		Diciamo $X \coloneqq \{ f \in C(K) \mid x_1 \sim x_2 \Rightarrow f(x_1) = f(x_2) \}$ allora applichiamo	il teorema di Stone-Weierstrass a $\sfrac{K}{\sim}$, è chiaro che $\overline{\mathcal A} \subset X$, vediamo che $X \subset \overline{\mathcal A}$. 
 
 		Data $g \in X$ troviamo $g_n \in \mathcal A$ tale che $g_n \to g$ uniformemente allora $\exists \tilde g \colon \sfrac{K}{\sim} \to \C$ tale che $g = \tilde g \compose \pi$, consideriamo $\mathcal A = \{ \tilde f \mid f \in \mathcal A \}$ che è una sottoalgebra di $C(\overline{\sfrac{K}{\sim}}; \C)$ che separa i punti, etc. 

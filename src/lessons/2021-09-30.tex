@@ -58,15 +58,15 @@ e $f \compose u$ è integrabile.
 \textbf{Dimostrazione.}
 Poniamo $\ds y_0 \coloneqq \int_X u \dd \mu$, allora la tesi diventa
 $$
-f \bigg( \int_X u \dd \mu \bigg) \leq \int_X f \compose u \dd \mu
-\quad
-\rightsquigarrow
-\quad
-\int_X f \compose u \dd \mu \geq f(y_0)
+	f \bigg( \int_X u \dd \mu \bigg) \leq \int_X f \compose u \dd \mu
+	\quad
+	\longiff
+	\quad
+	f(y_0) \leq \int_X f \compose u \dd \mu.
 $$
 Prendiamo $\phi \colon \R^d \to \R$ affine (ovvero $\phi(y) = a \cdot y + b$ con $a \in \R^d$ e $b \in \R$) tale che $\phi \leq f$, allora
 $$
-\int_X f \compose u \dd \mu \geq \int_X \phi \compose u \dd \mu = \int_X a \cdot u + b \dd \mu = a y_0 + b = \phi(y_0)
+	\int_X f \compose u \dd \mu \underset{(\star)}{\geq} \int_X \phi \compose u \dd \mu = \int_X a \cdot u + b \dd \mu = a y_0 + b = \phi(y_0)
 $$
 
 Infine concludiamo usando il seguente lemma di caratterizzazione delle funzioni convesse ed S.C.I.
@@ -77,9 +77,9 @@ $$
 \forall y_0 \in \R^d \quad \sup_{\substack{\phi \text{ affine} \\ \phi \leq f}} \phi(y_0) = f(y_0)
 $$
 
-Nel caso $d = 1$ e $f \colon \R \to \R$ possiamo appoggiarci al fatto che le funzioni convesse ammettono sempre derivata destra o sinistra, il $\sup$ diventa un massimo e ci basta prendere come $\phi$ la retta tangente in $(y_0, f(y_0))$ o una con pendenza compresa tra $f'(y_0^-)$ e $f'(y_0^+)$.
+Rileggendo meglio la dimostrazione\footnote{Viene considerata la parte negativa per invertire la disuguaglianza $(\star)$.} segue che $(f \compose u)^- < (\phi \compose u)^- \implies (f \compose u)^-$. 
 
-Rileggendo meglio la dimostrazione segue che $(f \compose u)^- < (\phi \compose u)^- \implies (f \compose u)^-$. 
+\textbf{Nota.} Nel caso $d = 1$ e $f \colon \R \to \R$ possiamo usare il fatto che le funzioni convesse ammettono sempre derivata destra o sinistra, il $\sup$ diventa un massimo e ci basta prendere come $\phi$ la retta tangente in $(y_0, f(y_0))$ o una con pendenza compresa tra $f'(y_0^-)$ e $f'(y_0^+)$.
 
 \qed
 
@@ -99,7 +99,7 @@ mentre per $p = +\infty$ poniamo
 $$
 	\norm{f}_\infty = \mathrm{supess} f(x) \coloneqq \inf \{ m \in [0, +\infty] \mid |f(x)| \leq m \text{ per $\mu$-q.o. } x \}.
 $$
-\textbf{Nota.} In realtà queste sono solo delle semi-norme\footnote{Vedremo meglio più avanti questo dettaglio}.
+\textbf{Nota.} In realtà queste sono solo delle semi-norme.
 
 \begin{itemize}
 	\item $\ds \norm{f}_\infty \leq \sup_{x \in X} |f(x)|$
@@ -141,11 +141,16 @@ inoltre vale l'uguale se e solo se $a_1 = a_2$.
 Se $a_1 = a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$. Per la concavità del logaritmo abbiamo
 % e passiamo $a_1^{\lambda_1} a_2^{\lambda_2}$ al logaritmo
 $$
-\lambda_1 \log a_1 + \lambda_2 \log a_2 \leq \log(\lambda_1 a_2 + \lambda_2 a_2),
+	\lambda_1 \log a_1 + \lambda_2 \log a_2 \leq \log(\lambda_1 a_2 + \lambda_2 a_2),
+	\longiff \log \left( a_1^{\lambda_1} a_2^{\lambda_2} \right) \leq \log(\lambda_1 a_2 + \lambda_2 a_2)
 $$
-da cui segue la tesi.
-
-Il se e solo se per l'uguale segue dal fatto che il logaritmo è \textit{strettamente concavo}. 
+e dalla monotonia
+%
+$$
+	 a_1^{\lambda_1} a_2^{\lambda_2} \leq \lambda_1 a_2 + \lambda_2 a_2.
+$$
+%
+Infine, il se e solo se per l'uguale segue dal fatto che il logaritmo è \textit{strettamente concavo}. 
 \qed
 
 \subsection{Disuguaglianza di H\"older}
@@ -190,7 +195,7 @@ Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$
 		= \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
 		$$
 \end{itemize}
-In particolare, vale l'uguaglianza se prendiamo un valore di $\gamma$ tale che $a_1 = a_2$. Resta da verificare che tale valore di $\gamma$ esista [TODO].
+% In particolare, vale l'uguaglianza se prendiamo un valore di $\gamma$ tale che $a_1 = a_2$. Resta da verificare che tale valore di $\gamma$ esista [TODO].
 \qed
 
 \textbf{Osservazione.}
@@ -202,9 +207,9 @@ $$
 \subsection{Disuguaglianza di Minkowski}
 
 \textbf{Proposizione.} 
-Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$ allora vale la disuguaglianza triangolare
+Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$. Allora vale la disuguaglianza triangolare
 $$
-\norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
+	\norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p.
 $$
 %
 \textbf{Dimostrazione.}
@@ -259,26 +264,26 @@ $$
 			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
 		\end{aligned}
 		$$
-		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte ed ottenere la tesi
-		$$
-		\implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
-		\implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
-		$$
+		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte ed ottenere la tesi.
+		% $$
+		% \implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
+		% \implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
+		% $$
 
 	\item \textit{Caso 3:} se $1 < p < +\infty$ ma $\norm{f_1 + f_2} = 0$ o $+\infty$ allora se $\norm{f_1 + f_2} = 0$ la disuguaglianza è banale mentre se $\norm{f_1 + f_2} = +\infty$ si usa la seguente disuguaglianza
 		$$
-		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+			\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p),
 		$$
 		che si ottiene usando la convessità della funzione $x \mapsto x^p$ e la combinazione affine $\frac{1}{2}x_1 + \frac{1}{2}x_2$ infatti
 		$$
-		\left( \frac{x}{2} + \frac{y}{2} \right)^p \leq \frac{1}{2} x^p + \frac{1}{2} y^p 
-		\implies \frac{1}{2^{p-1}} (x+y)^p \leq x^p + y^p 
-		\implies (x+y)^p \leq 2^{p-1} (x^p + y^p)
+			\left( \frac{x}{2} + \frac{y}{2} \right)^p \leq \frac{1}{2} x^p + \frac{1}{2} y^p 
+			\implies \frac{1}{2^{p-1}} (x+y)^p \leq x^p + y^p 
+			\implies (x+y)^p \leq 2^{p-1} (x^p + y^p).
 		$$
-		ma sostituendo con $f_1$ e $f_2$, integrando e poi sostituendo le norme otteniamo
-		$$
-		\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
-		$$
+		% ma sostituendo con $f_1$ e $f_2$, integrando e poi sostituendo le norme otteniamo
+		% $$
+		% 	\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p).
+		% $$
 		% $$
 		% \norm{f_1 + f_2}_p^p 
 		% = \int_X |f_1 + f_2|^p \dd \mu 
@@ -288,7 +293,7 @@ $$
 		% \leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
 		% = 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
 		% $$
-		da cui possiamo ricavare subito che almeno uno dei due termini deve essere $+\infty$.
-
+		% da cui possiamo ricavare subito che almeno uno dei due termini deve essere $+\infty$.
+\qed
 \end{itemize}
 

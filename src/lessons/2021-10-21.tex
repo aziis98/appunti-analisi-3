@@ -30,7 +30,7 @@ Ad esempio se restringiamo il dominio a $L^p(\R^d) \cap L^1(\R^d)$ l'applicazion
 Più formalmente, la mappa
 %
 $$
-T \colon \left( L^p \cap L^1(\R^d), \norm{\curry}_{L^p} \right) \to \R
+T \colon \left( L^p \cap L^1(\R^d), \norm{\cdot}_{L^p} \right) \to \R
 $$
 %
 è lineare ma non continua.
@@ -46,7 +46,7 @@ $$
 u_n (x) =
 \frac{1}{n} \One_{[n, 2n]} =
 \begin{cases}
-\dfrac{1}{n} \quad \text{se} \quad n \leq x \leq 2n \\[2ex]
+\frac{1}{n} \quad \text{se} \quad n \leq x \leq 2n \\
 0 \quad \text{altrimenti}. 
 \end{cases} 
 $$
@@ -208,6 +208,7 @@ V = \left\{ \left\{ x_n \right\} \mymid x_n = 0 \quad \text{definitivamente}  \r
 $$
 %
 Vediamo che non è chiuso. Sia $\underline{x} \in \ell^2$, definita come $\underline{x} = \{ 1 / n \}_{n \in \N \setminus \{0 \}}$, diciamo che $\ds \underline{x} = \lim_{n \to +\infty} \underline{x}^n$ dove
+%
 $$
 x_n^k = 
 \begin{cases}
@@ -215,14 +216,16 @@ x_n^k =
 0 \quad n > k, n = 0
 \end{cases} 
 $$
+%
 abbiamo che
+%
 $$
-\norm{\underline{x} - \underline{x}^k}_{\ell^2}^2 = \sum_{n=1}^{\infty} \left| x_n -x_n^k \right|^2 = \sum_{n = k+1}^{+\infty} \left| x_n \right|^2 = \sum_{n = k+1}^{\infty} \frac{1}{n^2} \xrightarrow{k \to +\infty} 0
+\norm{\underline{x} - \underline{x}^k}_{\ell^2}^2 = \sum_{n=1}^{\infty} \left| x_n -x_n^k \right|^2 = \sum_{n = k+1}^{+\infty} \left| x_n \right|^2 = \sum_{n = k+1}^{\infty} \frac{1}{n^2} \xrightarrow{k \to +\infty} 0.   
 $$
-abbiamo così trovato una successione che converge fuori da $V$ segue che $V$ non è chiuso.
+%
 
 Vediamo un altro esempio. Siano $X = \R$, $\mu$ la misura di Lebesgue e $p > 1$.
-In tal caso, l'insieme $L^p \cap L^1 (\R)$ è un sottospazio denso in $\left( L^1(\R), \norm{\curry }_{L^1} \right)$ e $\left( L^p(\R), \norm{\curry }_{L^p} \right)$.
+In tal caso, l'insieme $L^p \cap L^1 (\R)$ è un sottospazio denso in $\left( L^1(\R), \norm{\cdot }_{L^1} \right)$ e $\left( L^p(\R), \norm{\cdot }_{L^p} \right)$.
 
 \textbf{Nota.} L'insieme $L^2(\R) \cap L^1(\R)$ è un sottospazio proprio di $L^1(\R)$. Diciamo che non è chiuso in $\norm{\curry}_{L^1(\R)}$ perché è denso.
 Infatti, 
@@ -259,11 +262,10 @@ $$
 %
 Usiamo la proprietà che, essendo $f \ast g$ ben definita, si ha $ f \ast g(x) = g \ast f(x) $. Da cui
 \begin{align*}
-\left| f \ast g(x_1) - f \ast g(x_2) \right|
-&= \left| \int_{\R^d} g(x_1 - y) f(y) \dd y - \int_{\R^d} g(x_2 - y) f(y) \dd y \right| \\
+\left| f \ast g(x_1) - f \ast g(x_2) \right|  & = \left| \int_{\R^d} g(x_1 - y) f(y) \dd y \int_{\R^d} g(x_2 - y) f(y) \dd y   \right| \\
 & = \left| \int_{\R^d} \left( g(x_1 - y) - g(x_2 - y) \right) f(y) \dd y  \right| \\
-& \leq \int_{\R^d} \left| g(x_1 - y) - g(x_2 - y) \right| \cdot \left| f(y) \right| \dd y \\
-& \leq \int_{\R^d} M \left| (x_1 - y) - (x_2 - y) \right| \cdot \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
+& \leq \int_{\R^d} \left| g(x_1 - y) - g(x_2 - y) \right| \left| f(y) \right| \dd y \\
+& \leq \int_{\R^d} M \left| (x_1 - y) - (x_2 - y) \right| \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
 \end{align*}
 
 \textbf{Esercizio.} [TO DO] Se $f \in L^1(\R^d)$ e $g$ a supporto compatto è $\alpha$-Hölderiana allora anche $f \ast g$ lo è.
@@ -272,7 +274,7 @@ Usiamo la proprietà che, essendo $f \ast g$ ben definita, si ha $ f \ast g(x) =
 
 \subsection{Separabilità degli spazi $L^p$}
 
-\textbf{Proposizione.} Si ha che $L^p ( \R^d, \mu)$ con $\mu $ la misura di Lebesgue, è separabile se solo se $p \neq +\infty$. Lo stesso risultato vale per $\ell^p$.
+\textbf{Proposizione.} Si ha che $L^p\left( \R^d, \mu \right)$ con $\mu $ la misura di Lebesgue, è separabile se solo se $p \neq +\infty$. Lo stesso risultato vale per $\ell^p$.
 
 \textbf{Osservazione.} La proposizione è valida anche per $L^p(X,\mu)$ con $X \subset \R^d$ aperto.
 

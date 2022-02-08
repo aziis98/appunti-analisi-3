@@ -69,7 +69,7 @@ Se esistesse $(f_n)_n$, allora sarebbe di Cauchy rispetto alla norma $\norm{\cur
 (In particolare dato $E = \{ x \mid f(x) = \tilde f(x) \}$, prendiamo $x_n, y_n \in E$ tali che $x_n \uparrow 0$ e $y_n \downarrow 0$ ma i limiti di $f$ sono $0$ e $1$ \absurd)
 
 \textbf{Teorema} (di Lusin).
-Dato $X \subset \R^d, \mu = \mathscr L^d$ e data $f \colon X \to \R$ o $\R^m$ misurabile e $\epsilon > 0$, esiste un aperto $E \subset X$ con $|E| \leq \epsilon$ tale che $f$ è continua su $X \setminus E$ (la restrizione di $f$ a $X \setminus E$ è continua)
+Dato $X \subset \R^d, \mu = \mathscr L^d$ e data $f \colon X \to \R$ o $\R^m$ misurabile e $\epsilon > 0$, esiste $E$ aperto in $X$ con $|E| \leq \epsilon$ tale che $f$ è continua su $X \setminus E$ (la restrizione di $f$ a $X \setminus E$ è continua)
 
 \textbf{Osservazione.} 
 In generale $f$ può essere non continua in tutti i punti di $X$, infatti $E$ può essere denso e $X \setminus E$ avere parte interna vuota.
@@ -81,15 +81,13 @@ Usando questo lemma possiamo enunciare nuovamente il teorema precedente come seg
 \textbf{Teorema} (di Lusin$'$).
 Data $f \colon X \to \R$ misurabile e $\epsilon > 0$, $\exists E$ aperto con $|E| \leq \epsilon$ e $g \colon X \to \R$ continua tale che $f = g$ su $X \setminus E$, inoltre se $f \in L^p(X)$ e $p < +\infty$ si può anche chiedere che $\norm{f - g}_p \leq \epsilon$.
 
-Essenzialmente il teorema di Lusin ci dice che le funzioni misurabili (o in $L^p$), a meno di un insieme di misura arbitrariamente piccola, si comportano come funzioni continue.
-
 \textbf{Dimostrazione.}
 Basta trovare $E$ misurabile (per ottenere $E$ aperto si usa la regolarità della misura)
 \begin{itemize}
 	\item \textit{Caso 1}:
 		$f \in L^1(X)$ e $|X| < +\infty$
 
-		Abbiamo che $f \in L^1 \implies \exists f_n$ continue tali che $f_n \to f$ in $L^1 \implies f_n \to f$ in misura e per \textit{Severini-Egorov} esiste $E$ tale che $|E| \leq \epsilon$ e $f_n \to f$ uniformemente su $X \setminus E \implies f$ è continua su $X \setminus E$.
+		Abbiamo che $f \in L^1 \implies \exists f_n$ continue tali che $f_n \to f$ in $L^1 \implies f_n \to f$ in misura e per Severini-Egorov esiste $E$ tale che $|E| \leq \epsilon$ e $f_n \to f$ uniformemente su $X \setminus E \implies f$ è continua su $X \setminus E$.
 
 	\item \textit{Caso 2}:
 		$f$ qualunque misurabile e $|X| < +\infty$

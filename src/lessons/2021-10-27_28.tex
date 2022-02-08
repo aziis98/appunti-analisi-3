@@ -65,7 +65,7 @@ $$
 $$
 %
 
-\textbf{Teorema 1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema al più numerabile, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
+\textbf{Teorema~1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema ortonormale al più numerabile, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
 Definiamo per ogni $x \in H$, $n \in \N$ l'elemento $x_n = \left<x, e_n \right>$.
 Allora
 \begin{enumerate}
@@ -85,7 +85,7 @@ Se $x - \overline{x} \perp \mc{F}$, allora $x - \overline{x} \perp \overline{\sp
 Se $\mc{F}$ è completo, allora $x = \overline{x}$ e in particolare
 %
 $$
-x = \sum_{n=0}^{\infty} x_n e_n, \qquad \norm{x}^2 = \sum_{n=0}^{\infty} x_n^2  \qquad \text{(\textbf{Identità di Parceval})}.
+x = \sum_{n=0}^{\infty} x_n e_n, \qquad \norm{x}^2 = \sum_{n=0}^{\infty} x_n^2  \qquad \text{(\textbf{Identità di Parseval})}.
 $$
 %
 \end{enumerate}
@@ -103,35 +103,35 @@ Alla dimostrazione del teorema premettiamo il seguente lemma.
 
 \vs
 
-\textbf{Lemma.} Siano $H$ e $\mc{F}$ come nel teorema.
+\textbf{Lemma~2.} Siano $H$ e $\mc{F}$ come nel teorema.
 Data $(a_n) \in \ell^2$, allora
 \begin{enumerate}
-\item La serie $\ds \sum_n a_n e_n$ converge a qualche $\overline{x} \in H$. 
+	\item La serie $\ds \sum_n a_n e_n$ converge a qualche $\overline{x} \in H$. 
 
-\item $\overline{x}_n = a_n$ per ogni $n$.
+	\item $\overline{x}_n = a_n$ per ogni $n$.
 
-\item $\ds \norm{\overline{x}}^2 = \sum_n a_n^2$.
+	\item $\ds \norm{\overline{x}}^2 = \sum_n a_n^2$.
 \end{enumerate}
 
-\textbf{Dimostrazione lemma.} 
+\textbf{Dimostrazione.}
 \begin{enumerate}
 \item Dimostriamo che $\ds y_n = \sum_{n = 1}^{m} a_n e_n$ è di Cauchy in $H$.
 Se $m' > m$, vale
 %
 $$
-y_{m'} - y_m = \sum_{n = m+1}^{m'} a_n e_n
-\Longrightarrow  \norm{y_{m'} - y_m}^2 = \norm{\sum_{n = m+1}^{m'} a_n e_n}^2 
-= \sum_{n = m+1}^{m'} a_n^2 \leq \sum_{n = m+1}^{\infty} a_n^2 < +\infty.
+	y_{m'} - y_m = \sum_{n = m+1}^{m'} a_n e_n
+	\Longrightarrow  \norm{y_{m'} - y_m}^2 = \norm{\sum_{n = m+1}^{m'} a_n e_n}^2 
+	= \sum_{n = m+1}^{m'} a_n^2 \leq \sum_{n = m+1}^{\infty} a_n^2 < +\infty.
 $$
 %
-Dunque, per ogni $\epsilon$ esiste $m_\epsilon$ tale che $\ds \sum_{m + 1}^{\infty} a_n^2 \leq \epsilon^2 $, per cui 
+Dunque, per ogni $\epsilon$ esiste $m_\epsilon$ tale che $\ds \sum_{m_\epsilon + 1}^{\infty} a_n^2 \leq \epsilon^2 $, per cui 
 %
 $$
-\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{\infty} a_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} a_n^2 \leq \epsilon^2 \quad \forall m,m' \geq m_\epsilon.
+	\norm{y_{m'} - y_m}^2 \leq \sum_{m+1}^{m'} a_n^2 \leq \sum_{m_\epsilon + 1}^{\infty} a_n^2 \leq \epsilon^2 \quad \forall m,m' \geq m_\epsilon.
 $$
 %
 
-\item Se $m \geq n$, $\left<y_m, e_n \right> = a_n$, dunque
+\item Se $m \geq n$, $\left<y_m, e_n \right> = a_n$, dunque, per continuità del prodotto scalare
 %
 $$
 a_n = \left<y_m, e_n \right> \xrightarrow{m \to \infty} \left<\overline{x},e_n \right> = \ol{x}_n.
@@ -149,7 +149,7 @@ $$
 \end{enumerate}
 
 
-\textbf{Dimostrazione teorema.}
+\textbf{Dimostrazione Teorema~1.}
 
 \begin{enumerate}
 \item Studiamo la somma $\ds x = \sum_{n=0}^{m} x_n e_n + \overbrace{y}^{\text{resto}}$.
@@ -174,9 +174,9 @@ $$
 $$
 %
 
-\item Segue dal punto precedente e dal lemma.
+\item Segue dal lemma notando che il punto precedente ci dice che la successione $(x_n)$ è a quadrato sommabile.
 
-\item Segue dal punto precedente e dal lemma.
+\item Analogamente al caso precedente.
 
 \item Notiamo che $\left<x - \ol{x}, e_n \right> = x_n - \ol{x}_n \overset{\text{ii)}}{=} 0$ per ogni $n$. Cioè
 %
@@ -190,11 +190,11 @@ $$
 \end{enumerate}
 \qed
 
-\textbf{Corollario.} Siano $H$ spazio di Hilbert, $\mc{F} = \left\{ e_n \mymid n \in \Z \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
+\textbf{Corollario~3.} Siano $H$ spazio di Hilbert, $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ base di Hilbert, $x,x' \in H$. Valgono le seguenti.
 \begin{enumerate}
-\item Se $x_n = x_n'$ per ogni $n \in \N$, allora $x = x'$ ($\Leftarrow$ è ovvia.)
+\item $x_n = x_n' \mquad \forall n \in \N \longiff x = x'$ ($\Leftarrow$ è ovvia).
 
-\item $\ds \left<x,x' \right> = \sum_{n=0}^{\infty} x_n  x_n'$ (\textbf{Identità di Parceval}).
+\item $\ds \left<x,x' \right> = \sum_{n=0}^{\infty} x_n  x_n'$ (\textbf{Identità di Parseval}).
 
 \item L'applicazione $H \ni x \mapsto (x_n) \in \ell^2$ è un'isometria surgettiva\footnote{In particolare è bigettiva ma l'iniettività è ovvia.}.
 \end{enumerate}
@@ -204,26 +204,26 @@ $$
 \textbf{Dimostrazione.}
 
 \begin{enumerate}
-\item Per l'enunciato \ref{item:27ott_thm1_5} se due vettori hanno la stessa rappresentazione rispetto a una base di Hilbert coincidono.
+	\item Per l'enunciato \ref{item:27ott_thm1_5} se due vettori hanno la stessa rappresentazione rispetto a una base di Hilbert coincidono.
 
-\item La tesi segue usando l'identità di polarizzazione congiuntamente all'enunciato \ref{item:27ott_thm1_5} del teorema:
-%
-\begin{align*}
-\left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 + \norm{x - x'}^2 \right)
-= \frac{1}{4} \Big( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'}  \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \Big) \\
-& = \frac{1}{4} \left( \cancel{\sum x_n^2} + \cancel{\sum x_n'^2} + 2 \sum x_n x_n' - \cancel{\sum x_n^2} - \cancel{\sum x_n'^2} + 2 \sum x_n x_n' \right).
-\end{align*}
+	\item La tesi segue usando l'identità di polarizzazione congiuntamente all'enunciato \ref{item:27ott_thm1_5} del teorema:
+	%
+	\begin{align*}
+		\left<x,x' \right> & = \frac{1}{4} \left( \norm{x + x'}^2 - \norm{x - x'}^2 \right)
+		= \frac{1}{4} \Big( \sum_n \overbrace{(x_n + x_n')^2}^{x_n^2 + x_n'^2 + 2x_n x_n'} - \sum_n \underbrace{(x_n - x_n')^2}_{x_n^2 + x_n'^2 - 2 x_n x_n'}  \Big) \\
+		& = \frac{1}{4} \left( \cancel{\sum x_n^2} + \cancel{\sum x_n'^2} + 2 \sum x_n x_n' - \cancel{\sum x_n^2} - \cancel{\sum x_n'^2} + 2 \sum x_n x_n' \right).
+	\end{align*}
 
-\item Segue da Parseval e dal punto \ref{item:27ott_thm1_3}.
+	\item Il fatto che l'applicazione sia un'isometria segue da Parseval; che sia iniettiva dal fatto che $\mc{F}$ è una base di Hilbert e che sia surgettiva dai punti i) e ii) del Lemma~2.
 
+	\qed
 \end{enumerate}
-\qed
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Gli enunciati \ref{item:27ott_thm1_1} e \ref{item:27ott_thm1_5} non richiedono $H$ completo, mentre \ref{item:27ott_thm1_2} è vero anche se $H$ non è completo.
+\item Gli enunciati \ref{item:27ott_thm1_1} e \ref{item:27ott_thm1_5} non richiedono $H$ completo, mentre \ref{item:27ott_thm1_2} non è vero se $H$ non è completo.
 
-\item Se $H$ è uno spazio di Hilbert e $\mc{F}$ sistema ortonormale infinito, allora $\mc{F}$ non è mai una base algebrica\footnote{Per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio.}. Dunque, combinazioni lineari finite di $H$ non sono mai uguali ad $H$, ovvero $\spn(\mc{F}) \subsetneq H $) di $H$.
+\item Se $H$ è uno spazio di Hilbert e $\mc{F}$ sistema ortonormale infinito, allora $\mc{F}$ non è mai una base algebrica\footnote{Per base algebrica s'intende un insieme di vettori di uno spazio vettoriale le cui combinazioni lineari generano tutto lo spazio.}. Dunque, combinazioni lineari finite di $\mc{F}$ non sono mai uguali ad $H$, ovvero $\spn(\mc{F}) \subsetneq H $.
 
 \textbf{Dimostrazione.} Presi $(e_n) \subset \mc{F}$, consideriamo $\ds \ol{x} = \sum_{n=0}^{\infty} 2^{-n}e_n $. Allora  $\ds \ol{x} \in H \setminus \spn(\mc{F})$.
 %
@@ -237,11 +237,14 @@ $$
 
 \item[$\boxed{\Rightarrow}$] Vale $ H = \overline{\spn(\mc{F})} = \overline{\spn_\Q (\mc{F})} $. Concludiamo notando che $\overline{\spn_\Q (\mc{F})}$ è numerabile se  $\mc{F}$ è numerabile.
 
-\item[$\boxed{\Leftarrow}$] Se $\mc{F}$ non fosse numerabile, siccome $\norm{e - e'} = \sqrt{2}  \quad \forall e,e' \in \mc{F}$ allora $H$ non è separabile.
+\item[$\boxed{\Leftarrow}$] Se $\mc{F}$ non fosse numerabile, siccome $\norm{e - e'} = \sqrt{2}  \quad \forall e,e' \in \mc{F}$, potremmo definire per ogni elemento di $\mc{F}$ una palla di raggio $\sqrt{2}/2$, dunque potremmo definire un insieme di palle disgiunte. Dato un sottoinsieme denso di $H$, per definizione, deve intersecare ogni palla e dunque deve essere più che numerabile, dunque $H$ non sarebbe separabile.
 
 \end{itemize}
 
+
 \textbf{Esempio.} Lo spazio $H = L^2(X)$, con $X = \R^n$, $\mu $ misura di Lebesgue ha base di Hilbert numerabile.
+
+\newpage
 
 \item Dato $\mc{F}$ sistema ortonormale in $H$, allora $\mc{F}$ è completo se solo se $\mc{F}$ è massimale (nella classe dei sistemi ortonormali rispetto all'inclusione).
 
@@ -257,7 +260,7 @@ $$
 %
 dunque $\mc{F}$ è massimale.
 
-\item[$\boxed{\Leftarrow}$] Se  $\mc{F}$ non è completo, esiste $c \in H \setminus \spn(\mc{F})$.
+\item[$\boxed{\Leftarrow}$] Se  $\mc{F}$ non è completo, esiste $x \in H \setminus \spn(\mc{F})$.
 Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp \spn(\mc{F})$, dunque $x - \overline{x} \perp \mc{F}$ e $x - \overline{x} \neq \{ 0 \}$, da cui $\ds \mc{F} \; \cup \; \left\{ \frac{x - \overline{x}}{\norm{x - \overline{x}}} \right\}$ è un sistema ortonormale che include strettamente $\mc{F}$. \absurd
 
 \end{itemize}
@@ -265,22 +268,16 @@ Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp
 
 \textbf{Osservazione.} Nell'implicazione $\boxed{\Rightarrow}$ non abbiamo usato la completezza di $H$.
 
-\end{itemize}
-
-\vs
-
-\textbf{Corollario.} Ogni sistema ortonormale $\mc{F}$ si completa a $\tilde{\mc{F}}$ base di Hilbert di $H$.
+\item Ogni sistema ortonormale $\mc{F}$ si completa a $\tilde{\mc{F}}$ base di Hilbert di $H$.
 
 \textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$.
 Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. Allora $\tilde{\mc{F}}$ è una base di Hilbert.
 
-\vs
 
-\textbf{Nota.} Aggiungere le note a caso. [TO DO: ?]
+\end{itemize}
 
-\vs
 
-\textbf{Teorema 2.} Dato $V$ sottospazio vettoriale chiuso di $H$. Allora
+\textbf{Teorema~4.} Dato $V$ sottospazio vettoriale chiuso di $H$. Allora
 \begin{enumerate}
 \item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\tilde{x} \in V^\perp$ tale che $x = \overline{x} + \tilde{x}$.
 
@@ -323,56 +320,53 @@ $$
 %
 Un esempio di tale $V$ è $\spn(\mc{F})$ con $\mc{F}$ base di $H$ ($H$ di dimensione infinita).
 
-\hypertarget{thm:lez2728ott-teo3}{%
-\textbf{Teorema 3} (di rappresentazione di Riesz.)} Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
+\newpage
 
+\hypertarget{thm:lez2728ott-teo3}{%
+\textbf{Teorema~5} (di rappresentazione di Riesz.)} Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
 \begin{equation} \tag{$\ast$}
 	\Lambda(x) = \left<x,x_0 \right> \quad \text{per ogni} \; x \in H.
 \end{equation}
 
-\textbf{Dimostrazione.}
-Supponiamo $\Lambda \not\equiv 0$. Dato che $\Lambda$ è continuo, $\ker \Lambda$ è chiuso in $H$. Definiamo $V \coloneqq \ker \Lambda$.
-Per il primo enunciato del teorema precedente, $H = V + V^\perp$ e per quanto supposto $V^\perp \neq \{0\}$.
+\textbf{Lemma~6.} Dato $\Lambda \colon X \to \R$ lineare, $\left( \ker \Lambda \right)^\perp$ ha dimensione 0 o 1.
 
-Notiamo che $\dim V^\perp = 1$. Infatti, se per assurdo $\dim(V^\perp) > 1$, allora esisterebbe $W \subset V^\perp$ con $\dim W = 2$, da cui seguirebbe che $\Lambda \colon  W \to \R$ ha $\ker$ banale. \absurd
+\textbf{Dimostrazione} Se per assurdo $\dim (\ker \Lambda)^\perp \geq 2$, allora $(\ker \Lambda)^\perp$ conterrebbe un sottospazio $W$ di dimensione $2$.
+Dunque, $\dim \left( \ker \restr{\Lambda}{W} \right) = \{1,2\}$, essendo che $\dim \R = 1$. Ma questo non è possibile, in quanto abbiamo definito $W = \ker^\perp$. 
+\qed
 
-Allora $V^\perp = \spn \left\{ x_1 \right\}$ con $\norm{x_1} = 1$. Definiamo $c \coloneqq \Lambda(x_1), x_0 = c x_1$.
+\textbf{Dimostrazione Teorema~5.}
+Sia $V \coloneqq \ker \Lambda$. Dato che $\Lambda$ è continuo segue che $V$ è chiuso.
+Se $V = H \Longrightarrow \Lambda \cong 0$ e prendiamo $x_0 = 0$.
 
-Dimostriamo ora l'uguaglianza $\ast$ per passi.
-
-\begin{enumerate}
-\item Vale per $x \in V$ tale che $x \in \ker \Lambda$. Infatti $\Lambda(x)=x_0$ e $\left<x,x_0 \right> = 0$ perché $x_0 \in V^\perp$.
-
-\item Vale per $x = x_1$ (e quindi per $x \in V^\perp$). Infatti, 
-%
-$$
-\Lambda(x_1) = c \quad \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c.
-$$
-%
-
-\item Vale su $V + V^\perp = H$.
-\end{enumerate}
-
-\textbf{Osservazioni.}
+Se $V \neq H$, allora $V^\perp \neq \{0\}$ e definiamo $x_1 \in V^\perp$ con $\norm{x_1} = 1$.
+Poniamo $x_0 \coloneqq  c x_1$ con $c \coloneqq  \Lambda x_1$ e $\tilde{\Lambda}(x) \coloneqq \left<x,x_0 \right>$. Abbiamo che
 \begin{itemize}
-\item Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensione infinita.
+
+	\item $x \in V \Longrightarrow x \perp x_1 \Longrightarrow x \perp x_0 \Longrightarrow \tilde{\Lambda} = 0 = \Lambda(x)$. Quindi $\tilde{\Lambda} = \Lambda$ su $V$.
+
+	\item $\tilde{\Lambda}(x_1) = \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c = \Lambda(x_1)$. Quindi $\tilde{\Lambda} = \Lambda$ su $\spn(x_1) = V^\perp$.
+
+	\item $\tilde{\Lambda} = \Lambda$ su $V + V^\perp = H$.
+
+\qed
+\end{itemize}
+
+\textbf{Osservazione.}
+Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensione infinita.
 
 \textbf{Dimostrazione.} Prendo $\Lambda \colon H \to \R$ lineare definito come
 %
 $$
-\begin{cases}
-\Lambda(e_n) = n \quad \forall n \\
-\Lambda(e) = \text{qualsiasi } e \in \mc{G} \setminus \left\{ e_n \right\}.
-\end{cases} 
+	\begin{cases}
+	\Lambda(e_n) = n \quad \forall n \\
+	\Lambda(e) = \text{qualsiasi } e \in \mc{G} \setminus \left\{ e_n \right\}.
+	\end{cases} 
 $$
 %
 Allora
 %
 $$
-+\infty = \sup_n \left| \Lambda(e_n) \right| \leq \sup_{\norm{x} \leq 1} \left| \Lambda(x) \right| 
+	+\infty = \sup_n \left| \Lambda(e_n) \right| \leq \sup_{\norm{x} \leq 1} \left| \Lambda(x) \right| 
 $$
 %
 da cui segue che $\Lambda$ non è continuo.
-
-\end{itemize}
-
