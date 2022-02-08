@@ -14,7 +14,7 @@
 % dove $S_n f(\bar x) = \ds \sum_{n=-N}^N c_n e^{inx}$.
 
 \textbf{Lemma.} (di rappresentazione di $S_n f$ come convoluzione)
-Ricapitolando data $f$ come sopra abbiamo visto che
+Ricapitolando, data $f$ come sopra abbiamo visto che
 $$
 S_n f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_n(t) \dd t
 \qquad
@@ -22,23 +22,23 @@ S_n f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_n(t) \dd t
 D_N(t) \coloneqq \sum_{n=-N}^N e^{int} = \frac{\sin\left(\left(N + \frac{1}{2}\right)t\right)}{\sin \left(\frac{t}{2}\right)}
 $$
 \textbf{Osservazione.}
-In particolare vale $\ds \frac{1}{2\pi} \int_{-\pi}^\pi D_N(t) \dd t = 1$.
+Vale proprio che $\ds \frac{1}{2\pi} \int_{-\pi}^\pi D_N(t) \dd t = 1$.
 
 \textbf{Lemma.} (di Riemann-Lebesgue (generalizzato)).
 Data $g \in L^1(\R)$ e $h \in L^\infty(\R)$ con $h$ $T$-periodica, allora
 $$
 \int_\R g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty}
 \underbrace{\left(\int_\R g(x) \dd x \right)}_a
-\underbrace{\left(\avint_0^T h(x) \dd x \right)}_m
+\underbrace{\left(\fint_0^T h(x) \dd x \right)}_m
 $$
 
 Se supponiamo $\supp g \subseteq [0, 1]$ allora
 %
 $$
-	 \int_0^1 g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty} \int_0^1 g(x) \dd x \cdot \avint_0^T h(x) \dd x \approx \int_0^1 g(x) \dd x \cdot \avint_0^1 h(yx) \dd y.
+	 \int_0^1 g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty} \int_0^1 g(x) \dd x \cdot \fint_0^T h(x) \dd x \approx \int_0^1 g(x) \dd x \cdot \fint_0^1 h(yx) \dd y.
 $$
 %
-In particolare è abbastanza intuitivo il risultato per $g$ costante a tratti infatti su un intervallo otterremmo
+Il risultato per $g$ costante a tratti è abbastanza intuitivo infatti su un intervallo otterremmo
 $$
 \int_0^{x_1} g(x) h(yx) \dd x = c \int_0^{x_1} h(yx) \dd x = (c x_1) m
 $$
@@ -48,12 +48,12 @@ Però ci sarebbero delle correzzioni da fare per dimostrare le cose in questo mo
 Per ogni $s, y$ poniamo $\Phi(y, s) \coloneqq \int_\R g(x) h(yx + s) \dd x$ con $s, y \in \R$ allora la tesi è che $\Phi(y, 0) \xrightarrow{y \to \pm\infty} a m$.
 Vedremo che valgono le seguenti
 \begin{enumerate}
-	\item $\forall y \; \ds \avint_0^T \Phi(y, s) \dd s = am$.
+	\item $\forall y \; \ds \fint_0^T \Phi(y, s) \dd s = am$.
 	\item $\forall s \; \Phi(y, s) - \Phi(y, 0) \xrightarrow{y \to \pm \infty} 0$.
 \end{enumerate}
 da cui segue subito che
 $$
-\Phi(y, 0) - ma = \avint_0^T \Phi(y, 0) - \Phi(y, s) \dd s \xrightarrow{y \to \pm \infty} 0
+\Phi(y, 0) - ma = \fint_0^T \Phi(y, 0) - \Phi(y, s) \dd s \xrightarrow{y \to \pm \infty} 0
 $$
 per convergenza dominata dove dalla ii). segue la convergenza puntuale e come dominazione usiamo
 $$
@@ -72,7 +72,7 @@ da cui segue la tesi. Mostriamo ora i due punti.
 		$$
 		e possiamo usare Fubini-Tonelli in quanto 
 		$$
-		\ds \int_\R \avint_0^T |h(yx - s)| \dd s \cdot |g(x)| \dd x \leq \int_\R \norm{f}_\infty |g(x)| \dd x = \norm{h}_\infty \cdot \norm{g}_1
+		\ds \int_\R \fint_0^T |h(yx - s)| \dd s \cdot |g(x)| \dd x \leq \int_\R \norm{f}_\infty |g(x)| \dd x = \norm{h}_\infty \cdot \norm{g}_1
 		$$
 
 	\item Notiamo che
@@ -104,7 +104,7 @@ $$
 	&= \frac{1}{2\pi} \int_{-\pi}^\pi (f(\bar x - t) - f(\bar x)) D_N(t) \dd t \\
 	&= \frac{1}{2\pi} \int_{-\pi}^\pi \frac{f(\bar x - t) - f(\bar x)}{\sin \frac{t}{2}} \sin \left(\left(N + \frac{1}{2}\right) t\right) \dd t \\
 	&= \int_{-\pi}^\pi g(t) \cdot \sin \left(\left(N + \frac{1}{2}\right) t\right)
-	\xrightarrow{\text{RL}} \left(\int g(x) \dd x\right) \cdot \avint_0^\pi \sin x \dd x
+	\xrightarrow{\text{RL}} \left(\int g(x) \dd x\right) \cdot \fint_0^\pi \sin x \dd x
 \end{aligned}
 $$
 in particolare per applicare Riemann-Lebesgue serve $g \in L^1([-\pi, \pi])$ ma infatti per $|t| \leq \delta$

@@ -42,7 +42,7 @@ Dunque $\ds \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^3}{6}$.
 
 \subsection{Regolarità di $f$ e dei coefficienti}
 
-\textbf{Proposizione 1.} Data $f \in [-\pi,\pi] \to \C$ tale che
+\textbf{Proposizione 1.} Data $f \colon [-\pi,\pi] \to \C$ tale che
 \begin{itemize}
 \item[(R)] $f \in C^1$ (basta $f$ continua e  $C^1$ a tratti).
 
@@ -82,7 +82,7 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 
 \item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| < +\infty $ per ogni $\alpha < 1/2$.
 
-\item La serie di Fourier converge \footnote{$\sum a_n(x)$ converge totalmente se converge la serie $\sum \norm{a_n (x)}_\infty$.}{totalmente}.
+\item La serie di Fourier converge totalmente\footnote{Ricordiamo che $\sum a_n(x)$ converge totalmente se $\sum \norm{a_n (x)}_\infty < +\infty$.}.
 \end{enumerate}
 
 \textbf{Dimostrazione.}
@@ -93,10 +93,10 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 
 \item $\ds \sum \left| n \right|^\alpha \left| c_n(f) \right| 
 \underbrace{\leq}_{(n \neq 0)} \sum_{n \in \Z} \left| n \right| \left| c_n(f) \right| \cdot \frac{1}{\left| n \right|^{1-\alpha }}
-\underbrace{\leq}_{C-S} \overbrace{\left( \sum_{n \in \Z} \left| n \right|^2 \left| c_n(f) \right|^2  \right)^{1/2}}^{< +\infty \text{ per il punto ii)}} \cdot \left( \sum_{n \in \Z} \frac{1}{\left| n \right|^{2-2\alpha }}  \right)^{1/2}. 
+\underbrace{\leq}_{\text{C.S.}} \overbrace{\left( \sum_{n \in \Z} \left| n \right|^2 \left| c_n(f) \right|^2  \right)^{1/2}}^{< +\infty \text{ per il punto ii)}} \cdot \left( \sum_{n \in \Z} \frac{1}{\left| n \right|^{2-2\alpha }}  \right)^{1/2}. 
 $
 
-\item Dal punto precedente con $\alpha = 0$ otteniamo $\ds \norm{c_n(f) e^{inx}}_\infty \sum_{n \in \Z} \left| c_n(f) \right| < +\infty $.
+\item Dal punto precedente con $\alpha = 0$ otteniamo $\ds \sum_n \norm{c_n(f) e^{inx}}_\infty = \sum_{n \in \Z} |n|^0 \left| c_n(f) \right| < +\infty $.
 \end{enumerate}
 
 \hypertarget{prop:2021-08nov_prop_3}{%
@@ -119,22 +119,33 @@ Allora
 
 \textbf{Proposizione 4.} Se $f$ è continua e $\ds \sum_{n \in \Z} \left| n \right|^{k-1} \left| c_n(f) \right| < +\infty $ allora $f \in C^{k-1}$ e soddisfa $(CB_{k-1})$.
 
-\textbf{Dimostrazione.} Preso $h=0,1,\ldots,k-1$ vale
-\begin{align*}
-D^k (c_n(f) e^{inx}) & = c_n(f) (in)^h e^{inx} \\
-\norm{D^k (c_n(f) e^{inx})} & = \left| c_n(f) \right| \left| n \right|^h \leq \left| c_n(f) \right| \left| n \right|^{k-1}.
-\end{align*}
-Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente e quindi uniformemente per ogni $h \leq k-1$ ad $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
-Ma
-%
+\textbf{Dimostrazione.} 
+Sia $h \leq k - 1$ allora osserviamo che
 $$
-\frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
-\leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \rightarrow +\infty} 0.
+\begin{gathered}
+	D^h(c_n(f) e^{inx}) = (in)^h c_n(f) e^{inx} \\
+	\implies \norm{D^h(c_n(f) e^{inx})}_\infty = \norm{(in)^h c_n(f) e^{inx}}_\infty \leq |n|^h |c_n| \leq |n|^{k-1} |c_n| \\
+	\implies \sum_n \norm{D^h(c_n(f) e^{inx})}_\infty \leq \sum_n |n|^{k-1} |c_n| < +\infty 
+\end{gathered}
 $$
-%
-Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
-Allora $f = \tilde{f}$ nel senso $L^2$. Siccome $f,\tilde{f}$ sono continue e coincidono quasi ovunque, vale $f = \tilde{f}$.
-Abbiamo usato il lemma
+dunque la serie $\ds\sum D^h(c_n(f) e^{inx})$ converge totalmente. Per un teorema di Analisi 2 abbiamo che quindi $\exists \tilde f \in C^{k-1}$ tale che $\ds\sum c_n(f) e^{inx} \to \tilde f$ totalmente (in particolare $\ds\sum D^h (c_n(f) e^{inx}) \to D^h \tilde f$) da cui segue che converge uniformemente e quindi anche in $L^2$. Dunque $f = \tilde f$ in $L^2 \implies f = \tilde f$ q.o. e poiché sono entrambe continue $f = \tilde f$. \qed 
+% Preso $h=0,1,\ldots,k-1$ vale
+% \begin{align*}
+% D^h (c_n(f) e^{inx}) & = c_n(f) (in)^h e^{inx} \\
+% \norm{D^h (c_n(f) e^{inx})}_\infty & = \left| c_n(f) \right| \left| n \right|^h \leq \left| c_n(f) \right| \left| n \right|^{k-1}.
+% \end{align*}
+% % TODO(aziis98): e quindi esiste \tilde f tale che quella roba converge a D^h \tilde f...
+% Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente e quindi uniformemente per ogni $h \leq k-1$ ad $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
+% Ma
+% $$
+% \frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
+% \leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \rightarrow +\infty} 0.
+% $$
+% %
+% Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
+% Allora $f = \tilde{f}$ nel senso $L^2$. Siccome $f,\tilde{f}$ sono continue e coincidono quasi ovunque, vale $f = \tilde{f}$.
+
+In particolare abbiamo usato il seguente lemma.
 
 \vs
 
@@ -143,7 +154,7 @@ Abbiamo usato il lemma
 
 \vs
 
-\textbf{Osservazione.} $f \in C^{k-1}([-\pi,\pi]) + (CB_{k-1})$ se solo se $f $ è la restrizione a $[-pi,\pi]$ di una funzione $2\pi$-periodica e $C^{k-1}$.
+\textbf{Osservazione.} $f \in C^{k-1}([-\pi,\pi]) + (CB_{k-1})$ se solo se $f $ è la restrizione a $[-\pi,\pi]$ di una funzione $2\pi$-periodica e $C^{k-1}$.
 
 
 \subsection{Convergenza puntuale della serie di Fourier}
@@ -157,7 +168,7 @@ $$
 Allora $\ds \sum_{-\infty}^\infty c_n(f) e^{in\ol{x}}$ converge a $f(\ol{x})$.
 Cioè $\ds \sum_{-N}^N c_n(f) e^{in\ol{x}}\xrightarrow{N \to \infty} f(\ol{x})$ 
 
-\textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con "convoluzione":
+\textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con ``convoluzione'':
 
 Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots$ (estesa a funzioni $2\pi$-periodiche su $\R$).
 %
@@ -180,7 +191,7 @@ S_n f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{x
 & \overbrace{=}^{(\star)} \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \dd t 
 \end{align*}
 
-Dove $(\star)$ è il seguente lemma.
+Ricordiamo che non è esattamente la convoluzione di $f$ e $D_N$ in quanto il dominio è solo $[-\pi, \pi]$ e non tutto $\R$. In particolare in $(\star)$ abbiamo usato il seguente lemma.
 
 \textbf{Lemma.} Se $g$ è $T$-periodica e $g \in L^1([-\pi,\pi], \C) $, allora
 %
