@@ -1,0 +1,328 @@
+%
+% Lezione del 6 Ottobre 2021
+%
+
+\section{Costruzione spazi $L^p$}
+
+Fissiamo $(X, \mc A, \mu)$ come sempre.
+
+\textbf{Definizione.}
+Sia $\mathscr L^p$ l'insieme delle funzioni $f \colon X \to \R$ o $\R^d$ misurabili tali che $\norm{f}_p < +\infty$.
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item $\mathscr L^p$ è un sottospazio vettoriale dello spazio vettoriale dato da $\{ f \colon X \to \R \mid f \text{ misurabile} \}$ e $\norm{\curry}_p$ è una semi-norma.
+
+		\textbf{Dimostrazione.}
+		\begin{itemize}
+			\item $\mathscr L^p$ è chiuso per somma e moltiplicazione per scalari.
+
+			% \item $f_1, f_2 \in \mathscr L^p \implies f_1 + f_2 \in \mathscr L^p$
+
+			\item Dalla definizione segue subito $\norm{\lambda f}_p = |\lambda| \cdot \norm{f}_p$ l'omogeneità della norma.
+
+			\item Dalla disuguaglianza di Minkowski segue che $\norm{\curry}_p$ è una semi-norma.
+		\end{itemize}
+
+	\item In particolare non è una norma se $\{ 0 \} \subsetneq \{ f \mid \norm{f}_p = 0 \}$ ovvero se $\mc A$ contiene insiemi non vuoti di misura nulla.
+
+	\item In generale dato $V$ spazio vettoriale e $\norm{\curry}$ semi-norma su $V$ possiamo introdurre $N \coloneqq \{ v \mid \norm{v} = 0 \}$. $N$ risulta essere un sottospazio di $V$ e la norma data da $\norm{[v]} \coloneqq \norm{v}$ per $[v] \in \sfrac{V}{N}$ è ben definita ed è proprio una norma su $\sfrac{V}{N}$.
+
+	\item Nel caso della della norma $\norm{\curry}_p$ abbiamo che $[f_1] = [f_2] \iff [f_1 - f_2] = 0 \iff f_1 - f_2 = 0$ quasi ovunque. 
+\end{itemize}
+
+\textbf{Definizione.}
+Poniamo $N \coloneqq \{ f \mid \norm{f}_p = 0 \}$ e definiamo gli \textbf{spazi $L^p$} come
+$$
+L^p := \sfrac{\mathscr L^p}{N} = \sfrac{\mathscr L^p}{\sim} 
+\qquad
+\norm{[f]}_p \coloneqq \norm{f}_p
+$$
+
+\textbf{Notazione.}
+Ogni tanto serve precisare meglio l'insieme di partenza e di arrivo degli spazi $L^p$ ed in tal caso useremo le seguenti notazioni
+$$
+L^p = L^p(X) = L^p(X, \mu) = L^p(X, \mc A, \mu) = L^p(X, \mu; \R^d).
+$$
+
+\textbf{Nota.}
+Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttamente parlando di ``funzioni in $L^p$''. Le ``operazioni'' comuni non creano problemi però in certi casi bisogna stare attenti di star lavorando con oggetti ben definiti. Ad esempio:
+\begin{itemize}
+	\item Preso $x_0 \in X$, consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$. Notiamo che non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$ ovvero che la misura sia atomica) di $L^p$, in quanto possiamo variare $f$ su un insieme di misura nulla.
+
+	\item Invece ad esempio il seguente insieme è ben definito
+		$$
+		\left\{ f \in L^1 \;\middle|\; \int_X f \dd \mu = 0 \right\}
+		$$
+\end{itemize}
+
+\subsection{Prodotto scalare su $L^2$}
+
+Date $f_1,f_2 \in L^2(X)$ si pone
+%
+$$
+\langle f_1, f_2 \rangle \coloneqq \int_{X}^{} f_1 \cdot f_2 \dd \mu.
+$$
+%
+\textbf{Osservazioni.}
+
+\begin{itemize}
+\item La definizione di $\langle f_1, f_2 \rangle$ è ben posta, infatti basta far vedere che $\ds \int_X \left| f_1 f_2 \right| \dd \mu < +\infty$ ma per H\"older abbiamo
+%
+$$
+\int_{X}^{} \left| f_1 f_2 \right| \dd \mu \leq \norm{f_1}_2 \norm{f_2}_2 < +\infty
+$$
+%
+
+\item $\norm{f}_2^2 = \langle f,f \rangle$ per ogni $f \in L^2(X)$.
+
+\item Inoltre, $\ds \left| \int_X f_1 f_2 \dd \mu \, \right| \leq \int_X \left| f_1 f_2 \right| \dd \mu$ quindi
+%
+$$
+\left| \langle f_1, f_2 \rangle \right| \leq \norm{f_1}_2 \norm{f_2}_2 \quad \; \text{(\textit{Cauchy-Schwartz})}.
+$$
+
+\item L'operatore $\langle \curry, \curry \rangle$ è un prodotto scalare definito positivo.
+
+\end{itemize}
+
+\textbf{Osservazioni.}
+\begin{itemize}
+\item Dato $C$ spazio vettoriale reale con prodotto scalare $\langle \curry, \curry \rangle$, allora $\langle \curry, \curry \rangle$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
+%
+$$
+\langle v_1, v_2 \rangle = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
+$$
+%
+
+\item  Dato $V$ come sopra, vale l'identità del parallelogramma:
+%
+$$
+\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V.
+$$
+%
+ Usando questa identità di dimostra che la norma di $L^p$ deriva da un prodotto scalare solo per $p=2$.
+
+\end{itemize}
+
+\textbf{Proprietà.}
+Sia $V$ uno spazio vettoriale con norma $\norm{\curry}$. Allora vale l'identità del parallelogramma se solo se $\norm{\curry}$ deriva da un prodotto scalare.
+
+\textbf{Esempio.}
+La norma di $L^p \left( [-1,1] \right)$, deriva da un prodotto scalare solo per $p=2$.
+Prendiamo $f_1 = \One_{[-1,0]}$ e $f_2 = \One_{[0,+1]}$.
+Allora
+\vspace{-5mm}
+\begin{align*}
+	\norm{f_1 + f_2}_p^p = \int_{-1}^{1} 1 \dd x = 2 \Rightarrow \norm{f_1 + f_2}_p = 2^{1/p} \\
+	\norm{f_1 - f_2}_p = \norm{f_1 + f_2}_p = 2^{1/p}, \quad \norm{f_1}_p = \norm{f_2}_p = 1
+\end{align*}
+Se vale l'identità del parallelogramma allora
+$$
+\norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
+$$
+cioè
+$$
+2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
+$$
+
+\textbf{Domanda.} Per quali $X,\mc{A},\mu$ vale la stessa conclusione?
+
+
+\section{Completezza degli spazi $L^p$}
+
+Vediamo ora la proprietà più importante degli spazi $L^p$.
+
+\textbf{Teorema.}
+Lo spazio $L^p$ è completo per ogni $p \in [1,+\infty]$.
+
+% @aziis98: Per ora mi pare non si possano usare direttamente \label e \ref in questi punti, cioè linka alla sezione.
+\hypertarget{prop:completeness_lemma_1}{}
+\textbf{Lemma 1.} 
+Dato $(Y, d)$ spazio metrico, allora
+\begin{enumerate}
+	\item
+		Ogni successione $(y_n)$ tale che
+		$$
+		\sum^{\infty}_{n=1} d(y_n, y_{n+1}) < +\infty
+		$$
+		è di Cauchy.
+
+	\item \label{item:def_completeness_1}
+		Se ogni $(y_n)$ tale che $\ds \sum^{\infty}_{n=1} d(y_n, y_{n+1}) < +\infty$ converge allora $Y$ è completo.
+\end{enumerate}
+
+\textbf{Osservazione.} Non tutte le successioni di Cauchy $(y_n)$ soddisfano quella condizione. Ad esempio la successione $(-1)^n / n$ definita su $\R$ è di Cauchy però
+$$
+\sum_{n=1}^\infty \left| \frac{(-1)^{n+1}}{n+1} - \frac{(-1)^n}{n} \right| 
+= \sum_{n=1}^\infty \frac{2n + 1}{n^2 + n}
+\approx \sum_{n=1}^\infty \frac{1}{n} \to \infty.
+$$
+
+\textbf{Nota.} Per mostrare la completezza degli spazi $L^p$ è sufficiente verificare la convergenza per una sottoclasse propria delle successioni di Cauchy.
+
+\textbf{Dimostrazione.}
+\begin{enumerate}
+	\item Vorremmo vedere che $\forall \epsilon \, \exists N$ tale che $\forall m, n > N$ si ha $d(y_m, y_n) \leq \epsilon$. 
+		Presi $n > m$ abbiamo che 
+		$$
+		d(y_m, y_n) \leq \sum_{k=m}^{n-1} d(y_k, y_{k+1}) \leq \sum_{k=m}^\infty d(y_k, y_{k+1}) \to 0
+		$$
+		in quanto \textit{coda di una serie convergente}, quindi 
+		$$
+		\forall \epsilon > 0 \mquad \exists m_\epsilon \text{ tale che } \sum_{k = m_\epsilon}^\infty d(y_k, y_{k+1})< \epsilon \implies \forall n > m \geq m_\epsilon \; d(y_m, y_n) \leq \epsilon
+		$$ 
+
+	\item
+		Sia $(y_n)$ una successione di Cauchy, mostriamo che converge.
+		Osserviamo che esiste una sottosuccessione $\left( y_{n_k} \right)$ tale che
+		% Basta far vedere che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
+		$$
+			\sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty.
+		$$
+		Infatti, $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \mquad d(y_m, y_n) \leq 1 /2 ^k$ e dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
+		Per ipotesi $\left( y_{n_k} \right)$ converge a un qualche $y \in Y$, da cui la tesi\footnote{Data una successione di Cauchy $x_n$, se una sottosuccessione $x_{n_k}$ converge, allora converge anche la successione.}.
+		\qed
+
+		% @aziis98: In realtà non so se era più chiaro come stava prima boh
+
+		% Basta far vedere che data $(y_n)$ di Cauchy esiste una sottosuccessione $y_{n_k}$ tale che
+		% $$
+		% \sum_{k=1}^\infty d(y_{n_k}, y_{n_{k+1}}) < +\infty
+		% $$
+		% ma $\forall k \; \exists n_k$ tale che $\forall n, m \geq n_k \; d(y_m, y_n) \leq 1 /2 ^k$ dunque $d(y_{n_k}, y_{n_{k+1}}) \leq 1 / 2^k$.
+
+		% Quindi per ipotesi $y_{n_k}$ converge a qualche $y \in Y$ ed anche $y_n \to y$.
+		% \qed
+\end{enumerate}
+
+
+% @aziis98: Il latex mi vuole male e mi metteva solo Corollario e la prima frase alla fine della pagina e l'enumerate alla nuova, però se aggiungiamo cose prima poi lo togliamo.
+
+\hypertarget{prop:completeness_lemma_2}{}
+\textbf{Lemma 2.} 
+Dato $Y$ spazio normato, i seguenti fatti sono equivalenti
+\begin{enumerate}
+	\item $Y$ è completo.
+
+	% \item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero 
+	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
+\end{enumerate}
+
+\textbf{Dimostrazione.} 
+ii) $\Rightarrow$ i). Dobbiamo mostrare che $\sum_{n=1}^\infty y_n$ è di Cauchy.
+Per il Lemma~1 basta mostrare che la successione
+%
+$$
+	z_n \coloneqq  \sum_{k=1}^n y_k \quad \text{soddisfa la proprietà} \quad
+	\sum_{n=1}^\infty d(z_{n+1},z_n).
+$$
+%
+Espandendo la formula sopra
+%
+$$
+	\sum_{n=1}^\infty d(z_{n+1},z_n) = \sum_{n=1}^{\infty} \norm{\sum_k^{n+1} y_k - \sum_k^n y_k} 
+	= \sum_{n=1}^{\infty} \norm{y_{n+1}}
+$$
+%
+che è finito per ipotesi.
+
+\vs
+
+ii) $\Rightarrow$ i). Utilizziamo l'enunciato ii) del Lemma~2: mostriamo ogni $(y_n)$ che soddisfa la proprietà $\sum_n d(y_n,y_{n+1}) < +\infty$ converge.
+Definiamo la successione $z_n \coloneqq y_{n+1} - y_n$. Per ipotesi, essendo che $\sum_n \norm{z_n} < +\infty$, la serie $\sum_n z_n$ converge.
+Indicando con $L$ il limite della serie, abbiamo che $\lim_n y_n = L + y_1$.
+
+
+\qed
+
+\hypertarget{prop:completeness_lemma_3}{}
+\textbf{Lemma 3} 
+(Minkowski per somme infinite). 
+Date delle funzioni $(g_n)$ funzioni positive su $X$ allora
+$$
+\norm{\sum_{n=1}^\infty g_n}_p \leq \sum_{n=1}^\infty \norm{g_n}_p
+$$
+
+% @aziis98: Si bisognerebbe scrivere qualche parola in più magari a questa dimostrazione.
+\textbf{Dimostrazione.}
+Per ogni $N$ abbiamo che
+$$
+\norm{\sum_{n=1}^N g_n}_p^p 
+\leq \left( \,\sum_{n=1}^N \norm{g_n}_p \right)^p 
+\leq \left( \,\sum_{n=1}^\infty \norm{g_n}_p \right)^p 
+$$
+e per convergenza monotona possiamo passare il termine di sinistra al limite
+$$
+\lim_N \norm{\sum_{n=1}^N g_n}_p^p 
+= \lim_N \int_X \left( \sum_{n=1}^N g_n \right)^p \dd \mu
+= \int_X \left( \lim_N \sum_{n=1}^N g_n \right)^p \dd \mu
+= \norm{\sum_{n=1}^\infty g_n}_p^p
+$$
+\qed
+
+\textbf{Dimostrazione} (Completezza spazi $L^p$).
+\begin{itemize}
+	\item 
+		Se $p = +\infty$: si tratta di vedere che data $(f_n)$ di Cauchy in $L^\infty(X)$ esiste $E$ con $\mu(E) = 0$ tale che $(f_n)$ è di Cauchy rispetto allora norma del sup in $X \setminus E$. [TODO: Finire]
+
+	\item 
+		Se $p < +\infty$: per il \hyperlink{prop:completeness_lemma_2}{Lemma 2}, basta far vedere che data $(f_n) \subset L^p(X)$ tale che $\sum_{n=1}^\infty \norm{f_n}_p < +\infty$ allora $\sum_n f_n$ converge a qualche $f \in L^p(X)$.
+
+		La dimostrazione è suddivisa in tre passi, prima costruiamo $f$, poi mostriamo che $f_n$ converge a $f$ ed infine mostriamo $f \in L^p(X)$.
+
+		\begin{itemize}
+			\item 
+				\textit{Passo 1:} 
+				Per ipotesi abbiamo
+				$$
+				\infty 
+				> \sum_{n=1}^\infty \norm{f_n}_p 
+				= \sum_{n=1}^\infty \norm{|f_n|}_p 
+				\geq \norm{\sum_{n=1}^\infty |f_n|}_p 
+				= \left( \int \left( \sum_{n=1}^\infty |f_n(x)| \right)^p \dd \mu(x) \right)^{1/p}
+				$$
+				quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero in $E$ \footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ per funzioni definite quasi ovunque.}.
+			
+			\item 
+				\textit{Passo 2:}
+				Fissiamo $N$ ed osserviamo che $\forall x \in X \setminus E$ abbiamo
+				$$
+				\left| f(x) - \sum_{n=1}^N f_n(x) \right| 
+				= \left| \sum_{n=N+1}^\infty f_n(x) \right| 
+				\leq \sum_{n=N+1}^\infty |f_n(x)|
+				$$
+				da cui otteniamo
+				$$
+				\norm{f - \sum_{n=1}^N f_n}_p 
+				\leq \norm{\sum_{n=N+1}^\infty |f_n|}_p
+				\leq \sum_{n=N+1}^\infty \norm{f_n}_p
+				$$
+				dove l'ultimo termine è la coda di una serie convergente.
+			
+			\item 
+				\textit{Passo 3:}
+				In particolare rileggendo il passo precedente per $N = 0$ otteniamo
+				$$
+				\norm{f}_p \leq \sum_{n=1}^\infty \norm{f_n}_p < +\infty \implies f \in L^p
+				$$
+				\qed
+
+		\end{itemize}
+\end{itemize}
+
+\textbf{Esercizio.}\footnote{In questo corso non è strettamente necessario ricordarsi come si facciano tutti questi esercizietti di teoria della misura ma è bene saperli applicare in automatico quando serve.}
+Sia $f \colon X \to [0, +\infty]$ allora $\ds \int_X f \dd \mu < +\infty \implies f(x) < +\infty$ per quasi ogni $x$.
+
+\textbf{Dimostrazione.}
+Sia $E := \{ x \mid f(x) = +\infty \}$, allora l'idea è che
+$$
+\infty > \int_X f \dd \mu \geq \int_E f \dd \mu = +\infty \cdot \mu(E).
+$$
+Oppure, osserviamo che $\forall m \in [0, +\infty)$ abbiamo $f \cdot \One_E \geq m \cdot \One_E$ per ogni $x \in E$ quindi integrando ricaviamo
+$$
+\underbrace{\int_E f \dd \mu}_{I} \geq m \cdot \mu(E) 
+\implies \mu(E) \leq \frac{I}{m} \xrightarrow{m \to +\infty} 0
+$$
+\qed
+
