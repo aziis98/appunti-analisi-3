@@ -1,5 +1,5 @@
 
-# Appunti di Analisi 3
+# Appunti di Analisi 3 - solo lezioni teoriche
 
 ## Autori
 

@@ -370,3 +370,78 @@ $$
 $$
 %
 da cui segue che $\Lambda$ non è continuo.
+
+
+\section{Spazi di Hilbert complessi}
+
+\textbf{Definizione.}
+Sia $H$ una spazio vettoriale su $\C$ con prodotto hermitiano $\langle\curry; \curry\rangle$, ovvero tale che
+\begin{itemize}
+	\item $\langle \curry; \curry \rangle$ è lineare nella prima variabile
+	\item $\langle x; x' \rangle = \overline{\langle x', x \rangle}$ ovvero è antilineare nella seconda variabile.
+	\item $\langle x; x \rangle \geq 0$ per ogni $x$ e vale $0$ se e solo se $x = 0$.
+\end{itemize}
+
+Analogamente si pone $\norm{x} \coloneqq \sqrt{\langle x; x \rangle}$. C'è un'identità di polarizzazione ma è leggermente diversa dalla versione reale.
+
+\textbf{Definizione.} $H$ si dice di Hilbert se è \textbf{completo}.
+
+\textbf{Esempio.}
+Su $L^2(X; \C)$ si mette il prodotto scalare dato da
+$$
+\langle u; v \rangle \coloneqq \int_X u \cdot \overline v \dd \mu.
+$$
+
+\textbf{Teorema.} (della base di Hilbert per spazi complessi)
+Dato $\mathcal F = \{ e_n \}$ sistema ortonormale in $H$ e $x \in H$ allora per ogni $n$ si pone\footnote{E non $\langle e_n; x \rangle$!}
+$$
+x_n = \langle x; e_n \rangle
+$$
+Vale anche l'identità di Parseval $\norm{x^2} = \sum |x_n|^2$ dove $|\curry|$ è il modulo di un numero complesso, in particolare nella versione con prodotto scalare diventa
+$$
+\langle x, x' \rangle = \sum_n x_n \overline{x_n'}.
+$$
+
+
+\section{Esempi di basi Hilbertiane}
+
+\subsection{Polinomi}
+
+La base data da $ \{ 1, x, x^2, \dots, x^n, \dots \} $ opportunamente ortonormalizzata è una base di $L^2[0, 1]$ (anche di $L^2(\R)$) per il teorema di Stone-Weirstrass.
+
+
+\subsection{Base di Haar}
+
+\begin{wrapfigure}{r}{225pt}
+	\centering
+	\vspace{-4\baselineskip}
+	\inputfigure{base-di-haar-1} 
+	\vspace{-4.5\baselineskip}
+\end{wrapfigure}
+
+Vediamo la base di Haar data da due indici $n, k$ dove $n$ indica l'ampiezza delle ``onde'' (anche dette \textit{wavelet}) e $k$ il posizionamento dell'onda. Sia $n \in \N$ e $k = 1, \dots, 2^n$ e poniamo
+$$
+g^{0,0} \coloneqq \One_{[0,1]}
+\qquad
+g^{n,k} \coloneqq 2^\frac{n-1}{2} \left( \One_{\left[ \frac{2k - 2}{2^n}, \frac{2k - 1}{2^n} \right]} - \One_{\left[ \frac{2k - 1}{2^n}, \frac{2k}{2^n} \right]} \right)
+$$
+
+Inoltre $\| g^{n, k} \|_{L^2[0, 1]} = 1$ ed anche $\| g^{0,0} \|_{L^2[0, 1]} = 1$. Vedremo che $\{ g^{n,k} \mid n \geq 1, k = 1, \dots, 2^n \} \cup \{ g^{0,0} \}$ formano un sistema ortonormale.
+
+\begin{itemize}
+	\item $\langle g^{n,k}, g^{0,0} \rangle = 0$: È ovvio in quanto le $g^{n,k}$ hanno media nulla.
+
+	\item $\langle g^{n,k}, g^{n',k'} \rangle = 0$: Se $n = n'$ i supporti sono sempre disgiunti altrimenti $n \neq n'$, se supponiamo $n < n'$ allora i supporti o sono disgiunti e si conclude come prima o il supporto di $g^{n',k'}$ è contenuto in quello di $g^{n,k}$. In tal caso però $g^{n,k}$ è costante su $g^{n',k'}$ e dunque l'integrale è sempre nullo.
+\end{itemize}
+
+Inoltre è anche una base hilbertiana, per combinazioni algebriche si ottengono tutti gli intervalli della forma
+$$
+I_k \coloneqq \left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right]
+\qquad
+\rightsquigarrow
+\qquad
+\One_{I_k}
+$$
+ad esempio normalizzando $g^{n,k} + 2^\frac{n-1}{2} g^{0, 0}$ otteniamo uno degli intervalli di sopra di lunghezza $1 / 2^{n+1}$.
+
+Vedremo che possiamo estendere la base di Haar a tutto $\R$ però è più difficile... [TODO: Ehm aggiungere la parte dopo quando verrà fatta]
