@@ -92,7 +92,7 @@ Introduciamo delle varianti della serie di Fourier.
 	$$
 	%
 
-	\textit{Formula chiave.} Data $u \in \mc{C}^2 ([0,\pi])$ con condizioni al bordo $u(\curry, 0) = u(\curry, \pi)$. 
+	\textbf{Formula chiave.} Data $u \in \mc{C}^2 ([0,\pi])$ con condizioni al bordo $u(\curry, 0) = u(\curry, \pi)$. 
 	Allora
 	%
 	$$
@@ -102,8 +102,9 @@ Introduciamo delle varianti della serie di Fourier.
 	dove 
 	\begin{align*}
 		b_n(\ddot u) & \coloneqq \frac{2}{\pi} \int_0^\pi \ddot u(x) \sin(nx) \dd x \\
-		& = \frac{2}{\pi} \left| \dot u(x) \sin(nx) \right|_0^\pi - \frac{2}{\pi} \int_{0}^{\pi} \dot u(x) \cos(nx) \dd x \\
-		& = -n \frac{2}{\pi} \left| u(x) \cos(nx) \right|_0^\pi - n^2  \underbrace{\left( \frac{2}{\pi} \int_{0}^{\pi} u(x) \sin(nx) \dd x \right)}_{b_{n(x)}}
+		& = \frac{2}{\pi} \cancel{\left| \dot u(x) \sin(nx) \right|_0^\pi} - n\frac{2}{\pi} \int_{0}^{\pi} \dot u(x) \cos(nx) \dd x \\
+		& = -n \frac{2}{\pi} \cancel{\left| u(x) \cos(nx) \right|_0^\pi} - n^2  \underbrace{\left( \frac{2}{\pi} \int_{0}^{\pi} u(x) \sin(nx) \dd x \right)}_{b_n(u)} \\
+		& = -n^2 b_n(u).
 	\end{align*}
 	\qed
 
@@ -130,13 +131,13 @@ Formalmente,
 %
 $$
 	u_t = \sum_{n=1}^\infty \dot b_n(t) \sin(nx) \qquad 
-	u_{xx} = \sum_{n=1}^{\infty} -n^2 b_n(t) \sin(nx) 
+	u_{xx} = \sum_{n=1}^{\infty} -n^2 b_n(t) \sin(nx),
 $$
 %
-Dunque, 
+dunque
 %
 $$
-	u_t = u_{xx} \longiff \dot b_n(t) = -n^2 b_n(t) \mquad \forall t \forall n
+	u_t = u_{xx} \longiff \dot b_n(t) = -n^2 b_n(t) \qquad \forall t \forall n.
 $$
 %
 Cioè $b_n(t)$ risolve il problema di Cauchy.
@@ -144,7 +145,7 @@ Cioè $b_n(t)$ risolve il problema di Cauchy.
 	\label{eq:24nov-problema-2} \tag{P'}
 	\begin{cases}
 		\dot y = -n^2 y \\
-		y(0) = \dot b_n
+		y(0) = \dot b_n.
 	\end{cases}
 \end{equation}
 
@@ -201,6 +202,7 @@ Allora le norme delle derivate sono sommabili per ogni $n$, dunque $u \in \mc{C}
 \textbf{Domanda.} Quale ipotesi su $u_0$ garantisce $\sum_n |b_n^0| < +\infty$? Basta $u_0 \in \mc{C}^1$ e $u(0) = u(\pi) = 0$.
 
 \textbf{Teorema 2} (non esistenza nel passato).
-Esiste $u_0 \colon [0,\pi] \to \R$ $\mc{C}^\infty$ (+ condizioni al bordo) tale che per ogni $\delta > 0$ \eqref{eq:24nov-problema-1} non ha alcuna soluzione $u \colon (-\delta,0] \times [0,\pi] \to \R$ continua e $\mc{C}^1$ in $t$ e $\mc{C}^2 $ in $x$.
+Esiste $u_0 \colon [0,\pi] \to \R$ $\mc{C}^\infty$, con $u_0(0) = u_0(\pi)$ tale che per ogni $\delta > 0$ \eqref{eq:24nov-problema-1} non ha alcuna soluzione $u \colon (-\delta,0] \times [0,\pi] \to \R$ continua e $\mc{C}^1$ in $t$ e $\mc{C}^2 $ in $x$.
 
-\textbf{Teorema 3} (di unicità). [TO DO: aggiungere (è sempre lo stesso).]
+\textbf{Teorema 3} (di unicità).
+Sia $u \colon [0, T) \times [-\pi, \pi] \to \C$ continua, $C^1$ nel tempo e $C^2$ nello spazio per $t > 0$. Se $u$ risolve \eqref{eq:15nov2021_problem_1} su $t > 0$ allora $u$ è unica.

@@ -134,19 +134,15 @@ Allora
 	D^h (c_n(f) e^{inx}) & = c_n(f) (in)^h e^{inx} \\
 	\norm{D^h (c_n(f) e^{inx})} & = \left| c_n(f) \right| \left| n \right|^h \leq \left| c_n(f) \right| \left| n \right|^{k-1}.
 \end{align*}
-Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente e quindi uniformemente per ogni $h \leq k-1$ ad $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
-Ma
+Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente e quindi uniformemente per ogni $h \leq k-1$. Definiamo $\tilde{f}$ il limite della serie per $h=0$, ovvero il limite di $\sum c_n(f) e^{inx}$ con $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
+Notiamo che
 %
 $$
 	\frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
 \leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \rightarrow +\infty} 0.
 $$
 %
-Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
-Allora $f = \tilde{f}$ nel senso $L^2$. Siccome $f,\tilde{f}$ sono continue e coincidono quasi ovunque, vale $f = \tilde{f}$.
-Abbiamo usato il lemma
-
-\vs
+dunque, $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$, ovvero $f$ ed $\tilde{f}$ differiscono per un insieme di misura nulla ma essendo funzioni continue coincidono ovunque. In conclusione $f = \tilde{f}$. Abbiamo usato il seguente lemma.
 
 \textbf{Lemma.} Date $f,\tilde{f}$ continue e $f(x) = \tilde{f}(x)$ per quasi ogni $x$, allora  $f(x) = \tilde{f}(x)$ per ogni $x$.
 \qed
