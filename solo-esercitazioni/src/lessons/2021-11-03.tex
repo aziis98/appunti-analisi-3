@@ -202,51 +202,6 @@ Dimostrare che che $f = 0$ quasi ovunque su $\R^d$.
 \textit{Suggerimenti.} Usare la convoluzione con opportuni nuclei; notare che $\ds \int_B f = 0 \longiff f \ast \One_B = 0$ per ogni palla $B$.
 
 
-
-\section{Esempi di basi Hilbertiane}
-
-
-\subsection{Polinomi}
-
-La base data da $ \{ 1, x, x^2, \dots, x^n, \dots \} $ opportunamente ortonormalizzata è una base\footnote{Teorema di Stone-Weierstrass: i polinomi \\ sono densi nello spazio delle funzioni continue.} di $L^2[0, 1]$ (anche di $L^2(\R)$).
-
-
-\subsection{Base di Haar}
-
-\begin{wrapfigure}{r}{225pt}
-	\centering
-	\vspace{-4\baselineskip}
-	\inputfigure{base-di-haar-1} 
-	\vspace{-4.5\baselineskip}
-\end{wrapfigure}
-
-Vediamo la base di Haar data da due indici $n, k$ dove $n$ indica l'ampiezza delle ``onde'' (anche dette \textit{wavelet}) e $k$ il posizionamento dell'onda. Sia $n \in \N$ e $k = 1, \dots, 2^n$ e poniamo
-$$
-g^{0,0} \coloneqq \One_{[0,1]}
-\qquad
-g^{n,k} \coloneqq 2^\frac{n-1}{2} \left( \One_{\left[ \frac{2k - 2}{2^n}, \frac{2k - 1}{2^n} \right]} - \One_{\left[ \frac{2k - 1}{2^n}, \frac{2k}{2^n} \right]} \right)
-$$
-
-Inoltre $\| g^{n, k} \|_{L^2[0, 1]} = 1$ ed anche $\| g^{0,0} \|_{L^2[0, 1]} = 1$. Vedremo che $\{ g^{n,k} \mid n \geq 1, k = 1, \dots, 2^n \} \cup \{ g^{0,0} \}$ formano un sistema ortonormale.
-
-\begin{itemize}
-	\item $\langle g^{n,k}, g^{0,0} \rangle = 0$: È ovvio in quanto le $g^{n,k}$ hanno media nulla.
-
-	\item $\langle g^{n,k}, g^{n',k'} \rangle = 0$: Se $n = n'$ i supporti sono sempre disgiunti altrimenti $n \neq n'$, se supponiamo $n < n'$ allora i supporti o sono disgiunti e si conclude come prima o il supporto di $g^{n',k'}$ è contenuto in quello di $g^{n,k}$. In tal caso però $g^{n,k}$ è costante su $g^{n',k'}$ e dunque l'integrale è sempre nullo.
-\end{itemize}
-
-Inoltre è anche una base hilbertiana, per combinazioni algebriche si ottengono tutti gli intervalli della forma
-$$
-I_k \coloneqq \left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right]
-\qquad
-\rightsquigarrow
-\qquad
-\One_{I_k}
-$$
-ad esempio normalizzando $g^{n,k} + 2^\frac{n-1}{2} g^{0, 0}$ otteniamo uno degli intervalli di sopra di lunghezza $1 / 2^{n+1}$.
-
-Vedremo che possiamo estendere la base di Haar a tutto $\R$ però è più difficile... [TODO: Ehm aggiungere la parte dopo quando verrà fatta]
-
 \textbf{Esercizio.}
 Sia $p \geq 1$ allora $\{ u \in L^p(\R) \mid \int u \dd x = 0 \} \subseteq L^p(\R)$ è denso in $L^p(\R)$?
 

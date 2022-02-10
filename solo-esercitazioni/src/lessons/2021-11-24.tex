@@ -13,6 +13,23 @@ Introduciamo delle varianti della serie di Fourier.
 
 \begin{itemize}
 
+	\item \textbf{Serie di Fourier reale}. Data $u \in L^2([-\pi,\pi])$, definiamo
+	$$
+	\begin{gathered}
+		u(x) = \sum_{n=1}^\infty \left[ a_n \cos(nx) + b_n \sin(nx) \right] + a_0 \\
+		\qquad
+		a_n(u) = c_n(u) + c_{-n}(u)
+		\qquad
+		b_n(u) = i(c_n(u) - c_{-n}(u))
+		\qquad
+		a_0(u) = c_0(u) \\
+		a_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos(nx) \dd x
+		\qquad
+		b_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin(nx) \dd x \\
+		\text{e con base hilbertiana } \left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \,\middle|\, n \geq 1 \right\}.
+	\end{gathered}
+	$$
+
 	\item \textbf{Serie di Fourier su} \boldmath$[-\pi,\pi]^d$. Data \unboldmath$u \in L^2([-\pi,\pi]^2, \C)$, definiamo
 	%
 	$$
