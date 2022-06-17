@@ -75,6 +75,24 @@
     \import{./figures}{#1.pdf_tex}
 }
 
+
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+% Box
+\newcommand{\mybox}[1]{%
+\begin{tcolorbox}[%
+colback=white,
+colframe=black, 
+boxrule=0.2mm,
+boxsep=-0.5mm,
+top=10pt,
+bottom=10pt,
+arc=0mm]{}
+%
+#1
+%
+\end{tcolorbox}}
+
 %%%
 %%% Basic math and layout packages
 %%%

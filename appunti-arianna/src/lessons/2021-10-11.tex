@@ -1,6 +1,7 @@
 %
 % Lezione dell'11 Ottobre 2021
 %
+\newpage
 
 \section{Controesempi sulle convergenze}
 
@@ -45,17 +46,19 @@ per ogni $x \in X$, esiste una successione $(y_n)_{n \in \N}$ in $Y$ che tale ch
 
 Per ora sia $(X, \mc A, \mu)$ in generale.
 
+\mybox{%
 \textbf{Proposizione 1.} 
 Le funzioni limitate in $L^p$ sono dense in $L^p$.
+}
 
 \textbf{Dimostrazione.}
 Data $f \in L^p(X)$ cerchiamo una successione di funzioni $f_n \in L^p(X)$ limitate tali che $f_n \to f$ in $L^p$, consideriamo
 $$
-f(x) \coloneqq (f(x) \land n) \lor (-n)
+	f(x) \coloneqq (f(x) \land n) \lor (-n)
 $$
 vorremmo mostrare che $f_n \to f$ in $L^p$ ovvero
 $$
-\norm{f_n - f}_p^p = \int_X |f_n - f|^p \dd \mu \to 0
+	\norm{f_n - f}_p^p = \int_X |f_n - f|^p \dd \mu \to 0
 $$
 intanto osserviamo che, per la \textit{convergenza puntuale}, basta osservare che se $n \geq |f(x)|$ abbiamo che $\forall x \; f_n(x) = f(x) \implies f_n(x) \xrightarrow{n} f(x) \implies |f_n(x) - f(x)|^p \to 0$.
 
@@ -64,8 +67,10 @@ Per concludere basta applicare \textit{convergenza dominata} usando come dominaz
 
 \vs
 
+\mybox{%
 \textbf{Proposizione 2.}
-Sia\footnote{Lo span è inteso come combinazioni lineari} $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+Sia $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+}
 
 \textbf{Dimostrazione.}
 Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mathscr S}$.
@@ -103,7 +108,9 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 
 Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
+\mybox{%
 \textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+}
 
 \textbf{Dimostrazione.} (Idea) Basta approssimare componente per componente. \qed
 
@@ -114,8 +121,10 @@ Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mc A$.
 
 
 \hypertarget{prop:apprfunz_prop3}{}
+\mybox{%
 \textbf{Proposizione 3.}
 Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
+}
 
 \textbf{Dimostrazione.} ($\tilde{\mathscr S}_\ell$ è denso in $L^p$)
 Si dimostra che $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta, per la proposizione precedente, è denso in $L^p$.
@@ -136,12 +145,14 @@ In generale l'enunciato non vale per $p = +\infty$. Ad esempio, preso $L^\infty(
 
 \vss
 
-Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni a supporto compatto} \}$, dove il \textbf{supporto} è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero $ \operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}} $, in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
+Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni continue a supporto compatto} \}$, dove il \textbf{supporto} è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero $ \operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}} $, in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
 
 % notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
 
+\mybox{%
 \textbf{Proposizione 4.}
-Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense\footnote{È denso anche l'insieme delle funzioni continue a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.} in $L^p(X)$ per $p < +\infty$.
+Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense in $L^p(X)$ per $p < +\infty$.
+}
 
 Vediamo prima alcuni lemmi.
 
@@ -179,3 +190,6 @@ In particolare, sappiamo che su $A_\epsilon \setminus C_\epsilon$ vale $|f_\epsi
 \textbf{Dimostrazione Proposizione 4.} 
 Per la \hyperlink{prop:apprfunz_prop3}{Proposizione 3} basta approssimare la classe delle funzioni a supporto limitato (e finito). Dunque, per il \hyperlink{prop:apprfunz_lemma3}{Lemma 3} si ha la tesi.
 
+% \mybox{%
+% \textbf{Nota.} È denso anche l'insieme delle funzioni continue a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.
+% }

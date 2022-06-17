@@ -10,7 +10,7 @@
 
 Ricordiamo che una funzione $f \colon \R^d \to [-\infty, +\infty]$ è \textbf{convessa} se e solo se dati $x_1, \dots, x_n \in \R^d$ e $\lambda_1, \dots, \lambda_n \in [0, 1]$ con $\sum_i \lambda_i = 1$ abbiamo che
 $$
-f \left(\sum_i \lambda_i x_i \right) \leq \sum_i \lambda_i f(x_i)
+	f \left(\sum_i \lambda_i x_i \right) \leq \sum_i \lambda_i f(x_i)
 $$
 
 \textbf{Definizione.} Una funzione $f \colon X \to \ol{\R}$ si dice \textbf{semicontinua inferiormente nel punto} $x_0 \in X$ se per ogni $t \in \R$ con $t < f(x_0)$ esiste $U \in \mc{I}(x)$ tale che $t < f(y)$ per ogni $y \in U$. Infine $f$ si dice \textbf{semicontinua inferiormente su} $X$ se lo è in ogni $x \in X$.
@@ -20,13 +20,14 @@ $$
 	f(x) \leq \sup_{U \in \mc{I}(x)} \inf f(y) = \liminf_{x \to x_0} f(x).
 $$
 
-
+\mybox{%
 \textbf{Teorema} (Jensen).
 Dato $(X, \mc A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
 $$
-f \left( \int_X u \dd \mu \right) \leq \int_X f \compose u \dd \mu
+	f \left( \int_X u \dd \mu \right) \leq \int_X f \compose u \dd \mu
 $$
 e $f \compose u$ è integrabile.
+}
 
 \textbf{Osservazioni.}
 \begin{itemize}
@@ -143,12 +144,14 @@ $$
 
 \subsection{Disuguaglianza di Young}
 
+\mybox{%
 \textbf{Proposizione.}
 Per ogni $a_1, a_2 \geq 0$ e $\lambda_1, \lambda_2 > 0$ con $\lambda_1 + \lambda_2 = 1$ abbiamo che
 $$
-a_1^{\lambda_1} a_2^{\lambda_2} \leq \lambda_1 a_1 + \lambda_2 a_2
+	a_1^{\lambda_1} a_2^{\lambda_2} \leq \lambda_1 a_1 + \lambda_2 a_2
 $$
 inoltre vale l'uguale se e solo se $a_1 = a_2$.
+}
 
 \textbf{Dimostrazione.}
 Se $a_1$ o $a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$. Per la concavità del logaritmo abbiamo
@@ -168,12 +171,14 @@ Infine, il se e solo se per l'uguale segue dal fatto che il logaritmo è \textit
 
 \subsection{Disuguaglianza di H\"older}
 
+\mybox{%
 \textbf{Proposizione.}
 Date $f_1, f_2 \colon X \to \overline\R$ o $\R^d$ e $p_1, p_2$ esponenti coniugati allora
 $$
-\int_X |f_1| \cdot |f_2| \dd \mu \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
+	\int_X |f_1| \cdot |f_2| \dd \mu \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
 $$ 
 vale anche per $p = +\infty$ convenendo che $+\infty \cdot 0 = 0$ nel membro di destra.
+}
 
 \textbf{Dimostrazione.}
 Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$ la dimostrazione è immediata, supponiamo dunque $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} > 0$ e finiti.
@@ -219,11 +224,13 @@ $$
 
 \subsection{Disuguaglianza di Minkowski}
 
+\mybox{%
 \textbf{Proposizione.} 
 Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$. Allora vale la disuguaglianza triangolare
 $$
 	\norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p.
 $$
+}
 %
 \textbf{Dimostrazione.}
 \begin{itemize}
