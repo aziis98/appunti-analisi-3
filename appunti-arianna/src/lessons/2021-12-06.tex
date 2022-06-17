@@ -1,0 +1,180 @@
+
+\section{Trasformata di Fourier su $L^2$}
+
+Abbiamo visto che la \textit{serie di Fourier} si definisce naturalmente su $L^2$ (uno spazio di Hilbert) mentre la \textit{trasformata di Fourier} ha bisogno di $L^1$ che non è uno spazio di Hilbert. Vedremo ora come estendere la trasformata di Fourier ad $L^2$ e come poter fare i conti.
+
+\textbf{Proposizione 1.}
+Data $f \in L^1(\R; \C) \cap L^2(\R; \C)$ vale $\| \hat f\, \|_2 = \sqrt{2\pi} \norm{f}_2$.
+
+\textbf{Teorema 2.}
+$\mathcal F$ si estende per continuità da $L^1 \cap L^2$ a tutto $L^2$ e $\mathcal F / \sqrt{2\pi}$ risulta essere un'isometria (come operatore a valori in $L^2$).
+
+\textbf{Corollario 3.} (Identità di Plancherel).
+$\forall f_1, f_2 \in L^2(\R; \C)$ vale $\langle \hat{f_1}, \hat{f_2} \rangle = 2\pi \langle f_1, f_2 \rangle$.
+
+
+\hypertarget{oss-trasformata-su-ldue}{\textbf{Osservazione.}}
+Come si può calcolare $\hat f$ per $f \in L^2 \setminus L^1$? Se per quasi ogni $y \in \R$ esiste il limite
+$$
+\lim_n \underbrace{\int_{-n}^{n} f(x) e^{-ixy} \dd x}_{\hat{f_n}(y)}
+$$
+allora coincide con $\hat f(y)$.
+
+Infatti, per ogni $n$ posto $f_n \coloneqq f \cdot \One_{[-n, n]}$ abbiamo che $\lim_n \int_{-n}^n f(x) e^{-ixy} \dd x = \hat{f_n}(x)$.
+A questo punto, osserviamo che $f_n \to f$ in $L^2$ (da controllare per esercizio) e quindi $\hat f_n \to \hat f$ in $L^2$ (segue dalla continuità della trasformata). Siccome per ipotesi $\hat f_n$ converge puntualmente quasi ovunque allora $\hat f_n \to \hat f$ puntualmente quasi ovunque.
+
+Intuitivamente, il Teorema 2 e l'identità di polarizzazione danno il Corollario 3. mentre il Teorema 2 segue dalla Proposizione 1. più un fatto noto usando che $L^1 \cap L^2$ è denso in $L^2$.
+
+\textbf{Fatto Noto.} Dati $X$ e $Y$ spazi metrici, $Y$ completo e $D$ denso in $X$, $g \colon D \to Y$ uniformemente continua allora $g$ ammette un'unica estensione $G \colon X \to Y$ continua. (Inoltre se $X$ e $Y$ sono spazi normati e $g$ è lineare allora anche $G$ è lineare)
+
+\textbf{Dimostrazione Proposizione 1.}
+
+\textit{Dimostrazione che non funziona:}
+Proviamo a svolgere il calcolo diretto
+$$
+\begin{aligned}
+	\|\hat f\,\|_2^2 
+	&= \int_{-\infty}^{+\infty} \hat f(y) \overline{\hat f(y)} \dd y \\
+	&= \iiint f(x) e^{-ixy} \overline{f(t) e^{-ity}} \dd t \dd x \dd y = \\
+	&= \iint f(x) \overline{f(t)} \bigg( \underbrace{\int_{-\infty}^{+\infty} e^{-iy(t-x)} \dd y}_{\delta(x-t)} \bigg) \dd t \dd x = \\
+	&= \int \left( \int f(x) \delta(x - t) \dd x \right) \overline{f(t)} \dd t = \\
+	&= 2\pi \int f(t) \overline{f(t)} \dd t = 2\pi \norm{f}_2^2
+\end{aligned}
+$$
+vediamo però che compare l'integrale $\int_{-\infty}^{+\infty} e^{-iy(t-x)} \dd y$ e serve assumere che corrisponda a $\delta(x - t)$ dove $\delta$ è la ``funzione Delta di Dirac'', vediamo ora la dimostrazione formale usando una funzione ausiliaria.
+
+\textit{Dimostrazione formale:}
+Prendiamo $\varphi \colon \R \to [0,+\infty]$ tale che
+\begin{enumerate}
+	\item $\varphi$ continua in $0$, crescente per $y < 0$ e decrescente per $y > 0$ e $\varphi(0) = 1$.
+	\item $\varphi \in L^1$ e $\check\varphi \in L^1$.
+\end{enumerate}
+
+Poniamo per ogni $\delta$
+$$
+I_\delta = \int_{-\infty}^{+\infty} |\hat f(y)|^2 \varphi(\delta y) \dd y
+\xrightarrow{\text{?}}
+\int_{-\infty}^{+\infty} |f(y)|^2
+$$
+
+\begin{itemize}
+	\item \textit{Passo 1:}
+		$I_\delta \xrightarrow{\delta \to 0} \| \hat f \|_2^2$ per convergenza monotona usando l'ipotesi di crescenza/descrescenza prima/dopo lo $0$.
+
+	\item \textit{Passo 2:}
+		$$
+		\begin{aligned}
+			I_\delta 
+			&= \int \hat f(y) \overline{\hat f(y)} \varphi(\delta y) \dd y = \\
+			&= \int \left( \int f(x) e^{-ixy} \dd x \right) \left( \int \overline{f(t)} e^{ity} \dd t \right) \varphi(\delta y) \dd y = \\
+			&\overset{\mathclap{\text{FT}}}{=} 
+			\iint f(x) \overline{f(t)} 
+			\bigg( \underbrace{\int \varphi(\delta y) e^{i(t-x)y} \dd y}_{\sigma_\delta \check \varphi(t - x)} \bigg)
+			\dd x \dd y = \\
+			&= \int \left( f(x) \sigma_\delta \check\varphi(t - x) \dd x \right) \overline{f(t)} \dd t =\\
+			&= \int f \ast \sigma_\delta \check \varphi(t) \cdot \overline{f(t)} \dd t = \\
+			&= \langle f \ast \sigma_\delta \check \varphi; f \rangle \\
+		\end{aligned}
+		$$
+		e possiamo applicare il teorema di Fubini-Tonelli in quanto le ipotesi sono verificate infatti
+		$$
+		\begin{aligned}
+			&\iiint |f(x) \overline{f(t)}| e^{i(t - x)y} \varphi(\delta y) \dd x \dd t \dd y = \\
+			= &\iiint |f(x)| \cdot |f(t)| \cdot |\varphi(\delta y)| \dd x \dd t \dd y = \\
+			= &\norm{f}_1^2 \norm{\varphi(\delta y)}_1 < +\infty
+		\end{aligned}
+		$$
+		e $\norm{\varphi(\delta y)}_1 < +\infty$ poiché $\varphi \in L^1$.
+
+	\item \textit{Passo 3:}
+		$I_\delta \xrightarrow{\delta \to 0} 2\pi \norm{f}_2^2 $. Infatti $I_\delta = \langle f \ast \sigma_\delta \check \varphi; f \rangle$ e
+		$$
+		\sigma_\delta \check \varphi \xrightarrow{\text{in $L^2$}} m f
+		\qquad
+		\text{con }
+		m = \int \check \varphi(x) \dd x
+		$$
+
+	\item \textit{Passo 4:}
+		Infine $m = 2\pi$ ad esempio prendendo $\varphi(y) = e^{-|y|}$
+		$$
+		\check\varphi(x) = \frac{2}{1 + x^2} \in L^1
+		$$
+		ed in questo caso $m$ si calcola.
+\end{itemize}
+\qed
+
+\subsection{Proprietà della trasformata di Fourier in $L^2$}
+
+\textbf{Proposizione 4.}
+\begin{itemize}
+	\item $\hat{\tau_h f} = e^{-ihy} \hat f$
+	\item $\hat{e^{ihx} f} =  \tau_h \hat f$
+	\item $\hat{\sigma_h f} = \hat f(\delta y)$
+\end{itemize}
+
+\textbf{Dimostrazione.}
+Le identità valgono in $L^1 \cap L^2$ che è denso in $L^2$ e dunque si estendono per continuità ad $L^2$.
+
+\textbf{Proposizione 5.}
+Se $f \in C^1(\R; \C)$ e $f \in L^1 \cup L^2$ e $f' \in L^1 \cup L^2 \implies \hat{f'} = iy\hat{f}$.
+
+\textbf{Dimostrazione.}
+La stessa fatta per $f, f' \in L^1$. Si parte da $a_n, b_n$ tali che $a_n \to -\infty$ e $b_n \to +\infty$ con $f(a_n) \to 0$ e $f(b_n) \to 0$ e si integra per parti
+$$
+\begin{aligned}
+	\mathcal F(f' \cdot \One_{[a_n, b_n]})
+	&= \int_{a_n}^{b_n} f'(x) e^{-ixy} \dd x \\
+	&= \underbrace{\left[f(x) e^{-ixy}\right]_{a_n}^{b_n}}_{\to 0} + iy \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x = iy \mathcal F(f \cdot \One_{[a_n, b_n]}).
+\end{aligned}
+$$
+Per concludere si dimostra che 
+%
+\begin{gather*}
+	\mc{F}(f' \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f') \text{ in } L^2 \\
+	\mc{F}(f \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f) \text{ in } L^2
+\end{gather*}
+
+Ovvero si dimostra che
+\begin{gather*}
+	\int_{b_n}^{+\infty} |f(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
+	\int_{b_n}^{+\infty} |f'(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f'(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
+\end{gather*}
+Ma questo è vero in quanto $f,f' \in L^2$.
+
+\textbf{Proposizione 6.}
+Se $f \in C^1, f \in L^1, f' \in L^2 \implies \hat f \in L^1$ e soddisfa le ipotesi del teorema di inversione.
+
+\textbf{Dimostrazione.}
+Sappiamo che $iy \hat f = \hat{f'} \in L^2 \implies y \hat f \in L^2$.
+$$
+\begin{aligned}
+	\int_{\R} |\hat f(y)| \dd y 
+	& = \int_{|y| \leq 1} |\hat f(y)| \dd y + \int_{|y| \geq 1} |\hat f(y)| \dd y \\
+	& \leq 2 \| \hat f\, \|_\infty + \int_{|y| \geq 1} |\hat f(y) y| \frac{1}{|y|} \dd y \\
+	& \leq 2 \norm{f}_1 + \| \hat f y \|_2 \left( \int_{|y| \geq 1} \frac{1}{|y|^2} \dd y \right)^{1/2} \\
+	& \leq 2 \norm{f}_1 + 2 \norm{f'}_2
+\end{aligned}
+$$
+
+\textbf{Corollario.}
+$f \in C_C^1 \implies f, \hat f \in L^1$
+
+\textbf{Proposizione 7.}
+Se $f_1, f_2 \in L^2(\R; \C)$ (e dunque $f_1 f_2 \in L^1(\R; \C)$ per H\"older) allora
+$$
+2\pi \hat{f_1 f_2} = \hat{f_1} \ast \hat{f_2}
+$$
+
+\textbf{Dimostrazione.}
+$f_1, f_2 \in L^2 \implies f_1 f_2 \in L^1$ segue da H\"older. Dimostriamo la proposizione per $f_1, f_2 \in C_C^1 \implies f_1, f_2, f_1 f_2 \in C_C^1 \implies$ tutte in $L^1$ e con trasformate in $L^1$.
+$$
+\mathcal F^* \left( \frac{1}{2\pi} \hat{f_1} \ast \hat{f_2} \right)
+= \frac{1}{2\pi} \mathcal F^*(\hat{f_1}) \mathcal F^*(\hat{f_2})
+= \frac{1}{2\pi} (2\pi f_1) \cdot (2\pi f_2)
+= 2\pi f_1 \cdot f_2 = \mathcal F^*(\hat{f_1 f_2})
+$$
+ed usando che $\mathcal F^*$ è iniettiva otteniamo che $2 \pi \hat{f_1 f_2} = \hat{f_1} \ast \hat{f_2} $. 
+
+Per $f_1, f_2 \in L^2$ si procede per continuità e si approssimano $f_1$ ed $f_2$ con $f_{1,n}$ e $f_{2,n}$ in $C_C^1$.
+\qed

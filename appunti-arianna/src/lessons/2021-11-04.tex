@@ -1,0 +1,174 @@
+%
+% Lezione del 4 Novembre 2021
+%
+
+
+\chapter{Serie di Fourier}
+
+Lo scopo della serie di Fourier (complessa) è di rappresentare una funzione $f \colon [-\pi, \pi] \to \C$ (o più in generale una funzione $f \colon \R \to \C$ $2\pi$-periodica) come
+$$
+f(x) = \sum_{n=-\infty}^\infty c_n e^{i n x}
+$$
+In particolare, chiamiamo i coefficienti $c_n$ \textbf{coefficienti di Fourier} di $f(x)$ e tutta l'espressione a destra \textbf{serie di Fourier} di $f(x)$.
+
+\textbf{Motivazione.}
+La rappresentazione in serie di Fourier serve ad esempio a risolvere certe equazioni alle derivate parziali ed è anche utilizzata per la ``compressione dati''.
+
+\textbf{Problemi.}
+\begin{itemize}
+	\item Come si trovano (se esistono) i coefficienti di Fourier?
+	\item Ed in che senso la serie converge?
+\end{itemize}
+
+\textbf{Osservazione.}
+La serie appena vista è indicizzata da $-\infty$ a $+\infty$, più avanti vedremo che la definizione esatta non sarà importante ma per ora usiamo la definizione
+$$
+\sum_{n=-\infty}^\infty a_n \coloneqq \lim_{N \to +\infty} \sum_{n = -N}^N a_n
+$$
+ed ogni tanto scriveremo anche $\ds \sum_{n \in \Z} a_n$ per brevità.
+
+\textbf{Teorema 1.}
+L'insieme $\ds\mathcal F = \left\{ e_n(x) \coloneqq \frac{e^{inx}}{\sqrt{2\pi}} \right\}$ è una base ortonormale di $L^2([-\pi, \pi]; \C)$.
+
+Da cui \textit{formalmente} segue che
+$$
+\begin{aligned}
+	f(x) 
+	&= \sum_{n \in \Z} \langle f; e_n \rangle \cdot e_n
+	= \sum_{n \in \Z} \left( \int_{-\pi}^\pi f(t) \overline{\frac{e^{int}}{\sqrt{2\pi}}} \dd t \right) \frac{e^{inx}}{\sqrt{2\pi}} \\
+	&= \sum_{n \in \Z} \, \underbrace{\frac{1}{2\pi} \left( \int_{-\pi}^\pi f(t) e^{-int} \dd t \right)}_{c_n} \, e^{inx}
+\end{aligned}
+$$
+
+\textbf{Definizione.}
+Data $f \in L^2([-\pi, \pi]; \C)$ i coefficienti di Fourier di $f$ sono
+$$
+	c_n = c_n(f) \coloneqq \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x.
+$$
+Notiamo in particolare che è anche ben definito anche per $f \in L^1$ (anche se per ora non ci dice molto in quanto $L^1$ non è uno spazio di Hilbert).
+
+\textbf{Corollario.}
+Per ogni $f \in L^2([-\pi, \pi]; \C)$ abbiamo
+\begin{enumerate}
+	\item \label{item:4nov2021_cor1_1} 
+		La serie $\ds \sum_{n \in \Z} c_n e^{inx}$ converge a $f$ in $L^2$.
+
+	\item Vale l'identità di Parseval
+		$$
+		\norm{f}_2^2 = 2 \pi \sum_{n \in \Z} |c_n|^2
+		\qquad
+		\qquad
+		\langle f, g \rangle = 2\pi \sum_{n \in \Z} c_n(f) \overline{c_n(g)}
+		$$.
+\end{enumerate}
+
+\textbf{Osservazione.}
+Usando la \ref{item:4nov2021_cor1_1} ed il fatto che la convergenza in $L^2$ implica la convergenza quasi ovunque a meno di sottosuccessioni otteniamo che $\forall f \; \exists N_n \uparrow \infty$ tale che
+$$
+	\sum_{n = -N_k}^{N_k} c_n e^{inx} \xrightarrow{\;\;k\;\;} f(x) \qquad \foralmostall x \in [-\pi, \pi].
+$$
+
+In particolare nel 1966 Carleson ha dimostrato che in realtà vale proprio
+$$
+	\sum_{n = -N}^N c_n e^{inx} \xrightarrow{\;\;N\;\;} f(x) \qquad \foralmostall x.
+$$
+
+Prima di dimostrare il Teorema~1 riportiamo il teorema di Stone-Weierstrass.
+
+\textbf{Teorema} (di Stone-Weierstrass.)
+Sia $K$ uno spazio compatto e $T_2$ (essenzialmente è uno spazio metrico compatto) e sia $C(K)$ l'insieme delle funzioni continue reali su $K$, mentre $C(K; \C)$ le funzioni continue complesse su $K$ dotate della norma del $\sup$.
+
+Dato $\mathcal A \subset C(K)$ diciamo che è una \textbf{sottoalgebra} se è uno spazio vettoriale e chiuso rispetto al prodotto e diciamo che \textbf{separa i punti} se $\forall x_1, x_2 \in K$ con $x_1 \neq x_2$ allora $\exists f \in \mathcal A$ tale che $f(x_1) \neq f(x_2)$.
+\begin{itemize}
+	\item \textit{Caso reale:}
+	se $\mathcal A$ è una sottoalgebra di $C(K)$ che separa i punti e contiene le costanti allora $\overline{\mathcal A} = C(K)$.
+	
+	\item \textit{Caso complesso:}
+	se $\mathcal A$ è una sottoalgebra di $C(K; \C)$ che separa i punti, contiene le costanti e \textit{chiusa per coniugio} allora $\overline{\mathcal A} = C(K; \C)$.
+	
+\end{itemize}
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item Se $K = [0, 1]$, $\mathcal A = \text{``polinomi reali''} \implies \overline{\mathcal A} = C(K; \C)$.
+	
+	\item L'ipotesi di separare i punti è necessaria, se ad esempio $\exists x_1, x_2$ tali che $x_1 \neq x_2$ e per ogni $f$ abbiamo $f(x_1) = f(x_2)$ allora varrà analogamente anche per ogni funzione nella chiusura ma le funzioni continue separano i punti.
+
+	\item È anche necessario che $\mathcal A \supset \text{``costanti''}$, ad esempio dato $x_0 \in K$ ed $\mathcal A \coloneqq \{ f \in C(K) \mid f(x_0) = 0 \}$ abbiamo che $\overline{\mathcal A} = \mathcal A \subsetneq C(K)$.
+
+	\item Anche la chiusura per coniugio è necessaria, infatti ad esempio preso $K = \{ z \in \C \mid |z| \leq 1 \}$, $\mathcal A = \text{``polinomi complessi''}$, $\mathcal A$ separa i punti e contiene le costanti però $\overline{\mathcal A}$ sono solo le funzioni olomorfe su $K$.
+\end{itemize}
+
+In particolare, vorremmo applicare questo teorema alle funzioni $2\pi$-periodiche ristrette a $[-\pi, \pi]$ che però non verificano la separazione dei punti in quanto per la periodicità $f(-\pi) = f(\pi)$. Nel seguente corollario vediamo come possiamo estendere leggermente il teorema passando ai quozienti topologici.
+
+\textbf{Corollario.}
+Sia $\mathcal A$ una sottoalgebra di $C(K)$ (o analogamente per $C(K; \C)$) che contiene le costanti (e nel caso complesso anche chiusa per coniugio). Definiamo la relazione di equivalenza $x_1 \sim x_2$ se $f(x_1) = f(x_2)$ per ogni $f \in \mathcal A$. Allora,
+$$
+	\overline{\mathcal A} = \{ f \in C(K) \mid f(x_1) = f(x_2) \text{ se } x_1 \sim x_2 \}.
+$$
+\begin{minipage}{\textwidth - 2.5em}
+\parskip 1ex
+\setlength{\parindent}{0pt}
+
+\begin{wrapfigure}{r}{100pt}
+	\centering
+	\vspace{-1.5\baselineskip}
+	\begin{tikzcd}
+		K \ar[r, "g"] \ar[d, "\pi"] & \C \\
+		\sfrac{K}{\sim} \ar[ru, dashed, swap, "\tilde g"]
+	\end{tikzcd}
+	\vspace{-1.5\baselineskip}
+\end{wrapfigure}
+
+\textbf{Dimostrazione Corollario.}
+È chiaro che $\mc{A} \subset X \coloneqq \{ f \in C(K) \mid f(x_1) = f(x_2) \text{ se } x_1 \sim x_2 \}$. Data $g \in X$, definiamo $\tilde{g} \colon \sfrac{K}{\sim} \to \C$ in modo che $g = \tilde{g} \circ \pi$.
+Osserviamo che $\sfrac{K}{\sim}$ è compatto e $T_2$ e che $\tilde{\mc{A}} = \{\tilde{f} \colon  f \in \mc{A}\}$ soddisfa le ipotesi del teorema di Stone-Weierstrass, quindi $\ol{\tilde{\mc{A}}} = C\left( \sfrac{K}{\sim} ;\C \right)$, quindi per ogni $g \in X$ esiste una successione $\tilde{g}_n \in \tilde{\mc{A}}$ tale che $\tilde{g}_n \to \tilde{g}$ uniformemente e quindi $g_n \to g$ uniformemente.
+% Vogliamo applicare il teorema di Stone-Weierstrass a $\sfrac{k}{\sim}$. Definiamo $X \coloneqq \{ f \in C(K) \mid f(x_1) = f(x_2) \text{ se } x_1 \sim x_2 \}$; è chiaro che $\overline{\mathcal A} \subset X$. Vediamo che $X \subset \overline{\mathcal A}$. 
+
+% Data $g \in X$ troviamo $g_n \in \mathcal A$ tale che $g_n \to g$ uniformemente allora $\exists \tilde g \colon \sfrac{K}{\sim} \to \C$ tale che $g = \tilde g \compose \pi$, consideriamo $\mathcal A = \{ \tilde f \mid f \in \mathcal A \}$ che è una sottoalgebra di $C(\overline{\sfrac{K}{\sim}}; \C)$ che separa i punti, etc. 
+\qed
+\end{minipage}
+
+\vss
+
+\textbf{Dimostrazione Teorema~1.}
+Vogliamo vedere che
+\begin{enumerate}
+	\item $\mathcal F$ è un sistema ortonormale.
+
+		\textit{Dimostrazione.}
+		Basta calcolare $\langle e_n; e_m \rangle$ per ogni $n, m \in \Z$
+		$$
+		\langle e_n; e_m \rangle
+		= \int_{-\pi}^\pi \frac{e^{inx}}{\sqrt{2\pi}} \cdot \overline{\frac{e^{inx}}{\sqrt{2\pi}}} \dd x
+		=
+		\begin{cases}
+			\ds \frac{1}{2\pi} \int_{-\pi}^\pi 1 \dd x = 1 & \text{se } n = m \\[15pt]
+			\ds \frac{1}{2\pi} \left[ \frac{e^{i(n - m)x}}{i(n - m)} \right]_{-\pi}^\pi = 0& \text{se } n \neq m \\
+		\end{cases}
+		$$
+
+	\item $\mathcal F$ è completo.
+
+		\textit{Dimostrazione.} Questo punto richiede il teorema di Stone-Weierstrass.
+
+		Consideriamo
+		$$
+			\mathcal A = \spn_\C(\mathcal F) = \left\{ \sum_n a_n e^{inx} \right\} = \{ p(e^{inx}) \mid p \text{ polinomio a esponenti interi} \}.
+		$$
+		Segue che $\mathcal A$ è una sottoalgebra che separa i punti di $K$ tranne $-\pi$ e $\pi$ ed è chiusa per coniugio.
+
+		Per il corollario\footnote{Notiamo che la topologia su $\mathcal A$ è quella data dalla norma del $\sup$ delle funzioni continue quindi la chiusura è rispetto a tale norma e la indichiamo con $\overline{\mathcal A}^{\,C}$.} $\overline{\mathcal A}^{\,C} = \{ f \in C([-\pi, \pi]; \C) \mid f(-\pi) = f(\pi) \}$. Dato che la convergenza uniforme implica la convergenza in $L^2$ per spazi di misura finita, abbiamo:
+		$$
+			\overline{\mathcal A}^{\,L^2} \supseteq \{ f \in C([-\pi, \pi]; \C) \mid f(-\pi) = f(\pi) \}.
+		$$
+
+		Inoltre, $\overline{\mathcal A}^{\,L^2} \supseteq \{ f \in C([-\pi, \pi]; \C) \}$ in quanto, una $f \in C([-\pi, \pi]; \C)$ può essere approssimata in $L^2$ tramite funzioni $f_n$ che coincidono in $\{-\pi,\pi\}$. Definiamo $f_n = f \cdot \varphi_n$, dove le $\varphi_n$ sono tali che $\varphi_n(-\pi) = \varphi_n(\pi) = 0$, $\varphi_n = 1$ su $[1/n - \pi, \pi - 1/n]$; notiamo che $f_n \to f$ in $L^2$.
+
+		[TODO: Disegnino delle $\varphi_n$]
+
+		Infine poiché le funzioni continue sono dense in $L^2$ segue che $\overline{\mathcal A}^{L^2} = L^2$.
+
+\qed
+\end{enumerate}
+

@@ -1,0 +1,312 @@
+%
+% Lezione del 30 settembre
+%
+
+\chapter{Spazi $L^p$ e convoluzione}
+
+\section{Disuguaglianze}
+
+\subsection{Disuguaglianza di Jensen}
+
+Ricordiamo che una funzione $f \colon \R^d \to [-\infty, +\infty]$ è \textbf{convessa} se e solo se dati $x_1, \dots, x_n \in \R^d$ e $\lambda_1, \dots, \lambda_n \in [0, 1]$ con $\sum_i \lambda_i = 1$ abbiamo che
+$$
+f \left(\sum_i \lambda_i x_i \right) \leq \sum_i \lambda_i f(x_i)
+$$
+
+\textbf{Definizione.} Una funzione $f \colon X \to \ol{\R}$ si dice \textbf{semicontinua inferiormente nel punto} $x_0 \in X$ se per ogni $t \in \R$ con $t < f(x_0)$ esiste $U \in \mc{I}(x)$ tale che $t < f(y)$ per ogni $y \in U$. Infine $f$ si dice \textbf{semicontinua inferiormente su} $X$ se lo è in ogni $x \in X$.
+
+\textbf{Proprietà.} Dalla definizione segue che $f \colon X \to \ol{\R}$ è semicontinua inferiormente in $x_0 \in X$ se e solo se
+$$
+	f(x) \leq \sup_{U \in \mc{I}(x)} \inf f(y) = \liminf_{x \to x_0} f(x).
+$$
+
+
+\textbf{Teorema} (Jensen).
+Dato $(X, \mc A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
+$$
+f \left( \int_X u \dd \mu \right) \leq \int_X f \compose u \dd \mu
+$$
+e $f \compose u$ è integrabile.
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item $(f \compose u)^-$ ha integrale finito.
+
+	\item Interpretando $\mu$ come probabilità si riscrive come $\mathbb E[f \compose \mu] \geq f(\mathbb{E}[u])$.
+
+	\item Se $u$ è una funzione semplice, cioè $\ds u = \sum_i y_i \cdot \One_{E_i}$ con $E_i$ disgiunti e $\bigcup E_i = X$ allora posti $\lambda_i = \mu(E_i)$ abbiamo
+		$$
+		\int_X f \compose u \dd \mu = \int_X \sum_i f(y_i) \cdot \One_{E_i} \dd \mu = \sum_i \lambda_i f(y_i) \geq f \left( \sum_i \lambda_i y_i \right) = f \left( \int_X u \dd \mu \right)
+		$$
+
+		Questo ci darebbe una strada per dimostrare in generale per passi il teorema di Jensen ma in realtà si presentano vari problemi tecnici.
+
+	\item Ogni funzione convessa e S.C.I su $\Omega$ convesso in $\R^d$ si estende a $\tilde f \colon \R^d \to (-\infty, +\infty]$ convessa e S.C.I.; ad esempio se $\Omega = (0, +\infty)$
+		$$
+		f(y) = \frac{1}{y}
+		\quad\rightsquigarrow\quad
+		\tilde f(y) = 
+		\begin{cases}
+			+\infty & y \leq 0 \\[5pt]
+			\dfrac{1}{y} & y > 0
+		\end{cases}
+		$$
+
+	\item L'ipotesi di semi-continuità è non banale perché le funzioni convesse sono continue solo se a valori in $\R$, ad esempio per $k$ costante la funzione
+		$$
+		f(y) := 
+		\begin{cases}
+			k & y < 0 \\
+			+\infty & y \geq 0
+		\end{cases}
+		$$
+		è convessa ma non semi-continua inferiormente (e neanche continua).
+\end{itemize}
+
+\textbf{Dimostrazione.}
+Poniamo $\ds y_0 \coloneqq \int_X u \dd \mu$, allora la tesi diventa
+$$
+	f \bigg( \int_X u \dd \mu \bigg) \leq \int_X f \compose u \dd \mu
+	\quad
+	\longiff
+	\quad
+	f(y_0) \leq \int_X f \compose u \dd \mu.
+$$
+Prendiamo $\phi \colon \R^d \to \R$ affine (ovvero $\phi(y) = a \cdot y + b$ con $a \in \R^d$ e $b \in \R$) tale che $\phi \leq f$, allora
+$$
+	\int_X f \compose u \dd \mu \underset{(\star)}{\geq} \int_X \phi \compose u \dd \mu = \int_X a \cdot u + b \dd \mu = a y_0 + b = \phi(y_0)
+$$
+
+Concludiamo usando il seguente lemma di caratterizzazione delle funzioni convesse ed S.C.I.
+
+\textbf{Lemma.}
+Ogni $f \colon \R^d \to (-\infty, +\infty]$ convessa e S.C.I è tale che
+$$
+\forall y_0 \in \R^d \quad \sup_{\substack{\phi \text{ affine} \\ \phi \leq f}} \phi(y_0) = f(y_0)
+$$
+
+Infine, si dimostra che $(f \compose u)^-$ è integrabile. 
+Dal fatto che $f \circ u \geq \phi \circ u$ con $\phi \circ u$ sommabile\footnote{$u$ è sommabile e $\phi$ è affine.} si ha che
+\begin{align*}
+	& \Longrightarrow \left( f \circ u \right)^- \leq \left( \phi \circ u \right)^- \\
+	& \Longrightarrow \left( f \circ u \right)^- \quad \text{è sommabile} \\
+	& \Longrightarrow f \circ u \quad \text{è integrabile}
+\end{align*}
+\qed
+
+\textbf{Nota.} Nel caso $d = 1$ e $f \colon \R \to \R$ possiamo usare il fatto che le funzioni convesse ammettono sempre derivata destra o sinistra, il $\sup$ diventa un massimo e ci basta prendere come $\phi$ la retta tangente in $(y_0, f(y_0))$ o una con pendenza compresa tra $f'(y_0^-)$ e $f'(y_0^+)$.
+
+\textbf{Definizione.} Dati $p_1, p_2 \in [1, +\infty]$ diciamo che sono \textbf{coniugati} se
+$$
+\frac{1}{p_1} + \frac{1}{p_2} = 1
+$$
+convenendo che $1/\infty = 0$.
+
+Fissiamo $p \in [1, +\infty]$ detto \textit{esponente di sommabilità} e sia $(X, \mc A, \mu)$ come sempre.
+
+\textbf{Definizione.} Data $f \colon X \to \overline \R$ o $\R^d$ misurabile, la \textbf{norma} $p$ di $f$ è
+$$
+	\norm{f}_p \coloneqq \left( \int_X |f|^p \dd \mu \right)^{1/p} \quad p \in [1, +\infty)
+$$
+mentre per $p = +\infty$ poniamo
+$$
+	\norm{f}_\infty = \mathrm{supess} f(x) \coloneqq \inf \{ m \in [0, +\infty] \mid |f(x)| \leq m \text{ per $\mu$-q.o. } x \}.
+$$
+\textbf{Nota.} In realtà queste sono solo delle semi-norme.
+
+\begin{itemize}
+	\item $\ds \norm{f}_\infty \leq \sup_{x \in X} |f(x)|$
+
+	\item $\norm{f}_p = 0 \iff f = 0$ quasi ovunque
+
+		\textbf{Dimostrazione.}
+		\begin{itemize}
+			\item[$\boxed{\Rightarrow}$] [TODO: Facile ma non ovvia]
+			\item[$\boxed{\Leftarrow}$] Ovvio.
+		\end{itemize}
+		\qed
+
+	\item Se $f_1 = f_2$ quasi ovunque $\implies \norm{f_1}_p = \norm{f_2}_p$.
+
+		\textbf{Dimostrazione.} 
+		$f_1 = f_2$ quasi ovunque $\implies \exists D \subset X$ con $\mu(D) = 0$ tale che $f_1(x) = f_2(x)$ su $X \setminus D$, usiamo il fatto che l'integrale non cambia se modifichiamo la funzione su un insieme di misura nulla
+		$$
+		\norm{f_1}_p^p
+		= \int_X |f_1|^p \dd \mu 
+		= \int_{X \setminus D} |f_1|^p \dd \mu 
+		= \int_{X \setminus D} |f_2|^p \dd \mu 
+		= \int_{X} |f_2|^p \dd \mu 
+		= \norm{f_2}_p^p
+		$$ 
+		\qed
+\end{itemize}
+
+\subsection{Disuguaglianza di Young}
+
+\textbf{Proposizione.}
+Per ogni $a_1, a_2 \geq 0$ e $\lambda_1, \lambda_2 > 0$ con $\lambda_1 + \lambda_2 = 1$ abbiamo che
+$$
+a_1^{\lambda_1} a_2^{\lambda_2} \leq \lambda_1 a_1 + \lambda_2 a_2
+$$
+inoltre vale l'uguale se e solo se $a_1 = a_2$.
+
+\textbf{Dimostrazione.}
+Se $a_1$ o $a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$. Per la concavità del logaritmo abbiamo
+% e passiamo $a_1^{\lambda_1} a_2^{\lambda_2}$ al logaritmo
+$$
+	\lambda_1 \log a_1 + \lambda_2 \log a_2 \leq \log(\lambda_1 a_2 + \lambda_2 a_2),
+	\longiff \log \left( a_1^{\lambda_1} a_2^{\lambda_2} \right) \leq \log(\lambda_1 a_2 + \lambda_2 a_2)
+$$
+e dalla monotonia
+%
+$$
+	 a_1^{\lambda_1} a_2^{\lambda_2} \leq \lambda_1 a_2 + \lambda_2 a_2.
+$$
+%
+Infine, il se e solo se per l'uguale segue dal fatto che il logaritmo è \textit{strettamente concavo}. 
+\qed
+
+\subsection{Disuguaglianza di H\"older}
+
+\textbf{Proposizione.}
+Date $f_1, f_2 \colon X \to \overline\R$ o $\R^d$ e $p_1, p_2$ esponenti coniugati allora
+$$
+\int_X |f_1| \cdot |f_2| \dd \mu \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
+$$ 
+vale anche per $p = +\infty$ convenendo che $+\infty \cdot 0 = 0$ nel membro di destra.
+
+\textbf{Dimostrazione.}
+Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$ la dimostrazione è immediata, supponiamo dunque $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} > 0$ e finiti.
+
+\begin{itemize}
+	\item \textit{Caso 1:} se $p_1 = 1, p_2 = +\infty$ allora
+		$$
+		\int_X |f_1| \cdot |f_2| \dd \mu 
+		\leq \int_X |f_1| \cdot \norm{f_2}_{\infty} \dd \mu
+		= \norm{f_2}_{\infty} \cdot \int_X |f_1| \dd \mu
+		= \norm{f_2}_{\infty} \cdot \norm{f_1}_{1} 
+		$$
+
+	\item \textit{Caso 2:} se $1 < p_1, p_2 < +\infty$, introduciamo un parametro $\gamma > 0$ allora
+		$$
+		\int_X |f_1| \cdot |f_2| \dd \mu 
+		= \int_X \left( \gamma^{p_1} \cdot |f_1|^{p_1} \right)^{1/p_1} \cdot \left( \gamma^{-p_2} \cdot |f_2|^{p_2} \right)^{1/p_2} \dd \mu
+		$$
+		a questo punto chiamiamo per comodità $g_1 := \gamma^{p_1} \cdot |f_1|^{p_1}$, $\lambda_1 := 1 / p_1$ e $g_2 := \gamma^{-p_2} \cdot |f_1|^{p_2}$, $\lambda_2 := 1 / p_2$ da cui
+		$$
+		= \int_X g_1^{\lambda_1} \cdot g_2^{\lambda_2} 
+		\overset{\text{Young}}{\leq} \int_X \lambda_1 g_1 + \lambda_2 g_2 \dd \mu
+		= \lambda_1 \gamma^{p_1} \int_X |f_1|^{p_1} + \lambda_2 \gamma^{-p_2} \int_X |f_1|^{p_2} \dd \mu
+		$$
+		$$
+		= \lambda_1 \gamma^{p_1} \cdot \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \cdot \norm{f_2}_{p_2}^{p_2}
+		$$
+		posti ora $a_1 := \gamma^{p_1} \norm{f_1}_{p_1}^{p_1}$ e $a_2 := \gamma^{-p_2} \norm{f_1}_{p_2}^{p_2}$, per $\gamma \to 0$ abbiamo che $a_1 \to 0, a_2 \to +\infty$ mentre per $\gamma \to +\infty$ abbiamo che $a_1 \to +\infty, a_2 \to 0$ dunque per il teorema del valor medio esisterà $\gamma$ tale che $a_1 = a_2$, ma allora siamo nel caso dell'uguaglianza per la disuguaglianza di Young dunque
+		$$
+		\lambda_1 \gamma^{p_1} \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \norm{f_1}_{p_2}^{p_2} 
+		= \lambda_1 a_1 + \lambda_2 a_2 = a_1^{\lambda_1} \cdot a_2^{\lambda_2} 
+		= \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
+		$$
+\end{itemize}
+% In particolare, vale l'uguaglianza se prendiamo un valore di $\gamma$ tale che $a_1 = a_2$. Resta da verificare che tale valore di $\gamma$ esista [TODO].
+\qed
+
+\textbf{Osservazione.}
+La disuguaglianza di H\"older può essere generalizzata a $n$ funzioni, date $f_1, \dots, f_n$ e $p_1, \dots, p_n$ con $\frac{1}{p_1} + \dots + \frac{1}{p_2} = 1$ allora
+$$
+\int_X \prod_i^n |f_i| \dd \mu \leq \prod_i^n \norm{f_i}_{p_i} 
+$$
+
+\subsection{Disuguaglianza di Minkowski}
+
+\textbf{Proposizione.} 
+Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$. Allora vale la disuguaglianza triangolare
+$$
+	\norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p.
+$$
+%
+\textbf{Dimostrazione.}
+\begin{itemize}
+	\item \textit{Caso 1:} se $p = 1$ o $p = +\infty$, allora svolgiamo il calcolo diretto
+		
+		\begin{itemize}
+			\item Se $p = 1$
+				$$
+				\norm{f_1 + f_2}_1 
+				= \int_X |f_1 + f_2| \dd \mu 
+				\leq \int_X |f_1| + |f_2| \dd \mu 
+				= \int_X |f_1| \dd \mu + \int_X |f_2| \dd \mu
+				= \norm{f_1}_1 + \norm{f_2}_1
+				$$
+			\item Se $p = +\infty$ allora poniamo $D$ l'insieme di \textit{misura nulla} che realizza su $X \setminus D$ il supess\footnote{Si usa questa strategia perché il $\mathrm{supess}$ non soddisfa le proprietà del modulo e della somma del $\sup$.} ovvero $\mathrm{supess}_X |f_1 + f_2| = \mathrm{sup}_{X \,\setminus\, D} |f_1 + f_2|$
+				$$
+				\norm{f_1 + f_2}_\infty
+				= \mathrm{supess}_X |f_1 + f_2| 
+				= \mathrm{sup}_{X \,\setminus\, D} |f_1 + f_2| 
+				\leq \mathrm{sup}_{X \,\setminus\, D} (|f_1| + |f_2|)
+				$$
+				$$
+				= \mathrm{sup}_{X \,\setminus\, D} |f_1| + \mathrm{sup}_{X \,\setminus\, D} |f_2|
+				= \mathrm{supess}_X |f_1| + \mathrm{supess}_X |f_2|
+				= \norm{f_1}_\infty + \norm{f_2}_\infty
+				$$
+		\end{itemize}
+
+	\item \textit{Caso 2:} se $1 < p < +\infty$ e $0 < \norm{f_1 + f_2}_p < +\infty$
+		$$
+		\begin{aligned}
+			\norm{f_1 + f_2}_p^p 
+			&= \int_X |f_1 + f_2|^p 
+			\leq \int_X (|f_1| + |f_2|) \cdot |f_1 + f_2|^{p-1} \dd \mu = \\
+			&= \int_X |f_1| \cdot |f_1 + f_2|^{p-1} \dd \mu + \int_X |f_2| \cdot |f_1 + f_2|^{p-1} \dd \mu =
+		\end{aligned}
+		$$
+		ora introduciamo $q$ esponente coniugato di $p$ e notiamo
+		$$
+		q = \frac{p}{p-1} 
+		\quad
+		\text{e}
+		\quad
+		\norm{|f|^{p-1}}_q = \norm{f}_p^{p-1}
+		$$
+		ora continuiamo a svolgere il conto di prima usando H\"older con esponenti $p$ e $q$
+		$$
+		\begin{aligned}
+		&\overset{\text{H\"older}}{\leq} \norm{f_1}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q + \norm{f_2}_p \cdot \norm{|f_1 + f_2|^{p-1}}_q = \\
+			& = (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{|f_1 + f_2|^{p-1}}_q 
+			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
+		\end{aligned}
+		$$
+		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo dividere per l'ultimo fattore e ottenere la tesi.
+		% $$
+		% \implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
+		% \implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p
+		% $$
+
+	\item \textit{Caso 3:} se $1 < p < +\infty$ ma $\norm{f_1 + f_2} = 0$ o $+\infty$ allora se $\norm{f_1 + f_2} = 0$ la disuguaglianza è banale mentre se $\norm{f_1 + f_2} = +\infty$ si usa la seguente disuguaglianza
+		$$
+			\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p),
+		$$
+		che si ottiene usando la convessità della funzione $x \mapsto x^p$ e la combinazione affine $\frac{1}{2}x_1 + \frac{1}{2}x_2$ infatti
+		$$
+			\left( \frac{x}{2} + \frac{y}{2} \right)^p \leq \frac{1}{2} x^p + \frac{1}{2} y^p 
+			\implies \frac{1}{2^{p-1}} (x+y)^p \leq x^p + y^p 
+			\implies (x+y)^p \leq 2^{p-1} (x^p + y^p).
+		$$
+		% ma sostituendo con $f_1$ e $f_2$, integrando e poi sostituendo le norme otteniamo
+		% $$
+		% 	\norm{f_1 + f_2}_p^p \leq 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p).
+		% $$
+		% $$
+		% \norm{f_1 + f_2}_p^p 
+		% = \int_X |f_1 + f_2|^p \dd \mu 
+		% = 2^p \int_X \left| \frac{f_1 + f_2}{2} \right|^p \dd \mu 
+		% $$
+		% $$
+		% \leq 2^p \int_X \frac{1}{2} |f_1|^p + \frac{1}{2}|f_2|^p \dd \mu 
+		% = 2^{p-1} (\norm{f_1}_p^p + \norm{f_2}_p^p)
+		% $$
+		% da cui possiamo ricavare subito che almeno uno dei due termini deve essere $+\infty$.
+\qed
+\end{itemize}
+

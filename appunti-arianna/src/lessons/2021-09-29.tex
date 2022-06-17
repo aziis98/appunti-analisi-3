@@ -1,0 +1,244 @@
+%
+% Lezione del 29 settembre
+%
+
+\section{Funzioni misurabili}
+
+\textbf{Definizione.}
+Dato $(X, \mc{A}, \mu)$ e $f \colon X \to \R$ (o al posto di $\R$ in $Y$ spazio topologico), diciamo che $f$ è \textbf{misurabile} (più precisamente $\mc{A}$-misurabile), se
+$$
+\forall A \text{ aperto} \; f^{-1} (A) \in \mc{A}
+$$ 
+
+
+\textbf{Osservazioni.}
+\nopagebreak
+\begin{itemize}
+	\item Dato $E \subset X$, vale $E \in \mc{A}$ se solo se $\One_E$ è misurabile.
+	\item La classe delle funzioni misurabili è chiusa rispetto a molte operazioni
+	\begin{itemize}
+		\item \textit{Somma}, \textit{prodotto} (se hanno senso nello spazio immagine della funzione).
+		\item \textit{Composizione con funzione continua}: Se $f \colon X \to Y$ continua e $g \colon  Y \to Y'$ continua, allora $g \circ f$ è misurabile.
+		\item \textit{Convergenza puntuale}: data una successione di $f_n$ misurabili e $f_n \to f$ puntualmente, allora $f$ è misurabile.
+		\item $\liminf$ e $\limsup$ (almeno nel caso $Y = \R$).
+	\end{itemize}
+\end{itemize}
+
+
+\subsection{Funzioni semplici}
+
+% Indico con $\mc{S}$ la classe delle funzioni $f \colon  X \to \R$ \textit{semplici}, cioè della forma $f = \sum_{i}^{n} \alpha_i \One_{E_i}$ con $\{E_i \}_{1 \leq i \leq n}$ misurabili e $\alpha_i \in \R$.
+\textbf{Definizione.}
+Definiamo la classe delle \textbf{funzione semplici} come
+$$
+\mc S := \left\{ f \colon X \to \R \mymid f = \sum_i \alpha_i \One_{E_i} \text{ con $E_i$ misurabili e $\{\alpha_i\}$ finito} \right\}
+$$
+
+\textbf{Osservazione.} La rappresentazione di una funzione semplice come combinazione lineare di indicatrici di insiemi \textit{non è unica}, però se necessario possiamo prendere gli $E_i$ disgiunti.
+
+\section{Integrale}
+
+\textbf{Definizione.}
+Diamo la definizione di $\ds\int_X f \dd \mu$ per passi
+\begin{enumerate}
+	\item \label{item:def_int_1} 
+		Se $f \in \mc{S}$ e $f \geq 0$ cioè $f = \sum_i \alpha_i \One_{E_i}$ con $\alpha_i \geq 0$ allora poniamo
+$$
+			\int_{X} f \dd \mu \coloneqq \sum_{i} \alpha_i \mu(E_i),
+$$
+		convenendo che $0 \cdot +\infty = 0$ in quanto la misura di un insieme non è necessariamente finita.
+	
+	\item \label{item:def_int_2} 
+		Se $f \colon  X \to [0,+\infty]$ misurabile si pone
+$$
+			\int_{X} f \dd \mu \coloneqq \sup_{\substack{g \in \mc{S} \\ 0 \leq g \leq f}} \int_{X} g \dd \mu.
+$$
+		
+	\item 
+		$f \colon X \to \overline{\R}$ misurabile si dice \textbf{integrabile} se 
+$$
+			\int_{X} f^+ \dd \mu < + \infty \quad \text{oppure} \quad \int_{X} f^- \dd \mu < +\infty.
+$$
+		e per tali $f$ si pone
+$$
+			\int_{X} f \dd \mu \coloneqq  \int_{X} f^+ \dd \mu - \int_{X} f^- \dd \mu.
+$$
+	
+	\item 
+		$f \colon X \to \R^n$ si dice \textbf{sommabile} (o di \textbf{classe} $\mathscr L^1$) se $\int_X \left| f \right| \dd \mu < +\infty$. In tal caso, se $\int_X f_i^{\pm} \dd \mu < +\infty$ per ogni $f_i$ componente di $f$, allora $\int_X f \dd \mu$ esiste ed è finito.
+\end{enumerate}
+
+Per tali $f$ si pone
+$$
+	\int_{X} f \dd \mu \coloneqq  \left( \int_X f_1 \dd \mu, \ldots , \int_X f_n \dd \mu \right).
+$$
+
+\textbf{Notazione.}
+Scriveremo spesso $\ds \int_E f(x) \dd x$ invece di $\ds \int_E f \dd \mathscr L^n$ .
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item L'integrale è lineare (sulle funzioni sommabili).
+	
+	\item I passaggi \ref{item:def_int_1} e \ref{item:def_int_2} danno lo stesso risultato per $f$ semplice $\geq 0$.
+	
+	\item La definizione in \ref{item:def_int_2} ha senso per ogni $f \colon X \to [0,+\infty]$ anche non misurabile. Ma in generale vale solo che
+		$$
+		\int_{X} f_1 + f_2 \dd \mu \geq \int_X f_1 \dd \mu + \int_X f_2 \dd \mu.
+		$$
+	
+	\item Dato $E \in \mc{A}$, $f$ misurabile su $E$, notiamo che vale l'uguaglianza
+		$$
+		\int_E f \dd \mu \coloneqq \int_X f \cdot \One_E \dd \mu.
+		$$ 
+	
+	\item Si può definire l'integrale anche per $f \colon X \to Y$ con $Y$ \textit{spazio vettoriale normato finito dimensionale}\footnote{È necessario avere uno spazio vettoriale, perché serve la linearità e la moltiplicazione per scalare} ed $f$ sommabile.
+	
+	\item Se $f_1 = f_2$ $\mu$-q.o. allora $\ds \int_X f_1 \dd \mu = \int_X f_2 \dd \mu$.
+	
+	\item Si definisce $\ds \int_X f \dd \mu$ anche se  $f$ è misurabile e definita su $X \setminus N$ con $\mu(N) = 0$.
+	
+	\item Se $f \colon [a,b] \to \R$ è integrabile secondo Riemann allora è misurabile secondo Lebesgue e le due nozioni di integrale coincidono. 
+		
+		\textbf{Nota.} Lo stesso vale per integrali impropri di funzioni positive. Ma nel caso più generale non vale: se consideriamo la funzione
+		$$
+		f \colon (0,+\infty) \to \R 
+		\qquad
+		f(x) \coloneqq \dfrac{\sin x}{x}
+		$$
+		allora l'integrale di $f$ definito su $(0,+\infty)$ esiste come integrale improprio ma non secondo Lebesgue, infatti
+		$$
+		\int_0^{+\infty} f^+ \dd x = \int_0^{+\infty} f^- \dd x = +\infty
+		$$
+	
+	\item $\ds \int_X f \dd \delta_{x_0} = f(x_0)$
+	
+	\item Se $X = \N$ e $\mu$ è la misura che conta i punti l'integrale è 
+		$$
+		\int_X f \dd \mu = \sum_{n = 0}^{\infty} f(n) 
+		$$ 
+		per le $f$ positive o tali che $\sum f^+(n) < +\infty $ oppure $\sum f^-(n) < +\infty $.
+		
+		\textbf{Nota.} Come prima nel caso di funzioni non sempre positive ci sono casi in cui la serie solita non è definita come integrale di una misura, ad esempio
+		$$
+		\sum_{n=1}^{\infty} \frac{(-1)^n}{n}
+		$$
+		esiste come serie ma non come integrale.
+		
+	\item Dato $X$ qualunque, $\mu$ misura che conta i punti e $f \colon  X \to [0,+\infty] $ possiamo definire la somma di tutti i valori di $f$ 
+		$$
+		\sum_{x \in X} f(x) \coloneqq \int_{X} f \dd \mu.  
+		$$ 
+\end{itemize}
+
+\section{Teoremi di convergenza}
+
+Sia $(X, \mc{A}, \mu)$ come in precedenza.
+
+\textbf{Teorema} (di convergenza monotona o Beppo-Levi).
+Date $f_n \colon  X \to [0,+\infty]$ misurabili, tali che $f_n \uparrow f$ ovunque in $X$, allora\footnote{\textit{Mnemonica:} $\ds \sup_n \int_X f_n \dd \mu = \int_X \sup_n f_n \dd \mu$}
+$$
+\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \int_X f \dd \mu
+$$
+ed in particolare il termine a sinistra è crescente quindi è proprio un $\sup$ ovvero
+$\lim_{n \to +\infty} \int_{X} f_n \dd \mu = \sup_n \int_X f_n \dd \mu.$
+
+\textbf{Teorema} (lemma di Fatou).
+Date $f_n \colon X \to [0,+\infty]$ misurabili, allora
+$$
+\liminf_{n \to +\infty} \int_X f \dd \mu \geq \int_{X} \left( \liminf_{n \to +\infty} f_n \right) \dd \mu.
+$$ 
+
+\textbf{Teorema} (di convergenza dominata o di Lebesgue).
+Date $f_n \colon  X \to \R$ (o anche $\R^n$) misurabili con le seguenti proprietà
+\begin{itemize}
+	\item \textit{Convergenza puntuale:} $f_n (x) \to f(x)$ per ogni $x \in X$.
+	\item \textit{Dominazione:} Esiste $g \colon X \to [0,+\infty]$ sommabile tale che $\left| f_n (x) \right| \leq g(x)$ per ogni $x \in X$ e per ogni $n \in \N$.
+\end{itemize}
+allora
+$$
+\lim_{n \to \infty} \int_{X} f_n \dd \mu = \int_X f \dd \mu. 
+$$ 
+
+\textbf{Nota.}
+La seconda proprietà è essenziale; sostituirla con $\ds \int_X \left| f_n \right| \dd \mu \leq C < + \infty$ non basta!
+
+\textbf{Definizione.}
+Data una \textit{densità} $\rho \colon  \R^n \to [0,+\infty]$ misurabile, la \textbf{misura $\mu$ con densità $\rho$} è data da
+$$
+\forall E \in \mc A \quad \mu(E) \coloneqq \int_{E} \rho \dd x
+$$ 
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item $\R^n$ e $\mathscr L^n$ possono essere sostituiti da $X$ e $\widetilde{\mu}$.
+	\item il fatto che $\mu$ è una misura segue da Beppo Levi, in particolare serve per mostrare la subadditività.
+\end{itemize}
+
+
+\textbf{Teorema} (di cambio di variabile).
+Siano $\Omega$ e $\Omega'$ aperti di $\R^n$, $\Phi \colon \Omega \to \Omega' $ un diffeomorfismo\footnote{funzione differenziabile con inversa differenziabile.} di classe $C^1$ e $f \colon \Omega' \to [0,+\infty]$ misurabile. Allora
+$$
+\int_{\Omega'} f(x') \dd x' = \int_{\Omega} f(\Phi(x)) \left| \det(\nabla \Phi(x)) \right| \dd x.
+$$
+
+La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$ a valori in $\R^n$ sommabile.
+
+\textbf{Osservazioni.}
+\begin{itemize}
+	\item Se $n = 1$, $\left| \det(\Lambda \Phi(x)) \right| = \left| \Phi'(x) \right|$ e non $\Phi'(x)$ come nella formula vista ad Analisi 1 (l'informazione del segno viene data dall'inversione degli estremi).
+	
+	\item Indebolire le ipotesi su $\Phi$ è delicato. Basta $\Phi$ di classe $C^1$ e $\foralmostall x' \in \Omega' \; \# \Phi^{-1}(x') = 1$ (supponendo $\Phi$ iniettiva la proprietà precedente segue immediatamente).
+	Se $\Phi$ non è "quasi" iniettiva bisogna correggere la formula per tenere conto della molteplicità.
+
+	\item Quest'ultima osservazione serve giusto per far funzionare il cambio in coordinate polari che non è iniettivo solo nell'origine.
+\end{itemize}
+
+\textbf{Formula di cambio di variabile applicata a funzioni radiali.}
+Sia $f \colon [0,+\infty) \to \R$ misurabile (di solito si richiede misurabile e positiva oppure sommabile). Allora per il teorema di cambio di variabili vale la seguente
+$$
+	\int_{\R^n} f\left( \left| x \right| \right) \dd x = c_n \cdot \int_{0}^{+\infty} f(\rho) \rho^{n-1} \dd \rho,
+$$
+dove $\ds c_n = n \mathscr L^n \left( \mc{B}(0,1) \right)$.
+
+
+\subsection{Fubini-Tonelli}
+
+Di seguito riportiamo il teorema di Fubini-Tonelli per la misura di Lebesgue.
+
+\textbf{Teorema} (di Fubini-Tonelli).
+Sia $\R^{n_1} \times \R^{n_2} \simeq \R^n$ con $n = n_1 + n_2$, $ E \coloneqq E_1 \times E_2 $ dove $E_1, E_2$ sono misurabili e $f$ è una funzione misurabile definita su $E$.
+Se $f$ ha valori in $[0,+\infty]$ allora
+$$
+\int_E f \dd \mu 
+= \int_{E_2} \int_{E_1} f(x_1,x_2) \dd x_1 \dd x_2 
+= \int_{E_1} \int_{E_2} f(x_1,x_2) \dd x_2 \dd x_1
+$$ 
+
+Vale lo stesso per $f$ a valori in $\R$ o in $\R^n$ sommabile.
+
+\textbf{Osservazioni.}
+Possiamo generalizzare il teorema di Fubini-Tonelli a misure generiche ed ottenere alcuni risultati utili che useremo ogni tanto.
+\begin{itemize}
+	\item Se $X_1, X_2$ sono spazi con misure $\mu_1,\mu_2$ (con opportune ipotesi) vale:
+		$$
+		\int_{E_2} \int_{E_1} f(x_1,x_2) \dd \mu_1(x_1)  \dd \mu_2(x_2) 
+		= \int_{E_1} \int_{E_2} f(x_1,x_2) \dd \mu_2(x_2)  \dd \mu_1(x_1).
+		$$ 
+		se $f\geq 0$ oppure $\ds \int_{X_1} \int_{X_2} \left| f \right| \dd \mu_2(x_2)  \dd \mu_1(x_1) < + \infty $.
+	
+	\item \textbf{Teorema} (di scambio serie-integrale). Se $X_1 \subset \R$ (oppure $X_1 \subset \R^n$), $\mu_1 = \mathscr L^n$ e $X_2 = \N$, $\mu_2$ è la misura che conta i punti, allora la formula sopra diventa
+		$$
+		\sum_{n=0}^{\infty} \, \int_{X_1} f_n(x) \dd x  
+		= \int_{X_1} \sum_{n=0}^{\infty} f_n(x)  \dd x.
+		$$ 
+		se $f_i \geq 0$ oppure $\ds \sum_{i} \int_{X_1} \left| f_i(x) \right| \dd x  < + \infty $.
+	
+	\item \textbf{Teorema} (di scambio di serie). Se $X_1 = X_2 = \N$ e $\mu_1 = \mu_2$ è la misura che conta i punti la formula sopra diventa
+		$$
+		\sum_{j=0}^{\infty} \sum_{i=0}^{\infty} a_{i,j}  
+		= \sum_{i=0}^{\infty} \sum_{j=0}^{\infty} a_{i,j} 
+		$$ 
+		se $a_{i,j} \geq 0$ oppure $\ds \sum_{i} \sum_{j} \left| a_{i,j} \right| < +\infty $.
+\end{itemize}
+

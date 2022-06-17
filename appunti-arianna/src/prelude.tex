@@ -1,0 +1,248 @@
+%%%
+%%% Use a custom geometry for the page
+%%%
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+  top=20mm,
+  bottom=25mm
+}
+
+\usepackage{lipsum}
+
+%%%
+%%% File encoding
+%%%
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+
+%%%
+%%% Font
+%%%
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[font=itshape]{quoting}
+
+%%%
+%%% References
+%%%
+\usepackage[perpage]{footmisc}
+\usepackage{hyperref}
+\hypersetup{ 
+  linkbordercolor={.77 .4 .20},
+  citebordercolor={.31 .63 .31},
+  pdftitle={Appunti}
+}
+
+%%%
+%%% Pictures
+%%%
+
+% General
+\usepackage{caption}
+\usepackage{wrapfig}
+
+%%% 
+%%% Graphics
+%%% 
+\usepackage{graphicx}
+
+
+% Path per le figure
+\graphicspath{{./figures/.pdf_tex}}
+
+% Magia arcana equivalente a "\graphicspath" ma per "\input"
+\makeatletter
+\def\input@path{{./figures/.pdf_tex}}
+\makeatother
+
+\newcommand{\inputfigure}[1]{\input{#1.pdf_tex}}
+
+% TikZ
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+% Inkscape figures
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures}{#1.pdf_tex}
+}
+
+%%%
+%%% Basic math and layout packages
+%%%
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+% \usepackage{mathabx}
+\usepackage{mathtools}
+% \usepackage{xfrac}
+\usepackage{array}
+\usepackage[all]{xy}
+\usepackage{stmaryrd}
+\usepackage{multicol}
+\usepackage{centernot}
+\usepackage{esint}
+\usepackage{cancel}
+
+%%%
+%%% Enumerations
+%%%
+\usepackage{enumitem}
+
+% Custom settings for compact lists
+\setitemize{topsep=5pt}
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\circ$}
+
+\setlist[enumerate,1]{label=\roman*)}
+\setenumerate{topsep=5pt}
+
+%%%
+%%% Sections and page borders styles
+%%%
+
+% \usepackage{titlesec}
+% Adds horizontal rules under "\section" entries
+% \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+% \fancyhead[L]{\leftmark}% Empty left header
+% \fancyhead[C]{} % Page numbering for center header  
+% \fancyhead[R]{\rightmark}% Empty right header
+% \fancyfoot[L]{}% Empty left footer
+% \fancyfoot[C]{\thepage}% Empty center footer
+% \fancyfoot[R]{}% Empty left footer
+% \fancyhf{}
+% \chead{\footnotesize\rightmark}
+% \rfoot{\thepage}
+
+%%%
+%%% Styles by @aziis98
+%%%
+
+\newcommand{\avint}{\mathbin{%
+  \mathchoice%
+    {\,-\hspace{-12.5pt}\int}%
+    {\,-\hspace{-10.5pt}\int}%
+    {\,-\hspace{0pt}\int}% TODO: se servono
+    {\,-\hspace{0pt}\int}% TODO: se servono
+}}
+
+\newcommand{\supp}{\operatorname{supp}}
+
+% Better "\setminus"
+\newcommand{\mysetminusD}{%
+  \hbox{\tikz{\draw[line width=0.6pt,line cap=round] (3pt,0) -- (0,6pt);}}
+}
+\newcommand{\mysetminusS}{%
+  \hbox{\tikz{\draw[line width=0.45pt,line cap=round] (2pt,0) -- (0,4pt);}}
+}
+\newcommand{\mysetminusSS}{%
+  \hbox{\tikz{\draw[line width=0.4pt,line cap=round] (1.5pt,0) -- (0,3pt);}}
+}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+\renewcommand{\setminus}{\mysetminus}
+
+% Generali
+% \renewcommand{\implies}{\Rightarrow}
+% \renewcommand{\iff}{\Leftrightarrow}
+\newcommand{\longiff}{\Longleftrightarrow}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\sfrac}[2]{
+    \raisebox{+0.55ex}{$#1$}
+    /
+    \raisebox{-0.3ex}{$#2$}
+}
+
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\myphi}{\varphi}
+\newcommand{\compose}{\circ}
+\newcommand{\mquad}{\;\;}
+\newcommand{\mymid}{\;\middle|\;}
+\newcommand{\curry}{\,\cdot\,}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\pd}{\partial}
+
+% Fulmine dell'assurdo
+\usepackage{stmaryrd}
+\let\stmaryrdLightning\lightning
+\renewcommand{\lightning}{\stmaryrdLightning}
+\newcommand{\absurd}{$\lightning$}
+
+% Funzione indicatrice
+\newcommand{\bbOne}{\text{\usefont{U}{bbold}{m}{n}1}}
+\MakeRobust{\bbOne}
+\newcommand{\One}{\bbOne}
+
+% Ambienti temporanei
+% [Convergenza Monotona (Beppo Levi)]
+
+\newenvironment{theorem}{\textbf{Teorema.}}{}
+\newenvironment{named-theorem}[1]{\textbf{Teorema.} (\textit{#1})}{}
+
+% \newcommand{\TdF}{\mathcal F}
+\newcommand{\foralmostall}{\widetilde\forall}
+\newcommand{\almosteverywhere}{\;\;\text{q.o.}}
+
+\let\oldtilde\tilde
+\renewcommand{\tilde}{\widetilde}
+
+%%%
+%%% Styles by @<arianna>
+%%%
+
+%%
+%% Nuovi comandi
+%%
+% Utility
+
+% Insiemi numerici
+\newcommand{\restr}[2]{\left.#1\right|_{#2}}
+
+% Dichiarazione lettera Chi maiuscola -> \Chi
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{\mbox{\Large$#1\chi$}}} % inner command, used by \rchi%
+\newcommand{\Chi}{\rchi}
+
+% Altri comandi
+% operatori matematici
+\renewcommand{\dim}{\operatorname{dim}}
+% \newcommand{\ker}{\operatorname{ker}}
+\newcommand{\imm}{\operatorname{Im}}
+\newcommand{\spn}{\operatorname{Span}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\rk}{\operatorname{rk}}
+% \newcommand{\ort}{\; \bot \;}
+
+% utility and spacing
+\renewcommand{\hat}[1]{\widehat{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\renewcommand{\vss}{\vspace{5mm}}
+\newcommand{\vs}{\vspace{3mm}}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+
+\newcommand{\cper}{\mc{C}_{\operatorname{per}}}
+
+\let\oldhat\hat
+\renewcommand{\hat}{\widehat}
+
+\newcommand{\re}{\operatorname{Re}}
