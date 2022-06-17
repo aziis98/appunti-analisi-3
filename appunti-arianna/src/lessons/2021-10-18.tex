@@ -2,12 +2,12 @@
 % Lezione dell'18 Ottobre 2021
 %
 
-\section{Convoluzione}
+\chapter{Convoluzione}
 
 \textbf{Definizione.} Date $f_1,f_2 \colon  \R^d \to \R$ misurabili, il \textbf{prodotto di convoluzione} $f_1 \ast f_2$ è la funzione (da $\R^d$ a $\R$) data da
 %
 $$
-f_1 \ast f_2(x) = \int_{\R^d} f_1(x-y) f_2(y) \dd y
+	f_1 \ast f_2(x) = \int_{\R^d} f_1(x-y) f_2(y) \dd y
 $$
 %
 %
@@ -22,17 +22,17 @@ Ad esempio, se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$, allora $f_1 \as
 \item Se $f_1 \ast f_2(x)$ esiste, allora $\ds f_1 \ast f_2(x) = f_2 \ast f_1(x)$, infatti
 %
 $$
-f_1 \ast f_2 (x) 
-= \int_{\R^d} f_1(x-y) f_2(y) \dd y 
-% \underbrace{=}_{} 
-= \left( 
-{\footnotesize \begin{gathered}
-	t \coloneqq x - y \\ 
-	\dd t = \dd y
-\end{gathered}}
-\right) =
-\int_{\R^d} f_1(t) f_2(x-t) \dd t 
-= f_2 \ast f_1(x).
+	f_1 \ast f_2 (x) 
+	= \int_{\R^d} f_1(x-y) f_2(y) \dd y 
+	% \underbrace{=}_{} 
+	= \left( 
+	{\footnotesize \begin{gathered}
+		t \coloneqq x - y \\ 
+		\dd t = \dd y
+	\end{gathered}}
+	\right) =
+	\int_{\R^d} f_1(t) f_2(x-t) \dd t 
+	= f_2 \ast f_1(x).
 $$
 %
 
@@ -41,14 +41,14 @@ $$
 In realtà, si può generalizzare quanto sopra rimpiazzando $(\R^d, \mathscr L^d)$ con $(G,\mu)$, dove $G$ è un gruppo commutativo e $\mu$ una misura su $G$ invariante per traslazione. Per esempio, $\Z$ con la misura che conta i punti. Cioè $f_1,f_2 \colon \Z \to \R$, vale
 %
 $$
-f_1 \ast f_2(n) \coloneqq \sum_{n \in \Z} f_1(n - m) f_2(m).
+	f_1 \ast f_2(n) \coloneqq \sum_{n \in \Z} f_1(n - m) f_2(m).
 $$
 %
 
 \item Data $f$ distribuzione di massa (continua) su $\R^3$, il potenziale gravitazionale generato è
 %
 $$
-v(x) = \int_{y \in \R^d} \frac{1}{\left| x - y \right|} \rho(y) \dd y
+	v(x) = \int_{y \in \R^d} \frac{1}{\left| x - y \right|} \rho(y) \dd y
 $$
 %
 cioè $v = g \ast \rho$, dove  $g (x) = 1 / \left| x \right|$ è il potenziale di una massa puntuale in $0$.
@@ -56,4 +56,3 @@ cioè $v = g \ast \rho$, dove  $g (x) = 1 / \left| x \right|$ è il potenziale d
 \item Se $X_1, X_2$ sono variabili aleatorie (reali) con distribuzione di probabilità continua $p_1,p_2$ e $X_1,X_2$ sono indipendenti, allora $X_1 + X_2$ ha distribuzione di probabilità $p_1 \ast p_2$. (Facile per $X_1,X_2$ in $\Z$).
 
 \end{enumerate}
-

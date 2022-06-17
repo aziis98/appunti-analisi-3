@@ -65,30 +65,34 @@ $$
 $$
 %
 
+\mybox{%
 \textbf{Teorema~1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema ortonormale al più numerabile, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
 Definiamo per ogni $x \in H$, $n \in \N$ l'elemento $x_n = \left<x, e_n \right>$.
 Allora
 \begin{enumerate}
-\item \label{item:27ott_thm1_1}
-Vale $\ds \sum_{n} x_n^2 \leq \norm{x}^2$ (\textbf{Disuguaglianza di Bessel}).
 
-\item \label{item:27ott_thm1_2}
-La somma $\ds \sum_n x_n e_n$ converge a qualche $\overline{x} \in H$ e $\overline{x}_n = x_n$  per ogni $n$.
+	\item \label{item:27ott_thm1_1}
+	Vale $\ds \sum_{n} x_n^2 \leq \norm{x}^2$ (\textbf{Disuguaglianza di Bessel}).
 
-\item \label{item:27ott_thm1_3}
-Vale $\ds \norm{\overline{x}}^2 = \sum_n x_n^2 \leq \norm{x}^2$.
+	\item \label{item:27ott_thm1_2}
+	La somma $\ds \sum_n x_n e_n$ converge a qualche $\overline{x} \in H$ e $\overline{x}_n = x_n$  per ogni $n$.
 
-\item \label{item:27ott_thm1_4}
-Se $x - \overline{x} \perp \mc{F}$, allora $x - \overline{x} \perp \overline{\spn(\mc{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mc{F})}$.
+	\item \label{item:27ott_thm1_3}
+	Vale $\ds \norm{\overline{x}}^2 = \sum_n x_n^2 \leq \norm{x}^2$.
 
-\item \label{item:27ott_thm1_5}
-Se $\mc{F}$ è completo, allora $x = \overline{x}$ e in particolare
-%
-$$
-x = \sum_{n=0}^{\infty} x_n e_n, \qquad \norm{x}^2 = \sum_{n=0}^{\infty} x_n^2  \qquad \text{(\textbf{Identità di Parseval})}.
-$$
-%
+	\item \label{item:27ott_thm1_4}
+	Se $x - \overline{x} \perp \mc{F}$, allora $x - \overline{x} \perp \overline{\spn(\mc{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mc{F})}$.
+
+	\item \label{item:27ott_thm1_5}
+	Se $\mc{F}$ è completo, allora $x = \overline{x}$ e in particolare
+	%
+	$$
+		x = \sum_{n=0}^{\infty} x_n e_n, \qquad \norm{x}^2 = \sum_{n=0}^{\infty} x_n^2  \qquad \text{(\textbf{Identità di Parseval})}.
+	$$
+	%
+
 \end{enumerate}
+}
 
 %\textbf{Nota.} Il punto \ref{item:27ott_thm1_2} non segue dal fatto che la serie è assolutamente convergente. Infatti
 %%
@@ -277,6 +281,7 @@ Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. 
 \end{itemize}
 
 
+\mybox{%
 \textbf{Teorema~4.} Dato $V$ sottospazio vettoriale chiuso di $H$. Allora
 \begin{enumerate}
 \item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\tilde{x} \in V^\perp$ tale che $x = \overline{x} + \tilde{x}$.
@@ -285,6 +290,7 @@ Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. 
 
 \item $\overline{x}$ è caratterizzato come l'elemento di $V$ più vicino a $x$.
 \end{enumerate}
+}
 
 \textbf{Dimostrazione.}
 \begin{enumerate}

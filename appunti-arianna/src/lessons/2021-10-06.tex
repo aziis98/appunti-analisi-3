@@ -382,7 +382,7 @@ $$
 Fissiamo $E$ e supponiamo dapprima $E$ aperto. Possiamo scrivere $E$ come unione arbitraria di elementi della base $\mc{B}$
 %
 $$
-E = \bigcup_{i = 1}^\infty B_i.
+	E = \bigcup_{i = 1}^\infty B_i.
 $$
 %
 Per approssimare $E$ consideriamo gli insiemi $E_N = \bigcup_{i = 1}^N B_i$.
@@ -394,7 +394,7 @@ Concludiamo notando che il caso $E$ arbitrario si fa approssimandolo con una fam
 Per $\ell^p$ con $p < +\infty$ definiamo
 %
 $$
-Y = \left\{ \left\{ x_n \right\} \mymid x_n = 0 \quad \text{definitivamente}, x_n \in \Q \right\}
+	Y = \left\{ \left\{ x_n \right\} \mymid x_n = 0 \quad \text{definitivamente}, x_n \in \Q \right\}
 $$
 %
 e verifico che è numerabile e separabile.
@@ -409,20 +409,21 @@ Z = \left\{ \forall J \subset \N \quad u = \sum_{j \in J} \One_{E_j} \right\}.
 $$
 %
 $Z$ ha la cardinalità delle parti di $\N$ cioè è più che numerabile. Osserviamo che per ogni $u,v \in Z$, $u \neq v$ si ha che $\norm{u - v}_{L^\infty(\R)} = 1$.
-Se per assurdo esistesse un insieme denso e numerabile $D$ in $\ell^\infty$, per definizione di insieme denso dovremmo trovare per ogni palla di raggio minore di 1 e centro in un qualsiasi elemento di $Z$, un elemento di $D$. Ma questo è impossibile in quanto $D$ ha cardinalità numerabile e $Z$ la cardinalità del continuo.
+Se per assurdo esistesse un insieme denso e numerabile $D$ in $L^\infty$, per definizione di insieme denso dovremmo trovare per ogni palla di raggio minore di 1 e centro in un qualsiasi elemento di $Z$, un elemento di $D$. Ma questo è impossibile in quanto $D$ ha cardinalità numerabile e $Z$ la cardinalità del continuo.
 
-Vediamo in un altro modo che $l^\infty$ non è separabile. 
-Se per assurdo $Y = \left\{ \underline{x}^k \right\}_{k \in \N}$ fosse denso in $L^\infty$, allora potremmo definire un elemento $z \in l^\infty$ tale che $\norm{\underline{x}^k - \underline{z}}_{l^\infty} \geq 1$ per ogni $k$.
+\vs
 
-Definiamo $z = \left\{ z_n \right\}$ come segue
+Vediamo che $l^\infty$ non è separabile. 
+Sia $Y = \left\{ \underline{x}^k \right\}_{k \in \N}$, allora definiamo $\underline{z} \in l^\infty$ come segue
 %
 $$
-z_n = 
-\begin{cases}
-0 \quad \text{se} \quad | x_n^n | > 1 \\
-2 \quad \text{se} \quad | x_n^n | \leq 1
-\end{cases}. 
+	z_n = 
+	\begin{cases}
+		0 \quad \text{se} \quad | x_n^n | > 1 \\
+		2 \quad \text{se} \quad | x_n^n | \leq 1
+	\end{cases}
 $$
+In questo modo otteniamo $\norm{\underline{x}^k - \underline{z}}_{l^\infty} \geq 1$ per ogni $k$, dunque $\{\underline{x}^k\}_k$ non può essere denso.
 
 
 
