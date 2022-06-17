@@ -13,6 +13,14 @@ $$
 f \left(\sum_i \lambda_i x_i \right) \leq \sum_i \lambda_i f(x_i)
 $$
 
+\textbf{Definizione.} Una funzione $f \colon X \to \ol{\R}$ si dice \textbf{semicontinua inferiormente nel punto} $x_0 \in X$ se per ogni $t \in \R$ con $t < f(x_0)$ esiste $U \in \mc{I}(x)$ tale che $t < f(y)$ per ogni $y \in U$. Infine $f$ si dice \textbf{semicontinua inferiormente su} $X$ se lo è in ogni $x \in X$.
+
+\textbf{Proprietà.} Dalla definizione segue che $f \colon X \to \ol{\R}$ è semicontinua inferiormente in $x_0 \in X$ se e solo se
+$$
+	f(x) \leq \sup_{U \in \mc{I}(x)} \inf f(y) = \liminf_{x \to x_0} f(x).
+$$
+
+
 \textbf{Teorema} (Jensen).
 Dato $(X, \mc A, \mu)$ con $\mu(X) = 1$ e $f \colon \R^d \to [-\infty, +\infty]$ convessa e semi-continua inferiormente (S.C.I.) e $u \colon X \to \R^d$ sommabile allora vale
 $$
@@ -33,7 +41,7 @@ e $f \compose u$ è integrabile.
 
 		Questo ci darebbe una strada per dimostrare in generale per passi il teorema di Jensen ma in realtà si presentano vari problemi tecnici.
 
-	\item Ogni funzione convessa e S.C.I su $\Omega$ convesso in $\R^d$ si estende a $\tilde f \colon \R \to (-\infty, +\infty]$ convessa e S.C.I., ad esempio se $\Omega = (0, +\infty)$
+	\item Ogni funzione convessa e S.C.I su $\Omega$ convesso in $\R^d$ si estende a $\tilde f \colon \R^d \to (-\infty, +\infty]$ convessa e S.C.I.; ad esempio se $\Omega = (0, +\infty)$
 		$$
 		f(y) = \frac{1}{y}
 		\quad\rightsquigarrow\quad
@@ -44,7 +52,7 @@ e $f \compose u$ è integrabile.
 		\end{cases}
 		$$
 
-	\item La semi-continuità inferiore serve perché le funzioni convesse sono continue solo se a valori in $\R$, ad esempio per $k$ costante la funzione
+	\item L'ipotesi di semi-continuità è non banale perché le funzioni convesse sono continue solo se a valori in $\R$, ad esempio per $k$ costante la funzione
 		$$
 		f(y) := 
 		\begin{cases}
@@ -69,7 +77,7 @@ $$
 	\int_X f \compose u \dd \mu \underset{(\star)}{\geq} \int_X \phi \compose u \dd \mu = \int_X a \cdot u + b \dd \mu = a y_0 + b = \phi(y_0)
 $$
 
-Infine concludiamo usando il seguente lemma di caratterizzazione delle funzioni convesse ed S.C.I.
+Concludiamo usando il seguente lemma di caratterizzazione delle funzioni convesse ed S.C.I.
 
 \textbf{Lemma.}
 Ogni $f \colon \R^d \to (-\infty, +\infty]$ convessa e S.C.I è tale che
@@ -77,17 +85,22 @@ $$
 \forall y_0 \in \R^d \quad \sup_{\substack{\phi \text{ affine} \\ \phi \leq f}} \phi(y_0) = f(y_0)
 $$
 
-Rileggendo meglio la dimostrazione\footnote{Viene considerata la parte negativa per invertire la disuguaglianza $(\star)$.} segue che $(f \compose u)^- < (\phi \compose u)^- \implies (f \compose u)^-$. 
+Infine, si dimostra che $(f \compose u)^-$ è integrabile. 
+Dal fatto che $f \circ u \geq \phi \circ u$ con $\phi \circ u$ sommabile\footnote{$u$ è sommabile e $\phi$ è affine.} si ha che
+\begin{align*}
+	& \Longrightarrow \left( f \circ u \right)^- \leq \left( \phi \circ u \right)^- \\
+	& \Longrightarrow \left( f \circ u \right)^- \quad \text{è sommabile} \\
+	& \Longrightarrow f \circ u \quad \text{è integrabile}
+\end{align*}
+\qed
 
 \textbf{Nota.} Nel caso $d = 1$ e $f \colon \R \to \R$ possiamo usare il fatto che le funzioni convesse ammettono sempre derivata destra o sinistra, il $\sup$ diventa un massimo e ci basta prendere come $\phi$ la retta tangente in $(y_0, f(y_0))$ o una con pendenza compresa tra $f'(y_0^-)$ e $f'(y_0^+)$.
-
-\qed
 
 \textbf{Definizione.} Dati $p_1, p_2 \in [1, +\infty]$ diciamo che sono \textbf{coniugati} se
 $$
 \frac{1}{p_1} + \frac{1}{p_2} = 1
 $$
-convenendo che $\sfrac{1}{\infty} = 0$.
+convenendo che $1/\infty = 0$.
 
 Fissiamo $p \in [1, +\infty]$ detto \textit{esponente di sommabilità} e sia $(X, \mc A, \mu)$ come sempre.
 
@@ -138,7 +151,7 @@ $$
 inoltre vale l'uguale se e solo se $a_1 = a_2$.
 
 \textbf{Dimostrazione.}
-Se $a_1 = a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$. Per la concavità del logaritmo abbiamo
+Se $a_1$ o $a_2 = 0$ allora è ovvia. Supponiamo dunque $a_1, a_2 > 0$. Per la concavità del logaritmo abbiamo
 % e passiamo $a_1^{\lambda_1} a_2^{\lambda_2}$ al logaritmo
 $$
 	\lambda_1 \log a_1 + \lambda_2 \log a_2 \leq \log(\lambda_1 a_2 + \lambda_2 a_2),
@@ -177,7 +190,7 @@ Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$
 	\item \textit{Caso 2:} se $1 < p_1, p_2 < +\infty$, introduciamo un parametro $\gamma > 0$ allora
 		$$
 		\int_X |f_1| \cdot |f_2| \dd \mu 
-		= \int_X \left( \gamma^{p_1} \cdot |f_1|^{p_1} \right)^{1/p_1} \cdot \left( \gamma^{-p_2} \cdot |f_1|^{p_2} \right)^{1/p_2} \dd \mu
+		= \int_X \left( \gamma^{p_1} \cdot |f_1|^{p_1} \right)^{1/p_1} \cdot \left( \gamma^{-p_2} \cdot |f_2|^{p_2} \right)^{1/p_2} \dd \mu
 		$$
 		a questo punto chiamiamo per comodità $g_1 := \gamma^{p_1} \cdot |f_1|^{p_1}$, $\lambda_1 := 1 / p_1$ e $g_2 := \gamma^{-p_2} \cdot |f_1|^{p_2}$, $\lambda_2 := 1 / p_2$ da cui
 		$$
@@ -186,7 +199,7 @@ Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$
 		= \lambda_1 \gamma^{p_1} \int_X |f_1|^{p_1} + \lambda_2 \gamma^{-p_2} \int_X |f_1|^{p_2} \dd \mu
 		$$
 		$$
-		= \lambda_1 \gamma^{p_1} \cdot \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \cdot \norm{f_1}_{p_2}^{p_2}
+		= \lambda_1 \gamma^{p_1} \cdot \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \cdot \norm{f_2}_{p_2}^{p_2}
 		$$
 		posti ora $a_1 := \gamma^{p_1} \norm{f_1}_{p_1}^{p_1}$ e $a_2 := \gamma^{-p_2} \norm{f_1}_{p_2}^{p_2}$, per $\gamma \to 0$ abbiamo che $a_1 \to 0, a_2 \to +\infty$ mentre per $\gamma \to +\infty$ abbiamo che $a_1 \to +\infty, a_2 \to 0$ dunque per il teorema del valor medio esisterà $\gamma$ tale che $a_1 = a_2$, ma allora siamo nel caso dell'uguaglianza per la disuguaglianza di Young dunque
 		$$
@@ -225,15 +238,15 @@ $$
 				= \int_X |f_1| \dd \mu + \int_X |f_2| \dd \mu
 				= \norm{f_1}_1 + \norm{f_2}_1
 				$$
-			\item Se $p = +\infty$ allora poniamo $D$ l'insieme di \textit{misura nulla} che realizza su $X \setminus D$ il supess ovvero $\mathrm{supess}_X |f_1 + f_2| = \mathrm{sup}_{X \,\setminus\, D} |f_1 + f_2|$
+			\item Se $p = +\infty$ allora poniamo $D$ l'insieme di \textit{misura nulla} che realizza su $X \setminus D$ il supess\footnote{Si usa questa strategia perché il $\mathrm{supess}$ non soddisfa le proprietà del modulo e della somma del $\sup$.} ovvero $\mathrm{supess}_X |f_1 + f_2| = \mathrm{sup}_{X \,\setminus\, D} |f_1 + f_2|$
 				$$
 				\norm{f_1 + f_2}_\infty
 				= \mathrm{supess}_X |f_1 + f_2| 
-				= \mathrm{supess}_{X \,\setminus\, D} |f_1 + f_2| 
-				\leq \mathrm{supess}_{X \,\setminus\, D} (|f_1| + |f_2|)
+				= \mathrm{sup}_{X \,\setminus\, D} |f_1 + f_2| 
+				\leq \mathrm{sup}_{X \,\setminus\, D} (|f_1| + |f_2|)
 				$$
 				$$
-				= \mathrm{supess}_{X \,\setminus\, D} |f_1| + \mathrm{supess}_{X \,\setminus\, D} |f_2|
+				= \mathrm{sup}_{X \,\setminus\, D} |f_1| + \mathrm{sup}_{X \,\setminus\, D} |f_2|
 				= \mathrm{supess}_X |f_1| + \mathrm{supess}_X |f_2|
 				= \norm{f_1}_\infty + \norm{f_2}_\infty
 				$$
@@ -250,7 +263,7 @@ $$
 		$$
 		ora introduciamo $q$ esponente coniugato di $p$ e notiamo
 		$$
-		q = \frac{p - 1}{p} 
+		q = \frac{p}{p-1} 
 		\quad
 		\text{e}
 		\quad
@@ -264,7 +277,7 @@ $$
 			= (\norm{f_1}_p + \norm{f_2}_p) \cdot \norm{f_1 + f_2}_p^{p-1}  \\
 		\end{aligned}
 		$$
-		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo portare l'ultimo fattore dall'altra parte ed ottenere la tesi.
+		infine per l'ipotesi $\norm{f_1 + f_2}_p > 0$ possiamo dividere per l'ultimo fattore e ottenere la tesi.
 		% $$
 		% \implies \frac{\norm{f_1 + f_2}_p^p }{\norm{f_1 + f_2}_p^{p-1}} \leq \norm{f_1}_p + \norm{f_2}_p
 		% \implies \norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p

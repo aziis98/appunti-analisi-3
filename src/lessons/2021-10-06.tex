@@ -119,12 +119,14 @@ Allora
 \end{align*}
 Se vale l'identità del parallelogramma allora
 $$
-\norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
+	\norm{f_1 + f_2}_p^2 + \norm{f_1 - f_2}_p^2 = 2 \norm{f_1}_p^2 + 2 \norm{f_2}_p^2
 $$
 cioè
 $$
-2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
+	2^{2/p} + 2^{2/p} = 2 \cdot 1 + 2 \cdot 1 \iff p = 2.
 $$
+
+Dunque l'unica possibilità per verificare la regola del parallelogramma è che $p=2$.
 
 \textbf{Domanda.} Per quali $X,\mc{A},\mu$ vale la stessa conclusione?
 
@@ -206,16 +208,16 @@ Dato $Y$ spazio normato, i seguenti fatti sono equivalenti
 	\item $Y$ è completo.
 
 	% \item $\sum_{n=1}^\infty y_n$ converge in $Y$ per ogni $(y_n)$ tale che $\sum_{n=1}^\infty \norm{y_n} < +\infty$ ovvero 
-	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \to 0$.}.
+	\item Per ogni successione $(y_n)$ tale che $\ds \sum_{n=1}^\infty \norm{y_n} < +\infty$, la serie $\ds \sum_{n=1}^\infty y_n$ converge \footnote{Nel senso che esiste $y$ tale che $\norm{y - \sum_{n=1}^N y_n} \xrightarrow{N \to \infty} 0$.}.
 \end{enumerate}
 
 \textbf{Dimostrazione.} 
-ii) $\Rightarrow$ i). Dobbiamo mostrare che $\sum_{n=1}^\infty y_n$ è di Cauchy.
+i) $\Rightarrow$ ii). Dobbiamo mostrare che $\sum_{n=1}^\infty y_n$ è di Cauchy.
 Per il Lemma~1 basta mostrare che la successione
 %
 $$
 	z_n \coloneqq  \sum_{k=1}^n y_k \quad \text{soddisfa la proprietà} \quad
-	\sum_{n=1}^\infty d(z_{n+1},z_n).
+	\sum_{n=1}^\infty d(z_{n+1},z_n) < +\infty.
 $$
 %
 Espandendo la formula sopra
@@ -239,7 +241,7 @@ Indicando con $L$ il limite della serie, abbiamo che $\lim_n y_n = L + y_1$.
 \hypertarget{prop:completeness_lemma_3}{}
 \textbf{Lemma 3} 
 (Minkowski per somme infinite). 
-Date delle funzioni $(g_n)$ funzioni positive su $X$ allora
+Date delle funzioni $(g_n)$ positive su $X$ allora
 $$
 \norm{\sum_{n=1}^\infty g_n}_p \leq \sum_{n=1}^\infty \norm{g_n}_p
 $$
@@ -263,52 +265,56 @@ $$
 
 \textbf{Dimostrazione} (Completezza spazi $L^p$).
 \begin{itemize}
-	\item 
-		Se $p = +\infty$: si tratta di vedere che data $(f_n)$ di Cauchy in $L^\infty(X)$ esiste $E$ con $\mu(E) = 0$ tale che $(f_n)$ è di Cauchy rispetto allora norma del sup in $X \setminus E$. [TODO: Finire]
 
-	\item 
-		Se $p < +\infty$: per il \hyperlink{prop:completeness_lemma_2}{Lemma 2}, basta far vedere che data $(f_n) \subset L^p(X)$ tale che $\sum_{n=1}^\infty \norm{f_n}_p < +\infty$ allora $\sum_n f_n$ converge a qualche $f \in L^p(X)$.
+	\item Se $p = +\infty$: si tratta di vedere che data $(f_n)$ di Cauchy in $L^\infty(X)$ esiste $N$ con $\mu(N) = 0$ tale che $(f_n)$ è di Cauchy rispetto allora norma del sup in $X \setminus N$ che sappiamo essere completa per il punto ii) del \hyperlink{prop:completeness_lemma_2}{Lemma 2}\footnote{Dato che se $\sum \norm{y_n}_\infty < +\infty \Longrightarrow \sum_n y_n < +\infty$}.
 
-		La dimostrazione è suddivisa in tre passi, prima costruiamo $f$, poi mostriamo che $f_n$ converge a $f$ ed infine mostriamo $f \in L^p(X)$.
+	Determiniamo un tale $N$. Dato che $(f_n)$ è di Cauchy in $L^\infty(X)$ significa che
+	$$
+		\forall k \; \exists n_k \colon \forall n,m > n_k \colon \norm{f_n - f_m}_{L^\infty} < \frac{1}{2^k}, \qquad \norm{f_n - f_m}_{L^\infty} = \sup_{X \setminus N_{n,m}^k} |f_n - f_m|
+	$$
+	per un certo insieme $N_{n,m}^k$ di misura nulla. Definiamo $N^k = \bigcup_{n,m \in \N} N_{n,m}^k$ che ha misura nulla perché unione misurabile di insiemi di misura nulla.
+	Infine definiamo $N \coloneqq \bigcup_{k \in \N} N^k$ anch'esso di misura nulla che è l'insieme cercato.
 
-		\begin{itemize}
-			\item 
-				\textit{Passo 1:} 
-				Per ipotesi abbiamo
-				$$
-				\infty 
-				> \sum_{n=1}^\infty \norm{f_n}_p 
-				= \sum_{n=1}^\infty \norm{|f_n|}_p 
-				\geq \norm{\sum_{n=1}^\infty |f_n|}_p 
-				= \left( \int \left( \sum_{n=1}^\infty |f_n(x)| \right)^p \dd \mu(x) \right)^{1/p}
-				$$
-				quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero in $E$ \footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ per funzioni definite quasi ovunque.}.
-			
-			\item 
-				\textit{Passo 2:}
-				Fissiamo $N$ ed osserviamo che $\forall x \in X \setminus E$ abbiamo
-				$$
-				\left| f(x) - \sum_{n=1}^N f_n(x) \right| 
-				= \left| \sum_{n=N+1}^\infty f_n(x) \right| 
-				\leq \sum_{n=N+1}^\infty |f_n(x)|
-				$$
-				da cui otteniamo
-				$$
-				\norm{f - \sum_{n=1}^N f_n}_p 
-				\leq \norm{\sum_{n=N+1}^\infty |f_n|}_p
-				\leq \sum_{n=N+1}^\infty \norm{f_n}_p
-				$$
-				dove l'ultimo termine è la coda di una serie convergente.
-			
-			\item 
-				\textit{Passo 3:}
-				In particolare rileggendo il passo precedente per $N = 0$ otteniamo
-				$$
-				\norm{f}_p \leq \sum_{n=1}^\infty \norm{f_n}_p < +\infty \implies f \in L^p
-				$$
-				\qed
 
-		\end{itemize}
+	\item Se $p < +\infty$: per il \hyperlink{prop:completeness_lemma_2}{Lemma 2}, basta far vedere che data $(f_n) \subset L^p(X)$ tale che $\sum_{n=1}^\infty \norm{f_n}_p < +\infty$ allora $\sum_n f_n$ converge a qualche $f \in L^p(X)$.
+
+	La dimostrazione è suddivisa in tre passi, prima costruiamo $f$, poi mostriamo che $f_n$ converge a $f$ ed infine mostriamo $f \in L^p(X)$.
+
+	\begin{itemize}
+
+		\item \textit{Passo 1.} Per ipotesi abbiamo
+		$$
+			\infty 
+			> \sum_{n=1}^\infty \norm{f_n}_p 
+			= \sum_{n=1}^\infty \norm{|f_n|}_p 
+			\geq \norm{\sum_{n=1}^\infty |f_n|}_p 
+			= \left( \int \left( \sum_{n=1}^\infty |f_n(x)| \right)^p \dd \mu(x) \right)^{1/p}
+		$$
+		quindi $\sum_{n=1}^\infty |f_n(x)| < +\infty$ per ogni $x \in X \setminus E$ con $\mu(E) = 0$. Quindi $\sum_{n=1}^\infty f_n(x)$ converge a qualche $f(x)$ per ogni $x \in X \setminus E$ ed a questo punto ci basta estendere $f$ a zero in $E$ \footnote{Una costruzione alternativa degli spazi $L^p$ potrebbe anche partire da \textit{funzioni definite quasi ovunque}, questo ovvierebbe al problema di estendere a $0$ la funzione $f$ appena costruita. Però diventa più complicato mostrare di essere in uno spazio vettoriale poiché per esempio serve ridefinire $+$ per funzioni definite quasi ovunque.}.
+
+		
+		\item \textit{Passo 2.} Fissiamo $N$ ed osserviamo che $\forall x \in X \setminus E$ abbiamo
+		$$
+			\left| f(x) - \sum_{n=1}^N f_n(x) \right| 
+			= \left| \sum_{n=N+1}^\infty f_n(x) \right| 
+			\leq \sum_{n=N+1}^\infty |f_n(x)|
+		$$
+		da cui otteniamo
+		$$
+			\norm{f - \sum_{n=1}^N f_n}_p 
+			\leq \norm{\sum_{n=N+1}^\infty |f_n|}_p
+			\leq \sum_{n=N+1}^\infty \norm{f_n}_p
+		$$
+		dove l'ultimo termine è la coda di una serie convergente.
+		
+
+		\item \textit{Passo 3.} In particolare rileggendo il passo precedente per $N = 0$ otteniamo
+		$$
+			\norm{f}_p \leq \sum_{n=1}^\infty \norm{f_n}_p < +\infty \implies f \in L^p
+		$$
+		\qed
+
+	\end{itemize}
 \end{itemize}
 
 \textbf{Esercizio.}\footnote{In questo corso non è strettamente necessario ricordarsi come si facciano tutti questi esercizietti di teoria della misura ma è bene saperli applicare in automatico quando serve.}
@@ -327,7 +333,7 @@ $$
 \qed
 
 
-\subsection{Alcune proprietà a esercitazione degli spazi $L^p$}
+\subsection{Alcune proprietà viste a esercitazione degli spazi $L^p$}
 
 \textbf{Osservazioni.} Valgono le seguenti
 \begin{itemize}

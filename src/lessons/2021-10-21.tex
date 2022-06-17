@@ -40,7 +40,7 @@ Studiamo il caso reale, ovvero $d = 1$.
 Per verificare quanto sopra, utilizziamo la definizione di continuità per successioni.
 Definiamo una successione di funzioni a supporto compatto $u_n$, che sappiamo essere in tutti gli spazi $L^p$, e verifichiamo che $\lim_n T(u_n) \neq T(u_\infty)$ dove $u_\infty \coloneqq \lim_n u_n$.
 
-Definiamo la successione come segue (fare disegno):
+Definiamo la successione come segue:
 %
 $$
 u_n (x) =
@@ -51,22 +51,40 @@ u_n (x) =
 \end{cases} 
 $$
 %
-Dunque, $\ds T(u_n) = \int_{\R} u_n \dd x = \frac{1}{n} \left| E_n \right| = 1$, dove $E_n = [n,2n]$.
-Segue che $T(u_n) \equiv 1$ ma rispetto alla convergenza in $L^p$, $T(u_n) \not\to T(u_\infty) = T(0) = 0$.
+Noto quanto segue
+\begin{itemize}
 
-% e non è vero che $T(u_\infty = u_n \to 0) = 0$.
+	\item $u_\infty = 0$, infatti, posto $E_n = [n,2n]$
+	$$
+		\norm{u_n - 0}_{L^p(\R)}^p = \norm{u_n}_{L^p(\R)}^p 
+		= \int_{\R} u_n^p(x) \dd x 
+		= \frac{1}{n^p} \cdot \left| E_n \right| 
+		= \frac{n}{n^p} 
+		= \frac{1}{n^{p-1}} 
+		\xrightarrow{n \to \infty} 0.
+	$$
 
-Più in generale, quando $u \in L^p(\R^d)$ con $p > 1$, una costruzione come sopra non funziona, infatti
-%
-$$
-\norm{u_n}_{L^p(\R)}^p 
-= \int_{\R} u_n^p(x) \dd x 
-= \frac{1}{n^p} \cdot \left| E_n \right| 
-= \frac{n}{n^p} 
-= \frac{1}{n^{p-1}} 
-\xrightarrow{n \to \infty} 0.
-$$
-%                    
+	\item $T(u_n) \equiv 1$, infatti
+	$$
+		T(u_n) = \int_{\R} u_n \dd x = \frac{1}{n} \left| E_n \right| = 1.
+	$$
+	
+
+\end{itemize}
+In conclusione, rispetto alla convergenza in $L^p$ vale $T(u_n) \not\to T(u_\infty) = T(0) = 0$.
+
+%Più in generale, quando $u \in L^p(\R^d)$ con $p > 1$, una costruzione come sopra non funziona, infatti
+%%
+%$$
+%\norm{u_n}_{L^p(\R)}^p 
+%= \int_{\R} u_n^p(x) \dd x 
+%= \frac{1}{n^p} \cdot \left| E_n \right| 
+%= \frac{n}{n^p} 
+%= \frac{1}{n^{p-1}} 
+%\xrightarrow{n \to \infty} 0.
+%$$
+%%                    
+
 Un altro modo per dimostrare quanto sopra è verificare che, per ogni $C > 0$, esiste una funzione $u \in L^p(\R^d) \cap L^1(\R^d)$ tale per cui 
 %
 $$

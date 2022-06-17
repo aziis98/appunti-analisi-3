@@ -183,9 +183,10 @@ Dire se esiste $v \in L^1(\R)$ tale che sia elemento neutro della convoluzione, 
 $$
 \forall f \in L^1(\R) \qquad f \ast v = f.
 $$
-Una tale $v$ non esiste, per vederlo scegliamo opportunamente $\bar f$ e usiamo l'equazione. 
+
+\textbf{Soluzione.} Una tale $v$ non esiste, per vederlo scegliamo opportunamente $\bar f$ e usiamo l'equazione. 
 Scelgo $g \in C_C(\R)$ e defiamo $\sigma_\delta g = 1 / \delta g(1/\delta)$. Abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g$ per ogni $\delta$.
-Per il \hyperlink{thm:lez25ott_teodelta}{teorema} abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g \xrightarrow{\delta \to 0} v$ in $L^1(\R)$, ma $\sigma_\delta g \xrightarrow{\delta \to 0} 0$ quasi ovunque in $L^1(\R)$. Allora $v = 0$ q.o. in $L^1(\R)$, dunque non può valere $f \ast v = v$ per ogni $f \in L^1(\R)$.
+Per il \hyperlink{thm:lez25ott_teodelta}{teorema} abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g \xrightarrow{\delta \to 0} v$ in $L^1(\R)$, ma $\sigma_\delta g \xrightarrow{\delta \to 0} 0$ quasi ovunque in $L^1(\R)$. Allora $v = 0$ q.o. in $L^1(\R)$, dunque non può valere $f \ast v = f$ per ogni $f \in L^1(\R)$.
 
 \textbf{Esercizio.} [TO DO: per casa.] 
 Sia $f$ misurabile su $\R^d$ tale che $\int_E f \dd x = 0$ per ogni $E$ misurabile di $\R^d$. Dimostrare che $f = 0$ q.o. su $\R^d$.
@@ -199,7 +200,17 @@ $$
 $$
 Dimostrare che che $f = 0$ quasi ovunque su $\R^d$.
 
-\textit{Suggerimenti.} Usare la convoluzione con opportuni nuclei; notare che $\ds \int_B f = 0 \longiff f \ast \One_B = 0$ per ogni palla $B$.
+% \textit{Suggerimenti.} Usare la convoluzione con opportuni nuclei; notare che $\ds \int_B f = 0 \longiff f \ast \One_B = 0$ per ogni palla $B$.
+
+\textbf{Soluzione.} Considero $g = \One_{[0,1]} \in L^1(\R^d)$. Per quanto fatto in classe so che
+$$
+	\sigma_\delta g \ast f \xlongrightarrow{\delta \to 0} m f
+$$
+dunque se $\sigma_\delta g \ast f = 0$ per ogni $\delta$ ho finito.
+$$
+	\sigma_\delta g \ast f(y) = \int_{\R^d} \sigma_\delta \One_{[0,1]}(y-x) \cdot f(x) \dd x = \frac{1}{\delta^d} \int_{B(x,\delta)} f(x) \dd x = 0
+$$
+
 
 
 \textbf{Esercizio.}

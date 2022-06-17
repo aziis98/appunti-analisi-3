@@ -199,17 +199,18 @@ Si osserva che quanto detto sopra vale anche per $p = + \infty$.
 \textbf{Soluzione.}
 \begin{enumerate}
 
-	\item Dimostriamolo per induzione.
-	\textit{Passo base.} [TO DO]
+	\item Ovvio
+	% Dimostriamolo per induzione.
+	% \textit{Passo base.} [TO DO]
 
-	\textit{Passo induttivo.} ($n-1 \geq n$)
-	Vediamo che se $a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n = 0 \Longrightarrow a_1 = \ldots = a_n = 0$.
-	\begin{align*}
-		& a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} = - a_n \cdot x^n \\
-		& \qquad \qquad \qquad \downarrow + a_n \cdot x^n \\
-		& (a_1 + a_n) \cdot 1 + (a_2 + a_n) \cdot x + \cdots + (a_{n-1} + a_n) \cdot x^{n-1} = 0
-	\end{align*}
-	essendo che $1,x^1,\ldots,x^{n-1}$ sono linearmente indipendenti per ipotesi induttiva, vale $(a_i + a_n) = 0$ per ogni $i = 1,\ldots,n-1$, da cui $a_i = 0$ per ogni $i = 1,\ldots,n$.
+	% \textit{Passo induttivo.} ($n-1 \geq n$)
+	% Vediamo che se $a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n = 0 \Longrightarrow a_1 = \ldots = a_n = 0$.
+	% \begin{align*}
+	% 	& a_1 \cdot 1 + a_2 \cdot x + \cdots + a_{n-1} \cdot x^{n-1} = - a_n \cdot x^n \\
+	% 	& \qquad \qquad \qquad \downarrow + a_n \cdot x^n \\
+	% 	& (a_1 + a_n) \cdot 1 + (a_2 + a_n) \cdot x + \cdots + (a_{n-1} + a_n) \cdot x^{n-1} = 0
+	% \end{align*}
+	% essendo che $1,x^1,\ldots,x^{n-1}$ sono linearmente indipendenti per ipotesi induttiva, vale $(a_i + a_n) = 0$ per ogni $i = 1,\ldots,n-1$, da cui $a_i = 0$ per ogni $i = 1,\ldots,n$.
 
 	\item Dimostriamo che non è compatto. Se per assurdo lo fosse, dalla successione $(f_n)$ potremmo estrarre una sottosuccessione convergente $(f_{n_k})$ in $L^p([0,1])$; denotiamo il limite con $f$. Per i risultati visti sulla convergenza, da $(f_{n_k})$ potremmo estrarre una sottosuccessione convergente quasi ovunque a $f$. Ma questo è assurdo perché $\lim_n f_n = +\infty$.
 \end{enumerate}
@@ -263,12 +264,12 @@ In particolare, per ogni $n \in \N$ fissato, $\lim_k (x_n^k - x_n^\infty) = 0$.
 $F$ è chiuso perché se $(\underline{x}^k) \subset F$ e $\underline{x}^k \xrightarrow{\ell^1} \underline{x}^\infty$, allora per ogni $n \in \N$ vale 
 %
 $$
-\left| x_n^k \right| \leq 1 / n^2 \quad \text{e} \quad \underbrace{\lim_{n \to +\infty} \left| x_n^k  \right|}_{x_n^\infty} \leq 1/n^2.
+\left| x_n^k \right| \leq 1 / n^2 \quad \text{e} \quad \underbrace{\lim_{k \to +\infty} \left| x_n^k  \right|}_{x_n^\infty} \leq 1/n^2.
 $$
 %
 
 Dimostriamo che è compatto per successioni.
 Prendiamo $( \underline{x}^k ) \subset F$, ogni componente $x_n$ è equilimitata, quindi a meno di sottosuccessioni $x_n^{k_j}$ converge a $x_n^\infty$.
-A meno di diagonalizzare, possiamo supporre che le successione $k_j$ non dipenda da $n$.
+A meno di diagonalizzare, possiamo supporre che la successione $k_j$ non dipenda da $n$.
 Inoltre gli elementi $x_n^{k_j}$ sono dominati da $y = (1 / n^2)$. Concludiamo usando il teorema di convergenza dominata di Lebesgue.
 

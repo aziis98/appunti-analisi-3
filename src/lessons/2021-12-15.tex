@@ -10,7 +10,7 @@ $$
 %
 dove $\dd_x f$ è il termine di primo grado dello sviluppo di Taylor di $f$.
 
-\textbf{Definizione.} Siano $1 \leq k \leq d$ e $m = 1,2,\ldots$. L'insieme $\Sigma \subset \R^d$ si definisce \textbf{superficie} (senza bordo) di dimensione $k$ e classe $C^m$ se per ogni $x \in \Sigma$ esiste $U$ intorno aperto\footnote{D'ora in avanti gli intorni saranno sempre aperti.} di $x$ ed esiste una mappa $\phi \colon D \to \R^d \in C^m$ con $D$ aperto di $\R^k$ tale che
+\textbf{Definizione.} Siano $1 \leq k \leq d$ e $m \geq 1$. L'insieme $\Sigma \subset \R^d$ si definisce \textbf{superficie} (senza bordo) di dimensione $k$ e classe $C^m$ se per ogni $x \in \Sigma$ esiste $U$ intorno aperto\footnote{D'ora in avanti gli intorni saranno sempre aperti.} di $x$ ed esiste una mappa $\phi \colon D \to \R^d$  di classe $C^m$ con $D$ aperto di $\R^k$ tale che
 \begin{itemize}
 
 	\item $\phi(D) = \Sigma \cap U$
@@ -20,14 +20,14 @@ dove $\dd_x f$ è il termine di primo grado dello sviluppo di Taylor di $f$.
 	\item $\nabla \phi(s)$ ha rango massimo ($=k$) per ogni $s \in D$
 
 \end{itemize}
-Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
+Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie.
 
 \textbf{Osservazione.} Se $k = d$ abbiamo che $\Sigma$ è una superficie se e solo se $\Sigma$ è aperto.
 
 \textbf{Proposizione.} Dati $k,d,m$ come sopra, $\Sigma \subset \R^d$ e $x \in \Sigma$ sono fatti equivalenti
 \begin{itemize}
 
-	\item Esistono $U$ e $\phi \colon D \to \Sigma \cap U$ tale che $\phi$ è una parametrizzazione regolare
+	\item Esistono $U$ e $\phi \colon D \to \Sigma \cap U$ tale che $\phi$ è una parametrizzazione regolare.
 
 
 	\item Esistono $U$ intorno di $x$ e $g \colon U \to \R^{d-k} \in C^m$ tale che 
@@ -35,12 +35,12 @@ Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
 
 		\item $\Sigma \cap U = g^{-1}(0)$
 
-		\item $\nabla g$ ha rango massimo, ovvero $d-k$ 
+		\item $\nabla g$ ha rango massimo, ovvero $d-k$.
 
 	\end{itemize}
 
 
-	\item Esistono $U$ intorno di $x$ e $h \colon \R^k \to \R^{d-k}$ di classe $C^m$ tale che $\Sigma \cap U = \Gamma_h \cap U$ (dove $\Gamma_h$ è il grafico di $h$) avendo identificato $\R^k \times \R^{d-k}$ con $\R^d$ tramite una scelta di $k$ coordinate tra le $d$ di $\R^d$
+	\item Esistono $U$ intorno di $x$ e $h \colon \R^k \to \R^{d-k}$ di classe $C^m$ tale che $\Sigma \cap U = \Gamma_h \cap U$ (dove $\Gamma_h$ è il grafico di $h$) avendo identificato $\R^k \times \R^{d-k}$ con $\R^d$ tramite una scelta di $k$ coordinate tra le $d$ di $\R^d$.
 
 \end{itemize}
 
@@ -59,8 +59,6 @@ Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
 
 \end{itemize}
 
-\textbf{[TO DO]: disegni} in blu sul quaderno
-
 
 \textbf{Definizione.} Data $\Sigma$ superficie e fissato $x \in \Sigma$, lo \textbf{spazio tangente} a $\Sigma$ in $x$ è $ T_x \Sigma \coloneqq \imm (\dd_s \phi)$ dove $\phi \colon D \to \Sigma \cap U$ è una parametrizzazione regolare e $x = \phi(s)$ con $s \in D$.
 
@@ -75,7 +73,7 @@ Ovvero $\phi$ è una \textbf{parametrizzazione locale} della superficie
 	\item Data $g \colon U \to \R^{d-k}$ tale che $\Sigma \cap U = g^{-1}(0)$, $\rk(\nabla g) = d-k$ su $U$, allora 
 	%
 	$$
-		T_x \Sigma = \ker(\dd_x g) = \{\nabla g_1(x),\ldots, \nabla g_{n-k}(x) \}^\perp
+		T_x \Sigma = \ker(\dd_x g) = \{\nabla g_1(x),\ldots, \nabla g_{d-k}(x) \}^\perp
 	$$
 	%
 	

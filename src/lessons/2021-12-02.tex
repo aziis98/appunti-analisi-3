@@ -124,12 +124,12 @@ Per il teorema dei residui:
 
 	\item Verifichiamo che $\ds \int_{\gamma_r} g(x) \xrightarrow{r \to \infty} 0$ dove $[0,\pi] \ni \theta \xmapsto{\gamma_r} r e^{i\theta}$.
 
-	Poniamo $z = x + it$, dunque $yz = xy + yit$, da cui $\ds g(z) = g(x + it) = \left( e^{-ixy} e^{ty} \right) / (1 + (x + it)^2)$.
-	Dunque,
+	% Poniamo $z = x + it$, dunque $yz = xy + yit$, da cui $\ds g(z) = g(x + it) = \left( e^{-ixy} e^{ty} \right) / (1 + (x + it)^2)$.
+	Calcoliamo
 	%
 	$$
 		\int_0^\pi g(e^{i\theta}r) r \dd \theta
-		\Longrightarrow \int_0^\pi \frac{e^{-ri\cos \theta} e^{r \sin\theta y}}{(1 + r^2 e^{i2\theta})} r \dd \theta
+		\Longrightarrow \int_0^\pi \frac{e^{-iry\cos \theta} e^{r \sin\theta y}}{(1 + r^2 e^{i2\theta})} r \dd \theta
 		\xrightarrow{r \to \pm \infty} 0 \quad \text{se } y < 0. 
 	$$
 	%
@@ -145,5 +145,3 @@ Per il teorema dei residui:
 	Considerando anche il caso $y > 0$ la trasformata di Fourier diviene $\pi e^{-|y|}$.
 
 \end{itemize}
-
-[TO DO]. Riportare il teorema dei residui con i metodi di base per calcolare i residui?

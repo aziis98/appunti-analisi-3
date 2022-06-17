@@ -129,12 +129,20 @@ Abbiamo
 che è sommabile se $k + h \leq 2$ in $n$. La serie in ($*$) converge totalmente su $\R \times \R$ con tutte le derivate di ordine $\leq 2 \implies u$ è $C^2$.
 
 \textit{Passo 3.}
-Dimostriamo che $u$ risolve l'equazione $u_{tt} = v^2 u_{xx}$.
+Dimostriamo che $u$ risolve il problema (P). [TO DO: aggiungi link]
 
 % Infatti $u$ la risolve $c_0^0 + c_0^1 t$ e $v^\pm_n(x, t)$ e derivate e serie commutano. 
-$u$ risolve l'equazione perché derivata e serie commutano e per come abbiamo impostato (P$'$) $c_n(u(0, \curry)) = c_n(u_0) \implies u(0, \curry) = u_0$. $c_n(u_t(0, \curry)) = c_n(u_1) \implies u_t(0, \curry) = u_1$.
+% $u$ risolve l'equazione perché derivata e serie commutano e per come abbiamo impostato (P$'$) $c_n(u(0, \curry)) = c_n(u_0) \implies u(0, \curry) = u_0$. $c_n(u_t(0, \curry)) = c_n(u_1) \implies u_t(0, \curry) = u_1$.
 
-\textbf{Teorema 3.} (Unicità)
+Notiamo che $u(t,x)$ risolve l'equazione $u_{tt} = v^2 u_{xx}$ usando il lemma che ci garantisce di poter scambiare serie e derivata usando la regolarità $C^2$ dimostrata al punto precedente.
+Inoltre
+\begin{align*}
+	c_n(u(0, \curry)) = c_n(u_0) & \implies u(0, \curry) = u_0 \\
+	c_n(u_t(0, \curry)) \overset{\text{Lem 8}}{=} \dot c_n (u(0,\curry)) = c_n(u_1) & \implies u_t(0, \curry) = u_1.
+\end{align*}
+perché le funzioni sono continue.
+
+\textbf{Teorema 3} (Unicità).
 Se $u \colon I \times [-\pi, \pi] \to \C$ è $C^2$ in $x$ e $t$ e risolve (P) allora è unica.
 
 \textbf{Dimostrazione.}
