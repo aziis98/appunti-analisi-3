@@ -9,29 +9,33 @@
 % $$
 % e se $f_1$ e $f_2$ sono positive allora $f_1 \ast f_2(x) \in [0, +\infty]$. Ma ad esempio se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$ allora $f_1 \ast f_2(x)$ non è definito per alcun $x$.
 
-\textbf{Proposizione 1.}
-Se $|f_1| \ast |f_2| (x) < +\infty$ allora $f_1 \ast f_2(x)$ è ben definito, in quanto $|f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x)$.
-% in quanto
-% $$
-% |f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x)
-% $$
+\textbf{Proposizione 1.} Se $|f_1| \ast |f_2| (x) < +\infty$ allora $f_1 \ast f_2(x)$ è ben definito, in quanto $f_1 \ast f_2(x) \leq |f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x)$.
 
-\textbf{Dimostrazione.}
-Basta osservare che,
+\textbf{Dimostrazione.} Basta osservare che,
 %
 \begin{align*}
-f_1 \ast f_2(x) & = \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y 
-\leq \left| \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y \right| \\
-& \leq \int_{\R^d} |f_1(x-y) \cdot f_2(y)| \dd y
-= |f_1| \ast |f_2|(x) < +\infty.
+	f_1 \ast f_2(x) & = \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y 
+	\leq \left| \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y \right| \\
+	& \leq \int_{\R^d} |f_1(x-y) \cdot f_2(y)| \dd y
+	= |f_1| \ast |f_2|(x) < +\infty.
 \end{align*}
 \qed
 
-\textbf{Corollario 2.}
-Se $|f_1| \ast |f_2| \in L^p(\R^d)$ con $1 \leq p \leq +\infty$ allora $f_1 \ast f_2(x)$ è ben definito per quasi ogni $x \in \R^d$ e $\norm{f_1 \ast f_2}_p \leq \norm{|f_1| \ast |f_2|}_p$.
+\textbf{Corollario 2.} Se $|f_1| \ast |f_2| \in L^p(\R^d)$ con $1 \leq p \leq +\infty$ allora $f_1 \ast f_2(x)$ è ben definito per quasi ogni $x \in \R^d$ e $\norm{f_1 \ast f_2}_p \leq \norm{|f_1| \ast |f_2|}_p$.
 
-\textbf{Dimostrazione.}
-Segue subito dalla proposizione precedente.
+\textbf{Dimostrazione.} Dato che $|f_1| \ast |f_2| \in L^p$ segue che
+$$
+	\int_{\R^d} \left( |f_1| \ast |f_2|(x) \right)^p \dd x < +\infty
+	\Longrightarrow f_1 \ast f_2(x) \leq |f_1| \ast |f_2|(x) < +\infty \quad \tilde{\forall} x \in \R^d.
+$$
+Inoltre
+\begin{multline*}
+	\norm{f_1 \ast f_2}_p^p 
+	= \int_{\R^d} \left| \left( \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y \right) \right|^p \dd x \\
+	\leq \int_{\R^d} \left( \int_{\R^d} \left| f_1(x-y) \right| \cdot \left| f_2(y) \right| \dd y \right)^p \dd x
+	= \norm{|f_1| \ast |f_2| }_p^p
+\end{multline*}
+
 \qed
 
 \mybox{%
@@ -53,67 +57,76 @@ allora $f_1 \ast f_2$ è ben definito quasi ovunque e
 	\item 
 		Nel caso di prima $1$ e $\sin x$ sono solo in $L^\infty$ infatti viene $r = -1$ e la disuguaglianza non ha senso.
 
-	\item
-		Supponiamo di avere $\norm{f_1 \ast f_2} \leq C \cdot \norm{f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2}$ allora vediamo che per ogni $f_1, f_2$ positiva deve valere necessariamente $\alpha_1 = \alpha_2 = 1$ e la condizione (\ref{eqn:conv_th3_cond}).
 
-		\textbf{Dimostrazione.}
-		Per ogni $\lambda > 0$ consideriamo $\lambda f_1$ e $f_2$, allora 
+	% \item Data $f \colon \R^d \to \R$ e $\lambda > 0$ poniamo $R_{\lambda} f(x) \coloneqq f(x / \lambda)$ allora abbiamo $\norm{R_\lambda f}_p = \lambda^{d / p} \norm{f}_p$, dove l'esponente $d/p$ si può ricavare per \textit{analisi dimensionale}\footnote{Ovvero studiando le potenze delle unità di misura delle varie quantità.}.
+	% % \footnote{In particolare ad Istituzioni di Analisi si vedono le disuguaglianze di Sobolev ed anche in quel caso tutte le condizioni sugli esponenti si riescono a ricavare per analisi dimensionale...}. 
+	% Consideriamo l'espressione
+	% $$
+	% 	\norm{f}_p^p = \int_{\R^d} |f(x)|^p \dd x.
+	% $$
+	% Se $f(x)$ è una \textit{quantità adimensionale} allora $\int_{\R^d} f(x)^p \dd x$ ha dimensione di un \textit{volume} $\mathsf L^d$, da cui $\norm{f}_p$ ha dimensione di $\mathsf L^{d / p}$.
+
+	% Similmente, per ottenere $\norm{R_\lambda(f_1 \ast f_2)}_r = \lambda^{d(1 + 1 / r)} \norm{f_1 \ast f_2}_r$, basta osservare che
+	% $$
+	% 	f_1 \ast f_2 (x) = \int_{\R^d} f_1(x - y) f_2(y) \dd y
+	% $$
+	% ha dimensione $\mathsf L^d$, da cui
+	% $$
+	% 	\norm{f_1 \ast f_2}_r = \bigg( \int_{\R^d} \underbrace{|f_1 \ast f_2|^r}_{\mathsf L^{dr}} \underbrace{\dd x}_{\mathsf L^d} \bigg)^{1 / r}
+	% $$
+	% ha dimensione di $\mathsf L^{d(1 + 1/r)}$.
+
+
+	\item Supponiamo di avere $\norm{f_1 \ast f_2}_r \leq C \cdot \norm{f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2}$ allora vediamo che per ogni $f_1, f_2$ positive deve valere necessariamente $\alpha_1 = \alpha_2 = 1$ e $1/r = 1/p_1 + 1/p_2 - 1$.
+
+	\textbf{Dimostrazione.} Vediamo prima $\alpha_1 = \alpha_2 = 1$ e successivamente $1/r = 1/p_1 + 1/p_2 - 1$.
+	\begin{itemize}
+	
+		\item Per ogni $\lambda > 0$ consideriamo $\lambda f_1$ e $f_2$, allora 
 		$$
-		\norm{(\lambda f_1) \ast f_2}_r = \norm{\lambda (f_1 \ast f_2)}_r = \lambda \norm{f_1 \ast f_2}_r
+			\norm{(\lambda f_1) \ast f_2}_r = \norm{\lambda (f_1 \ast f_2)}_r = \lambda \norm{f_1 \ast f_2}_r
 		$$
 		ma abbiamo anche
 		$$
-		\norm{(\lambda f_1) \ast f_2}_r \leq C \cdot \norm{\lambda f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2} = C \cdot \lambda^{\alpha_1} \norm{f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2},
+			\norm{(\lambda f_1) \ast f_2}_r \leq C \cdot \norm{\lambda f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2} = C \cdot \lambda^{\alpha_1} \norm{f_1}_{p_1}^{\alpha_1} \cdot \norm{f_2}_{p_2}^{\alpha_2},
 		$$
-        da cui necessariamente $\alpha_1 = 1$ e di conseguenza $\alpha_2 = 1$.
+		da cui necessariamente $\alpha_1 = 1$ e similmente si dimostra che $\alpha_2 = 1$.
 
-		A questo punto richiediamo anche che $f_1$ e $f_2$ siano tali che $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} < +\infty$ e $\norm{f_1 \ast f_2} > 0$ (questo possiamo farlo in quanto basta prendere $f_1 = f_2 = \One_B$ con $B$ una palla, nel caso segue proprio che $f_1 \ast f_2 (x) > 0$ se $|x| < 1$).
+		% A questo punto richiediamo anche che $f_1$ e $f_2$ siano tali che $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} < +\infty$ e $\norm{f_1 \ast f_2} > 0$ (questo possiamo farlo in quanto basta prendere $f_1 = f_2 = \One_B$ con $B$ una palla, nel caso segue proprio che $f_1 \ast f_2 (x) > 0$ se $|x| < 1$).
 
-		Data $f \colon \R^d \to \R$ e $\lambda > 0$ poniamo $R_{\lambda} f(x) \coloneqq f(x / \lambda)$ allora abbiamo
-        \begin{align*}
-        \norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r
-        & = \norm{\int_{\R^d} f_1 \left( \frac{x-y}{\lambda} \right) \cdot f_2\left( \frac{y}{\lambda} \right) \dd y} 
-        = 
-        \begin{pmatrix}
-        t = \frac{y}{\lambda} \\
-        \lambda \dd t = \dd y
-        \end{pmatrix} \\
-        & = \lambda^d \cdot \norm{\int_{\R^d} f_1 \left( \frac{x}{\lambda} - t \right) \cdot f_2(t) \dd t} \\
-        & = \lambda^d \cdot \norm{R_\lambda (f_1 \ast f_2)}_r.
-        \end{align*}
-        Per il punto successivo abbiamo $\norm{R_\lambda(g)}_r = \lambda^{d/r} \norm{g}_r$, da cui otteniamo
+
+		\item Data $f \colon \R^d \to \R$ e $\lambda > 0$ poniamo $R_{\lambda} f(x) \coloneqq f(x / \lambda)$ allora abbiamo
+		\begin{align*}
+			\norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r
+			& = \norm{\int_{\R^d} f_1 \left( \frac{x-y}{\lambda} \right) \cdot f_2\left( \frac{y}{\lambda} \right) \dd y} 
+			= 
+			\begin{pmatrix}
+				t = \frac{y}{\lambda} \\
+				\lambda^d \dd t = \dd y
+			\end{pmatrix} \\
+			& = \lambda^d \cdot \norm{\int_{\R^d} f_1 \left( \frac{x}{\lambda} - t \right) \cdot f_2(t) \dd t} \\
+			& = \lambda^d \cdot \norm{R_\lambda (f_1 \ast f_2)}_r.
+		\end{align*}
+		Similmente si dimostra che $\norm{R_\lambda(g)}_r = \lambda^{d/r} \norm{g}_r$, da cui otteniamo
 		$$
-		\norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r 
-		= \lambda^{d \left( 1 + \frac{1}{r} \right)} \norm{f_1 \ast f_2}_r.
+			\norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r 
+			= \lambda^{d \left( 1 + \frac{1}{r} \right)} \norm{f_1 \ast f_2}_r.
 		$$
 		Ma anche
-		$$
-		\norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r 
-		\leq C \cdot \norm{R_\lambda f_1}_{p_1} \cdot \norm{R_\lambda f_2}_{p_2}
-		= \lambda^{d \left( \frac{1}{p_1} + \frac{1}{p_2} \right)} \cdot \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}.
-		$$
-		Dunque sicuramente abbiamo $\lambda^{d \left(1 + {1 / r} \right)} \leq C \cdot \lambda^{d\left( {1 / p_1} + {1 / p_2} \right)}$ per ogni $\lambda > 0$ e quindi $1 + {1 / r} = {1 / p_1} + {1 / p_2}$.
+		\begin{multline*}
+			\lambda^{d(1 + \frac{1}{r})} \norm{f_1 \ast f_2}_r
+			= \norm{(R_\lambda f_1) \ast (R_\lambda f_2)}_r 
+			\overset{\eqref{eqn:conv_th3_thesis}}{\leq} C \cdot \norm{R_\lambda f_1}_{p_1} \cdot \norm{R_\lambda f_2}_{p_2} \\
+			= C \cdot \lambda^{d \left( \frac{1}{p_1} + \frac{1}{p_2} \right)} \cdot \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}.
+		\end{multline*}
+		Dunque abbiamo $\lambda^{d \left(1 + {1 / r} \right)} \leq C \cdot \lambda^{d\left( {1 / p_1} + {1 / p_2} \right)}$ per ogni $\lambda > 0$ e quindi $1 + {1 / r} = {1 / p_1} + {1 / p_2}$.
 		\qed
 
-	\item
-		$\norm{R_\lambda f}_p = \lambda^{d / p} \norm{f}_p$ ed in realtà possiamo ricavare l'esponente $d / p$ per \textit{analisi dimensionale}\footnote{Ovvero studiando le potenze delle unità di misura delle varie quantità.}.
-        % \footnote{In particolare ad Istituzioni di Analisi si vedono le disuguaglianze di Sobolev ed anche in quel caso tutte le condizioni sugli esponenti si riescono a ricavare per analisi dimensionale...}. 
-        Consideriamo l'espressione
-		$$
-		\norm{f}_p^p = \int_{\R^d} f(x) \dd x.
-		$$
-		Se $f(x)$ è una \textit{quantità adimensionale} allora $\int_{\R^d} f \dd x$ ha dimensione di un \textit{volume} $\mathsf L^d$, da cui $\norm{f}_p$ ha dimensione di $\mathsf L^{d / p}$.
+	\end{itemize}
 
-		Similmente, per ottenere $\norm{R_\lambda(f_1 \ast f_2)}_r = \lambda^{d(1 + 1 / r)} \norm{f_1 \ast f_2}_r$, basta osservare che
-		$$
-		f_1 \ast f_2 (x) = \int_{\R^d} f_1(x - y) f_2(y) \dd y
-		$$
-		ha dimensione $\mathsf L^d$, da cui
-		$$
-		\norm{f_1 \ast f_2}_r = \bigg( \int_{\R^d} \underbrace{|f_1 \ast f_2|^r}_{\mathsf L^{dr}} \underbrace{\dd x}_{\mathsf L^d} \bigg)^{1 / r}
-		$$
-		ha dimensione di $\mathsf L^{d(1 + 1/r)}$.
 \end{itemize}
+
+\vss
 
 \textbf{Dimostrazione Teorema 3.}
 Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_1, f_2 \geq 0$.
@@ -135,7 +148,7 @@ Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_
 		\textit{Caso leggermente meno facile.} Se $p_1 = p, p_2 = 1$ e $r = p$.
 		Vogliamo vedere che
 		$$
-		\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \cdot \norm{f_2}_1
+			\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \cdot \norm{f_2}_1
 		$$
 		allora
 		$$
@@ -151,12 +164,13 @@ Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_
 		$$
 		con $p'$ esponente coniugato a $p$. Inoltre notiamo che $\norm{f_1(y - \curry)}_p = \norm{f_1}$ per invarianza di $\mathscr L^d$ per riflessioni e traslazioni. Infine otteniamo
 		$$
-		\norm{f_1}_p {\| h^{p-1} \|}_{p'} \norm{f_2}_1
-		= \norm{f_1}_p \norm{h}_{p}^{p-1} \norm{f_2}_1.
+			\norm{f_1}_p {\| h^{p-1} \|}_{p'} \norm{f_2}_1
+			= \norm{f_1}_p \norm{h}_{p}^{p-1} \norm{f_2}_1.
 		$$
 		Dunque, $\norm{f_1 \ast f_2}_p^p \leq \norm{f_1 \ast f_2}_p^{p-1} \norm{f_1}_p \norm{f_2}_1 \implies \norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \norm{f_2}_1$. Quest'ultima implicazione però è valida solo nel caso in cui $0 < \norm{f_1 \ast f_2}_p < +\infty$. Resterebbero da controllare i due casi in cui la norma è $0$ oppure $+\infty$. Il primo è ovvio; il secondo invece si fa per approssimazione e passando al limite.
 
-		Consideriamo $f_1, f_2$ e approssimiamole con $f_{1,n}, f_{2,n}$ limitate a supporto compatto, allora vale $\norm{f_{1,n} \ast f_{1,n}}_p \leq \norm{f_{1,n}}_p \cdot \norm{f_{2,n}}_1$ e passando al limite si ottiene la tesi. In particolare possiamo costruire le $f_n$ come
+		% https://math.stackexchange.com/questions/1344706/are-continuous-functions-with-compact-support-bounded
+		Consideriamo $f_1, f_2$ e approssimiamole con $f_{1,n}, f_{2,n}$ a supporto compatto (e limitate\footnote{Le funzioni continue a supporto compatto sono limitate per Weierstrass.}), allora vale $\norm{f_{1,n} \ast f_{1,n}}_p \leq \norm{f_{1,n}}_p \cdot \norm{f_{2,n}}_1$ e passando al limite si ottiene la tesi. In particolare possiamo costruire le $f_n$ come
 		$$
 		f_n(x) \coloneqq (f(x) \cdot \One_{\mc B(0, n)}(x)) \land n
 		$$
@@ -284,7 +298,7 @@ Per il Lemma 6 basta dimostrare che $f_{1,n} \ast f_{2,n} \longrightarrow f_1 \a
 \begin{align*}
 	\norm{f_{1,n} \ast f_{2,n} - f_1 \ast f_2}_\infty
 	& = \norm{\left( f_{1,n} \ast f_{2,n} - f_{1,n} \ast f_2 \right) + \left( f_{1,n} \ast f_2 - f_1 \ast f_2 \right)}_\infty \\
-	& \underset{\mathclap{\text{lin della conv}}}{\leq} \norm{f_{1,n} \ast \left( f_{2,n} - f_2 \right)}_\infty + \norm{\left( f_{1,n} - f_1 \right) \ast f_2}_\infty \\
+	& \leq \norm{f_{1,n} \ast \left( f_{2,n} - f_2 \right)}_\infty + \norm{\left( f_{1,n} - f_1 \right) \ast f_2}_\infty \\
 	& \underset{ii)}{\leq} \underbrace{\norm{f_{1,n}}_{p_1}}_{\to \norm{f_1}_{p_1}} \underbrace{\norm{f_{2,n} - f_2}_{p_2}}_{\to 0} + \underbrace{\norm{f_{1,n} - f_1}_{p_1}}_{\to 0} \norm{f_2}_{p_2}.
 \end{align*}
 

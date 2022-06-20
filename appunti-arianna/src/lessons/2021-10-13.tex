@@ -45,7 +45,7 @@ $$
 %
 Dunque, basta prendere $\beta \in [1/p_2, 1/p_1)$.
 
-Ora cerchiamo $g \in L^2 (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
+Ora cerchiamo $g \in L^{p_2} (0,+\infty) \setminus \, L^{p_1}(0,+\infty)$.
 Definiamo $g(x)$ come segue
 $$
 g(x) \coloneqq \frac{1}{(1+x)^\alpha}
@@ -68,7 +68,7 @@ Data $f \in L^{p_2}(X)$, cioè con $\int_X \left| f \right|^{p_2} \dd \mu < +\in
 Usiamo Hölder:
 \begin{align*}
 \int_X \left| f \right|^{p_1} \dd \mu & \leq \Bigg( \int_X \overbrace{\left| h(x) \right|^p}^{\left| f(x) \right|^{p_1 p}}  \dd \mu  \Bigg)^{1/p} \cdot \left( \int_X 1^q \dd \mu  \right)^{1/q}
-\underbrace{\leq}_{p = p_1 / p_2} \left( \int_X \left| f \right|^{p_2} \dd \mu  \right)^{p_2 /p_1} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
+\underbrace{\leq}_{p = p_2 / p_1} \left( \int_X \left| f \right|^{p_2} \dd \mu  \right)^{p_1 /p_2} \left( \int_X 1^q \dd \mu  \right)^{1/q} \\
 & \underbrace{=}_{\mathclap{q = \left( 1 - \frac{1}{p} \right)^{-1} = \frac{p}{p-1} = \frac{p_2 / p_1}{p_2 - p_1}}} \norm{f}_{L^{p_2}(X)}^{p_1} \cdot \mu(X)^{\frac{p_2 - p_1}{p_2}}.
 \end{align*}
 %
@@ -129,7 +129,7 @@ Per farlo, esibiamo una successione $\left\{ f_n \right\}_{n \in \N} \subset B$ 
 La costruiamo in modo che non abbia sottosuccessioni di Cauchy
 %
 $$
-f_n \colon (0,1) \to \R, \quad \norm{f_n - f_m}_{L^p} \geq c_0 > 0 \quad  \forall n \neq m.
+	f_n \colon (0,1) \to \R, \quad \norm{f_n - f_m}_{L^p} \geq c_0 > 0 \quad  \forall n \neq m.
 $$
 %
 Cerco $A_n \subset (0,1)$ tale che $\left| A_n \cap A_m \right| = 0$ per ogni $n \neq m$.
@@ -137,23 +137,23 @@ Definiamo $f_n$ come segue
 %
 $$
 f_n(x) \coloneqq 
-\begin{cases}
-0 \quad  \text{se} \; x \in (0,1) \setminus (1 / (n+1), 1/ n) \\
-c_n > 0 \quad \text{altrimenti}
-\end{cases} 
+	\begin{cases}
+		0 \quad  \text{se} \; x \in (0,1) \setminus (1 / (n+1), 1/ n) \\
+		c_n > 0 \quad \text{altrimenti}
+	\end{cases} 
 $$
 %
 dove $c_n$ è tale che 
 %
 $$
 \left( \int_{1 / n+1}^{1 / n} c_n^p  \right)^{1/p} = 1 \longiff 
-c_n^p \cdot (1/n - 1/(n+1)) = 1 \longiff c_n^p = n \cdot (n+1).
+	c_n^p \cdot (1/n - 1/(n+1)) = 1 \longiff c_n^p = n \cdot (n+1).
 $$
 %
 Calcoliamo ora $\norm{f_n - f_m}^p_{L^p}$ con $n \neq m$ :
 %
 $$
-\int_0^1 \left| f_n(x) - f_m(x) \right|^p \dd x = \int\limits_{\mathclap{(1/n,1/n+1) \cup (1/ m+1,1/m)}} \left| f_n - f_m \right|^p \dd x = \int_{1 / n+1}^{1 / n} \left| f_n \right|^p \dd x + \int_{0}^{1} \left| f_m \right|^p \dd x = 1 + 1 = 2.
+	\int_0^1 \left| f_n(x) - f_m(x) \right|^p \dd x = \int\limits_{\mathclap{(1/n,1/n+1) \cup (1/ m+1,1/m)}} \left| f_n - f_m \right|^p \dd x = \int_{1 / n+1}^{1 / n} \left| f_n \right|^p \dd x + \int_{1/m+1}^{1/m} \left| f_m \right|^p \dd x = 1 + 1 = 2.
 $$
 %
 

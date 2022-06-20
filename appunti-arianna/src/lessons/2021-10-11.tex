@@ -126,8 +126,7 @@ Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mc A$.
 Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
 }
 
-\textbf{Dimostrazione.} ($\tilde{\mathscr S}_\ell$ è denso in $L^p$)
-Si dimostra che $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta, per la proposizione precedente, è denso in $L^p$.
+\textbf{Dimostrazione.} Si dimostra che $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta, per la proposizione precedente, è denso in $L^p$.
 % @ar-lli (?) (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
 Dal lemma seguente si ottiene la tesi.
 
@@ -174,21 +173,21 @@ Dato $E \subset \R^n$ limitato (e quindi di misura finita) esiste $f_\epsilon \i
 \textbf{Dimostrazione.}
 Per regolarità della misura di Lebesgue abbiamo che per ogni $\epsilon$ esistono $C_\epsilon \subset E \subset A_\epsilon$ tali che $|A_\epsilon \setminus C_\epsilon| \leq \epsilon$. Per il \hyperlink{prop:apprfunz_lemma2}{Lemma 2} possiamo definire la classe di funzioni $f_\epsilon \colon \R^n \to [0, 1]$ continue tali che
 $$
-f_\epsilon = 1 \text{ su $C_\epsilon$}
-\qquad
-f_\epsilon = 0 \text{ su $\R^n \setminus A_\epsilon$}.
+	f_\epsilon = 1 \text{ su $C_\epsilon$}
+	\qquad
+	f_\epsilon = 0 \text{ su $\R^n \setminus A_\epsilon$}.
 $$
 In particolare, sappiamo che su $A_\epsilon \setminus C_\epsilon$ vale $|f_\epsilon - \One_E| \leq 1$. Allora,
 %
 \begin{align*}
-\norm{f_\epsilon - \One_E}_p^p & = \int_{A_\epsilon \setminus C_\epsilon} |f_\epsilon - \One_E|^p \dd x \leq \int_{A_\epsilon \setminus C_\epsilon } \One_{A_\epsilon \setminus C_\epsilon } \dd x = \left| A_\epsilon \setminus C_\epsilon  \right|^{1/p} \leq \epsilon^{1/p} \\
-& \implies \norm{f_\epsilon - \One_E}_p^p \xrightarrow{\epsilon \to 0} 0.
+	\norm{f_\epsilon - \One_E}_p^p & = \int_{A_\epsilon \setminus C_\epsilon} |f_\epsilon - \One_E|^p \dd x \leq \int_{A_\epsilon \setminus C_\epsilon } \One_{A_\epsilon \setminus C_\epsilon } \dd x = \left| A_\epsilon \setminus C_\epsilon  \right|^{1/p} \leq \epsilon^{1/p} \\
+	& \implies \norm{f_\epsilon - \One_E}_p^p \xrightarrow{\epsilon \to 0} 0.
 \end{align*}
 \qed
 
 
 \textbf{Dimostrazione Proposizione 4.} 
-Per la \hyperlink{prop:apprfunz_prop3}{Proposizione 3} basta approssimare la classe delle funzioni a supporto limitato (e finito). Dunque, per il \hyperlink{prop:apprfunz_lemma3}{Lemma 3} si ha la tesi.
+Per la \hyperlink{prop:apprfunz_prop3}{Proposizione 3} basta approssimare la classe delle funzioni a supporto limitato (e di misura finita). Dunque, per il \hyperlink{prop:apprfunz_lemma3}{Lemma 3} si ha la tesi.
 
 % \mybox{%
 % \textbf{Nota.} È denso anche l'insieme delle funzioni continue a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.

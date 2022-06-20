@@ -134,10 +134,11 @@ $$
 % E dunque $X = \{ u \in L^2 \mid \langle u, g \rangle = 0 \}$.
 
 Calcoliamo ora $X^\perp$ e le proiezioni $p_X$, $p_{X^\perp}$. 
-Abbiamo che $X = \{ u \in L^2(\R) \mid \langle u, g \rangle = 0 \}$ dove $g = \One_{[0,2]}(x)$, dunque $X^\perp = \spn(g)$.
+Abbiamo che $X = \{ u \in L^2(\R) \mid \langle u, g \rangle = 0 \}$ dove $g = \One_{[0,2]}(x)$, dunque\footnote{Dato $\mc{F} \subset H$ spazio di Hilbert, $(\mc{F}^\perp)^\perp = \ol{\spn{\mc{F}}}$} $X = \spn(g)^\perp \Longrightarrow X^\perp = (\spn(g)^\perp)^\perp =  \ol{\spn(g)} = \spn{g}$.
+
 Notiamo\footnote{Con $g / \norm{g^\perp}_{L^2}$ indichiamo una base normalizzata di $g^\perp$.} che
 $$
-L^2(\R) = \spn_\R\left\{\frac{g}{\norm{g}_{L^2}}\right\} \oplus \left\{ \frac{g^\perp}{\norm{g^\perp}_{L^2}} \right\}.
+	L^2(\R) = \spn_\R\left\{\frac{g}{\norm{g}_{L^2}}\right\} \oplus \left\{ \frac{g^\perp}{\norm{g^\perp}_{L^2}} \right\}.
 $$
 Calcoliamo $p_X(u)$ come segue
 %
@@ -185,7 +186,7 @@ $$
 $$
 
 \textbf{Soluzione.} Una tale $v$ non esiste, per vederlo scegliamo opportunamente $\bar f$ e usiamo l'equazione. 
-Scelgo $g \in C_C(\R)$ e defiamo $\sigma_\delta g = 1 / \delta g(1/\delta)$. Abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g$ per ogni $\delta$.
+Scelgo $g \in C_C^\infty(\R)$ e defiamo $\sigma_\delta g = 1 / \delta g(1/\delta)$. Abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g$ per ogni $\delta$.
 Per il \hyperlink{thm:lez25ott_teodelta}{teorema} abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g \xrightarrow{\delta \to 0} v$ in $L^1(\R)$, ma $\sigma_\delta g \xrightarrow{\delta \to 0} 0$ quasi ovunque in $L^1(\R)$. Allora $v = 0$ q.o. in $L^1(\R)$, dunque non può valere $f \ast v = f$ per ogni $f \in L^1(\R)$.
 
 \textbf{Esercizio.} [TO DO: per casa.] 
@@ -193,10 +194,9 @@ Sia $f$ misurabile su $\R^d$ tale che $\int_E f \dd x = 0$ per ogni $E$ misurabi
 
 \textit{Suggerimento.} Considerare l'integrale sull'insieme $\{ x \in \R^d \mid f(x) = 0 \} \cup \{ x \in \R^d \mid f(x) \neq 0 \}$ e verificare che, se denotiamo $A =  \{ x \in \R^d \mid f(x) \neq 0 \}$, allora $|A| = 0$.
 
-\textbf{Esercizio.} [TO DO: per casa.]
-Sia $f$ Lebesgue-misurabile su $\R^d$ tale che $\forall B$ palla su $\R^d$
+\textbf{Esercizio.} Sia $f$ Lebesgue-misurabile su $\R^d$ tale che $\forall B$ palla su $\R^d$
 $$
-\int_B f \dd x = 0
+	\int_B f \dd x = 0
 $$
 Dimostrare che che $f = 0$ quasi ovunque su $\R^d$.
 

@@ -100,7 +100,7 @@
 \textbf{Osservazione.}
 Osserviamo che la convoluzione si comporta bene con l'operatore di traslazione definito precedentemente, infatti $\tau_h (f_1 \ast f_2) = (\tau_h f_1) \ast f_2$ in quanto
 $$
-	f_1 \ast f_2 (x - h) 
+	\tau_h(f_1 \ast f_2) =  f_1 \ast f_2 (x - h) 
 	= \int f_1(x - h - y) \cdot f_2(y) \dd y = \int \tau_h f(x - y) \cdot f_2(y) \dd y
 	= (\tau_h f_1) \ast f_2
 $$
@@ -127,38 +127,45 @@ allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$
 
 \textbf{Nota.} Ha senso anche se $\nabla f_1$ è a valori vettoriali. In tal caso  $\frac{\pd}{\pd x_i}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 \quad \text{per } i = 1, \dots, d $.
 
- 
-\textbf{Dimostrazione.}
+Premettiamo il seguente.
+
+\textbf{Lemma.} Date $g,h \colon [a,b] \to \R$ continue e tali che
+$$
+	g(x) - g(a) = \int_a^x h(t) \dd t \quad \forall x \in [a,b]
+$$
+allora $g \in C^1$ e $g' = h$.
+
+\vs
+
+\textbf{Dimostrazione Proposizione.}
 \begin{itemize}
-	\item $d = 1$:
-		Sappiamo che $f_1 \ast f_2$ ed $f_1' \ast f_2$ sono continue. Vediamo che coincidono usando il teorema fondamentale del calcolo integrale. L'uguaglianza $(f_1 \ast f_2)' = f_1' \ast f_2$ segue da
-		$$
-		\int_a^b f_1' \ast f_2 \dd x = f_1 \ast f_2(b) - f_1 \ast f_2(a)
-		\quad \forall a < b
-		$$
-		ed in effetti
+	\item $d = 1$. Per il Lemma basta dimostrare che $\forall -\infty < a < x < +\infty$ vale
+	$$
+		f_1 \ast f_2(x) - f_1 \ast f_2(a) = \int_a^x f_1' \ast f_2(t) \dd t.
+	$$
+	Infatti
 		$$
 		\begin{aligned}
-			\int_a^b f_1' \ast f_2 (x) \dd x
-			&= \int_a^b \int_{-\infty}^\infty f_1'(x - y) f_2(y) \dd y \dd x \\
-			&\overset{\text{($*$)}}{=} \int_{-\infty}^\infty \int_a^b f_1'(x - y) \dd x \cdot f_2(y) \dd y \\
-			&= \int_{-\infty}^\infty (f_1(b - y) - f_1(a - y)) \cdot f_2(y) \dd y \\
-			&= \int_{-\infty}^\infty f_1(b - y) f_2(y) \dd y - \int_{-\infty}^\infty f_1(a - y) f_2(y) \dd y \\
-			&= f_1 \ast f_2(b) - f_1 \ast f_2(a).
+			\int_a^x f_1' \ast f_2 (t) \dd t
+			& = \int_a^x \int_{-\infty}^\infty f_1'(t - y) f_2(y) \dd y \dd t \\
+			& \overset{\text{($*$)}}{=} \int_{-\infty}^\infty \int_a^x f_1'(t - y) \dd t \cdot f_2(y) \dd y \\
+			& = \int_{-\infty}^\infty (f_1(x - y) - f_1(a - y)) \cdot f_2(y) \dd y \\
+			& = \int_{-\infty}^\infty f_1(x - y) f_2(y) \dd y - \int_{-\infty}^\infty f_1(a - y) f_2(y) \dd y \\
+			& = f_1 \ast f_2(x) - f_1 \ast f_2(a).
 		\end{aligned}
 		$$
-		In particolare in ($*$) stiamo usando Fubini-Tonelli in quanto
+		In ($*$) abbiamo usato Fubini-Tonelli:
 		$$
-		\int_a^b \int_{-\infty}^\infty |f_1'(x-y)| \cdot |f_2(y)| \dd y \dd x
-		\leq \int_a^b \norm{f_1'(x - \curry)}_{p_1} \cdot \norm{f_2}_{p_2} \dd x 
-		= \norm{f_1'}_{p_1} \cdot \norm{f_2}_{p_2} \cdot (b - a).
+			\int_a^x \int_{-\infty}^\infty |f_1'(t-y)| \cdot |f_2(y)| \dd y \dd t
+			\leq \int_a^x \norm{f_1'(t - \curry)}_{p_1} \cdot \norm{f_2}_{p_2} \dd t 
+			= \norm{f_1'}_{p_1} \cdot \norm{f_2}_{p_2} \cdot (x - a).
 		$$
 
 	\item
 		per $d > 1$ dato $i = 1, \dots, d$ basta semplicemente considerare le proiezioni infatti
 		$$
-		\int_a^b \frac{\pd f_1}{\pd x_i} \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{t}, \dots, x_d) \dd t
-		= f_1 \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{b}, \dots, x_d) - f_1 \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{a}, \dots, x_d)
+		\int_a^x \frac{\pd f_1}{\pd x_i} \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{t}, \dots, x_d) \dd t
+		= f_1 \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{x}, \dots, x_d) - f_1 \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{a}, \dots, x_d)
 		$$
 		\qed
 \end{itemize}
@@ -249,7 +256,7 @@ per \textit{convergenza dominata}, verifichiamone le ipotesi
 \end{enumerate}
 \qed
 
-\vspace{-5mm}
+\vss
 
 \mybox{%
 \textbf{Corollario.}

@@ -9,7 +9,7 @@ Sia $H$ spazio vettoriale reale con prodotto scalare $\left<\cdot, \cdot \right>
 Si ricorda l'identità di polarizzazione
 %
 $$
-\left<x_1,x_2 \right> = \frac{1}{4} \left( \norm{x_1 + x_2}^2 - \norm{x_1 - x_2}^2 \right).
+	\left<x_1,x_2 \right> = \frac{1}{4} \left( \norm{x_1 + x_2}^2 - \norm{x_1 - x_2}^2 \right).
 $$
 %
 
@@ -19,16 +19,17 @@ $$
 
 \textbf{Esempi.} 
 \begin{itemize}
-\item Dato $(X, \mc{A}, \mu )$, gli spazi $L^2(X), L^2(X, \R^m)$ sono spazi di Hilbert.
 
-\item Lo spazio $\ds \ell^2 = \left\{ (x_n) \mymid \sum_{n=0}^{\infty} x_n^2 < +\infty  \right\}$ è uno spazio di Hilbert.
+	\item Dato $(X, \mc{A}, \mu )$, gli spazi $L^2(X), L^2(X, \R^m)$ sono spazi di Hilbert.
+
+	\item Lo spazio $\ds \ell^2 = \left\{ (x_n) \mymid \sum_{n=0}^{\infty} x_n^2 < +\infty  \right\}$ è uno spazio di Hilbert.
 
 \end{itemize}
 
 \textbf{Definizione.} $\mc{F} \subset H$ è un \textbf{sistema ortonormale} se
 %
 $$
-\norm{e} = 1 \mquad \forall e \in \mc{F}, \qquad  \left<e,e' \right> = 0 \mquad \forall e \neq e' \in \mc{F}.
+	\norm{e} = 1 \mquad \forall e \in \mc{F}, \qquad  \left<e,e' \right> = 0 \mquad \forall e \neq e' \in \mc{F}.
 $$
 %
 
@@ -41,27 +42,26 @@ $$
 
 L'esempio che segue spiega quanto appena detto.
 
-\textbf{Esempio.}
-In $\ell^2$ una base ortonormale è $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\overset{(n)}{1},0,\ldots )$. \\
+\textbf{Esempio.} In $\ell^2$ una base ortonormale è $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$ con $e_n = (0,\ldots ,0,\overset{(n)}{1},0,\ldots )$. \\
 Infatti, il fatto che siano ortonormali è banale; verifichiamo che sia una base. 
 
 Studiamo $\spn(\mc{F}) = \left\{ x = (x_0,x_1,\ldots ) \mymid x_n \quad \text{è definitivamente nullo}  \right\}$: dato $x \in \ell^2$ e $m = \N$, definiamo
 %
 $$
-P_mx \coloneqq (x_0,x_1,\ldots , x_m,0,\ldots ).
+	P_mx \coloneqq (x_0,x_1,\ldots , x_m,0,\ldots ).
 $$
 %
 Allora $\spn(\mc{F}) \supset P_m x \xrightarrow{m \to +\infty} x$ in $\ell^2$.
 Infatti, 
 %
 $$
-x - P_m x = (0,\ldots ,0, x_{m+1}, x_{m+2},\ldots ).
+	x - P_m x = (0,\ldots ,0, x_{m+1}, x_{m+2},\ldots ).
 $$
 %
 Dunque
 %
 $$
-\norm{x - P_m x} = \sum_{n = m+1}^{\infty} x_n^2 \xrightarrow{m \to +\infty} 0.
+	\norm{x - P_m x} = \sum_{n = m+1}^{\infty} x_n^2 \xrightarrow{m \to +\infty} 0.
 $$
 %
 
@@ -138,15 +138,15 @@ $$
 \item Se $m \geq n$, $\left<y_m, e_n \right> = a_n$, dunque, per continuità del prodotto scalare
 %
 $$
-a_n = \left<y_m, e_n \right> \xrightarrow{m \to \infty} \left<\overline{x},e_n \right> = \ol{x}_n.
+	a_n = \left<y_m, e_n \right> \xrightarrow{m \to \infty} \left<\overline{x},e_n \right> = \ol{x}_n.
 $$
 %
 
 \item Si ha l'uguaglianza $\ds \norm{y_m}^2 = \sum_{n=1}^{m} a_n^2$, per cui passando al limite per $m \to +\infty$ otteniamo 
 \begin{align*}
-& \norm{y_m}^2 \xrightarrow{m \to \infty} \norm{\ol{x}}^2 \\
-& \quad \rotatebox[origin=c]{90}{=} \\
-& \sum_{n=0}^{m} a_n^2 \xrightarrow{m \to \infty} \sum_{n=0}^{\infty} a_n^2 
+	& \norm{y_m}^2 \xrightarrow{m \to \infty} \norm{\ol{x}}^2 \\
+	& \quad \rotatebox[origin=c]{90}{=} \\
+	& \sum_{n=0}^{m} a_n^2 \xrightarrow{m \to \infty} \sum_{n=0}^{\infty} a_n^2 
 \end{align*}
 \qed
 
@@ -161,32 +161,32 @@ $$
 Notiamo che $x$ è somma di vettori ortogonali, infatti $y$ è ortogonale a $\ds \sum_{n=0}^{m} x_n e_n$ :
 %
 $$
-\left<y,e_i \right> = \left<x - \sum_{n=0}^{m} x_n e_n, e_i \right>
-= \left<x,e_i \right> - \sum_{n=0}^{m} x_n \underbrace{\left<e_n,e_i \right>}_{\delta_{i,n}} = x_i - x_i = 0.
+	\left<y,e_i \right> = \left<x - \sum_{n=0}^{m} x_n e_n, e_i \right>
+	= \left<x,e_i \right> - \sum_{n=0}^{m} x_n \underbrace{\left<e_n,e_i \right>}_{\delta_{i,n}} = x_i - x_i = 0.
 $$
 %
 Essendo che $x$ è somma di vettori ortogonali abbiamo
 %
 $$
-\norm{x}^2 = \sum_{n=1}^{m} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2.
+	\norm{x}^2 = \sum_{n=1}^{m} x_n^2 + \norm{y}^2 \geq \sum_{n=1}^{m} x_n^2.
 $$
 %
 Passando al limite per $m \to +\infty$ otteniamo
 %
 $$
-\norm{x}^2 \geq \sum_{n=1}^{\infty} x_n^2. 
+	\norm{x}^2 \geq \sum_{n=1}^{\infty} x_n^2. 
 $$
 %
 
 \item Segue dal lemma notando che il punto precedente ci dice che la successione $(x_n)$ è a quadrato sommabile.
 
-\item Analogamente al caso precedente.
+\item Segue banalmente dai primi due punti.
 
 \item Notiamo che $\left<x - \ol{x}, e_n \right> = x_n - \ol{x}_n \overset{\text{ii)}}{=} 0$ per ogni $n$. Cioè
 %
 $$
-x - \ol{x} \perp e_n \Longrightarrow x - \ol{x} \perp \spn(\mc{F})
-\Longrightarrow x - \ol{x} \underset{\substack{\text{continuità} \\ \text{pr. scalare}}}{\perp} \ol{\spn(\mc{F})}
+	x - \ol{x} \perp e_n \Longrightarrow x - \ol{x} \perp \spn(\mc{F})
+	\Longrightarrow x - \ol{x} \underset{\substack{\text{continuità} \\ \text{pr. scalare}}}{\perp} \ol{\spn(\mc{F})}
 $$
 %
 
@@ -284,24 +284,25 @@ Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. 
 \mybox{%
 \textbf{Teorema~4.} Dato $V$ sottospazio vettoriale chiuso di $H$. Allora
 \begin{enumerate}
-\item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\tilde{x} \in V^\perp$ tale che $x = \overline{x} + \tilde{x}$.
+	\item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\tilde{x} \in V^\perp$ tale che $x = \overline{x} + \tilde{x}$.
 
-\item Gli elementi $\overline{x}$ e $\tilde{x}$ sono univocamente determinati (e indicati con $x_V$ e $x_V^\perp$).
+	\item Gli elementi $\overline{x}$ e $\tilde{x}$ sono univocamente determinati (e indicati con $x_V$ e $x_V^\perp$).
 
-\item $\overline{x}$ è caratterizzato come l'elemento di $V$ più vicino a $x$.
+	\item $\overline{x}$ è caratterizzato come l'elemento di $V$ più vicino a $x$.
 \end{enumerate}
 }
 
 \textbf{Dimostrazione.}
 \begin{enumerate}
+
 \item Dato che $V$ è chiuso, $V$ è completo, cioè $V$ è un sottospazio di $H$, dunque $V$ ammette base ortonormale $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
-Definiamo $\overline{x} \in \overline{\spn(\mc{F})}$ come nel Teorema 1 e $\tilde{x} \coloneqq x - \overline{x} \in \overline{\spn(\mc{F})} = V^\perp$ (per \ref{item:27ott_thm1_4}).
+Definiamo $\overline{x} \in \overline{\spn(\mc{F})}$ come nel Teorema~1 e $\tilde{x} \coloneqq x - \overline{x} \perp \overline{\spn(\mc{F})} = V$ (per \ref{item:27ott_thm1_4}) dunque $\tilde{x} \in V^\perp$.
 
 \item Se $x = \overline{x} + \tilde{x} = \overline{x}' + \tilde{x}'$, dove $\overline{x}, \overline{x}' \in V$ e $\tilde{x}, \tilde{x}' \in V^\perp$, allora
 %
 $$
-\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} \underbrace{\Longrightarrow}_{V \cap V^\perp = \{0 \} }
-\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} = 0.
+	\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} \underbrace{\Longrightarrow}_{V \cap V^\perp = \{0 \} }
+	\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} = 0.
 $$
 %
 
@@ -329,7 +330,7 @@ Un esempio di tale $V$ è $\spn(\mc{F})$ con $\mc{F}$ base di $H$ ($H$ di dimens
 \newpage
 
 \hypertarget{thm:lez2728ott-teo3}{%
-\textbf{Teorema~5} (di rappresentazione di Riesz.)} Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
+\textbf{Teorema~5} (di rappresentazione di Riesz.)} Sia $H$ spazio di Hilbert. Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
 \begin{equation} \tag{$\ast$}
 	\Lambda(x) = \left<x,x_0 \right> \quad \text{per ogni} \; x \in H.
 \end{equation}
@@ -337,7 +338,7 @@ Un esempio di tale $V$ è $\spn(\mc{F})$ con $\mc{F}$ base di $H$ ($H$ di dimens
 \textbf{Lemma~6.} Dato $\Lambda \colon X \to \R$ lineare, $\left( \ker \Lambda \right)^\perp$ ha dimensione 0 o 1.
 
 \textbf{Dimostrazione} Se per assurdo $\dim (\ker \Lambda)^\perp \geq 2$, allora $(\ker \Lambda)^\perp$ conterrebbe un sottospazio $W$ di dimensione $2$.
-Dunque, $\dim \left( \ker \restr{\Lambda}{W} \right) = \{1,2\}$, essendo che $\dim \R = 1$. Ma questo non è possibile, in quanto abbiamo definito $W = \ker^\perp$. 
+Dunque, $\dim \left( \ker \restr{\Lambda}{W} \right) = \{1,2\}$, essendo che $\dim \R = 1$. Ma questo non è possibile, in quanto abbiamo definito $W \subset \ker^\perp$. 
 \qed
 
 \textbf{Dimostrazione Teorema~5.}
@@ -350,7 +351,7 @@ Poniamo $x_0 \coloneqq  c x_1$ con $c \coloneqq  \Lambda x_1$ e $\tilde{\Lambda}
 
 	\item $x \in V \Longrightarrow x \perp x_1 \Longrightarrow x \perp x_0 \Longrightarrow \tilde{\Lambda} = 0 = \Lambda(x)$. Quindi $\tilde{\Lambda} = \Lambda$ su $V$.
 
-	\item $\tilde{\Lambda}(x_1) = \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c = \Lambda(x_1)$. Quindi $\tilde{\Lambda} = \Lambda$ su $\spn(x_1) = V^\perp$.
+	\item $\tilde{\Lambda}(x_1) = \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c = \Lambda(x_1)$. Quindi $\tilde{\Lambda} = \Lambda$ su $\spn(x_1) = V^\perp$ che ha dimensione 0 o 1 per il Lemma~6.
 
 	\item $\tilde{\Lambda} = \Lambda$ su $V + V^\perp = H$.
 
