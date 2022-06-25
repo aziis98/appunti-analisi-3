@@ -17,6 +17,7 @@ Per avere una base ortonormale di autovettori di un operatore $T$ serve che $T$ 
 \textbf{Definizione.} Dato $H$ spazio di Hilbert complesso o reale, $D$ sottospazio denso di $H$, $T \colon D \to H$ lineare (non necessariamente continuo), dico che $T$ è \textbf{autoaggiunto} se $\left<Tx,y \right> = \left<x,Ty \right>$ per ogni $x,y \in D$.
 Infine, si dice che $T$ è \textbf{definito positivo} se $\left<Tx,x \right> > 0$.
 
+\mybox{%
 \textbf{Proposizione.} Dato $T$ come sopra
 \begin{enumerate}
 
@@ -27,6 +28,10 @@ Infine, si dice che $T$ è \textbf{definito positivo} se $\left<Tx,x \right> > 0
 	\item Se $T$ è definito positivo allora $\underbrace{\left<Tx,x \right>}_{\text{è reale}} > 0$ per ogni $x \in D$ dunque ogni autovalore è $> 0$.
 
 \end{enumerate}
+}
+
+\textbf{Attenzione!} Per dimostrare che gli autovettori di un operatore autoaggiunto $T$ formano una base di $L^2(\Omega)$ è necessario verificare la completezza: infatti, il teorema garantisce solamente l'ortogonalità.
+Per dimostrare la completezza si può, per esempio, usare il teorema di Stone-Weierstrass.
 
 \textbf{Nota.} In dimensione infinita manca un teorema spettrale, ovvero tale che $\ds \ol{\bigoplus_\lambda V_\lambda} = H$.
 
@@ -44,7 +49,7 @@ Mostrare che
 \end{enumerate}
 
 
-In questo caso esiste una base ortonormale di $L^2$ di autovettori di $T$. [TO DO: aggiustare].
+In questo caso esiste una base ortonormale di $L^2$ di autovettori di $T$.
 
 \textbf{Dimostrazione.} 
 \begin{enumerate}
@@ -52,8 +57,8 @@ In questo caso esiste una base ortonormale di $L^2$ di autovettori di $T$. [TO D
 	\item Dati $u,c \in D (= \cper^1)$, allora
 	$$
 		\left<Tu,v \right> = \int_{-\pi}^\pi i \dot u \ol{v} \dd x
-		= \cancel{\left| iu\ol{v} \right|_{-\pi}^\pi} - \int_{-\pi}^\pi iu \ol{v} \dd x
-		= \int_{-\pi}^\pi u \ol{iv} \dd x
+		= \cancel{\left| iu\ol{v} \right|_{-\pi}^\pi} - \int_{-\pi}^\pi iu \dot{\ol{v}} \dd x
+		= \int_{-\pi}^\pi u \ol{i\dot v} \dd x
 	$$
 
 	\item Questo è un esercizio di equazioni differenziali ordinarie. Risolviamo il problema
@@ -65,7 +70,7 @@ In questo caso esiste una base ortonormale di $L^2$ di autovettori di $T$. [TO D
 	\end{cases} 
 	$$
 	%
-	da cui $\dot u + i \lambda u = 0$, che ha polinomio associato $t + i\lambda = 0$ con radice  $-i\lambda$. In conclusione la soluzione del problema sopra è $\alpha e^{i\lambda x}$.
+	da cui $\dot u + i \lambda u = 0$, che ha polinomio associato $t + i\lambda = 0$ con radice  $-i\lambda$. In conclusione la soluzione del problema sopra è $\alpha e^{-i\lambda x}$.
 
 	Dalla condizione al bordo abbiamo che $\alpha e^{i\lambda \pi} = \alpha e^{-i\lambda \pi}$ dunque $e^{i\lambda \pi} = e^{- i\lambda \pi} \longiff e^{2i\lambda \pi} = 1 \longiff \lambda \in \Z$.
 

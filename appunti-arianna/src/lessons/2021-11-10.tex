@@ -14,25 +14,30 @@
 % dove $S_n f(\bar x) = \ds \sum_{n=-N}^N c_n e^{inx}$.
 Il seguente lemma riassume quanto detto finora.
 
-\textbf{Lemma.} (di rappresentazione di $S_n f$ come convoluzione)
+\mybox{%
+\textbf{Lemma} (di rappresentazione di $S_n f$ come convoluzione).
 Data $f \in L^1([-\pi,\pi;\C])$ (estesa a funzioni $2\pi$-periodiche su $\R$) vale
-Ricapitolando data $f$ come sopra abbiamo visto che
 $$
 	S_N f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_N(t) \dd t
-\qquad
-\text{con }
-D_N(t) \coloneqq \sum_{n=-N}^N e^{int} = \frac{\sin\left(\left(N + \frac{1}{2}\right)t\right)}{\sin \left(\frac{t}{2}\right)}
 $$
-\textbf{Osservazione.}
-In particolare: $\ds \frac{1}{2\pi} \int_{-\pi}^\pi D_N(t) \dd t = 1$.
+con
+$$
+	D_N(t) \coloneqq \sum_{n=-N}^N e^{int} = \frac{\sin\left(\left(N + \frac{1}{2}\right)t\right)}{\sin \left(\frac{t}{2}\right)},
+	\qquad \qquad 
+	\frac{1}{2\pi} \int_{-\pi}^\pi D_N(t) \dd t = 1.
+$$
+}
 
-\textbf{Lemma.} (di Riemann-Lebesgue (generalizzato)).
+
+\mybox{%
+\textbf{Lemma} (di Riemann-Lebesgue (generalizzato)).
 Data $g \in L^1(\R)$ e $h \in L^\infty(\R)$ con $h$ $T$-periodica, allora
 $$
-\int_\R g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty}
-\underbrace{\left(\int_\R g(x) \dd x \right)}_a
-\underbrace{\left(\avint_0^T h(x) \dd x \right)}_m
+	\int_\R g(x) h(yx) \dd x \xrightarrow{y \to \pm \infty}
+	\underbrace{\left(\int_\R g(x) \dd x \right)}_a
+	\underbrace{\left(\avint_0^T h(x) \dd x \right)}_m
 $$
+}
 
 %Se supponiamo $\supp g \subseteq [0, 1]$ allora
 %%
@@ -59,7 +64,7 @@ $$
 $$
 per convergenza dominata; dove dalla ii) segue la convergenza puntuale e come dominazione usiamo
 $$
-	\Phi(y, 0) - \Phi(y, s)| \leq 2 \norm{g}_1 \norm{h}_\infty.
+	|\Phi(y, 0) - \Phi(y, s)| \leq 2 \norm{g}_1 \norm{h}_\infty.
 $$
 Mostriamo ora i due punti.
 \begin{enumerate}
@@ -118,6 +123,8 @@ $$
 	|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi]).
 $$
 \qed
+
+Vale la seguente generalizzazione del teorema di convergenza puntuale della serie di Fourier.
 
 \textbf{Proposizione.} Data $f \in L^1([-\pi, \pi])$ estesa per periodicità e dato $\bar x$ tale che esistano i limiti a destra e sinistra di $f$ in $\bar x$ detti $L^+$ e $L^-$ ed $f$ $\alpha$-H\"olderiana a sinistra e destra si può vedere che vale
 $$

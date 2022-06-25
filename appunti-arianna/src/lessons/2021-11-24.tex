@@ -11,6 +11,8 @@ Studiamo ora variazioni alle condizioni di bordo.
 
 Introduciamo delle varianti della serie di Fourier.
 
+\subsection{Basi di Hilbert rilevanti}
+
 \begin{itemize}
 
 	\item \textbf{Serie di Fourier reale}. Data $u \in L^2([-\pi,\pi])$, definiamo
@@ -89,7 +91,7 @@ Introduciamo delle varianti della serie di Fourier.
 
 	\textbf{Dimostrazione.} Mostriamo l'ortonormalità e la completezza.
 
-	\textit{Ortonormalità.} Sono conti. [TO DO]
+	\textit{Ortonormalità.} Sono conti.
 
 	\textit{Completezza.} Data $u \in L^2([0,\pi])$. Sia $\tilde{u}$ l'estensione dispari a $[-\pi,\pi]$. Allora 
 	%
@@ -173,9 +175,11 @@ Ovvero $b_n(t) = b_n^0 e^{-n^2 t}$, da cui
 \end{equation}
 
 
+\mybox{%
 \textbf{Teorema 1} (di esistenza nel futuro).
 Se $u_0 \colon [0,\pi] \to \R$ è continua è $\ds \sum_n |b_n^0| < +\infty$ (basta $u_0 \in \mc{C}^1$ e $u(0) = u(\pi) = 0$).
 Allora la $u$ in \eqref{eq:24nov-soluzione-1} è ben definita e continua su $[0,+\infty) \times \R$ e risolve \eqref{eq:24nov-problema-1}.
+}
 
 \textbf{Dimostrazione.} Dimostriamo il teorema per passi.
 
@@ -218,8 +222,12 @@ Allora le norme delle derivate sono sommabili per ogni $n$, dunque $u \in \mc{C}
 
 \textbf{Domanda.} Quale ipotesi su $u_0$ garantisce $\sum_n |b_n^0| < +\infty$? Basta $u_0 \in \mc{C}^1$ e $u(0) = u(\pi) = 0$.
 
+\mybox{%
 \textbf{Teorema 2} (non esistenza nel passato).
 Esiste $u_0 \colon [0,\pi] \to \R$ $\mc{C}^\infty$, con $u_0(0) = u_0(\pi)$ tale che per ogni $\delta > 0$ \eqref{eq:24nov-problema-1} non ha alcuna soluzione $u \colon (-\delta,0] \times [0,\pi] \to \R$ continua e $\mc{C}^1$ in $t$ e $\mc{C}^2 $ in $x$.
+}
 
+\mybox{%
 \textbf{Teorema 3} (di unicità).
 Sia $u \colon [0, T) \times [-\pi, \pi] \to \C$ continua, $C^1$ nel tempo e $C^2$ nello spazio per $t > 0$. Se $u$ risolve \eqref{eq:15nov2021_problem_1} su $t > 0$ allora $u$ è unica.
+}

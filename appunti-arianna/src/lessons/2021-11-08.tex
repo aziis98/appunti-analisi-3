@@ -9,16 +9,16 @@
 \begin{itemize}
 \item $\cos x = \frac{e^{ix} - e^{-ix}}{2} = \frac{1}{2} e^{ix} + \frac{1}{2} e^{-ix}$, allora $ c_n =
 \begin{cases}
-\frac{1}{2} \quad n = \pm 1 \\
-0 \quad \text{altrimenti} 
+	\frac{1}{2} \quad n = \pm 1 \\
+	0 \quad \text{altrimenti} 
 \end{cases}. 
 $
 
 \item $(\sin x)^2 = (\frac{e^{ix} - e^{-ix}}{2i})^2 = \frac{1}{4} e^{2ix} + \frac{1}{2} - \frac{1}{4} e^{-2ix}$, allora $c_n =
 \begin{cases}
--\frac{1}{4} \quad n = \pm 2 \\
-\frac{1}{2} \quad n = 0 \\
-0 \quad \text{altrimenti} 
+	-\frac{1}{4} \quad n = \pm 2 \\
+	\frac{1}{2} \quad n = 0 \\
+	0 \quad \text{altrimenti} 
 \end{cases} $.
 
 \item $f(x) = x, c_0 = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) \dd x = 0$. Per $n \neq 0$ :
@@ -36,12 +36,13 @@ Valgono le uguaglianze
 \sum_{n \in \Z} \left| c_n \right|^2i & = \frac{1}{2\pi } \norm{x}_2^2 = \frac{1}{2\pi } \int_{-\pi}^\pi x^2 \dd x = \frac{2}{2\pi} \cdot \frac{\pi^3}{3} = \frac{\pi^2}{3}.
 \end{align*}
 %
-Dunque $\ds \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^3}{6}$.
+Dunque $\ds \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$.
 
 \end{itemize}
 
 \section{Regolarità di $f$ e dei coefficienti}
 
+\mybox{%
 \textbf{Proposizione 1.} Data $f \in [-\pi,\pi] \to \C$ tale che
 \begin{itemize}
 \item[(R)] $f \in C^1$ (basta $f$ continua e  $C^1$ a tratti).
@@ -50,23 +51,24 @@ Dunque $\ds \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^3}{6}$.
 \end{itemize}
 
 Allora $\ds c_n(f') \overset{(\star)}{=} in \ c_n(f)$.
+}
 
 Derivazione formale della formula
 %
 $$
-f(x) = \sum_{n \in \Z} c_n e^{inx} \xrightarrow{\text{derivata}} f'(x) = \sum_{n \in \Z} in \ c_n e^{inx} 
+	f(x) = \sum_{n \in \Z} c_n e^{inx} \xrightarrow{\text{derivata}} f'(x) = \sum_{n \in \Z} in \ c_n e^{inx} 
 $$
 %
 
 \textbf{Dimostrazione.} Vale quanto segue
 \begin{align*}
-c_n(f') & = \frac{1}{2\pi} \int_{-\pi}^\pi f(x)' e^{-inx} \dd x \\
-& \underbrace{=}_{\text{int. per parti}} \frac{1}{2\pi} \overbrace{\cancel{\left| f(x) e^{-inx} \right|_{-\pi}^\pi}}^{f(-\pi) = f(\pi), \; e^{-in\pi} = e^{-in (-\pi)}} - \frac{1}{2\pi} \int_{-\pi}^\pi f(x) (-in) e^{-inx} \dd x \\
-& = (in) \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x = in \ c_n(f).
+	c_n(f') & = \frac{1}{2\pi} \int_{-\pi}^\pi f(x)' e^{-inx} \dd x \\
+	& \underbrace{=}_{\text{int. per parti}} \frac{1}{2\pi} \overbrace{\cancel{\left| f(x) e^{-inx} \right|_{-\pi}^\pi}}^{f(-\pi) = f(\pi), \; e^{-in\pi} = e^{-in (-\pi)}} - \frac{1}{2\pi} \int_{-\pi}^\pi f(x) (-in) e^{-inx} \dd x \\
+	& = (in) \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd x = in \ c_n(f).
 \end{align*} 
 \qed
 
-\textbf{Esercizio.} Trovare l'analogo della formula della derivata nel caso di cui non valga la condizione al bordo (CB). [TO DO]
+\textbf{Nota.} La formula della derivata nel caso di cui non valga la condizione al bordo (CB) si dimostra allo stesso modo ma il primo termine dell'integrazione per parti non si cancella. 
 
 \textbf{Osservazione.} In verità, basta ancora meno. Possiamo riformulare la Proposizione 1 come segue.
 
@@ -92,11 +94,13 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 \item La serie di Fourier converge \footnote{$\sum a_n(x)$ converge totalmente se converge la serie $\sum \norm{a_n (x)}_\infty$.}{totalmente}.
 \end{enumerate}
 
+\newpage
+
 \textbf{Dimostrazione.}
 \begin{enumerate}
 
 	\item $\ds \sum_{n \in \Z} n^2 \left| c_n(f) \right|^2 \overbrace{=}^{(\ast)} \sum_{n \in \Z} \left| c_n(f') \right|^2
-	\underbrace{=}_{\text{Parseval}} \norm{f'}_2^2 / 2\pi \overbrace{<}^{\mathclap{f' \in L^1([-\pi,\pi], \C) \subset L^2([-\pi,\pi], \C) }} +\infty$.
+	\underbrace{=}_{\text{Parseval}} \norm{f'}_2^2 / 2\pi \overbrace{<}^{\mathclap{f' \in L^\infty([-\pi,\pi], \C) \subset L^2([-\pi,\pi], \C) }} +\infty$.
 
 	\item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| 
 	\underbrace{\leq}_{(n \neq 0)} \sum_{n \in \Z} \left| n \right| \left| c_n(f) \right| \cdot \frac{1}{\left| n \right|^{1-\alpha }}
@@ -106,8 +110,6 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 	\item Dal punto precedente con $\alpha = 0$ otteniamo $\ds \sum \norm{c_n(f) e^{inx}}_\infty = \sum_{n \in \Z} \left| c_n(f) \right| < +\infty $.
 \qed
 \end{enumerate}
-
-\newpage
 
 \hypertarget{prop:2021-08nov_prop_3}{%
 \textbf{Proposizione 3.}} Data $f \in [-\pi,\pi] \to \C$ tale che
@@ -127,7 +129,9 @@ Allora
 	\item La serie di Fourier di $f$ converge totalmente con tutte le derivate fino all'ordine $k-1$.
 \end{enumerate}
 
+\mybox{%
 \textbf{Proposizione 4.} Se $f$ è continua e $\ds \sum_{n \in \Z} \left| n \right|^{k-1} \left| c_n(f) \right| < +\infty $ allora $f \in C^{k-1}$ e soddisfa $(CB_{k-1})$.
+}
 
 % \textbf{Proposizione 4.} Se $f$ è continua e $\ds \sum_{n \in \Z} \left| n \right|^k \left| c_n(f) \right| < +\infty $ allora $f \in C^k$ e soddisfa $(CB_k)$.
 
@@ -136,21 +140,29 @@ Allora
 	D^h (c_n(f) e^{inx}) & = c_n(f) (in)^h e^{inx} \\
 	\norm{D^h (c_n(f) e^{inx})} & = \left| c_n(f) \right| \left| n \right|^h \leq \left| c_n(f) \right| \left| n \right|^{k-1}.
 \end{align*}
-Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente e quindi uniformemente per ogni $h \leq k-1$ ad $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
-Ma
-%
-$$
-	\frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
-\leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \rightarrow +\infty} 0.
-$$
-%
-Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
-Allora $f = \tilde{f}$ nel senso $L^2$. Siccome $f,\tilde{f}$ sono continue e coincidono quasi ovunque, vale $f = \tilde{f}$.
-Abbiamo usato il lemma
+% Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente
+%e quindi uniformemente per ogni $h \leq k-1$ ad $\tilde{f} \colon  [-\pi,\pi] \to \C$ di classe $C^{k-1}$.
+%Ma
+%%
+%$$
+%	\frac{1}{\sqrt{2\pi} } \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_2
+%\leq \norm{\sum_{-N}^N c_n e^{inx} - \tilde{f}(x)}_\infty \xrightarrow{N \rightarrow +\infty} 0.
+%$$
+%%
+%Ma $\ds \sum c_n e^{inx} \to \tilde{f}$ uniformemente, allora $\ds \sum_{-N}^N c_n e^{inx} \to \tilde{f}$ in $L^2$.
+%Allora $f = \tilde{f}$ nel senso $L^2$. Siccome $f,\tilde{f}$ sono continue e coincidono quasi ovunque, vale $f = \tilde{f}$.
+%Abbiamo usato il lemma
+Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente (e quindi uniformemente) con tutte le derivate fino all'ordine $k-1$ dunque per il teorema di derivazione per serie segue la tesi.
 
-\vs
+% \textbf{Teorema} (di derivazione per serie.) Data una successione di funzioni $f_n$ di classe $C^h$, se la serie $\sum_{n} f_n $ converge uniformemente alla funzione $S$ e se la serie delle derivate $k$-esime per $k \leq h$ converge uniformemente alla funzione $W$ allora $S$ è di classe $C^h$ e $W = \dd / \dd x^k S$, cioè
+% $$
+% 	W = \sum_n \frac{\dd}{\dd x^k} f_n = \frac{\dd}{\dd x^k} \left( \sum_n f_n \right) = \frac{\dd}{\dd x^k} S.
+% $$
 
-\textbf{Lemma.} Date $f,\tilde{f}$ continue e $f(x) = \tilde{f}(x)$ per quasi ogni $x$, allora  $f(x) = \tilde{f}(x)$ per ogni $x$.
+
+%\vs
+
+%\textbf{Lemma.} Date $f,\tilde{f}$ continue e $f(x) = \tilde{f}(x)$ per quasi ogni $x$, allora  $f(x) = \tilde{f}(x)$ per ogni $x$.
 \qed
 
 \vs
@@ -160,14 +172,16 @@ Abbiamo usato il lemma
 
 \section{Convergenza puntuale della serie di Fourier}
 
-\textbf{Teorema.} Data $f \in L^1([-\pi,\pi], \C) $ (estesa in modo $2\pi$-periodico a tutto $\R$) tale che esiste $\ol{x} \in \R$ ed esiste $\alpha > 0$ tale che $f$ è $\alpha$-Holderiana in $\ol{x}$, cioè esiste $\delta > 0 $, $M < +\infty$ per cui
+\mybox{%
+\textbf{Teorema.} Data $f \in L^1([-\pi,\pi], \C) $ (estesa in modo $2\pi$-periodico a tutto $\R$), $\ol{x} \in \R$ e $f$ è $\alpha$-Hölderiana con $\alpha > 0$, cioè esistono $\delta > 0 $ e $M < +\infty$ per cui
 %
 $$
-\left| f(\ol{x} +t) - f(\ol{x}) \right| \leq M \left| t \right|^\alpha \qquad \forall t \colon \left| t \right| < \delta \longiff \limsup_{t \to 0} \frac{\left| f(\ol{x} + t) - f(\ol{x}) \right|}{\left| t \right|^\alpha } < +\infty.
+	\left| f(\ol{x} +t) - f(\ol{x}) \right| \leq M \left| t \right|^\alpha \qquad \text{per $t$ tale che } \left| t \right| < \delta,
 $$
 %
-Allora $\ds \sum_{-\infty}^\infty c_n(f) e^{in\ol{x}}$ converge a $f(\ol{x})$.
+allora $\ds \sum_{-\infty}^\infty c_n(f) e^{in\ol{x}}$ converge a $f(\ol{x})$.
 Cioè $\ds \sum_{-N}^N c_n(f) e^{in\ol{x}}\xrightarrow{N \to \infty} f(\ol{x})$ 
+}
 
 \textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con "convoluzione":
 

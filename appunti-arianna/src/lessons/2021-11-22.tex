@@ -38,8 +38,10 @@ Vedremo i seguenti risultati
 	\item Unicità.
 \end{itemize}
 
+\mybox{%
 \textbf{Teorema 1.}
 Dati $u_0 \in C^2_{\text{per}}, u_1 \in C^1_{\text{per}}$, allora esistono $c_0^0, c_0^1 \in \C$ e $\varphi^+, \varphi^- \in C^2_{\text{per}}$ (con integrale nullo sul periodo) tali che la $u$ in ($**$) è di classe $C^2$ su $\R \times \R$, $2\pi$-periodica in $x$ e risolve (P). Inoltre, se $u_0,u_1$ sono reali $u$ è reale.
+}
 
 \textbf{Lemma 4.}
 Date $h, g \in C^1(\R)$ con $g$ primitiva di $h$ e $T > 0$ allora $g$ è $T$-periodica $\iff h$ è $T$-periodica e $\int_0^T h(x) \dd x = 0$.
@@ -93,8 +95,10 @@ dove $g_1$ è la primitiva di $h_1$.
 % \textbf{Osservazione.}
 % Il termine ``$c_0^1 t$'' rappresenta il caso in cui è l'anello di base a ruotare.
 
+\mybox{%
 \textbf{Teorema 2.}
 Siano $u_0, u_1 \in C^0_\text{per}$ tali che $\sum n^2 |c_n^0| < +\infty$ e $\sum |n| \cdot |c_n^1| < +\infty$. Allora ($*$) definisce una funzione $u \colon \R \times \R \to \C$ di classe $C^2$, $2\pi$-periodica in $x$ che risolve (P). Inoltre, se $u_0,u_1$ sono reali $u$ è reale.
+}
 
 \textbf{Dimostrazione.}
 $$
@@ -129,7 +133,7 @@ Abbiamo
 che è sommabile se $k + h \leq 2$ in $n$. La serie in ($*$) converge totalmente su $\R \times \R$ con tutte le derivate di ordine $\leq 2 \implies u$ è $C^2$.
 
 \textit{Passo 3.}
-Dimostriamo che $u$ risolve il problema (P). [TO DO: aggiungi link]
+Dimostriamo che $u$ risolve il problema \eqref{eq:17nov2021_problem_1}.
 
 % Infatti $u$ la risolve $c_0^0 + c_0^1 t$ e $v^\pm_n(x, t)$ e derivate e serie commutano. 
 % $u$ risolve l'equazione perché derivata e serie commutano e per come abbiamo impostato (P$'$) $c_n(u(0, \curry)) = c_n(u_0) \implies u(0, \curry) = u_0$. $c_n(u_t(0, \curry)) = c_n(u_1) \implies u_t(0, \curry) = u_1$.
@@ -142,11 +146,14 @@ Inoltre
 \end{align*}
 perché le funzioni sono continue.
 
+\mybox{%
 \textbf{Teorema 3} (Unicità).
 Se $u \colon I \times [-\pi, \pi] \to \C$ è $C^2$ in $x$ e $t$ e risolve (P) allora è unica.
+}
 
 \textbf{Dimostrazione.}
-Si ripercorre la stessa dell'equazione del calore. Dimostriamo che i coefficienti $c_n(t) = c_n(u(t, \curry))$ definiti per $t \in I$ risolvono (P$'$)...
+Si ripercorre la stessa dell'equazione del calore.
+
 
 \section{Altre applicazioni della serie di Fourier}
 

@@ -46,6 +46,7 @@ $$
 
 \newpage
 
+\mybox{%
 \textbf{Teorema.} Data $f \in L^1(\R;\C)$, allora
 \begin{enumerate}
 
@@ -58,6 +59,7 @@ $$
 	\item $\hat{f}$ è infinitesima.
 
 \end{enumerate}
+}
 
 \textbf{Dimostrazione.} 
 \begin{enumerate}
@@ -65,7 +67,7 @@ $$
 	\item $\hat{f}(y)$ è ben definita per ogni $y \in \R$. Infatti, $f(x) e^{-iyx} \in L^1$ dato che
 	%
 	$$
-		\int_{-\infty}^\infty \left| f(x) e^{-iyx} \right| \dd x 
+		\norm{\hat{f}}_1 \leq \int_{-\infty}^\infty \left| f(x) e^{-iyx} \right| \dd x 
 		= \int_{-\infty}^\infty \left| f(x) \right| \dd x
 		= \norm{f}_1.
 	$$
@@ -75,7 +77,7 @@ $$
 	\item $\norm{\hat{f}}_\infty \leq \norm{f}_1$. Infatti,
 	%
 	$$
-		|\hat{f}|_\infty \leq \int \left| f(x) e^{-iyx} \right| \dd x = \norm{f}_1
+		|\hat{f}| \leq \int \left| f(x) e^{-iyx} \right| \dd x = \norm{f}_1
 	$$
 	%
 

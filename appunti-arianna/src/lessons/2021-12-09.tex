@@ -7,7 +7,7 @@ Se $f,xf \in L^1(\R;\C)$, allora $\hat{f} \in C^1(\R;\C)$ e $(\hat{f})' = \hat{-
 
 \textbf{Dimostrazione.} Vale $|x^h| \leq 1 + |x|^k$ per ogni $x$ e per ogni $h=1,\ldots,k$.
 Allora $|x^hf| \leq (1 + |x|^k)|f| \in L^1$.
-Il resto dell'enunciato è per induzione su $k$.
+Il resto dell'enunciato è per induzione su $k$ usando la Proposizione~4.
 
 \vs
 
@@ -18,7 +18,7 @@ Il resto dell'enunciato è per induzione su $k$.
 \textbf{Teorema} (Paley-Weiner).
 Se $e^{\alpha |x|} \cdot f(x) \in L^1$ per qualche $\alpha > 0$, allora $\hat{f}$ è analitica\footnote{Restrizione di $g \colon \underbrace{\R \times (-\alpha,\alpha)}_{\R \times \R \simeq \C} \to \C$ olomorfa}.
 
-\textbf{Dimostrazione.} In $\underset{y}{\R} \times \underset{t}{\R} \simeq \underset{z=x+it}{\C}$ definisco $g(z)$.
+\textbf{Dimostrazione.} In $\underset{y}{\R} \times \underset{t}{\R} \simeq \underset{z=y+it}{\C}$ definisco $g(z)$.
 
 Ricordiamo che $\hat{f}(y) = \int_{-\infty}^\infty f(x) e^{-iyx} \dd x $.
 Poniamo
@@ -32,8 +32,8 @@ $$
 Infatti,
 %
 $$
-	\int_{-\infty}^\infty f(x) e^{-izx} \dd x 
-	= \int_{-\infty}^\infty |f(x)| e^{tx} \dd t
+	\left| \int_{-\infty}^\infty f(x) e^{-izx} \dd x  \right|
+	\leq \int_{-\infty}^\infty |f(x)| e^{tx} \dd t
 	\leq \int_{-\infty}^\infty |f(x)| e^{\alpha |x|} \dd x < +\infty
 $$
 %
@@ -41,7 +41,8 @@ $$
 \textit{Passo 2.} Mostriamo che $g(z)$ è olomorfa su $\R \times (-\alpha,\alpha)$.
 Sviluppo $g$ in serie di potenze in $0$.
 
-\textbf{Nota.} Questo mi serve per dire che è olomorfa in una palla di raggio $\alpha $ centrata in $0$. Per concludere bisogna traslare il centro la palla per tutta la retta reale e mostrare la stessa cosa [TO DO: spiegare meglio + disegno palla].
+\textbf{Nota.} Questo mi serve per dire che è olomorfa in una palla di raggio $\alpha $ centrata in $0$. Per concludere bisogna traslare il centro la palla per tutta la retta reale e mostrare la stessa cosa.
+% [TO DO: spiegare meglio + disegno palla].
 
 %
 $$
@@ -73,7 +74,9 @@ Per concludere si dimostra (allo stesso modo) che $g$ si sviluppa in serie in og
 
 \vs
 
-\textbf{Corollario.} Se $f \in L^1$ è olomorfa e a supporto compatto allora $\hat{f}$ è la restrizione di $g \colon \C \to \C$ olomorfa \textbf{[TO DO: controllare]}.
+% \textbf{Corollario.} Se $f \in L^1$ è olomorfa e a supporto compatto allora $\hat{f}$ è la restrizione di $g \colon \C \to \C$ olomorfa \textbf{[TO DO: controllare]}.
+
+\textbf{Corollario.} Se $f \in L^1$ e $f$ ha supporto compatto allora $\hat{f}$ è analitica, anzi $\hat{f}$ coincide su $\R$ con una funzione olomorfa $g \colon \C \to \C$.
 
 \textbf{Nota.} Se $f \in L^1$ e a supporto compatto, si ha $f(x) e^{\alpha |x|} \in L^1$ per ogni $\alpha$.
 
