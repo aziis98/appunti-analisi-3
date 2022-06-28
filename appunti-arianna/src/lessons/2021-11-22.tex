@@ -97,8 +97,14 @@ dove $g_1$ è la primitiva di $h_1$.
 
 \mybox{%
 \textbf{Teorema 2.}
-Siano $u_0, u_1 \in C^0_\text{per}$ tali che $\sum n^2 |c_n^0| < +\infty$ e $\sum |n| \cdot |c_n^1| < +\infty$. Allora ($*$) definisce una funzione $u \colon \R \times \R \to \C$ di classe $C^2$, $2\pi$-periodica in $x$ che risolve (P). Inoltre, se $u_0,u_1$ sono reali $u$ è reale.
+Siano $u_0, u_1 \colon [-\pi,\pi] \to \C$ continue e tali che 
+$$
+	\sum n^2 |c_n^0| < +\infty \qquad \qquad \sum |n| \cdot |c_n^1| < +\infty.
+$$
+Allora ($*$) definisce una funzione $u \colon \R \times \R \to \C$ di classe $C^2$, $2\pi$-periodica in $x$ che risolve (P). Inoltre, se $u_0,u_1$ sono reali $u$ è reale.
 }
+
+\newpage
 
 \textbf{Dimostrazione.}
 $$
@@ -110,7 +116,7 @@ $$
 	)
 $$
 
-\textit{Passo 1.}
+\fbox{Passo 1}
 Dimostriamo che $u \in C^0(\R \times \R)$ e $2\pi$-periodica in $x$. 
 
 La funzione $u$ soddisfa le condizioni di periodicità. Per mostrare la continuità è sufficiente mostrare che la serie converge totalmente su $\R \times \R$. Notiamo che
@@ -119,7 +125,7 @@ $$
 $$
 dunque sono sono sommabili in $n$.
 
-\textit{Passo 2.}
+\fbox{Passo 2}
 Mostriamo che $u \in C^2(\R \times \R)$. 
 
 Abbiamo 
@@ -132,7 +138,7 @@ Abbiamo
 %
 che è sommabile se $k + h \leq 2$ in $n$. La serie in ($*$) converge totalmente su $\R \times \R$ con tutte le derivate di ordine $\leq 2 \implies u$ è $C^2$.
 
-\textit{Passo 3.}
+\fbox{Passo 3}
 Dimostriamo che $u$ risolve il problema \eqref{eq:17nov2021_problem_1}.
 
 % Infatti $u$ la risolve $c_0^0 + c_0^1 t$ e $v^\pm_n(x, t)$ e derivate e serie commutano. 
@@ -153,6 +159,8 @@ Se $u \colon I \times [-\pi, \pi] \to \C$ è $C^2$ in $x$ e $t$ e risolve (P) al
 
 \textbf{Dimostrazione.}
 Si ripercorre la stessa dell'equazione del calore.
+
+\textbf{Nota.} $I$ è un intervallo che può contenere lo zero.
 
 
 \section{Altre applicazioni della serie di Fourier}
