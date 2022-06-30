@@ -1,0 +1,99 @@
+Data $f \colon \R \to \C$ poniamo
+%
+$$
+	f(x) \overset{(\ast)}{=} \frac{1}{2\pi} \int_{-\infty}^\infty \hat{f}(y) e^{iyx} \dd y 
+	\qquad \hat{f}(y) \coloneqq \int_{-\infty}^\infty f(x) e^{-iyx} \dd x.
+$$
+%
+Dove $\hat{u}$ si chiama \textit{trasformata di Fourier}\footnote{Sostituisce la serie di Fourier quando si passa da funzioni su $\R$ $2\pi$-periodiche a funzioni su $\R$.} di $u$ e la formula $(\ast)$ si dice \textit{formula di inversione}.
+
+\textit{Derivazione formale} (della formula di inversione).
+Prendiamo $f \in \mc{C}_C^1(\R,\C)$ e $\delta > 0$ tale che $\supp(f) \subset [-\pi / \delta, \pi / \delta]$. 
+
+Scriviamo $f$ in serie di Fourier su $[-\pi / \delta, \pi / \delta]$ (serve un cambio di variabile per ricondursi alla serie di Fourier su $[-\pi,\pi]$).
+%
+\begin{gather*}
+	f(x) = \sum_{n \in \Z} c_n^\delta (f) e^{in \delta x} \\
+	c_n^\delta (f) \coloneqq \frac{\delta}{2\pi} \int_{-\pi / \delta}^{\pi / \delta} f(x) e^{-in \delta x} \dd x
+	= \frac{\delta}{2\pi} \int_{-\infty}^\infty f(x) e^{-in \delta x} \dd x
+	= \frac{\delta}{2\pi} \hat{f}(n\delta).
+\end{gather*}
+Dunque,
+%
+$$
+	f(x) = \frac{1}{2\pi} \sum_{n \in \Z} \frac{\delta}{2\pi} \underbrace{\hat{f}(n\delta) e^{i(n\delta)x}}_{\hat{f}(y) e^{iyx} \; \text{calcolata in } y = n\delta}
+$$
+%
+dove $\ds \sum_{n \in \Z} \frac{\delta}{2\pi}\hat{f}(n\delta) e^{i(n\delta)x} $ è la somma di Riemann di $\ds \int_{-\infty}^{\infty} \hat{f} e^{iyx} \dd y$.
+Dunque
+%
+$$
+	f(x) = \frac{1}{2\pi} \sum_{n \in \Z} \frac{\delta}{2\pi} \hat{f}(n\delta) e^{i(n\delta)x}
+	\xrightarrow{\delta \to 0}
+	\frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(y) e^{iyx} \dd y.
+$$
+%
+Quest'ultimo passaggio non è giustificato rigorosamente ma si può rendere rigoroso per $f \in \mc{C}_C^1(\R)$.
+
+\vss
+
+\textbf{Definizione.} Data $f \in L^1(\R; \C)$ la \textbf{trasformata di Fourier} $\hat{f}$ è definita da
+%
+$$
+	\hat{f}(y) = \int_{-\infty}^\infty f(x) e^{-ixy} \dd x \quad \forall y \in \R.
+$$
+%
+
+\newpage
+
+\mybox{%
+\textbf{Teorema.} Data $f \in L^1(\R;\C)$, allora
+\begin{enumerate}
+
+	\item $\hat{f}$ è ben definita in ogni punto di $\R$.
+
+	\item Vale $\norm{\hat{f}}_\infty \leq \norm{f}_1$.
+
+	\item $\hat{f}$ è continua
+
+	\item $\hat{f}$ è infinitesima.
+
+\end{enumerate}
+}
+
+\textbf{Dimostrazione.} 
+\begin{enumerate}
+
+	\item $\hat{f}(y)$ è ben definita per ogni $y \in \R$. Infatti, $f(x) e^{-iyx} \in L^1$ dato che
+	%
+	$$
+		\norm{\hat{f}}_1 \leq \int_{-\infty}^\infty \left| f(x) e^{-iyx} \right| \dd x 
+		= \int_{-\infty}^\infty \left| f(x) \right| \dd x
+		= \norm{f}_1.
+	$$
+	%
+
+
+	\item $\norm{\hat{f}}_\infty \leq \norm{f}_1$. Infatti,
+	%
+	$$
+		|\hat{f}| \leq \int \left| f(x) e^{-iyx} \right| \dd x = \norm{f}_1
+	$$
+	%
+
+
+	\item $\hat{f}$ è continua. Se $y_n \to y$, allora
+	%
+	$$
+		\hat{f}(y_n) = \int_{-\infty}^\infty f(x) e^{-ixy_n} \dd x \xrightarrow{n \to \infty}
+		\int_{-\infty}^\infty f(x) e^{-iny} \dd x = \hat{f}(y)
+	$$
+	%
+	per convergenza dominata. Infatti, la convergenza puntuale segue dalla continuità dell'esponenziale; mentre la dominazione è data da $|f(x) e^{-iyx}| = |f(x)|$.
+
+
+	\item $\hat{f}(y) \xrightarrow{y \to \pm \infty} 0$ per il lemma di Riemann-Lebesgue.
+
+\end{enumerate}
+\qed
+

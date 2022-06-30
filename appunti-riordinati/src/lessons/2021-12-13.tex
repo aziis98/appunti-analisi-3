@@ -1,0 +1,141 @@
+\subsection{Calcolo TdF - seconda parte}
+
+Abbiamo visto che le trasformate di $f(x) = e^{-|x|}$ e $g(x) = 1 / (1 + x^2)$ sono rispettivamente
+$$
+\hat f(y) = \frac{2}{1 + y^2}
+\qquad
+\hat g(y) = \pi e^{-|y|}
+$$
+Vorremo provare a trovare ora le trasformate funzioni come $x^2 e^{-|x|}$ o $x / (1 + x^2)$ usando le proprietà delle trasformate con le derivate. Ricordiamo che
+$$
+\begin{gathered}
+	f, f' \in L^1 \implies \hat{f'\,}(y) = i y \hat f(y) \\
+	f, x f \in L^1 \implies \hat{f}'(y) = \hat{-i x f\,}(y)
+\end{gathered}
+$$
+dunque intuitivamente per $x^2 e^{-|x|}$ possiamo fare
+$$
+x^2 e^{-|x|} = i (-i) x (x e^{-|x|}) \implies \mathcal F(i (-i) x (x e^{-|x|})) = i (\mathcal F(x e^{-|x|}))'(y)
+$$
+ora dobbiamo calcolare $\mathcal F(x e^{-|x|})(y)$
+$$
+	\mathcal F(x e^{-|x|})(y) = i \mathcal F(-ix e^{-|x|}) = i \mathcal F(e^{-|x|})'(y) = i \left(\frac{2}{1 + y^2}\right)' = \frac{-4iy}{(1+y^2)^2}
+$$
+dunque in conclusione abbiamo
+$$
+	\mathcal F(x^2 e^{-|x|})(y) = i \left(\frac{-4iy}{(1 + y^2)^2}\right)' = 4 \left(\frac{y}{(1 + y^2)^2}\right)'
+$$
+Invece per quanto riguarda
+$$
+g(x) = \frac{x}{1+x^2} \notin L^1
+$$
+però è in $L^2$ ma per poterne calcolare la trasformata di Fourier dovremmo passare per delle troncate di $g(x)$ come riportato nell'\hyperlink{oss-trasformata-su-ldue}{Osservazione vista a teoria}. 
+
+\textbf{Nota.} Possiamo però vedere chi dovrebbe essere il candidato formale usando le tecniche di prima
+$$
+	\frac{x}{1+x^2} = \frac{i (-ix)}{1+x^2} \rightsquigarrow 
+	i \mathcal F \left( (-ix) \frac{1}{1+x^2} \right)(y)
+	= i \mathcal F \left( \frac{1}{1+x^2} \right)'(y) = i \pi (e^{-|y|})'(y)
+$$
+però notiamo che la derivata di $e^{-|y|}$ non è ben definita in $0$.
+
+\newpage
+
+\textbf{Esercizio.}
+Calcolare la trasformata di Fourier di
+$$
+	f(x) = \One_{[-r, r]}(x)
+$$
+Iniziamo a svolgere il conto
+$$
+	\hat f(y) = \int_{-\infty}^\infty \One_{[-r, r]}(x) e^{-ixy} \dd x = \int_{-r}^r e^{-ixy} \dd x
+	=
+	\begin{cases}
+		2r & y=0 \\
+		\ds \int_{-r}^r e^{-ixy} \dd x & y \neq 0 \\
+	\end{cases}
+$$
+nel caso $y \neq 0$ continuiamo a svolgere il conto
+$$
+	\int_{-ry}^{ry} \frac{e^{-it}}{y} \dd t 
+	= \frac{1}{y} \int_{-ry}^{ry} [\cos(t) - i\underbrace{\sin(t)}_{\text{dispari}}] \dd t
+	= \frac{2}{y} \sin(ry)
+$$
+dunque in conclusione abbiamo
+$$
+	\mathcal F(\One_{[-r, r]}(x)) =
+	\begin{cases}
+		2r & y=0 \\
+		\ds \frac{2}{y} \sin(ry) & y \neq 0 \\
+	\end{cases}
+$$
+
+\textbf{Esercizio.}
+Un esercizio simile è calcolare $\mathcal F(\One_{[0, r]}(x))$, ovvero il caso non centrato e poi provare a calcolare (come integrale improprio di Analisi 1) l'integrale
+$$
+\int_{0}^{\infty} \frac{\sin(t)}{t} \dd t = \lim_{r \to \infty}\int_{0}^{r} \frac{\sin(t)}{t} \dd t
+$$
+
+\subsubsection{Trasformata della Gaussiana}
+
+Calcoliamo ora la trasformata della funzione gaussiana $e^{-x^2 / 2}$.
+
+\begin{itemize}
+	\item \textbf{Metodo I:} Troviamo un'equazione differenziale (lineare) risolta dalla gaussiana, sia $f(x) = e^{-x^2 / 2}$ allora vale
+		$$
+		f'(x) = -x e^{-x^2/2} = -x f(x)
+		$$
+		e per il decadimento della gaussiana abbiamo che $f, f' \in L^1$ dunque
+		$$
+		i y \hat f(y) = \hat{f'(x)}(y) = -i \mathcal F(-i x f(x))(y) = i (\hat{f})' (y)
+		$$
+		dunque $\hat f = h(y)$ con $h$ tale che $h'(y) = -y h(y) \implies h(y) = k e^{-y^2 / 2}$, rimane da trovare $k$. Calcoliamo direttamente $h(0)$
+		$$
+		\begin{gathered}
+			h(0) 
+			= \hat{e^{-x^2/2}(0)} 
+			= \int_{-\infty}^\infty e^{-x^2 / 2} e^{-ix \cdot 0} \dd x
+			= \int_{-\infty}^\infty e^{-x^2 / 2} \dd x = \sqrt{2\pi} \\
+			\implies \hat{e^{-x^2/2}} = \sqrt{2\pi} e^{-y^2 / 2}
+		\end{gathered}
+		$$
+
+	\item \textbf{Metodo II:} Studiamo la funzione di variabile complessa $g(z) = e^{-z^2/2}$ e integriamola lungo un percorso che passi per $[-r, r] \times \{ 0 \} \subset \R^2 \approx \C$.
+		$$
+		\begin{aligned}
+			\mathcal F(\hat{e^{-x^2/2}})(y) 
+			&= \int_\R e^{-x^2 / 2} \cdot e^{-ixy} \dd x
+			= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy)} \dd x \\
+			&= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2 - y^2)} \dd x 
+			= \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2)} \cdot e^{-y^2 / 2} \dd x \\
+			&= e^{-y^2 / 2} \int_\R e^{-\frac{1}{2}(x^2 + 2ixy + y^2)} \dd x 
+			= e^{-y^2 / 2} \lim_{r \to \infty} \int_{-r}^r \underbrace{e^{-\frac{1}{2}(x + iy)^2}}_{g(x + iy)} \dd x
+		\end{aligned}
+		$$
+		Consideriamo ora il rettangolo $D_r \coloneqq \{ z \mid \operatorname{Im} z \in [0, iy] \text{ e } \operatorname{Re} z \in [-r, r] \}$ dunque poiché $g(z)$ non ha poli su $D_r$ abbiamo
+		$$
+		\begin{gathered}
+			\int_{\pd D_r} g = \sum \text{Res. su $D_r$} = 0 \\
+			0 = \int_{-r}^r g(x) \dd x - \int_{-r}^r g(x + iy) \dd x 
+			+ i \int_{0}^{y} g(r + ix) \dd x - i\int_{0}^{y} g(-r + i(y-x)) \dd x.
+		\end{gathered}
+		$$
+		I termini verticali vanno a zero, infatti:
+		$$
+			\int_0^y e^{-(r+ix)^2 / 2} \dd x
+			= e^{-r^2 / 2} \int_0^y e^{-ixr - x^2/2} \dd x \leq y e^{-r^2 / 2} \xrightarrow{r \to +\infty} 0.
+		$$
+		L'altro integrale è analogo. In conclusione abbiamo
+		$$
+		\begin{aligned}
+			\hat{e^{-x^2 / 2}} (y) 
+			&= \lim_{r \to +\infty} \int_{-r}^r e^{-y^2 / 2} e^{-(x + iy)^2 / 2} \dd x 
+			= e^{-y^2 / 2} \left[ \lim_{r \to +\infty} \int_{-r}^r e^{-x^2 / 2} \dd x + o(1) \right] = \\
+			&= e^{-y^2 / 2} \int_{-\infty}^\infty e^{-x^2 / 2} \dd x = \sqrt{2\pi} e^{-y^2 / 2} 
+		\end{aligned}
+		$$
+		\qed
+
+\end{itemize}
+
+

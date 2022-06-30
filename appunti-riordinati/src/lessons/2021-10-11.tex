@@ -1,0 +1,194 @@
+%
+% Lezione dell'11 Ottobre 2021
+%
+\newpage
+
+\section{Controesempi sulle convergenze}
+
+Vediamo un controesempio che mostra che tutte le implicazioni sui vari tipi di convergenza sono ottimali ovvero
+\begin{enumerate}
+
+	\item \label{item:ce_1} $f_n \to f$ in misura $\centernot\implies f_n \to f$ q.o.
+
+	\item \label{item:ce_2} $f_n \to f$ in $L^p$ con $p < +\infty \centernot\implies f_n \to f$ q.o.
+
+	\item \label{item:ce_3} $\mu(E_n) \to 0 \centernot\implies$ per q.o $x$ si ha $x \notin E_n$ definitivamente. 
+
+\end{enumerate}
+
+\textbf{Dimostrazione.}
+Consideriamo gli insiemi $I_1 = \left[ 1, 1 + \frac{1}{2} \right], I_2 = \left[1 + \frac{1}{2}, 1 + \frac{1}{2} + \frac{1}{3} \right], \dots$
+$$
+	I_n \coloneqq \left[ \; \sum_{k=1}^n \frac{1}{k}, \; \sum_{k=1}^{n+1} \frac{1}{k} \; \right]
+$$
+e consideriamo la loro proiezione ``modulo'' $[0, 1]$ usando la funzione $p \colon \R \to [0, 1)$ \textit{parte frazionaria} data da
+$$
+	p(x) \coloneqq x - \lfloor x \rfloor
+$$
+e chiamiamo $E_n \coloneqq p(I_n)$. Per ogni $n$ abbiamo che $|I_n| = |E_n| = 1 / n$ e $\bigcup_n I_n = [1, +\infty)$ (in quanto $\sum_{k=1}^\infty \frac{1}{k} = +\infty$) e quindi ogni $x \in [0, 1)$ appartiene ad $E_n$ per infiniti $n$ ed in particolare questo mostra la \ref{item:ce_3}. 
+
+% [TODO: Disegnino]
+
+Per la \ref{item:ce_1} basta notare che $\One_{E_n} \to 0$ in misura (in quanto $|E_n| \to 0$) ma $\One_{E_n} \centernot\to 0$ $\mu$-q.o. dato che $x \in E_n$ per infiniti $n$, anzi $\forall x \in [0, 1) \; \One_{E_n}(x) \centernot\to 0$ e la \ref{item:ce_2} segue analogamente.
+\qed
+
+\section{Approssimazioni di funzioni in $L^p$}
+
+% Ricordiamo la nozione di insieme denso in uno spazio metrico.
+% Sia (X,d) uno spazio metrico e Y ⊆ X. Allora Y è denso in X se solo se
+% per ogni x ∈ X, esiste una successione y_n in Y che tale che x = lim_n y_n.
+
+Vediamo ora alcune classi di funzioni dense in $L^p$ che risulteranno essere un utile strumento da usare nelle dimostrazioni.
+
+\textbf{Nota.} Ricordiamo la nozione di insieme denso in uno spazio metrico.
+Sia $(X,d)$ uno spazio metrico e $Y \subset X$. Allora Y è denso in X se solo se
+per ogni $x \in X$, esiste una successione $(y_n)_{n \in \N}$ in $Y$ che tale che $x = \lim_n y_n$.
+
+Per ora sia $(X, \mc A, \mu)$ in generale.
+
+\mybox{%
+\textbf{Proposizione 1.} 
+Le funzioni limitate in $L^p$ sono dense in $L^p$.
+}
+
+\textbf{Dimostrazione.}
+Data $f \in L^p(X)$ cerchiamo una successione di funzioni $f_n \in L^p(X)$ limitate tali che $f_n \to f$ in $L^p$, consideriamo
+$$
+	f(x) \coloneqq (f(x) \land n) \lor (-n)
+$$
+vorremmo mostrare che $f_n \to f$ in $L^p$ ovvero
+$$
+	\norm{f_n - f}_p^p = \int_X |f_n - f|^p \dd \mu \to 0
+$$
+intanto osserviamo che, per la \textit{convergenza puntuale}, basta osservare che se $n \geq |f(x)|$ abbiamo che $\forall x \; f_n(x) = f(x) \implies f_n(x) \xrightarrow{n} f(x) \implies |f_n(x) - f(x)|^p \to 0$.
+
+Per concludere basta applicare \textit{convergenza dominata} usando come dominazione direttamente $|f(x) - f_n(x)| \leq |f(x)| \implies |f(x) - f_n(x)|^p \leq |f(x)|^p$ e notiamo che $|f|^p \in L^1(X)$.
+\qed
+
+\vs
+
+\mybox{%
+\textbf{Proposizione 2.}
+Sia $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+}
+
+\textbf{Dimostrazione.}
+Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mathscr S}$.
+\begin{itemize}
+	\item 
+		\textit{Caso 1}: Se $f \geq 0$ allora fissiamo $\epsilon > 0$ e per ogni $k = 1, 2, \dots$ e poniamo
+		$$
+		A_\epsilon^k := \{ x \mid k \epsilon \leq f(x) \leq (k+1) \epsilon \}
+		$$
+		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita\footnote{È misurabile in quanto preimmagine di un misurabile, ed ha misura finita in quanto $f \in L^p(X)$.}. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
+		$$
+		f_\epsilon(x) := \sum_{1 \leq k \leq 1 / \epsilon^2} k \epsilon \cdot \One_{A_\epsilon^k}(x) \in \tilde{\mathscr S}
+		$$
+		% [TODO: Disegnino]
+
+		Osserviamo che vale anche $\max f_\epsilon(x) = \max\{ k \epsilon \mid k \epsilon \leq f(x) \text{ e } k \leq 1 / \epsilon^2 \}$ e mostriamo la seguente\footnote{Notiamo che qui stiamo applicando il teorema di \textit{convergenza dominata} su una famiglia parametrizzata da $\epsilon$ e non su una successione ma si può verificare facilmente che il teorema (ed anche gli altri risultati di convergenza di successioni di funzioni) si può estendere semplicemente prendendo $\epsilon = 1 / n$ per $n \to \infty$.}
+		$$
+		\int_X |f(x) - f_\epsilon(x)|^p \dd \mu(x) \xrightarrow{\epsilon \to 0} 0
+		$$
+		\begin{itemize}
+			\item \textit{Convergenza puntuale}: Per l'identità precedente abbiamo che $0 \leq f(x) - f_\epsilon(x) \leq \epsilon$ se $f(x) \leq 1 / \epsilon + \epsilon$.
+			% @aziis98: Cioè per me questo passaggio è ancora un po' mistico quindi poi voglio provare a spiegarlo meglio
+			% ($f(x) \leq 1 / \epsilon \implies k \epsilon \leq 1 / \epsilon \implies k \leq 1 / \epsilon^2$ [TODO])
+			\item \textit{Dominazione}: Possiamo usare nuovamente $|f(x) - f_\epsilon(x)|^p \leq |f(x)|^p < +\infty$ in quanto $f \in L^p(X)$.
+		\end{itemize}
+
+		% [TODO: Disegnino]
+
+	\item 
+		\textit{Caso 2}:
+		Sia $f \colon X \to \R$ allora si può rifare la dimostrazione precedente oppure si può semplicemente considerare $f_\epsilon \coloneqq (f^+)_\epsilon - (f^-)_\epsilon$.
+
+\end{itemize}
+\qed
+
+Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
+
+\mybox{%
+\textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+}
+
+\textbf{Dimostrazione.} (Idea) Basta approssimare componente per componente. \qed
+
+
+\vss
+
+Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mc A$.
+
+
+\hypertarget{prop:apprfunz_prop3}{}
+\mybox{%
+\textbf{Proposizione 3.}
+Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
+}
+
+\textbf{Dimostrazione.} Si dimostra che $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta, per la proposizione precedente, è denso in $L^p$.
+% @ar-lli (?) (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
+Dal lemma seguente si ottiene la tesi.
+
+\textbf{Lemma 1.}
+Dato $E \in \mc A, \mu(E) < +\infty$ esiste $E_n \in \mc A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
+
+\textbf{Dim.}
+Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E \cap \mc B(x_0, n)$; $E_n \subset E$ e $E \setminus E_n \downarrow \varnothing \implies \mu(E \setminus E_n) \xrightarrow{n} 0$.
+
+\qed
+
+\textbf{Osservazione.} 
+In generale l'enunciato non vale per $p = +\infty$. Ad esempio, preso $L^\infty(\R)$ e $f = 1$ non si può approssimare con funzioni a supporto limitato; in particolare, data $g$ con supporto $A$ limitato $|f - g| = 1$ su $\R \setminus A$ e siccome $|\R \setminus A| > 0$ abbiamo $\norm{f - g}_\infty \geq 1$.
+
+
+\vss
+
+Ora siano $X \subset \R^n, \mu = \mathscr L^n$ e $C_C(\R^n) \coloneqq \{ \text{funzioni continue a supporto compatto} \}$, dove il \textbf{supporto} è definito come la chiusura dell'insieme dei punti in cui la funzione è non zero $ \operatorname{supp}(f) := \overline{\{ x \mid f(x) \neq 0 \}} $, in quanto per le funzioni continue l'insieme $\{ x \mid f(x) \neq 0 \}$ è sempre aperto e dunque mai veramente compatto, a parte quando è vuoto.
+
+% notiamo che $C_C(\R^n) \subset L^p$ per ogni $p$.
+
+\mybox{%
+\textbf{Proposizione 4.}
+Le funzioni in $C_C(\R^n)$ \textit{ristrette a $X$} sono dense in $L^p(X)$ per $p < +\infty$.
+}
+
+Vediamo prima alcuni lemmi.
+
+\hypertarget{prop:apprfunz_lemma2}{}
+\textbf{Lemma 2.} (di Urysohn)
+Dati $C_0, C_1$ chiusi disgiunti in $X$ spazio metrico esiste una funzione $f \colon X \to [0, 1]$ continua tale che $f = 0$ su $C_0$ e $f = 1$ su $C_1$.
+
+\textbf{Dimostrazione.}
+Posta $d(x, C) = \inf \{ d(x, y) \mid y \in C \}$ basta considerare
+$$
+f(x) =
+\frac{d(x, C_0)}{d(x, C_0) + d(x, C_1)}.
+$$
+
+\hypertarget{prop:apprfunz_lemma3}{}
+\textbf{Lemma 3.}
+Dato $E \subset \R^n$ limitato (e quindi di misura finita) esiste $f_\epsilon \in C_C(\R^n)$ tale che $f_\epsilon \xrightarrow{\epsilon \to 0} \One_E$ in $L^p(\R^n)$ e quindi in $L^p(X)$.
+
+\textbf{Dimostrazione.}
+Per regolarità della misura di Lebesgue abbiamo che per ogni $\epsilon$ esistono $C_\epsilon \subset E \subset A_\epsilon$ tali che $|A_\epsilon \setminus C_\epsilon| \leq \epsilon$. Per il \hyperlink{prop:apprfunz_lemma2}{Lemma 2} possiamo definire la classe di funzioni $f_\epsilon \colon \R^n \to [0, 1]$ continue tali che
+$$
+	f_\epsilon = 1 \text{ su $C_\epsilon$}
+	\qquad
+	f_\epsilon = 0 \text{ su $\R^n \setminus A_\epsilon$}.
+$$
+In particolare, sappiamo che su $A_\epsilon \setminus C_\epsilon$ vale $|f_\epsilon - \One_E| \leq 1$. Allora,
+%
+\begin{align*}
+	\norm{f_\epsilon - \One_E}_p^p & = \int_{A_\epsilon \setminus C_\epsilon} |f_\epsilon - \One_E|^p \dd x \leq \int_{A_\epsilon \setminus C_\epsilon } \One_{A_\epsilon \setminus C_\epsilon } \dd x = \left| A_\epsilon \setminus C_\epsilon  \right|^{1/p} \leq \epsilon^{1/p} \\
+	& \implies \norm{f_\epsilon - \One_E}_p^p \xrightarrow{\epsilon \to 0} 0.
+\end{align*}
+\qed
+
+
+\textbf{Dimostrazione Proposizione 4.} 
+Per la \hyperlink{prop:apprfunz_prop3}{Proposizione 3} basta approssimare la classe delle funzioni a supporto limitato (e di misura finita). Dunque, per il \hyperlink{prop:apprfunz_lemma3}{Lemma 3} si ha la tesi.
+
+% \mybox{%
+% \textbf{Nota.} È denso anche l'insieme delle funzioni continue a supporto compatto ristretto a $X$ e si indica con $\mc{C}_C^0(\R^n)$.
+% }

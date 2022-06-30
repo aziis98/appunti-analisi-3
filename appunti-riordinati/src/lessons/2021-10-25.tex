@@ -1,0 +1,266 @@
+%
+% Lezione del 25 Ottobre 2021
+%
+
+% @aziis98: Secondo me possiamo rilocarle abbastanza le cose di questa lezione boh
+% \section{Aggiunte sulle lezioni precedenti}
+% \section{Rimanenze dalla lezione precedente}
+
+% \textbf{Proposizione.}
+% Data $f \in L^p(\R^d)$ con $1 \leq p < +\infty$ allora la funzione $\tau_h f \colon \R^d \to L^p(\R^d)$ data da $h \mapsto f(\cdot - h)$ è continua.
+
+% \textbf{Dimostrazione.}
+% Per prima cosa notiamo che basta vedere solo la continuità in $0$ in quanto
+% $$
+% \tau_{h'} f - \tau_h f = \tau_{h} (\tau_{h' - h} f - f) 
+% \implies \norm{\tau_{h'} f - \tau_{h} f}_p = \norm{\tau_{h' - h} f - f}_p.
+% $$
+% Dimostriamo ora la proposizione in due passi.
+% \begin{itemize}
+% 	\item
+% 		\textit{Caso 1:} $f \in C_C(\R^d)$
+% 		$$
+% 		\norm{\tau_h f - f}_p^p 
+% 		= \int_{\R^d} |f(x - h) - f(x)|^p \dd x \xrightarrow{|h| \to 0} 0
+% 		$$
+% 		per convergenza dominata, verifichiamo però che siano rispettate le ipotesi
+% 		\begin{enumerate}
+% 			\item
+% 				La convergenza puntuale, ovvero $|f(x - h) - f(x)|^p \xrightarrow{|h| \to 0} 0$ segue direttamente dalla continuità di $f$.
+% 			\item
+% 				Come dominazione invece usiamo $|f(x - h) - f(x)|^p \leq (2 \norm{f}_\infty)^p \cdot \One_{\mc B(0, R + 1)}$ usando che $f \in C_C \implies \operatorname{supp}(f) \subset \overline{B(0, R)}$ e poi che 
+% 				$$
+% 				\operatorname{supp}(f(\curry - h) - f(\curry)) \subset \overline{\mc B(0, R + |h|)}
+% 				$$
+% 				infine se $|h| < 1$ come raggio ci basta prendere $R + 1$.
+% 		\end{enumerate}
+% 	\item 
+% 		\textit{Caso 2:} $f$ qualunque
+% 		Dato $\epsilon > 0$ prendiamo $g \in C_C(\R^d)$ tale che $\norm{g - f} \leq \epsilon$ allora aggiungiamo a sottraiamo $g + \tau_h g$ e raggruppiamo in modo da ottenere
+% 		$$
+% 		\begin{gathered}
+% 			\tau_h f - f = \tau_h(f - g) + (\tau_h g - g) + (g - f) \\
+% 			\implies \norm{\tau_h f - f}_p 
+% 			\leq \underbrace{\norm{\tau_h(f - g)}_p}_{\leq \epsilon} 
+% 			+ \norm{\tau_h g - g}_p
+% 			+ \underbrace{\norm{g - f}_p}_{\leq \epsilon} 
+% 			\leq 2 \epsilon + \underbrace{\norm{\tau_h g - g}_p}_{\to 0 \text{ per \textit{Caso 1}}}
+% 		\end{gathered}
+% 		$$
+% 		dunque $\limsup_{|h| \to 0} \norm{\tau_h f - f}_p \leq 2\epsilon$ ma per arbitrarietà di $\epsilon$ otteniamo anche che $\norm{\tau_h f - f}_p \to 0$ per $|h| \to 0$.
+% \end{itemize}
+% \qed
+
+% [TO DO: il teorema sotto non è già stato dimostrato?]
+% \textbf{Teorema.}
+% Siano $f_1 \in L^{p_1}(\R^d)$ e $f_2 \in L^{p_2}(\R^d)$ con $p_1$ e $p_2$ esponenti coniugati, allora $f_1 \ast f_2$ è definita per ogni $x$ e uniformemente continua
+% $$
+% 	|f_1 \ast f_2(x)| \leq \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2} \quad \forall x.
+% $$
+
+% \textbf{Dimostrazione.}
+% Prendiamo $f_{1,n}, f_{2, n} \in C_C(\R^d)$ tali che $f_{1, n} \to f_1$ in $L^{p_1}$ e $f_{2, n} \to f_2$ in $L^{p_2}$.
+% \begin{itemize}
+% 	\item 
+% 		Per prima cosa verifichiamo che $f \ast g$ è ben definita. Notiamo che $f_{1,n} \ast f_{2,n}$ ha supporto limitato, infatti se $\supp(f_{i,n}) \subset \overline{\mc B(0, r_{i,n})}$ per $i = 1, 2$ allora
+% 		$$
+% 		\supp(f_{1,n} \ast f_{2,n}) \subset \overline{\mc B(0, r_{1,n} + r_{2,n})}
+% 		$$
+% 		e basta notare che l'espressione
+% 		$$
+% 		f_1 \ast f_2(x) = \int_{\R^d} f_1(x - y) f_2(y) \dd y
+% 		$$
+% 		ha integranda nulla per ogni $y$ se $|x| \geq r_{1,n} + r_{2,n}$.
+	
+% 	\item
+% 		Vediamo che $f_{1,n} \ast f_{2,n} \to f_1 \ast f_2$ uniformemente
+% 		$$
+% 		f_{1,n} \ast f_{2,n} - f_1 \ast f_2 
+% 		= (f_{1,n} - f_1) \ast f_{2,n} - f_1 \ast (f_{2,n} - f_2)
+% 		$$
+% 		$$
+% 		\begin{aligned}
+% 			\norm{f_{1,n} \ast f_{2,n} - f_1 \ast f_2}_p
+% 			&\leq \norm{(f_{1,n} - f_1) \ast f_{2,n}}_p + \norm{f_1 \ast (f_{2,n} - f_2)}_p \\
+% 			&\leq 
+% 			\underbrace{\norm{f_{1,n} - f_1}_{p_1}}_{\to 0}
+% 			\cdot \underbrace{\norm{f_{2,n}}_{p_2}}_{\to \norm{f_2}_{p_2}}
+% 			+ \underbrace{\norm{f_1}_{p_1}}_{\text{cost.}}
+% 			\cdot \underbrace{\norm{f_{2,n} - f_2}_{p_2}}_{\to 0}
+% 			\to 0
+% 		\end{aligned}
+% 		$$
+
+% 	\item 
+% 		$C_0(\R^d)$ è chiuso per convergenza uniforme [TODO: da fare per esercizio]
+% \end{itemize}
+
+\section{Derivata e Convoluzione}
+
+\textbf{Osservazione.}
+Osserviamo che la convoluzione si comporta bene con l'operatore di traslazione definito precedentemente, infatti $\tau_h (f_1 \ast f_2) = (\tau_h f_1) \ast f_2$ in quanto
+$$
+	\tau_h(f_1 \ast f_2) =  f_1 \ast f_2 (x - h) 
+	= \int f_1(x - h - y) \cdot f_2(y) \dd y = \int \tau_h f(x - y) \cdot f_2(y) \dd y
+	= (\tau_h f_1) \ast f_2
+$$
+quindi ``formalmente'' possiamo calcolare il seguente rapporto incrementale
+$$
+	\frac{\tau_h(f_1 \ast f_2) - f_1 \ast f_2}{h}
+	= \frac{\tau_h f_1 - f_1}{h} \ast f_2
+	\implies (f_1 \ast f_2)' = (f_1)' \ast f_2
+$$
+
+Vediamo ora di formalizzare questo risultato.
+
+\mybox{%
+\textbf{Teorema.}
+Dati $p_1$ e $p_2$ esponenti coniugati, se
+
+\begin{itemize}
+	\item $f_1 \in C^1(\R^d)$, $f_1$ e $\nabla f_1 \in L^{p_1}(\R^d)$
+
+	\item $f_2 \in L^{p_2}(\R^d)$ 
+\end{itemize}
+allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$.
+}
+
+\textbf{Nota.} Ha senso anche se $\nabla f_1$ è a valori vettoriali. In tal caso  $\frac{\pd}{\pd x_i}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 \quad \text{per } i = 1, \dots, d $.
+
+Premettiamo il seguente.
+
+\textbf{Lemma.} Date $g,h \colon [a,b] \to \R$ continue e tali che
+$$
+	g(x) - g(a) = \int_a^x h(t) \dd t \quad \forall x \in [a,b]
+$$
+allora $g \in C^1$ e $g' = h$.
+
+\vs
+
+\textbf{Dimostrazione Proposizione.}
+\begin{itemize}
+	\item $d = 1$. Per il Lemma basta dimostrare che $\forall -\infty < a < x < +\infty$ vale
+	$$
+		f_1 \ast f_2(x) - f_1 \ast f_2(a) = \int_a^x f_1' \ast f_2(t) \dd t.
+	$$
+	Infatti
+		$$
+		\begin{aligned}
+			\int_a^x f_1' \ast f_2 (t) \dd t
+			& = \int_a^x \int_{-\infty}^\infty f_1'(t - y) f_2(y) \dd y \dd t \\
+			& \overset{\text{($*$)}}{=} \int_{-\infty}^\infty \int_a^x f_1'(t - y) \dd t \cdot f_2(y) \dd y \\
+			& = \int_{-\infty}^\infty (f_1(x - y) - f_1(a - y)) \cdot f_2(y) \dd y \\
+			& = \int_{-\infty}^\infty f_1(x - y) f_2(y) \dd y - \int_{-\infty}^\infty f_1(a - y) f_2(y) \dd y \\
+			& = f_1 \ast f_2(x) - f_1 \ast f_2(a).
+		\end{aligned}
+		$$
+		In ($*$) abbiamo usato Fubini-Tonelli:
+		$$
+			\int_a^x \int_{-\infty}^\infty |f_1'(t-y)| \cdot |f_2(y)| \dd y \dd t
+			\leq \int_a^x \norm{f_1'(t - \curry)}_{p_1} \cdot \norm{f_2}_{p_2} \dd t 
+			= \norm{f_1'}_{p_1} \cdot \norm{f_2}_{p_2} \cdot (x - a).
+		$$
+
+	\item
+		per $d > 1$ dato $i = 1, \dots, d$ basta semplicemente considerare le proiezioni infatti
+		$$
+		\int_a^x \frac{\pd f_1}{\pd x_i} \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{t}, \dots, x_d) \dd t
+		= f_1 \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{x}, \dots, x_d) - f_1 \ast f_2 (x_1, \dots, \overset{\text{($i$)}}{a}, \dots, x_d)
+		$$
+		\qed
+\end{itemize}
+
+\textbf{Corollario.}
+Data $f_1 \in C_C^\infty(\R^d)$ (da cui segue $\nabla^k \in L^q(\R^d)$ per ogni $k = 0, 1, \dots$ e $1 \leq q < +\infty$) e $f_2 \in L^p(\R^d)$ allora $f_1 \ast f_2 \in C^\infty(\R^d)$ (anzi $\nabla^k(f_1 \ast f_2) \in C_0(\R^d)$ per ogni $k$) e vale la formula nota\footnote{dato che $\nabla^k f_1$ ha valori in $\R^k$ e $f_2$ in $\R$, dobbiamo definire $\nabla^k f_1 \ast f_2$ [TO DO: da fare].}
+$$
+	\nabla^k (f_1 \ast f_2) = (\nabla^k f_1) \ast f_2 \quad \forall k = 1,\ldots
+$$
+
+\textbf{Dimostrazione.}
+Si dimostra per induzione su $k$. [TO DO: da fare]
+
+\section{Approssimazione per convoluzione}
+
+\textbf{Definizione.} 
+Per prima cosa data una funzione $g \colon \R^d \to \R$ e $\delta \neq 0$ poniamo
+$$
+\sigma_\delta g(x) \coloneqq \frac{1}{\delta^d} g\left( \frac{x}{\delta} \right)
+$$
+e notiamo che questa trasformazione preserva la norma $L^1$. Infatti, il valore $1/\delta^d$ è proprio il modulo del determinante dello Jacobiano del cambio di variabile.
+
+
+
+\begin{multicols}{2}
+
+\mybox{%
+\hypertarget{thm:lez25ott_teodelta}{%
+\textbf{Teorema.}}
+Data $f \in L^p(\R^d)$ e $g \in L^1(\R^d)$ con $1 \leq p < +\infty$ e posto $\ds m \coloneqq \int_{\R^d} g(x) \dd x$, allora 
+$$
+	f \ast \sigma_\delta g \xrightarrow{\delta \to 0} m f \mquad \text{in } L^p(\R^d).
+$$
+}
+
+\columnbreak
+
+\begin{flushright}
+	\inputfigure{sigma-delta-transform}
+\end{flushright}
+
+\end{multicols}
+
+\textbf{Interpretazione.}
+Se $g_2 \geq 0$ con $\int g \dd x = 1$ (dunque $g$ distribuzione di probabilità) allora $f \ast g$ possiamo pensarla come media pesata di traslate di $f$, dunque facendo $f \ast \sigma_\delta g$ stiamo pesando sempre di più i valori delle traslate vicino a $0$. 
+
+% minuto 1:28:00 definire la funzione e fare disegnino (questa funzione si usa anche
+% in altri casi per vedere che una certa proprietà non vale in $L^\infty$
+\textbf{Nota.} Per $p = +\infty$ il teorema non vale. Infatti, la funzione $f = \One_{[0,+\infty]} \in L^\infty$; le funzioni $f \ast \sigma_\delta g$ sono continue ma non convergono in $L^\infty$ a $mf = f$. Infatti, le successioni continue convergono in $L^\infty$ a funzioni che coincidono, a meno di insiemi di misura nulla, con funzioni continue, ed $f$ non è possibile modificarla in un insieme di misura nulla in modo che coincida con una funzione continua.
+
+\textbf{Dimostrazione.}
+Per ora consideriamo $g$ generica e ripercorriamo una dimostrazione simile a quella fatta per la disuguaglianza di Young
+$$
+\begin{aligned}
+	\norm{f \ast g - m f}_p^p 
+	&= \int_{\R^d} {\underbrace{|f \ast g - m f|}_h}^p \dd x \\
+	&= \int |f \ast g - m f| \cdot h^{p-1} \dd x \\
+	&= \int \left| \int f(x - y) g(y) \dd y - f(x) \int g(y) \dd y \right| \cdot h^{p-1}(x) \dd x \\
+	&\leq \int \int |f(x - y) - f(x)| \cdot |g(y)| \dd y \cdot h^{p-1}(x) \dd x \\
+	&\overset{\text{($*$)}}{=} \int \left(\int |f(x - y) - f(x)| h^{p-1}(x) \dd x \right) |g(y)| \dd y,
+\end{aligned}
+$$
+dove in ($*$) abbiamo usato Fubini-Tonelli. Ora prendiamo $q$ tale che $1/p + 1/q = 1$ allora per H\"older abbiamo
+$$
+\begin{aligned}
+	&\leq \int \norm{f(\curry - y) - f(\curry)}_p \| h^{p-1} \|_q \cdot |g(y)| \dd y \\
+	&= \norm{h}_p^{p-1} \int_{\R^d} \norm{\tau_y f - f}_p \cdot |g(y)| \dd y \\
+\end{aligned}
+$$
+dunque abbiamo ricavato che
+$$
+\norm{f \ast g - m f}_p^p 
+\leq \norm{f \ast g - m f}_p^{p-1} \int_{\R^d} \norm{\tau_y f - f}_p \cdot |g(y)| \dd y
+$$
+ed ora applicando questa stima a $\sigma_\delta g$ invece che a $g$ otteniamo
+$$
+\norm{f \ast \sigma_\delta g - m f}_p
+\leq \int_{\R^d} \norm{\tau_y f - f}_p \cdot |\sigma_\delta g(y)| \dd y,
+$$
+infine ponendo $z = y / \delta$ e $\dd z = 1/\delta^d \dd y$ e sostituendo nell'integrale
+$$
+= \int_{\R^d} \norm{\tau_{\delta z} f - f}_p \cdot |g(z)| \dd z \xrightarrow{\delta \to 0} 0
+$$
+per \textit{convergenza dominata}, verifichiamone le ipotesi
+\begin{enumerate}
+	\item La convergenza puntuale segue in quanto $\norm{\tau_{\delta z} f - f}_p \xrightarrow{\delta \to 0} 0$ per ogni $z$.
+	\item Come dominazione prendiamo $2 \norm{f}_p \cdot |g| \in L^1$.
+\end{enumerate}
+\qed
+
+\vss
+
+\mybox{%
+\textbf{Corollario.}
+Sia $g \in C_C^\infty(\R^d)$ con $\ds \int g \dd x = 1$ e $f \in L^p(\R^d)$ e $1 \leq p < +\infty$ allora $\sigma_\delta g \ast f \xrightarrow{\delta \to 0} f$ in $L^p(\R^d)$ e $\sigma_\delta g \ast f \in C^\infty(\R^d)$.
+}
+
+\textbf{Osservazione.} Dal corollario segue che per $p \in [1,\infty)$ il sottospazio $C^\infty \subset L^p(\R^d)$ è denso in $L^p(\R^d)$; dunque ogni $C^k \subset L^p(\R^d)$ è denso.

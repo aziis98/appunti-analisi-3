@@ -1,0 +1,105 @@
+\section{Integrazione di $k$-forme su superfici}
+
+\textbf{Proposizione 0.} Il prodotto esterno $\wedge$ è distributivo (rispetto a +), associativo e anticommutativo, ovvero $\alpha \wedge \beta = (-1)^{hk} \beta \wedge \alpha$.
+
+Data $e_1,\ldots,e_d$ base di $V$, $e_1^*,\ldots,e_d^*$ è una base di $V^*$.
+Denotiamo con $I(d,k) \coloneqq \{ \underline{i} = (i_1,\ldots,i_k) \text{ con } 1 \leq i_1 \leq \ldots \leq i_k \leq i_d \}$ l'insieme di multiindici.
+Per ogni $i \in I(d,k)$ indichiamo con $e_{\underline{i}}^* = e_{i_1}^* \wedge \ldots \wedge e_{i_k}^* \in \Lambda^k(V)$. Data una matrice $d \times k$ $A$, $A_{\underline{i}}$ è il minore di $A$ dato dalle righe $i_1,\ldots,i_k$.
+
+\textbf{Proposizione 1.} $e_{\underline{i}}^* (v_1,\ldots,v_k) = \det(A_{\underline{i}})$, dove $A \in R^{d\times k}$ matrice delle coordinate di $v_1,\ldots,v_k$, cioè $A_{ij} = (v_j)_i$.
+
+\textbf{Dimostrazione.} Per induzione su $k$.
+\begin{itemize}
+
+	\item $k=1$. OK
+
+	\item \textit{Passo induttivo} $k-1 \to k$. Scriviamo $e_{\underline{i}}^* = e_{i_1} \wedge e_{\underline{i'}}$ con $\underline{i'} = (i_2,\ldots,i_k)$.
+	Usando la definizione di prodotto esterno e l'ipotesi induttiva notiamo che questo è uguale allo sviluppo per la prima riga di $\det(A_{\underline{i}})$
+
+\end{itemize}
+\qed
+
+\textbf{Proposizione 2.} Posta $\{e_{\underline{i}} \colon \underline{i} \in I(d,k) \}$ è una base di $\Lambda^k(V)$ e in particolare per ogni $\alpha \in \Lambda^k(V)$
+%
+$$
+	\alpha = \sum_{\underline{i} \in I(d,k)} \alpha(e_{\underline{i}}) e_{\underline{i}}^* 
+$$
+%
+\textbf{Dimostrazione.} Definiamo $\tilde{\alpha}$ come sopra. Prendiamo $\underline{i} \in I(d,k)$,allora
+%
+$$
+\tilde{\alpha}(e_{j_1},\ldots,e_{j_k}) = \sum_{\underline{i}} \alpha \left( e_{i_1},\ldots,e_{i_k} \right) \cdot \underbrace{e_{\underline{i}}^* (e_{j_1},\ldots,e_{j_k})}_{= \delta_{ij}} = \alpha (e_{j_1},\ldots,e_{j_k})
+$$
+%
+Si conclude per linearità e alternanza.
+
+\textbf{Corollario.} Vale la seguente identità 
+%
+$$
+\dim \Lambda^k(V) = \# I(d,k) = 
+\begin{cases}
+	\binom{d}{k} \quad \text{se } k < d \\
+	0 \qquad \text{altrimenti} 
+\end{cases} 
+$$
+%
+
+\textbf{Proposizione 3} (Formula di Binet generalizzata).
+Dati $A,B$ matrici di $d \times k$ con $k < d$, allora
+%
+$$
+	\det(B^tA) = \sum_{\underline{i} \in I(d,k)} \det(B_{\underline{i}}) \det (A_{\underline{i}})
+$$
+%
+
+\textbf{Dimostrazione.} Basta definire $\alpha(v_1,\ldots,v_k) = \det(B^t A)$ dove $A$ è la matrice avente colonne pari a $v_1,\ldots,v_k$.
+Bisogna verificare che $\alpha$ è $k$-lineare alternante ([TO DO]), da cui segue che
+%
+$$
+	\det(B^tA) = \alpha(v_1,\ldots,v_k) 
+	\underset{\text{Prop 2} }{=} \sum_{\underline{i}} \underbrace{\alpha(e_{i_1}^*,\ldots,e_{i_k}^*)}_{\det(B_{\underline{i}}^t)}
+	\cdot \underbrace{e_{\underline{i}}^* (v_1,\ldots,v_k)}_{\det A_i}
+$$
+%
+
+\qed
+
+\textbf{Osservazione.} Nel caso in cui $B = A$, otteniamo la formula
+%
+$$
+	\det(A^tA) = \sum_{\mathclap{\substack{Q \text{ minore } \\ k \times k \text{ di } A }}} \det(Q)^2.
+$$
+%
+
+
+\textbf{Caso particolare $V = \R^d$.} Indichiamo con $e_1,\ldots,e_d$ i vettori della base canonica, $\dd x_1,\ldots, \dd x_d$ base duale di $\R^d$, $\dd x_{\underline{i}} \coloneqq e_{\underline{i}}^*$ base canonica di $\Lambda^k(\R^d)$.
+
+
+\textbf{Esempio.}
+\begin{align*}
+	(\dd x_1 + 2 \dd x_2) & \wedge (2 \dd x_1 \wedge \dd x_3 - \dd x_2 \wedge\dd x_4) \\
+	& = 2 \dd x_1 \wedge\dd x_1 \wedge\dd x_3 - \dd x_1 \wedge\dd x_2 \wedge \dd x_4 + 4 \dd x_2 \wedge\dd x_1 \wedge\dd x_3 - 2 \dd x_2 \wedge\dd x_2 \wedge\dd x_4 \\
+	& = - \dd x_1 \wedge\dd x_2 \wedge\dd x_4 - 4 \dd x_1 \wedge\dd x_2 \wedge\dd x_3.
+\end{align*}
+
+\textbf{Nota.} Nel prodotto esterno si cancellano tutti i termini con indici ripetuti.
+
+\textbf{Definizione.} Dato $\Omega \subset \R^d$ aperto, una \textbf{$k$-forma} $\omega$ su $\Omega$ è una "funzione"  da $\Omega$ in $\Lambda^k(\R^d)$. In coordinate, $\ds \omega(x) = \sum_{\underline{i} \in I(d,k)} w_{\underline{i}}(x) \cdot \dd x_{\underline{i}}$.
+
+Il \textbf{differenziale esterno} di una $k$-forma $\omega$ su $\Omega$ di classe $C^1$ è la $k+1$-forma su $\Omega$ di classe almeno $C^0$ data da
+\begin{itemize}
+
+	\item $k=0$. In tal caso $f$ è una funzione (0-forma) e $\ds \dd f(x) = \dd_x f = \sum \frac{\partial w_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$
+
+
+	\item $k > 0$ $\ds \dd \omega \coloneqq \sum_{\underline{i} \in I(d,k)} \dd \omega_{\underline{i}} (x) \wedge \dd x_{\underline{i}} = \sum_{\underline{i} \in I(d,k)} \sum_{j=1}^d \frac{\partial \omega_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$.
+
+\end{itemize}
+
+\textbf{Proposizione} (Leibniz). Valgono le seguenti.
+\begin{itemize}
+
+	\item $\ds \dd (\omega_1 \wedge \omega_2) = \dd \omega_1 \wedge \omega_2 + (-1)^{k_1} \omega_1 \wedge \omega_2$
+
+	\item $\dd^2 \omega = 0$
+\end{itemize}

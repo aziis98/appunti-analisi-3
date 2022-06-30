@@ -1,0 +1,80 @@
+\section{Esercizi}
+
+\subsection{Convoluzione}
+
+Sia $f \in L^1(\R^d)$ e sia $g \colon \R^d \to \R$ continua a supporto compatto\footnote{In tal caso $g$ è lipschitziana.}.
+%
+$$
+\left| g(x) - g(y) \right| \leq M \left| x - y \right|_{\R^d}.
+$$
+%
+
+\textbf{Esercizio.} Dimostrare che $f \ast g$ è ben definita e lipschitziana, dove $f \in L^1(\R^d)$ e $g \in \mc{C}_C^0 (\R^d)$.
+
+Verifichiamo che la convoluzione è ben definita.
+Dal fatto che $g \in \mc{C}_C^0(\R^d)$ abbiamo in particolare che $g$ è limitata, da cui
+%
+$$
+f \ast g = \int_{\R^d} f(x-y) \cdot g(y) \dd y \overset{|g| \leq M}{\leq} M \cdot \int_{\R^d} f(x-y) \dd y \overset{f \in L^1(\R^d)}{<} +\infty.
+$$
+%
+
+Ora verifichiamo che $f \ast g$ è lipschitziana. Consideriamo $x_1,x_2 \in \R^d$
+%
+$$
+\left| f \ast g (x_1) - f \ast g(x_2) \right| = \left| \int_{\R^d} f(x_1 - x) g(y) \dd y  - \int_{\R^d} f(x_2 - y) g(y) \dd y  \right|
+$$
+%
+Usiamo la proprietà che, essendo $f \ast g$ ben definita, si ha $ f \ast g(x) = g \ast f(x) $. Da cui
+\begin{align*}
+\left| f \ast g(x_1) - f \ast g(x_2) \right|  & = \left| \int_{\R^d} g(x_1 - y) f(y) \dd y \int_{\R^d} g(x_2 - y) f(y) \dd y   \right| \\
+& = \left| \int_{\R^d} \left( g(x_1 - y) - g(x_2 - y) \right) f(y) \dd y  \right| \\
+& \leq \int_{\R^d} \left| g(x_1 - y) - g(x_2 - y) \right| \left| f(y) \right| \dd y \\
+& \leq \int_{\R^d} M \left| (x_1 - y) - (x_2 - y) \right| \left| f(y) \right| \dd y \leq M \left| x_1 - x_2 \right| \cdot \norm{f}_{L^1(\R^d)}.
+\end{align*}
+
+\textbf{Esercizio.} [TO DO] Se $f \in L^1(\R^d)$ e $g$ a supporto compatto è $\alpha$-Hölderiana allora anche $f \ast g$ lo è.
+
+\textbf{Esercizio.} [TO DO] Presa $f(x) = \One_{[0,1]}$ in $\R$, calcolare $f \ast f$.
+
+\subsection{Approssimazioni per convoluzione}
+
+Abbiamo visto che data $g \in L^1(\R^d)$ con $\int g \dd x = 1$ allora per ogni $f \in L^p(\R^d)$ abbiamo $f_\delta \coloneqq f \ast \sigma_\delta g \xrightarrow{\delta \to 0} f$ in $L^p(\R^d)$ per $p \neq \infty$.
+
+\textbf{Esercizio.}
+Dire se esiste $v \in L^1(\R)$ tale che sia elemento neutro della convoluzione, ovvero
+$$
+\forall f \in L^1(\R) \qquad f \ast v = f.
+$$
+
+\textbf{Soluzione.} Una tale $v$ non esiste, per vederlo scegliamo opportunamente $\bar f$ e usiamo l'equazione. 
+Scelgo $g \in C_C^\infty(\R)$ e defiamo $\sigma_\delta g = 1 / \delta g(1/\delta)$. Abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g$ per ogni $\delta$.
+Per il \hyperlink{thm:lez25ott_teodelta}{teorema} abbiamo che $\sigma_\delta g \ast v = \sigma_\delta g \xrightarrow{\delta \to 0} v$ in $L^1(\R)$, ma $\sigma_\delta g \xrightarrow{\delta \to 0} 0$ quasi ovunque in $L^1(\R)$. Allora $v = 0$ q.o. in $L^1(\R)$, dunque non può valere $f \ast v = f$ per ogni $f \in L^1(\R)$.
+
+\textbf{Esercizio.} [TO DO: per casa.] 
+Sia $f$ misurabile su $\R^d$ tale che $\int_E f \dd x = 0$ per ogni $E$ misurabile di $\R^d$. Dimostrare che $f = 0$ q.o. su $\R^d$.
+
+\textit{Suggerimento.} Considerare l'integrale sull'insieme $\{ x \in \R^d \mid f(x) = 0 \} \cup \{ x \in \R^d \mid f(x) \neq 0 \}$ e verificare che, se denotiamo $A =  \{ x \in \R^d \mid f(x) \neq 0 \}$, allora $|A| = 0$.
+
+\textbf{Esercizio.} Sia $f$ Lebesgue-misurabile su $\R^d$ tale che $\forall B$ palla su $\R^d$
+$$
+	\int_B f \dd x = 0
+$$
+Dimostrare che che $f = 0$ quasi ovunque su $\R^d$.
+
+% \textit{Suggerimenti.} Usare la convoluzione con opportuni nuclei; notare che $\ds \int_B f = 0 \longiff f \ast \One_B = 0$ per ogni palla $B$.
+
+\textbf{Soluzione.} Considero $g = \One_{[0,1]} \in L^1(\R^d)$. Per quanto fatto in classe so che
+$$
+	\sigma_\delta g \ast f \xlongrightarrow{\delta \to 0} m f
+$$
+dunque se $\sigma_\delta g \ast f = 0$ per ogni $\delta$ ho finito.
+$$
+	\sigma_\delta g \ast f(y) = \int_{\R^d} \sigma_\delta \One_{[0,1]}(y-x) \cdot f(x) \dd x = \frac{1}{\delta^d} \int_{B(x,\delta)} f(x) \dd x = 0
+$$
+
+
+
+\textbf{Esercizio.}
+Sia $p \geq 1$ allora $\{ u \in L^p(\R) \mid \int u \dd x = 0 \} \subseteq L^p(\R)$ è denso in $L^p(\R)$?
+
