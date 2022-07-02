@@ -274,10 +274,10 @@ Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp
 
 \textbf{Osservazione.} Nell'implicazione $\boxed{\Rightarrow}$ non abbiamo usato la completezza di $H$.
 
-\item Ogni sistema ortonormale $\mc{F}$ si completa a $\tilde{\mc{F}}$ base di Hilbert di $H$.
+\item Ogni sistema ortonormale $\mc{F}$ si completa a $\wtilde{\mc{F}}$ base di Hilbert di $H$.
 
-\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \tilde{\mc{F}} \subset \mc{F} \right\}$.
-Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. Allora $\tilde{\mc{F}}$ è una base di Hilbert.
+\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \wtilde{\mc{F}} \subset \mc{F} \right\}$.
+Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\wtilde{\mc{F}}$. Allora $\wtilde{\mc{F}}$ è una base di Hilbert.
 
 
 \end{itemize}
@@ -286,9 +286,9 @@ Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. 
 \mybox{%
 \textbf{Teorema~4.} Dato $V$ sottospazio vettoriale chiuso di $H$. Allora
 \begin{enumerate}
-	\item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\tilde{x} \in V^\perp$ tale che $x = \overline{x} + \tilde{x}$.
+	\item $H = V + V^\perp$, cioè per ogni $x \in H$ esiste $\overline{x} \in V$ e $\wtilde{x} \in V^\perp$ tale che $x = \overline{x} + \wtilde{x}$.
 
-	\item Gli elementi $\overline{x}$ e $\tilde{x}$ sono univocamente determinati (e indicati con $x_V$ e $x_V^\perp$).
+	\item Gli elementi $\overline{x}$ e $\wtilde{x}$ sono univocamente determinati (e indicati con $x_V$ e $x_V^\perp$).
 
 	\item $\overline{x}$ è caratterizzato come l'elemento di $V$ più vicino a $x$.
 \end{enumerate}
@@ -298,13 +298,13 @@ Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\tilde{\mc{F}}$. 
 \begin{enumerate}
 
 \item Dato che $V$ è chiuso, $V$ è completo, cioè $V$ è un sottospazio di $H$, dunque $V$ ammette base ortonormale $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
-Definiamo $\overline{x} \in \overline{\spn(\mc{F})}$ come nel Teorema~1 e $\tilde{x} \coloneqq x - \overline{x} \perp \overline{\spn(\mc{F})} = V$ (per \ref{item:27ott_thm1_4}) dunque $\tilde{x} \in V^\perp$.
+Definiamo $\overline{x} \in \overline{\spn(\mc{F})}$ come nel Teorema~1 e $\wtilde{x} \coloneqq x - \overline{x} \perp \overline{\spn(\mc{F})} = V$ (per \ref{item:27ott_thm1_4}) dunque $\wtilde{x} \in V^\perp$.
 
-\item Se $x = \overline{x} + \tilde{x} = \overline{x}' + \tilde{x}'$, dove $\overline{x}, \overline{x}' \in V$ e $\tilde{x}, \tilde{x}' \in V^\perp$, allora
+\item Se $x = \overline{x} + \wtilde{x} = \overline{x}' + \wtilde{x}'$, dove $\overline{x}, \overline{x}' \in V$ e $\wtilde{x}, \wtilde{x}' \in V^\perp$, allora
 %
 $$
-	\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} \underbrace{\Longrightarrow}_{V \cap V^\perp = \{0 \} }
-	\overline{x} - \overline{x}' = \tilde{x}' - \tilde{x} = 0.
+	\overline{x} - \overline{x}' = \wtilde{x}' - \wtilde{x} \underbrace{\Longrightarrow}_{V \cap V^\perp = \{0 \} }
+	\overline{x} - \overline{x}' = \wtilde{x}' - \wtilde{x} = 0.
 $$
 %
 
@@ -348,14 +348,14 @@ Sia $V \coloneqq \ker \Lambda$. Dato che $\Lambda$ è continuo segue che $V$ è 
 Se $V = H \Longrightarrow \Lambda \cong 0$ e prendiamo $x_0 = 0$.
 
 Se $V \neq H$, allora $V^\perp \neq \{0\}$ e definiamo $x_1 \in V^\perp$ con $\norm{x_1} = 1$.
-Poniamo $x_0 \coloneqq  c x_1$ con $c \coloneqq  \Lambda x_1$ e $\tilde{\Lambda}(x) \coloneqq \left<x,x_0 \right>$. Abbiamo che
+Poniamo $x_0 \coloneqq  c x_1$ con $c \coloneqq  \Lambda x_1$ e $\wtilde{\Lambda}(x) \coloneqq \left<x,x_0 \right>$. Abbiamo che
 \begin{itemize}
 
-	\item $x \in V \Longrightarrow x \perp x_1 \Longrightarrow x \perp x_0 \Longrightarrow \tilde{\Lambda} = 0 = \Lambda(x)$. Quindi $\tilde{\Lambda} = \Lambda$ su $V$.
+	\item $x \in V \Longrightarrow x \perp x_1 \Longrightarrow x \perp x_0 \Longrightarrow \wtilde{\Lambda} = 0 = \Lambda(x)$. Quindi $\wtilde{\Lambda} = \Lambda$ su $V$.
 
-	\item $\tilde{\Lambda}(x_1) = \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c = \Lambda(x_1)$. Quindi $\tilde{\Lambda} = \Lambda$ su $\spn(x_1) = V^\perp$ che ha dimensione 0 o 1 per il Lemma~6.
+	\item $\wtilde{\Lambda}(x_1) = \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c = \Lambda(x_1)$. Quindi $\wtilde{\Lambda} = \Lambda$ su $\spn(x_1) = V^\perp$ che ha dimensione 0 o 1 per il Lemma~6.
 
-	\item $\tilde{\Lambda} = \Lambda$ su $V + V^\perp = H$.
+	\item $\wtilde{\Lambda} = \Lambda$ su $V + V^\perp = H$.
 
 \qed
 \end{itemize}

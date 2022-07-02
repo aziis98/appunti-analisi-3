@@ -69,11 +69,11 @@ Per concludere basta applicare \textit{convergenza dominata} usando come dominaz
 
 \mybox{%
 \textbf{Proposizione 2.}
-Sia $\tilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\tilde{\mathscr S}$ è denso in $L^p(X)$.
+Sia $\wtilde{\mathscr S} \coloneqq \spn(\{ \One_E \mid E \in \mc A, \mu(E) < +\infty \})$, allora $\wtilde{\mathscr S}$ è denso in $L^p(X)$.
 }
 
 \textbf{Dimostrazione.}
-Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mathscr S}$.
+Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\wtilde{\mathscr S}$.
 \begin{itemize}
 	\item 
 		\textit{Caso 1}: Se $f \geq 0$ allora fissiamo $\epsilon > 0$ e per ogni $k = 1, 2, \dots$ e poniamo
@@ -82,7 +82,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 		$$
 		risulta che $A_k^\epsilon$ è misurabile ed ha misura finita\footnote{È misurabile in quanto preimmagine di un misurabile, ed ha misura finita in quanto $f \in L^p(X)$.}. Ora consideriamo la successione di funzioni parametrizzata da $\epsilon$ data da
 		$$
-		f_\epsilon(x) := \sum_{1 \leq k \leq 1 / \epsilon^2} k \epsilon \cdot \One_{A_\epsilon^k}(x) \in \tilde{\mathscr S}
+		f_\epsilon(x) := \sum_{1 \leq k \leq 1 / \epsilon^2} k \epsilon \cdot \One_{A_\epsilon^k}(x) \in \wtilde{\mathscr S}
 		$$
 		% [TODO: Disegnino]
 
@@ -109,7 +109,7 @@ Data $f \in L^p(X)$ cerchiamo una successione che approssima $f$ in $\tilde{\mat
 Generalizziamo la proposizione al caso di $f \colon X \to \R^d$ come segue
 
 \mybox{%
-\textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \tilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\tilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
+\textbf{Proposizione 2bis} (Generalizzata). Sia $\ds \wtilde{\mathscr S} \coloneqq \left\{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty \right\}$. Allora $\wtilde{\mathscr S}$ è denso in $L^p(X; \R^d)$.
 }
 
 \textbf{Dimostrazione.} (Idea) Basta approssimare componente per componente. \qed
@@ -123,15 +123,15 @@ Sia ora $X$ uno \textit{spazio metrico} e $\{ \text{aperti} \} \subset \mc A$.
 \hypertarget{prop:apprfunz_prop3}{}
 \mybox{%
 \textbf{Proposizione 3.}
-Sia $\tilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\tilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
+Sia $\wtilde{\mathscr S}_\ell \coloneqq \{ \sum_i \alpha_i \One_{E_i} \mid \alpha_i \in \R^d, E_i \in \mc A, \mu(E_i) < +\infty, E_i \text{ limitati} \}$ allora $\wtilde{\mathscr S}_\ell$ è denso in $L^p(X; \R^d)$ per $p < +\infty$.
 }
 
-\textbf{Dimostrazione.} Si dimostra che $\tilde{\mathscr S}_\ell$ è denso in $\tilde{\mathscr S}$ che a sua volta, per la proposizione precedente, è denso in $L^p$.
+\textbf{Dimostrazione.} Si dimostra che $\wtilde{\mathscr S}_\ell$ è denso in $\wtilde{\mathscr S}$ che a sua volta, per la proposizione precedente, è denso in $L^p$.
 % @ar-lli (?) (usando la definizione di densità topologica la tesi è quasi ovvia mentre usando la definizione per successioni bisogna passare per un procedimento diagonale).
 Dal lemma seguente si ottiene la tesi.
 
 \textbf{Lemma 1.}
-Dato $E \in \mc A, \mu(E) < +\infty$ esiste $E_n \in \mc A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \tilde{\mathscr S}_\ell$).
+Dato $E \in \mc A, \mu(E) < +\infty$ esiste $E_n \in \mc A$ con $E_n$ limitati tali che $E_n \subset E$ e $\mu(E \setminus E_n) \to 0$ e quindi $\norm{\One_{E} - \One_{E_n}}_p = \mu(E \setminus E_n)^{1/p} \xrightarrow{n} 0$ (e $\One_{E_n} \in \wtilde{\mathscr S}_\ell$).
 
 \textbf{Dim.}
 Dato $E$ con $\mu(E) < +\infty$ prendiamo $x_0 \in X$ e poniamo $E_n \coloneqq E \cap \mc B(x_0, n)$; $E_n \subset E$ e $E \setminus E_n \downarrow \varnothing \implies \mu(E \setminus E_n) \xrightarrow{n} 0$.

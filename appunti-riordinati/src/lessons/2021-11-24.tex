@@ -93,19 +93,19 @@ Introduciamo delle varianti della serie di Fourier.
 
 	\textit{Ortonormalità.} Sono conti.
 
-	\textit{Completezza.} Data $u \in L^2([0,\pi])$. Sia $\tilde{u}$ l'estensione dispari a $[-\pi,\pi]$. Allora 
+	\textit{Completezza.} Data $u \in L^2([0,\pi])$. Sia $\wtilde{u}$ l'estensione dispari a $[-\pi,\pi]$. Allora 
 	%
 	$$
-		\tilde{u} = a_0 + \sum_{n=1}^{\infty} \tilde{a}_n \cos(nx) + \tilde{b}_n \sin(nx)
-		\underset{\tilde{u} \text{ dispari}} = \sum_{n=1}^{\infty} \tilde{b}_n \sin(nx).
+		\wtilde{u} = a_0 + \sum_{n=1}^{\infty} \wtilde{a}_n \cos(nx) + \wtilde{b}_n \sin(nx)
+		\underset{\wtilde{u} \text{ dispari}} = \sum_{n=1}^{\infty} \wtilde{b}_n \sin(nx).
 	$$
 	%
 
-	\textbf{Osservazione.} I coefficienti $\tilde{b}_n = b_n$. Si può vedere in diversi modi, un modo possibile è questo.
+	\textbf{Osservazione.} I coefficienti $\wtilde{b}_n = b_n$. Si può vedere in diversi modi, un modo possibile è questo.
 	%
 	$$
-		\tilde{b}_n = \frac{1}{\pi} \int_{-\pi}^{\pi} \tilde{u}(x) \sin(nx) \dd x 
-		= \frac{2}{\pi} \int_{0}^{\pi} \tilde{u} \sin(nx) \dd x 
+		\wtilde{b}_n = \frac{1}{\pi} \int_{-\pi}^{\pi} \wtilde{u}(x) \sin(nx) \dd x 
+		= \frac{2}{\pi} \int_{0}^{\pi} \wtilde{u} \sin(nx) \dd x 
 		= \frac{2}{\pi} \int_{0}^{\pi} u(x) \sin(nx) \dd x 
 		= b_n.
 	$$

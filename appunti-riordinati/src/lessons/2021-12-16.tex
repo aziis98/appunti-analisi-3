@@ -1,11 +1,13 @@
-\section{Superfici $k$-dimensionali in $\R^d$ di classe $C^1$}
+% \section{Superfici $k$-dimensionali in $\R^d$ di classe $C^1$}
+
+\vss
 
 \textbf{Definizione.} Un insieme $E \subset \Sigma$ è \textbf{misurabile} (secondo Lebesgue) se $\forall \phi \colon D \to \Sigma \cap U$ parametrizzazione regolare e $D \subset \R^k$, l'insieme $\phi^{-1}(E \cap U) \subset \R^k$ è misurabile secondo Lebesgue.
 
 \textbf{Notazione.} $\mc{M}(\Sigma) \coloneqq  \{ E \subset \Sigma \text{ misurabili} \}$.
 
 \mybox{%
-\textbf{Proposizione 1.} Esiste un'unica misura $\sigma_k$ su $\mc{M}(\Sigma)$ tale che per ogni $E$ misurabile e per ogni $\phi \colon D \to \Sigma \cap U$ parametrizzazione regolare
+\textbf{Proposizione 1.} Esiste un'unica misura $\sigma_k$ su $\mc{M}(\Sigma)$ tale che per ogni $E \subset \Sigma \cap U$ misurabile e per ogni $\phi \colon D \to \Sigma \cap U$ parametrizzazione regolare
 %
 \begin{equation}
 	\label{eq:16dic_formula1} \tag{1}
@@ -29,38 +31,60 @@
 
 \textbf{Dimostrazione.} 
 
-\textit{Passo 1:} costruzione di $\sigma_k$.
+\fbox{Passo 1: costruzione di $\sigma_k$.}
+Prendiamo $\phi_i \colon  D_i \to \Sigma \cap U_i$ famiglia numerabile di parametrizzazioni regolari; inoltre sia $\left\{ \Sigma_i \right\}$ partizione di $\Sigma$ tale che $\{\Sigma_i\} \subset \bigcup_i U_i$ e $\Sigma_i \subset \Sigma \cap U_i$ e poniamo
 
-Prendiamo $\sigma_i \colon  D_i \to \Sigma \cap U_i$ parametrizzazioni regolari, dove $\{D_i\}$ è una famiglia numerabile, tale che $\Sigma \subset \bigcup U_i$.
-Prendiamo $\Sigma_i$ misurabili e disgiunti tali che $\bigcup \Sigma_i = \Sigma$ e $\Sigma_i \subset U_i$.
+% tali che $\bigcup_{i}  U_i$ dove $\{D_i\}$ è una famiglia numerabile, tale che $\Sigma \subset \bigcup U_i$.
+% Prendiamo $\Sigma_i$ misurabili e disgiunti tali che $\bigcup \Sigma_i = \Sigma$ e $\Sigma_i \subset U_i$.
 
-Per ogni $E \in \mc{M}(\Sigma)$ poniamo 
+% Per ogni $E \in \mc{M}(\Sigma)$ poniamo 
 %
 $$
-	\sigma_k (E) = \sum_i \quad  \int\limits_{\mathclap{\phi^{-1}(E \cap \Sigma_i)}} J \phi_i(s) \dd s
+	\sigma_k (E) = \sum_i \quad  \int\limits_{\mathclap{\phi_i^{-1}(E \cap \Sigma_i)}} J \phi_i(s) \dd s \qquad \forall E \; \text{misurabile}
 $$
 %
 Evitiamo di verificare che sia una misura $\sigma$-addittiva.
 
-Per dimostrare la proposizione si usa il seguente lemma.
+\newpage
 
-\textbf{Lemma.} Date $\phi \colon D \to \Sigma \cap U$ e $\tilde{\phi} \colon \tilde{D} \to \Sigma \cap \tilde{U}$ e $E$ misurabili contenuto in $U \cap \tilde{U}$, allora
+\fbox{Passo 2: dimostrazione di \eqref{eq:16dic_formula1}.}
+Il punto chiave è dimostrare il seguente lemma.
+
+\textbf{Lemma.} Date $\phi \colon D \to \Sigma \cap U$ e $\wtilde{\phi} \colon \wtilde{D} \to \Sigma \cap \wtilde{U}$ ed $E \subset \Sigma \cap U \cap \wtilde{U}$ misurabile, allora
 %
 \begin{equation}
 	\label{eq:16dic_formula2} \tag{2}
-	\int_{\phi^{-1}(E)} J\phi(s) \dd s = \int_{\tilde{\phi}(E)} J\tilde{\phi}(\tilde{s}) \dd \tilde{s}
+	\int_{\phi^{-1}(E)} J\phi(s) \dd s = \int_{\wtilde{\phi}(E)} J\wtilde{\phi}(\wtilde{s}) \dd \wtilde{s}
 \end{equation}
 %
 
-\textbf{Dimostrazione lemma.} Usiamo il cambio di variabile $s = \phi^{-1}(\tilde{\phi}(\tilde{s})) =: g(\tilde{s})$.
+Infatti, dando per buono il lemma, osserviamo quanto segue.
+Fissato $i$
+$$
+	\phi \colon D \to \Sigma \cap U \qquad \phi_i \colon D \to \Sigma \cap U_i
+	\qquad E_i \subset \Sigma \cap U \cap U_i
+$$
+dunque
+$$
+	\int_{\phi_i^{-1}(E \cap \Sigma_i)} J \phi_i(s) \dd s
+	= \int_{\phi^{-1}(E \cap \Sigma)} J \phi(s) \dd s.
+$$
+Infine sommando in $i$
+$$
+	\sigma_k(E)
+	= \sum_i \int_{\phi_i^{-1}(E \cap \Sigma_i)} J \phi_i(s) \dd s 
+	= \int_{\phi^{-1}(E \cap \Sigma)} J \phi(s) \dd s,
+$$
+da cui la tesi.
+
+\textbf{Dimostrazione lemma.} Usiamo il cambio di variabile $s = \phi^{-1}(\wtilde{\phi}(\wtilde{s})) =: g(\wtilde{s})$.
 \begin{align*}
 	\int_F J\phi(s) \dd s & = \int_{g^{-1}(F) = \tilde{F}} J\phi(s) Jg(\tilde{s}) \dd \tilde{s}
 	= \int_{\tilde{F}} |\det(\dd_s \phi)| \cdot | \det(\dd_{\tilde{s}}g)| \dd \tilde{s} \\
-	& = \int_{\tilde{F}} \left| \det (d_{\tilde{s}}(\phi \circ g)) \right| \dd \tilde{s}
-	= \int_{\tilde{F}} J \tilde{\phi}(\tilde{s}) \dd \tilde(s)
+	& = \int_{\tilde{F}} \left| \det (\dd_{\tilde{s}}(\phi \circ g)) \right| \dd \tilde{s}
+	= \int_{\tilde{F}} J \tilde{\phi}(\tilde{s}) \dd \tilde{s}
 \end{align*}
 %
-Da cui la tesi.
 \qed
 
 \mybox{%
@@ -71,8 +95,12 @@ Da cui la tesi.
 	\int_{\Sigma \cap U} f(x) \dd \sigma_k(x) = \int_D f(\phi(s)) J\phi(s) \dd s
 \end{equation}
 }
+\textbf{Dimostrazione.} La formula \eqref{eq:16dic_formula3} vale se $f$ è semplice (per la formula \eqref{eq:16dic_formula1}) e poi si estende per approssimazione a tutte le $f$ positive...
+\qed
 
-Se $\phi \colon D \to \Sigma \cap U$ è solo $C^1$, come vanno corrette \eqref{eq:16dic_formula1} e \eqref{eq:16dic_formula3}?
+Per calcolare $\int_\Sigma f \dd \sigma_k$ e $\sigma_k(E)$ conviene usare mappe $\phi$ che non sono esattamente parametrizzazioni; ci chidiamo dunque come vanno corrette \eqref{eq:16dic_formula1} e \eqref{eq:16dic_formula3} se $\phi \colon D \to \Sigma \cap U$ è solo $C^1$?
+
+\textbf{Proposizione} (formula dell'area). Valgono le seguenti.
 \begin{equation}
 	\tag{1'}
 	\int_{E \cap U} \# \phi^{-1}(x) \dd \sigma_k(x) = \int_{\phi^{-1}(E \cap U)} J\phi(s) \dd s
@@ -84,6 +112,8 @@ e
 \end{equation}
 
 \textbf{Nota.} Le formule sopra giustificano il fatto che parametrizzazione non esattamente bigettive possono essere usate lo stesso per il calcolo dei volumi.
+
+\vss
 
 \textbf{Esempio.} Parametrizzazione di $\mathbb{S}^d \subset \R^{d+1}$ con coordinate sferiche.
 
@@ -117,6 +147,7 @@ $$
 	J_\phi(s) = \sqrt{1 + |\nabla f(s)|}.
 $$
 
+\vss
 
 \textbf{Proposizione 3.} Sia $\Sigma$ superficie come al solito. Allora esiste un'unica misura $\mu$ sui $\mc{M}(\Sigma)$ tale che per ogni $\epsilon > 0$ esiste $\delta > 0$ tale che data $f \colon \Sigma \cap U \to \R^k \in C^1$ che è $\delta$-isometria, cioè
 %
@@ -131,7 +162,7 @@ $$
 $$
 %
 
-\textbf{Corollario 4.} Poiché $\sigma_k$ e la restrizione di $\mc{H}^k$ a $\Sigma$ hanno la proprietà \eqref{eq:16dic_prop3}, coincidono.
+\textbf{Corollario 4} (coincidenza con la misura di Hausdorff.) Poiché $\sigma_k$ e la restrizione di $\mc{H}^k$ a $\Sigma$ hanno la proprietà \eqref{eq:16dic_prop3}, coincidono.
 
 \textbf{Dimostrazione} (Unicità). 
 Prendiamo $\mu,\mu'$ che soddisfano \eqref{eq:16dic_prop3}.
@@ -141,7 +172,7 @@ Fissiamo $E,\epsilon > 0$ e $\delta$ di conseguenza usando \eqref{eq:16dic_prop3
 	\item Per ogni $x \in \Sigma$ esiste $\phi_x \colon U_x \cap \Sigma \to \R^k$ tale che $\dd_x \phi_x \colon T_x \Sigma \to \R^k$ è un'isometria.
 
 
-	\item per ogni $x$ esiste $V_x \subset U_x$ tale che $\phi_x \colon \Sigma \cap V_x \to \R^k$ è $\delta$-isometria.
+	\item Per ogni $x$ esiste $V_x \subset U_x$ tale che $\phi_x \colon \Sigma \cap V_x \to \R^k$ è $\delta$-isometria.
 
 
 	\item Ricopriamo $\Sigma$ con una successione $V_i \coloneqq V_{x_i}$.
@@ -155,17 +186,17 @@ Per \eqref{eq:16dic_prop3} abbiamo che
 %
 \begin{gather*}
 	\frac{1}{1+\epsilon} \mu(E_i) \leq |f(E_i)| \leq (1+\epsilon) \mu(E_i) \\
-	\frac{1}{1+\epsilon} \tilde{\mu}(E_i) \leq |f(E_i)| \leq (1+\epsilon) \tilde{\mu}(E_i)
+	\frac{1}{1+\epsilon} \wtilde{\mu}(E_i) \leq |f(E_i)| \leq (1+\epsilon) \wtilde{\mu}(E_i)
 \end{gather*}
 da cui incrociando le disuguaglianze otteniamo
 $$
 \Longrightarrow \;
 \begin{gathered}
-	\frac{1}{(1+\epsilon)^2} \mu(E_i) \leq \tilde \mu(E_i) \leq (1+\epsilon)^2 \mu(E_i) \\
-	\frac{1}{(1+\epsilon)^2} \tilde \mu(E_i) \leq \mu(E_i) \leq (1+\epsilon)^2 \tilde \mu(E_i)
+	\frac{1}{(1+\epsilon)^2} \mu(E_i) \leq \wtilde \mu(E_i) \leq (1+\epsilon)^2 \mu(E_i) \\
+	\frac{1}{(1+\epsilon)^2} \wtilde \mu(E_i) \leq \mu(E_i) \leq (1+\epsilon)^2 \wtilde \mu(E_i)
 \end{gathered}
 $$
-e per arbitrarietà di $\epsilon$ ricaviamo $\mu(E) = \tilde{\mu}(E)$. Per arbitrarietà di $E$ otteniamo $\mu = \tilde{\mu}$.
+e per arbitrarietà di $\epsilon$ ricaviamo $\mu(E) = \wtilde{\mu}(E)$. Per arbitrarietà di $E$ otteniamo $\mu = \wtilde{\mu}$.
 \qed
 
 

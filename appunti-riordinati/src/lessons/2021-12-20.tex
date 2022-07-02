@@ -1,5 +1,3 @@
-\section{Integrazione di $k$-forme su superfici}
-
 \textbf{Proposizione 0.} Il prodotto esterno $\wedge$ è distributivo (rispetto a +), associativo e anticommutativo, ovvero $\alpha \wedge \beta = (-1)^{hk} \beta \wedge \alpha$.
 
 Data $e_1,\ldots,e_d$ base di $V$, $e_1^*,\ldots,e_d^*$ è una base di $V^*$.
@@ -25,10 +23,10 @@ $$
 	\alpha = \sum_{\underline{i} \in I(d,k)} \alpha(e_{\underline{i}}) e_{\underline{i}}^* 
 $$
 %
-\textbf{Dimostrazione.} Definiamo $\tilde{\alpha}$ come sopra. Prendiamo $\underline{i} \in I(d,k)$,allora
+\textbf{Dimostrazione.} Definiamo $\wtilde{\alpha}$ come sopra. Prendiamo $\underline{i} \in I(d,k)$,allora
 %
 $$
-\tilde{\alpha}(e_{j_1},\ldots,e_{j_k}) = \sum_{\underline{i}} \alpha \left( e_{i_1},\ldots,e_{i_k} \right) \cdot \underbrace{e_{\underline{i}}^* (e_{j_1},\ldots,e_{j_k})}_{= \delta_{ij}} = \alpha (e_{j_1},\ldots,e_{j_k})
+\wtilde{\alpha}(e_{j_1},\ldots,e_{j_k}) = \sum_{\underline{i}} \alpha \left( e_{i_1},\ldots,e_{i_k} \right) \cdot \underbrace{e_{\underline{i}}^* (e_{j_1},\ldots,e_{j_k})}_{= \delta_{ij}} = \alpha (e_{j_1},\ldots,e_{j_k})
 $$
 %
 Si conclude per linearità e alternanza.
@@ -84,22 +82,25 @@ $$
 
 \textbf{Nota.} Nel prodotto esterno si cancellano tutti i termini con indici ripetuti.
 
-\textbf{Definizione.} Dato $\Omega \subset \R^d$ aperto, una \textbf{$k$-forma} $\omega$ su $\Omega$ è una "funzione"  da $\Omega$ in $\Lambda^k(\R^d)$. In coordinate, $\ds \omega(x) = \sum_{\underline{i} \in I(d,k)} w_{\underline{i}}(x) \cdot \dd x_{\underline{i}}$.
 
-Il \textbf{differenziale esterno} di una $k$-forma $\omega$ su $\Omega$ di classe $C^1$ è la $k+1$-forma su $\Omega$ di classe almeno $C^0$ data da
-\begin{itemize}
+% \section{Integrazione di $k$-forme su superfici}
 
-	\item $k=0$. In tal caso $f$ è una funzione (0-forma) e $\ds \dd f(x) = \dd_x f = \sum \frac{\partial w_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$
+% \textbf{Definizione.} Dato $\Omega \subset \R^d$ aperto, una \textbf{$k$-forma} $\omega$ su $\Omega$ è una "funzione"  da $\Omega$ in $\Lambda^k(\R^d)$. In coordinate, $\ds \omega(x) = \sum_{\underline{i} \in I(d,k)} w_{\underline{i}}(x) \cdot \dd x_{\underline{i}}$.
+
+% Il \textbf{differenziale esterno} di una $k$-forma $\omega$ su $\Omega$ di classe $C^1$ è la $k+1$-forma su $\Omega$ di classe almeno $C^0$ data da
+% \begin{itemize}
+
+% 	\item $k=0$. In tal caso $f$ è una funzione (0-forma) e $\ds \dd f(x) = \dd_x f = \sum \frac{\partial w_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$
 
 
-	\item $k > 0$ $\ds \dd \omega \coloneqq \sum_{\underline{i} \in I(d,k)} \dd \omega_{\underline{i}} (x) \wedge \dd x_{\underline{i}} = \sum_{\underline{i} \in I(d,k)} \sum_{j=1}^d \frac{\partial \omega_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$.
+% 	\item $k > 0$ $\ds \dd \omega \coloneqq \sum_{\underline{i} \in I(d,k)} \dd \omega_{\underline{i}} (x) \wedge \dd x_{\underline{i}} = \sum_{\underline{i} \in I(d,k)} \sum_{j=1}^d \frac{\partial \omega_{\underline{i}}(x)}{\partial x_j} \dd x_j \wedge \dd x_{\underline{i}}$.
 
-\end{itemize}
+% \end{itemize}
 
-\textbf{Proposizione} (Leibniz). Valgono le seguenti.
-\begin{itemize}
+% \textbf{Proposizione} (Leibniz). Valgono le seguenti.
+% \begin{itemize}
 
-	\item $\ds \dd (\omega_1 \wedge \omega_2) = \dd \omega_1 \wedge \omega_2 + (-1)^{k_1} \omega_1 \wedge \omega_2$
+% 	\item $\ds \dd (\omega_1 \wedge \omega_2) = \dd \omega_1 \wedge \omega_2 + (-1)^{k_1} \omega_1 \wedge \omega_2$
 
-	\item $\dd^2 \omega = 0$
-\end{itemize}
+% 	\item $\dd^2 \omega = 0$
+% \end{itemize}
