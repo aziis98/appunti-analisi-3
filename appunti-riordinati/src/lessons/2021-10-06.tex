@@ -48,15 +48,14 @@ $$
 \textbf{Nota.}
 Nella pratica non si parla mai di ``classi di funzioni'' e si lavora direttamente parlando di ``funzioni in $L^p$''. Le ``operazioni'' comuni non creano problemi però in certi casi bisogna stare attenti di star lavorando con oggetti ben definiti. Ad esempio:
 \begin{itemize}
-	\item Preso $x_0 \in X$, consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$. Notiamo che non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$ ovvero che la misura sia atomica) di $L^p$, in quanto possiamo variare $f$ su un insieme di misura nulla.
+	\item Preso $x_0 \in X$, consideriamo l'insieme $\{ f \in L^p \mid f(x_0) = 0 \}$. Notiamo che non è un sottoinsieme ben definito (a meno che $\mu(\{ x_0 \}) > 0$ ovvero che la misura sia atomica) di $L^p$, in quanto possiamo variare $f$ su $x_0$ (che è un insieme di misura nulla) e ottenere una nuova funzione $g$ con $[g] = [f]$ ma $g \notin \{ f \in L^p \mid f(x_0) = 0 \}$.
 
-	\item Invece ad esempio il seguente insieme è ben definito
+	\item Invece il seguente insieme è ben definito
 		$$
 		\left\{ f \in L^1 \;\middle|\; \int_X f \dd \mu = 0 \right\}
 		$$
 \end{itemize}
 
-\newpage
 
 \section{Prodotto scalare su $L^2$}
 
@@ -90,20 +89,30 @@ $$
 
 \textbf{Osservazioni.}
 \begin{itemize}
-\item Dato $C$ spazio vettoriale reale con prodotto scalare $\langle \curry, \curry \rangle$, allora $\langle \curry, \curry \rangle$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
-%
-$$
-\langle v_1, v_2 \rangle = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
-$$
-%
 
-\item  Dato $V$ come sopra, vale l'identità del parallelogramma:
-%
+\item Uno $V$ spazio vettoriale reale normato ha norma $\norm{\curry}$ derivante da un prodotto scalare se solo se vale l'\textbf{identità del parallelogramma}
 $$
-\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V.
+	\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V;
 $$
-%
- Usando questa identità di dimostra che la norma di $L^p$ deriva da un prodotto scalare solo per $p=2$.
+in tal caso il prodotto scalare può essere calcolato tramite l'\textbf{identità di polarizzazione}
+$$
+	\langle v_1, v_2 \rangle = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
+$$
+
+%\item Dato $C$ spazio vettoriale reale con prodotto scalare $\langle \curry, \curry \rangle$, allora $\langle \curry, \curry \rangle$ si ricava dalla norma associata $\norm{\curry}$ tramite l'identità di polarizzazione:
+%%
+%$$
+%\langle v_1, v_2 \rangle = \frac{1}{4} \left( \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 \right).
+%$$
+%%
+
+%\item  Dato $V$ come sopra, vale l'identità del parallelogramma:
+%%
+%$$
+%\norm{v_1 + v_2}^2 + \norm{v_1 - v_2}^2 = 2 \norm{v_1}^2 + 2 \norm{v_2}^2 \quad \forall v_1,v_2 \in V.
+%$$
+%%
+Usando l'identità del parallelogramma si dimostra che la norma di $L^p$ deriva da un prodotto scalare solo per $p=2$.
 
 \end{itemize}
 
@@ -176,7 +185,7 @@ $$
 		$$
 		in quanto \textit{coda di una serie convergente}, quindi 
 		$$
-		\forall \epsilon > 0 \mquad \exists m_\epsilon \text{ tale che } \sum_{k = m_\epsilon}^\infty d(y_k, y_{k+1})< \epsilon \implies \forall n > m \geq m_\epsilon \; d(y_m, y_n) \leq \epsilon
+		\forall \epsilon > 0 \mquad \exists m_\epsilon \text{ tale che } \sum_{k = m_\epsilon}^\infty d(y_k, y_{k+1})< \epsilon \implies \forall n > m \geq m_\epsilon \text{ vale } d(y_m, y_n) \leq \epsilon
 		$$ 
 
 	\item
@@ -204,8 +213,6 @@ $$
 
 
 % @aziis98: Il latex mi vuole male e mi metteva solo Corollario e la prima frase alla fine della pagina e l'enumerate alla nuova, però se aggiungiamo cose prima poi lo togliamo.
-
-\newpage
 
 \hypertarget{prop:completeness_lemma_2}{}
 \textbf{Lemma 2.} 
@@ -268,6 +275,8 @@ $$
 = \norm{\sum_{n=1}^\infty g_n}_p^p
 $$
 \qed
+
+\newpage
 
 \textbf{Dimostrazione} (Completezza spazi $L^p$).
 \begin{itemize}
@@ -343,7 +352,7 @@ $$
 
 \subsection{Confrontabilità degli spazi di $L^p$}
 
-\textbf{Osservazioni.} Valgono le seguenti
+\textbf{Osservazioni.} Valgono le seguenti\footnote{Le dimostrazioni di questi fatti sono nella parte di esercizi in fondo al capitolo.}
 \begin{itemize}
 
 	\item Sia $X \in \R^n$, $\mu$ misura di Lebesgue e $1 \leq p_1 < p_2 \leq +\infty$. In generale non posso confrontare gli spazi $L^p$. Tuttavia, se $\mu(X) < +\infty$, allora

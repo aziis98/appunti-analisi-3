@@ -18,7 +18,7 @@ Il seguente lemma riassume quanto detto finora.
 \textbf{Lemma} (di rappresentazione di $S_n f$ come convoluzione).
 Data $f \in L^1([-\pi,\pi;\C])$ (estesa a funzioni $2\pi$-periodiche su $\R$) vale
 $$
-	S_N f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_N(t) \dd t
+	S_N f(x) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x - t) D_N(t) \dd t = \frac{1}{2\pi} f \ast D_N(x)
 $$
 con
 $$
@@ -93,7 +93,7 @@ Mostriamo ora i due punti.
 			= \int_\R g \left( t - s/y \right) h(yt) \dd t \\
 			& \Longrightarrow \Phi(y, s) - \Phi(y, 0) = \int_\R \left(g\left( t - \frac{s}{y}\right) - g(t) \right) h(yt) \dd t \\
 			& \Longrightarrow 
-			|\Phi(y, s) - \Phi(y, 0)| = \int_\R |\tau_{s/y} g - g| \cdot |h(yt)| \dd t
+			|\Phi(y, s) - \Phi(y, 0)| \leq \int_\R |\tau_{s/y} g - g| \cdot |h(yt)| \dd t
 			\leq \norm{\tau_{s/y} g - g}_1 \cdot \norm{h}_\infty \xrightarrow{y \to \pm \infty} 0.
 		\end{align*}
 \qed
@@ -105,23 +105,39 @@ Mostriamo ora i due punti.
 	&= \frac{1}{2\pi} \int_{-\pi}^\pi f(\bar x - t) D_N(t) \dd t - \frac{1}{2\pi} \int_{-\pi}^\pi f(\bar x) D_N(t) \dd t \\
 	&= \frac{1}{2\pi} \int_{-\pi}^\pi (f(\bar x - t) - f(\bar x)) D_N(t) \dd t \\
 	&= \frac{1}{2\pi} \int_{-\pi}^\pi \frac{f(\bar x - t) - f(\bar x)}{\sin \frac{t}{2}} \sin \left(\left(N + \frac{1}{2}\right) t\right) \dd t \\
-	&= \int_{-\pi}^\pi g(t) \cdot \sin \left(\left(N + \frac{1}{2}\right) t\right)
+	&= \frac{1}{2\pi} \int_{-\pi}^\pi g(t) \cdot \sin \left(\left(N + \frac{1}{2}\right) t\right)
 \end{align*}
 Applicando il Lemma di Riemann-Lebesgue otteniamo:
 %
 $$
-	S_N f(\bar{x}) - f(\bar{x}) \xrightarrow{N \to +\infty} \left(\int g(x) \dd x\right) \cdot \avint_0^\pi \sin x \dd x = 0.
+	S_N f(\bar{x}) - f(\bar{x}) \xrightarrow{N \to +\infty} \frac{1}{2} \left(\int g(x) \dd x\right) \cdot \avint_0^{2\pi} \sin x \dd x = 0.
 $$
 %
 
-In particolare, per applicare il lemma serve $g \in L^1([-\pi, \pi])$; ma infatti per $|t| \leq \delta$
+Per applicare il lemma devo verificare che $g \in L^1([-\pi,\pi])$:
+\begin{align*}
+	\int_{-\pi}^\pi |g(t)| \dd t
+	& = \int_{|t| \leq \delta} |g(t)| \dd t + \int_{\delta < |t| \leq \pi} |g(t)| \dd t \\
+	& \overbrace{\leq}^{(\star)} \int_{|t| \leq \delta} \frac{M |t|^\alpha}{|t|/\pi} \dd t
+	+ \int_{\delta < |t| \leq \pi} \frac{|f(\ol{x} + t)| + |f(\ol{x})|}{\sin(\delta / 2)} \dd t \\
+	& \leq 2\pi M \int_0^\delta \frac{\dd t}{t^{1-\alpha}} + \frac{\norm{f}_1 + |f(\ol{x})|}{\sin(\delta/2)} < +\infty
+\end{align*}
+dove in $(\star)$ abbiamo usato
 $$
-	|g(t)| \leq \frac{|f(\bar x - t) - f(\bar x)|}{|\sin \frac{t}{2}|} \leq \frac{M |t|^\alpha}{|t| / \pi} = \frac{M \pi}{|t|^{1 - \alpha}} \in L^1([-\delta, \delta]).
+	\left| \sin\left( t/2 \right) \right| \geq |t|/\pi \mquad \forall t \in [-\pi,\pi]
+	\qquad \text{e} \qquad  
+	\left| \sin(t/2) \right| \geq \left| \sin(\delta / 2) \right| \mquad \text{se } \delta \leq |t| \leq \pi
 $$
-Invece per $\delta \leq |t| \leq \pi$ basta
-$$
-	|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi]).
-$$
+
+
+% In particolare, per applicare il lemma serve $g \in L^1([-\pi, \pi])$; ma infatti per $|t| \leq \delta$
+% $$
+% 	|g(t)| \leq \frac{|f(\bar x - t) - f(\bar x)|}{|\sin \frac{t}{2}|} \leq \frac{M |t|^\alpha}{|t| / \pi} = \frac{M \pi}{|t|^{1 - \alpha}} \in L^1([-\delta, \delta]).
+% $$
+% Invece per $\delta \leq |t| \leq \pi$ basta
+% $$
+% 	|g(t)| \leq \frac{|f(\bar x - t)| + |f(\bar x)|}{\sin \frac{\delta}{2}} \in L^1([-\pi, \pi]).
+% $$
 \qed
 
 Vale la seguente generalizzazione del teorema di convergenza puntuale della serie di Fourier.

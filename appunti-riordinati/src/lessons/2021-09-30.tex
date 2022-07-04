@@ -62,6 +62,13 @@ e $f \compose u$ è integrabile.
 		\end{cases}
 		$$
 		è convessa ma non semi-continua inferiormente (e neanche continua).
+
+	\item Se $0 < \mu(X) < +\infty$ la disuguaglianza di Jensen va modificata come segue
+	$$
+		\fint_X f \circ u \dd \mu \leq f \left( \fint_X u \dd \mu \right).
+	$$
+	Per la dimostrazione ci si riconduce al caso precedente sostituendo $\mu$ con $\wtilde{\mu} \coloneqq m \cdot \mu$, con $m \coloneqq 1 / \mu(X)$.
+	
 \end{itemize}
 
 \textbf{Dimostrazione.}
@@ -111,7 +118,7 @@ $$
 $$
 mentre per $p = +\infty$ poniamo
 $$
-	\norm{f}_\infty = \mathrm{supess} f(x) \coloneqq \inf \{ m \in [0, +\infty] \mid |f(x)| \leq m \text{ per $\mu$-q.o. } x \}.
+	\norm{f}_\infty = \operatorname{supess}_{x \in X} f(x) \coloneqq \inf \{ m \in [0, +\infty] \mid |f(x)| \leq m \text{ per $\mu$-q.o. } x \}.
 $$
 \textbf{Nota.} In realtà queste sono solo delle semi-norme.
 
@@ -181,7 +188,7 @@ vale anche per $p = +\infty$ convenendo che $+\infty \cdot 0 = 0$ nel membro di 
 }
 
 \textbf{Dimostrazione.}
-Se $\norm{f_1}_{p_1} = 0$ o $+\infty$ e anche $\norm{f_2}_{p_2} = 0$ o $+\infty$ la dimostrazione è immediata, supponiamo dunque $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} > 0$ e finiti.
+Se $\norm{f_1}_{p_1} = 0,+\infty$ o $\norm{f_2}_{p_2} = 0,+\infty$ la dimostrazione è immediata, supponiamo dunque $\norm{f_1}_{p_1}, \norm{f_2}_{p_2} > 0$ e finiti.
 
 \begin{itemize}
 	\item \textit{Caso 1:} se $p_1 = 1, p_2 = +\infty$ allora
@@ -226,7 +233,7 @@ $$
 
 \mybox{%
 \textbf{Proposizione.} 
-Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \R$ oppure $\R^d$. Allora vale la disuguaglianza triangolare
+Consideriamo sempre $(X, \mc A, \mu)$ e sia $p \in [1, +\infty]$ un esponente di sommabilità ed $f_1, f_2 \colon X \to \ol{\R}$ oppure $\R^d$. Allora vale la disuguaglianza triangolare
 $$
 	\norm{f_1 + f_2}_p \leq \norm{f_1}_p + \norm{f_2}_p.
 $$

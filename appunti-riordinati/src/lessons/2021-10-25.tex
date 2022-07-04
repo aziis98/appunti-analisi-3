@@ -125,17 +125,17 @@ Dati $p_1$ e $p_2$ esponenti coniugati, se
 allora $f_1 \ast f_2 \in C^1$ con $\nabla(f_1 \ast f_2) = (\nabla f_1) \ast f_2$.
 }
 
-\textbf{Nota.} Ha senso anche se $\nabla f_1$ è a valori vettoriali. In tal caso  $\frac{\pd}{\pd x_i}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 \quad \text{per } i = 1, \dots, d $.
+% \textbf{Nota.} Ha senso anche se $\nabla f_1$ è a valori vettoriali. In tal caso  $\frac{\pd}{\pd x_i}(f_1 \ast f_2) = \left( \frac{\pd f_1}{\pd x_i} \right) \ast f_2 \quad \text{per } i = 1, \dots, d $.
 
 Premettiamo il seguente.
 
-\textbf{Lemma.} Date $g,h \colon [a,b] \to \R$ continue e tali che
+\textbf{Lemma} (teorema fondamentale del calcolo integrale.) Date $g,h \colon [a,b] \to \R$ continue e tali che
 $$
 	g(x) - g(a) = \int_a^x h(t) \dd t \quad \forall x \in [a,b]
 $$
 allora $g \in C^1$ e $g' = h$.
 
-\vs
+\newpage
 
 \textbf{Dimostrazione Proposizione.}
 \begin{itemize}
@@ -210,7 +210,7 @@ $$
 \end{multicols}
 
 \textbf{Interpretazione.}
-Se $g_2 \geq 0$ con $\int g \dd x = 1$ (dunque $g$ distribuzione di probabilità) allora $f \ast g$ possiamo pensarla come media pesata di traslate di $f$, dunque facendo $f \ast \sigma_\delta g$ stiamo pesando sempre di più i valori delle traslate vicino a $0$. 
+Se $g \geq 0$ con $\int g \dd x = 1$ (dunque $g$ distribuzione di probabilità) allora $f \ast g$ possiamo pensarla come media pesata di traslate di $f$, dunque facendo $f \ast \sigma_\delta g$ stiamo pesando sempre di più i valori delle traslate vicino a $0$. 
 
 % minuto 1:28:00 definire la funzione e fare disegnino (questa funzione si usa anche
 % in altri casi per vedere che una certa proprietà non vale in $L^\infty$
@@ -249,7 +249,7 @@ infine ponendo $z = y / \delta$ e $\dd z = 1/\delta^d \dd y$ e sostituendo nell'
 $$
 = \int_{\R^d} \norm{\tau_{\delta z} f - f}_p \cdot |g(z)| \dd z \xrightarrow{\delta \to 0} 0
 $$
-per \textit{convergenza dominata}, verifichiamone le ipotesi
+per \textit{convergenza dominata}, verifichiamone le ipotesi:
 \begin{enumerate}
 	\item La convergenza puntuale segue in quanto $\norm{\tau_{\delta z} f - f}_p \xrightarrow{\delta \to 0} 0$ per ogni $z$.
 	\item Come dominazione prendiamo $2 \norm{f}_p \cdot |g| \in L^1$.

@@ -65,6 +65,7 @@ $$
 $$
 %
 
+% \hypertarget{teo:della-base-hilbert}
 \mybox{%
 \textbf{Teorema~1.} (della base di Hilbert.) Dato $H$ spazio di Hilbert, $\mc{F}$ sistema ortonormale al più numerabile, ovvero $\mc{F} = \left\{ e_n \mymid n \in \N \right\}$.
 Definiamo per ogni $x \in H$, $n \in \N$ l'elemento $x_n = \left<x, e_n \right>$.
@@ -80,8 +81,11 @@ Allora
 	\item \label{item:27ott_thm1_3}
 	Vale $\ds \norm{\overline{x}}^2 = \sum_n x_n^2 \leq \norm{x}^2$.
 
+	% \item \label{item:27ott_thm1_4}
+	% Se $x - \overline{x} \perp e_n \mquad \forall n$, allora $x - \overline{x} \perp \overline{\spn(\mc{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mc{F})}$.
 	\item \label{item:27ott_thm1_4}
-	Se $x - \overline{x} \perp \mc{F}$, allora $x - \overline{x} \perp \overline{\spn(\mc{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mc{F})}$.
+	Vale $x - \overline{x} \perp e_n \mquad \forall n$ e in particolare $x - \overline{x} \perp \overline{\spn(\mc{F})}$, ovvero $\overline{x}$ è la proiezione di $x$ su $\overline{\spn(\mc{F})}$.
+
 
 	\item \label{item:27ott_thm1_5}
 	Se $\mc{F}$ è completo, allora $x = \overline{x}$ e in particolare
@@ -119,7 +123,7 @@ Data $(a_n) \in \ell^2$, allora
 
 \textbf{Dimostrazione.}
 \begin{enumerate}
-\item Dimostriamo che $\ds y_n = \sum_{n = 1}^{m} a_n e_n$ è di Cauchy in $H$.
+\item Dimostriamo che $\ds y_m = \sum_{n = 1}^{m} a_n e_n$ è di Cauchy in $H$.
 Se $m' > m$, vale
 %
 $$
@@ -267,17 +271,24 @@ $$
 dunque $\mc{F}$ è massimale.
 
 \item[$\boxed{\Leftarrow}$] Se  $\mc{F}$ non è completo, esiste $x \in H \setminus \spn(\mc{F})$.
-Definiamo $\overline{x}$ come nel Teorema 1. Notiamo che $x - \overline{x} \perp \spn(\mc{F})$, dunque $x - \overline{x} \perp \mc{F}$ e $x - \overline{x} \neq \{ 0 \}$, da cui $\ds \mc{F} \; \cup \; \left\{ \frac{x - \overline{x}}{\norm{x - \overline{x}}} \right\}$ è un sistema ortonormale che include strettamente $\mc{F}$. \absurd
+Definiamo $\overline{x}$ come nel Teorema~1. Notiamo che $x - \overline{x} \perp \spn(\mc{F})$, dunque $x - \overline{x} \perp \mc{F}$ e $x - \overline{x} \neq \{ 0 \}$, da cui $\ds \mc{F} \; \cup \; \left\{ \frac{x - \overline{x}}{\norm{x - \overline{x}}} \right\}$ è un sistema ortonormale che include strettamente $\mc{F}$. \absurd
 
 \end{itemize}
 
 
 \textbf{Osservazione.} Nell'implicazione $\boxed{\Rightarrow}$ non abbiamo usato la completezza di $H$.
 
-\item Ogni sistema ortonormale $\mc{F}$ si completa a $\wtilde{\mc{F}}$ base di Hilbert di $H$.
+\item Ogni sistema ortonormale $\mc{F}$ si completa a $\wtilde{\mc{F}}$ base di Hilbert di $H$. In particolare ogni spazio di Hilbert ammette una base.
 
-\textbf{Dimostrazione.} Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale} H \text{ tale che } \wtilde{\mc{F}} \subset \mc{F} \right\}$.
-Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\wtilde{\mc{F}}$. Allora $\wtilde{\mc{F}}$ è una base di Hilbert.
+\textbf{Dimostrazione.} Sia $X \coloneqq \left\{ \mc{F} \subset H \colon \mc{F} \text{ è sistema ortonormale} \right\}$. Gli elementi di $X$ sono ordinati rispetto all'inclusione e ogni catena ammette un elemento massimale dato dall'unione dei suoi elementi, dunque $X$ ammette un elemento massimale $B$ per il lemma di Zorn e tale elemento è una base di Hilbert.
+Infatti, l'ortonormalità è banale dato che $B \in X$. La completezza si dimostra usando la formula di decomposizione
+$$
+	H = \ol{\spn(B)} \oplus \ol{\spn(B)}^\perp
+$$
+notando che per la massimalità di $B$ deve valere $\ol{\spn(B)}^\perp = \{0\}$.
+
+% Sia $X = \left\{ \mc{F} \; \text{sistema ortonormale di } H \text{ tale che } \wtilde{\mc{F}} \subset \mc{F} \right\}$.
+% Per Zorn, $X$ contiene un elemento massimale. Denotiamolo con $\wtilde{\mc{F}}$. Allora $\wtilde{\mc{F}}$ è una base di Hilbert.
 
 
 \end{itemize}
@@ -329,8 +340,6 @@ $$
 %
 Un esempio di tale $V$ è $\spn(\mc{F})$ con $\mc{F}$ base di $H$ ($H$ di dimensione infinita).
 
-\newpage
-
 \hypertarget{thm:lez2728ott-teo3}{%
 \textbf{Teorema~5} (di rappresentazione di Riesz.)} Sia $H$ spazio di Hilbert. Dato $\Lambda \colon  H \to \R$ lineare e continuo, esiste $x_0 \in H$ tale che 
 \begin{equation} \tag{$\ast$}
@@ -351,7 +360,7 @@ Se $V \neq H$, allora $V^\perp \neq \{0\}$ e definiamo $x_1 \in V^\perp$ con $\n
 Poniamo $x_0 \coloneqq  c x_1$ con $c \coloneqq  \Lambda x_1$ e $\wtilde{\Lambda}(x) \coloneqq \left<x,x_0 \right>$. Abbiamo che
 \begin{itemize}
 
-	\item $x \in V \Longrightarrow x \perp x_1 \Longrightarrow x \perp x_0 \Longrightarrow \wtilde{\Lambda} = 0 = \Lambda(x)$. Quindi $\wtilde{\Lambda} = \Lambda$ su $V$.
+	\item $x \in V \Longrightarrow x \perp x_1 \Longrightarrow x \perp x_0 \Longrightarrow \wtilde{\Lambda}(x) = 0 = \Lambda(x)$. Quindi $\wtilde{\Lambda} = \Lambda$ su $V$.
 
 	\item $\wtilde{\Lambda}(x_1) = \left<x_1,x_0 \right> = \left<x_1, c x_1 \right> = c \norm{x_1}^2 = c = \Lambda(x_1)$. Quindi $\wtilde{\Lambda} = \Lambda$ su $\spn(x_1) = V^\perp$ che ha dimensione 0 o 1 per il Lemma~6.
 
@@ -361,18 +370,17 @@ Poniamo $x_0 \coloneqq  c x_1$ con $c \coloneqq  \Lambda x_1$ e $\wtilde{\Lambda
 \end{itemize}
 
 \textbf{Osservazione.}
-Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensione infinita.
+Esistono funzioni $\Lambda \colon  H \to \R$ lineari ma non continue se $H$ ha dimensione infinita. 
 
-\textbf{Dimostrazione.} Prendo $\Lambda \colon H \to \R$ lineare definito come
+Infatti, presa $\mc{G}$ base algebrica di vettori unitari di $H$; $\mc{G}$ è infinita e contiene una successione $(e_n)$. Definiamo $\Lambda \colon H \to \R$ lineare come
 %
 $$
 	\begin{cases}
-	\Lambda(e_n) = n \quad \forall n \\
-	\Lambda(e) = \text{qualsiasi } e \in \mc{G} \setminus \left\{ e_n \right\}.
+	\Lambda(e_n) = n & \quad \forall n \\
+	\Lambda(e) = C & \quad  e \in \mc{G} \setminus \left\{ e_n \right\}.
 	\end{cases} 
 $$
-%
-Allora
+con $C$ generico. Allora
 %
 $$
 	+\infty = \sup_n \left| \Lambda(e_n) \right| \leq \sup_{\norm{x} \leq 1} \left| \Lambda(x) \right| 
@@ -406,10 +414,11 @@ Dato $\mathcal F = \{ e_n \}$ sistema ortonormale in $H$ e $x \in H$ allora per 
 $$
 x_n = \langle x; e_n \rangle
 $$
-Vale anche l'identità di Parseval $\norm{x^2} = \sum |x_n|^2$ dove $|\curry|$ è il modulo di un numero complesso, in particolare nella versione con prodotto scalare diventa
-$$
-\langle x, x' \rangle = \sum_n x_n \overline{x_n'}.
-$$
+e il resto dell'enunciato è uguale al caso reale.
+% Vale anche l'identità di Parseval $\norm{x^2} = \sum |x_n|^2$ dove $|\curry|$ è il modulo di un numero complesso, in particolare nella versione con prodotto scalare diventa
+% $$
+% \langle x, x' \rangle = \sum_n x_n \overline{x_n'}.
+% $$
 
 
 \section{Esempi di basi Hilbertiane}
@@ -425,14 +434,14 @@ La base data da $ \{ 1, x, x^2, \dots, x^n, \dots \} $ opportunamente ortonormal
 	\centering
 	\vspace{-4\baselineskip}
 	\inputfigure{base-di-haar-1} 
-	\vspace{-4.5\baselineskip}
+	\vspace{-9\baselineskip}
 \end{wrapfigure}
 
-Vediamo la base di Haar data da due indici $n, k$ dove $n$ indica l'ampiezza delle ``onde'' (anche dette \textit{wavelet}) e $k$ il posizionamento dell'onda. Sia $n \in \N$ e $k = 1, \dots, 2^n$ e poniamo
+Vediamo la base di Haar su $L^2([0,1])$ data da due indici $n, k$ dove $n$ indica l'ampiezza delle ``onde'' (anche dette \textit{wavelet}) e $k$ il posizionamento dell'onda. Sia $n \in \N$ e $k = 1, \dots, 2^n$ e poniamo
 $$
-g^{0,0} \coloneqq \One_{[0,1]}
-\qquad
-g^{n,k} \coloneqq 2^\frac{n-1}{2} \left( \One_{\left[ \frac{2k - 2}{2^n}, \frac{2k - 1}{2^n} \right]} - \One_{\left[ \frac{2k - 1}{2^n}, \frac{2k}{2^n} \right]} \right)
+	g^{0,0} \coloneqq \One_{[0,1]}
+	\qquad
+	g^{n,k} \coloneqq 2^\frac{n-1}{2} \left( \One_{\left[ \frac{2k - 2}{2^n}, \frac{2k - 1}{2^n} \right]} - \One_{\left[ \frac{2k - 1}{2^n}, \frac{2k}{2^n} \right]} \right)
 $$
 
 Inoltre $\| g^{n, k} \|_{L^2[0, 1]} = 1$ ed anche $\| g^{0,0} \|_{L^2[0, 1]} = 1$. Vedremo che $\{ g^{n,k} \mid n \geq 1, k = 1, \dots, 2^n \} \cup \{ g^{0,0} \}$ formano un sistema ortonormale.
@@ -440,17 +449,21 @@ Inoltre $\| g^{n, k} \|_{L^2[0, 1]} = 1$ ed anche $\| g^{0,0} \|_{L^2[0, 1]} = 1
 \begin{itemize}
 	\item $\langle g^{n,k}, g^{0,0} \rangle = 0$: È ovvio in quanto le $g^{n,k}$ hanno media nulla.
 
-	\item $\langle g^{n,k}, g^{n',k'} \rangle = 0$: Se $n = n'$ i supporti sono sempre disgiunti altrimenti $n \neq n'$, se supponiamo $n < n'$ allora i supporti o sono disgiunti e si conclude come prima o il supporto di $g^{n',k'}$ è contenuto in quello di $g^{n,k}$. In tal caso però $g^{n,k}$ è costante su $g^{n',k'}$ e dunque l'integrale è sempre nullo.
+	\item $\langle g^{n,k}, g^{n',k'} \rangle = 0$. Se $n = n'$ i supporti sono sempre disgiunti. Se $n < n'$, allora i supporti o sono disgiunti e si conclude come prima o il supporto di $g^{n',k'}$ è contenuto in quello di $g^{n,k}$ e dunque l'integrale ha media nulla.
 \end{itemize}
 
-Inoltre è anche una base hilbertiana, per combinazioni algebriche si ottengono tutti gli intervalli della forma
-$$
-I_k \coloneqq \left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right]
-\qquad
-\rightsquigarrow
-\qquad
-\One_{I_k}
-$$
-ad esempio normalizzando $g^{n,k} + 2^\frac{n-1}{2} g^{0, 0}$ otteniamo uno degli intervalli di sopra di lunghezza $1 / 2^{n+1}$.
+\newpage
 
-Vedremo che possiamo estendere la base di Haar a tutto $\R$ però è più difficile... [TODO: Ehm aggiungere la parte dopo quando verrà fatta]
+Inoltre è anche una base hilbertiana dato che per combinazioni algebriche si ottengono tutti gli intervalli della forma
+$$
+	I_k \coloneqq \left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right]
+	\qquad
+	\rightsquigarrow
+	\qquad
+	\One_{I_k}
+$$
+che formano un insieme denso. Per mostrare la densità si dimostra che le funzioni indicatrici $\One_{I_k}$ possono approssimare ogni funzione caratteristica $\One_{[a,b]}$ con $0 \leq a < b \leq 1$ (in questo modo si ottengono tutte le funzioni semplici in $[0,1]$).
+
+% Tali intervalli si possono ottenere normalizzando $g^{n,k} + 2^\frac{n-1}{2} g^{0, 0}$ otteniamo uno degli intervalli di sopra di lunghezza $1 / 2^{n+1}$.
+
+\textbf{Nota.} È possibile estendere la base di Haar a tutto $\R$.

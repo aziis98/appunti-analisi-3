@@ -26,7 +26,7 @@
 \textbf{Dimostrazione.} Dato che $|f_1| \ast |f_2| \in L^p$ segue che
 $$
 	\int_{\R^d} \left( |f_1| \ast |f_2|(x) \right)^p \dd x < +\infty
-	\Longrightarrow f_1 \ast f_2(x) \leq |f_1| \ast |f_2|(x) < +\infty \quad \wtilde{\forall} x \in \R^d.
+	\Longrightarrow |f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x) < +\infty \quad \wtilde{\forall} x \in \R^d.
 $$
 Inoltre
 \begin{multline*}
@@ -153,7 +153,7 @@ Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_
 		allora
 		$$
 		\begin{aligned}
-			\norm{f_1 \ast f_2}_p
+			\norm{f_1 \ast f_2}_p^p
 			&= \int_{\R^d} (\underbrace{f_1 \ast f_2}_{h})^p \dd x
 			= \int h \cdot h^{p-1} \dd x 
 			= \iint f_1(x - y) f_2(y) h^{p-1}(x) \dd y \dd x = \\
@@ -170,18 +170,33 @@ Per via del Corollario 2. ci basta dimostrare (\ref{eqn:conv_th3_thesis}) se $f_
 		Dunque, $\norm{f_1 \ast f_2}_p^p \leq \norm{f_1 \ast f_2}_p^{p-1} \norm{f_1}_p \norm{f_2}_1 \implies \norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \norm{f_2}_1$. Quest'ultima implicazione però è valida solo nel caso in cui $0 < \norm{f_1 \ast f_2}_p < +\infty$. Resterebbero da controllare i due casi in cui la norma è $0$ oppure $+\infty$. Il primo è ovvio; il secondo invece si fa per approssimazione e passando al limite.
 
 		% https://math.stackexchange.com/questions/1344706/are-continuous-functions-with-compact-support-bounded
-		Consideriamo $f_1, f_2$ e approssimiamole con $f_{1,n}, f_{2,n}$ a supporto compatto (e limitate\footnote{Le funzioni continue a supporto compatto sono limitate per Weierstrass.}), allora vale $\norm{f_{1,n} \ast f_{1,n}}_p \leq \norm{f_{1,n}}_p \cdot \norm{f_{2,n}}_1$ e passando al limite si ottiene la tesi. In particolare possiamo costruire le $f_n$ come
+		Consideriamo $f_1, f_2$ e approssimiamole con $f_{1,n}, f_{2,n}$ limitate a supporto limitato e crescenti,
 		$$
-		f_n(x) \coloneqq (f(x) \cdot \One_{\mc B(0, n)}(x)) \land n
+			f_{i,n} = (f \wedge n) \cdot \One_{B(0,n)} \qquad i=1,2.
 		$$
-
-		\textbf{Osservazione.}
-		Se $f_2 \geq 0$ e $\int f_2 \dd x = 1$ allora $\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p$ è una versione semplificata della proposizione precedente, in particolare la dimostrazione si semplifica in quanto possiamo pensare a $f_2$ come distribuzione di probabilità e quindi $f_1 \ast f_2$ è una ``media pesata'' delle traslazioni di $f_1$ o più precisamente una combinazione convessa ``integrale''.
+		Allora $f_{1,n} \ast f_{2,n}$ è limitata e con supporto limitato e quindi $\norm{f_{1,n} \ast f_{2,n}}_p < +\infty$ e per il \textit{Caso leggermente meno facile},
+		$$
+			\norm{f_{1,n} \ast f_{2,n}(x)}_p \leq \norm{f_{1,n}}_{p} \cdot \norm{f_{2,n}}_1
+		$$
+		Inoltre $f_{1,n} \ast f_{2,n} \uparrow f_1 \ast f_2(x)$ per il teorema di convergenza monotona, e sempre per convergenza monotona
+		\begin{gather*}
+			\norm{f_{1,n} \ast f_{2,n}(x)}_p \uparrow  \norm{f_1 \ast f_2}_p \\
+			\norm{f_{1,n}}_p \uparrow \norm{f_1}_p \\
+			\norm{f_{2,n}}_1 \uparrow \norm{f_2}_1
+		\end{gather*}
+		da cui otteniamo $\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p \norm{f_2}_1$.
+		
+		% allora vale $\norm{f_{1,n} \ast f_{1,n}}_p \leq \norm{f_{1,n}}_p \cdot \norm{f_{2,n}}_1$ e passando al limite si ottiene la tesi. In particolare possiamo costruire le $f_n$ come
+		% $$
+		% 	f_n(x) \coloneqq (f(x) \cdot \One_{\mc B(0, n)}(x)) \land n
+		% $$
 
 	\item
 		\textit{Caso generale.} Non lo facciamo perché servono mille mila parametri e non è troppo interessante.
 \end{itemize}
 \qed
+
+\textbf{Osservazione.} Se $f_2 \geq 0$ e $\int f_2 \dd x = 1$ allora $\norm{f_1 \ast f_2}_p \leq \norm{f_1}_p$ è una versione semplificata della proposizione precedente, in particolare la dimostrazione si semplifica in quanto possiamo pensare a $f_2$ come distribuzione di probabilità e quindi $f_1 \ast f_2$ è una ``media pesata'' delle traslazioni di $f_1$ o più precisamente una combinazione convessa ``integrale''.
 
 Nel caso $r = +\infty$ gli esponenti $p_1$ e $p_2$ sono proprio coniugati e possiamo rafforzare la tesi del teorema precedente.
 

@@ -85,14 +85,18 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 
 \vs
 
+La seguente dà un'indicazione sul comportamento asintotico dei coefficienti di Fourier.
+
+\mybox{%
 \textbf{Proposizione 2.} Data $f$ come nella Proposizione~1, valgono le seguenti
 \begin{enumerate}
 \item $\ds \sum_{n \in \Z} n^2 \left| c_n(f) \right|^2 = \frac{\norm{f'}_2^2}{2\pi} < +\infty$.
 
 \item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| < +\infty $ per ogni $\alpha < 1/2$.
 
-\item La serie di Fourier converge \footnote{$\sum a_n(x)$ converge totalmente se converge la serie $\sum \norm{a_n (x)}_\infty$.}{totalmente}.
+\item La serie di Fourier converge.
 \end{enumerate}
+}
 
 \newpage
 
@@ -103,7 +107,7 @@ Allora la formula $(\star)$ diventa $\ds c_n(g) = in \ c_n(f)$.
 	\underbrace{=}_{\text{Parseval}} \norm{f'}_2^2 / 2\pi \overbrace{<}^{\mathclap{f' \in L^\infty([-\pi,\pi], \C) \subset L^2([-\pi,\pi], \C) }} +\infty$.
 
 	\item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| 
-	\underbrace{\leq}_{(n \neq 0)} \sum_{n \in \Z} \left| n \right| \left| c_n(f) \right| \cdot \frac{1}{\left| n \right|^{1-\alpha }}
+	\underbrace{=}_{(n \neq 0)} \sum_{n \in \Z} \left| n \right| \left| c_n(f) \right| \cdot \frac{1}{\left| n \right|^{1-\alpha }}
 	\underbrace{\leq}_{\text{C-S per } \ell^2} \overbrace{\left( \sum_{n \in \Z} \left| n \right|^2 \left| c_n(f) \right|^2  \right)^{1/2}}^{< +\infty \text{ per il punto ii)}} \cdot \overbrace{\left( \sum_{n \in \Z} \frac{1}{\left| n \right|^{2-2\alpha }}  \right)^{1/2}}^{\alpha < 1/2 \; \Rightarrow \; <+\infty} < +\infty. 
 	$
 
@@ -122,7 +126,7 @@ Allora
 \begin{enumerate}
 	\item $\ds c_n (D^h f) = (in)^h c_n(f)$ per ogni $n \in \Z$ per ogni $h = 1,\ldots,k$.
 
-	\item $\ds \sum \left| n \right|^{2k} \left| c_n(f) \right|^2 \leq \frac{\norm{D^k f}_2^2}{2\pi} < +\infty$.
+	\item $\ds \sum \left| n \right|^{2k} \left| c_n(f) \right|^2 = \frac{\norm{D^k f}_2^2}{2\pi} < +\infty$.
 
 	\item $\ds \sum_{n \in \Z} \left| n \right|^\alpha \left| c_n(f) \right| < +\infty $ per ogni $\alpha < k - 1/2$.
 
@@ -173,7 +177,7 @@ Dunque $\ds \sum D^h \left( c_n(f) e^{inx} \right)$ converge totalmente (e quind
 \section{Convergenza puntuale della serie di Fourier}
 
 \mybox{%
-\textbf{Teorema.} Data $f \in L^1([-\pi,\pi], \C) $ (estesa in modo $2\pi$-periodico a tutto $\R$), $\ol{x} \in \R$ e $f$ è $\alpha$-Hölderiana con $\alpha > 0$, cioè esistono $\delta > 0 $ e $M < +\infty$ per cui
+\textbf{Teorema.} Data $f \in L^1([-\pi,\pi], \C) $ (estesa in modo $2\pi$-periodico a tutto $\R$), $\ol{x} \in \R$ e $f$ è $\alpha$-Hölderiana in $\ol{x}$ con $\alpha > 0$, cioè esistono $\delta > 0 $ e $M < +\infty$ per cui
 %
 $$
 	\left| f(\ol{x} +t) - f(\ol{x}) \right| \leq M \left| t \right|^\alpha \qquad \text{per $t$ tale che } \left| t \right| < \delta,
@@ -183,7 +187,7 @@ allora $\ds \sum_{-\infty}^\infty c_n(f) e^{in\ol{x}}$ converge a $f(\ol{x})$.
 Cioè $\ds \sum_{-N}^N c_n(f) e^{in\ol{x}}\xrightarrow{N \to \infty} f(\ol{x})$ 
 }
 
-\textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con "convoluzione":
+\textit{Lavoro preparatorio}: rappresentare somme parziali di serie di Fourier con ``convoluzione'':
 
 Data $f \in L^1([-\pi,\pi], \C) $, $N = 1,2,\ldots$ (estesa a funzioni $2\pi$-periodiche su $\R$).
 %
@@ -202,11 +206,11 @@ Riscriviamo
 Poniamo $\ds D_N(z) \coloneqq \sum_{n=-N}^{N} e^{inz} $ che si definisce \textbf{nucleo di Dirichlet}. Allora
 %
 \begin{align*}
-	S_N f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{x-y=t, \dd y = \dd t} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
+	S_N f(x) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(y) D_N(x-y) \dd y \overbrace{=}^{x-y=t, \dd y = - \dd t} \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \dd t \\
 	& \overbrace{=}^{(\star)} \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \dd t 
+	= \frac{1}{2\pi} f \ast D_N(x)
 \end{align*}
-
-Dove $(\star)$ è il seguente lemma.
+dove $\ast$ è il prodotto di convoluzione su $\R / 2\pi\Z$. Infine $(\star)$ è il seguente lemma.
 
 \textbf{Lemma.} Se $g$ è $T$-periodica e $g \in L^1([-\pi,\pi], \C) $, allora
 %

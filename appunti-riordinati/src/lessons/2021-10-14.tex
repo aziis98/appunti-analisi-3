@@ -31,6 +31,12 @@ Sia $X$ aperto di $\R^n, \mu = \mathscr L^n$ allora $C_C(X)$ è denso in $L^p$ p
 \begin{itemize}
 	\item
 		$\mathscr S_C := \{ \text{funzioni semplici con supporto compatto in $X$} \}$ è denso in $L^p(X)$ per ogni $p < +\infty$.
+		L'idea è di approssimare la classe delle funzioni semplici aventi dominio limitato. Data $f \in \mathscr{S}_l$ la approssimiamo con 
+		$$
+			f_n \coloneqq  f \cdot \One_{\{|x| < n\} \cap \{\dd(\partial X,x) > 1/n\}}.
+		$$
+		Resta da verificare che tale successione converge a $f$ in $L^p$.
+	
 
 	\item
 		Dato $E$ relativamente compatto\footnote{Un sottospazio relativamente compatto di uno spazio topologico è un sottoinsieme dello spazio topologico la cui chiusura è compatta.} in $X$ esiste $f_n \in C_C(X)$ tale che $f_n \to \One_E$ in $L^p$ per ogni $p < +\infty$.
@@ -117,8 +123,6 @@ Data $f \colon X \to \R$ misurabile e $\epsilon > 0$, esiste $E$ aperto con $|E|
 
 Inoltre se $f \in L^p(X)$ e $p < +\infty$ si può anche chiedere che $\norm{f - g}_p \leq \epsilon$.
 }
-
-\newpage
 
 \section{Appendice}
 
