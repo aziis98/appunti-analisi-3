@@ -16,7 +16,8 @@ Il resto dell'enunciato è per induzione su $k$ usando la Proposizione~4.
 \vs
 
 \textbf{Teorema} (Paley-Weiner).
-Se $e^{\alpha |x|} \cdot f(x) \in L^1$ per qualche $\alpha > 0$, allora $\hat{f}$ è analitica\footnote{Restrizione di $g \colon \underbrace{\R \times (-\alpha,\alpha)}_{\R \times \R \simeq \C} \to \C$ olomorfa}.
+Se $e^{\alpha |x|} \cdot f(x) \in L^1$ per qualche $\alpha > 0$, allora $\hat{f}$ coincide su $\R$ con una funzione $g \colon \R \times (-\alpha,\alpha) \to \C$ olomorfa, in particolare $\hat{f}$ è analitica. 
+% è analitica\footnote{Restrizione di $g \colon \underbrace{\R \times (-\alpha,\alpha)}_{\R \times \R \simeq \C} \to \C$ olomorfa}.
 
 \textbf{Dimostrazione.} In $\underset{y}{\R} \times \underset{t}{\R} \simeq \underset{z=y+it}{\C}$ definisco $g(z)$.
 
@@ -32,8 +33,8 @@ $$
 Infatti,
 %
 $$
-	\left| \int_{-\infty}^\infty f(x) e^{-izx} \dd x  \right|
-	\leq \int_{-\infty}^\infty |f(x)| e^{tx} \dd t
+	\int_{-\infty}^\infty |f(x) e^{-izx}| \dd x 
+	= \int_{-\infty}^\infty |f(x)| e^{tx} \dd t
 	\leq \int_{-\infty}^\infty |f(x)| e^{\alpha |x|} \dd x < +\infty
 $$
 %
@@ -76,9 +77,11 @@ Per concludere si dimostra (allo stesso modo) che $g$ si sviluppa in serie in og
 
 % \textbf{Corollario.} Se $f \in L^1$ è olomorfa e a supporto compatto allora $\hat{f}$ è la restrizione di $g \colon \C \to \C$ olomorfa \textbf{[TO DO: controllare]}.
 
-\textbf{Corollario.} Se $f \in L^1$ e $f$ ha supporto compatto allora $\hat{f}$ è analitica, anzi $\hat{f}$ coincide su $\R$ con una funzione olomorfa $g \colon \C \to \C$.
-
 \textbf{Nota.} Se $f \in L^1$ e a supporto compatto, si ha $f(x) e^{\alpha |x|} \in L^1$ per ogni $\alpha$.
+
+Infatti si ha il seguente.
+
+\textbf{Corollario.} Se $f \in L^1$ e $f$ ha supporto compatto allora $\hat{f}$ è analitica, anzi $\hat{f}$ coincide su $\R$ con una funzione olomorfa $g \colon \C \to \C$.
 
 \section{Applicazioni TdF}
 
@@ -119,7 +122,7 @@ $$
 	\rho(x) \coloneqq \frac{e^{-x^2 / 2}}{\sqrt{2\pi}}, \quad  \hat{\sigma_{\sqrt{2t}}\rho} = \hat{\rho}(\sqrt{2t}y).
 $$
 %
-Però è noto che\footnote{Si vede all'esercitazione che segue?} $\ds \hat{\rho}(y) = e^{-y^2/2} \implies \hat{\rho}(\sqrt{2t}y) = e^{-(\sqrt{2t}y)^2 / 2} = e^{-y^2 t}$. Da cui
+Però è noto che $\ds \hat{\rho}(y) = e^{-y^2/2} \implies \hat{\rho}(\sqrt{2t}y) = e^{-(\sqrt{2t}y)^2 / 2} = e^{-y^2 t}$. Da cui
 %
 $$
 	\hat{u}(t,y) = \hat{u_0} (y) e^{-y^2t} = \hat{u_0}(y) \cdot \hat{\sigma_{\sqrt{2t}} \rho}(y)
@@ -140,15 +143,21 @@ Dunque
 
 \textbf{Teorema.} Se $u_0 \colon \R \to \R$ è continua e limitata, allora $u$ data in \eqref{eq:09dic_prob2} è ben definita su $[0,+\infty) \times \R$, continua, $C^\infty$ per $t>0$ e risolve \eqref{eq:09dic_prob1}.
 
-\vss
+L'unicità di $u$ vale nello spazio delle funzioni per cui si possono fare i calcoli sopra, per esempio\footnote{Queste condizioni sono un sostituto delle condizioni al bordo.} le $u \colon [0,T) \to \R \to \R$ tali che esistono $g_1,g_2 \in L^1$ per cui
+$$
+	\left| u(t,x) \right| \leq g_1(x), \qquad \left| u_t(t,x) \right| \leq g_2(x).
+$$
 
-Data $u \colon [0,T) \times \R \to \R$ soluzione di \eqref{eq:09dic_prob1} tale che esiste $h_0,h_1 \in L^1(\R)$ tali che 
-%
-$$
-	|u(t,x)| \leq h_0(x), \quad |u_t(t,x)| \leq h_1(x)
-$$
-%
-allora $\hat{u}(\cdot,y)$ è univocamente determinata su $[0,T)$, dunque $u$ è univocamente determinata per l'iniettività di TdF.
+Senza ulteriori condizioni su $u$ non c'è unicità per (P).
+
+
+%Data $u \colon [0,T) \times \R \to \R$ soluzione di \eqref{eq:09dic_prob1} tale che esiste $h_0,h_1 \in L^1(\R)$ tali che 
+%%
+%$$
+%	|u(t,x)| \leq h_0(x), \quad |u_t(t,x)| \leq h_1(x)
+%$$
+%%
+%allora $\hat{u}(\cdot,y)$ è univocamente determinata su $[0,T)$, dunque $u$ è univocamente determinata per l'iniettività di TdF.
 
 % A seguire è stato fatto quanto segue, che però è fuori programma e pertanto non viene riportato
 % Disuguaglianza di Heisemberg

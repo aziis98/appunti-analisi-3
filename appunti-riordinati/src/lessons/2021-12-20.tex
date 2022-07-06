@@ -1,32 +1,38 @@
 \textbf{Proposizione 0.} Il prodotto esterno $\wedge$ è distributivo (rispetto a +), associativo e anticommutativo, ovvero $\alpha \wedge \beta = (-1)^{hk} \beta \wedge \alpha$.
 
-Data $e_1,\ldots,e_d$ base di $V$, $e_1^*,\ldots,e_d^*$ è una base di $V^*$.
-Denotiamo con $I(d,k) \coloneqq \{ \underline{i} = (i_1,\ldots,i_k) \text{ con } 1 \leq i_1 \leq \ldots \leq i_k \leq i_d \}$ l'insieme di multiindici.
-Per ogni $i \in I(d,k)$ indichiamo con $e_{\underline{i}}^* = e_{i_1}^* \wedge \ldots \wedge e_{i_k}^* \in \Lambda^k(V)$. Data una matrice $d \times k$ $A$, $A_{\underline{i}}$ è il minore di $A$ dato dalle righe $i_1,\ldots,i_k$.
+\vss
 
-\textbf{Proposizione 1.} $e_{\underline{i}}^* (v_1,\ldots,v_k) = \det(A_{\underline{i}})$, dove $A \in R^{d\times k}$ matrice delle coordinate di $v_1,\ldots,v_k$, cioè $A_{ij} = (v_j)_i$.
+Troviamo ora una base di $\Lambda^k(V)$.
+
+Data $e_1,\ldots,e_d$ base di $V$, $e_1^*,\ldots,e_d^*$ è una base di $V^*$.
+Denotiamo con $I(d,k) \coloneqq \{ \underline{i} = (i_1,\ldots,i_k) \text{ con } 1 \leq i_1 < \ldots < i_k \leq d \}$ l'insieme di multiindici.
+Per ogni $\underline{i} \in I(d,k)$ indichiamo con $e_{\underline{i}}^* = e_{i_1}^* \wedge \ldots \wedge e_{i_k}^* \in \Lambda^k(V)$. 
+
+\textbf{Notazione.} Data una matrice $d \times k$ $A$, $A_{\underline{i}}$ è il minore di $A$ dato dalle righe $i_1,\ldots,i_k$.
+
+\textbf{Proposizione 1.} $e_{\underline{i}}^* (v_1,\ldots,v_k) = \det(A_{\underline{i}})$, dove $A \in \R^{d\times k}$ matrice delle coordinate di $v_1,\ldots,v_k$ rispetto a $e_1,\ldots,e_d$, cioè $A_{ij} = (v_j)_i$.
 
 \textbf{Dimostrazione.} Per induzione su $k$.
 \begin{itemize}
 
 	\item $k=1$. OK
 
-	\item \textit{Passo induttivo} $k-1 \to k$. Scriviamo $e_{\underline{i}}^* = e_{i_1} \wedge e_{\underline{i'}}$ con $\underline{i'} = (i_2,\ldots,i_k)$.
+	\item \textit{Passo induttivo} $k-1 \to k$. Scriviamo $e_{\underline{i}}^* = e^*_{i_1} \wedge e^*_{\underline{i'}}$ con $\underline{i'} = (i_2,\ldots,i_k)$.
 	Usando la definizione di prodotto esterno e l'ipotesi induttiva notiamo che questo è uguale allo sviluppo per la prima riga di $\det(A_{\underline{i}})$
 
 \end{itemize}
 \qed
 
-\textbf{Proposizione 2.} Posta $\{e_{\underline{i}} \colon \underline{i} \in I(d,k) \}$ è una base di $\Lambda^k(V)$ e in particolare per ogni $\alpha \in \Lambda^k(V)$
+\textbf{Proposizione 2.} L'insieme $\{e^*_{\underline{i}} \colon \underline{i} \in I(d,k) \}$ è una base di $\Lambda^k(V)$ e in particolare per ogni $\alpha \in \Lambda^k(V)$
 %
 $$
-	\alpha = \sum_{\underline{i} \in I(d,k)} \alpha(e_{\underline{i}}) e_{\underline{i}}^* 
+	\alpha(v_1,\ldots,v_k) = \sum_{\underline{i} \in I(d,k)} \alpha(e_{\underline{i}}) e_{\underline{i}}^* (v_1,\ldots,v_k)
 $$
 %
 \textbf{Dimostrazione.} Definiamo $\wtilde{\alpha}$ come sopra. Prendiamo $\underline{i} \in I(d,k)$,allora
 %
 $$
-\wtilde{\alpha}(e_{j_1},\ldots,e_{j_k}) = \sum_{\underline{i}} \alpha \left( e_{i_1},\ldots,e_{i_k} \right) \cdot \underbrace{e_{\underline{i}}^* (e_{j_1},\ldots,e_{j_k})}_{= \delta_{ij}} = \alpha (e_{j_1},\ldots,e_{j_k})
+\wtilde{\alpha}(e_{j_1},\ldots,e_{j_k}) = \sum_{\underline{i}} \alpha \left( e_{i_1},\ldots,e_{i_k} \right) \cdot \underbrace{e_{\underline{i}}^* (e_{j_1},\ldots,e_{j_k})}_{= \delta_{\underline{i}\underline{j}}} = \alpha (e_{j_1},\ldots,e_{j_k})
 $$
 %
 Si conclude per linearità e alternanza.
@@ -36,17 +42,17 @@ Si conclude per linearità e alternanza.
 $$
 \dim \Lambda^k(V) = \# I(d,k) = 
 \begin{cases}
-	\binom{d}{k} \quad \text{se } k < d \\
+	\binom{d}{k} \quad \text{se } k \leq d \\
 	0 \qquad \text{altrimenti} 
 \end{cases} 
 $$
 %
 
 \textbf{Proposizione 3} (Formula di Binet generalizzata).
-Dati $A,B$ matrici di $d \times k$ con $k < d$, allora
+Dati $A,B$ matrici di $d \times k$ con $1 \leq k \leq d$, allora
 %
 $$
-	\det(B^tA) = \sum_{\underline{i} \in I(d,k)} \det(B_{\underline{i}}) \det (A_{\underline{i}})
+	\det(B^tA) = \sum_{\underline{i} \in I(d,k)} \det(B_{\underline{i}}^t) \det (A_{\underline{i}})
 $$
 %
 

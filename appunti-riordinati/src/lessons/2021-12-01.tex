@@ -63,7 +63,7 @@ $$
 $$
 serve che $f(x) \to 0$ per $|x| \to +\infty$ per far sì che $(\star) = 0$.
 
-\textbf{Nota.} $f \in C \cap L^1 $ non implica che $f(x) \xrightarrow{x \to \pm \infty}$, tuttavia $f \in C^1 \cap L^1$ e $f' \in L^1$ sì, però la dimostrazione è più complicata.
+\textbf{Nota.} $f \in C \cap L^1 $ non implica che $f(x) \xrightarrow{x \to \pm \infty} 0$, tuttavia $f \in C^1 \cap L^1$ e $f' \in L^1$ sì, però la dimostrazione è più complicata.
 
 Argomentiamo come segue: $f \in L^1 \implies \liminf_{|x| \to \infty} |f(x)| = 0$, in quanto se $\liminf_{|x| \to \infty} |f(x)| = \delta > 0$ allora la funzione sarebbe $> \delta$ per $|x| \to +\infty$ ed avrebbe integrale $+\infty$, dunque esistono due successioni $a_n \to -\infty, b_n \to +\infty$ tali che $f(a_n) \to 0$ e $f(b_n) \to 0$ quindi come prima abbiamo
 $$
@@ -105,7 +105,7 @@ Sia $I$ un intervallo di $\R$, $E$ misurabile in $\R^d$ e $g \colon I \times E \
 \end{enumerate}
 allora $G(t) \coloneqq \int_E g(t, x) \dd x$ è ben definita per ogni $t \in I$ e $G \in C^1(I)$ e
 $$
-G'(t) = \int_E \frac{\pd}{\pd t}g(t, x) \dd x
+G'(t) = \underbrace{\int_E \frac{\pd}{\pd t}g(t, x) \dd x}_{\wtilde{G}(t)}
 $$
 \textbf{Traccia dimostrazione.}
 \begin{itemize}
@@ -117,6 +117,7 @@ $$
 		G(t_1) - G(t_0) \overset{(*)}{=} \int_{t_0}^{t_1} \wtilde G(t) \dd t
 		$$
 		ed usando Fubini-Tonelli in ($*$).
+\qed
 \end{itemize}
 
 \mybox{%
@@ -131,10 +132,10 @@ $$
 $$
 \begin{aligned}
 	\hat{f_1 \ast f_2}(y)
-	&= \int f_1 \ast f_2 (x) e^{-ixy} \dd x = \\
-	&= \iint f_1(x - t) f_2(t) \dd t \, e^{-ixy} \dd x = \\
-	&= \int \left(\int f_1(x - t) e^{-i(x - t)y} \dd x \right) f_2(t) e^{-ity} \dd t = \\
-	&= \int \hat f_1(y) f_2(t) e^{-ity} \dd t = \hat{f_1}(y) \cdot \hat{f_2}(y)
+	& = \int f_1 \ast f_2 (x) e^{-ixy} \dd x \\
+	& = \iint f_1(x - t) f_2(t) \dd t \, e^{-ixy} \dd x \\
+	& \overset{\ast}{=} \int \left(\int f_1(x - t) e^{-i(x - t)y} \dd x \right) f_2(t) e^{-ity} \dd t \\
+	& = \int \hat f_1(y) f_2(t) e^{-ity} \dd t = \hat{f_1}(y) \cdot \hat{f_2}(y).
 \end{aligned}
 $$
 
@@ -143,14 +144,16 @@ Data $g \in L^1(\R; \C)$ definiamo l'\textbf{antitrasformata di Fourier} di $g$ 
 $$
 	\check g(x) \coloneqq \int_{-\infty}^{+\infty} g(y) e^{ixy} \dd y.
 $$
-Cioè $\check g(x) = \hat g(-x)$ e scriviamo anche $\check g = \mathcal F^* g$. Effettivamente $\mathcal F^*$ è l'aggiunto di $\mathcal F$, almeno formalmente\footnotemark infatti abbiamo
-$$
+Cioè $\check g(x) = \hat g(-x)$ e scriviamo anche $\check g = \mathcal F^* g$. Effettivamente $\mathcal F^*$ è l'aggiunto di $\mathcal F$, almeno formalmente (in $L^1$ non è definito il prodotto scalare) infatti abbiamo
+\begin{multline*}
 	\langle \mathcal F f, g \rangle
-	= \iint f \overline{e^{ixy} g(y)} \dd x \dd y
+	= \int \hat{f}(y) \ol{g(y)} \dd y
+	= \iint f(x) e^{-ixy} \ol{g(y)} \dd x \dd y
+	= \iint f(x) \overline{g(y)e^{ixy}} \dd x \dd y \\
 	= \int f(x) \overline{\check g(x)} \dd x
 	= \langle f, \mathcal F^* g \rangle.
-$$
-\footnotetext{In $L^1$ non è definito il prodotto scalare.}
+\end{multline*}
+
 
 \mybox{%
 \textbf{Teorema 7.}
@@ -174,7 +177,7 @@ $$
 	\mathcal F^* \mathcal F f 
 	& = \int_{-\infty}^{+\infty} \hat f(y) e^{iyx} \dd y = \\
 	& = \iint f(t) e^{-iyt} \dd t e^{ixy} \dd y = \\
-	\substack{\text{non si può} \\ \text{usare Fubini\footnotemark}}\to & = \int f(t) \underbrace{\int e^{i(x-t)y} \dd y}_{\text{``$\delta(x-t)$''}} \dd t = f(x)
+	\substack{\text{non si può} \\ \text{usare Fubini}\footnotemark}\to & = \int f(t) \underbrace{\int e^{i(x-t)y} \dd y}_{\text{``$\delta(x-t)$''}} \dd t = f(x)
 \end{aligned}
 $$
 % \addtocounter{footnote}{1}
@@ -188,7 +191,7 @@ $$
 \end{enumerate}
 e poniamo $g_\delta(x) \coloneqq \ds \int_{-\infty}^{+\infty} \hat f(y) \varphi(\delta y) e^{ixy} \dd y$.
 \begin{itemize}
-	\item \textit{Passo 1.}
+	\item \fbox{Passo 1}
 		$g_\delta(x) \to \mathcal F^* \mathcal F f(x)$ per ogni $x \in \R$ per convergenza dominata. Infatti:
 		$$
 			\int \hat f(y) e^{iyx} \varphi(\delta y) \dd y \xrightarrow{\delta \to 0} 
@@ -196,7 +199,7 @@ e poniamo $g_\delta(x) \coloneqq \ds \int_{-\infty}^{+\infty} \hat f(y) \varphi(
 		$$
 		e come dominazione usiamo $|\hat f(y) e^{iyx} \varphi(\delta y)| \leq |\hat f(y)| \cdot \norm{\varphi}_\infty$
 
-	\item \textit{Passo 2.} Per Fubini Tonelli vale 
+	\item \fbox{Passo 2} Per Fubini Tonelli vale 
 		\begin{multline*}
 			g_\delta(x) = \int \hat{f} e^{ixy} \myphi(\delta y) \dd y = \int \left( \int f(t) e^{-ity} \dd t \right) e^{ixy} \varphi(\delta y) \dd y \\
 			\overset{\text{Fubini}}{=} \int f(t) \left( \int \myphi(\delta y) e^{i(x-t)y} \dd y \right) \dd t,
@@ -209,25 +212,35 @@ e poniamo $g_\delta(x) \coloneqq \ds \int_{-\infty}^{+\infty} \hat f(y) \varphi(
 		$$
 		Dunque otteniamo
 		$$
-		\begin{aligned}
-			g_\delta(x) & = \int f(t) \overbrace{\left( \int \myphi(\delta y) e^{i(x-t)y} \dd y \right)}^{\mathclap{\substack{\text{antitrasf. di $\myphi(\delta y)$} \\ \text{calcolata in $x-t$ ovvero $\sigma_\delta \check{\myphi}(x-t)$}}}} \dd t \\
-			& = \int f(t) \sigma_\delta \check{\myphi}(x-t) \dd t = f \ast \sigma_\delta \check{\myphi}(x).
-		\end{aligned}
+			g_\delta(x) = \int f(t) \overbrace{\left( \int \myphi(\delta y) e^{i(x-t)y} \dd y \right)}^{\mathclap{\substack{\text{antitrasf. di $\myphi(\delta y)$} \\ \text{calcolata in $x-t$ ovvero $\sigma_\delta \check{\myphi}(x-t)$}}}} \dd t
+			= \int f(t) \sigma_\delta \check{\myphi}(x-t) \dd t = f \ast \sigma_\delta \check{\myphi}(x).
 		$$
 
-	\item \textit{Passo 3.} Siccome $f \in L^1$ e $\check \myphi \in L^1$, per il teorema di approssimazione per convoluzione segue
+	\item \fbox{Passo 3} Siccome $f \in L^1$ e $\check \myphi \in L^1$, per il teorema di approssimazione per convoluzione segue
 	$$
 		g_\delta (x) = f \ast \sigma_\delta \check \myphi(x) \xrightarrow{\delta \to 0} mf(x) \quad \text{in } L^1, \qquad \text{dove} \qquad  m = \int \check \myphi(y) \dd y.
 	$$
 	
-	\item \textit{Passo 4.} Usando il primo ed il terzo passo otteniamo $\mathcal F^* \mathcal F f = m f$ per quasi ogni $x$, in quanto la convergenza puntuale e quella in $L^1$ devono essere compatibili. 
-	% in particolare, la convergenza in $L^1$ a meno di sottosuccessioni equivale alla convergenza puntuale e dunque coincidono.
+	\item \fbox{Passo 4} Usando il primo ed il terzo passo otteniamo $\mathcal F^* \mathcal F f = m f$ per quasi ogni $x$, in quanto la convergenza puntuale e quella in $L^1$ sono compatibili; in particolare, la convergenza in $L^1$ a meno di sottosuccessioni equivale alla convergenza puntuale e dunque coincidono.
 
-	\item \textit{Passo 5.} Resta da dimostrare che $m = 2\pi$. Prendendo $\varphi(y) = e^{-|y|}$ segue che
-		$$
-			\check \varphi(x) = \frac{2}{1 + x^2}
-		$$
-		e dunque $m = 2\pi$. In realtà vale per ogni $\varphi$ che verifica le condizioni dell'ipotesi.
+	\item \fbox{Passo 5} Resta da dimostrare che $m = 2\pi$. 
+	Basta prendere $\myphi(y) = 1/(1+y^2)$ per cui
+	$$
+	\check{\myphi}(x) \overset{\myphi \text{ è pari}}{=} \hat{\myphi}(x) = \pi e^{-|x|} 
+	\quad \text{e} \quad 
+	m = 2 \int_0^{+\infty} \pi e^{-x} \dd x = 2\pi
+	$$
+
+	\textbf{Nota.} In realtà $m = 2\pi$ per ogni $\myphi$ per via della formula di inversione:
+	$$
+		2\pi = 2\pi \myphi(0) = \mc{F} \mc{F}^\ast \myphi(0) = \int_{\R} \check{\myphi}(x) \dd x =: m
+	$$
+	
+	% Prendendo $\varphi(y) = e^{-|y|}$ segue che
+	% 	$$
+	% 		\check \varphi(x) = \frac{2}{1 + x^2}
+	% 	$$
+	% 	e dunque $m = 2\pi$. In realtà vale per ogni $\varphi$ che verifica le condizioni dell'ipotesi.
 \end{itemize}
 \qed
 

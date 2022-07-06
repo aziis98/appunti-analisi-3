@@ -9,25 +9,42 @@
 % $$
 % e se $f_1$ e $f_2$ sono positive allora $f_1 \ast f_2(x) \in [0, +\infty]$. Ma ad esempio se prendiamo $f_1 = 1$ e $f_2 = \sin x$ con $d = 1$ allora $f_1 \ast f_2(x)$ non è definito per alcun $x$.
 
-\textbf{Proposizione 1.} Se $|f_1| \ast |f_2| (x) < +\infty$ allora $f_1 \ast f_2(x)$ è ben definito, in quanto $f_1 \ast f_2(x) \leq |f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x)$.
+\textbf{Proposizione 1.} Date $f_1,f_2 \colon \R^d \to \R$ e $x \in \R^d$, se $|f_1| \ast |f_2| (x) < +\infty$ allora $f_1 \ast f_2(x)$ è ben definito, reale e in particolare vale 
+$$
+	\left| f_1 \ast f_2(x) \right| \leq |f_1| \ast |f_2|(x).
+$$
 
-\textbf{Dimostrazione.} Basta osservare che,
-%
-\begin{align*}
-	f_1 \ast f_2(x) & = \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y 
-	\leq \left| \int_{\R^d} f_1(x-y) \cdot f_2(y) \dd y \right| \\
-	& \leq \int_{\R^d} |f_1(x-y) \cdot f_2(y)| \dd y
-	= |f_1| \ast |f_2|(x) < +\infty.
-\end{align*}
+\textbf{Dimostrazione.} 
+% Basta osservare che,
+% $$
+% 	\leq \int_{\R^d} |f_1(x-y) \cdot f_2(y)| \dd y = |f_1| \ast |f_2|(x) < +\infty.
+% $$
+% \qed
+Se 
+$$
+	|f_1| \ast |f_2|(x) = \int_{\R^d} \left| f_1(x-y) f_2(y) \right| \dd y
+$$
+è finito allora $f_1(x-\cdot) f_2(\cdot) \in L^1(\R^d)$ per ogni $x$ e quindi
+$$
+	f_1 \ast f_2(x) \coloneqq \int_{\R^d} f_1(x-y) f_2(y) \dd y
+$$
+è ben definito e
+$$
+	|f_1 \ast f_2(x)| \leq \int_{\R^d} \left| f_1(x-y)f_2(y) \right| \dd y = |f_1| \ast |f_2|(x)
+$$
 \qed
+
+
 
 \textbf{Corollario 2.} Se $|f_1| \ast |f_2| \in L^p(\R^d)$ con $1 \leq p \leq +\infty$ allora $f_1 \ast f_2(x)$ è ben definito per quasi ogni $x \in \R^d$ e $\norm{f_1 \ast f_2}_p \leq \norm{|f_1| \ast |f_2|}_p$.
 
 \textbf{Dimostrazione.} Dato che $|f_1| \ast |f_2| \in L^p$ segue che
 $$
 	\int_{\R^d} \left( |f_1| \ast |f_2|(x) \right)^p \dd x < +\infty
-	\Longrightarrow |f_1 \ast f_2(x)| \leq |f_1| \ast |f_2|(x) < +\infty \quad \wtilde{\forall} x \in \R^d.
+	\Longrightarrow |f_1| \ast |f_2|(x) < +\infty \quad \wtilde{\forall} x \in \R^d.
 $$
+e per la Proposizione~1 segue la buona definizione $\wtilde{\forall} x \in \R^d$.
+
 Inoltre
 \begin{multline*}
 	\norm{f_1 \ast f_2}_p^p 

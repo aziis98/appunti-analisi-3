@@ -54,25 +54,26 @@ Il punto chiave è dimostrare il seguente lemma.
 %
 \begin{equation}
 	\label{eq:16dic_formula2} \tag{2}
-	\int_{\phi^{-1}(E)} J\phi(s) \dd s = \int_{\wtilde{\phi}(E)} J\wtilde{\phi}(\wtilde{s}) \dd \wtilde{s}
+	\int_{\phi^{-1}(E)} J\phi(s) \dd s = \int_{\wtilde{\phi}^{-1}(E)} J\wtilde{\phi}(\wtilde{s}) \dd \wtilde{s}
 \end{equation}
 %
 
 Infatti, dando per buono il lemma, osserviamo quanto segue.
 Fissato $i$
 $$
-	\phi \colon D \to \Sigma \cap U \qquad \phi_i \colon D \to \Sigma \cap U_i
-	\qquad E_i \subset \Sigma \cap U \cap U_i
+	\phi \colon D \to \Sigma \cap U \qquad \phi_i \colon D_i \to \Sigma \cap U_i
+	\qquad E \cap \Sigma_i \subset \Sigma \cap U \cap U_i
 $$
 dunque
 $$
 	\int_{\phi_i^{-1}(E \cap \Sigma_i)} J \phi_i(s) \dd s
-	= \int_{\phi^{-1}(E \cap \Sigma)} J \phi(s) \dd s.
+	= \int_{\phi^{-1}(E \cap \Sigma_i)} J \phi(s) \dd s.
 $$
 Infine sommando in $i$
 $$
 	\sigma_k(E)
 	= \sum_i \int_{\phi_i^{-1}(E \cap \Sigma_i)} J \phi_i(s) \dd s 
+	= \sum_i \int_{\phi^{-1}(E \cap \Sigma_i)} J \phi(s) \dd s 
 	= \int_{\phi^{-1}(E \cap \Sigma)} J \phi(s) \dd s,
 $$
 da cui la tesi.
@@ -134,7 +135,7 @@ $$
 Dunque 
 \begin{itemize}
 
-	\item $\phi_d \left( [0,\pi]^{d-1} \times [0,2\pi] \right) = \mathbb{S}^d$ è una parametrizzazione in coordinate sferiche ed è iniettiva.
+	\item $\phi_d \left( [0,\pi]^{d-1} \times [0,2\pi] \right) = \mathbb{S}^d$ è una parametrizzazione in coordinate sferiche ed è iniettiva su $(0,\pi)^{d-1} \times (0,2\pi)$
 
 	\item $J\phi_d(\alpha) = \sin(\alpha_1)^{d-1} \sin(\alpha_2)^{d-2} \cdots \sin(\alpha_{d-1})^1$
 
@@ -151,15 +152,15 @@ $$
 
 \textbf{Proposizione 3.} Sia $\Sigma$ superficie come al solito. Allora esiste un'unica misura $\mu$ sui $\mc{M}(\Sigma)$ tale che per ogni $\epsilon > 0$ esiste $\delta > 0$ tale che data $f \colon \Sigma \cap U \to \R^k \in C^1$ che è $\delta$-isometria, cioè
 %
-\begin{equation}
-	\label{eq:16dic_prop3} \tag{P}
+$$
 	\frac{1}{1 + \delta} |x-x'| \leq |f(x) - f(x')| \leq (1+\delta)|x-x'| \quad \forall x,x' \in \Sigma \cap U
-\end{equation}
+$$
 Allora
 %
-$$
+\begin{equation}
+	\label{eq:16dic_prop3} \tag{P}
 	\frac{1}{1+\epsilon} \sigma_k(E) \leq |f(E)| \leq (1+\epsilon)\sigma_k(E) \quad \forall E \text{ mis } \subset \Sigma \cap U
-$$
+\end{equation}
 %
 
 \textbf{Corollario 4} (coincidenza con la misura di Hausdorff.) Poiché $\sigma_k$ e la restrizione di $\mc{H}^k$ a $\Sigma$ hanno la proprietà \eqref{eq:16dic_prop3}, coincidono.
@@ -231,7 +232,7 @@ Dato $V$ spazio vettoriale su $\R$ e $k=1,2,\ldots$, l'applicazione $\alpha \col
 \textbf{Definizione.} Dati $V,V'$ spazi vettoriali, $T \colon V \to V'$ lineare, $\alpha \in \Lambda^k (V')$, il \textbf{pull-back} di $\alpha$ secondo $T$ è
 %
 $$
-T^\# \alpha \in \Lambda^k(V) \quad \text{dato da} \quad T^\# \alpha(v_1,\ldots,v_k) = \alpha(Tv_1,\ldots,Tv_n)
+T^\# \alpha \in \Lambda^k(V) \quad \text{dato da} \quad T^\# \alpha(v_1,\ldots,v_k) = \alpha(Tv_1,\ldots,Tv_k)
 $$
 %
 Inoltre, dati $\alpha \in \Lambda^k(V), \beta \in \Lambda^h(V)$ si definisce \textbf{prodotto esterno} e si indica con $\alpha \wedge \beta \in \Lambda^{k+h}(V)$ quanto segue

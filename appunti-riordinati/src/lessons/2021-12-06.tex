@@ -8,26 +8,57 @@ Abbiamo visto che la \textit{serie di Fourier} si definisce naturalmente su $L^2
 Data $f \in L^1(\R; \C) \cap L^2(\R; \C)$ vale $\| \hat f\, \|_2 = \sqrt{2\pi} \norm{f}_2$.
 }
 
-\textbf{Teorema 2.}
-$\mathcal F$ si estende per continuità da $L^1 \cap L^2$ a tutto $L^2$ e $\mathcal F / \sqrt{2\pi}$ risulta essere un'isometria\footnote{dunque è uniformemente continua.} (come operatore a valori in $L^2$).
+\mybox{%
+\textbf{Teorema 2.} Valgono i seguenti
+\begin{itemize}
 
-\textbf{Dimostrazione.} Segue dalla Proposizione~1 e dal seguente lemma di estensione.
+	\item $\mathcal F$ si estende per continuità da $L^1 \cap L^2$ a tutto $L^2$
+
+	\item $\mathcal F / \sqrt{2\pi}$ risulta essere un'isometria\footnotemark (come operatore a valori in $L^2$); ovvero, per ogni $f_1, f_2 \in L^2(\R; \C)$ vale
+	$$
+		\langle \hat{f_1}, \hat{f_2} \rangle = 2\pi \langle f_1, f_2 \rangle
+		\qquad \text{identità di Plancherel}.
+	$$
+
+\end{itemize}
+}
+\footnotetext{Dunque è uniformemente continua.}
+
+\textbf{Dimostrazione.} Il primo enunciato si ottiene dal seguente lemma di estensione.
 
 \textbf{Lemma.} Dati $X$ e $Y$ spazi metrici, $Y$ completo e $D$ denso in $X$, $g \colon D \to Y$ uniformemente continua allora $g$ ammette un'unica estensione $G \colon X \to Y$ continua. (Inoltre se $X$ e $Y$ sono spazi normati e $g$ è lineare allora anche $G$ è lineare).
 \qed
 
-\textbf{Corollario 3.} (Identità di Plancherel).
-Per ogni $f_1, f_2 \in L^2(\R; \C)$ vale $\langle \hat{f_1}, \hat{f_2} \rangle = 2\pi \langle f_1, f_2 \rangle$.
-
-\textbf{Dimostrazione.} Segue dal Teorema~2 e dall'identità di polarizzazione. 
-Infatti, 
+Il secondo enunciato si ottiene dal primo enunciato del Teorema~2, dalla Proposizione~1 e  dalla formula di polarizzazione:
 \begin{align*}
-	\left<\hat{f_1}, \hat{f_2} \right>  & \overset{\text{identità pol}}{=} 
+	\left<\hat{f_1}, \hat{f_2} \right>
+	& =
 	\frac{1}{4} \left( \norm{\hat{f_1} + \hat{f_2}}^2 + \norm{\hat{f_1} - \hat{f_1}}^2 \right) \\
-	\substack{\text{Teo~2}} \to & = \frac{2\pi}{4} \left( \norm{f_1 + f_2}^2 + \norm{f_1 - f_1}^2 \right) \\
+	& = \frac{2\pi}{4} \left( \norm{f_1 + f_2}^2 + \norm{f_1 - f_1}^2 \right) \\
 	& = 2\pi \left<f_1,f_2 \right>.
 \end{align*}
 \qed
+
+% \textbf{Teorema 2.}
+% $\mathcal F$ si estende per continuità da $L^1 \cap L^2$ a tutto $L^2$ e $\mathcal F / \sqrt{2\pi}$ risulta essere un'isometria\footnote{dunque è uniformemente continua.} (come operatore a valori in $L^2$).
+
+% \textbf{Dimostrazione.} Segue dalla Proposizione~1 e dal seguente lemma di estensione.
+
+% \textbf{Lemma.} Dati $X$ e $Y$ spazi metrici, $Y$ completo e $D$ denso in $X$, $g \colon D \to Y$ uniformemente continua allora $g$ ammette un'unica estensione $G \colon X \to Y$ continua. (Inoltre se $X$ e $Y$ sono spazi normati e $g$ è lineare allora anche $G$ è lineare).
+% \qed
+
+% \textbf{Corollario 3.} (Identità di Plancherel).
+% Per ogni $f_1, f_2 \in L^2(\R; \C)$ vale $\langle \hat{f_1}, \hat{f_2} \rangle = 2\pi \langle f_1, f_2 \rangle$.
+
+% \textbf{Dimostrazione.} Segue dal Teorema~2 e dall'identità di polarizzazione. 
+% Infatti, 
+% \begin{align*}
+% 	\left<\hat{f_1}, \hat{f_2} \right>  & \overset{\text{identità pol}}{=} 
+% 	\frac{1}{4} \left( \norm{\hat{f_1} + \hat{f_2}}^2 + \norm{\hat{f_1} - \hat{f_1}}^2 \right) \\
+% 	\substack{\text{Teo~2}} \to & = \frac{2\pi}{4} \left( \norm{f_1 + f_2}^2 + \norm{f_1 - f_1}^2 \right) \\
+% 	& = 2\pi \left<f_1,f_2 \right>.
+% \end{align*}
+% \qed
 
 \vss
 
@@ -56,7 +87,7 @@ $$
 
 \begin{itemize}
 
-	\item \textit{Passo 1.} 
+	\item \fbox{Passo 1} 
 	Poniamo per ogni $\delta$
 	$$
 		I_\delta = \int_{-\infty}^{+\infty} |\hat f(y)|^2 \varphi(\delta y) \dd y
@@ -64,7 +95,7 @@ $$
 		\int_{-\infty}^{+\infty} |f(y)|^2 \qquad \text{per Beppo Levi.}
 	$$
 
-	\item \textit{Passo 2.}
+	\item \fbox{Passo 2}
 		$$
 		\begin{aligned}
 			I_\delta 
@@ -73,8 +104,8 @@ $$
 			&\overset{\mathclap{\text{FT}}}{=} 
 			\iint f(x) \overline{f(t)} 
 			\bigg( \underbrace{\int \varphi(\delta y) e^{i(t-x)y} \dd y}_{\sigma_\delta \check \varphi(t - x)} \bigg)
-			\dd x \dd y = \\
-			&= \int \left( f(x) \sigma_\delta \check\varphi(t - x) \dd x \right) \overline{f(t)} \dd t =\\
+			\dd x \dd t = \\
+			&= \int \left( \int f(x) \sigma_\delta \check\varphi(t - x) \dd x \right) \overline{f(t)} \dd t =\\
 			&= \int f \ast \sigma_\delta \check \varphi(t) \cdot \overline{f(t)} \dd t = \\
 			&= \langle f \ast \sigma_\delta \check \varphi; f \rangle \\
 		\end{aligned}
@@ -82,15 +113,15 @@ $$
 		e possiamo applicare il teorema di Fubini-Tonelli in quanto le ipotesi sono verificate, infatti
 		$$
 		\begin{aligned}
-			&\iiint |f(x) \overline{f(t)}| e^{i(t - x)y} \varphi(\delta y) \dd x \dd t \dd y = \\
+			&\iiint |f(x) \overline{f(t)} e^{i(t - x)y} \varphi(\delta y)| \dd x \dd t \dd y = \\
 			= &\iiint |f(x)| \cdot |f(t)| \cdot |\varphi(\delta y)| \dd x \dd t \dd y = \\
 			= &\norm{f}_1^2 \norm{\varphi(\delta y)}_1 < +\infty
 		\end{aligned}
 		$$
 		e $\norm{\varphi(\delta y)}_1 < +\infty$ poiché $\varphi \in L^1$.
 
-	\item \textit{Passo 3.}
-		$I_\delta \xrightarrow{\delta \to 0} 2\pi \norm{f}_2^2 $. Infatti $I_\delta = \langle f \ast \sigma_\delta \check \varphi; f \rangle$ e
+	\item \fbox{Passo 3}
+		$I_\delta \xrightarrow{\delta \to 0} m \norm{f}_2^2 $. Infatti $I_\delta = \langle f \ast \sigma_\delta \check \varphi; f \rangle$ e
 		$$
 		\sigma_\delta \check \varphi \xrightarrow{\text{in $L^2$}} m f
 		\qquad
@@ -98,15 +129,12 @@ $$
 		m = \int \check \varphi(x) \dd x
 		$$
 
-	\item \textit{Passo 4.}
-		Infine $m = 2\pi$ ad esempio prendendo $\varphi(y) = e^{-|y|}$
-		$$
-			\check\varphi(x) = \frac{2}{1 + x^2} \in L^1.
-		$$
+	\item \fbox{Passo 4}
+		Infine $m = 2\pi$ ad esempio prendendo $\varphi(y) = 1/(1+y^2)$.
 \end{itemize}
 \qed
 
-\vss
+\newpage
 
 \hypertarget{oss-trasformata-su-ldue}{\textbf{Calcolo TdF su $\mathbf{L^2 \setminus L^1}$.}}
 % Come si può calcolare $\hat f$ per $f \in L^2 \setminus L^1$? Se per quasi ogni $y \in \R$ esiste il limite
@@ -153,28 +181,52 @@ Le identità valgono in $L^1 \cap L^2$ che è denso in $L^2$ e dunque si estendo
 \textbf{Proposizione 5.}
 Se $f \in C^1(\R; \C)$ e $f \in L^1 \cup L^2$ e $f' \in L^1 \cup L^2 \implies \hat{f'} = iy\hat{f}$.
 
-\textbf{Dimostrazione.}
-La stessa fatta per $f, f' \in L^1$. Si parte da $a_n, b_n$ tali che $a_n \to -\infty$ e $b_n \to +\infty$ con $f(a_n) \to 0$ e $f(b_n) \to 0$ e si integra per parti
+\textbf{Dimostrazione.} 
+Come per il caso di $f, f' \in L^1$ si definiscono le successioni $a_n, b_n$ tali che $a_n \to -\infty$ e $b_n \to +\infty$ con $f(a_n) \to 0$ e $f(b_n) \to 0$.
+
+Definiamo $f_n \coloneqq f \cdot \One_{[a_n,b_n]}$; segue subito che $f_n \xrightarrow{L^2} f$, dunque $\hat{f_n} \xrightarrow{L^2} \hat{f}$ e a meno di sottosuccessioni $\hat{f_n}(y) \to \hat{f}(y)$ per quasi ogni $y$. Perciò
+$$
+	\wtilde{\forall} y \;\exists \lim_n \int_{a_n}^{b_n} f(x) e^{-ixy} \dd x \quad \text{ed è uguale a} \quad \int_{-\infty}^{+\infty} f(x) e^{-ixy} \dd x = \hat{f}(y)
+$$
+Analogamente
+$$
+	\wtilde{\forall} y \;\exists \lim_n \int_{a_n}^{b_n} f'(x) e^{-ixy} \dd x \quad \text{ed è uguale a} \quad \int_{-\infty}^{+\infty} f'(x) e^{-ixy} \dd x = \hat{f'}(y)
+$$
+Si integra per parti
 $$
 \begin{aligned}
-	\mathcal F(f' \cdot \One_{[a_n, b_n]})
-	&= \int_{a_n}^{b_n} f'(x) e^{-ixy} \dd x \\
-	&= \underbrace{\left[f(x) e^{-ixy}\right]_{a_n}^{b_n}}_{\to 0} + iy \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x = iy \mathcal F(f \cdot \One_{[a_n, b_n]}).
+	\int_{a_n}^{b_n} f'(x) e^{-ixy} \dd x = \left[f(x) e^{-ixy}\right]_{a_n}^{b_n} + iy \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x
 \end{aligned}
 $$
-Per concludere si dimostra che 
-%
-\begin{gather*}
-	\mc{F}(f' \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f') \text{ in } L^2 \\
-	\mc{F}(f \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f) \text{ in } L^2
-\end{gather*}
+passando al limite in $n$
+$$
+	\hat{f'}(y) = 0 + iy \hat{f}(y) \quad \wtilde{\forall} y.
+$$
+\qed
 
-Ovvero si dimostra che
-\begin{gather*}
-	\int_{b_n}^{+\infty} |f(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
-	\int_{b_n}^{+\infty} |f'(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f'(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
-\end{gather*}
-Ma questo è vero in quanto $f,f' \in L^2$.
+
+%\textbf{Dimostrazione.}
+%La stessa fatta per $f, f' \in L^1$. Si parte da $a_n, b_n$ tali che $a_n \to -\infty$ e $b_n \to +\infty$ con $f(a_n) \to 0$ e $f(b_n) \to 0$ e si integra per parti
+%$$
+%\begin{aligned}
+%	\mathcal F(f' \cdot \One_{[a_n, b_n]})
+%	&= \int_{a_n}^{b_n} f'(x) e^{-ixy} \dd x \\
+%	&= \underbrace{\left[f(x) e^{-ixy}\right]_{a_n}^{b_n}}_{\to 0} + iy \int_{a_n}^{b_n} f(x) e^{-iyx} \dd x = iy \mathcal F(f \cdot \One_{[a_n, b_n]}).
+%\end{aligned}
+%$$
+%Per concludere si dimostra che 
+%%
+%\begin{gather*}
+%	\mc{F}(f' \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f') \text{ in } L^2 \\
+%	\mc{F}(f \cdot \One_{[a_n,b_n]}) \xrightarrow{n \to \infty} \mc{F}(f) \text{ in } L^2
+%\end{gather*}
+
+%Ovvero si dimostra che
+%\begin{gather*}
+%	\int_{b_n}^{+\infty} |f(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
+%	\int_{b_n}^{+\infty} |f'(x) e^{-ixy}|^2 \dd x + \int_{-\infty}^{a_n} |f'(x) e^{-ixy}|^2 \dd x \xrightarrow{n \to \infty} 0 \\
+%\end{gather*}
+%Ma questo è vero in quanto $f,f' \in L^2$.
 
 \newpage
 
@@ -189,7 +241,7 @@ $$
 	& = \int_{|y| \leq 1} |\hat f(y)| \dd y + \int_{|y| \geq 1} |\hat f(y)| \dd y \\
 	& \leq 2 \| \hat f\, \|_\infty + \int_{|y| \geq 1} |\hat f(y) y| \frac{1}{|y|} \dd y \\
 	& \leq 2 \norm{f}_1 + \| \hat f y \|_2 \left( \int_{|y| \geq 1} \frac{1}{|y|^2} \dd y \right)^{1/2} \\
-	& \leq 2 \norm{f}_1 + 2 \norm{f'}_2
+	& \leq 2 \norm{f}_1 + 2 \norm{\hat{f'}}_2
 \end{aligned}
 $$
 
