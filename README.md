@@ -1,5 +1,4 @@
-
-# Appunti di Analisi 3
+# Appunti del corso di Analisi 3
 
 ## Autori
 
@@ -8,4 +7,4 @@
 
 ## Struttura
 
-Questa branch ha lo scopo di dividere le lezioni teoriche dalle esercitazioni, spostando nelle lezioni prime i risultati di teoria visti ad esercitazione.
+Nella cartella ``appunti-riordinati`` le esercitazioni sono state riordinate così da raggrupparle per argomento alla fine del capitolo.
