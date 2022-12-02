@@ -18,7 +18,7 @@ $$
 	\item La classe delle funzioni misurabili è chiusa rispetto a molte operazioni
 	\begin{itemize}
 		\item \textit{Somma}, \textit{prodotto} (se hanno senso nello spazio immagine della funzione).
-		\item \textit{Composizione con funzione continua}: Se $f \colon X \to Y$ continua e $g \colon  Y \to Y'$ continua, allora $g \circ f$ è misurabile.
+		\item \textit{Composizione con funzione continua}: Se $f \colon X \to Y$ misurabile e $g \colon  Y \to Y'$ continua, allora $g \circ f$ è misurabile.
 		\item \textit{Convergenza puntuale}: data una successione di $f_n$ misurabili e $f_n \to f$ puntualmente, allora $f$ è misurabile.
 		\item $\liminf$ e $\limsup$ (almeno nel caso $Y = \R$).
 	\end{itemize}
@@ -29,7 +29,7 @@ $$
 
 % Indico con $\mc{S}$ la classe delle funzioni $f \colon  X \to \R$ \textit{semplici}, cioè della forma $f = \sum_{i}^{n} \alpha_i \One_{E_i}$ con $\{E_i \}_{1 \leq i \leq n}$ misurabili e $\alpha_i \in \R$.
 \textbf{Definizione.}
-Definiamo la classe delle \textbf{funzione semplici} come
+Definiamo la classe delle \textbf{funzioni semplici} come
 $$
 \mc S := \left\{ f \colon X \to \R \mymid f = \sum_i \alpha_i \One_{E_i} \text{ con $E_i$ misurabili e $\{\alpha_i\}$ finito} \right\}
 $$
@@ -186,7 +186,7 @@ La stessa formula vale per $f$ a valori in $\overline{\R}$ integrabile e per $f$
 
 \textbf{Osservazioni.}
 \begin{itemize}
-	\item Se $n = 1$, $\left| \det(\Lambda \Phi(x)) \right| = \left| \Phi'(x) \right|$ e non $\Phi'(x)$ come nella formula vista ad Analisi 1 (l'informazione del segno viene data dall'inversione degli estremi).
+	\item Se $n = 1$, $\left| \det(\nabla \Phi(x)) \right| = \left| \Phi'(x) \right|$ e non $\Phi'(x)$ come nella formula vista ad Analisi 1 (l'informazione del segno viene data dall'inversione degli estremi).
 	
 	\item Indebolire le ipotesi su $\Phi$ è delicato. Basta $\Phi$ di classe $C^1$ e $\foralmostall x' \in \Omega' \; \# \Phi^{-1}(x') = 1$ (supponendo $\Phi$ iniettiva la proprietà precedente segue immediatamente).
 	Se $\Phi$ non è "quasi" iniettiva bisogna correggere la formula per tenere conto della molteplicità.

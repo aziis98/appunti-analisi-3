@@ -33,7 +33,7 @@ e $f \compose u$ è integrabile.
 \begin{itemize}
 	\item $(f \compose u)^-$ ha integrale finito.
 
-	\item Interpretando $\mu$ come probabilità si riscrive come $\mathbb E[f \compose \mu] \geq f(\mathbb{E}[u])$.
+	\item Interpretando $\mu$ come probabilità si riscrive come $\mathbb E[f \compose u] \geq f(\mathbb{E}[u])$.
 
 	\item Se $u$ è una funzione semplice, cioè $\ds u = \sum_i y_i \cdot \One_{E_i}$ con $E_i$ disgiunti e $\bigcup E_i = X$ allora posti $\lambda_i = \mu(E_i)$ abbiamo
 		$$
@@ -65,7 +65,7 @@ e $f \compose u$ è integrabile.
 
 	\item Se $0 < \mu(X) < +\infty$ la disuguaglianza di Jensen va modificata come segue
 	$$
-		\fint_X f \circ u \dd \mu \leq f \left( \fint_X u \dd \mu \right).
+		f \left( \fint_X u \dd \mu \right) \leq \fint_X f \circ u \dd \mu
 	$$
 	Per la dimostrazione ci si riconduce al caso precedente sostituendo $\mu$ con $\wtilde{\mu} \coloneqq m \cdot \mu$, con $m \coloneqq 1 / \mu(X)$.
 	
@@ -204,18 +204,18 @@ Se $\norm{f_1}_{p_1} = 0,+\infty$ o $\norm{f_2}_{p_2} = 0,+\infty$ la dimostrazi
 		\int_X |f_1| \cdot |f_2| \dd \mu 
 		= \int_X \left( \gamma^{p_1} \cdot |f_1|^{p_1} \right)^{1/p_1} \cdot \left( \gamma^{-p_2} \cdot |f_2|^{p_2} \right)^{1/p_2} \dd \mu
 		$$
-		a questo punto chiamiamo per comodità $g_1 := \gamma^{p_1} \cdot |f_1|^{p_1}$, $\lambda_1 := 1 / p_1$ e $g_2 := \gamma^{-p_2} \cdot |f_1|^{p_2}$, $\lambda_2 := 1 / p_2$ da cui
+		a questo punto chiamiamo per comodità $g_1 := \gamma^{p_1} \cdot |f_1|^{p_1}$, $\lambda_1 := 1 / p_1$ e $g_2 := \gamma^{-p_2} \cdot |f_2|^{p_2}$, $\lambda_2 := 1 / p_2$ da cui
 		$$
 		= \int_X g_1^{\lambda_1} \cdot g_2^{\lambda_2} 
 		\overset{\text{Young}}{\leq} \int_X \lambda_1 g_1 + \lambda_2 g_2 \dd \mu
-		= \lambda_1 \gamma^{p_1} \int_X |f_1|^{p_1} + \lambda_2 \gamma^{-p_2} \int_X |f_1|^{p_2} \dd \mu
+		= \lambda_1 \gamma^{p_1} \int_X |f_1|^{p_1} + \lambda_2 \gamma^{-p_2} \int_X |f_2|^{p_2} \dd \mu
 		$$
 		$$
 		= \lambda_1 \gamma^{p_1} \cdot \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \cdot \norm{f_2}_{p_2}^{p_2}
 		$$
-		posti ora $a_1 := \gamma^{p_1} \norm{f_1}_{p_1}^{p_1}$ e $a_2 := \gamma^{-p_2} \norm{f_1}_{p_2}^{p_2}$, per $\gamma \to 0$ abbiamo che $a_1 \to 0, a_2 \to +\infty$ mentre per $\gamma \to +\infty$ abbiamo che $a_1 \to +\infty, a_2 \to 0$ dunque per il teorema del valor medio esisterà $\gamma$ tale che $a_1 = a_2$, ma allora siamo nel caso dell'uguaglianza per la disuguaglianza di Young dunque
+		posti ora $a_1 := \gamma^{p_1} \norm{f_1}_{p_1}^{p_1}$ e $a_2 := \gamma^{-p_2} \norm{f_2}_{p_2}^{p_2}$, per $\gamma \to 0$ abbiamo che $a_1 \to 0, a_2 \to +\infty$ mentre per $\gamma \to +\infty$ abbiamo che $a_1 \to +\infty, a_2 \to 0$ dunque per il teorema del valor medio esisterà $\gamma$ tale che $a_1 = a_2$, ma allora siamo nel caso dell'uguaglianza per la disuguaglianza di Young dunque
 		$$
-		\lambda_1 \gamma^{p_1} \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \norm{f_1}_{p_2}^{p_2} 
+		\lambda_1 \gamma^{p_1} \norm{f_1}_{p_1}^{p_1} + \lambda_2 \gamma^{-p_2} \norm{f_2}_{p_2}^{p_2} 
 		= \lambda_1 a_1 + \lambda_2 a_2 = a_1^{\lambda_1} \cdot a_2^{\lambda_2} 
 		= \norm{f_1}_{p_1} \cdot \norm{f_2}_{p_2}
 		$$
